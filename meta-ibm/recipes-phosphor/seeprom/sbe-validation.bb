@@ -6,7 +6,7 @@ HOMEPAGE = "http://github.ibm.com/openbmc/sbe-validation"
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://${PHOSPHORBASE}/COPYING.apache-2.0;md5=34400b68072d710fecd0a2940a0d1658"
 SRC_URI += "git://git@github.ibm.com/openbmc/sbe-validation.git;protocol=ssh"
-SRCREV = "13ab183c807e097635068e3bc548cdb926d0f37c"
+SRCREV = "110e83e40bbb911f2c54fc149fcabf54b1545148"
 
 inherit autotools pkgconfig
 
