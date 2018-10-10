@@ -2,17 +2,13 @@ SUMMARY = "Phosphor OpenBMC SBE Validation"
 DESCRIPTION = "Phosphor OpenBMC SBE Validation"
 PR = "r1"
 
-HOMEPAGE = "http://github.ibm.com/openbmc/sbe-validation"
-LICENSE = "Apache-2.0"
-LIC_FILES_CHKSUM = "file://${PHOSPHORBASE}/COPYING.apache-2.0;md5=34400b68072d710fecd0a2940a0d1658"
-SRC_URI += "git://git@github.ibm.com/openbmc/sbe-validation.git;protocol=ssh"
-SRCREV = "110e83e40bbb911f2c54fc149fcabf54b1545148"
-
-inherit autotools pkgconfig
+require sbe-validation.inc
+inherit autotools pkgconfig pythonnative
 
 DEPENDS += "autoconf-archive-native"
 DEPENDS += "openssl"
-RDEPENDS_${PN} += "sbe-seeprom-tool"
+DEPENDS += "phosphor-logging sdbusplus sdbus++-native"
+RDEPENDS_${PN} += "sbe-seeprom-tool phosphor-logging sdbusplus"
 RDEPENDS_${PN} += "bash"
 
 S = "${WORKDIR}/git"
