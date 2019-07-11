@@ -1,3 +1,12 @@
+# ibm-openbmc
+
+ibm-openbmc/openbmc is an IBM downstream fork of
+[openbmc/openbmc](https://github.com/openbmc/openbmc). The purpose is to
+provide early access to features and capabilities which have not yet been
+accepted or merged into upstream OpenBMC and to use as a base for IBM products.
+IBM is committed to its continued contribution to the Linux foundation OpenBMC
+project and almost all commits found here have already been pushed upstream.
+
 # OpenBMC
 
 [![Build Status](https://openpower.xyz/buildStatus/icon?job=openbmc-build)](https://openpower.xyz/job/openbmc-build/)
