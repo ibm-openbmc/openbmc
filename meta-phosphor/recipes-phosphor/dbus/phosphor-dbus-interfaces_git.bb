@@ -13,8 +13,8 @@ inherit phosphor-dbus-yaml
 DEPENDS += "autoconf-archive-native"
 DEPENDS += "sdbus++-native"
 
-SRC_URI += "git://github.com/openbmc/phosphor-dbus-interfaces"
-SRCREV = "4ad9170e7549abbec3c8c52ac4b68a82e01f1c68"
+SRC_URI += "git://github.com/ibm-openbmc/phosphor-dbus-interfaces;branch=OP940"
+SRCREV = "23a49f6418f2ba330759e47211397873772951ec"
 
 DEPENDS_remove_class-native = "sdbus++-native"
 DEPENDS_remove_class-nativesdk = "sdbus++-native"
