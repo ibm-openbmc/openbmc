@@ -6,7 +6,9 @@ LIC_FILES_CHKSUM = "file://${S}/COPYING;md5=3b83ef96387f14655fc854ddc3c6bd57"
 PV = "2.1+git${SRCPV}"
 
 SRC_URI += "git://github.com/open-power/pdbg.git"
-SRCREV = "2463be165d7eaa50b648c343e410d851edfb70ce"
+SRC_URI += "file://proc-thread-control-chipop-based.patch"
+
+SRCREV = "dbbb35af951e36cb1ff134bdf74a5346d316e782"
 
 DEPENDS += "dtc-native"
 
