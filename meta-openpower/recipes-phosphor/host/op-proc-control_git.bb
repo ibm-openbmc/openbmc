@@ -11,11 +11,8 @@ S = "${WORKDIR}/git"
 inherit autotools obmc-phosphor-utils pkgconfig pythonnative
 inherit systemd
 
-SRC_URI += "git://github.com/openbmc/openpower-proc-control"
-SRCREV = "16ab00cb9383b17b8dd033a1cb300e2a013d55b1"
 SRC_URI += "git://github.com/ibm-openbmc/openpower-proc-control;branch=OP940"
 SRCREV = "16ab00cb9383b17b8dd033a1cb300e2a013d55b1"
-
 
 DEPENDS += " \
         autoconf-archive-native \
