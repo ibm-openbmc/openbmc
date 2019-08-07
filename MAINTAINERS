@@ -39,6 +39,7 @@ Description of section entries:
     A change cannot be added to an OpenBMC repository without a MAINTAINER's
     approval; thus, a MAINTAINER should always be listed as a reviewer.
 
+
 START OF MAINTAINERS LIST
 -------------------------
 
