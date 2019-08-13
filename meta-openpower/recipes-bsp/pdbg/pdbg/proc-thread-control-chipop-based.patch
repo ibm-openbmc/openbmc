@@ -1,0 +1,441 @@
+From 858f990d37c96ddc5035edfd86c069bdd6eddb07 Mon Sep 17 00:00:00 2001
+From: Amitay Isaacs <amitay@ozlabs.org>
+Date: Fri, 2 Aug 2019 12:25:35 +1000
+Subject: [PATCH 1/8] libpdbg: Fix implementation of thread_sreset_all
+
+Run sreset procedure only on enabled threads.
+
+Signed-off-by: Amitay Isaacs <amitay@ozlabs.org>
+Reviewed-by: Alistair Popple <alistair@popple.id.au>
+---
+ libpdbg/chip.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/libpdbg/chip.c b/libpdbg/chip.c
+index 67e3afa..a36a038 100644
+--- a/libpdbg/chip.c
++++ b/libpdbg/chip.c
+@@ -178,6 +178,9 @@ int thread_sreset_all(void)
+ 		return rc;
+ 
+ 	pdbg_for_each_class_target("thread", thread) {
++		if (pdbg_target_status(thread) != PDBG_TARGET_ENABLED)
++			continue;
++
+ 		rc |= thread_sreset(thread);
+ 	}
+ 
+-- 
+2.7.2
+
+
+From b7fa1ea02f01bbb23e57a3749d3b8843330eb8d1 Mon Sep 17 00:00:00 2001
+From: Amitay Isaacs <amitay@ozlabs.org>
+Date: Fri, 2 Aug 2019 12:26:17 +1000
+Subject: [PATCH 2/8] sbefifo: Memory size for sbefifo ops must be 4-byte
+ aligned
+
+Signed-off-by: Amitay Isaacs <amitay@ozlabs.org>
+Reviewed-by: Alistair Popple <alistair@popple.id.au>
+---
+ libpdbg/sbefifo.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libpdbg/sbefifo.c b/libpdbg/sbefifo.c
+index a2442cd..c251089 100644
+--- a/libpdbg/sbefifo.c
++++ b/libpdbg/sbefifo.c
+@@ -146,7 +146,7 @@ static int sbefifo_op(struct sbefifo *sbefifo,
+ 	 * Allocate extra memory for FFDC (SBEFIFO_MAX_FFDC_SIZE = 0x2000)
+ 	 * Use *out_len as a hint to expected reply length
+ 	 */
+-	buflen = *out_len + 0x2000 ;
++	buflen = (*out_len + 0x2000 + 3) & (uint32_t)~3;
+ 	buf = malloc(buflen);
+ 	assert(buf);
+ 
+-- 
+2.7.2
+
+
+From e0360429b1eac8449073058471db28205c5d316a Mon Sep 17 00:00:00 2001
+From: Amitay Isaacs <amitay@ozlabs.org>
+Date: Fri, 2 Aug 2019 12:26:42 +1000
+Subject: [PATCH 3/8] sbefifo: Improve the log output, drop extra newline
+
+Signed-off-by: Amitay Isaacs <amitay@ozlabs.org>
+Reviewed-by: Alistair Popple <alistair@popple.id.au>
+---
+ libpdbg/sbefifo.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/libpdbg/sbefifo.c b/libpdbg/sbefifo.c
+index c251089..90cf83e 100644
+--- a/libpdbg/sbefifo.c
++++ b/libpdbg/sbefifo.c
+@@ -386,7 +386,7 @@ static int sbefifo_op_control(struct sbefifo *sbefifo,
+ 	uint32_t cmd, op, out_len, status;
+ 	int rc;
+ 
+-	PR_NOTICE("sbefifo: control c:0x%x, t=%u\n, op=%u\n", core_id, thread_id, oper);
++	PR_NOTICE("sbefifo: control c:0x%x, t=0x%x, op=%u\n", core_id, thread_id, oper);
+ 
+ 	op = ((core_id & 0xff) << 8) | ((thread_id & 0x0f) << 4) | (oper & 0x0f);
+ 	cmd = SBEFIFO_CMD_CLASS_INSTRUCTION | SBEFIFO_CMD_CONTROL_INSN;
+-- 
+2.7.2
+
+
+From d0a0d919cccbd69631aaef0d37f1dba8d53e86e0 Mon Sep 17 00:00:00 2001
+From: Amitay Isaacs <amitay@ozlabs.org>
+Date: Fri, 2 Aug 2019 12:26:43 +1000
+Subject: [PATCH 4/8] kernel: Log scom read/write errors only at debug level
+
+Library really should not log errors, but return the right error code so
+user application can generate the appropriate error log.  However, it is
+a good idea to log all errors at debug level from library to help debug.
+
+Signed-off-by: Amitay Isaacs <amitay@ozlabs.org>
+Reviewed-by: Alistair Popple <alistair@popple.id.au>
+---
+ libpdbg/kernel.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/libpdbg/kernel.c b/libpdbg/kernel.c
+index 0f37602..4cc0334 100644
+--- a/libpdbg/kernel.c
++++ b/libpdbg/kernel.c
+@@ -157,7 +157,7 @@ static int kernel_pib_getscom(struct pib *pib, uint64_t addr, uint64_t *value)
+ 	rc = pread(pib->fd, value, 8, addr);
+ 	if (rc < 0) {
+ 		rc = errno;
+-		PR_ERROR("Failed to read scom");
++		PR_DEBUG("Failed to read scom addr 0x%016"PRIx64"\n", addr);
+ 		return rc;
+ 	}
+ 	return 0;
+@@ -170,7 +170,7 @@ static int kernel_pib_putscom(struct pib *pib, uint64_t addr, uint64_t value)
+ 	rc = pwrite(pib->fd, &value, 8, addr);
+ 	if (rc < 0) {
+ 		rc = errno;
+-		PR_ERROR("Failed to write scom");
++		PR_DEBUG("Failed to write scom addr 0x%016"PRIx64"\n", addr);
+ 		return rc;
+ 	}
+ 	return 0;
+-- 
+2.7.2
+
+
+From 0a625a7331de4a77de6796329ce6a6cb051182a3 Mon Sep 17 00:00:00 2001
+From: Amitay Isaacs <amitay@ozlabs.org>
+Date: Wed, 31 Jul 2019 17:58:46 +1000
+Subject: [PATCH 5/8] libpdbg: Add thread start/step/stop all api
+
+Signed-off-by: Amitay Isaacs <amitay@ozlabs.org>
+---
+ libpdbg/chip.c    | 99 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ libpdbg/libpdbg.h |  3 ++
+ 2 files changed, 102 insertions(+)
+
+diff --git a/libpdbg/chip.c b/libpdbg/chip.c
+index a36a038..830c3ec 100644
+--- a/libpdbg/chip.c
++++ b/libpdbg/chip.c
+@@ -154,6 +154,105 @@ int thread_sreset(struct pdbg_target *thread_target)
+ 	return thread->sreset(thread);
+ }
+ 
++int thread_step_all(void)
++{
++	struct pdbg_target *pib, *thread;
++	int rc = 0, count = 0;
++
++	pdbg_for_each_class_target("pib", pib) {
++		struct sbefifo *sbefifo;
++
++		sbefifo = pib_to_sbefifo(pib);
++		if (!sbefifo)
++			break;
++
++		/*
++		 * core_id = 0xff (all SMT4 cores)
++		 * thread_id = 0xf (all 4 threads in the SMT4 core)
++		 */
++		rc |= sbefifo->thread_step(sbefifo, 0xff, 0xf);
++		count++;
++	}
++
++	if (count > 0)
++		return rc;
++
++	pdbg_for_each_class_target("thread", thread) {
++		if (pdbg_target_status(thread) != PDBG_TARGET_ENABLED)
++			continue;
++
++		rc |= thread_step(thread, 1);
++	}
++
++	return rc;
++}
++
++int thread_start_all(void)
++{
++	struct pdbg_target *pib, *thread;
++	int rc = 0, count = 0;
++
++	pdbg_for_each_class_target("pib", pib) {
++		struct sbefifo *sbefifo;
++
++		sbefifo = pib_to_sbefifo(pib);
++		if (!sbefifo)
++			break;
++
++		/*
++		 * core_id = 0xff (all SMT4 cores)
++		 * thread_id = 0xf (all 4 threads in the SMT4 core)
++		 */
++		rc |= sbefifo->thread_start(sbefifo, 0xff, 0xf);
++		count++;
++	}
++
++	if (count > 0)
++		return rc;
++
++	pdbg_for_each_class_target("thread", thread) {
++		if (pdbg_target_status(thread) != PDBG_TARGET_ENABLED)
++			continue;
++
++		rc |= thread_start(thread);
++	}
++
++	return rc;
++}
++
++int thread_stop_all(void)
++{
++	struct pdbg_target *pib, *thread;
++	int rc = 0, count = 0;
++
++	pdbg_for_each_class_target("pib", pib) {
++		struct sbefifo *sbefifo;
++
++		sbefifo = pib_to_sbefifo(pib);
++		if (!sbefifo)
++			break;
++
++		/*
++		 * core_id = 0xff (all SMT4 cores)
++		 * thread_id = 0xf (all 4 threads in the SMT4 core)
++		 */
++		rc |= sbefifo->thread_stop(sbefifo, 0xff, 0xf);
++		count++;
++	}
++
++	if (count > 0)
++		return rc;
++
++	pdbg_for_each_class_target("thread", thread) {
++		if (pdbg_target_status(thread) != PDBG_TARGET_ENABLED)
++			continue;
++
++		rc |= thread_stop(thread);
++	}
++
++	return rc;
++}
++
+ int thread_sreset_all(void)
+ {
+ 	struct pdbg_target *pib, *thread;
+diff --git a/libpdbg/libpdbg.h b/libpdbg/libpdbg.h
+index 25bfd97..da81d30 100644
+--- a/libpdbg/libpdbg.h
++++ b/libpdbg/libpdbg.h
+@@ -204,6 +204,9 @@ int thread_start(struct pdbg_target *target);
+ int thread_step(struct pdbg_target *target, int steps);
+ int thread_stop(struct pdbg_target *target);
+ int thread_sreset(struct pdbg_target *target);
++int thread_start_all(void);
++int thread_step_all(void);
++int thread_stop_all(void);
+ int thread_sreset_all(void);
+ struct thread_state thread_status(struct pdbg_target *target);
+ 
+-- 
+2.7.2
+
+
+From fc3dd0d54665fd37b7c9c837bb61141f36f766f6 Mon Sep 17 00:00:00 2001
+From: Amitay Isaacs <amitay@ozlabs.org>
+Date: Wed, 31 Jul 2019 17:28:15 +1000
+Subject: [PATCH 6/8] path: Check if all specified class targets are selected
+
+Signed-off-by: Amitay Isaacs <amitay@ozlabs.org>
+---
+ src/path.c | 15 +++++++++++++++
+ src/path.h |  9 +++++++++
+ 2 files changed, 24 insertions(+)
+
+diff --git a/src/path.c b/src/path.c
+index a80a288..a0eb666 100644
+--- a/src/path.c
++++ b/src/path.c
+@@ -321,6 +321,21 @@ bool path_target_selected(struct pdbg_target *target)
+ 	return false;
+ }
+ 
++bool path_target_all_selected(const char *classname, struct pdbg_target *parent)
++{
++	struct pdbg_target *target;
++
++	if (!parent)
++		parent = pdbg_target_root();
++
++	pdbg_for_each_target(classname, parent, target) {
++		if (!path_target_selected(target))
++			return false;
++	}
++
++	return true;
++}
++
+ void path_target_dump(void)
+ {
+ 	struct pdbg_target *target;
+diff --git a/src/path.h b/src/path.h
+index c3c20c0..3eb1447 100644
+--- a/src/path.h
++++ b/src/path.h
+@@ -51,6 +51,15 @@ bool path_target_add(struct pdbg_target *target);
+ bool path_target_selected(struct pdbg_target *target);
+ 
+ /**
++ * @brief Check if all the targets of specific class are selected
++ *
++ * @param[in]  classname Class name
++ * @param[in]  parent Parent target
++ * @return true if all the targets are selected, false otherwise
++ */
++bool path_target_all_selected(const char *classname, struct pdbg_target *parent);
++
++/**
+  * @brief Print the list of path targets to stdout
+  */
+ void path_target_dump(void);
+-- 
+2.7.2
+
+
+From 0a3941aaaf8b318cf719bad96414924f9b13eb41 Mon Sep 17 00:00:00 2001
+From: Amitay Isaacs <amitay@ozlabs.org>
+Date: Wed, 31 Jul 2019 18:04:38 +1000
+Subject: [PATCH 7/8] pdbg: Call thread_<op>_all() api if all threads are
+ selected
+
+This allows to optimize the thread operations (start/step/stop/sreset)
+when using sbefifo backend.
+
+Signed-off-by: Amitay Isaacs <amitay@ozlabs.org>
+---
+ src/thread.c | 24 ++++++++++++++++++++++++
+ 1 file changed, 24 insertions(+)
+
+diff --git a/src/thread.c b/src/thread.c
+index 7fd53a8..60d404b 100644
+--- a/src/thread.c
++++ b/src/thread.c
+@@ -154,6 +154,11 @@ static int thr_start(void)
+ 	struct pdbg_target *target;
+ 	int count = 0;
+ 
++	if (path_target_all_selected("thread", NULL)) {
++		thread_start_all();
++		return 1;
++	}
++
+ 	for_each_path_target_class("thread", target) {
+ 		if (pdbg_target_status(target) != PDBG_TARGET_ENABLED)
+ 			continue;
+@@ -171,6 +176,15 @@ static int thr_step(uint64_t steps)
+ 	struct pdbg_target *target;
+ 	int count = 0;
+ 
++	if (path_target_all_selected("thread", NULL)) {
++		int i;
++
++		for (i=0; i<count; i++)
++			thread_step_all();
++
++		return 1;
++	}
++
+ 	for_each_path_target_class("thread", target) {
+ 		if (pdbg_target_status(target) != PDBG_TARGET_ENABLED)
+ 			continue;
+@@ -188,6 +202,11 @@ static int thr_stop(void)
+ 	struct pdbg_target *target;
+ 	int count = 0;
+ 
++	if (path_target_all_selected("thread", NULL)) {
++		thread_stop_all();
++		return 1;
++	}
++
+ 	for_each_path_target_class("thread", target) {
+ 		if (pdbg_target_status(target) != PDBG_TARGET_ENABLED)
+ 			continue;
+@@ -300,6 +319,11 @@ static int thr_sreset(void)
+ 	struct pdbg_target *target;
+ 	int count = 0;
+ 
++	if (path_target_all_selected("thread", NULL)) {
++		thread_sreset_all();
++		return 1;
++	}
++
+ 	for_each_path_target_class("thread", target) {
+ 		if (pdbg_target_status(target) != PDBG_TARGET_ENABLED)
+ 			continue;
+-- 
+2.7.2
+
+
+From 66a93ea93d8b3a5d19549817d2e6e8011c95a8c9 Mon Sep 17 00:00:00 2001
+From: Amitay Isaacs <amitay@ozlabs.org>
+Date: Fri, 2 Aug 2019 16:29:30 +1000
+Subject: [PATCH 8/8] sbefifo: Enable special-wakeup for thread stop and sreset
+
+Signed-off-by: Amitay Isaacs <amitay@ozlabs.org>
+---
+ libpdbg/sbefifo.c | 11 ++++++++---
+ 1 file changed, 8 insertions(+), 3 deletions(-)
+
+diff --git a/libpdbg/sbefifo.c b/libpdbg/sbefifo.c
+index 90cf83e..784db32 100644
+--- a/libpdbg/sbefifo.c
++++ b/libpdbg/sbefifo.c
+@@ -383,12 +383,17 @@ static int sbefifo_op_control(struct sbefifo *sbefifo,
+ {
+ 	uint8_t *out;
+ 	uint32_t msg[3];
+-	uint32_t cmd, op, out_len, status;
++	uint32_t cmd, op, out_len, status, mode = 0;
+ 	int rc;
+ 
+-	PR_NOTICE("sbefifo: control c:0x%x, t=0x%x, op=%u\n", core_id, thread_id, oper);
++	/* Enforce special-wakeup for thread stop and sreset */
++	if ((oper & 0xf) == SBEFIFO_INSN_OP_STOP ||
++	    (oper & 0xf) == SBEFIFO_INSN_OP_SRESET)
++		mode = 0x2;
+ 
+-	op = ((core_id & 0xff) << 8) | ((thread_id & 0x0f) << 4) | (oper & 0x0f);
++	PR_NOTICE("sbefifo: control c:0x%x, t:0x%x, op:%u mode:%u\n", core_id, thread_id, oper, mode);
++
++	op = (mode << 16) | ((core_id & 0xff) << 8) | ((thread_id & 0x0f) << 4) | (oper & 0x0f);
+ 	cmd = SBEFIFO_CMD_CLASS_INSTRUCTION | SBEFIFO_CMD_CONTROL_INSN;
+ 
+ 	msg[0] = htobe32(3);	// number of words
+-- 
+2.7.2
+
