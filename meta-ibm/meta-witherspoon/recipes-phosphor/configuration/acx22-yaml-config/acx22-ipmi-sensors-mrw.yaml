@@ -43,7 +43,6 @@ cpucore_func_sensor:
                     7:
                         assert: true
                         deassert: false
-                        skipOn: deassert
                         type: bool
         xyz.openbmc_project.State.Decorator.OperationalStatus:
             Functional:
