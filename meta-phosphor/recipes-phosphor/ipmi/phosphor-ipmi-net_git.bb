@@ -16,9 +16,15 @@ DEPENDS += "systemd"
 DEPENDS += "phosphor-ipmi-host"
 
 SRC_URI += "git://github.com/openbmc/phosphor-net-ipmid"
+SRC_URI += "file://ipmi-net-firewall.sh"
 SRCREV = "f8a34fc47183c553b9e78301e6f55170dbb7976d"
 
 S = "${WORKDIR}/git"
+
+do_install_append() {
+            install -m 0755 ${WORKDIR}/ipmi-net-firewall.sh \
+            ${D}${bindir}/ipmi-net-firewall.sh
+}
 
 FILES_${PN} += " \
         ${systemd_system_unitdir}/${PN}@.service \
