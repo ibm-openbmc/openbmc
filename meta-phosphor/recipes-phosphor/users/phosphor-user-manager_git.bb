@@ -39,6 +39,13 @@ DBUS_SERVICE_phosphor-ldap = " \
         xyz.openbmc_project.Ldap.Config.service \
         xyz.openbmc_project.LDAP.PrivilegeMapper.service \
 "
+
+
+# Expired password is optional feature
+PACKAGE_BEFORE_PN += "${PN}-expired-password"
+SYSTEMD_PACKAGES += "${PN}-expired-password"                
+SYSTEMD_SERVICE_${PN}-expired-password += "first-boot-expire-password.service"
+
 SRC_URI += "file://add_groups_workaround.sh"
 SRC_URI += "git://github.com/ibm-openbmc/phosphor-user-manager;branch=OP940"
 SRCREV = "c10f815d8d29e702afbbbbbf6ae1807d1566274b"
