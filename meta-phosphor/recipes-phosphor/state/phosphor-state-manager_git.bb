@@ -131,7 +131,7 @@ HOST_RST_RBT_ATTEMPTS_SVC_INST = "phosphor-reset-host-reboot-attempts@{0}.servic
 HOST_RST_RBT_ATTEMPTS_SVC_FMT = "../${HOST_RST_RBT_ATTEMPTS_SVC}:${HOST_START_TGTFMT}.requires/${HOST_RST_RBT_ATTEMPTS_SVC_INST}"
 SYSTEMD_LINK_${PN}-host += "${@compose_list_zip(d, 'HOST_RST_RBT_ATTEMPTS_SVC_FMT', 'OBMC_HOST_INSTANCES', 'OBMC_HOST_INSTANCES')}"
 
-SRC_URI += "git://github.com/openbmc/phosphor-state-manager"
-SRCREV = "27115aec886d69def59d18be7534d1156a9712ce"
+SRC_URI += "git://github.com/ibm-openbmc/phosphor-state-manager;branch=OP940"
+SRCREV = "47c6636fd5cdd76ea5f3fd2b9ea9f07fa572d0f9"
 
 S = "${WORKDIR}/git"
