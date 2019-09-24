@@ -16,7 +16,6 @@ DEPENDS += "phosphor-dbus-interfaces"
 DEPENDS += "boost"
 DEPENDS += "nss-pam-ldapd"
 DEPENDS += "systemd"
-RDEPENDS_${PN} += "bash"
 PACKAGE_BEFORE_PN = "phosphor-ldap"
 
 inherit useradd
@@ -40,18 +39,11 @@ DBUS_SERVICE_phosphor-ldap = " \
         xyz.openbmc_project.LDAP.PrivilegeMapper.service \
 "
 
-
 # Expired password is optional feature
 PACKAGE_BEFORE_PN += "${PN}-expired-password"
-SYSTEMD_PACKAGES += "${PN}-expired-password"                
+SYSTEMD_PACKAGES += "${PN}-expired-password"
 SYSTEMD_SERVICE_${PN}-expired-password += "first-boot-expire-password.service"
 
-SRC_URI += "file://add_groups_workaround.sh"
-SRC_URI += "git://github.com/ibm-openbmc/phosphor-user-manager;branch=OP940"
-SRCREV = "c10f815d8d29e702afbbbbbf6ae1807d1566274b"
+SRC_URI += "git://github.com/openbmc/phosphor-user-manager"
+SRCREV = "1af1223304dbf7aaecd5f238227abee95cce8b39"
 S = "${WORKDIR}/git"
-
-do_install_append() {
-        install -d ${D}${bindir}
-        install -m 0755 ${WORKDIR}/add_groups_workaround.sh ${D}${bindir}/add_groups_workaround.sh
-}
