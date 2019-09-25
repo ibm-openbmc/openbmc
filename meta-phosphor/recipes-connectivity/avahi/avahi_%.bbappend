@@ -6,6 +6,6 @@ FILES_avahi-daemon_append += "${systemd_system_unitdir}/avahi-daemon.service.d/a
 
 do_install_append() {
 
-        install -Dm 0755 ${WORKDIR}/avahi-daemon-override.conf \
+        install -Dm 0644 ${WORKDIR}/avahi-daemon-override.conf \
         ${D}${systemd_system_unitdir}/avahi-daemon.service.d/avahi-daemon-override.conf
 }
