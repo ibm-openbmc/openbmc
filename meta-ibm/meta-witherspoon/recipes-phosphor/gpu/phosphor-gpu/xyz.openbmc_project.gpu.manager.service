@@ -1,0 +1,14 @@
+[Unit]
+Description=GPU management
+Wants=op-power-start@0.target
+After=op-power-start@0.target
+Conflicts=obmc-chassis-poweroff@0.target
+
+[Service]
+ExecStart=/usr/bin/gpu_main
+Type=dbus
+BusName=xyz.openbmc_project.gpu.manager
+SyslogIdentifier=phosphor-gpu
+
+[Install]
+WantedBy=obmc-chassis-poweron@0.target
