@@ -10,7 +10,7 @@ EXTRA_SRC_URI = ""
 EXTRA_SRC_URI_witherspoon = " \
     file://ac922-ipmi-extra-hwmon-sensors.yaml \
     "
-SRC_URI = " \
+SRC_URI_ibm-ac-server = " \
     file://acx22-ipmi-fru-bmc.yaml \
     file://acx22-ipmi-fru-not-sent-by-host.yaml \
     file://acx22-ipmi-hwmon-sensors.yaml \
@@ -19,7 +19,13 @@ SRC_URI = " \
     file://acx22-ipmi-sensors-mrw.yaml \
     ${EXTRA_SRC_URI} \
     "
-
+SRC_URI_mihawk = " \
+    file://acx22-ipmi-fru-bmc.yaml \
+    file://acx22-ipmi-hwmon-sensors.yaml \
+    file://acx22-ipmi-inventory-sensors.yaml \
+    file://acx22-ipmi-occ-sensors.yaml \
+    file://acx22-ipmi-sensors-mrw.yaml \
+    "
 DEPENDS = " \
     mrw-native \
     mrw-perl-tools-native \
@@ -28,9 +34,12 @@ DEPENDS = " \
 
 S = "${WORKDIR}"
 
-ACx22_IPMI_EXTRA_FRU_READ_YAMLS = " \
+ACx22_IPMI_EXTRA_FRU_READ_YAMLS_ibm-ac-server = " \
     acx22-ipmi-fru-bmc.yaml \
     acx22-ipmi-fru-not-sent-by-host.yaml \
+    "
+ACx22_IPMI_EXTRA_FRU_READ_YAMLS_mihawk = " \
+    acx22-ipmi-fru-bmc.yaml \
     "
 ACx22_IPMI_EXTRA_MACHINE_SENSOR_YAMLS = ""
 ACx22_IPMI_EXTRA_MACHINE_SENSOR_YAMLS_witherspoon = " \
