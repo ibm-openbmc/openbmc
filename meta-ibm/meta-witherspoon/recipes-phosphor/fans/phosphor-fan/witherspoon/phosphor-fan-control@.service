@@ -1,0 +1,12 @@
+[Unit]
+Description=Phosphor Fan Control Daemon
+Requires=max31785-hwmon-helper@ahb-apb-bus\x401e78a000-i2c\x2dbus\x40100-max31785\x4052.service
+After=max31785-hwmon-helper@ahb-apb-bus\x401e78a000-i2c\x2dbus\x40100-max31785\x4052.service
+
+[Service]
+Restart=on-failure
+ExecStart=/usr/bin/env phosphor-fan-control --control
+SyslogIdentifier=phosphor-fan-control
+
+[Install]
+RequiredBy=obmc-chassis-poweron@%i.target
