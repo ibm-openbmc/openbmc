@@ -1,0 +1,13 @@
+[Unit]
+Description=Phosphor PLDM Daemon
+Wants=mctp-demux.service
+After=mctp-demux.service
+
+[Service]
+Restart=always
+EnvironmentFile={envfiledir}/pldmd
+ExecStart=/usr/bin/env pldmd --verbose $VERBOSE
+SyslogIdentifier=pldmd
+
+[Install]
+WantedBy={SYSTEMD_DEFAULT_TARGET}
