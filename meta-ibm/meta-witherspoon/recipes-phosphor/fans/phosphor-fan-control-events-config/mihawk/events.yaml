@@ -134,6 +134,18 @@ groups:
           - /temperature/p1_vdn_temp
           - /temperature/p0_vdd_temp
           - /temperature/p1_vdd_temp
+    - name: zone0_gpu
+      description: Group of gpu temperature sensors for zone 0
+      type: /xyz/openbmc_project/sensors
+      members:
+          - /temperature/gpu0
+          - /temperature/gpu1
+          - /temperature/gpu2
+          - /temperature/gpu3
+          - /temperature/gpu4
+          - /temperature/gpu5
+          - /temperature/gpu6
+          - /temperature/gpu7
 matches:
     - name: propertiesChanged
       description: >
@@ -584,3 +596,41 @@ events:
                           type: uint64_t
                 timer:
                     interval: 10
+              - name: speed_changes_based_on_gpu_temps
+                groups:
+                    - name: zone0_gpu
+                      zone_conditions:
+                          - name: air_cooled_chassis
+                            zones:
+                                - 0
+                      interface: xyz.openbmc_project.Sensor.Value
+                      property:
+                          name: Value
+                          type: int64_t
+                matches:
+                    - name: interfacesAdded
+                    - name: propertiesChanged
+                    - name: interfacesRemoved
+                actions:
+                    - name: set_net_increase_speed
+                      property:
+                          value: 70
+                          type: int64_t
+                      factor:
+                          value: 1
+                          type: int64_t
+                      delta:
+                          value: 13
+                          type: uint64_t
+                    - name: set_net_decrease_speed
+                      property:
+                          value: 67
+                          type: int64_t
+                      factor:
+                          value: 4
+                          type: int64_t
+                      delta:
+                          value: 5
+                          type: uint64_t
+                timer:
+                    interval: 1
