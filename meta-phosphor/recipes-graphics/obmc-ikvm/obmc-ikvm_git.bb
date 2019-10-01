@@ -8,6 +8,8 @@ DEPENDS = " libvncserver systemd sdbusplus phosphor-logging phosphor-dbus-interf
 SRC_URI = "git://github.com/openbmc/obmc-ikvm"
 SRCREV = "23135dd97ec828e2abeacce06d472bb45bc358d5"
 
+SRC_URI += " file://0001-Prevent-excessive-journal-logging-by-wakeup-signal.patch"
+
 PV = "1.0+git${SRCPV}"
 
 SYSTEMD_SERVICE_${PN} += "start-ipkvm.service"
