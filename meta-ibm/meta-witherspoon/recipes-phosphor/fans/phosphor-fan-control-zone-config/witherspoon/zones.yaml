@@ -28,9 +28,21 @@ zone_configuration:
                       - value: CUSTOM
                         description: >
                             Custom thermal control mode for handling the use of
-                            optical cables located behind the GPU exhaust that
-                            could produce overtemp warnings without this mode
-                            enabled.
+                            PCI cards located behind the GPU exhaust that
+                            could overtemp where the default mode is not
+                            sufficient enough.
+                      - value: CUSTOM+
+                        description: >
+                            Custom thermal control mode for handling the use of
+                            PCI cards located behind the GPU exhaust that
+                            could overtemp where the lesser custom mode is not
+                            sufficient enough.
+                      - value: CUSTOM++
+                        description: >
+                            Custom thermal control mode for handling the use of
+                            PCI cards located behind the GPU exhaust that
+                            could overtemp where a lesser custom mode is not
+                            sufficient enough.
                 - name: Current
                   type: string
                   persist: true
@@ -63,11 +75,30 @@ zone_configuration:
                       - value: DEFAULT
                         description: >
                             Default thermal control mode
+                      - value: CUSTOM
+                        description: >
+                            Custom thermal control mode for handling the use of
+                            PCI cards located behind the GPU exhaust that
+                            could overtemp where the default mode is not
+                            sufficient enough.
+                      - value: CUSTOM+
+                        description: >
+                            Custom thermal control mode for handling the use of
+                            PCI cards located behind the GPU exhaust that
+                            could overtemp where the lesser custom mode is not
+                            sufficient enough.
+                      - value: CUSTOM++
+                        description: >
+                            Custom thermal control mode for handling the use of
+                            PCI cards located behind the GPU exhaust that
+                            could overtemp where a lesser custom mode is not
+                            sufficient enough.
                 - name: Current
                   type: string
                   persist: true
                   values:
-                      - value: DEFAULT
-                        description: >
-                            Set current thermal control mode to the
-                            default. No other modes are supported.
+                     - value: DEFAULT
+                       description: >
+                           Set current thermal control mode to the
+                           default which will be replaced on startup if
+                           another selected mode was persisted.
