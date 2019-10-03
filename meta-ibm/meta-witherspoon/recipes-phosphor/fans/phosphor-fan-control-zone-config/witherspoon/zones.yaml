@@ -31,18 +31,16 @@ zone_configuration:
                             PCI cards located behind the GPU exhaust that
                             could overtemp where the default mode is not
                             sufficient enough.
-                      - value: CUSTOM+
+                      - value: HEAVY_IO
                         description: >
-                            Custom thermal control mode for handling the use of
-                            PCI cards located behind the GPU exhaust that
-                            could overtemp where the lesser custom mode is not
-                            sufficient enough.
-                      - value: CUSTOM++
+                            Heavy IO thermal control mode for handling the use
+                            of PCI cards that produce heavy IO utilization and
+                            could overtemp.
+                      - value: MAX_BASE_FAN_FLOOR
                         description: >
-                            Custom thermal control mode for handling the use of
-                            PCI cards located behind the GPU exhaust that
-                            could overtemp where a lesser custom mode is not
-                            sufficient enough.
+                            Maximum base fan floor mode is for handling the
+                            use of any hardware that requires the highest
+                            amount of cooling even when the system may be idle.
                 - name: Current
                   type: string
                   persist: true
@@ -81,18 +79,16 @@ zone_configuration:
                             PCI cards located behind the GPU exhaust that
                             could overtemp where the default mode is not
                             sufficient enough.
-                      - value: CUSTOM+
+                      - value: HEAVY_IO
                         description: >
-                            Custom thermal control mode for handling the use of
-                            PCI cards located behind the GPU exhaust that
-                            could overtemp where the lesser custom mode is not
-                            sufficient enough.
-                      - value: CUSTOM++
+                            Heavy IO thermal control mode for handling the use
+                            of PCI cards that produce heavy IO utilization and
+                            could overtemp.
+                      - value: MAX_BASE_FAN_FLOOR
                         description: >
-                            Custom thermal control mode for handling the use of
-                            PCI cards located behind the GPU exhaust that
-                            could overtemp where a lesser custom mode is not
-                            sufficient enough.
+                            Maximum base fan floor mode is for handling the
+                            use of any hardware that requires the highest
+                            amount of cooling even when the system may be idle.
                 - name: Current
                   type: string
                   persist: true

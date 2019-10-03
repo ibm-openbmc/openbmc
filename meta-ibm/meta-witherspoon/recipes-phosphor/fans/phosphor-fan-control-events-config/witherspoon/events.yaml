@@ -395,14 +395,14 @@ events:
                 type: uint64_t
           - name: update_default_floor
             property:
-                value: CUSTOM+
+                value: HEAVY_IO
                 type: std::string
             speed:
                 value: 10500
                 type: uint64_t
           - name: update_default_floor
             property:
-                value: CUSTOM++
+                value: MAX_BASE_FAN_FLOOR
                 type: std::string
             speed:
                 value: 10500
@@ -458,7 +458,7 @@ events:
                   property:
                       name: Current
                       type: std::string
-                      value: CUSTOM+
+                      value: HEAVY_IO
             map:
                 value:
                     - 27000: 5900
@@ -473,7 +473,7 @@ events:
                   property:
                       name: Current
                       type: std::string
-                      value: CUSTOM++
+                      value: MAX_BASE_FAN_FLOOR
             map:
                 value:
                     - 27000: 7200
@@ -538,7 +538,7 @@ events:
                   property:
                       name: Current
                       type: std::string
-                      value: CUSTOM+
+                      value: HEAVY_IO
             map:
                 value:
                     - 27000: 5900
@@ -553,7 +553,7 @@ events:
                   property:
                       name: Current
                       type: std::string
-                      value: CUSTOM++
+                      value: MAX_BASE_FAN_FLOOR
             map:
                 value:
                     - 27000: 7200
