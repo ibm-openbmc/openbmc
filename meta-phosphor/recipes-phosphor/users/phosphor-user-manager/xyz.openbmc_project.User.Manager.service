@@ -1,7 +1,13 @@
 [Unit]
 Description=Phosphor User Manager
+Wants=obmc-mapper.target
+After=obmc-mapper.target
+After=sysinit.target
+ConditionPathIsReadWrite=/etc
 
 [Service]
+# Ensure appropriate groups and permissions set
+ExecStartPre=/usr/bin/env add_groups_workaround.sh
 ExecStart=/usr/bin/env phosphor-user-manager
 SyslogIdentifier=phosphor-user-manager
 Restart=always
