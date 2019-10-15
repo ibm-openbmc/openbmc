@@ -16,17 +16,17 @@ SRC_URI = "http://www.openssl.org/source/openssl-${PV}.tar.gz \
            file://0001-skip-test_symbol_presence.patch \
            file://0001-buildinfo-strip-sysroot-and-debug-prefix-map-from-co.patch \
            file://afalg.patch \
-           file://CVE-2019-1543.patch \
            "
 
 SRC_URI_append_class-nativesdk = " \
            file://environment.d-openssl.sh \
            "
 
-SRC_URI[md5sum] = "4532712e7bcc9414f5bce995e4e13930"
-SRC_URI[sha256sum] = "5c557b023230413dfb0756f3137a13e6d726838ccd1430888ad15bfb2b43ea4b"
+SRC_URI[md5sum] = "3be209000dbc7e1b95bcdf47980a3baa"
+SRC_URI[sha256sum] = "1e3a91bc1f9dfce01af26026f856e064eab4c8ee0a8f457b5ae30b40b8b711f2"
 
-inherit lib_package multilib_header ptest
+inherit lib_package multilib_header multilib_script ptest
+MULTILIB_SCRIPTS = "${PN}-bin:${bindir}/c_rehash"
 
 PACKAGECONFIG ?= ""
 PACKAGECONFIG_class-native = ""
@@ -43,10 +43,10 @@ do_configure[cleandirs] = "${B}"
 EXTRA_OECONF_append_libc-musl = " no-async"
 EXTRA_OECONF_append_libc-musl_powerpc64 = " no-asm"
 
-# This prevents openssl from using getrandom() which is not available on older glibc versions
+# adding devrandom prevents openssl from using getrandom() which is not available on older glibc versions
 # (native versions can be built with newer glibc, but then relocated onto a system with older glibc)
-EXTRA_OECONF_class-native = "--with-rand-seed=devrandom"
-EXTRA_OECONF_class-nativesdk = "--with-rand-seed=devrandom"
+EXTRA_OECONF_class-native = "--with-rand-seed=os,devrandom"
+EXTRA_OECONF_class-nativesdk = "--with-rand-seed=os,devrandom"
 
 # Relying on hardcoded built-in paths causes openssl-native to not be relocateable from sstate.
 CFLAGS_append_class-native = " -DOPENSSLDIR=/not/builtin -DENGINESDIR=/not/builtin"
@@ -199,8 +199,6 @@ CONFFILES_openssl-conf = "${sysconfdir}/ssl/openssl.cnf"
 RRECOMMENDS_libcrypto += "openssl-conf"
 RDEPENDS_${PN}-ptest += "openssl-bin perl perl-modules bash"
 
-RPROVIDES_openssl-conf = "openssl10-conf"
-RREPLACES_openssl-conf = "openssl10-conf"
-RCONFLICTS_openssl-conf = "openssl10-conf"
-
 BBCLASSEXTEND = "native nativesdk"
+
+CVE_PRODUCT = "openssl:openssl"
