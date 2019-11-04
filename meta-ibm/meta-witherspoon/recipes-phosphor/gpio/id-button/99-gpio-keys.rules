@@ -1,0 +1,1 @@
+ACTION=="add", SUBSYSTEM=="input", ENV{ID_PATH}=="platform-gpio-keys", RUN+="/bin/systemctl start phosphor-gpio-monitor@id_button.service"
