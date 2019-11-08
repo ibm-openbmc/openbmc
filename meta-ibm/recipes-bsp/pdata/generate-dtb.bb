@@ -4,7 +4,7 @@ PR = "r1"
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/Apache-2.0;md5=89aea4e17d99a7cacdbeed46a0096b10"
 
-DEPENDS = "pdata-native libekb-p10-native"
+DEPENDS = "pdata-native ${@getlibekb_depend(d)}-native"
 PDATA_DTB_PATH="${datadir}/pdata"
 FILES:${PN} += "${PDATA_DTB_PATH}"
 
@@ -12,7 +12,7 @@ FILES:${PN} += "${PDATA_DTB_PATH}"
 FILESEXTRAPATHS_append := "${THISDIR}/files:"
 SRC_URI = "file://tmp-pdata.service"
 
-inherit systemd
+inherit systemd phal
 SYSTEMD_SERVICE_${PN} += "tmp-pdata.service"
 
 do_install() {
@@ -22,7 +22,7 @@ do_install() {
     DTB_FILE_INSTALL_PATH=${D}${sysconfdir}/pdata/
     DTB_FILE_CONF_PATH=${D}${PDATA_DTB_PATH}
 
-    ${STAGING_BINDIR_NATIVE}/attributes create ${STAGING_DATADIR_NATIVE}/p10.dtb ${STAGING_DATADIR_NATIVE}/p10_attributes.db ${STAGING_DATADIR_NATIVE}/${DTB_FILE_NAME}
+    ${STAGING_BINDIR_NATIVE}/attributes create ${STAGING_DATADIR_NATIVE}/${TARGET_PROC}.dtb ${STAGING_DATADIR_NATIVE}/${TARGET_PROC}_attributes.db ${STAGING_DATADIR_NATIVE}/${DTB_FILE_NAME}
 
     install -d ${D}${systemd_unitdir}/system/
     install -m 0644 ${WORKDIR}/tmp-pdata.service ${D}${systemd_unitdir}/system
