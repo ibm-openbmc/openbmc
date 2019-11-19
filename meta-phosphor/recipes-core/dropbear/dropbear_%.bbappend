@@ -5,4 +5,5 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 SRC_URI += "file://dropbearkey.service \
             file://localoptions.h \
             file://dropbear.default \
+            file://0001-implement-expired-password-dialog.patch \
            "
