@@ -10,10 +10,10 @@ GROUPADD_PARAM:${PN} = "web; redfish"
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=175792518e4ac015ab6696d16c4f607e"
 
-SRC_URI = "git://github.com/openbmc/bmcweb.git"
+SRC_URI = "git://github.com/ibm-openbmc/bmcweb.git;nobranch=1"
 
 PV = "1.0+git${SRCPV}"
-SRCREV = "97128e926c8253f02cf25d2ca9881cadc426df2c"
+SRCREV = "bb9eaf9fe15f15e16777ffaf7ec2f54a2536d3ee"
 
 S = "${WORKDIR}/git"
 
@@ -44,11 +44,11 @@ RDEPENDS:${PN} += " \
 
 do_install_ptest() {
         install -d ${D}${PTEST_PATH}/test
-        cp -rf ${B}/*_test ${D}${PTEST_PATH}/test/
+        cp -rf ${B}*_test ${D}${PTEST_PATH}/test/
 }
 
 PACKAGECONFIG ??= ""
-PACKAGECONFIG[ibm-mc-console] = "-DIBM_MC_CONSOLE=yes, -DIBM_MC_CONSOLE=no, pldm, "
+PACKAGECONFIG[ibm-mc-console] = "-Dibm-management-console=enabled, -Dibm-management-console=disabled, pldm, "
 
 FILES:${PN} += "${datadir}/** "
 
@@ -59,6 +59,9 @@ EXTRA_OEMESON = " \
     -Dyocto-deps=enabled \
 "
 
+EXTRA_OECMAKE = "-DBMCWEB_BUILD_UT=OFF -DYOCTO_DEPENDENCIES=ON -DBMCWEB_ENABLE_IBM_MANAGEMENT_CONSOLE=ON -DBMCWEB_ENABLE_REDFISH_DUMP_LOG=ON"
+EXTRA_OEMESON = "--buildtype=minsize -Dtests=disabled -Dyocto-deps=enabled -Dredfish-dump-log=enabled"
+
 SYSTEMD_SERVICE:${PN} += "bmcweb.service bmcweb.socket"
 
-FULL_OPTIMIZATION = "-Os "
+FULL_OPTIMIZATION = "-Os -pipe "
