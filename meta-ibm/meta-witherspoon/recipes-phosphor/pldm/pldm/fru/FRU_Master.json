@@ -1,0 +1,12 @@
+{
+    "service":"xyz.openbmc_project.Inventory.Manager",
+    "root_path":"/xyz/openbmc_project/inventory",
+    "interfaces":[
+        "xyz.openbmc_project.Inventory.Item.Board.Motherboard",
+        "xyz.openbmc_project.Inventory.Item.Bmc",
+        "xyz.openbmc_project.Inventory.Item.Panel",
+        "xyz.openbmc_project.Inventory.Item.Vrm",
+        "xyz.openbmc_project.Inventory.Item.Tpm"
+    ]
+}
+
