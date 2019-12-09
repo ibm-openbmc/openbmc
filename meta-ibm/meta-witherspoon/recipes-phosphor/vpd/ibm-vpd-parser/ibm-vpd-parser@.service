@@ -1,0 +1,11 @@
+[Unit]
+Description=IPZ format VPD Parser service for FRU %I
+Wants=mapper-wait@-xyz-openbmc_project-inventory.service
+After=mapper-wait@-xyz-openbmc_project-inventory.service
+
+[Service]
+ExecStart=/usr/bin/env ibm-read-vpd --file %f/nvmem
+SyslogIdentifier=ibm-vpd-parser
+
+[Install]
+RequiredBy=multi-user.target
