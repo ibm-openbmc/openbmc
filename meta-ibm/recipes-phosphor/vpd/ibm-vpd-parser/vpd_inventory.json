@@ -1,0 +1,65 @@
+{
+  "commonInterfaces": {
+    "xyz.openbmc_project.Inventory.Decorator.Asset": {
+      "PartNumber": {
+        "recordName": "VINI",
+        "keywordName": "PN"
+      },
+      "SerialNumber": {
+        "recordName": "VINI",
+        "keywordName": "SN"
+      }
+    },
+    "xyz.openbmc_project.Inventory.Item": {
+      "PrettyName": {
+        "recordName": "VINI",
+        "keywordName": "DR"
+      }
+    }
+  },
+  "frus": {
+    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a480.i2c-bus/i2c-8/8-0050/8-00500/nvmem": {
+      "inventoryPath": "/system/chassis/motherboard",
+      "extraInterfaces": {
+        "xyz.openbmc_project.Inventory.Item.Board.Motherboard": null
+      }
+    },
+    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a480.i2c-bus/i2c-8/8-0051/8-00510/nvmem": {
+      "inventoryPath": "/system/chassis/motherboard/ebmc_card_bmc",
+      "extraInterfaces": {
+        "xyz.openbmc_project.Inventory.Item.Bmc": null
+      }
+    },
+    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a080.i2c-bus/i2c-0/0-0051/0-00510/nvmem": {
+      "inventoryPath": "/system/chassis/motherboard/tpm_wilson",
+      "extraInterfaces": {
+        "xyz.openbmc_project.Inventory.Item.Tpm": null
+      }
+    },
+    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-7/7-0050/7-00500/nvmem": {
+      "inventoryPath": "/system/chassis/motherboard/base_op_panel_blyth",
+      "extraInterfaces": {
+        "xyz.openbmc_project.Inventory.Item.Panel": null
+      }
+    },
+    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-7/7-0051/7-00510/nvmem": {
+      "inventoryPath": "/system/chassis/motherboard/lcd_op_panel_hill",
+      "extraInterfaces": {
+        "xyz.openbmc_project.Inventory.Item.Panel": null
+      }
+    },
+    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a500.i2c-bus/i2c-9/9-0050/9-00500/nvmem": {
+      "inventoryPath": "/system/chassis/motherboard/vdd_vrm0",
+      "extraInterfaces": {
+        "xyz.openbmc_project.Inventory.Item.Vrm": null
+      }
+    },
+    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a580.i2c-bus/i2c-10/10-0050/10-00500/nvmem": {
+      "inventoryPath": "/system/chassis/motherboard/vdd_vrm1",
+      "extraInterfaces": {
+        "xyz.openbmc_project.Inventory.Item.Vrm": null
+      }
+    }
+  }
+}
+
