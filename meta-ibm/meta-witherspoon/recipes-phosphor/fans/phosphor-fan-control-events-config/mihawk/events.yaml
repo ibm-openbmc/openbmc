@@ -146,6 +146,11 @@ groups:
           - /temperature/gpu5
           - /temperature/gpu6
           - /temperature/gpu7
+    - name: service_gpu
+      description: Group of monitor gpu service
+      type: /xyz/openbmc_project/sensors
+      members:
+          - /temperature/gpu0
 matches:
     - name: propertiesChanged
       description: >
@@ -302,6 +307,22 @@ events:
     - name: default_fan_floor_on_service_fail
       groups:
           - name: zone0_ambient
+            interface: xyz.openbmc_project.Sensor.Value
+            property:
+                name: Value
+                type: int64_t
+      matches:
+          - name: nameOwnerChanged
+      actions:
+          - name: call_actions_based_on_timer
+            timer:
+                delay: 5
+                type: oneshot
+            actions:
+                - name: default_floor_on_missing_owner
+    - name: default_fan_floor_on_gpu_service_fail
+      groups:
+          - name: service_gpu
             interface: xyz.openbmc_project.Sensor.Value
             property:
                 name: Value
