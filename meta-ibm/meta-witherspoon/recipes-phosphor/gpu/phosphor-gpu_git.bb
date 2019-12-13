@@ -19,7 +19,7 @@ LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=86d3f3a95c324c9479bd8986968f4327"
 
 SRC_URI := "git://github.com/wistron-corporation/phosphor-gpu.git;protocol=git"
-SRCREV := "dc27898de5cc99c411ef54039bfde9316f925fe3"
+SRCREV := "f634dc0677de4a4776f832c68685345634004820"
 S = "${WORKDIR}/git"
 
 DBUS_SERVICE_${PN} += "xyz.openbmc_project.gpu.manager.service"
