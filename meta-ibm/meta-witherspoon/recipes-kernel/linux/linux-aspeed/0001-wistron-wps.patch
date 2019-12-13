@@ -1,14 +1,14 @@
-From 8cce17737eae8cd398d9b81ce63fddb050fd45f6 Mon Sep 17 00:00:00 2001
+From 80515160b982989b254e7ea7d82f072babfa3108 Mon Sep 17 00:00:00 2001
 From: Ben Pai <Ben_Pai@wistron.com>
-Date: Wed, 11 Dec 2019 20:47:12 +0800
+Date: Fri, 13 Dec 2019 17:46:44 +0800
 Subject: [PATCH] wistron-wps
 
 ---
  arch/arm/boot/dts/aspeed-bmc-opp-mihawk.dts |   4 +-
  drivers/hwmon/pmbus/Kconfig                 |   9 ++
  drivers/hwmon/pmbus/Makefile                |   1 +
- drivers/hwmon/pmbus/wistron-wps.c           | 174 ++++++++++++++++++++++++++++
- 4 files changed, 186 insertions(+), 2 deletions(-)
+ drivers/hwmon/pmbus/wistron-wps.c           | 173 ++++++++++++++++++++++++++++
+ 4 files changed, 185 insertions(+), 2 deletions(-)
  create mode 100644 drivers/hwmon/pmbus/wistron-wps.c
 
 diff --git a/arch/arm/boot/dts/aspeed-bmc-opp-mihawk.dts b/arch/arm/boot/dts/aspeed-bmc-opp-mihawk.dts
@@ -62,10 +62,10 @@ index c950ea9..072afcb 100644
  obj-$(CONFIG_SENSORS_ZL6100)	+= zl6100.o
 diff --git a/drivers/hwmon/pmbus/wistron-wps.c b/drivers/hwmon/pmbus/wistron-wps.c
 new file mode 100644
-index 0000000..2457cce
+index 0000000..850f1bb
 --- /dev/null
 +++ b/drivers/hwmon/pmbus/wistron-wps.c
-@@ -0,0 +1,174 @@
+@@ -0,0 +1,173 @@
 +// SPDX-License-Identifier: GPL-2.0-or-later
 +/*
 + * Copyright 2019 Wistron Corp.
@@ -110,7 +110,7 @@ index 0000000..2457cce
 +	int *idxp = file->private_data;
 +	int idx = *idxp;
 +	struct wistron_wps *psu = to_psu(idxp, idx);
-+	char data[I2C_SMBUS_BLOCK_MAX] = { 0 };
++	char data[I2C_SMBUS_BLOCK_MAX+2] = { 0 };
 +
 +	switch (idx) {
 +	case WPS_DEBUGFS_FRU:
@@ -138,7 +138,6 @@ index 0000000..2457cce
 +
 +done:
 +	data[rc] = '\n';
-+	rc += 2;
 +
 +	return simple_read_from_buffer(buf, count, ppos, data, rc);
 +}
