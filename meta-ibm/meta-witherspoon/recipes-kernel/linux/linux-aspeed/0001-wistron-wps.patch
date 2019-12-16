@@ -1,14 +1,14 @@
-From 80515160b982989b254e7ea7d82f072babfa3108 Mon Sep 17 00:00:00 2001
+From 5762c92bdc6f0b0860c7dee5fe4ce605fb7f749c Mon Sep 17 00:00:00 2001
 From: Ben Pai <Ben_Pai@wistron.com>
-Date: Fri, 13 Dec 2019 17:46:44 +0800
+Date: Mon, 16 Dec 2019 18:28:43 +0800
 Subject: [PATCH] wistron-wps
 
 ---
  arch/arm/boot/dts/aspeed-bmc-opp-mihawk.dts |   4 +-
  drivers/hwmon/pmbus/Kconfig                 |   9 ++
  drivers/hwmon/pmbus/Makefile                |   1 +
- drivers/hwmon/pmbus/wistron-wps.c           | 173 ++++++++++++++++++++++++++++
- 4 files changed, 185 insertions(+), 2 deletions(-)
+ drivers/hwmon/pmbus/wistron-wps.c           | 174 ++++++++++++++++++++++++++++
+ 4 files changed, 186 insertions(+), 2 deletions(-)
  create mode 100644 drivers/hwmon/pmbus/wistron-wps.c
 
 diff --git a/arch/arm/boot/dts/aspeed-bmc-opp-mihawk.dts b/arch/arm/boot/dts/aspeed-bmc-opp-mihawk.dts
@@ -31,13 +31,14 @@ index 52e88b0..ad4853c 100644
  	};
  
 diff --git a/drivers/hwmon/pmbus/Kconfig b/drivers/hwmon/pmbus/Kconfig
-index b658848..ecf0900 100644
+index b658848..56a8489 100644
 --- a/drivers/hwmon/pmbus/Kconfig
 +++ b/drivers/hwmon/pmbus/Kconfig
-@@ -210,6 +210,15 @@ config SENSORS_UCD9200
+@@ -209,6 +209,15 @@ config SENSORS_UCD9200
+ 
  	  This driver can also be built as a module. If so, the module will
  	  be called ucd9200.
- 
++  
 +config SENSORS_WISTRON_WPS
 +	tristate "Wistron Power Supply"
 +	help
@@ -46,10 +47,9 @@ index b658848..ecf0900 100644
 +
 +	  This driver can also be built as a module. If so, the module will
 +	  be called wistron-wps.
-+
+ 
  config SENSORS_ZL6100
  	tristate "Intersil ZL6100 and compatibles"
- 	help
 diff --git a/drivers/hwmon/pmbus/Makefile b/drivers/hwmon/pmbus/Makefile
 index c950ea9..072afcb 100644
 --- a/drivers/hwmon/pmbus/Makefile
@@ -62,10 +62,10 @@ index c950ea9..072afcb 100644
  obj-$(CONFIG_SENSORS_ZL6100)	+= zl6100.o
 diff --git a/drivers/hwmon/pmbus/wistron-wps.c b/drivers/hwmon/pmbus/wistron-wps.c
 new file mode 100644
-index 0000000..850f1bb
+index 0000000..aa33567
 --- /dev/null
 +++ b/drivers/hwmon/pmbus/wistron-wps.c
-@@ -0,0 +1,173 @@
+@@ -0,0 +1,174 @@
 +// SPDX-License-Identifier: GPL-2.0-or-later
 +/*
 + * Copyright 2019 Wistron Corp.
@@ -110,7 +110,7 @@ index 0000000..850f1bb
 +	int *idxp = file->private_data;
 +	int idx = *idxp;
 +	struct wistron_wps *psu = to_psu(idxp, idx);
-+	char data[I2C_SMBUS_BLOCK_MAX+2] = { 0 };
++	char data[I2C_SMBUS_BLOCK_MAX + 2] = { 0 };
 +
 +	switch (idx) {
 +	case WPS_DEBUGFS_FRU:
@@ -138,6 +138,7 @@ index 0000000..850f1bb
 +
 +done:
 +	data[rc] = '\n';
++	rc += 2;
 +
 +	return simple_read_from_buffer(buf, count, ppos, data, rc);
 +}
