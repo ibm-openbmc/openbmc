@@ -116,6 +116,8 @@ SYSTEMD_ENVIRONMENT_FILE_${PN}_append_p10bmc = " ${@compose_list(d, 'ENVS', 'ITE
 PACKAGECONFIG_append_ibm-ac-server = " max31785-msl"
 SYSTEMD_ENVIRONMENT_FILE_max31785-msl_append_ibm-ac-server = " obmc/hwmon-max31785/max31785.conf"
 SYSTEMD_LINK_max31785-msl_append_ibm-ac-server = " ../phosphor-max31785-msl@.service:multi-user.target.wants/phosphor-max31785-msl@${MACHINE}.service"
+SYSTEMD_ENVIRONMENT_FILE_max31785-msl_append_rainier = " obmc/hwmon-max31785/max31785.conf"
+SYSTEMD_LINK_max31785-msl_append_rainier = " ../phosphor-max31785-msl@.service:multi-user.target.wants/phosphor-max31785-msl@${MACHINE}.service"
 
 SYSTEMD_SERVICE_${PN}_append_ibm-ac-server = " max31785-hwmon-helper@.service"
 
