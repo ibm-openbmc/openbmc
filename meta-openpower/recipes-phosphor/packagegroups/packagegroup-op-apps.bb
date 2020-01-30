@@ -48,4 +48,5 @@ SUMMARY_${PN}-system = "OpenPOWER System"
 RDEPENDS_${PN}-system = " \
         pdbg \
         croserver \
+        ${@bb.utils.contains('OBMC_MACHINE_FEATURES', 'phal', 'ecmd-pdbg', '', d)} \
         "
