@@ -1,1 +1,2 @@
-SUBSYSTEM=="tty", ATTRS{iomem_base}=="0x1E787000", SYMLINK+="ttyVUART0", TAG+="systemd"
+SUBSYSTEM=="tty", ATTRS{iomem_base}=="0x1E787000", ENV{SYSTEMD_WANTS}="obmc-console@ttyVUART0" SYMLINK+="ttyVUART0", TAG+="systemd"
+SUBSYSTEM=="tty", ATTRS{iomem_base}=="0x1E788000", ENV{SYSTEMD_WANTS}="obmc-console@ttyVUART1" SYMLINK+="ttyVUART1", TAG+="systemd"
