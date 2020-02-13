@@ -1,0 +1,52 @@
+From af029c989518ba8fe578fec8ca1b38ea75b822e2 Mon Sep 17 00:00:00 2001
+From: Andrew Jeffery <andrew@aj.id.au>
+Date: Wed, 12 Feb 2020 22:46:27 +1030
+Subject: [PATCH] console-server: Choose tty device from a configuration file
+
+If the tty device is not specified on the command-line, search the
+configuration file before failing.
+
+This enables mapping a socket name to a device name via the filesystem.
+
+Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
+Change-Id: I18a9cf53d2af4641554ed87020ab97bfe7609563
+---
+ console-server.c | 18 +++++++++++-------
+ 1 file changed, 11 insertions(+), 7 deletions(-)
+
+diff --git a/console-server.c b/console-server.c
+index d814dffabd72..11d017b82682 100644
+--- a/console-server.c
++++ b/console-server.c
+@@ -798,13 +798,8 @@ int main(int argc, char **argv)
+ 		}
+ 	}
+ 
+-	if (optind >= argc) {
+-		warnx("Required argument <DEVICE> missing");
+-		usage(argv[0]);
+-		return EXIT_FAILURE;
+-	}
+-
+-	config_tty_kname = argv[optind];
++	if (optind < argc)
++		config_tty_kname = argv[optind];
+ 
+ 	console = malloc(sizeof(struct console));
+ 	memset(console, 0, sizeof(*console));
+@@ -818,6 +813,15 @@ int main(int argc, char **argv)
+ 		goto out_free;
+ 	}
+ 
++	if (!config_tty_kname)
++		config_tty_kname = config_get_value(config, "upstream-tty");
++
++	if (!config_tty_kname) {
++		warnx("No TTY device specified");
++		usage(argv[0]);
++		return EXIT_FAILURE;
++	}
++
+ 	console->tty_kname = config_tty_kname;
+ 
+ 	rc = tty_init(console, config);
