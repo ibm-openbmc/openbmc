@@ -1,0 +1,153 @@
+From 3adb44aa283d6c4282034854a170b9ac0d16ccbb Mon Sep 17 00:00:00 2001
+From: Andrew Jeffery <andrew@aj.id.au>
+Date: Wed, 12 Feb 2020 22:58:16 +1030
+Subject: [PATCH] console-client: Enable use of a configuration file
+
+Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
+Change-Id: I08f736243c1843bfb8855f5ceb69418d59a8775a
+---
+ Makefile.am               |  4 ++++
+ console-client.c          | 41 +++++++++++++++++++++++++++++++++------
+ test/Makefile.am          |  4 ++++
+ test/test-client-escape.c |  1 +
+ 4 files changed, 44 insertions(+), 6 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 059ac1b2ecff..ce84c4c5bf03 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -21,10 +21,14 @@ obmc_console_server_SOURCES = \
+ obmc_console_server_LDFLAGS = $(SYSTEMD_LIBS) -lrt
+ obmc_console_server_CFLAGS = $(SYSTEMD_CFLAGS)
+ 
++obmc_console_client_CPPFLAGS = \
++	-DSYSCONFDIR=\"$(sysconfdir)\"
++
+ obmc_console_client_SOURCES = \
+ 	 console-client.c \
+ 	 console-server.h \
+ 	 console-socket.c \
++	 config.c \
+ 	 util.c
+ 
+ SUBDIRS = test
+diff --git a/console-client.c b/console-client.c
+index db8acd32b654..50fa44460578 100644
+--- a/console-client.c
++++ b/console-client.c
+@@ -253,7 +253,10 @@ int main(int argc, char *argv[])
+ 	struct console_client _client, *client;
+ 	struct pollfd pollfds[2];
+ 	enum process_rc prc = PROCESS_OK;
++	const char *config_path = NULL;
+ 	const char *socket_id = NULL;
++	const uint8_t *esc = NULL;
++	struct config *config;
+ 	int rc;
+ 
+ 	client = &_client;
+@@ -261,18 +264,24 @@ int main(int argc, char *argv[])
+ 	client->esc_type = ESC_TYPE_SSH;
+ 
+ 	for (;;) {
+-		rc = getopt(argc, argv, "e:i:");
++		rc = getopt(argc, argv, "c:e:i:");
+ 		if (rc == -1)
+ 			break;
+ 
+ 		switch (rc) {
++		case 'c':
++			if (optarg[0] == '\0') {
++				fprintf(stderr, "Config str cannot be empty\n");
++				return EXIT_FAILURE;
++			}
++			config_path = optarg;
++			break;
+ 		case 'e':
+ 			if (optarg[0] == '\0') {
+ 				fprintf(stderr, "Escape str cannot be empty\n");
+ 				return EXIT_FAILURE;
+ 			}
+-			client->esc_type = ESC_TYPE_STR;
+-			client->esc_state.str.str = (const uint8_t*)optarg;
++			esc = (const uint8_t*)optarg;
+ 			break;
+ 		case 'i':
+ 			if (optarg[0] == '\0') {
+@@ -285,19 +294,37 @@ int main(int argc, char *argv[])
+ 			fprintf(stderr,
+ 				"Usage: %s "
+ 				"[-e <escape sequence>]"
+-				"[-i <socket ID>]\n",
++				"[-i <socket ID>]"
++				"[-c <config>]\n",
+ 				argv[0]);
+ 			return EXIT_FAILURE;
+ 		}
+ 	}
+ 
++	config = config_init(config_path);
++	if (!config) {
++		warnx("Can't read configuration, exiting.");
++		return EXIT_FAILURE;
++	}
++
++	if (!esc)
++		esc = (const uint8_t *)config_get_value(config, "escape-sequence");
++
++	if (esc) {
++		client->esc_type = ESC_TYPE_STR;
++		client->esc_state.str.str = esc;
++	}
++
++	if (!socket_id)
++		socket_id = config_get_value(config, "socket-id");
++
+ 	rc = client_init(client, socket_id);
+ 	if (rc)
+ 		return EXIT_FAILURE;
+ 
+ 	rc = client_tty_init(client);
+ 	if (rc)
+-		goto out_fini;
++		goto out_config_fini;
+ 
+ 	for (;;) {
+ 		pollfds[0].fd = client->fd_in;
+@@ -322,7 +349,9 @@ int main(int argc, char *argv[])
+ 			break;
+ 	}
+ 
+-out_fini:
++out_config_fini:
++	config_fini(config);
++
+ 	client_fini(client);
+ 	if (prc == PROCESS_ESC)
+ 		return EXIT_ESCAPE;
+diff --git a/test/Makefile.am b/test/Makefile.am
+index e3fda8b1645e..0a810e6763a0 100644
+--- a/test/Makefile.am
++++ b/test/Makefile.am
+@@ -19,5 +19,9 @@ EXTRA_DIST = ringbuffer-test-utils.c
+ AM_CPPFLAGS = -I$(top_srcdir)
+ AM_LDFLAGS = $(OESDK_TESTCASE_FLAGS)
+ 
++
++test_client_escape_CPPFLAGS = \
++	$(AM_CPPFLAGS) \
++	-DSYSCONFDIR=\"\"
+ test_client_escape_SOURCES = \
+ 	test-client-escape.c
+diff --git a/test/test-client-escape.c b/test/test-client-escape.c
+index eeae0159c80e..921009c056e1 100644
+--- a/test/test-client-escape.c
++++ b/test/test-client-escape.c
+@@ -19,6 +19,7 @@
+ #include <stdio.h>
+ 
+ #define read __read
++#include "config.c"
+ #include "console-socket.c"
+ #define main __main
+ #include "console-client.c"
