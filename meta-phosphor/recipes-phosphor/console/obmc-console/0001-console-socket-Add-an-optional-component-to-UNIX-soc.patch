@@ -1,7 +1,7 @@
 From 8b65cca9916087612a4fc6496273c0a58dd68181 Mon Sep 17 00:00:00 2001
 From: Andrew Jeffery <andrew@aj.id.au>
 Date: Mon, 10 Feb 2020 12:12:36 +1030
-Subject: [PATCH] console-socket: Add an optional component to UNIX socket
+Subject: [PATCH 1/6] console-socket: Add an optional component to UNIX socket
  abstract names
 
 Allows multiple instances of obmc-console-server to run concurrently
@@ -261,3 +261,5 @@ index 76e9c15d0bef..eeae0159c80e 100644
  int write_buf_to_fd(int fd, const uint8_t *buf, size_t len)
  {
  	struct test_ctx *ctx = &ctxs[fd];
+-- 
+2.20.1
