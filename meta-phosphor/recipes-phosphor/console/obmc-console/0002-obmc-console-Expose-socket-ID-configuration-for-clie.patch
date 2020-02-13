@@ -1,8 +1,8 @@
 From 077046b91ce67796a73ee32c3a3c2703e0a398da Mon Sep 17 00:00:00 2001
 From: Andrew Jeffery <andrew@aj.id.au>
 Date: Mon, 10 Feb 2020 12:36:09 +1030
-Subject: [PATCH] obmc-console: Expose socket ID configuration for client and
- server
+Subject: [PATCH 2/6] obmc-console: Expose socket ID configuration for client
+ and server
 
 * Add a new option in the server configuration file to use a friendly ID
   in the socket abstract path
@@ -104,3 +104,5 @@ index 00044f411c3c..a11ab24f0a21 100644
  	if (len < 0) {
  		if (errno)
  			warn("Failed to configure socket: %s", strerror(errno));
+-- 
+2.20.1
