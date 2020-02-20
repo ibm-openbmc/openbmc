@@ -8,7 +8,7 @@ DEPENDS = "pdata-native libekb-p10-native"
 
 do_install() {
 
-    DTB_FILE_NAME=${MACHINE}.dtb
+    DTB_FILE_NAME=power-target.dtb
     DTB_FILE_INSTALL_PATH=${D}${sysconfdir}/pdata/
 
     ${STAGING_BINDIR_NATIVE}/attributes create ${STAGING_DATADIR_NATIVE}/p10.dtb ${STAGING_DATADIR_NATIVE}/p10_attributes.db ${STAGING_DATADIR_NATIVE}/${DTB_FILE_NAME}
