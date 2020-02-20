@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-export PDBG_DTB=/etc/pdata/power-target.dtb
+export PDBG_DTB=/tmp/pdata/power-target.dtb

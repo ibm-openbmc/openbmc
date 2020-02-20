@@ -1,0 +1,10 @@
+[Unit]
+Description=Move pdata device tree blob to /tmp
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c 'mkdir -p /tmp/pdata && cp /etc/pdata/power-target.dtb /tmp/pdata'
+SyslogIdentifier=pdata
+
+[Install]
+WantedBy=multi-user.target
