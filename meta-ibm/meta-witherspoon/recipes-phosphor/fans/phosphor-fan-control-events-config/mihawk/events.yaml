@@ -146,6 +146,34 @@ groups:
           - /temperature/gpu5
           - /temperature/gpu6
           - /temperature/gpu7
+    - name: zone0_nvme
+      description: Group of nvme temperature sensors for zone 0
+      type: /xyz/openbmc_project/sensors
+      members:
+          - /temperature/nvme0
+          - /temperature/nvme1
+          - /temperature/nvme2
+          - /temperature/nvme3
+          - /temperature/nvme4
+          - /temperature/nvme5
+          - /temperature/nvme6
+          - /temperature/nvme7
+          - /temperature/nvme8
+          - /temperature/nvme9
+          - /temperature/nvme10
+          - /temperature/nvme11
+          - /temperature/nvme12
+          - /temperature/nvme13
+          - /temperature/nvme14
+          - /temperature/nvme15
+          - /temperature/nvme16
+          - /temperature/nvme17
+          - /temperature/nvme18
+          - /temperature/nvme19
+          - /temperature/nvme20
+          - /temperature/nvme21
+          - /temperature/nvme22
+          - /temperature/nvme23
     - name: service_gpu
       description: Group of monitor gpu service
       type: /xyz/openbmc_project/sensors
@@ -709,3 +737,41 @@ events:
                           type: uint64_t
                 timer:
                     interval: 1
+              - name: speed_changes_based_on_nvme_temps
+                groups:
+                    - name: zone0_nvme
+                      zone_conditions:
+                          - name: air_cooled_chassis
+                            zones:
+                                - 0
+                      interface: xyz.openbmc_project.Sensor.Value
+                      property:
+                          name: Value
+                          type: int64_t
+                matches:
+                    - name: interfacesAdded
+                    - name: propertiesChanged
+                    - name: interfacesRemoved
+                actions:
+                    - name: set_net_increase_speed
+                      property:
+                          value: 55
+                          type: int64_t
+                      factor:
+                          value: 1
+                          type: int64_t
+                      delta:
+                          value: 13
+                          type: uint64_t
+                    - name: set_net_decrease_speed
+                      property:
+                          value: 52
+                          type: int64_t
+                      factor:
+                          value: 3
+                          type: int64_t
+                      delta:
+                          value: 5
+                          type: uint64_t
+                timer:
+                    interval: 3
