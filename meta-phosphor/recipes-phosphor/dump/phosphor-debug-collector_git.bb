@@ -39,6 +39,7 @@ DEPENDS += " \
         ${PYTHON_PN}-setuptools-native \
         ${PYTHON_PN}-mako-native \
         fmt \
+        pldm \
 "
 
 RDEPENDS:${PN}-manager += " \
