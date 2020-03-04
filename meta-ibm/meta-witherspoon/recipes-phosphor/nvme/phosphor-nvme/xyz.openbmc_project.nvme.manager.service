@@ -1,0 +1,14 @@
+[Unit]
+Description=NVMe management
+Wants=op-power-start@0.target
+After=op-power-start@0.target
+Conflicts=obmc-chassis-poweroff@0.target
+
+[Service]
+ExecStart=/usr/bin/nvme_main
+Type=dbus
+BusName=xyz.openbmc_project.nvme.manager
+SyslogIdentifier=phosphor-nvme
+
+[Install]
+WantedBy=obmc-chassis-poweron@0.target
