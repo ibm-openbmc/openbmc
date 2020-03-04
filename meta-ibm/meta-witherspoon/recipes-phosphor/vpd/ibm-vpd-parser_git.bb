@@ -3,7 +3,7 @@ DESCRIPTION = "Parse FRU VPD and update into DBUS"
 PR = "r1"
 PV = "1.0+git${SRCPV}"
 
-inherit autotools pkgconfig
+inherit meson pkgconfig
 inherit obmc-phosphor-systemd
 
 DEPENDS += "sdbusplus"
@@ -20,7 +20,8 @@ SRC_URI += " file://vpd_inventory.json"
 S = "${WORKDIR}/git"
 
 SYSTEMD_SERVICE_${PN} := "ibm-vpd-parser@.service"
-EXTRA_OECONF := " --enable-ibm-parser "
+SYSTEMD_SERVICE_${PN} += "system-vpd.service"
+EXTRA_OEMESON := " -Dibm-parser=enabled -Dtests=disabled "
 
 FILES_${PN} += "${datadir}/vpd/*.json"
 
