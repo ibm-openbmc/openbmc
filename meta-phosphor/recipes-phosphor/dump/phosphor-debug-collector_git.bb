@@ -16,6 +16,10 @@ DEPENDS += " \
         ${PYTHON_PN}-mako-native \
         fmt \
         pldm \
+        ${PYTHON_PN}-native \
+        ${PYTHON_PN}-pyyaml-native \
+        ${PYTHON_PN}-setuptools-native \
+        ${PYTHON_PN}-mako-native \
 "
 PACKAGECONFIG ??= "${@bb.utils.contains_any('DISTRO_FEATURES', \
          'obmc-ubi-fs phosphor-mmc', '', 'jffs-workaround', d)}"
