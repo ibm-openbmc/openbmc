@@ -1,12 +1,26 @@
 {
     "service":"xyz.openbmc_project.Inventory.Manager",
     "root_path":"/xyz/openbmc_project/inventory",
-    "interfaces":[
-        "xyz.openbmc_project.Inventory.Item.Board.Motherboard",
-        "xyz.openbmc_project.Inventory.Item.Bmc",
-        "xyz.openbmc_project.Inventory.Item.Panel",
-        "xyz.openbmc_project.Inventory.Item.Vrm",
-        "xyz.openbmc_project.Inventory.Item.Tpm"
+    "entities":[
+        {
+            "interface" : "xyz.openbmc_project.Inventory.Item.Board.Motherboard",
+            "entity_type" : 64
+        },
+        {
+            "interface" : "xyz.openbmc_project.Inventory.Item.Bmc",
+            "entity_type" : 137
+        },
+        {
+            "interface" : "xyz.openbmc_project.Inventory.Item.Panel",
+            "entity_type" : 69
+        },
+        {
+            "interface" : "xyz.openbmc_project.Inventory.Item.Vrm",
+            "entity_type" : 123
+        },
+        {
+            "interface" : "xyz.openbmc_project.Inventory.Item.Tpm",
+            "entity_type" : 208
+        }
     ]
 }
-
