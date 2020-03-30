@@ -1,0 +1,30 @@
+From 5f8da4d7b7fd6be3cbb7ef99398f2fe8aa65b8dd Mon Sep 17 00:00:00 2001
+From: Matt Spinler <spinler@us.ibm.com>
+Date: Mon, 30 Mar 2020 15:01:34 -0500
+Subject: [PATCH] Increase retry attempts
+
+This is a temporary fix that gets by some intermittent I2C read fails of
+the max31785 when using the AST2600 BMC.
+
+Change-Id: I434b4e0045f616b0d005592a0022a640ec9992bf
+Signed-off-by: Matt Spinler <spinler@us.ibm.com>
+---
+ hwmonio.hpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hwmonio.hpp b/hwmonio.hpp
+index ff18204..c73a75a 100644
+--- a/hwmonio.hpp
++++ b/hwmonio.hpp
+@@ -6,7 +6,7 @@
+ namespace hwmonio
+ {
+ 
+-static constexpr auto retries = 10;
++static constexpr auto retries = 40;
+ static constexpr auto delay = std::chrono::milliseconds{100};
+ 
+ /** @class FileSystemInterface
+-- 
+2.26.0
+
