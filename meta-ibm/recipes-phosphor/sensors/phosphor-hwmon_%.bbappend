@@ -121,6 +121,8 @@ SYSTEMD_LINK_max31785-msl_append_rainier = " ../phosphor-max31785-msl@.service:m
 
 SYSTEMD_SERVICE_${PN}_append_ibm-ac-server = " max31785-hwmon-helper@.service"
 
+SRC_URI_append_witherspoon-tacoma = "file://0001-Increase-retry-attempts.patch"
+
 do_install_append_ibm-ac-server() {
     install -d ${D}/${base_libdir}/udev/rules.d/
     install -m 0644 ${WORKDIR}/70-max31785-hwmon.rules ${D}/${base_libdir}/udev/rules.d/
