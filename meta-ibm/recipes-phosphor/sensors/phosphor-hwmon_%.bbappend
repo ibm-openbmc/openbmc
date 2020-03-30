@@ -78,3 +78,4 @@ SYSTEMD_LINK:max31785-msl:append:ibm-ac-server = " ../phosphor-max31785-msl@.ser
 SYSTEMD_ENVIRONMENT_FILE:max31785-msl:append:rainier = " obmc/hwmon-max31785/max31785.conf"
 SYSTEMD_LINK:max31785-msl:append:rainier = " ../phosphor-max31785-msl@.service:multi-user.target.wants/phosphor-max31785-msl@${MACHINE}.service"
 
+SRC_URI:append:witherspoon-tacoma = "file://0001-Increase-retry-attempts.patch"
