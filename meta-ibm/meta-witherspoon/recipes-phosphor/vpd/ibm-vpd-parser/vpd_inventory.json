@@ -39,6 +39,7 @@
         "inventoryPath": "/system",
         "inherit": false,
         "isSystemVpd": true,
+        "copyRecords": ["VSYS"],
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.System": null,
           "xyz.openbmc_project.Inventory.Decorator.Asset": {
