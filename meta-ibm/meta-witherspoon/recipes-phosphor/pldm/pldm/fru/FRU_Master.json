@@ -21,6 +21,14 @@
         {
             "interface" : "xyz.openbmc_project.Inventory.Item.Tpm",
             "entity_type" : 208
+        },
+        {
+            "interface" : "xyz.openbmc_project.Inventory.Item.System",
+            "entity_type" : 11521
+        },
+        {
+            "interface" : "xyz.openbmc_project.Inventory.Item.Chassis",
+            "entity_type" : 45
         }
     ]
 }
