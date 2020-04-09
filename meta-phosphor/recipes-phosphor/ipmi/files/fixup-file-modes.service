@@ -1,0 +1,13 @@
+[Unit]
+Description=Fixup IPMI file modes
+After=network.target
+
+[Service]
+Restart=no
+Type=oneshot
+RemainAfterExit=true
+SyslogIdentifier=fixup-ipmi-files
+ExecStart=/bin/chmod 600 /etc/ipmi_pass /etc/key_file
+
+[Install]
+WantedBy=multi-user.target
