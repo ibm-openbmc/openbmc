@@ -47,6 +47,9 @@ do_install_ptest() {
         cp -rf ${B}/*_test ${D}${PTEST_PATH}/test/
 }
 
+PACKAGECONFIG ??= ""
+PACKAGECONFIG[ibm-mc-console] = "-DIBM_MC_CONSOLE=yes, -DIBM_MC_CONSOLE=no, pldm, "
+
 FILES:${PN} += "${datadir}/** "
 
 
