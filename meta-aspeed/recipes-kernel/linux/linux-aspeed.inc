@@ -8,7 +8,10 @@ KCONFIG_MODE="--alldefconfig"
 
 KSRC ?= "git://github.com/openbmc/linux;protocol=git;branch=${KBRANCH}"
 SRC_URI = "${KSRC}"
-SRC_URI += " file://defconfig"
+SRC_URI += " file://defconfig \
+    file://0001-hwmon-pmbus-ibm-cffps-Fix-LED-blink-behavior.patch \
+    file://0002-hwmon-pmbus-ibm-cffps-Don-t-relinquish-control-of-LE.patch \
+"
 
 LINUX_VERSION_EXTENSION ?= "-${SRCREV}"
 
