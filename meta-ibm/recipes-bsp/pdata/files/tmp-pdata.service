@@ -1,9 +1,11 @@
 [Unit]
-Description=Move pdata device tree blob to /tmp
+Description=Copy power specific system device tree blob to /tmp
+After=obmc-vpnor-updatesymlinks.service
+Wants=obmc-vpnor-updatesymlinks.service
 
 [Service]
 Type=oneshot
-ExecStart=/bin/sh -c 'mkdir -p /tmp/pdata && cp /etc/pdata/power-target.dtb /tmp/pdata'
+ExecStart=/bin/sh -c 'mkdir -p /tmp/pdata && cp /var/lib/phosphor-software-manager/pnor/ro/DEVTREE /tmp/pdata'
 SyslogIdentifier=pdata
 
 [Install]
