@@ -117,3 +117,8 @@ SYSTEMD_SUBSTITUTIONS_witherspoon-tacoma = "ADDR:200:phosphor-fan-control@.servi
 
 EXTRA_OECONF_append_rainier = " --enable-json"
 RDEPENDS_${PN}-presence-tach_append_rainier = " phosphor-fan-presence-config"
+
+# Set the appropriate i2c address used within the overridden phosphor-fan-control@.service
+# file that's used for witherspoon type(including witherspoon-tacoma) machines
+SYSTEMD_SUBSTITUTIONS_witherspoon = "ADDR:100:phosphor-fan-control@.service"
+SYSTEMD_SUBSTITUTIONS_witherspoon-tacoma = "ADDR:200:phosphor-fan-control@.service"
