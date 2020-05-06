@@ -4,11 +4,6 @@ PR = "r1"
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/Apache-2.0;md5=89aea4e17d99a7cacdbeed46a0096b10"
 
-# TODO: Need to remove pdata depends if any of bmc application is dependent with pdata.
-# Added for testing to check to meta data generation for attributes use to read/write
-# from power specific system device tree.
-DEPENDS = "pdata"
-
 PDATA_DTB_PATH="${datadir}/pdata"
 FILES_${PN} += "${PDATA_DTB_PATH}"
 
