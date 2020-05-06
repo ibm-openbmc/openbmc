@@ -2,6 +2,6 @@ PACKAGECONFIG ??= "${@bb.utils.contains('OBMC_MACHINE_FEATURES', 'phal', 'phal',
                    ${@bb.utils.contains('OBMC_MACHINE_FEATURES', 'op-fsi', 'openfsi', '', d)} \
                   "
 
-PACKAGECONFIG[phal] = "--enable-phal, --disable-phal --enable-p9, ipl"
+PACKAGECONFIG[phal] = "--enable-phal, --disable-phal --enable-p9, ipl pdata"
 
 PACKAGECONFIG[openfsi] = "--enable-openfsi, --disable-openfsi"
