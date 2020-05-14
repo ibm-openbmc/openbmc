@@ -4,7 +4,7 @@ manager_configuration:
 zone_configuration:
   zones:
     - zone: 0
-      full_speed: 16800
+      full_speed: 11200
       default_floor: 6500
       increase_delay: 5
       decrease_interval: 30
