@@ -20,7 +20,7 @@
         },
         {
             "interface" : "xyz.openbmc_project.Inventory.Item.Tpm",
-            "entity_type" : 208
+            "entity_type" : 24576
         },
         {
             "interface" : "xyz.openbmc_project.Inventory.Item.System",
