@@ -1,0 +1,6 @@
+---
+/com/ibm/host0/hypervisor:
+    - Interface: com.ibm.Host.Target
+      Properties:
+          Target:
+             Default: Target::Hypervisor::PowerVM
