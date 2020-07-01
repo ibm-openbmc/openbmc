@@ -112,10 +112,6 @@
               Validation:
                   Type: "regex"
                   Validator: '^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$'
-    - Interface: xyz.openbmc_project.Network.EthernetInterface
-      Properties:
-          DHCPEnabled:
-              Default: 'false'
 
 /xyz/openbmc_project/network/vmi/intf0/ipv4/addr0:
     - Interface: xyz.openbmc_project.Network.IP
@@ -161,10 +157,6 @@
               Validation:
                   Type: "regex"
                   Validator: '^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$'
-    - Interface: xyz.openbmc_project.Network.EthernetInterface
-      Properties:
-          DHCPEnabled:
-              Default: 'false'
 
 /xyz/openbmc_project/network/vmi/intf1/ipv4/addr0:
     - Interface: xyz.openbmc_project.Network.IP
