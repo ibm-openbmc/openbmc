@@ -5,7 +5,6 @@ RDEPENDS_${PN} += " \
 "
 
 SYSTEMD_SERVICE_${PN} += " \
-        obmc-vpnor-mounthostfw.service \
         obmc-vpnor-updatesymlinks.service \
         obmc-vpnor-check-clearvolatile@.service \
         obmc-vpnor-enable-clearvolatile@.service \
