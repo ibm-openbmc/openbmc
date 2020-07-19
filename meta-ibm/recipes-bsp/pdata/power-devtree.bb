@@ -14,18 +14,11 @@ FILES:${PN} += "${PDATA_DTB_PATH}"
 
 #jffs2 workaround
 FILESEXTRAPATHS_append := "${THISDIR}/files:"
-SRC_URI = "file://tmp-pdata.service"
-
-inherit systemd phal
-SYSTEMD_SERVICE_${PN} += "tmp-pdata.service"
 
 do_install() {
 
     DTB_FILE_ENV=power-target.sh
     DTB_FILE_CONF_PATH=${D}${PDATA_DTB_PATH}
-
-    install -d ${D}${systemd_unitdir}/system/
-    install -m 0644 ${WORKDIR}/tmp-pdata.service ${D}${systemd_unitdir}/system
 
     install -d ${DTB_FILE_CONF_PATH}
     install -m 744 ${THISDIR}/files/${DTB_FILE_ENV} ${DTB_FILE_CONF_PATH}/${DTB_FILE_ENV}
