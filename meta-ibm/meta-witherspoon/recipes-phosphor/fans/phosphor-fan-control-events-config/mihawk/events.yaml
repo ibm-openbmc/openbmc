@@ -188,9 +188,9 @@ groups:
           - /temperature/250_soc_temp7
     - name: service_gpu
       description: Group of monitor gpu service
-      type: /xyz/openbmc_project/sensors
+      type: /xyz/openbmc_project/gpuservice
       members:
-          - /temperature/gpu0
+          - /status
 matches:
     - name: propertiesChanged
       description: >
@@ -363,10 +363,10 @@ events:
     - name: default_fan_floor_on_gpu_service_fail
       groups:
           - name: service_gpu
-            interface: xyz.openbmc_project.Sensor.Value
+            interface: xyz.openbmc_project.Inventory.Item
             property:
-                name: Value
-                type: int64_t
+                name: Present
+                type: bool
       matches:
           - name: nameOwnerChanged
       actions:
