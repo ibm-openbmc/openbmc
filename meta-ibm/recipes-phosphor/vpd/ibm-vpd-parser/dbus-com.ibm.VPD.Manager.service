@@ -8,9 +8,9 @@
 #  (at your option) any later version.
 
 [Unit]
-Description=VPD editing service
+Description=VPD manager service
 
 [Service]
-BusName=com.ibm.vpd.Editor
+BusName=com.ibm.VPD.Manager
 Type=dbus
-ExecStart=/usr/bin/vpd-kwd-editor
+ExecStart=/usr/bin/vpd-manager
