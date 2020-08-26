@@ -7,13 +7,17 @@ LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/Apache-2.0;md5
 PDATA_DTB_PATH="${datadir}/pdata"
 FILES:${PN} += "${PDATA_DTB_PATH}"
 
+FILES:${PN} += "${systemd_unitdir}/system.conf.d/power-target.conf"
+
 #jffs2 workaround
-FILESEXTRAPATHS_append := "${THISDIR}/files:"
+FILESEXTRAPATHS:append := "${THISDIR}/files:"
 
 do_install() {
 
     DTB_FILE_ENV=power-target.sh
     DTB_FILE_CONF_PATH=${D}${PDATA_DTB_PATH}
+
+    install -m 644 -D ${THISDIR}/files/power-target.conf ${D}${systemd_unitdir}/system.conf.d/power-target.conf
 
     install -d ${DTB_FILE_CONF_PATH}
     install -m 744 ${THISDIR}/files/${DTB_FILE_ENV} ${DTB_FILE_CONF_PATH}/${DTB_FILE_ENV}
