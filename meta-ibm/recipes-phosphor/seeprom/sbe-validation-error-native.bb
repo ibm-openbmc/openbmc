@@ -2,7 +2,6 @@ SUMMARY = "Copy error yaml files to known path for elog parsing"
 PR = "r1"
 
 inherit native
-inherit obmc-phosphor-license
 inherit phosphor-dbus-yaml
 
 require sbe-validation.inc
