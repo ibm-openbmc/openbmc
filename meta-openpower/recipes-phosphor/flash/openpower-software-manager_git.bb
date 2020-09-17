@@ -20,7 +20,7 @@ PACKAGECONFIG[verify_pnor_signature] = "--enable-verify_pnor_signature,--disable
 PACKAGECONFIG[ubifs_layout] = "--enable-ubifs_layout,--disable-ubifs_layout,,mtd-utils-ubifs"
 
 EXTRA_OECONF += " \
-    PNOR_MSL="v2.0.10 v2.2" \
+    PNOR_MSL="v2.0.10 v2.2 v2.4.1" \
     "
 
 DEPENDS += " \
