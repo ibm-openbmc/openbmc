@@ -12,8 +12,6 @@ FILES_${PN} += "${systemd_unitdir}/system.conf.d/power-target.conf"
 #jffs2 workaround
 FILESEXTRAPATHS_append := "${THISDIR}/files:"
 
-inherit phal
-
 do_install() {
 
     DTB_FILE_ENV=power-target.sh
