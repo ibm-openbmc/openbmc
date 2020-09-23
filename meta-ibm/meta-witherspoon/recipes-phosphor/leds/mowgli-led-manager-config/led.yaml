@@ -1,0 +1,324 @@
+BmcBooted:
+    power-button:
+        Action: 'Blink'
+        DutyOn: 50
+        Period: 250
+        Priority: 'On'
+PowerOn:
+    power-button:
+        Action: 'On'
+        DutyOn: 50
+        Period: 0
+        Priority: 'On'
+EnclosureFault:
+    front-fault:
+        Action: 'On'
+        DutyOn: 50
+        Period: 0
+        Priority: 'On'
+EnclosureIdentify:
+    front-id:
+        Action: 'On'
+        DutyOn: 50
+        Period: 0
+        Priority: 'On'
+Fan0Fault:
+    fan0:
+        Action: 'On'
+        DutyOn: 50
+        Period: 0
+        Priority: 'Blink'
+    front-fault:
+        Action: 'On'
+        DutyOn: 50
+        Period: 0
+        Priority: 'On'
+Fan1Fault:
+    fan1:
+        Action: 'On'
+        DutyOn: 50
+        Period: 1000
+        Priority: 'Blink'
+    front-fault:
+        Action: 'On'
+        DutyOn: 50
+        Period: 0
+        Priority: 'On'
+Fan2Fault:
+    fan2:
+        Action: 'On'
+        DutyOn: 50
+        Period: 0
+        Priority: 'Blink'
+    front-fault:
+        Action: 'On'
+        DutyOn: 50
+        Period: 0
+        Priority: 'On'
+Fan3Fault:
+    fan3:
+        Action: 'On'
+        DutyOn: 50
+        Period: 1000
+        Priority: 'Blink'
+    front-fault:
+        Action: 'On'
+        DutyOn: 50
+        Period: 0
+        Priority: 'On'
+Fan4Fault:
+    fan4:
+        Action: 'On'
+        DutyOn: 50
+        Period: 0
+        Priority: 'Blink'
+    front-fault:
+        Action: 'On'
+        DutyOn: 50
+        Period: 0
+        Priority: 'On'
+Powersupply0Fault:
+    front-fault:
+        Action: 'On'
+        DutyOn: 50
+        Period: 0
+        Priority: 'On'
+Powersupply1Fault:
+    front-fault:
+        Action: 'On'
+        DutyOn: 50
+        Period: 0
+        Priority: 'On'
+LampTest:
+    front-fault:
+        Action: 'Blink'
+        DutyOn: 50
+        Period: 1000
+        Priority: 'On'
+    front-id:
+        Action: 'Blink'
+        DutyOn: 50
+        Period: 1000
+        Priority: 'On'
+    power-button:
+        Action: 'Blink'
+        DutyOn: 50
+        Period: 1000
+        Priority: 'On'
+    fan0:
+        Action: 'Blink'
+        DutyOn: 50
+        Period: 1000
+        Priority: 'Blink'
+    fan1:
+        Action: 'Blink'
+        DutyOn: 50
+        Period: 1000
+        Priority: 'Blink'
+    fan2:
+        Action: 'Blink'
+        DutyOn: 50
+        Period: 1000
+        Priority: 'Blink'
+    fan3:
+        Action: 'Blink'
+        DutyOn: 50
+        Period: 1000
+        Priority: 'Blink'
+    fan4:
+        Action: 'Blink'
+        DutyOn: 50
+        Period: 1000
+        Priority: 'Blink'
+core0Fault:
+    front-fault:
+        Action: 'On'
+        DutyOn: 50
+        Period: 0
+        Priority: 'On'
+core1Fault:
+    front-fault:
+        Action: 'On'
+        DutyOn: 50
+        Period: 0
+        Priority: 'On'
+core2Fault:
+    front-fault:
+        Action: 'On'
+        DutyOn: 50
+        Period: 0
+        Priority: 'On'
+core3Fault:
+    front-fault:
+        Action: 'On'
+        DutyOn: 50
+        Period: 0
+        Priority: 'On'
+core4Fault:
+    front-fault:
+        Action: 'On'
+        DutyOn: 50
+        Period: 0
+        Priority: 'On'
+core5Fault:
+    front-fault:
+        Action: 'On'
+        DutyOn: 50
+        Period: 0
+        Priority: 'On'
+core6Fault:
+    front-fault:
+        Action: 'On'
+        DutyOn: 50
+        Period: 0
+        Priority: 'On'
+core7Fault:
+    front-fault:
+        Action: 'On'
+        DutyOn: 50
+        Period: 0
+        Priority: 'On'
+core8Fault:
+    front-fault:
+        Action: 'On'
+        DutyOn: 50
+        Period: 0
+        Priority: 'On'
+core9Fault:
+    front-fault:
+        Action: 'On'
+        DutyOn: 50
+        Period: 0
+        Priority: 'On'
+core10Fault:
+    front-fault:
+        Action: 'On'
+        DutyOn: 50
+        Period: 0
+        Priority: 'On'
+core11Fault:
+    front-fault:
+        Action: 'On'
+        DutyOn: 50
+        Period: 0
+        Priority: 'On'
+core12Fault:
+    front-fault:
+        Action: 'On'
+        DutyOn: 50
+        Period: 0
+        Priority: 'On'
+core13Fault:
+    front-fault:
+        Action: 'On'
+        DutyOn: 50
+        Period: 0
+        Priority: 'On'
+core14Fault:
+    front-fault:
+        Action: 'On'
+        DutyOn: 50
+        Period: 0
+        Priority: 'On'
+core15Fault:
+    front-fault:
+        Action: 'On'
+        DutyOn: 50
+        Period: 0
+        Priority: 'On'
+core16Fault:
+    front-fault:
+        Action: 'On'
+        DutyOn: 50
+        Period: 0
+        Priority: 'On'
+core17Fault:
+    front-fault:
+        Action: 'On'
+        DutyOn: 50
+        Period: 0
+        Priority: 'On'
+core18Fault:
+    front-fault:
+        Action: 'On'
+        DutyOn: 50
+        Period: 0
+        Priority: 'On'
+core19Fault:
+    front-fault:
+        Action: 'On'
+        DutyOn: 50
+        Period: 0
+        Priority: 'On'
+core20Fault:
+    front-fault:
+        Action: 'On'
+        DutyOn: 50
+        Period: 0
+        Priority: 'On'
+core21Fault:
+    front-fault:
+        Action: 'On'
+        DutyOn: 50
+        Period: 0
+        Priority: 'On'
+core22Fault:
+    front-fault:
+        Action: 'On'
+        DutyOn: 50
+        Period: 0
+        Priority: 'On'
+core23Fault:
+    front-fault:
+        Action: 'On'
+        DutyOn: 50
+        Period: 0
+        Priority: 'On'
+cpu0Fault:
+    front-fault:
+        Action: 'On'
+        DutyOn: 50
+        Period: 0
+        Priority: 'On'
+dimm0Fault:
+    front-fault:
+        Action: 'On'
+        DutyOn: 50
+        Period: 0
+        Priority: 'On'
+dimm1Fault:
+    front-fault:
+        Action: 'On'
+        DutyOn: 50
+        Period: 0
+        Priority: 'On'
+dimm2Fault:
+    front-fault:
+        Action: 'On'
+        DutyOn: 50
+        Period: 0
+        Priority: 'On'
+dimm3Fault:
+    front-fault:
+        Action: 'On'
+        DutyOn: 50
+        Period: 0
+        Priority: 'On'
+motherboardFault:
+    front-fault:
+        Action: 'On'
+        DutyOn: 50
+        Period: 0
+        Priority: 'On'
+occFault:
+    front-fault:
+        Action: 'On'
+        DutyOn: 50
+        Period: 0
+        Priority: 'On'
+systemFault:
+    front-fault:
+        Action: 'On'
+        DutyOn: 50
+        Period: 0
+        Priority: 'On'
