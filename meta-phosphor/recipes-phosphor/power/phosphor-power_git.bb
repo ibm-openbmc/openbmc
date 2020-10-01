@@ -55,6 +55,8 @@ REGS_CONF_SVC = "phosphor-regulators-config.service"
 REGS_MON_ENA_SVC = "phosphor-regulators-monitor-enable.service"
 REGS_MON_DIS_SVC = "phosphor-regulators-monitor-disable.service"
 
+RDEPENDS_phosphor-power-psu-monitor = "entity-manager"
+
 SYSTEMD_SERVICE_${PN}-sequencer = "${SEQ_MONITOR_SVC} ${SEQ_PGOOD_SVC}"
 SYSTEMD_SERVICE_${PN}-monitor = "${@bb.utils.contains('PACKAGECONFIG', 'monitor', '${PSU_MONITOR_TMPL}', '', d)}"
 SYSTEMD_SERVICE_${PN}-psu-monitor = "${PSU_MONITOR_SVC}"
