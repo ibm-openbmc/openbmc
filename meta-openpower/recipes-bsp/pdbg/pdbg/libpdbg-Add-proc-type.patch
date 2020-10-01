@@ -1,0 +1,41 @@
+From e50e02d5c329cfccad6ef91334b9cf9d10d5164d Mon Sep 17 00:00:00 2001
+From: Amitay Isaacs <amitay@ozlabs.org>
+Date: Wed, 6 May 2020 16:26:12 +1000
+Subject: [PATCH] libpdbg: Add p10
+
+Signed-off-by: Amitay Isaacs <amitay@ozlabs.org>
+---
+ libpdbg/libpdbg.h | 1 +
+ libpdbg/target.h  | 3 ++-
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/libpdbg/libpdbg.h b/libpdbg/libpdbg.h
+index 180a609..2630fd7 100644
+--- a/libpdbg/libpdbg.h
++++ b/libpdbg/libpdbg.h
+@@ -53,6 +53,7 @@ enum pdbg_proc {
+ 	PDBG_PROC_UNKNOWN,  /**< Unknown processor */
+ 	PDBG_PROC_P8,       /**< POWER8 processor  */
+ 	PDBG_PROC_P9,       /**< POWER9 processor  */
++	PDBG_PROC_P10,      /**< POWER10 processor */
+ };
+ 
+ /**
+diff --git a/libpdbg/target.h b/libpdbg/target.h
+index 522a4dc..77de9d1 100644
+--- a/libpdbg/target.h
++++ b/libpdbg/target.h
+@@ -28,8 +28,9 @@
+ #define CHIP_ID_P8P 0xd3
+ #define CHIP_ID_P9  0xd1
+ #define CHIP_ID_P9P 0xd9
++#define CHIP_ID_P10 0xda
+ 
+-enum chip_type {CHIP_UNKNOWN, CHIP_P8, CHIP_P8NV, CHIP_P9};
++enum chip_type {CHIP_UNKNOWN, CHIP_P8, CHIP_P8NV, CHIP_P9, CHIP_P10};
+ 
+ struct pdbg_target_class {
+ 	char *name;
+-- 
+1.8.3.1
+

@@ -7,6 +7,8 @@ PV = "3.0+git${SRCPV}"
 
 SRC_URI += "git://github.com/open-power/pdbg.git"
 SRCREV = "v3.0"
+SRC_URI += "file://libpdbg-Add-processor-type-to-libsbefifo-implementation.patch"
+SRC_URI += "file://libpdbg-Add-proc-type.patch"
 
 DEPENDS += "dtc-native"
 

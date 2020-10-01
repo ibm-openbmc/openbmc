@@ -1,0 +1,201 @@
+From 926b75a56e65c3f22e501e1e83625f517eb65e91 Mon Sep 17 00:00:00 2001
+From: Amitay Isaacs <amitay@ozlabs.org>
+Date: Thu, 25 Jun 2020 15:56:23 +1000
+Subject: [PATCH] libpdbg: Add processor type to libsbefifo implementation
+
+There are few changes between P9 and P10 sbefifo api.  Use proc type to
+implement the changes in the api.
+
+Signed-off-by: Amitay Isaacs <amitay@ozlabs.org>
+---
+ libpdbg/cronus.c             | 18 ++++++++++++++++--
+ libpdbg/sbefifo.c            | 18 ++++++++++++++++--
+ libsbefifo/connect.c         | 26 ++++++++++++++++++++++++--
+ libsbefifo/libsbefifo.h      |  8 ++++++--
+ libsbefifo/sbefifo_private.h |  1 +
+ 5 files changed, 63 insertions(+), 8 deletions(-)
+
+diff --git a/libpdbg/cronus.c b/libpdbg/cronus.c
+index 23d555b..8966843 100644
+--- a/libpdbg/cronus.c
++++ b/libpdbg/cronus.c
+@@ -155,13 +155,27 @@ static int cronus_sbefifo_transport(uint8_t *msg, uint32_t msg_len,
+ static int cronus_sbefifo_probe(struct pdbg_target *target)
+ {
+ 	struct sbefifo *sf = target_to_sbefifo(target);
+-	int rc;
++	int rc, proc;
+ 
+ 	rc = cronus_probe(target);
+ 	if (rc)
+ 		return rc;
+ 
+-	rc = sbefifo_connect_transport(cronus_sbefifo_transport, sf, &sf->sf_ctx);
++	switch (pdbg_get_proc()) {
++	case PDBG_PROC_P9:
++		proc = SBEFIFO_PROC_P9;
++		break;
++
++	case PDBG_PROC_P10:
++		proc = SBEFIFO_PROC_P10;
++		break;
++
++	default:
++		PR_ERROR("SBEFIFO driver not supported\n");
++		return -1;
++	}
++
++	rc = sbefifo_connect_transport(proc, cronus_sbefifo_transport, sf, &sf->sf_ctx);
+ 	if (rc) {
+ 		PR_ERROR("Unable to initialize sbefifo driver\n");
+ 		return rc;
+diff --git a/libpdbg/sbefifo.c b/libpdbg/sbefifo.c
+index 898fd1a..f654c91 100644
+--- a/libpdbg/sbefifo.c
++++ b/libpdbg/sbefifo.c
+@@ -615,12 +615,26 @@ static int sbefifo_probe(struct pdbg_target *target)
+ {
+ 	struct sbefifo *sf = target_to_sbefifo(target);
+ 	const char *sbefifo_path;
+-	int rc;
++	int rc, proc;
+ 
+ 	sbefifo_path = pdbg_target_property(target, "device-path", NULL);
+ 	assert(sbefifo_path);
+ 
+-	rc = sbefifo_connect(sbefifo_path, &sf->sf_ctx);
++	switch (pdbg_get_proc()) {
++	case PDBG_PROC_P9:
++		proc = SBEFIFO_PROC_P9;
++		break;
++
++	case PDBG_PROC_P10:
++		proc = SBEFIFO_PROC_P10;
++		break;
++
++	default:
++		PR_ERROR("SBEFIFO driver not supported\n");
++		return -1;
++	}
++
++	rc = sbefifo_connect(sbefifo_path, proc, &sf->sf_ctx);
+ 	if (rc) {
+ 		PR_ERROR("Unable to open sbefifo driver %s\n", sbefifo_path);
+ 		return rc;
+diff --git a/libsbefifo/connect.c b/libsbefifo/connect.c
+index 1295dc5..1d23af5 100644
+--- a/libsbefifo/connect.c
++++ b/libsbefifo/connect.c
+@@ -20,15 +20,27 @@
+ #include <fcntl.h>
+ #include <errno.h>
+ #include <stdarg.h>
++#include <stdbool.h>
+ 
+ #include "libsbefifo.h"
+ #include "sbefifo_private.h"
+ 
+-int sbefifo_connect(const char *fifo_path, struct sbefifo_context **out)
++static bool proc_valid(int proc)
++{
++	if (proc == SBEFIFO_PROC_P9 || proc == SBEFIFO_PROC_P10)
++		return true;
++
++	return false;
++}
++
++int sbefifo_connect(const char *fifo_path, int proc, struct sbefifo_context **out)
+ {
+ 	struct sbefifo_context *sctx;
+ 	int fd, rc;
+ 
++	if (!proc_valid(proc))
++		return EINVAL;
++
+ 	sctx = malloc(sizeof(struct sbefifo_context));
+ 	if (!sctx) {
+ 		fprintf(stderr, "Memory allocation error\n");
+@@ -37,6 +49,7 @@ int sbefifo_connect(const char *fifo_path, struct sbefifo_context **out)
+ 
+ 	*sctx = (struct sbefifo_context) {
+ 		.fd = -1,
++		.proc = proc,
+ 	};
+ 
+ 	fd = open(fifo_path, O_RDWR | O_SYNC);
+@@ -53,10 +66,13 @@ int sbefifo_connect(const char *fifo_path, struct sbefifo_context **out)
+ 	return 0;
+ }
+ 
+-int sbefifo_connect_transport(sbefifo_transport_fn transport, void *priv, struct sbefifo_context **out)
++int sbefifo_connect_transport(int proc, sbefifo_transport_fn transport, void *priv, struct sbefifo_context **out)
+ {
+ 	struct sbefifo_context *sctx;
+ 
++	if (!proc_valid(proc))
++		return EINVAL;
++
+ 	sctx = malloc(sizeof(struct sbefifo_context));
+ 	if (!sctx) {
+ 		fprintf(stderr, "Memory allocation error\n");
+@@ -65,6 +81,7 @@ int sbefifo_connect_transport(sbefifo_transport_fn transport, void *priv, struct
+ 
+ 	*sctx = (struct sbefifo_context) {
+ 		.fd = -1,
++		.proc = proc,
+ 		.transport = transport,
+ 		.priv = priv,
+ 	};
+@@ -84,6 +101,11 @@ void sbefifo_disconnect(struct sbefifo_context *sctx)
+ 	free(sctx);
+ }
+ 
++int sbefifo_proc(struct sbefifo_context *sctx)
++{
++	return sctx->proc;
++}
++
+ void sbefifo_debug(const char *fmt, ...)
+ {
+ 	va_list ap;
+diff --git a/libsbefifo/libsbefifo.h b/libsbefifo/libsbefifo.h
+index cbfb76d..3af54b4 100644
+--- a/libsbefifo/libsbefifo.h
++++ b/libsbefifo/libsbefifo.h
+@@ -48,15 +48,19 @@
+ #define SBEFIFO_SEC_PIB_ERROR             0x0011
+ #define SBEFIFO_SEC_PARITY_ERROR          0x0012
+ 
++#define SBEFIFO_PROC_P9    0x01
++#define SBEFIFO_PROC_P10   0x02
++
+ struct sbefifo_context;
+ 
+ typedef int (*sbefifo_transport_fn)(uint8_t *msg, uint32_t msg_len,
+ 				    uint8_t *out, uint32_t *out_len,
+ 				    void *private_data);
+ 
+-int sbefifo_connect(const char *fifo_path, struct sbefifo_context **out);
+-int sbefifo_connect_transport(sbefifo_transport_fn transport, void *priv, struct sbefifo_context **out);
++int sbefifo_connect(const char *fifo_path, int proc, struct sbefifo_context **out);
++int sbefifo_connect_transport(int proc, sbefifo_transport_fn transport, void *priv, struct sbefifo_context **out);
+ void sbefifo_disconnect(struct sbefifo_context *sctx);
++int sbefifo_proc(struct sbefifo_context *sctx);
+ 
+ int sbefifo_parse_output(struct sbefifo_context *sctx, uint32_t cmd,
+ 			 uint8_t *buf, uint32_t buflen,
+diff --git a/libsbefifo/sbefifo_private.h b/libsbefifo/sbefifo_private.h
+index d94112f..6262c3e 100644
+--- a/libsbefifo/sbefifo_private.h
++++ b/libsbefifo/sbefifo_private.h
+@@ -65,6 +65,7 @@
+ 
+ struct sbefifo_context {
+ 	int fd;
++	int proc;
+ 
+ 	sbefifo_transport_fn transport;
+ 	void *priv;
+-- 
+1.8.3.1
+
