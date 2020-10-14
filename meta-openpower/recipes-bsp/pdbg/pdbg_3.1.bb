@@ -3,10 +3,10 @@ DESCRIPTION = "pdbg allows JTAG-like debugging of the host POWER processors"
 LICENSE     = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://${S}/COPYING;md5=3b83ef96387f14655fc854ddc3c6bd57"
 
-PV = "3.0+git${SRCPV}"
+PV = "3.1+git${SRCPV}"
 
 SRC_URI += "git://github.com/open-power/pdbg.git"
-SRCREV = "v3.0"
+SRCREV = "v3.1"
 
 DEPENDS += "dtc-native"
 
