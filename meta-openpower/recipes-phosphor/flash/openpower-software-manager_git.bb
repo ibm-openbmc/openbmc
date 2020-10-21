@@ -38,7 +38,7 @@ RDEPENDS_${PN} += " \
 S = "${WORKDIR}/git"
 
 SRC_URI += "git://github.com/ibm-openbmc/openpower-pnor-code-mgmt;branch=OP940"
-SRCREV = "daee925e34326ee63b8717d1fdb2c9041b4849ef"
+SRCREV = "f666dd0b916627d77c6064a242f19db061cd2311"
 
 DBUS_SERVICE_${PN} += "org.open_power.Software.Host.Updater.service"
 
