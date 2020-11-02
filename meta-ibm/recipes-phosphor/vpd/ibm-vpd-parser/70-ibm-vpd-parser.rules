@@ -1,1 +1,2 @@
 SUBSYSTEM=="nvmem", SUBSYSTEMS=="i2c", ENV{OF_NAME}=="eeprom", ACTION=="add", TAG+="systemd", ENV{SYSTEMD_WANTS}+="ibm-vpd-parser@%N.service"
+SUBSYSTEM=="nvmem", SUBSYSTEMS=="spi", ENV{OF_NAME}=="eeprom", ACTION=="add", TAG+="systemd", ENV{SYSTEMD_WANTS}+="ibm-vpd-parser@%N.service"
