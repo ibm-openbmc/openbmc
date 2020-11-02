@@ -36,4 +36,6 @@ do_install_append() {
     install -m 0644 ${WORKDIR}/70-ibm-vpd-parser.rules ${D}/${base_libdir}/udev/rules.d/
     install ${WORKDIR}/*.json ${D}${datadir}/vpd/
     install -m 0644 ${WORKDIR}/com.ibm.VPD.Manager.service ${D}/${datadir}/dbus-1/system-services
+    install -d ${D}/var/lib/vpd
+    ln -s ${datadir}/vpd/vpd_inventory.json ${D}/var/lib/vpd/vpd_inventory.json
 }
