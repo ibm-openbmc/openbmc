@@ -17,6 +17,8 @@ require ${PN}.inc
 
 SRC_URI += " file://70-ibm-vpd-parser.rules"
 SRC_URI += " file://vpd_inventory.json"
+SRC_URI += " file://50001001.json"
+SRC_URI += " file://50001000.json"
 SRC_URI += " file://com.ibm.VPD.Manager.service"
 
 S = "${WORKDIR}/git"
@@ -36,6 +38,4 @@ do_install:append() {
     install -m 0644 ${WORKDIR}/70-ibm-vpd-parser.rules ${D}/${base_libdir}/udev/rules.d/
     install ${WORKDIR}/*.json ${D}${datadir}/vpd/
     install -m 0644 ${WORKDIR}/com.ibm.VPD.Manager.service ${D}/${datadir}/dbus-1/system-services
-    install -d ${D}/var/lib/vpd
-    ln -s ${datadir}/vpd/vpd_inventory.json ${D}/var/lib/vpd/vpd_inventory.json
 }
