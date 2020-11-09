@@ -50,6 +50,10 @@
             "Model": {
               "recordName": "VSYS",
               "keywordName": "TM"
+            },
+            "SubModel": {
+              "recordName": "VSYS",
+              "keywordName": "BR"
             }
           },
           "com.ibm.ipzvpd.Location" : {
