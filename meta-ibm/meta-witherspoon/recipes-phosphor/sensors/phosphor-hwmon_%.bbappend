@@ -102,6 +102,9 @@ OCCS = " \
         00--00--00--06/sbefifo1-dev0/occ-hwmon.1 \
         00--00--00--0a/fsi-master/fsi1/slave@01--00/01--01--00--06/sbefifo2-dev0/occ-hwmon.2 \
         "
+OCCS_mowgli = " \
+        00--00--00--06/sbefifo1-dev0/occ-hwmon.1 \
+        "
 OCCSFMT = "devices/platform/gpio-fsi/fsi-master/fsi0/slave@00--00/{0}.conf"
 OCCITEMS = "${@compose_list(d, 'OCCSFMT', 'OCCS')}"
 
@@ -111,6 +114,7 @@ SYSTEMD_ENVIRONMENT_FILE_${PN}_append_ibm-ac-server = " ${@compose_list(d, 'ENVS
 SYSTEMD_ENVIRONMENT_FILE_${PN}_append_mihawk = " ${@compose_list(d, 'ENVS', 'ITEMS')}"
 SYSTEMD_ENVIRONMENT_FILE_${PN}_append_mihawk = " ${@compose_list(d, 'ENVS', 'OCCITEMS')}"
 SYSTEMD_ENVIRONMENT_FILE_${PN}_append_mowgli = " ${@compose_list(d, 'ENVS', 'ITEMS')}"
+SYSTEMD_ENVIRONMENT_FILE_${PN}_append_mowgli = " ${@compose_list(d, 'ENVS', 'OCCITEMS')}"
 
 SYSTEMD_ENVIRONMENT_FILE_max31785-msl_append_ibm-ac-server = " obmc/hwmon-max31785/max31785.conf"
 SYSTEMD_LINK_max31785-msl_append_ibm-ac-server = " ../phosphor-max31785-msl@.service:multi-user.target.wants/phosphor-max31785-msl@${MACHINE}.service"
