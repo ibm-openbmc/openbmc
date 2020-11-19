@@ -258,6 +258,226 @@
               }
           }
       }
+    ],
+    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a280.i2c-bus/i2c-4/4-0050/4-00500/nvmem": [
+      {
+        "inventoryPath": "/system/chassis/motherboard/pcie_cable_card0",
+        "bind" : "4-0050",
+        "preAction" : {
+          "pin" : "SLOT0_PRSNT_EN_RSVD",
+          "value" : 1
+        },
+        "postActionFail" : {
+          "pin" : "SLOT0_PRSNT_EN_RSVD",
+          "value" : 0
+        },
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-C0"
+          }
+        }
+      }
+    ],
+    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a300.i2c-bus/i2c-5/5-0050/5-00500/nvmem": [
+      {
+        "inventoryPath": "/system/chassis/motherboard/pcie_cable_card3",
+        "bind" : "5-0050",
+        "preAction" : {
+          "pin" : "SLOT3_PRSNT_EN_RSVD",
+          "value" : 1
+        },
+        "postActionFail" : {
+          "pin" : "SLOT3_PRSNT_EN_RSVD",
+          "value" : 0
+        },
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-C3"
+          }
+        }
+      }
+    ],
+    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a300.i2c-bus/i2c-5/5-0051/5-00510/nvmem": [
+      {
+        "inventoryPath": "/system/chassis/motherboard/pcie_cable_card4",
+        "bind" : "5-0051",
+        "preAction" : {
+          "pin" : "SLOT4_PRSNT_EN_RSVD",
+          "value" : 1
+        },
+        "postActionFail" : {
+          "pin" : "SLOT4_PRSNT_EN_RSVD",
+          "value" : 0
+        },
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-C4"
+          }
+        }
+      }
+    ],
+    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a600.i2c-bus/i2c-11/11-0050/11-00500/nvmem": [
+      {
+        "inventoryPath": "/system/chassis/motherboard/pcie_cable_card10",
+        "bind" : "11-0050",
+        "preAction" : {
+          "pin" : "SLOT10_PRSNT_EN_RSVD",
+          "value" : 1
+        },
+        "postActionFail" : {
+          "pin" : "SLOT10_PRSNT_EN_RSVD",
+          "value" : 0
+        },
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-C10"
+          }
+        }
+      }
+    ],
+    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a280.i2c-bus/i2c-4/4-0052/4-00520/nvmem": [
+      {
+        "inventoryPath": "/system/chassis/motherboard/pcie_cable_card2",
+        "bind" : "4-0052",
+        "preAction" : {
+          "pin" : "SLOT2_PRSNT_EN_RSVD",
+          "value" : 1
+        },
+        "postActionFail" : {
+          "pin" : "SLOT2_PRSNT_EN_RSVD",
+          "value" : 0
+        },
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-C2"
+          }
+        }
+      }
+    ],
+    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a380.i2c-bus/i2c-6/6-0053/6-00530/nvmem": [
+      {
+        "inventoryPath": "/system/chassis/motherboard/pcie_cable_card6",
+        "bind" : "6-0053",
+        "preAction" : {
+          "pin" : "SLOT6_PRSNT_EN_RSVD",
+          "value" : 1
+        },
+        "postActionFail" : {
+          "pin" : "SLOT6_PRSNT_EN_RSVD",
+          "value" : 0
+        },
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-C6"
+          }
+        }
+      }
+    ],
+    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a380.i2c-bus/i2c-6/6-0052/6-00520/nvmem": [
+      {
+        "inventoryPath": "/system/chassis/motherboard/pcie_cable_card7",
+        "bind" : "6-0052",
+        "preAction" : {
+          "pin" : "SLOT7_PRSNT_EN_RSVD",
+          "value" : 1
+        },
+        "postActionFail" : {
+          "pin" : "SLOT7_PRSNT_EN_RSVD",
+          "value" : 0
+        },
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-C7"
+          }
+        }
+      }
+    ],
+    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a380.i2c-bus/i2c-6/6-0050/6-00500/nvmem": [
+      {
+        "inventoryPath": "/system/chassis/motherboard/pcie_cable_card9",
+        "bind" : "6-0050",
+        "preAction" : {
+          "pin" : "SLOT9_PRSNT_EN_RSVD",
+          "value" : 1
+        },
+        "postActionFail" : {
+          "pin" : "SLOT9_PRSNT_EN_RSVD",
+          "value" : 0
+        },
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-C9"
+          }
+        }
+      }
+    ],
+    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a600.i2c-bus/i2c-11/11-0051/11-00510/nvmem": [
+      {
+        "inventoryPath": "/system/chassis/motherboard/pcie_cable_card11",
+        "bind" : "11-0051",
+        "preAction" : {
+          "pin" : "SLOT11_PRSNT_EN_RSVD",
+          "value" : 1
+        },
+        "postActionFail" : {
+          "pin" : "SLOT11_PRSNT_EN_RSVD",
+          "value" : 0
+        },
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-C11"
+          }
+        }
+      }
+    ],
+    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a280.i2c-bus/i2c-4/4-0051/4-00510/nvmem": [
+      {
+        "inventoryPath": "/system/chassis/motherboard/pcie_cable_card1",
+        "bind" : "4-0051",
+        "preAction" : {
+          "pin" : "SLOT1_PRSNT_EN_RSVD",
+          "value" : 1
+        },
+        "postActionFail" : {
+          "pin" : "SLOT1_PRSNT_EN_RSVD",
+          "value" : 0
+        },
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-C1"
+          }
+        }
+      }
+    ],
+    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a380.i2c-bus/i2c-6/6-0051/6-00510/nvmem": [
+      {
+        "inventoryPath": "/system/chassis/motherboard/pcie_cable_card8",
+        "bind" : "6-0051",
+        "preAction" : {
+          "pin" : "SLOT8_PRSNT_EN_RSVD",
+          "value" : 1
+        },
+        "postActionFail" : {
+          "pin" : "SLOT8_PRSNT_EN_RSVD",
+          "value" : 0
+        },
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-C8"
+          }
+        }
+      }
     ]
   }
 }
