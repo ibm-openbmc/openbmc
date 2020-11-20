@@ -12,6 +12,7 @@ DEPENDS += "autoconf-archive-native"
 DEPENDS += "cli11"
 DEPENDS += "nlohmann-json"
 DEPENDS += "phosphor-dbus-interfaces"
+DEPENDS += "libgpiod"
 
 require ${PN}.inc
 
