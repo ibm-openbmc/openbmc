@@ -23,6 +23,11 @@ do_install_append_mihawk() {
         install -D ${WORKDIR}/fan-errors.yaml ${D}${config_dir}/fan-errors.yaml
 }
 
+do_install_append_mowgli() {
+        install -D ${WORKDIR}/air-cooled.yaml ${D}${config_dir}/air-cooled.yaml
+        install -D ${WORKDIR}/fan-errors.yaml ${D}${config_dir}/fan-errors.yaml
+}
+
 FILES_${PN} += "${config_dir}/air-cooled.yaml"
 FILES_${PN}_append_ibm-ac-server = " ${config_dir}/water-cooled.yaml"
 FILES_${PN} += "${config_dir}/fan-errors.yaml"
