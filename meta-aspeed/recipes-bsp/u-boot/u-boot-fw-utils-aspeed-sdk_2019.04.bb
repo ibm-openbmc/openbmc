@@ -30,6 +30,9 @@ do_install () {
 
 	install -m 644 ${WORKDIR}/${ENV_CONFIG_FILE} ${D}${sysconfdir}/fw_env.config
 }
+do_install_append_witherspoon-tacoma() {
+	install -m 644 ${WORKDIR}/fw_env_ast2600_nor.config ${D}${sysconfdir}/fw_env.config
+}
 
 do_install_class-cross () {
 	install -d ${D}${bindir_cross}
