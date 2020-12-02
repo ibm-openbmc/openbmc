@@ -6,7 +6,7 @@ groups:
       members:
           - /0
     - name: air_cooled_zone0_fans
-      description: Group of fan inventory objects for air cooled zone 0
+      description: Group of fan rotors inventory objects for air cooled zone 0
       type: /xyz/openbmc_project/inventory
       members:
           - /system/chassis/motherboard/fan0
@@ -14,6 +14,20 @@ groups:
           - /system/chassis/motherboard/fan2
           - /system/chassis/motherboard/fan3
           - /system/chassis/motherboard/fan4
+    - name: air_cooled_zone0_fans_rotors
+      description: Group of fan inventory objects for air cooled zone 0
+      type: /xyz/openbmc_project/inventory
+      members:
+          - /system/chassis/motherboard/fan0/fan0_0
+          - /system/chassis/motherboard/fan1/fan1_0
+          - /system/chassis/motherboard/fan2/fan2_0
+          - /system/chassis/motherboard/fan3/fan3_0
+          - /system/chassis/motherboard/fan4/fan4_0
+          - /system/chassis/motherboard/fan0/fan0_1
+          - /system/chassis/motherboard/fan1/fan1_1
+          - /system/chassis/motherboard/fan2/fan2_1
+          - /system/chassis/motherboard/fan3/fan3_1
+          - /system/chassis/motherboard/fan4/fan4_1
     - name: zone0_ambient
       description: Group of ambient temperature sensors for zone 0
       type: /xyz/openbmc_project/sensors
@@ -288,7 +302,7 @@ events:
                 type: uint64_t
     - name: fails_before_high_speed_air
       groups:
-          - name: air_cooled_zone0_fans
+          - name: air_cooled_zone0_fans_rotors
             zone_conditions:
                 - name: air_cooled_chassis
                   zones:
@@ -344,13 +358,13 @@ events:
                       - name: set_floor_from_average_sensor_value
                         map:
                             value:
-                                - 25000: 38
-                                - 27000: 38
-                                - 31000: 75
-                                - 35000: 117
-                                - 39000: 205
-                                - 44000: 236
-                                - 45000: 255
+                                - 26000: 38
+                                - 28000: 38
+                                - 32000: 75
+                                - 36000: 117
+                                - 40000: 205
+                                - 45000: 236
+                                - 46000: 255
                             type: std::map<int64_t, uint64_t>
                       - name: set_ceiling_from_average_sensor_value
                         map:
@@ -433,7 +447,7 @@ events:
                           type: uint64_t
                     - name: set_net_decrease_speed
                       property:
-                          value: 72000
+                          value: 70000
                           type: int64_t
                       factor:
                           value: 2000
