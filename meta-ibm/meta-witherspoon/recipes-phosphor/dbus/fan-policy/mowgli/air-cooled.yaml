@@ -1,7 +1,7 @@
 # Air cooled mowgli fan policy for PDM.
 #
-# An air cooled mihawk requires a minimum of three functional fans
-# enclosures or six functional fan rotors across all enclosures.
+# An air cooled mowgli requires a minimum of five functional fans
+# enclosures or ten functional fan rotors across all enclosures.
 # If the number of functional fan enclosures is below three, soft poweroff
 # the system, whereas if the number of fan rotors drop below four, an
 # immediate hard poweroff of the system occurs.
@@ -195,7 +195,7 @@
 
 - name: check group presence
   description: >
-    'If this condition passes more than one fan has been unplugged
+    'If this condition passes more than two fan has been unplugged
     for more than 25 seconds.  Shut the system down.  Count present
     fans rather than non-present fans since the latter would pass
     if the fan has not been created for some reason.
@@ -216,7 +216,7 @@
 
 - name: check group functional enclosures
   description: >
-    'If this condition passes more than one fan enclosure in the group has been
+    'If this condition passes more than two fan enclosure in the group has been
     marked as nonfunctional for 25 seconds.  Shut the system down.
 
     For a more detailed definition of nonfunctional, consult the documentation
@@ -229,13 +229,13 @@
   defer: 25000000us
   callback: log and shutdown
   countop: '>'
-  countbound: 1
+  countbound: 2
   op: '=='
   bound: false
 
 - name: check group functional rotors
   description: >
-    'If this condition passes more than two fan rotors in the group have been
+    'If this condition passes more than three fan rotors in the group have been
     marked as nonfunctional for 25 seconds.  Immediately power off.
     For a more detailed definition of nonfunctional, consult the documentation
     of xyz.openbmc_project.State.Decorator.OperationalStatus and/or the
