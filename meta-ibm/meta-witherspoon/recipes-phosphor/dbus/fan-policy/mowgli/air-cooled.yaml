@@ -196,7 +196,7 @@
 - name: check group presence
   description: >
     'If this condition passes more than two fan has been unplugged
-    for more than 25 seconds.  Shut the system down.  Count present
+    for more than 300 seconds.  Shut the system down.  Count present
     fans rather than non-present fans since the latter would pass
     if the fan has not been created for some reason.
 
@@ -207,7 +207,7 @@
   condition: count
   paths: fan enclosures
   properties: fan present
-  defer: 25000000us
+  defer: 300000000us
   callback: log and shutdown
   countop: '<'
   countbound: 4
@@ -217,7 +217,7 @@
 - name: check group functional enclosures
   description: >
     'If this condition passes more than two fan enclosure in the group has been
-    marked as nonfunctional for 25 seconds.  Shut the system down.
+    marked as nonfunctional for 300 seconds.  Shut the system down.
 
     For a more detailed definition of nonfunctional, consult the documentation
     of xyz.openbmc_project.State.Decorator.OperationalStatus and/or the
@@ -226,7 +226,7 @@
   condition: count
   paths: fan enclosures
   properties: fan functional
-  defer: 25000000us
+  defer: 300000000us
   callback: log and shutdown
   countop: '>'
   countbound: 2
@@ -236,7 +236,7 @@
 - name: check group functional rotors
   description: >
     'If this condition passes more than three fan rotors in the group have been
-    marked as nonfunctional for 25 seconds.  Immediately power off.
+    marked as nonfunctional for 300 seconds.  Immediately power off.
     For a more detailed definition of nonfunctional, consult the documentation
     of xyz.openbmc_project.State.Decorator.OperationalStatus and/or the
     documentation of the fan inventory object implementation.'
@@ -244,7 +244,7 @@
   condition: count
   paths: fan rotors
   properties: fan functional
-  defer: 25000000us
+  defer: 300000000us
   callback: log and poweroff
   countop: '>'
   countbound: 2
