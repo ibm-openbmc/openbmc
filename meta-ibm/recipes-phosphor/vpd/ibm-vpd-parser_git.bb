@@ -21,6 +21,7 @@ SRC_URI += " file://vpd_inventory.json"
 SRC_URI += " file://50001001.json"
 SRC_URI += " file://50001000.json"
 SRC_URI += " file://com.ibm.VPD.Manager.service"
+SRC_URI += " file://50003000.json"
 
 S = "${WORKDIR}/git"
 
