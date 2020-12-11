@@ -1,0 +1,169 @@
+{
+  "commonInterfaces": {
+    "xyz.openbmc_project.Inventory.Decorator.Asset": {
+      "PartNumber": {
+        "recordName": "VINI",
+        "keywordName": "PN"
+      },
+      "SerialNumber": {
+        "recordName": "VINI",
+        "keywordName": "SN"
+      },
+      "BuildDate": {
+        "recordName": "VR10",
+        "keywordName": "DC",
+        "encoding": "DATE"
+      }
+    },
+    "xyz.openbmc_project.Inventory.Item": {
+      "PrettyName": {
+        "recordName": "VINI",
+        "keywordName": "DR"
+      },
+     "Present": true
+    }
+  },
+  "frus": {
+    "/sys/bus/i2c/drivers/at24/8-0050/eeprom": [
+      {
+        "inventoryPath": "/system/chassis/motherboard",
+        "isSystemVpd": true,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Board.Motherboard": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0"
+          }
+        }
+      },
+      {
+        "inventoryPath": "/system",
+        "inherit": false,
+        "isSystemVpd": true,
+        "copyRecords": ["VSYS"],
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.System": null,
+          "xyz.openbmc_project.Inventory.Decorator.Asset": {
+            "SerialNumber": {
+              "recordName": "VSYS",
+              "keywordName": "SE"
+            },
+            "Model": {
+              "recordName": "VSYS",
+              "keywordName": "TM"
+            },
+            "SubModel": {
+              "recordName": "VSYS",
+              "keywordName": "BR"
+            }
+          },
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Umts"
+          }
+        }
+      },
+      {
+        "inventoryPath": "/system/chassis",
+        "inherit": false,
+        "isSystemVpd": true,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Chassis": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs"
+          }
+        }
+      }
+    ],
+    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a480.i2c-bus/i2c-8/8-0051/8-00510/nvmem": [
+      {
+        "inventoryPath": "/system/chassis/motherboard/bmc",
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Bmc": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-C0"
+          }
+        }
+      },
+      {
+        "inventoryPath": "/system/chassis/motherboard/bmc/ethernet0",
+        "inherit": false,
+        "noprime": true,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Ethernet": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-C0-T2"
+          },
+          "xyz.openbmc_project.Inventory.Item.NetworkInterface": {
+            "MACAddress": {
+              "recordName": "VCFG",
+              "keywordName": "Z0",
+              "encoding": "MAC"
+            }
+          }
+        }
+      },
+      {
+        "inventoryPath": "/system/chassis/motherboard/bmc/ethernet1",
+        "inherit": false,
+        "noprime": true,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Ethernet": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-C0-T3"
+          },
+          "xyz.openbmc_project.Inventory.Item.NetworkInterface": {
+            "MACAddress": {
+              "recordName": "VCFG",
+              "keywordName": "Z1",
+              "encoding": "MAC"
+            }
+          }
+        }
+      },
+      {
+        "inventoryPath": "/system/chassis/motherboard/bmc/usb2_conn0",
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-C0-T0"
+          }
+        }
+      },
+      {
+      "inventoryPath": "/system/chassis/motherboard/bmc/usb2_conn1",
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-C0-T1"
+          }
+        }
+      },
+      {
+      "inventoryPath": "/system/chassis/motherboard/bmc/usb3_conn0",
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-C0-T4"
+          }
+        }
+      },
+      {
+      "inventoryPath": "/system/chassis/motherboard/bmc/usb3_conn1",
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-C0-T5"
+          }
+        }
+      },
+      {
+      "inventoryPath": "/system/chassis/motherboard/bmc/tod_battery",
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Battery": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-C0-E0"
+          }
+        }
+      }
+    ]
+  }
+}
