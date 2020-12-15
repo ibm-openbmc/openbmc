@@ -1,9 +1,9 @@
 # Mowgli fan policy for PDM.
 #
 # Mowgli requires a minimum of four functional fans enclosures
-# or seven functional fan rotors across all enclosures.
+# or eight functional fan rotors across all enclosures.
 # If the number of functional fan enclosures is below four, soft poweroff
-# the system, whereas if the number of fan rotors drop below seven, an
+# the system, whereas if the number of fan rotors drop below eight, an
 # immediate hard poweroff of the system occurs.
 
 - name: fan enclosures
@@ -153,7 +153,7 @@
 - name: check fans
   description: >
     'Verify there are at least four functional fan enclosures and at least
-    seven functional fan rotors, power off if not.'
+    eight functional fan rotors, power off if not.'
   class: callback
   callback: group
   members:
@@ -184,7 +184,7 @@
 
 - name: check group functional enclosures
   description: >
-    'If this condition passes more than one fan enclosure in the group has been
+    'If this condition passes more than two fan enclosure in the group has been
     marked as nonfunctional for 300 seconds.  Shut the system down.
 
     For a more detailed definition of nonfunctional, consult the documentation
@@ -197,7 +197,7 @@
   defer: 300000000us
   callback: log and shutdown
   countop: '>'
-  countbound: 1
+  countbound: 2
   op: '=='
   bound: false
 
