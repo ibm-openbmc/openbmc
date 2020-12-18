@@ -22,6 +22,7 @@ DEPENDS += " \
          "
 
 EXTRA_OECONF_append_ibm-ac-server = "UCD90160_DEF_YAML_FILE=${STAGING_DIR_HOST}${datadir}/power-sequencer/ucd90160.yaml"
+EXTRA_OECONF_append_mowgli = "MOWGLICPLD_DEVICE_ACCESS=yes"
 
 CHASSIS_ON_TGT = "obmc-chassis-poweron@0.target"
 SEQ_MONITOR_SVC = "pseq-monitor.service"
@@ -30,10 +31,8 @@ SEQ_MONITOR_FMT = "../${SEQ_MONITOR_SVC}:${CHASSIS_ON_TGT}.wants/${SEQ_MONITOR_S
 SEQ_PGOOD_SVC = "pseq-monitor-pgood.service"
 SEQ_PGOOD_FMT = "../${SEQ_PGOOD_SVC}:${CHASSIS_ON_TGT}.wants/${SEQ_PGOOD_SVC}"
 
-SYSTEMD_SERVICE_${PN}_append_ibm-ac-server += "${SEQ_MONITOR_SVC} ${SEQ_PGOOD_SVC}"
-SYSTEMD_LINK_${PN}_append_ibm-ac-server += "${SEQ_MONITOR_FMT} ${SEQ_PGOOD_FMT}"
-SYSTEMD_SERVICE_${PN}_append_mihawk += "${SEQ_MONITOR_SVC} ${SEQ_PGOOD_SVC}"
-SYSTEMD_LINK_${PN}_append_mihawk += "${SEQ_MONITOR_FMT} ${SEQ_PGOOD_FMT}"
+SYSTEMD_SERVICE_${PN} += "${SEQ_MONITOR_SVC} ${SEQ_PGOOD_SVC}"
+SYSTEMD_LINK_${PN} += "${SEQ_MONITOR_FMT} ${SEQ_PGOOD_FMT}"
 
 PSU_MONITOR_TMPL = "power-supply-monitor@.service"
 PSU_MONITOR_INSTFMT = "power-supply-monitor@{0}.service"
