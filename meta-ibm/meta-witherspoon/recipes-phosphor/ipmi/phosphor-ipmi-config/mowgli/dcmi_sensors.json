@@ -1,0 +1,31 @@
+{
+    "inlet": [
+        {"instance": 1, "dbus": "/xyz/openbmc_project/sensors/temperature/ambient_temp", "record_id": 255}
+    ],
+    "cpu": [
+        {"instance": 1, "dbus": "/xyz/openbmc_project/sensors/temperature/p0_core0_temp", "record_id": 17},
+        {"instance": 2, "dbus": "/xyz/openbmc_project/sensors/temperature/p0_core1_temp", "record_id": 20},
+        {"instance": 3, "dbus": "/xyz/openbmc_project/sensors/temperature/p0_core2_temp", "record_id": 23},
+        {"instance": 4, "dbus": "/xyz/openbmc_project/sensors/temperature/p0_core3_temp", "record_id": 26},
+        {"instance": 5, "dbus": "/xyz/openbmc_project/sensors/temperature/p0_core4_temp", "record_id": 29},
+        {"instance": 6, "dbus": "/xyz/openbmc_project/sensors/temperature/p0_core5_temp", "record_id": 32},
+        {"instance": 7, "dbus": "/xyz/openbmc_project/sensors/temperature/p0_core6_temp", "record_id": 35},
+        {"instance": 8, "dbus": "/xyz/openbmc_project/sensors/temperature/p0_core7_temp", "record_id": 38},
+        {"instance": 9, "dbus": "/xyz/openbmc_project/sensors/temperature/p0_core8_temp", "record_id": 41},
+        {"instance": 10, "dbus": "/xyz/openbmc_project/sensors/temperature/p0_core9_temp", "record_id": 44},
+        {"instance": 11, "dbus": "/xyz/openbmc_project/sensors/temperature/p0_core10_temp", "record_id": 47},
+        {"instance": 12, "dbus": "/xyz/openbmc_project/sensors/temperature/p0_core11_temp", "record_id": 50},
+        {"instance": 13, "dbus": "/xyz/openbmc_project/sensors/temperature/p0_core12_temp", "record_id": 53},
+        {"instance": 14, "dbus": "/xyz/openbmc_project/sensors/temperature/p0_core13_temp", "record_id": 56},
+        {"instance": 15, "dbus": "/xyz/openbmc_project/sensors/temperature/p0_core14_temp", "record_id": 59},
+        {"instance": 16, "dbus": "/xyz/openbmc_project/sensors/temperature/p0_core15_temp", "record_id": 62},
+        {"instance": 17, "dbus": "/xyz/openbmc_project/sensors/temperature/p0_core16_temp", "record_id": 65},
+        {"instance": 18, "dbus": "/xyz/openbmc_project/sensors/temperature/p0_core17_temp", "record_id": 68},
+        {"instance": 19, "dbus": "/xyz/openbmc_project/sensors/temperature/p0_core18_temp", "record_id": 71},
+        {"instance": 20, "dbus": "/xyz/openbmc_project/sensors/temperature/p0_core19_temp", "record_id": 74},
+        {"instance": 21, "dbus": "/xyz/openbmc_project/sensors/temperature/p0_core20_temp", "record_id": 77},
+        {"instance": 22, "dbus": "/xyz/openbmc_project/sensors/temperature/p0_core21_temp", "record_id": 80},
+        {"instance": 23, "dbus": "/xyz/openbmc_project/sensors/temperature/p0_core22_temp", "record_id": 83},
+        {"instance": 24, "dbus": "/xyz/openbmc_project/sensors/temperature/p0_core23_temp", "record_id": 86}
+    ]
+}
