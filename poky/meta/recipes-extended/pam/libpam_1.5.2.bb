@@ -21,16 +21,18 @@ SRC_URI = "${GITHUB_BASE_URI}/download/v${PV}/Linux-PAM-${PV}.tar.xz \
            file://pam.d/common-session-noninteractive \
            file://pam.d/other \
            file://libpam-xtests.patch \
+           file://0001-run-xtests.sh-check-whether-files-exist.patch \
+           file://run-ptest \
            file://pam-volatiles.conf \
-           file://0001-modules-pam_namespace-Makefile.am-correctly-install-.patch \
-          "
+           "
 
-SRC_URI[sha256sum] = "201d40730b1135b1b3cdea09f2c28ac634d73181ccd0172ceddee3649c5792fc"
+SRC_URI[sha256sum] = "e4ec7131a91da44512574268f493c6d8ca105c87091691b8e9b56ca685d4f94d"
 
 DEPENDS = "bison-native flex flex-native cracklib libxml2-native virtual/crypt"
 
 EXTRA_OECONF = "--includedir=${includedir}/security \
                 --libdir=${base_libdir} \
+                --with-systemdunitdir=${systemd_system_unitdir} \
                 --disable-nis \
                 --disable-regenerate-docu \
                 --disable-doc \
@@ -145,6 +147,10 @@ do_install() {
 
 	if ${@bb.utils.contains('DISTRO_FEATURES','systemd','true','false',d)}; then
 		echo "session optional pam_systemd.so" >> ${D}${sysconfdir}/pam.d/common-session
+	fi
+	if ${@bb.utils.contains('DISTRO_FEATURES','usrmerge','false','true',d)}; then
+		install -d ${D}/${libdir}/
+		mv ${D}/${base_libdir}/pkgconfig ${D}/${libdir}/
 	fi
 }
 
