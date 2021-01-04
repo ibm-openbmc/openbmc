@@ -42,30 +42,30 @@ groups:
       description: Group of core temperature sensors for zone 0
       type: /xyz/openbmc_project/sensors
       members:
-          - /temperature/core0_temp
-          - /temperature/core1_temp
-          - /temperature/core2_temp
-          - /temperature/core3_temp
-          - /temperature/core4_temp
-          - /temperature/core5_temp
-          - /temperature/core6_temp
-          - /temperature/core7_temp
-          - /temperature/core8_temp
-          - /temperature/core9_temp
-          - /temperature/core10_temp
-          - /temperature/core11_temp
-          - /temperature/core12_temp
-          - /temperature/core13_temp
-          - /temperature/core14_temp
-          - /temperature/core15_temp
-          - /temperature/core16_temp
-          - /temperature/core17_temp
-          - /temperature/core18_temp
-          - /temperature/core19_temp
-          - /temperature/core20_temp
-          - /temperature/core21_temp
-          - /temperature/core22_temp
-          - /temperature/core23_temp
+          - /temperature/p0_core0_temp
+          - /temperature/p0_core1_temp
+          - /temperature/p0_core2_temp
+          - /temperature/p0_core3_temp
+          - /temperature/p0_core4_temp
+          - /temperature/p0_core5_temp
+          - /temperature/p0_core6_temp
+          - /temperature/p0_core7_temp
+          - /temperature/p0_core8_temp
+          - /temperature/p0_core9_temp
+          - /temperature/p0_core10_temp
+          - /temperature/p0_core11_temp
+          - /temperature/p0_core12_temp
+          - /temperature/p0_core13_temp
+          - /temperature/p0_core14_temp
+          - /temperature/p0_core15_temp
+          - /temperature/p0_core16_temp
+          - /temperature/p0_core17_temp
+          - /temperature/p0_core18_temp
+          - /temperature/p0_core19_temp
+          - /temperature/p0_core20_temp
+          - /temperature/p0_core21_temp
+          - /temperature/p0_core22_temp
+          - /temperature/p0_core23_temp
     - name: zone0_dimms
       description: Group of dimm temperature sensors for zone 0
       type: /xyz/openbmc_project/sensors
@@ -342,13 +342,13 @@ events:
                       - name: set_floor_from_average_sensor_value
                         map:
                             value:
-                                - 26000: 38
-                                - 28000: 38
-                                - 32000: 75
-                                - 36000: 117
-                                - 40000: 205
-                                - 45000: 236
-                                - 46000: 255
+                                - 26000: 55
+                                - 28000: 55
+                                - 32000: 77
+                                - 36000: 115
+                                - 40000: 168
+                                - 45000: 215
+                                - 48000: 255
                             type: std::map<int64_t, uint64_t>
                       - name: set_ceiling_from_average_sensor_value
                         map:
