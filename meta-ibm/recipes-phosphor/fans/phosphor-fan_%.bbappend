@@ -114,3 +114,6 @@ FILES:${PN}-control:append:p10bmc = " \
 # file that's used for witherspoon type(including witherspoon-tacoma) machines
 SYSTEMD_SUBSTITUTIONS:witherspoon = "ADDR:100:phosphor-fan-control@.service"
 SYSTEMD_SUBSTITUTIONS:witherspoon-tacoma = "ADDR:200:phosphor-fan-control@.service"
+
+EXTRA_OECONF:append:rainier = " --enable-json"
+RDEPENDS_${PN}-presence-tach:append:rainier = " phosphor-fan-presence-config"
