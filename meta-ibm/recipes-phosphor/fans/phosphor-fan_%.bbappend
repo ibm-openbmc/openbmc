@@ -61,3 +61,6 @@ SYSTEMD_SUBSTITUTIONS:witherspoon-tacoma = "ADDR:200:phosphor-fan-control@.servi
 # Set the PKG_DEFAULT_MACHINE name to "witherspoon" for tacoma so witherspoon's
 # JSON config files are installed on tacoma machines (since they use the same ones)
 PKG_DEFAULT_MACHINE:witherspoon-tacoma = "witherspoon"
+
+EXTRA_OECONF:append:rainier = " --enable-json"
+RDEPENDS_${PN}-presence-tach:append:rainier = " phosphor-fan-presence-config"
