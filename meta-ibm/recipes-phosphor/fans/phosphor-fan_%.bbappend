@@ -64,3 +64,4 @@ PKG_DEFAULT_MACHINE:witherspoon-tacoma = "witherspoon"
 
 EXTRA_OECONF:append:rainier = " --enable-json"
 RDEPENDS_${PN}-presence-tach:append:rainier = " phosphor-fan-presence-config"
+RDEPENDS_${PN}-monitor:append:rainier = " phosphor-fan-monitor-config"
