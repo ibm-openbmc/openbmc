@@ -7,10 +7,9 @@
         },
         "Threshold" :
         {
-            "CriticalHigh": 100,
-            "CriticalLow": 0,
-            "WarningHigh": 100,
-            "WarningLow": 0
+            "HardShutdownHigh": 58,
+            "SoftShutdownHigh": 53,
+            "WarningHigh": 45
         },
         "Params":
         {
