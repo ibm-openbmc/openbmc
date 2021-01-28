@@ -1,12 +1,12 @@
-From 274bb23eb7f6e2be5fab13aa167624eaa401711c Mon Sep 17 00:00:00 2001
-From: Ben Pai <Ben_Pai@wistron.com>
-Date: Wed, 16 Sep 2020 17:00:57 +0800
+From f324f8431f9a196a28e3f944e49a3b9c52748b19 Mon Sep 17 00:00:00 2001
+From: Ben Pai <ben_pai@wistron.com>
+Date: Tue, 26 Jan 2021 11:18:29 +0800
 Subject: [PATCH] Add mowgli platform
 
 ---
  arch/arm/boot/dts/Makefile                  |   1 +
- arch/arm/boot/dts/aspeed-bmc-opp-mowgli.dts | 663 ++++++++++++++++++++++++++++
- 2 files changed, 664 insertions(+)
+ arch/arm/boot/dts/aspeed-bmc-opp-mowgli.dts | 668 ++++++++++++++++++++++++++++
+ 2 files changed, 669 insertions(+)
  create mode 100644 arch/arm/boot/dts/aspeed-bmc-opp-mowgli.dts
 
 diff --git a/arch/arm/boot/dts/Makefile b/arch/arm/boot/dts/Makefile
@@ -23,10 +23,10 @@ index d6dfdf7..535366f 100644
  	aspeed-bmc-opp-swift.dtb \
 diff --git a/arch/arm/boot/dts/aspeed-bmc-opp-mowgli.dts b/arch/arm/boot/dts/aspeed-bmc-opp-mowgli.dts
 new file mode 100644
-index 0000000..11fd869
+index 0000000..f5b9027
 --- /dev/null
 +++ b/arch/arm/boot/dts/aspeed-bmc-opp-mowgli.dts
-@@ -0,0 +1,663 @@
+@@ -0,0 +1,668 @@
 +// SPDX-License-Identifier: GPL-2.0+
 +/dts-v1/;
 +#include "aspeed-g5.dtsi"
@@ -610,6 +610,11 @@ index 0000000..11fd869
 +	/* RTC RX8900CE */
 +	/* TMP275A */
 +	/* TMP275A */
++
++	rtc@32 {
++		compatible = "epson,rx8900";
++		reg = <0x32>;
++	};
 +
 +	tmp275@48 {
 +		compatible = "ti,tmp275";
