@@ -61,6 +61,8 @@ CHIPS_mihawk = " \
 
 CHIPS_mowgli = " \
                bus@1e78a000/i2c-bus@40/tmp275@48 \
+               bus@1e78a000/i2c-bus@100/power-supply@68 \
+               bus@1e78a000/i2c-bus@100/power-supply@69 \
                bus@1e78a000/i2c-bus@140/ir35221@28 \
                bus@1e78a000/i2c-bus@140/ir35221@29 \
                bus@1e78a000/i2c-bus@140/ir35221@2d \
