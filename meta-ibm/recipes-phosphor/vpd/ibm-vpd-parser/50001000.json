@@ -9,6 +9,14 @@
         "recordName": "VINI",
         "keywordName": "SN"
       },
+      "SparePartNumber": {
+        "recordName": "VINI",
+        "keywordName": "FN"
+      },
+      "Model": {
+        "recordName": "VINI",
+        "keywordName": "CC"
+      },
       "BuildDate": {
         "recordName": "VR10",
         "keywordName": "DC",
