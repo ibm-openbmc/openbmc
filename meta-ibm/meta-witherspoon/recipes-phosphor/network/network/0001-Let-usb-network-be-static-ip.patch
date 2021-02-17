@@ -1,0 +1,38 @@
+From c1e37528b159878d96fc77864b38fac5992bcc28 Mon Sep 17 00:00:00 2001
+From: Ben Pai <ben_pai@wistron.com>
+Date: Wed, 27 Jan 2021 13:59:29 +0800
+Subject: [PATCH] Let usb network be static ip
+
+---
+ util.cpp | 2 ++
+ util.hpp | 1 +
+ 2 files changed, 3 insertions(+)
+
+diff --git a/util.cpp b/util.cpp
+index fbf923a..d469ebe 100644
+--- a/util.cpp
++++ b/util.cpp
+@@ -264,6 +264,8 @@ std::string toString(const InAddrAny& addr)
+ 
+ bool isLinkLocalIP(const std::string& address)
+ {
++    if(address == USB_NETWORK)
++        return 0;
+     return address.find(IPV4_PREFIX) == 0 || address.find(IPV6_PREFIX) == 0;
+ }
+ 
+diff --git a/util.hpp b/util.hpp
+index cf59cbb..83b7802 100644
+--- a/util.hpp
++++ b/util.hpp
+@@ -24,6 +24,7 @@ constexpr auto IPV4_MAX_PREFIX_LENGTH = 32;
+ constexpr auto IPV6_MAX_PREFIX_LENGTH = 64;
+ constexpr auto IPV4_PREFIX = "169.254";
+ constexpr auto IPV6_PREFIX = "fe80";
++constexpr auto USB_NETWORK = "169.254.95.120";
+ 
+ namespace mac_address
+ {
+-- 
+2.7.4
+
