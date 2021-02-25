@@ -47,16 +47,6 @@ SYSTEMD_LINK:${PN}-control:witherspoon += "${@compose_list(d, 'FMT_CONTROL_STDBY
 FMT_CONTROL_PWRON:witherspoon = "../${TMPL_CONTROL}:${POWERON_TGT}.requires/${INSTFMT_CONTROL}"
 SYSTEMD_LINK:${PN}-control:witherspoon += "${@compose_list(d, 'FMT_CONTROL_PWRON', 'OBMC_CHASSIS_INSTANCES')}"
 
-# Link fan presence service to be started at standby, and also at power on
-# in case it had failed for some reason.
-FMT_TACH_STDBY = "../${TMPL_TACH}:${MULTI_USR_TGT}.wants/${INSTFMT_TACH}"
-FMT_TACH_PWRON = "../${TMPL_TACH}:${POWERON_TGT}.requires/${INSTFMT_TACH}"
-SYSTEMD_LINK_${PN}-presence-tach_rainier += "${@compose_list(d, 'FMT_TACH_STDBY', 'OBMC_CHASSIS_INSTANCES')}"
-SYSTEMD_LINK_${PN}-presence-tach_rainier += "${@compose_list(d, 'FMT_TACH_PWRON', 'OBMC_CHASSIS_INSTANCES')}"
-
-SYSTEMD_LINK_${PN}-presence-tach_witherspoon += "${@compose_list(d, 'FMT_TACH_STDBY', 'OBMC_CHASSIS_INSTANCES')}"
-SYSTEMD_LINK_${PN}-presence-tach_witherspoon += "${@compose_list(d, 'FMT_TACH_PWRON', 'OBMC_CHASSIS_INSTANCES')}"
-
 # Enable the use of JSON on the fan applications that support it
 PACKAGECONFIG:append:witherspoon = " json"
 EXTRA_OEMESON:append:witherspoon = " -Djson-control=disabled"
