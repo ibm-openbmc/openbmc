@@ -8,4 +8,4 @@ ExecStart=/usr/bin/env ibm-read-vpd --file %f/nvmem
 SyslogIdentifier=ibm-vpd-parser
 
 [Install]
-RequiredBy=multi-user.target
+WantedBy=multi-user.target
