@@ -1,5 +1,5 @@
 HOMEPAGE = "http://github.com/openbmc/phosphor-inventory-manager"
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=e3fc50a88d0a364313df4b21ef20c29e"
-SRC_URI = "git://github.com/openbmc/phosphor-inventory-manager"
-SRCREV = "706a9fcc53d2b96393aeb9e829599b2605f92595"
+SRC_URI = "git://github.com/ibm-openbmc/phosphor-inventory-manager;nobranch=1"
+SRCREV = "2ec8ce396ae53d34f52aabf0712f914d63d8612f"
