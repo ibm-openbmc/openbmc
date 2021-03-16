@@ -1,0 +1,36 @@
+# README
+
+This directory has test cases for the OpenBMC PAM conversion tool.  The PAM conversion tool (../files/convert-pam-configs.sh) is intended to run on the BMC as part of a oneshot service.
+
+Here's the tricky part: These test cases are intended to be used in two different environments:
+1. Testing the conversion tool on a Linux host.
+2. Testing the oneshot service on a BMC.
+
+## Notes for testing the conversion tool on a Linux host.
+
+The test script is intended run on Linux and is not intended to run on the BMC.
+Note the test creates and writes files into a workdir.
+
+Synopsis:
+  cd tests/..    # change to the test-cases parent directory
+  ./tests/run-all-tests.sh    # perform the test
+  # Validation of test results is not fully automated, so please
+  # examine console output and results under ./workdir
+
+Files under tests/original-source are sample input for the OpenBMC PAM conversion tool.  These files were copied from the source project and modified in the same way OpenBMC installs them.  The testing process copies these files into the ./workdir and modifies them in several ways as needed.
+
+See:
+ - https://github.com/openbmc/openbmc/tree/master/meta-phosphor/recipes-extended/pam/libpam/pam.d (and look at versions older than this patch)
+ - https://github.com/linux-pam/linux-pam/blob/master/modules/pam_faillock/faillock.conf
+ - https://github.com/libpwquality/libpwquality/blob/master/src/pwquality.conf
+
+## Notes for testing the oneshot service on a BMC.
+
+Manual testing procedure:
+ - Consider using a QEMU BMC for ease of recovery.
+ - Install a firmware image in your that has the new Linux-PAM stuff.
+ - Login to the BMC command shell as the root user.
+ - For each scenario in run-all-tests.sh:
+    - Edit the config files as indicated by the scenario
+    - Run the service: systemctl start pam-convert-configs.service
+    - Validate the result: check the logs, and attempt to login
