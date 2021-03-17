@@ -3961,7 +3961,7 @@
             "Internal": false,
             "LengthyDescription": null,
             "LogSource": "BMC",
-            "Message": "Unable to detect master processor on FSI bus",
+            "Message": "Unable to detect processor on FSI bus",
             "ReferencedInventory": "FSI",
             "RelatedEventIDs": {},
             "Serviceable": true,
