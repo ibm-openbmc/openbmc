@@ -3,6 +3,10 @@ EXTRA_OEMESON_append = " \
     -Dibm-management-console=enabled \
 "
 
+EXTRA_OEMESON_append_rainier = " \
+    -Dibm-lamp-test=enabled \
+"
+
 inherit obmc-phosphor-discovery-service
 
 REGISTERED_SERVICES_${PN} += "obmc_redfish:tcp:443:"
