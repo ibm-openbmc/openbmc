@@ -4,6 +4,10 @@ EXTRA_OEMESON:append = " \
     -Dredfish-new-powersubsystem-thermalsubsystem=enabled \
 "
 
+EXTRA_OEMESON_append_rainier = " \
+    -Dibm-lamp-test=enabled \
+"
+
 inherit obmc-phosphor-discovery-service
 
 REGISTERED_SERVICES:${PN} += "obmc_redfish:tcp:443:"
