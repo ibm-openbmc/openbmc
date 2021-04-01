@@ -4,6 +4,7 @@ SRC_URI_append_ibm-ac-server += " file://ClearHostSecurityKeys-default-zero.over
 SRC_URI_append_mihawk = " file://TPMEnable-default-true.override.yml"
 SRC_URI_append_mowgli = " file://TPMEnable-default-true.override.yml"
 SRC_URI_append_mowgli = " file://PowerRestorePolicy-default-restore.override.yml"
+SRC_URI_append_mowgli += " file://ClearHostSecurityKeys-default-zero.override.yml"
 # Provide a means to enable/disable openpower dbus linking
 DEPENDS += "openpower-dbus-interfaces openpower-dbus-interfaces-native"
 PACKAGECONFIG ??= "link-op-dbus-intfs"
