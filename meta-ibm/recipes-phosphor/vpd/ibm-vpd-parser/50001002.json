@@ -267,7 +267,7 @@
           }
       }
     ],
-    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a280.i2c-bus/i2c-4/i2c20/20-0050/20-00500/nvmem": [
+    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a280.i2c-bus/i2c-4/i2c-20/20-0050/20-00500/nvmem": [
       {
         "inventoryPath": "/system/chassis/motherboard/pcie_cable_card0",
         "bind" : "20-0050",
@@ -287,7 +287,7 @@
         }
       }
     ],
-    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a300.i2c-bus/i2c-5/i2c23/23-0050/23-00500/nvmem": [
+    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a300.i2c-bus/i2c-5/i2c-23/23-0050/23-00500/nvmem": [
       {
         "inventoryPath": "/system/chassis/motherboard/pcie_cable_card3",
         "bind" : "23-0050",
@@ -307,7 +307,7 @@
         }
       }
     ],
-    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a300.i2c-bus/i2c-5/i2c24/24-0051/24-00510/nvmem": [
+    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a300.i2c-bus/i2c-5/i2c-24/24-0051/24-00510/nvmem": [
       {
         "inventoryPath": "/system/chassis/motherboard/pcie_cable_card4",
         "bind" : "24-0051",
@@ -327,7 +327,7 @@
         }
       }
     ],
-    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a600.i2c-bus/i2c-11/i2c29/29-0050/29-00500/nvmem": [
+    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a600.i2c-bus/i2c-11/i2c-29/29-0050/29-00500/nvmem": [
       {
         "inventoryPath": "/system/chassis/motherboard/pcie_cable_card10",
         "bind" : "29-0050",
@@ -347,7 +347,7 @@
         }
       }
     ],
-    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a280.i2c-bus/i2c-4/i2c22/22-0052/22-00520/nvmem": [
+    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a280.i2c-bus/i2c-4/i2c-22/22-0052/22-00520/nvmem": [
       {
         "inventoryPath": "/system/chassis/motherboard/pcie_cable_card2",
         "bind" : "22-0052",
@@ -367,7 +367,7 @@
         }
       }
     ],
-    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a380.i2c-bus/i2c-6/i2c25/25-0053/25-00530/nvmem": [
+    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a380.i2c-bus/i2c-6/i2c-25/25-0053/25-00530/nvmem": [
       {
         "inventoryPath": "/system/chassis/motherboard/pcie_cable_card6",
         "bind" : "25-0053",
@@ -387,7 +387,7 @@
         }
       }
     ],
-    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a380.i2c-bus/i2c-6/i2c26/26-0052/26-00520/nvmem": [
+    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a380.i2c-bus/i2c-6/i2c-26/26-0052/26-00520/nvmem": [
       {
         "inventoryPath": "/system/chassis/motherboard/pcie_cable_card7",
         "bind" : "26-0052",
@@ -407,7 +407,7 @@
         }
       }
     ],
-    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a380.i2c-bus/i2c-6/i2c27/27-0050/27-00500/nvmem": [
+    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a380.i2c-bus/i2c-6/i2c-27/27-0050/27-00500/nvmem": [
       {
         "inventoryPath": "/system/chassis/motherboard/pcie_cable_card9",
         "bind" : "27-0050",
@@ -427,7 +427,7 @@
         }
       }
     ],
-    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a600.i2c-bus/i2c-11/i2c30/30-0051/30-00510/nvmem": [
+    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a600.i2c-bus/i2c-11/i2c-30/30-0051/30-00510/nvmem": [
       {
         "inventoryPath": "/system/chassis/motherboard/pcie_cable_card11",
         "bind" : "30-0051",
@@ -447,7 +447,7 @@
         }
       }
     ],
-    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a280.i2c-bus/i2c-4/i2c21/21-0051/21-00510/nvmem": [
+    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a280.i2c-bus/i2c-4/i2c-21/21-0051/21-00510/nvmem": [
       {
         "inventoryPath": "/system/chassis/motherboard/pcie_cable_card1",
         "bind" : "21-0051",
@@ -467,7 +467,7 @@
         }
       }
     ],
-    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a380.i2c-bus/i2c-6/i2c28/28-0051/28-00510/nvmem": [
+    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a380.i2c-bus/i2c-6/i2c-28/28-0051/28-00510/nvmem": [
       {
         "inventoryPath": "/system/chassis/motherboard/pcie_cable_card8",
         "bind" : "28-0051",
