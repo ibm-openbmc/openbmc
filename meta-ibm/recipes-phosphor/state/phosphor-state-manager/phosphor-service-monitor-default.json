@@ -26,7 +26,7 @@
         "com.ibm.VPD.Manager.service",
         "mctp-demux.service",
         "org.open_power.OCC.Control.service",
-        "org.open_power.Dump.Manager.service",
+        "org.open_power.Dump.Manager@0.service",
         "org.open_power.HardwareIsolation.service",
         "org.openbmc.HostIpmi.service",
         "phosphor-fan-control@0.service",
