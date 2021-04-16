@@ -8,9 +8,8 @@ OP_DEBUG_COLLECTOR_PKGS = " \
                           "
 PACKAGE_BEFORE_PN = "${OP_DEBUG_COLLECTOR_PKGS}"
 
-inherit meson \
+inherit pkgconfig meson \
         obmc-phosphor-dbus-service \
-        pkgconfig \
         obmc-phosphor-systemd \
         python3native \
         phosphor-dbus-yaml \
@@ -57,6 +56,13 @@ DEPENDS:remove:class-native = "phosphor-logging"
 DEPENDS:remove:class-nativesdk = "phosphor-logging ipl"
 
 PACKAGECONFIG ??= ""
+PACKAGECONFIG[openpower_dump_collection] = " \
+        -Ddump-collection=enabled  \
+        -DHB_DUMP_COLLECTION_PATH=${hostboot_dump_temp_path} \
+        -DHW_DUMP_COLLECTION_PATH=${hardware_dump_temp_path}, \
+        -Ddump-collection=disabled, \
+        ${OPENPOWER_DUMP_DEPENDS}, \
+"
 
 # Remove packages which doesn't build with nativesdk
 DEPENDS:remove:class-nativesdk = " \

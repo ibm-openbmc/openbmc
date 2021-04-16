@@ -41,6 +41,7 @@ RDEPENDS:${PN}-extras:append:p10bmc = " platform-fru-detect"
 RDEPENDS:${PN}-extras:append:p10bmc = " gdbserver strace"
 RDEPENDS:${PN}-extras:append:witherspoon-tacoma = " pldm srvcfg-manager webui-vue biosconfig-manager phosphor-post-code-manager phosphor-host-postd kexec-tools makedumpfile kdump vmcore-dmesg debug-trigger"
 RDEPENDS:${PN}-extras:append:witherspoon-tacoma = " openpower-hw-diags panel"
+RDEPENDS_${PN}-debug-collector:append:p10bmc = " openpower-debug-collector-openpower-dump-manager"
 
 RDEPENDS:${PN}-extras:remove:p10bmc = "obmc-ikvm liberation-fonts uart-render-controller"
 RDEPENDS:${PN}-host-state-mgmt:remove:p10bmc = "checkstop-monitor"
