@@ -40,6 +40,7 @@
         "phosphor-virtual-sensor.service",
         "pldmd.service",
         "sensor-monitor.service ",
-        "system-vpd.service"
+        "system-vpd.service",
+	"org.open_power.Dump.Manager.service"
     ]
 }
