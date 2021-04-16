@@ -1,6 +1,7 @@
 pkg_postinst:${PN}:append() {
 	mkdir -p $D$systemd_system_unitdir/obmc-host-crash@0.target.wants
 	mkdir -p $D$systemd_system_unitdir/obmc-host-timeout@0.target.wants
+        mkdir -p $D$systemd_system_unitdir/obmc-host-startmin@0.target.wants
 
 	# The obmc-host-crash target is repurposed for the memory preserving reboot
 	# feature when it is enabled. If not enabled, then install the standard
@@ -20,6 +21,11 @@ pkg_postinst:${PN}:append() {
 		TARGET="../openpower-debug-collector-watchdog-timeout@.service"
 		ln -s $TARGET $LINK
 	fi
+  if [ "${@bb.utils.filter('PACKAGECONFIG', 'openpower_dump_collection', d)}" == openpower_dump_collection ]; then
+         LINK="$D$systemd_system_unitdir/obmc-host-startmin@0.target.wants/org.open_power.Dump.Manager.service"
+         TARGET="../org.open_power.Dump.Manager.service"
+         ln -s $TARGET $LINK
+  fi
 }
 
 pkg_prerm:${PN}:append() {
@@ -33,4 +39,8 @@ pkg_prerm:${PN}:append() {
 		LINK="$D$systemd_system_unitdir/obmc-host-timeout@0.target.wants/openpower-debug-collector-watchdog-timeout@0.service"
 		rm $LINK
 	fi
+  if [ "${@bb.utils.filter('DISTRO_FEATURES', 'mpreboot', d)}" != mpreboot ]; then
+          LINK="$D$systemd_system_unitdir/obmc-host-startmin@0.target.wants/org.open_power.Dump.Manager.service"
+          rm $LINK
+  fi
 }
