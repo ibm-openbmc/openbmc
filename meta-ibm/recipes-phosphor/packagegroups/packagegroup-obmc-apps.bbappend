@@ -22,6 +22,8 @@ EXTRA_IBM_LOGGING_PKGS:witherspoon-tacoma = ""
 EXTRA_IBM_LOGGING_PKGS:p10bmc = " \
     python3-sbe-log-parsers \
     hostboot-pel-parsers \
+    openpower-pel-parsers \
+    openpower-hw-diags-pel-parser-data \
 "
 
 RDEPENDS:${PN}-inventory:append:ibm-ac-server = " openpower-fru-vpd openpower-occ-control phosphor-cooling-type phosphor-gpio-monitor-presence"
@@ -34,6 +36,7 @@ RDEPENDS:${PN}-extras:append:p10bmc = " ${POWER_SERVICE_PACKAGES_P10} webui-vue 
 RDEPENDS:${PN}-extras:append:p10bmc = " pldm openpower-hw-diags srvcfg-manager biosconfig-manager phosphor-post-code-manager phosphor-host-postd debug-trigger libmctp"
 RDEPENDS:${PN}-extras:append:witherspoon-tacoma = " pldm srvcfg-manager webui-vue biosconfig-manager phosphor-post-code-manager phosphor-host-postd kexec-tools makedumpfile kdump vmcore-dmesg debug-trigger"
 RDEPENDS:${PN}-extras:append:witherspoon-tacoma = " openpower-hw-diags"
+RDEPENDS:${PN}-debug-collector:append:p10bmc = " openpower-debug-collector-openpower-dump-manager"
 
 RDEPENDS:${PN}-extras:remove:p10bmc = "obmc-ikvm liberation-fonts uart-render-controller"
 RDEPENDS:${PN}-host-state-mgmt:remove:p10bmc = "checkstop-monitor"
