@@ -603,6 +603,226 @@
                }
             }
          }
-      ]
-   }
+      ],
+      "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a280.i2c-bus/i2c-4/i2c-16/16-0052/16-00520/nvmem":[
+         {
+            "inventoryPath": "/system/chassis/motherboard/pcie_cable_card0",
+            "bind" : "16-0052",
+            "preAction" : {
+              "pin" : "presence-cable-card1",
+              "value" : 1
+            },
+            "postActionFail" : {
+              "pin" : "presence-cable-card1",
+              "value" : 0
+            },
+            "extraInterfaces": {
+              "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
+              "com.ibm.ipzvpd.Location" : {
+                  "LocationCode" : "Ufcs-P0-C1"
+              }
+            }
+          }
+       ],
+       "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a280.i2c-bus/i2c-4/i2c-17/17-0050/17-00500/nvmem":[
+          {
+             "inventoryPath": "/system/chassis/motherboard/pcie_cable_card1",
+             "bind" : "17-0050",
+             "preAction" : {
+               "pin" : "presence-cable-card2",
+               "value" : 1
+             },
+             "postActionFail" : {
+               "pin" : "presence-cable-card2",
+               "value" : 0
+             },
+             "extraInterfaces": {
+               "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
+               "com.ibm.ipzvpd.Location" : {
+                   "LocationCode" : "Ufcs-P0-C2"
+               }
+             }
+          }
+       ],
+       "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a280.i2c-bus/i2c-4/i2c-18/18-0051/18-00510/nvmem":[
+          {
+             "inventoryPath": "/system/chassis/motherboard/pcie_cable_card2",
+             "bind" : "18-0051",
+             "preAction" : {
+               "pin" : "presence-cable-card3",
+               "value" : 1
+             },
+             "postActionFail" : {
+               "pin" : "presence-cable-card3",
+               "value" : 0
+             },
+             "extraInterfaces": {
+               "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
+               "com.ibm.ipzvpd.Location" : {
+                   "LocationCode" : "Ufcs-P0-C3"
+               }
+             }
+          }
+       ],
+       "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a300.i2c-bus/i2c-5/i2c-19/19-0050/19-00500/nvmem":[
+          {
+             "inventoryPath": "/system/chassis/motherboard/pcie_cable_card3",
+             "bind" : "19-0050",
+             "preAction" : {
+               "pin" : "presence-cable-card4",
+               "value" : 1
+             },
+             "postActionFail" : {
+               "pin" : "presence-cable-card4",
+               "value" : 0
+             },
+             "extraInterfaces": {
+               "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
+               "com.ibm.ipzvpd.Location" : {
+                   "LocationCode" : "Ufcs-P0-C4"
+               }
+             }
+          }
+       ],
+       "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a300.i2c-bus/i2c-5/i2c-20/20-0051/20-00510/nvmem":[
+          {
+             "inventoryPath": "/system/chassis/motherboard/pcie_cable_card4",
+             "bind" : "20-0051",
+             "preAction" : {
+               "pin" : "presence-cable-card5",
+               "value" : 1
+             },
+             "postActionFail" : {
+               "pin" : "presence-cable-card5",
+               "value" : 0
+             },
+             "extraInterfaces": {
+               "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
+               "com.ibm.ipzvpd.Location" : {
+                   "LocationCode" : "Ufcs-P0-C5"
+               }
+             }
+          }
+       ],
+       "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a300.i2c-bus/i2c-5/i2c-21/21-0051/21-00510/nvmem":[
+          {
+             "inventoryPath": "/system/chassis/motherboard/pcie_cable_card5",
+             "bind" : "21-0051",
+             "preAction" : {
+               "pin" : "presence-cable-card6",
+               "value" : 1
+             },
+             "postActionFail" : {
+               "pin" : "presence-cable-card6",
+               "value" : 0
+             },
+             "extraInterfaces": {
+               "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
+               "com.ibm.ipzvpd.Location" : {
+                   "LocationCode" : "Ufcs-P0-C6"
+               }
+             }
+          }
+       ],
+       "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a300.i2c-bus/i2c-5/i2c-22/22-0053/22-00530/nvmem":[
+          {
+             "inventoryPath": "/system/chassis/motherboard/pcie_cable_card6",
+             "bind" : "22-0053",
+             "preAction" : {
+               "pin" : "presence-cable-card7",
+               "value" : 1
+             },
+             "postActionFail" : {
+               "pin" : "presence-cable-card7",
+               "value" : 0
+             },
+             "extraInterfaces": {
+               "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
+               "com.ibm.ipzvpd.Location" : {
+                   "LocationCode" : "Ufcs-P0-C7"
+               }
+             }
+          }
+       ],
+       "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a380.i2c-bus/i2c-6/i2c-23/23-0050/23-00500/nvmem":[
+          {
+             "inventoryPath": "/system/chassis/motherboard/pcie_cable_card7",
+             "bind" : "23-0050",
+             "preAction" : {
+               "pin" : "presence-cable-card8",
+               "value" : 1
+             },
+             "postActionFail" : {
+               "pin" : "presence-cable-card8",
+               "value" : 0
+             },
+             "extraInterfaces": {
+               "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
+               "com.ibm.ipzvpd.Location" : {
+                   "LocationCode" : "Ufcs-P0-C8"
+               }
+             }
+          }
+       ],
+       "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a380.i2c-bus/i2c-6/i2c-24/24-0052/24-00520/nvmem":[
+          {
+             "inventoryPath": "/system/chassis/motherboard/pcie_cable_card8",
+             "bind" : "24-0052",
+             "preAction" : {
+               "pin" : "presence-cable-card9",
+               "value" : 1
+             },
+             "postActionFail" : {
+               "pin" : "presence-cable-card9",
+               "value" : 0
+             },
+             "extraInterfaces": {
+               "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
+               "com.ibm.ipzvpd.Location" : {
+                   "LocationCode" : "Ufcs-P0-C9"
+               }
+             }
+          }
+       ],
+       "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a380.i2c-bus/i2c-6/i2c-25/25-0053/25-00530/nvmem":[
+          {
+             "inventoryPath": "/system/chassis/motherboard/pcie_cable_card9",
+             "bind" : "25-0053",
+             "preAction" : {
+               "pin" : "presence-cable-card10",
+               "value" : 1
+             },
+             "postActionFail" : {
+               "pin" : "presence-cable-card10",
+               "value" : 0
+             },
+             "extraInterfaces": {
+               "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
+               "com.ibm.ipzvpd.Location" : {
+                   "LocationCode" : "Ufcs-P0-C10"
+               }
+             }
+          }
+       ],
+       "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a380.i2c-bus/i2c-6/i2c-26/26-0051/26-00510/nvmem":[
+          {
+             "inventoryPath": "/system/chassis/motherboard/pcie_cable_card10",
+             "bind" : "26-0051",
+             "preAction" : {
+               "pin" : "presence-cable-card11",
+               "value" : 1
+             },
+             "postActionFail" : {
+               "pin" : "presence-cable-card11",
+               "value" : 0
+             },
+             "extraInterfaces": {
+               "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
+               "com.ibm.ipzvpd.Location" : {
+                   "LocationCode" : "Ufcs-P0-C11"
+               }
+             }
+          }
+       ]
+    }
 }
