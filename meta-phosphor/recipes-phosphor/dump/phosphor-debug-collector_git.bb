@@ -128,9 +128,17 @@ install_dreport_plugins_scripts() {
 # From tools/dreport.d/include.d to /usr/share/dreport.d/include.d
 install_dreport_include_scripts() {
     install -d ${D}${dreport_include_dir}
-    install -m 0755 ${S}/tools/dreport.d/include.d/* \
+    install -m 0755 ${S}/tools/dreport.d/include.d/functions \
                 ${D}${dreport_include_dir}/
 }
+
+# Install dcommon script
+# From tools/dreport.d/dcommon to /usr/share/dreport.d/dcommon
+install_dcommon_script() {
+    install -d ${D}${dreport_dir}
+    install -m 0755 ${S}/tools/dreport.d/include.d/dcommon ${D}${dreport_dir}/
+}
+
 # Make the links for a single user plugin script
 # Create user directories based on the dump type value in the config section
 # Create softlinks for the base scripts in the user directories
@@ -183,3 +191,25 @@ python install_dreport_user_scripts() {
         srcname = os.path.join(source_path, script)
         install_dreport_user_script(srcname, d)
 }
+
+PACKAGECONFIG ??= "${@bb.utils.contains_any('DISTRO_FEATURES', \
+         'obmc-ubi-fs phosphor-mmc', '', 'jffs-workaround', d)}"
+PACKAGECONFIG[jffs-workaround] = "-Djffs-workaround=enabled, \
+        -Djffs-workaround=disabled"
+
+PACKAGECONFIG[host-dump-transport-pldm] = " \
+        -Dhost-transport=pldm,, \
+        pldm \
+        "
+
+PACKAGECONFIG[openpower-dumps-extension] = " \
+       -Dopenpower-dumps-extension=enabled, \
+       -Dopenpower-dumps-extension=disabled  \
+"
+
+do_install[postfuncs] += "install_dreport"
+do_install[postfuncs] += "install_dreport_conf_file"
+do_install[postfuncs] += "install_dreport_plugins_scripts"
+do_install[postfuncs] += "install_dreport_include_scripts"
+do_install[postfuncs] += "install_dreport_user_scripts"
+do_install[postfuncs] += "install_dcommon_script"
