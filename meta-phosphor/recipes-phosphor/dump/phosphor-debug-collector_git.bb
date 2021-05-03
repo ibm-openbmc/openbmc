@@ -119,8 +119,15 @@ install_dreport_plugins_scripts() {
 # From tools/dreport.d/include.d to /usr/share/dreport.d/include.d
 install_dreport_include_scripts() {
     install -d ${D}${dreport_include_dir}
-    install -m 0755 ${S}/tools/dreport.d/include.d/* \
+    install -m 0755 ${S}/tools/dreport.d/include.d/functions \
                 ${D}${dreport_include_dir}/
+}
+
+# Install dcommon script
+# From tools/dreport.d/dcommon to /usr/share/dreport.d/dcommon
+install_dcommon_script() {
+    install -d ${D}${dreport_dir}
+    install -m 0755 ${S}/tools/dreport.d/include.d/dcommon ${D}${dreport_dir}/
 }
 
 # Make the links for a single user plugin script
@@ -204,3 +211,4 @@ do_install[postfuncs] += "install_dreport_conf_file"
 do_install[postfuncs] += "install_dreport_plugins_scripts"
 do_install[postfuncs] += "install_dreport_include_scripts"
 do_install[postfuncs] += "install_dreport_user_scripts"
+do_install[postfuncs] += "install_dcommon_script"
