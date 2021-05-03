@@ -6,3 +6,7 @@ RDEPENDS_${PN}-host-state-mgmt_append_df-openpower = " checkstop-monitor"
 # Add openpower debug collector as a requirement for state-mgmt
 # since it is used during checkstop handling.
 RDEPENDS_${PN}-host-state-mgmt_append_df-openpower = " openpower-debug-collector"
+
+# Add opdreport for openpower systems
+# This script will collect host dumps
+RDEPENDS_${PN}-debug-collector_append = " phosphor-debug-collector-opdreport"
