@@ -1,5 +1,6 @@
 HOMEPAGE = "https://github.com/openbmc/openpower-debug-collector"
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=e3fc50a88d0a364313df4b21ef20c29e"
-SRC_URI += "git://github.com/openbmc/openpower-debug-collector"
-SRCREV = "bce0d4a571c9ce3f62ad6c2bda6d32f26eb238c8"
+SRC_URI += "git://github.com/ibm-openbmc/openpower-debug-collector;nobranch=1"
+SRCREV = "1d057a42a9a25fc7eacfaaae25c9c901ed8b622e"
+
