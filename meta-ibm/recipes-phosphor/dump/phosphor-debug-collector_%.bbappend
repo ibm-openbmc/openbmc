@@ -13,6 +13,7 @@ DIR_CRT_SVC ?= "create_openpower_dump_dirs.service"
 SYSTEMD_SERVICE_${PN}-manager += "${DIR_CRT_SVC}"
 
 SYSTEMD_SUBSTITUTIONS_append_p10bmc += "HOSTBOOT_DUMP_PATH:${hostboot_dump_path}:${DIR_CRT_SVC}"
+SYSTEMD_SUBSTITUTIONS_append_witherspoon-tacoma += "HOSTBOOT_DUMP_PATH:${hostboot_dump_path}:${DIR_CRT_SVC}"
 
 EXTRA_OEMESON_append_p10bmc += "-DHOSTBOOT_DUMP_PATH=${hostboot_dump_path}"
 EXTRA_OEMESON_append_p10bmc += "-DHOSTBOOT_DUMP_TMP_FILE_DIR=${hostboot_dump_temp_path}"
