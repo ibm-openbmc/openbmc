@@ -34,7 +34,9 @@ do_compile () {
     cd ${S}
     rm -rf node_modules
     npm --loglevel info --proxy=${http_proxy} --https-proxy=${https_proxy} install
-    npm run build
+    # Should set this in a layer like meta-ibm instead
+    # This is a temporary hack to allow testing of IBM only features
+    VUE_APP_ENV_NAME=ibm npm run build
 }
 
 do_install () {
