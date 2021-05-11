@@ -4,7 +4,7 @@ EXTRA_OEMESON:append = " \
     -Dredfish-new-powersubsystem-thermalsubsystem=enabled \
 "
 
-EXTRA_OEMESON_append_rainier = " \
+EXTRA_OEMESON:append:p10bmc = " \
     -Dibm-lamp-test=enabled \
 "
 
