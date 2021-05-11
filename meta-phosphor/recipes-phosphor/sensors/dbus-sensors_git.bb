@@ -11,7 +11,7 @@ DEPENDS = " \
     phosphor-logging \
     sdbusplus \
     "
-SRCREV = "c361e222997b94f08a38975826a25ba6ab8ffa86"
+SRCREV = "988ae0e55020601e120b7d9e19c8ac8f4b1d9d72"
 PACKAGECONFIG ??= " \
     adcsensor \
     intelcpusensor \
@@ -37,7 +37,7 @@ PACKAGECONFIG[nvmesensor] = "-Dnvme=enabled, -Dnvme=disabled"
 PACKAGECONFIG[external] = "-Dexternal=enabled, -Dexternal=disabled"
 PV = "0.1+git${SRCPV}"
 
-SRC_URI = "git://github.com/openbmc/dbus-sensors.git;branch=master;protocol=https"
+SRC_URI = "git://github.com/ibm-openbmc/dbus-sensors.git;nobranch=1;protocol=https"
 
 SYSTEMD_SERVICE:${PN} += "${@bb.utils.contains('PACKAGECONFIG', 'adcsensor', \
                                                'xyz.openbmc_project.adcsensor.service', \
