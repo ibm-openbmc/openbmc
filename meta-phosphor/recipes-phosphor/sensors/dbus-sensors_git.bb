@@ -1,8 +1,8 @@
 SUMMARY = "dbus-sensors"
 DESCRIPTION = "Dbus Sensor Services Configured from D-Bus"
 
-SRC_URI = "git://github.com/openbmc/dbus-sensors.git"
-SRCREV = "b782eec69267206863c07f9ea26b475be7f0f291"
+SRC_URI = "git://github.com/ibm-openbmc/dbus-sensors.git;nobranch=1"
+SRCREV = "8aeb3b5c59a6acba33bac23cd8f02dd79abe115b"
 
 PV = "0.1+git${SRCPV}"
 
@@ -15,6 +15,7 @@ PACKAGECONFIG ??= " \
     exitairtempsensor \
     fansensor \
     hwmontempsensor \
+    iiosensor \
     intrusionsensor \
     ipmbsensor \
     mcutempsensor \
@@ -27,6 +28,7 @@ PACKAGECONFIG[cpusensor] = "-Dcpu=enabled, -Dcpu=disabled"
 PACKAGECONFIG[exitairtempsensor] = "-Dexit-air=enabled, -Dexit-air=disabled"
 PACKAGECONFIG[fansensor] = "-Dfan=enabled, -Dfan=disabled"
 PACKAGECONFIG[hwmontempsensor] = "-Dhwmon-temp=enabled, -Dhwmon-temp=disabled"
+PACKAGECONFIG[iiosensor] = "-Diio=enabled, -Diio=disabled"
 PACKAGECONFIG[intrusionsensor] = "-Dintrusion=enabled, -Dintrusion=disabled"
 PACKAGECONFIG[ipmbsensor] = "-Dipmb=enabled, -Dipmb=disabled"
 PACKAGECONFIG[mcutempsensor] = "-Dmcu=enabled, -Dmcu=disabled"
@@ -48,6 +50,9 @@ SYSTEMD_SERVICE:${PN} += "${@bb.utils.contains('PACKAGECONFIG', 'fansensor', \
                                                '', d)}"
 SYSTEMD_SERVICE:${PN} += "${@bb.utils.contains('PACKAGECONFIG', 'hwmontempsensor', \
                                                'xyz.openbmc_project.hwmontempsensor.service', \
+                                               '', d)}"
+SYSTEMD_SERVICE:${PN} += "${@bb.utils.contains('PACKAGECONFIG', 'iiosensor', \
+                                               'xyz.openbmc_project.iiosensor.service', \
                                                '', d)}"
 SYSTEMD_SERVICE:${PN} += "${@bb.utils.contains('PACKAGECONFIG', 'intrusionsensor', \
                                                'xyz.openbmc_project.intrusionsensor.service', \
