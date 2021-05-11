@@ -43,9 +43,11 @@ SUMMARY:${PN}-flash = "OpenPOWER Flash"
 RDEPENDS:${PN}-flash = " \
         openpower-software-manager\
         "
+RDEPENDS:${PN}-system:append:p10bmc = " guard"
 
 SUMMARY:${PN}-system = "OpenPOWER System"
 RDEPENDS:${PN}-system = " \
         pdbg \
         croserver \
+        ${@bb.utils.contains('OBMC_MACHINE_FEATURES', 'phal', 'ecmd-pdbg', '', d)} \
         "
