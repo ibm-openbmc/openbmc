@@ -21,7 +21,7 @@ EXTRA_OEMESON:append:witherspoon-tacoma = " \
     -Dvm-websocket=disabled \
 "
 
-EXTRA_OEMESON_append_rainier = " \
+EXTRA_OEMESON:append:p10bmc = " \
     -Dibm-lamp-test=enabled \
     -Dhw-isolation=enabled \
     -Dhypervisor-serial-socket=enabled \
