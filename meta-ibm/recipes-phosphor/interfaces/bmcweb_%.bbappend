@@ -3,7 +3,7 @@ EXTRA_OEMESON_append = " \
     -Dibm-management-console=enabled \
 "
 
-EXTRA_OEMESON_append_rainier = " \
+EXTRA_OEMESON_append_p10bmc = " \
     -Dibm-lamp-test=enabled \
 "
 

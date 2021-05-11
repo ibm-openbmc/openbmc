@@ -43,9 +43,6 @@ SUMMARY_${PN}-flash = "OpenPOWER Flash"
 RDEPENDS_${PN}-flash = " \
         openpower-software-manager\
         "
-RDEPENDS_${PN}-flash_append_witherspoon-128 = " host-fw"
-RDEPENDS_${PN}-flash_append_witherspoon-tacoma = " host-fw"
-RDEPENDS_${PN}-flash_append_p10bmc = " host-fw"
 RDEPENDS_${PN}-system_append_p10bmc = " guard"
 
 SUMMARY_${PN}-system = "OpenPOWER System"
