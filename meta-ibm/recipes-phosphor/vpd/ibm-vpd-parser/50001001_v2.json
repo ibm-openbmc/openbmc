@@ -281,7 +281,7 @@
         }
       }
     ],
-    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a480.i2c-bus/i2c-8/8-0051/8-00510/nvmem": [
+    "/sys/bus/i2c/drivers/at24/8-0051/eeprom": [
       {
         "inventoryPath": "/system/chassis/motherboard/ebmc_card_bmc",
         "extraInterfaces": {
@@ -328,7 +328,7 @@
         }
       }
     ],
-    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a080.i2c-bus/i2c-0/0-0051/0-00510/nvmem": [
+    "/sys/bus/i2c/drivers/at24/0-0051/eeprom": [
       {
         "inventoryPath": "/system/chassis/motherboard/tpm_wilson",
         "extraInterfaces": {
@@ -339,7 +339,7 @@
         }
       }
     ],
-    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-7/7-0050/7-00500/nvmem": [
+    "/sys/bus/i2c/drivers/at24/7-0050/eeprom": [
       {
         "inventoryPath": "/system/chassis/motherboard/base_op_panel_blyth",
         "extraInterfaces": {
@@ -350,7 +350,7 @@
         }
       }
     ],
-    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-7/7-0051/7-00510/nvmem": [
+    "/sys/bus/i2c/drivers/at24/7-0051/eeprom": [
       {
         "inventoryPath": "/system/chassis/motherboard/lcd_op_panel_hill",
         "extraInterfaces": {
@@ -361,7 +361,7 @@
         }
       }
     ],
-    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a500.i2c-bus/i2c-9/9-0050/9-00500/nvmem": [
+    "/sys/bus/i2c/drivers/at24/9-0050/eeprom": [
       {
         "inventoryPath": "/system/chassis/motherboard/vdd_vrm0",
         "extraInterfaces": {
@@ -372,7 +372,7 @@
         }
       }
     ],
-    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a580.i2c-bus/i2c-10/10-0050/10-00500/nvmem": [
+    "/sys/bus/i2c/drivers/at24/10-0050/eeprom": [
       {
         "inventoryPath": "/system/chassis/motherboard/vdd_vrm1",
         "extraInterfaces": {
@@ -383,7 +383,7 @@
         }
       }
     ],
-    "/sys/devices/platform/ahb/ahb:apb/1e79b000.fsi/fsi-master/fsi0/slave@00:00/00:00:00:04/spi_master/spi12/spi12.0/spi12.00/nvmem": [
+    "/sys/bus/spi/drivers/at25/spi12.0/eeprom": [
       {
           "inventoryPath": "/system/chassis/motherboard/cpu0",
           "powerOffOnly" : true,
@@ -409,7 +409,7 @@
           }
       }
     ],
-    "/sys/devices/platform/ahb/ahb:apb/1e79b000.fsi/fsi-master/fsi0/slave@00:00/00:00:00:0a/fsi-master/fsi1/slave@01:00/01:01:00:04/spi_master/spi22/spi22.0/spi22.00/nvmem": [
+    "/sys/bus/spi/drivers/at25/spi22.0/eeprom": [
       {
           "inventoryPath": "/system/chassis/motherboard/cpu1",
           "powerOffOnly" : true,
@@ -425,7 +425,7 @@
           }
       }
     ],
-    "/sys/devices/platform/ahb/ahb:apb/1e79b000.fsi/fsi-master/fsi0/slave@00:00/00:00:00:0a/fsi-master/fsi1/slave@02:00/01:02:00:04/spi_master/spi32/spi32.0/spi32.00/nvmem": [
+    "/sys/bus/spi/drivers/at25/spi32.0/eeprom": [
       {
           "inventoryPath": "/system/chassis/motherboard/cpu2",
           "powerOffOnly" : true,
@@ -451,7 +451,7 @@
           }
       }
     ],
-    "/sys/devices/platform/ahb/ahb:apb/1e79b000.fsi/fsi-master/fsi0/slave@00:00/00:00:00:0a/fsi-master/fsi1/slave@03:00/01:03:00:04/spi_master/spi42/spi42.0/spi42.00/nvmem": [
+    "/sys/bus/spi/drivers/at25/spi42.0/eeprom": [
       {
           "inventoryPath": "/system/chassis/motherboard/cpu3",
           "powerOffOnly" : true,
@@ -467,7 +467,7 @@
           }
       }
     ],
-    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a280.i2c-bus/i2c-4/i2c-20/20-0050/20-00500/nvmem": [
+    "/sys/bus/i2c/drivers/at24/20-0050/eeprom": [
       {
         "inventoryPath": "/system/chassis/motherboard/pcie_cable_card0",
         "bind" : "20-0050",
@@ -510,7 +510,7 @@
         }
       }
     ],
-    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a300.i2c-bus/i2c-5/i2c-23/23-0050/23-00500/nvmem": [
+    "/sys/bus/i2c/drivers/at24/23-0050/eeprom": [
       {
         "inventoryPath": "/system/chassis/motherboard/pcie_cable_card3",
         "bind" : "23-0050",
@@ -553,7 +553,7 @@
         }
       }
     ],
-    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a300.i2c-bus/i2c-5/i2c-24/24-0051/24-00510/nvmem": [
+    "/sys/bus/i2c/drivers/at24/24-0051/eeprom": [
       {
         "inventoryPath": "/system/chassis/motherboard/pcie_cable_card4",
         "bind" : "24-0051",
@@ -596,7 +596,7 @@
         }
       }
     ],
-    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a600.i2c-bus/i2c-11/i2c-29/29-0050/29-00500/nvmem": [
+    "/sys/bus/i2c/drivers/at24/29-0050/eeprom": [
       {
         "inventoryPath": "/system/chassis/motherboard/pcie_cable_card10",
         "bind" : "29-0050",
@@ -639,7 +639,7 @@
         }
       }
     ],
-    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a280.i2c-bus/i2c-4/i2c-22/22-0052/22-00520/nvmem": [
+    "/sys/bus/i2c/drivers/at24/22-0052/eeprom": [
       {
         "inventoryPath": "/system/chassis/motherboard/pcie_cable_card2",
         "bind" : "22-0052",
@@ -659,7 +659,7 @@
         }
       }
     ],
-    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a380.i2c-bus/i2c-6/i2c-25/25-0053/25-00530/nvmem": [
+    "/sys/bus/i2c/drivers/at24/25-0053/eeprom": [
       {
         "inventoryPath": "/system/chassis/motherboard/pcie_cable_card6",
         "bind" : "25-0053",
@@ -679,7 +679,7 @@
         }
       }
     ],
-    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a380.i2c-bus/i2c-6/i2c-26/26-0052/26-00520/nvmem": [
+    "/sys/bus/i2c/drivers/at24/26-0052/eeprom": [
       {
         "inventoryPath": "/system/chassis/motherboard/pcie_cable_card7",
         "bind" : "26-0052",
@@ -699,7 +699,7 @@
         }
       }
     ],
-    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a380.i2c-bus/i2c-6/i2c-27/27-0050/27-00500/nvmem": [
+    "/sys/bus/i2c/drivers/at24/27-0050/eeprom": [
       {
         "inventoryPath": "/system/chassis/motherboard/pcie_cable_card9",
         "bind" : "27-0050",
@@ -719,7 +719,7 @@
         }
       }
     ],
-    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a600.i2c-bus/i2c-11/i2c-30/30-0051/30-00510/nvmem": [
+    "/sys/bus/i2c/drivers/at24/30-0051/eeprom": [
       {
         "inventoryPath": "/system/chassis/motherboard/pcie_cable_card11",
         "bind" : "30-0051",
@@ -739,7 +739,7 @@
         }
       }
     ],
-    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a280.i2c-bus/i2c-4/i2c-21/21-0051/21-00510/nvmem": [
+    "/sys/bus/i2c/drivers/at24/21-0051/eeprom": [
       {
         "inventoryPath": "/system/chassis/motherboard/pcie_cable_card1",
         "bind" : "21-0051",
@@ -759,7 +759,7 @@
         }
       }
     ],
-    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a380.i2c-bus/i2c-6/i2c-28/28-0051/28-00510/nvmem": [
+    "/sys/bus/i2c/drivers/at24/28-0051/eeprom": [
       {
         "inventoryPath": "/system/chassis/motherboard/pcie_cable_card8",
         "bind" : "28-0051",
@@ -779,7 +779,7 @@
         }
       }
     ],
-    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a700.i2c-bus/i2c-13/13-0050/13-00500/nvmem": [
+    "/sys/bus/i2c/drivers/at24/13-0050/eeprom": [
       {
         "inventoryPath": "/system/chassis/motherboard/disk_backplane0",
         "extraInterfaces": {
@@ -870,7 +870,7 @@
         }
       }
     ],
-    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a780.i2c-bus/i2c-14/14-0050/14-00500/nvmem": [
+    "/sys/bus/i2c/drivers/at24/14-0050/eeprom": [
       {
         "inventoryPath": "/system/chassis/motherboard/disk_backplane1",
         "extraInterfaces": {
@@ -961,7 +961,7 @@
         }
       }
     ],
-    "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a800.i2c-bus/i2c-15/15-0051/15-00500/nvmem": [
+    "/sys/bus/i2c/drivers/at24/15-0050/eeprom": [
       {
         "inventoryPath": "/system/chassis/motherboard/disk_backplane2",
         "extraInterfaces": {
