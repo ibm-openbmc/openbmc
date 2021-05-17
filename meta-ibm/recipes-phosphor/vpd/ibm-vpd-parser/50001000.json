@@ -1069,6 +1069,358 @@
           }
         }
       }
+    ],
+    "/sys/bus/i2c/drivers/at24/111-0050/eeprom" :[
+      {
+        "inventoryPath": "/system/chassis/motherboard/dimm0",
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Dimm": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-C12"
+          }
+        }
+      }
+    ],
+    "/sys/bus/i2c/drivers/at24/110-0050/eeprom" :[
+      {
+        "inventoryPath": "/system/chassis/motherboard/dimm1",
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Dimm": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-C13"
+          }
+        }
+      }
+    ],
+    "/sys/bus/i2c/drivers/at24/214-0050/eeprom" :[
+      {
+        "inventoryPath": "/system/chassis/motherboard/dimm2",
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Dimm": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-C16"
+          }
+        }
+      }
+    ],
+    "/sys/bus/i2c/drivers/at24/210-0050/eeprom" :[
+      {
+        "inventoryPath": "/system/chassis/motherboard/dimm3",
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Dimm": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-C17"
+          }
+        }
+      }
+    ],
+    "/sys/bus/i2c/drivers/at24/202-0050/eeprom" :[
+      {
+        "inventoryPath": "/system/chassis/motherboard/dimm4",
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Dimm": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-C18"
+          }
+        }
+      }
+    ],
+    "/sys/bus/i2c/drivers/at24/311-0050/eeprom" :[
+      {
+        "inventoryPath": "/system/chassis/motherboard/dimm5",
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Dimm": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-C19"
+          }
+        }
+      }
+    ],
+    "/sys/bus/i2c/drivers/at24/310-0050/eeprom" :[
+      {
+        "inventoryPath": "/system/chassis/motherboard/dimm6",
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Dimm": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-C20"
+          }
+        }
+      }
+    ],
+    "/sys/bus/i2c/drivers/at24/312-0050/eeprom" :[
+      {
+        "inventoryPath": "/system/chassis/motherboard/dimm7",
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Dimm": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-C21"
+          }
+        }
+      }
+    ],
+    "/sys/bus/i2c/drivers/at24/402-0050/eeprom" :[
+      {
+        "inventoryPath": "/system/chassis/motherboard/dimm8",
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Dimm": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-C25"
+          }
+        }
+      }
+    ],
+    "/sys/bus/i2c/drivers/at24/410-0050/eeprom" :[
+      {
+        "inventoryPath": "/system/chassis/motherboard/dimm9",
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Dimm": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-C26"
+          }
+        }
+      }
+    ],
+    "/sys/bus/i2c/drivers/at24/112-0050/eeprom" :[
+      {
+        "inventoryPath": "/system/chassis/motherboard/dimm10",
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Dimm": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-C27"
+          }
+        }
+      }
+    ],
+    "/sys/bus/i2c/drivers/at24/115-0050/eeprom" :[
+      {
+        "inventoryPath": "/system/chassis/motherboard/dimm11",
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Dimm": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-C28"
+          }
+        }
+      }
+    ],
+    "/sys/bus/i2c/drivers/at24/100-0050/eeprom" :[
+      {
+        "inventoryPath": "/system/chassis/motherboard/dimm12",
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Dimm": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-C29"
+          }
+        }
+      }
+    ],
+    "/sys/bus/i2c/drivers/at24/101-0050/eeprom" :[
+      {
+        "inventoryPath": "/system/chassis/motherboard/dimm13",
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Dimm": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-C30"
+          }
+        }
+      }
+    ],
+    "/sys/bus/i2c/drivers/at24/114-0050/eeprom" :[
+      {
+        "inventoryPath": "/system/chassis/motherboard/dimm14",
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Dimm": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-C31"
+          }
+        }
+      }
+    ],
+    "/sys/bus/i2c/drivers/at24/113-0050/eeprom" :[
+      {
+        "inventoryPath": "/system/chassis/motherboard/dimm15",
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Dimm": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-C32"
+          }
+        }
+      }
+    ],
+    "/sys/bus/i2c/drivers/at24/216-0050/eeprom" :[
+      {
+        "inventoryPath": "/system/chassis/motherboard/dimm16",
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Dimm": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-C33"
+          }
+        }
+      }
+    ],
+    "/sys/bus/i2c/drivers/at24/203-0050/eeprom" :[
+      {
+        "inventoryPath": "/system/chassis/motherboard/dimm17",
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Dimm": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-C34"
+          }
+        }
+      }
+    ],
+    "/sys/bus/i2c/drivers/at24/217-0050/eeprom" :[
+      {
+        "inventoryPath": "/system/chassis/motherboard/dimm18",
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Dimm": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-C35"
+          }
+        }
+      }
+    ],
+    "/sys/bus/i2c/drivers/at24/211-0050/eeprom" :[
+      {
+        "inventoryPath": "/system/chassis/motherboard/dimm19",
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Dimm": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-C36"
+          }
+        }
+      }
+    ],
+    "/sys/bus/i2c/drivers/at24/215-0050/eeprom" :[
+      {
+        "inventoryPath": "/system/chassis/motherboard/dimm20",
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Dimm": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-C37"
+          }
+        }
+      }
+    ],
+    "/sys/bus/i2c/drivers/at24/315-0050/eeprom" :[
+      {
+        "inventoryPath": "/system/chassis/motherboard/dimm21",
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Dimm": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-C38"
+          }
+        }
+      }
+    ],
+    "/sys/bus/i2c/drivers/at24/300-0050/eeprom" :[
+      {
+        "inventoryPath": "/system/chassis/motherboard/dimm22",
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Dimm": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-C39"
+          }
+        }
+      }
+    ],
+    "/sys/bus/i2c/drivers/at24/313-0050/eeprom" :[
+      {
+        "inventoryPath": "/system/chassis/motherboard/dimm23",
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Dimm": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-C40"
+          }
+        }
+      }
+    ],
+    "/sys/bus/i2c/drivers/at24/314-0050/eeprom" :[
+      {
+        "inventoryPath": "/system/chassis/motherboard/dimm24",
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Dimm": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-C41"
+          }
+        }
+      }
+    ],
+    "/sys/bus/i2c/drivers/at24/301-0050/eeprom" :[
+      {
+        "inventoryPath": "/system/chassis/motherboard/dimm25",
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Dimm": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-C42"
+          }
+        }
+      }
+    ],
+    "/sys/bus/i2c/drivers/at24/417-0050/eeprom" :[
+      {
+        "inventoryPath": "/system/chassis/motherboard/dimm26",
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Dimm": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-C43"
+          }
+        }
+      }
+    ],
+    "/sys/bus/i2c/drivers/at24/403-0050/eeprom" :[
+      {
+        "inventoryPath": "/system/chassis/motherboard/dimm27",
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Dimm": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-C44"
+          }
+        }
+      }
+    ],
+    "/sys/bus/i2c/drivers/at24/416-0050/eeprom" :[
+      {
+        "inventoryPath": "/system/chassis/motherboard/dimm28",
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Dimm": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-C45"
+          }
+        }
+      }
+    ],
+    "/sys/bus/i2c/drivers/at24/411-0050/eeprom" :[
+      {
+        "inventoryPath": "/system/chassis/motherboard/dimm29",
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Dimm": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-C46"
+          }
+        }
+      }
+    ],
+    "/sys/bus/i2c/drivers/at24/415-0050/eeprom" :[
+      {
+        "inventoryPath": "/system/chassis/motherboard/dimm30",
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Dimm": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-C47"
+          }
+        }
+      }
+    ],
+    "/sys/bus/i2c/drivers/at24/414-0050/eeprom" :[
+      {
+        "inventoryPath": "/system/chassis/motherboard/dimm31",
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Dimm": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-C48"
+          }
+        }
+      }
     ]
   }
 }
