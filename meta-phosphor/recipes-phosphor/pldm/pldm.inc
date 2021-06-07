@@ -1,5 +1,5 @@
 HOMEPAGE = "https://github.com/openbmc/pldm"
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=86d3f3a95c324c9479bd8986968f4327"
-SRC_URI = "git://github.com/openbmc/pldm"
-SRCREV = "3ddbe439da4f2d7d44c7fa881d937be7da5d3b8d"
+SRC_URI = "git://github.com/ibm-openbmc/pldm;nobranch=1"
+SRCREV = "3b5616383731eae047d5a112b48d975dbe51e9bc"
