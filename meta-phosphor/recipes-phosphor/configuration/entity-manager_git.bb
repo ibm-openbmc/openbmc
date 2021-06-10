@@ -1,3 +1,6 @@
+## Warning: unknown variable/routine "PACKAGECONFIG ??= "ipmi-fru""
+## Warning: unknown variable/routine "PACKAGECONFIG[ipmi-fru] = "-Dfru-device=true, -Dfru-device=false, i2c-tools,""
+## Warning: unknown variable/routine "PACKAGE_BEFORE_PN = "${EXTRA_ENTITY_MANAGER_PACKAGES}""
 SUMMARY = "Entity Manager"
 DESCRIPTION = "Entity Manager provides d-bus configuration data \
 and configures system sensors"
@@ -10,14 +13,12 @@ DEPENDS = "boost \
            valijson \
            ${PYTHON_PN}-jsonschema-native \
 "
-SRCREV = "af29361cd6250566513bdae992695275f3dc88fe"
+SRCREV = "0f279d14ffe8bb91beb9de366e6ac865e03dacaa"
 PACKAGECONFIG ??= "ipmi-fru"
 PACKAGECONFIG[ipmi-fru] = "-Dfru-device=true, -Dfru-device=false, i2c-tools,"
 PV = "0.1+git${SRCPV}"
 
-SRC_URI = "git://github.com/openbmc/entity-manager.git;branch=master;protocol=https \
-           file://blocklist.json \
-          "
+SRC_URI = "git://github.com/ibm-openbmc/entity-manager.git;nobranch=1;protocol=https file://blocklist.json"
 
 S = "${WORKDIR}/git"
 SYSTEMD_PACKAGES = "${PN} ${EXTRA_ENTITY_MANAGER_PACKAGES}"
