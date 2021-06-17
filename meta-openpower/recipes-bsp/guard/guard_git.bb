@@ -1,6 +1,6 @@
 HOMEPAGE =  "https://github.com/open-power/guard"
-SUMMARY     = "Guard the faulty components"
-DESCRIPTION = "Provide a way to guard the faulty component from the system"
+SUMMARY     = "GUARD the faulty components"
+DESCRIPTION = "Provide a way to GUARD the faulty component from the system"
 PR = "r1"
 PV = "1.0+git${SRCPV}"
 LICENSE = "Apache-2.0"
