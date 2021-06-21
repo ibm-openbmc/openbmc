@@ -1,7 +1,7 @@
 HOMEPAGE =  "https://github.com/open-power/pdata/"
 
 SUMMARY     = "POWER Host data management"
-DESCRIPTION = "Device tree based POWER host data management"
+DESCRIPTION = "Devicetree based POWER host data management"
 PR = "r1"
 PV = "1.0+git${SRCPV}"
 LICENSE     = "Apache-2.0"
@@ -13,7 +13,7 @@ inherit autotools \
         perlnative
 
 SRC_URI = "git://git@github.com/open-power/pdata;branch="main""
-SRCREV = "200483615035f954bdfbac855458a287a307a3ef"
+SRCREV = "b05eb90ad19807ab0f8f1c861c56a0dbb0a75d0b"
 
 DEPENDS = "pdbg \
            libxml-simple-perl-native \
@@ -21,11 +21,7 @@ DEPENDS = "pdbg \
            ekb-native \
            autoconf-archive"
 
-BBCLASSEXTEND = "native"
-
-PDATA_CONFARG = ""
-PDATA_CONFARG:ibm-power9-cpu = "CHIP=p9"
-PDATA_CONFARG:ibm-power10-cpu = "CHIP=p10"
+PDATA_CONFARG = "CHIP=p10"
 EXTRA_OECONF = "--enable-gen_attrsinfo ${PDATA_CONFARG}"
 
 EXTRA_OEMAKE = "EKB=${STAGING_DATADIR_NATIVE}/ekb/"
