@@ -12,18 +12,12 @@ inherit autotools
 S = "${WORKDIR}/git"
 
 SRC_URI = "git://git@github.com/open-power/ipl;branch="main""
-SRCREV = "84ca31e5a15d12e358e4879bed6ea20947b0c1b3"
+SRCREV = "b33312fb2e707b87efcec892d5807d21d013fae9"
 
-SRC_URI += "file://enable-istep0-procedures-only-p9.patch"
-
-IPL_EKB_DEPENDS = ""
-IPL_EKB_DEPENDS_ibm-power9-cpu = "libekb"
-IPL_EKB_DEPENDS_ibm-power10-cpu = "libekb-p10"
 DEPENDS = " \
-        ${IPL_EKB_DEPENDS} pdbg autoconf-archive guard \
+        libekb pdbg autoconf-archive guard \
         "
 
-RDEPENDS_${PN} = "power-devtree"
+RDEPENDS_${PN} = "phal-devtree"
 
-EXTRA_OECONF_ibm-power9-cpu = "CHIP=p9"
-EXTRA_OECONF_ibm-power10-cpu = "CHIP=p10"
+EXTRA_OECONF = "CHIP=p10"
