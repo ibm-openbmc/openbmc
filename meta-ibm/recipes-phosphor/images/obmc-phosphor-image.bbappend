@@ -57,7 +57,6 @@ IBM_EXTRA_USERS_PARAMS += " \
 # Add the "service" account.
 IBM_EXTRA_USERS_PARAMS += " \
   useradd -M -d / --groups priv-admin,redfish,web,wheel service; \
-  usermod -p ${DEFAULT_OPENBMC_PASSWORD} service; \
   "
 
 # This is recipe specific to ensure it takes effect.
@@ -65,3 +64,4 @@ EXTRA_USERS_PARAMS:pn-obmc-phosphor-image += "${@bb.utils.contains('DISTRO_FEATU
 
 # The service account needs sudo.
 IMAGE_INSTALL:append = " ${@bb.utils.contains('DISTRO_FEATURES', 'ibm-service-account-policy', 'sudo', '', d)}"
+IMAGE_INSTALL:append = " ${@bb.utils.contains('DISTRO_FEATURES', 'ibm-service-account-policy', 'ibm-acf', '', d)}"
