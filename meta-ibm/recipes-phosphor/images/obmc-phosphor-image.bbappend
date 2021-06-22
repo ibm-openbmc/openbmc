@@ -63,3 +63,4 @@ EXTRA_USERS_PARAMS_pn-obmc-phosphor-image += "${@bb.utils.contains('DISTRO_FEATU
 
 # The service account needs sudo.
 IMAGE_INSTALL_append = " ${@bb.utils.contains('DISTRO_FEATURES', 'ibm-service-account-policy', 'sudo', '', d)}"
+IMAGE_INSTALL_append = " ${@bb.utils.contains('DISTRO_FEATURES', 'ibm-service-account-policy', 'ibm-acf', '', d)}"
