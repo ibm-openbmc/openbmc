@@ -1,1 +1,1 @@
-PACKAGECONFIG:p10bmc = "hwmontempsensor"
+PACKAGECONFIG:p10bmc = "hwmontempsensor iiosensor"
