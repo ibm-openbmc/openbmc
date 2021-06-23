@@ -16,3 +16,7 @@ PACKAGECONFIG_append_mihawk = " verify_signature"
 # Enable sync of persistent files to the alternate BMC chip
 PACKAGECONFIG_append_ibm-ac-server = " sync_bmc_files"
 PACKAGECONFIG_append_mihawk = " sync_bmc_files"
+
+# Set BMC Minimum Ship Level
+EXTRA_OEMESON_append_p10bmc = " -Dbmc-msl='fw1020.00-25'"
+EXTRA_OEMESON_append_p10bmc = " -Dregex-bmc-msl='([a-z]+[0-9]{2})+([0-9]+).([0-9]+).([0-9]+)'"
