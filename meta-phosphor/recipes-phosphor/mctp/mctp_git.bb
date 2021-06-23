@@ -12,6 +12,7 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=0d30807bb7a4f16d36e96b78f9ed8fae"
 SRC_URI = "git://github.com/openbmc/libmctp \
 	   file://default"
 SRCREV = "cfeaef8ecb0ab8c59ea4e145603523e599d60014"
+CONFFILES_${PN} = "${sysconfdir}/default/mctp"
 
 DEPENDS += "autoconf-archive-native \
             systemd \
@@ -29,9 +30,15 @@ PACKAGECONFIG[astlpc-raw-kcs] = "--enable-astlpc-raw-kcs,--disable-astlpc-raw-kc
 
 CONFFILES_${PN} = "${sysconfdir}/default/mctp"
 
+PACKAGECONFIG ??= "${@bb.utils.filter('DISTRO_FEATURES', 'systemd', d)}"
+PACKAGECONFIG[systemd] = "--with-systemdsystemunitdir=${systemd_system_unitdir}, \
+                          --without-systemdsystemunitdir,systemd"
+
+CONFFILES_${PN} = "${sysconfdir}/default/mctp"
+
 do_install_append() {
 	install -d ${D}${sysconfdir}/default
-	install -m 0644 ${WORKDIR}/default ${D}${sysconfdir}/default/mctp
+	install -m 0644 ${WORKDIR}/mctp ${D}${sysconfdir}/default/mctp
 }
 
 S = "${WORKDIR}/git"
