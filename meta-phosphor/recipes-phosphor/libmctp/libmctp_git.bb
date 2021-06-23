@@ -26,6 +26,12 @@ S = "${WORKDIR}/git"
 inherit systemd
 inherit autotools pkgconfig
 
+PACKAGECONFIG ??= "${@bb.utils.filter('DISTRO_FEATURES', 'systemd', d)}"
+PACKAGECONFIG[systemd] = "--with-systemdsystemunitdir=${systemd_system_unitdir}, \
+                          --without-systemdsystemunitdir,systemd"
+
+CONFFILES:${PN} = "${sysconfdir}/default/mctp"
+
 do_install:append() {
         install -d ${D}${sysconfdir}/default
         install -m 0644 ${WORKDIR}/default ${D}${sysconfdir}/default/mctp
