@@ -22,6 +22,9 @@ SRC_URI = "https://github.com/linux-pam/linux-pam/releases/download/v${PV}/Linux
            file://pam.d/other \
            file://libpam-xtests.patch \
            file://0001-modules-pam_namespace-Makefile.am-correctly-install-.patch \
+           file://0001-Makefile.am-support-usrmage.patch \
+           file://run-ptest \
+           file://pam-volatiles.conf \
            "
 
 SRC_URI[sha256sum] = "201d40730b1135b1b3cdea09f2c28ac634d73181ccd0172ceddee3649c5792fc"
@@ -39,7 +42,7 @@ CFLAGS_append = " -fPIC "
 
 S = "${WORKDIR}/Linux-PAM-${PV}"
 
-inherit autotools gettext pkgconfig systemd
+inherit autotools gettext pkgconfig systemd ptest
 
 PACKAGECONFIG ??= ""
 PACKAGECONFIG[audit] = "--enable-audit,--disable-audit,audit,"
