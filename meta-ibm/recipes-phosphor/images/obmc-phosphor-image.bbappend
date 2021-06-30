@@ -37,9 +37,9 @@ inherit extrausers
 
 # The password hash used here is the traditional 0penBmc password.
 
-#IBM_EXTRA_USERS_PARAMS += " \
-#  usermod -p '\$1\$UGMqyqdG\$FZiylVFmRRfl9Z0Ue8G7e/' root; \
-#  "
+IBM_EXTRA_USERS_PARAMS += " \
+  usermod -p '\$6\$UGMqyqdG\$GqTb3tXPFx9AJlzTw/8X5RoW2Z.100dT.acuk8AFJfNQYr.ZRL8itMIgLqsdq46RNHgiv78XayOSl.IbR4DFU.' root; \
+  "
 
 # Add group "wheel" (before adding the "service" account).
 IBM_EXTRA_USERS_PARAMS += " \
@@ -49,13 +49,13 @@ IBM_EXTRA_USERS_PARAMS += " \
 # Add the "admin" account.
 IBM_EXTRA_USERS_PARAMS += " \
   useradd -M -d / --groups priv-admin,redfish,web -s /sbin/nologin admin; \
-  usermod -p '\$1\$UGMqyqdG\$FZiylVFmRRfl9Z0Ue8G7e/' admin; \
+  usermod -p '\$6\$UGMqyqdG\$GqTb3tXPFx9AJlzTw/8X5RoW2Z.100dT.acuk8AFJfNQYr.ZRL8itMIgLqsdq46RNHgiv78XayOSl.IbR4DFU.' admin; \
   "
 
 # Add the "service" account.
 IBM_EXTRA_USERS_PARAMS += " \
   useradd -M -d / --groups priv-admin,redfish,web,wheel service; \
-  usermod -p '\$1\$UGMqyqdG\$FZiylVFmRRfl9Z0Ue8G7e/' service; \
+  usermod -p '\$6\$UGMqyqdG\$GqTb3tXPFx9AJlzTw/8X5RoW2Z.100dT.acuk8AFJfNQYr.ZRL8itMIgLqsdq46RNHgiv78XayOSl.IbR4DFU.' service; \
   "
 
 # This is recipe specific to ensure it takes effect.
