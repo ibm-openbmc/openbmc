@@ -24,6 +24,9 @@ EXTRA_OEMESON += "-Dtests=disabled"
 # For libpdbg, provided by the pdbg package
 DEPENDS += "pdbg"
 
+EXTRA_OEMESON = " \
+        -Dtests=disabled \
+        "
 TEMPLATE = "pcie-poweroff@.service"
 INSTANCE_FORMAT = "pcie-poweroff@{}.service"
 INSTANCES = "${@compose_list(d, 'INSTANCE_FORMAT', 'OBMC_CHASSIS_INSTANCES')}"
