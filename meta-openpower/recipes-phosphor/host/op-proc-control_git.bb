@@ -10,7 +10,7 @@ S = "${WORKDIR}/git"
 inherit meson obmc-phosphor-utils pkgconfig
 inherit systemd
 
-SRC_URI += "git://github.com/openbmc/openpower-proc-control"
+SRC_URI += "git://git@github.com/openbmc/openpower-proc-control"
 SRCREV = "f8c14bcfd507e0224fe258d38bdef8d32ebfbf48"
 
 DEPENDS += " \
@@ -24,6 +24,9 @@ EXTRA_OEMESON += "-Dtests=disabled"
 # For libpdbg, provided by the pdbg package
 DEPENDS += "pdbg"
 
+EXTRA_OEMESON = " \
+        -Dtests=disabled \
+        "
 TEMPLATE = "pcie-poweroff@.service"
 INSTANCE_FORMAT = "pcie-poweroff@{}.service"
 INSTANCES = "${@compose_list(d, 'INSTANCE_FORMAT', 'OBMC_CHASSIS_INSTANCES')}"
