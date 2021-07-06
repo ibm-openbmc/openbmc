@@ -20,7 +20,7 @@ do_install_append() {
         else
             #increment pam_tally2.so default=n+1 as we are inserting pam_ibmacf after it
             sed -i.bak "s/auth.*default.*pam_tally2.*/auth [success=ok user_unknown=ignore default=3] pam_tally2.so deny=0 unlock_time=0/g" ${D}${sysconfdir}/pam.d/common-auth
-            sed -i.bak "/${COMMON_AUTH_PATTERN}/i auth [success=3 default=die ignore=ignore] pam_ibmacf.so" ${D}${sysconfdir}/pam.d/common-auth
+            sed -i.bak "/${COMMON_AUTH_PATTERN}/i auth [success=4 default=die ignore=ignore] pam_ibmacf.so" ${D}${sysconfdir}/pam.d/common-auth
         fi
 
         grep -q ${COMMON_ACCOUNT_PATTERN} ${D}${sysconfdir}/pam.d/common-account || err=$?
