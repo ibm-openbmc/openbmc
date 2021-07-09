@@ -163,7 +163,6 @@ QUIESCE_INSTFMT = "obmc-host-quiesce@{1}.target"
 QUIESCE_FMT = "../${QUIESCE_TMPL}:${CRASH_TIMEOUT_TGTFMT}.wants/${QUIESCE_INSTFMT}"
 
 SYSTEMD_SERVICE_${PN}-obmc-targets += " \
-        obmc-mapper.target \
         obmc-fans-ready.target \
         obmc-fan-control.target \
         obmc-fan-control-ready@.target \
