@@ -1,0 +1,40 @@
+[Unit]
+Description=Phosphor Boot Indicator
+
+# Start it after services that allow us to diagnose any further faults
+After=bmcweb.service
+After=dropbear.socket
+
+[Service]
+Type=simple
+
+# Specify a default indicator GPIO
+Environment=BOOT_INDICATOR_NAME={BOOT_INDICATOR_NAME}
+
+# Specify an environment file that we populate with the derived chip and line
+# values. Environment files are re-read on transitioning between unit states,
+# for example from start-pre to start[1][2].
+#
+# [1] https://www.freedesktop.org/software/systemd/man/systemd.exec.html#EnvironmentFile=
+# [2] https://www.freedesktop.org/software/systemd/man/systemctl.html#list-units%20PATTERN%E2%80%A6
+EnvironmentFile=-/var/lib/phosphor-boot-indicator/environ
+
+# The default indicator GPIO can be overridden in the system configuration by
+# specifying BOOT_INDICATOR_NAME=
+EnvironmentFile=-/etc/default/phosphor-boot-indicator
+
+# Only start the unit if we can find the appropriate GPIO
+ExecCondition=/usr/bin/gpiofind ${{BOOT_INDICATOR_NAME}}
+
+# Generate the environment file containing the CHIP and LINE variables
+ExecStartPre=/bin/mkdir -p /var/lib/phosphor-boot-indicator
+ExecStartPre=/bin/sh -c 'exec /usr/bin/gpiofind ${{BOOT_INDICATOR_NAME}} | tr " " "\\n" | ( read CHIP; read LINE; echo -e "BOOT_INDICATOR_CHIP=$CHIP\\nBOOT_INDICATOR_LINE=$LINE" ) > /var/lib/phosphor-boot-indicator/environ'
+
+# Hold the line high until we're stopped
+ExecStart=/usr/bin/gpioset --mode=signal --drive=open-source ${{BOOT_INDICATOR_CHIP}} ${{BOOT_INDICATOR_LINE}}=1
+
+# Ensure the line is set low once we're stopped
+ExecStopPost=/usr/bin/gpioset --mode=exit --drive=open-source ${{BOOT_INDICATOR_CHIP}} ${{BOOT_INDICATOR_LINE}}=0
+
+[Install]
+WantedBy=default.target
