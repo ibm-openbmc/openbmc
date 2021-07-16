@@ -1,0 +1,74 @@
+From 96bee1bc66e76fe8e787a3927bb6861fc0f0f187 Mon Sep 17 00:00:00 2001
+From: Joel Stanley <joel@jms.id.au>
+Date: Thu, 15 Jul 2021 14:22:58 +0930
+Subject: [PATCH] aspeed/hace: Reset when error occurs
+
+Some hashing operations have been triggering an error state.
+
+This can be reproduced on the u-boot command line:
+
+hash sha512 83000128 3762a8
+
+This completes, and the hash is correct. However HACE1C, the status
+register, shows an error bit is set 0x00800000.
+
+$ bitfield HACE1C 0x00800000 |grep 0x1
+                 Hash input data buffer overflow: 0x1
+
+The next operation is queued, and this never completes. The status
+register shows 0x00c00001
+
+$ bitfield HACE1C 0x00c00001 |grep 0x1
+                 Hash input data buffer overflow: 0x1
+                 Hash input rorate data overflow: 0x1
+                                Hash engine busy: 0x1
+
+A HACE reset will clear this state:
+
+mw.l 0x1e6e2040 0x10
+mw.l 0x1e6e2044 0x10
+
+Adding code to do this if any error bits are set in the status register
+is a workaround for the issue while further debugging is done.
+
+Another workaround is to do an operation before running the problematic
+operation. This sequence succeeds:
+
+hash sha512 83000000 10
+hash sha512 83000128 3762a8
+
+Signed-off-by: Joel Stanley <joel@jms.id.au>
+Link: https://lore.kernel.org/r/20210715045258.13912-1-joel@jms.id.au
+---
+ drivers/crypto/aspeed_hace.c | 15 ++++++++++++---
+ 1 file changed, 12 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/crypto/aspeed_hace.c b/drivers/crypto/aspeed_hace.c
+index a99fb7c249be..f40779c08816 100644
+--- a/drivers/crypto/aspeed_hace.c
++++ b/drivers/crypto/aspeed_hace.c
+@@ -100,9 +100,18 @@ static int digest_object(const void *src, unsigned int length, void *digest,
+ 	writel(HACE_SHA_BE_EN | method, base + ASPEED_HACE_HASH_CMD);
+ 
+ 	/* SHA512 hashing appears to have a througput of about 12MB/s */
+-	return aspeed_hace_wait_completion(base + ASPEED_HACE_STS,
+-			HACE_HASH_ISR,
+-			1000 + (length >> 3));
++	aspeed_hace_wait_completion(base + ASPEED_HACE_STS, HACE_HASH_ISR,
++				    1000 + (length >> 3));
++
++	if (readl(base + ASPEED_HACE_STS)) {
++		debug("\nHACE error 0x%08x, resetting\n", readl(base + 0x1c));
++
++		writel(0x10, 0x1e6e2040);
++		mdelay(5);
++		writel(0x10, 0x1e6e2044);
++	}
++
++	return 0;
+ }
+ 
+ void hw_sha1(const unsigned char *pbuf, unsigned int buf_len,
+-- 
+2.32.0
+
