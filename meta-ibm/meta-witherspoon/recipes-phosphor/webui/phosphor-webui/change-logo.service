@@ -1,0 +1,13 @@
+[Unit]
+Description=Start the change logo script
+After=op-vpd-parser.service
+
+[Service]
+Restart=no
+ExecStart=sh /usr/share/www/changeLogo.sh
+SyslogIdentifier=changeLogo.sh
+Type=oneshot
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
