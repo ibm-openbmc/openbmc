@@ -70,4 +70,3 @@ DEPENDS:remove:class-nativesdk = " \
         pdata \
         "
 
-BBCLASSEXTEND += "native nativesdk"
