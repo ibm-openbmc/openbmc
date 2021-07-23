@@ -29,6 +29,9 @@ FILES:${PN} += "${datadir}/network/*.json"
 PACKAGECONFIG:append = " sync-mac"
 PACKAGECONFIG:append:p10bmc = " hyp-nw-config"
 
+PACKAGECONFIG[hyp-nw-config] = "-Dhyp-nw-config=enabled, -Dhyp-nw-config=disabled,,"
+SYSTEMD_SERVICE_${PN} += "${@bb.utils.contains('PACKAGECONFIG', 'hyp-nw-config', 'xyz.openbmc_project.Network.Hypervisor.service', '', d)}"
+
 install_network_configuration(){
     install -d ${D}${datadir}/network/
     install -m 0644 ${WORKDIR}/inventory-object-map.json ${D}${datadir}/network/config.json
