@@ -15,6 +15,7 @@ PR = "r1"
 
 SRC_URI += "git://github.com/openbmc/hiomapd.git;branch=master;protocol=https"
 SRC_URI += "file://99-aspeed-lpc-ctrl.rules"
+SRC_URI:append:p10bmc = " file://0001-vpnor-Load-PNOR-TOC-lid-and-ignore-missing-RO-files.patch"
 
 S = "${WORKDIR}/git"
 SYSTEMD_SUBSTITUTIONS += "FLASH_SIZE:${MBOXD_FLASH_SIZE}:${PN}.service"
