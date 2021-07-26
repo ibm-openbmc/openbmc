@@ -17,6 +17,7 @@ S = "${WORKDIR}/git"
 SRC_URI += "git://github.com/openbmc/mboxbridge.git"
 
 SRC_URI += "file://99-aspeed-lpc-ctrl.rules"
+SRC_URI_append_p10bmc = " file://0001-vpnor-Load-PNOR-TOC-lid-and-ignore-missing-RO-files.patch"
 
 SRCREV="5c9264daedf1aff690e1957c4578d8395b549cff"
 
