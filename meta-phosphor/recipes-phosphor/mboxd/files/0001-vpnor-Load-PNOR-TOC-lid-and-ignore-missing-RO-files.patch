@@ -1,0 +1,61 @@
+From 7599958a8b8677c4081164a089f4df0665c16b5a Mon Sep 17 00:00:00 2001
+From: Adriana Kobylak <anoo@us.ibm.com>
+Date: Mon, 26 Jul 2021 13:37:47 +0000
+Subject: [PATCH] vpnor: Load PNOR TOC lid and ignore missing RO files
+
+The P10 images would not have the PNOR partition files anymore in favor
+of lid files, which would be handled by PLDM instead of mboxd. In the
+mean time, symlinks are created at runtime for the PNOR partition files,
+but they can only be created in the RW directory, therefore ignore
+errors if RO files are not found during initialization.
+
+In addition, need to hardcode the lid number for the TOC file, because
+this lid is temporary (PLDM doesn't need a TOC file), so it's not listed
+in the lids JSON file.
+
+Code that creates the symlinks:
+https://gerrit.openbmc-project.xyz/c/openbmc/openpower-pnor-code-mgmt/+/45249
+
+Tested: Verified rainier powered on with image that only had lid files
+and the symlinks created.
+
+Signed-off-by: Adriana Kobylak <anoo@us.ibm.com>
+---
+ vpnor/table.cpp | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/vpnor/table.cpp b/vpnor/table.cpp
+index 89fb934..82e14f9 100644
+--- a/vpnor/table.cpp
++++ b/vpnor/table.cpp
+@@ -83,6 +83,11 @@ void Table::preparePartitions(const struct vpnor_data* priv)
+     const fs::path roDir(priv->paths.ro_loc);
+     const fs::path patchDir(priv->paths.patch_loc);
+     fs::path tocFile = roDir / PARTITION_TOC_FILE;
++    if (!fs::exists(tocFile))
++    {
++        const fs::path rwDir(priv->paths.rw_loc);
++        tocFile = rwDir / "81e00994.lid";
++    }
+     allocateMemory(tocFile);
+ 
+     std::ifstream file(tocFile.c_str());
+@@ -136,6 +141,7 @@ void Table::preparePartitions(const struct vpnor_data* priv)
+             }
+         }
+ 
++#if 0
+         file = roDir / part.data.name;
+         if (!fs::exists(file))
+         {
+@@ -143,6 +149,7 @@ void Table::preparePartitions(const struct vpnor_data* priv)
+             err << "Partition file " << file.native() << " does not exist";
+             throw InvalidTocEntry(err.str());
+         }
++#endif
+ 
+         patch = patchDir / part.data.name;
+         if (fs::is_regular_file(patch))
+-- 
+2.25.1
+
