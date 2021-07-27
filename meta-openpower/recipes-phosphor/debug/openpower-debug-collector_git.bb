@@ -58,7 +58,8 @@ DEPENDS:remove:class-nativesdk = "phosphor-logging ipl"
 PACKAGECONFIG ??= ""
 PACKAGECONFIG[openpower_dump_collection] = " \
         -Ddump-collection=enabled  \
-        -DHB_DUMP_COLLECTION_PATH=${hostboot_dump_temp_path}, \
+        -DHB_DUMP_COLLECTION_PATH=${hostboot_dump_temp_path} \
+        -DHW_DUMP_COLLECTION_PATH=${hardware_dump_temp_path}, \
         -Ddump-collection=disabled, \
         ${OPENPOWER_DUMP_DEPENDS}, \
 "
