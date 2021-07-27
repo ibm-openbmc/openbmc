@@ -17,6 +17,9 @@ EXTRA_OEMESON:append:p10bmc = " -DBMC_DUMP_MAX_SIZE=20480"
 EXTRA_OEMESON:append:p10bmc += "-DHOSTBOOT_DUMP_PATH=${hostboot_dump_path}"
 EXTRA_OEMESON:append:p10bmc += "-DHOSTBOOT_DUMP_TMP_FILE_DIR=${hostboot_dump_temp_path}"
 
+EXTRA_OEMESON:append:p10bmc += "-DHARDWARE_DUMP_PATH=${hardware_dump_path}"
+EXTRA_OEMESON:append:p10bmc += "-DHARDWARE_DUMP_TMP_FILE_DIR=${hardware_dump_temp_path}"
+
 SRC_URI += "file://plugins.d/ibm_elogall"
 SRC_URI += "file://plugins.d/pels"
 
