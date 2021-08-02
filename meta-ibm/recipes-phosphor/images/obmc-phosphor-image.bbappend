@@ -55,7 +55,6 @@ IBM_EXTRA_USERS_PARAMS += " \
 # Add the "service" account.
 IBM_EXTRA_USERS_PARAMS += " \
   useradd -M -d / --groups priv-admin,redfish,web,wheel service; \
-  usermod -p ${DEFAULT_OPENBMC_PASSWORD} service; \
   "
 
 # This is recipe specific to ensure it takes effect.
