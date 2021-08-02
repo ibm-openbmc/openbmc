@@ -4,6 +4,7 @@ SRC_URI:append:ibm-ac-server = " file://associations.json"
 DEPENDS:append:ibm-ac-server = " inventory-cleanup"
 
 PACKAGECONFIG:append:p10bmc = " associations"
+DEPENDS:append:p10bmc = " inventory-cleanup"
 SRC_URI:append:p10bmc = " \
     file://ibm,rainier-2u_associations.json \
     file://ibm,rainier-4u_associations.json \
