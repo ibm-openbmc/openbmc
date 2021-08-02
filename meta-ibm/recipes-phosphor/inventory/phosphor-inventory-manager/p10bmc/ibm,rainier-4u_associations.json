@@ -785,7 +785,7 @@
             ]
         },
         {
-            "path": "system/chassis/motherboard/cpu0",
+            "path": "system/chassis/motherboard/dcm0/cpu0",
             "endpoints":
             [
                 {
@@ -813,7 +813,7 @@
             ]
         },
         {
-            "path": "system/chassis/motherboard/cpu1",
+            "path": "system/chassis/motherboard/dcm0/cpu1",
             "endpoints":
             [
                 {
@@ -841,7 +841,7 @@
             ]
         },
         {
-            "path": "system/chassis/motherboard/cpu2",
+            "path": "system/chassis/motherboard/dcm1/cpu0",
             "endpoints":
             [
                 {
@@ -869,7 +869,7 @@
             ]
         },
         {
-            "path": "system/chassis/motherboard/cpu3",
+            "path": "system/chassis/motherboard/dcm1/cpu1",
             "endpoints":
             [
                 {
@@ -953,7 +953,7 @@
             ]
         },
         {
-            "path": "system/chassis/motherboard/dimm2",
+            "path": "system/chassis/motherboard/dimm10",
             "endpoints":
             [
                 {
@@ -981,7 +981,7 @@
             ]
         },
         {
-            "path": "system/chassis/motherboard/dimm3",
+            "path": "system/chassis/motherboard/dimm9",
             "endpoints":
             [
                 {
@@ -1009,7 +1009,7 @@
             ]
         },
         {
-            "path": "system/chassis/motherboard/dimm4",
+            "path": "system/chassis/motherboard/dimm8",
             "endpoints":
             [
                 {
@@ -1037,7 +1037,7 @@
             ]
         },
         {
-            "path": "system/chassis/motherboard/dimm5",
+            "path": "system/chassis/motherboard/dimm16",
             "endpoints":
             [
                 {
@@ -1065,7 +1065,7 @@
             ]
         },
         {
-            "path": "system/chassis/motherboard/dimm6",
+            "path": "system/chassis/motherboard/dimm17",
             "endpoints":
             [
                 {
@@ -1093,7 +1093,7 @@
             ]
         },
         {
-            "path": "system/chassis/motherboard/dimm7",
+            "path": "system/chassis/motherboard/dimm18",
             "endpoints":
             [
                 {
@@ -1121,7 +1121,7 @@
             ]
         },
         {
-            "path": "system/chassis/motherboard/dimm8",
+            "path": "system/chassis/motherboard/dimm24",
             "endpoints":
             [
                 {
@@ -1149,7 +1149,7 @@
             ]
         },
         {
-            "path": "system/chassis/motherboard/dimm9",
+            "path": "system/chassis/motherboard/dimm25",
             "endpoints":
             [
                 {
@@ -1177,7 +1177,7 @@
             ]
         },
         {
-            "path": "system/chassis/motherboard/dimm10",
+            "path": "system/chassis/motherboard/dimm2",
             "endpoints":
             [
                 {
@@ -1205,7 +1205,7 @@
             ]
         },
         {
-            "path": "system/chassis/motherboard/dimm11",
+            "path": "system/chassis/motherboard/dimm4",
             "endpoints":
             [
                 {
@@ -1233,7 +1233,7 @@
             ]
         },
         {
-            "path": "system/chassis/motherboard/dimm12",
+            "path": "system/chassis/motherboard/dimm5",
             "endpoints":
             [
                 {
@@ -1261,7 +1261,7 @@
             ]
         },
         {
-            "path": "system/chassis/motherboard/dimm13",
+            "path": "system/chassis/motherboard/dimm7",
             "endpoints":
             [
                 {
@@ -1289,7 +1289,7 @@
             ]
         },
         {
-            "path": "system/chassis/motherboard/dimm14",
+            "path": "system/chassis/motherboard/dimm6",
             "endpoints":
             [
                 {
@@ -1317,7 +1317,7 @@
             ]
         },
         {
-            "path": "system/chassis/motherboard/dimm15",
+            "path": "system/chassis/motherboard/dimm3",
             "endpoints":
             [
                 {
@@ -1345,7 +1345,7 @@
             ]
         },
         {
-            "path": "system/chassis/motherboard/dimm16",
+            "path": "system/chassis/motherboard/dimm15",
             "endpoints":
             [
                 {
@@ -1373,7 +1373,7 @@
             ]
         },
         {
-            "path": "system/chassis/motherboard/dimm17",
+            "path": "system/chassis/motherboard/dimm14",
             "endpoints":
             [
                 {
@@ -1401,7 +1401,7 @@
             ]
         },
         {
-            "path": "system/chassis/motherboard/dimm18",
+            "path": "system/chassis/motherboard/dimm11",
             "endpoints":
             [
                 {
@@ -1429,7 +1429,7 @@
             ]
         },
         {
-            "path": "system/chassis/motherboard/dimm19",
+            "path": "system/chassis/motherboard/dimm13",
             "endpoints":
             [
                 {
@@ -1457,7 +1457,7 @@
             ]
         },
         {
-            "path": "system/chassis/motherboard/dimm20",
+            "path": "system/chassis/motherboard/dimm12",
             "endpoints":
             [
                 {
@@ -1485,7 +1485,7 @@
             ]
         },
         {
-            "path": "system/chassis/motherboard/dimm21",
+            "path": "system/chassis/motherboard/dimm20",
             "endpoints":
             [
                 {
@@ -1513,7 +1513,7 @@
             ]
         },
         {
-            "path": "system/chassis/motherboard/dimm22",
+            "path": "system/chassis/motherboard/dimm21",
             "endpoints":
             [
                 {
@@ -1541,7 +1541,7 @@
             ]
         },
         {
-            "path": "system/chassis/motherboard/dimm23",
+            "path": "system/chassis/motherboard/dimm19",
             "endpoints":
             [
                 {
@@ -1569,7 +1569,7 @@
             ]
         },
         {
-            "path": "system/chassis/motherboard/dimm24",
+            "path": "system/chassis/motherboard/dimm22",
             "endpoints":
             [
                 {
@@ -1597,7 +1597,7 @@
             ]
         },
         {
-            "path": "system/chassis/motherboard/dimm25",
+            "path": "system/chassis/motherboard/dimm23",
             "endpoints":
             [
                 {
@@ -1625,7 +1625,7 @@
             ]
         },
         {
-            "path": "system/chassis/motherboard/dimm26",
+            "path": "system/chassis/motherboard/dimm27",
             "endpoints":
             [
                 {
@@ -1653,7 +1653,7 @@
             ]
         },
         {
-            "path": "system/chassis/motherboard/dimm27",
+            "path": "system/chassis/motherboard/dimm30",
             "endpoints":
             [
                 {
@@ -1681,7 +1681,7 @@
             ]
         },
         {
-            "path": "system/chassis/motherboard/dimm28",
+            "path": "system/chassis/motherboard/dimm31",
             "endpoints":
             [
                 {
@@ -1737,7 +1737,7 @@
             ]
         },
         {
-            "path": "system/chassis/motherboard/dimm30",
+            "path": "system/chassis/motherboard/dimm28",
             "endpoints":
             [
                 {
@@ -1765,7 +1765,7 @@
             ]
         },
         {
-            "path": "system/chassis/motherboard/dimm31",
+            "path": "system/chassis/motherboard/dimm26",
             "endpoints":
             [
                 {
@@ -2334,7 +2334,7 @@
             ]
         },
         {
-            "path": "system/chassis/motherboard/pcie_cable_card0/cxp_top",
+            "path": "system/chassis/motherboard/pcieslot0/pcie_card0/cxp_top",
             "endpoints":
             [
                 {
@@ -2362,7 +2362,7 @@
             ]
         },
         {
-            "path": "system/chassis/motherboard/pcie_cable_card0/cxp_bot",
+            "path": "system/chassis/motherboard/pcieslot0/pcie_card0/cxp_bot",
             "endpoints":
             [
                 {
@@ -2390,7 +2390,7 @@
             ]
         },
         {
-            "path": "system/chassis/motherboard/pcie_cable_card3/cxp_top",
+            "path": "system/chassis/motherboard/pcieslot3/pcie_card3/cxp_top",
             "endpoints":
             [
                 {
@@ -2418,7 +2418,7 @@
             ]
         },
         {
-            "path": "system/chassis/motherboard/pcie_cable_card3/cxp_bot",
+            "path": "system/chassis/motherboard/pcieslot3/pcie_card3/cxp_bot",
             "endpoints":
             [
                 {
@@ -2446,7 +2446,7 @@
             ]
         },
         {
-            "path": "system/chassis/motherboard/pcie_cable_card4/cxp_top",
+            "path": "system/chassis/motherboard/pcieslot4/pcie_card4/cxp_top",
             "endpoints":
             [
                 {
@@ -2474,7 +2474,7 @@
             ]
         },
         {
-            "path": "system/chassis/motherboard/pcie_cable_card4/cxp_bot",
+            "path": "system/chassis/motherboard/pcieslot4/pcie_card4/cxp_bot",
             "endpoints":
             [
                 {
@@ -2502,7 +2502,7 @@
             ]
         },
         {
-            "path": "system/chassis/motherboard/pcie_cable_card10/cxp_top",
+            "path": "system/chassis/motherboard/pcieslot10/pcie_card10/cxp_top",
             "endpoints":
             [
                 {
@@ -2530,7 +2530,7 @@
             ]
         },
         {
-            "path": "system/chassis/motherboard/pcie_cable_card10/cxp_bot",
+            "path": "system/chassis/motherboard/pcieslot10/pcie_card10/cxp_bot",
             "endpoints":
             [
                 {
