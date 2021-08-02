@@ -1,0 +1,35 @@
+description: >
+    P10BMC inventory fixups
+
+events:
+    - name: 
+      description: >
+          Remove the deprecated inventory objects
+      type: startup
+      actions:
+          - name: destroyObjects
+            paths:
+                - /system/chassis/motherboard/cpu0
+                - /system/chassis/motherboard/cpu1
+                - /system/chassis/motherboard/cpu2
+                - /system/chassis/motherboard/cpu3
+                - /system/chassis/motherboard/pcieslot5
+                - /system/chassis/motherboard/pcie_cable_card0
+                - /system/chassis/motherboard/pcie_cable_card0/cxp_top
+                - /system/chassis/motherboard/pcie_cable_card0/cxp_bot
+                - /system/chassis/motherboard/pcie_cable_card1
+                - /system/chassis/motherboard/pcie_cable_card2
+                - /system/chassis/motherboard/pcie_cable_card3
+                - /system/chassis/motherboard/pcie_cable_card3/cxp_top
+                - /system/chassis/motherboard/pcie_cable_card3/cxp_bot
+                - /system/chassis/motherboard/pcie_cable_card4
+                - /system/chassis/motherboard/pcie_cable_card4/cxp_top
+                - /system/chassis/motherboard/pcie_cable_card4/cxp_bot
+                - /system/chassis/motherboard/pcie_cable_card6
+                - /system/chassis/motherboard/pcie_cable_card7
+                - /system/chassis/motherboard/pcie_cable_card8
+                - /system/chassis/motherboard/pcie_cable_card9
+                - /system/chassis/motherboard/pcie_cable_card10
+                - /system/chassis/motherboard/pcie_cable_card10/cxp_top
+                - /system/chassis/motherboard/pcie_cable_card10/cxp_bot
+                - /system/chassis/motherboard/pcie_cable_card11
