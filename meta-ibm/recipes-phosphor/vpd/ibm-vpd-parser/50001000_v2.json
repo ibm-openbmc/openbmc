@@ -371,6 +371,15 @@
     "/sys/bus/i2c/drivers/at24/7-0051/eeprom": [
       {
         "inventoryPath": "/system/chassis/motherboard/lcd_op_panel_hill",
+        "bind" : "7-0051",
+        "preAction" : {
+          "pin" : "RUSSEL_FW_I2C_ENABLE_N",
+          "value" : 0
+        },
+        "postActionFail" : {
+          "pin" : "RUSSEL_FW_I2C_ENABLE_N",
+          "value" : 1
+        },
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.Panel": null,
           "com.ibm.ipzvpd.Location" : {
