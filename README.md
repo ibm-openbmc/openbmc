@@ -174,3 +174,4 @@ The Technical Steering Committee (TSC) guides the project. Members are:
 - Mail: openbmc@lists.ozlabs.org [https://lists.ozlabs.org/listinfo/openbmc](https://lists.ozlabs.org/listinfo/openbmc)
 - Discord: https://discord.gg/69Km47zH98
 
+
