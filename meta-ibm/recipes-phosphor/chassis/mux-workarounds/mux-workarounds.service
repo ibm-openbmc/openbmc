@@ -1,0 +1,12 @@
+[Unit]
+Description=Perform workarounds for I2C Muxes
+Wants=sysinit.target
+After=sysinit.target
+
+[Service]
+ExecStart=/usr/bin/mux-workarounds.sh
+Type=oneshot
+RemainAfterExit=yes
+
+[Install]
+RequiredBy=basic.target
