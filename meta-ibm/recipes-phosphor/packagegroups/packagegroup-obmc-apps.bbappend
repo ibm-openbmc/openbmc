@@ -23,7 +23,6 @@ EXTRA_IBM_LOGGING_PKGS_witherspoon-tacoma = ""
 EXTRA_IBM_LOGGING_PKGS_mihawk = "ibm-logging"
 EXTRA_IBM_LOGGING_PKGS_p10bmc = " \
     openpower-pel-parsers \
-    hostboot-pel-parsers \
     openpower-hw-diags-pel-parser-data \
 "
 
