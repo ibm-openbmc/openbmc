@@ -241,6 +241,17 @@
         "extraInterfaces": {
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-A0"
+          },
+          "com.ibm.ipzvpd.VINI" : {
+              "FN": [48, 50, 89, 75, 51, 50, 51],
+              "CC": [55, 66, 53, 70]
+          },
+          "com.ibm.ipzvpd.DINF" : {
+              "RI": [0, 5, 33, 0]
+          },
+          "xyz.openbmc_project.Inventory.Decorator.Asset" : {
+              "Model": "7B5F",
+              "SparePartNumber": "02YK323"
           }
         }
       },
@@ -250,6 +261,17 @@
         "extraInterfaces": {
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-A1"
+          },
+          "com.ibm.ipzvpd.VINI" : {
+              "FN": [48, 50, 89, 75, 51, 50, 51],
+              "CC": [55, 66, 53, 70]
+          },
+          "com.ibm.ipzvpd.DINF" : {
+              "RI": [0, 5, 33, 1]
+          },
+          "xyz.openbmc_project.Inventory.Decorator.Asset" : {
+              "Model": "7B5F",
+              "SparePartNumber": "02YK323"
           }
         }
       },
@@ -259,6 +281,17 @@
         "extraInterfaces": {
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-A2"
+          },
+          "com.ibm.ipzvpd.VINI" : {
+              "FN": [48, 50, 89, 75, 51, 50, 51],
+              "CC": [55, 66, 53, 70]
+          },
+          "com.ibm.ipzvpd.DINF" : {
+              "RI": [0, 5, 33, 2]
+          },
+          "xyz.openbmc_project.Inventory.Decorator.Asset" : {
+              "Model": "7B5F",
+              "SparePartNumber": "02YK323"
           }
         }
       },
@@ -268,6 +301,17 @@
         "extraInterfaces": {
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-A3"
+          },
+          "com.ibm.ipzvpd.VINI" : {
+              "FN": [48, 50, 89, 75, 51, 50, 51],
+              "CC": [55, 66, 53, 70]
+          },
+          "com.ibm.ipzvpd.DINF" : {
+              "RI": [0, 5, 33, 3]
+          },
+          "xyz.openbmc_project.Inventory.Decorator.Asset" : {
+              "Model": "7B5F",
+              "SparePartNumber": "02YK323"
           }
         }
       },
@@ -277,6 +321,17 @@
         "extraInterfaces": {
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-A4"
+          },
+          "com.ibm.ipzvpd.VINI" : {
+              "FN": [48, 50, 89, 75, 51, 50, 51],
+              "CC": [55, 66, 53, 70]
+          },
+          "com.ibm.ipzvpd.DINF" : {
+              "RI": [0, 5, 33, 4]
+          },
+          "xyz.openbmc_project.Inventory.Decorator.Asset" : {
+              "Model": "7B5F",
+              "SparePartNumber": "02YK323"
           }
         }
       },
@@ -286,6 +341,17 @@
         "extraInterfaces": {
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-A5"
+          },
+          "com.ibm.ipzvpd.VINI" : {
+              "FN": [48, 50, 89, 75, 51, 50, 51],
+              "CC": [55, 66, 53, 70]
+          },
+          "com.ibm.ipzvpd.DINF" : {
+              "RI": [0, 5, 33, 5]
+          },
+          "xyz.openbmc_project.Inventory.Decorator.Asset" : {
+              "Model": "7B5F",
+              "SparePartNumber": "02YK323"
           }
         }
       },
