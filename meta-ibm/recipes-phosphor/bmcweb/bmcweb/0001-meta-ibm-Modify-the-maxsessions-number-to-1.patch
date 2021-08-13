@@ -1,0 +1,29 @@
+From e20e8ba33ef260e2eb43b390b2a8b00699f9da8c Mon Sep 17 00:00:00 2001
+From: LuluTHSu <Lulu_Su@wistron.com>
+Date: Thu, 12 Aug 2021 17:44:25 +0800
+Subject: [PATCH] meta-ibm: Modify the maxsessions number to 1
+
+Mowgli's bmcweb only allows one KVM session.
+This patch is based on the multi-session code base.
+
+Signed-off-by: LuluTHSu <Lulu_Su@wistron.com>
+---
+ include/kvm_websocket.hpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/include/kvm_websocket.hpp b/include/kvm_websocket.hpp
+index db42ab8..29dda0e 100644
+--- a/include/kvm_websocket.hpp
++++ b/include/kvm_websocket.hpp
+@@ -11,7 +11,7 @@ namespace crow
+ namespace obmc_kvm
+ {
+ 
+-static constexpr const uint maxSessions = 4;
++static constexpr const uint maxSessions = 1;
+ 
+ class KvmSession
+ {
+-- 
+2.7.4
+

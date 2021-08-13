@@ -4,4 +4,4 @@ EXTRA_OECMAKE_append = " \
 "
 
 FILESEXTRAPATHS_prepend_mowgli := "${THISDIR}/${PN}:"
-SRC_URI_append_mowgli = " file://0001-Revert-Add-concurrent-KVM-sessions-support.patch"
+SRC_URI_append_mowgli = " file://0001-meta-ibm-Modify-the-maxsessions-number-to-1.patch"
