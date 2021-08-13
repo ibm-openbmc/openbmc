@@ -2,30 +2,9 @@
     {
         "Desc":
         {
-            "Name": "Ambient_Virtual_Temp",
-            "SensorType": "temperature"
-        },
-        "Threshold" :
-        {
-            "HardShutdownHigh": 58,
-            "SoftShutdownHigh": 53,
-            "WarningHigh": 45
-        },
-        "Params":
-        {
-            "DbusParam":
-            [
-                {
-                    "ParamName": "T0",
-                    "Desc":
-                    {
-                        "Name": "Ambient_0_Temp",
-                        "SensorType": "temperature"
-                    }
-                }
-            ]
-        },
-        "Expression": "T0"
+            "Config" : "D-Bus",
+            "Type" : "ModifiedMedian"
+        }
     },
     {
         "Desc":
