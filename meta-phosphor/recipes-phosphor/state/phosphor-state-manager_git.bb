@@ -82,7 +82,6 @@ FILES_${PN}-discover = "${bindir}/phosphor-discover-system-state"
 SYSTEMD_SERVICE_${PN}-discover += "phosphor-discover-system-state@.service"
 
 FILES_${PN}-host-check = "${bindir}/phosphor-host-check"
-SYSTEMD_SERVICE_${PN}-host-check += "phosphor-reset-host-check@.service"
 SYSTEMD_SERVICE_${PN}-host-check += "phosphor-reset-host-running@.service"
 
 SYSTEMD_SERVICE_${PN}-reset-sensor-states += "phosphor-reset-sensor-states@.service"
@@ -164,7 +163,6 @@ QUIESCE_INSTFMT = "obmc-host-quiesce@{1}.target"
 QUIESCE_FMT = "../${QUIESCE_TMPL}:${CRASH_TIMEOUT_TGTFMT}.wants/${QUIESCE_INSTFMT}"
 
 SYSTEMD_SERVICE_${PN}-obmc-targets += " \
-        obmc-mapper.target \
         obmc-fans-ready.target \
         obmc-fan-control.target \
         obmc-fan-control-ready@.target \
@@ -184,6 +182,6 @@ SYSTEMD_LINK_${PN}-obmc-targets += "${@compose_list(d, 'FAN_LINK_FMT', 'OBMC_CHA
 SYSTEMD_LINK_${PN}-obmc-targets += "${@compose_list(d, 'QUIESCE_FMT', 'HOST_ERROR_TARGETS', 'OBMC_HOST_INSTANCES')}"
 
 SRC_URI += "git://github.com/openbmc/phosphor-state-manager"
-SRCREV = "3ac78dfd6e3c6bf1c673e6acc8e6dc2deb6bd98b"
+SRCREV = "0d1c3f1f9329c853677f0581287afef83eeea0f0"
 
 S = "${WORKDIR}/git"
