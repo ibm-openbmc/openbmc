@@ -225,7 +225,7 @@
               "LocationCode" : "Ufcs-A0"
           },
           "com.ibm.ipzvpd.VINI" : {
-              "FN": [48, 50, 89, 75, 51, 50, 55],
+              "FN": [48, 50, 89, 75, 50, 51, 55],
               "CC": [55, 66, 53, 71]
           },
           "com.ibm.ipzvpd.DINF" : {
@@ -233,7 +233,7 @@
           },
           "xyz.openbmc_project.Inventory.Decorator.Asset" : {
               "Model": "7B5G",
-              "SparePartNumber": "02YK327"
+              "SparePartNumber": "02YK237"
           }
         }
       },
@@ -245,7 +245,7 @@
               "LocationCode" : "Ufcs-A1"
           },
           "com.ibm.ipzvpd.VINI" : {
-              "FN": [48, 50, 89, 75, 51, 50, 55],
+              "FN": [48, 50, 89, 75, 50, 51, 55],
               "CC": [55, 66, 53, 71]
           },
           "com.ibm.ipzvpd.DINF" : {
@@ -253,7 +253,7 @@
           },
           "xyz.openbmc_project.Inventory.Decorator.Asset" : {
               "Model": "7B5G",
-              "SparePartNumber": "02YK327"
+              "SparePartNumber": "02YK237"
           }
         }
       },
@@ -265,7 +265,7 @@
               "LocationCode" : "Ufcs-A2"
           },
           "com.ibm.ipzvpd.VINI" : {
-              "FN": [48, 50, 89, 75, 51, 50, 55],
+              "FN": [48, 50, 89, 75, 50, 51, 55],
               "CC": [55, 66, 53, 71]
           },
           "com.ibm.ipzvpd.DINF" : {
@@ -273,7 +273,7 @@
           },
           "xyz.openbmc_project.Inventory.Decorator.Asset" : {
               "Model": "7B5G",
-              "SparePartNumber": "02YK327"
+              "SparePartNumber": "02YK237"
           }
         }
       },
@@ -285,7 +285,7 @@
               "LocationCode" : "Ufcs-A3"
           },
           "com.ibm.ipzvpd.VINI" : {
-              "FN": [48, 50, 89, 75, 51, 50, 55],
+              "FN": [48, 50, 89, 75, 50, 51, 55],
               "CC": [55, 66, 53, 71]
           },
           "com.ibm.ipzvpd.DINF" : {
@@ -293,7 +293,7 @@
           },
           "xyz.openbmc_project.Inventory.Decorator.Asset" : {
               "Model": "7B5G",
-              "SparePartNumber": "02YK327"
+              "SparePartNumber": "02YK237"
           }
         }
       },
@@ -305,7 +305,7 @@
               "LocationCode" : "Ufcs-A4"
           },
           "com.ibm.ipzvpd.VINI" : {
-              "FN": [48, 50, 89, 75, 51, 50, 55],
+              "FN": [48, 50, 89, 75, 50, 51, 55],
               "CC": [55, 66, 53, 71]
           },
           "com.ibm.ipzvpd.DINF" : {
@@ -313,7 +313,7 @@
           },
           "xyz.openbmc_project.Inventory.Decorator.Asset" : {
               "Model": "7B5G",
-              "SparePartNumber": "02YK327"
+              "SparePartNumber": "02YK237"
           }
         }
       },
@@ -325,7 +325,7 @@
               "LocationCode" : "Ufcs-A5"
           },
           "com.ibm.ipzvpd.VINI" : {
-              "FN": [48, 50, 89, 75, 51, 50, 55],
+              "FN": [48, 50, 89, 75, 50, 51, 55],
               "CC": [55, 66, 53, 71]
           },
           "com.ibm.ipzvpd.DINF" : {
@@ -333,7 +333,7 @@
           },
           "xyz.openbmc_project.Inventory.Decorator.Asset" : {
               "Model": "7B5G",
-              "SparePartNumber": "02YK327"
+              "SparePartNumber": "02YK237"
           }
         }
       },
