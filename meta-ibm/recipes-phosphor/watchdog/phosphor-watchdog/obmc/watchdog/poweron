@@ -1,8 +1,4 @@
 DEVPATH=/xyz/openbmc_project/watchdog/host0
 SERVICE=xyz.openbmc_project.Watchdog
-# Enable host watchdog but just start the host target on a timeout
-# for now if it expires. Once host has full support in, we can fully
-# enable. The host startmin target is already running so this
-# will just be a noop
-TARGET=obmc-host-startmin@0.target
+TARGET=obmc-host-timeout@0.target
 TIMEOUT_IN_MSEC=600000
