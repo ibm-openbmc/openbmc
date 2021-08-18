@@ -1,0 +1,12 @@
+# Remove the "-G priv-admin" default set in the meta-phosphor layer.
+# This tells the BMC's dropbear SSH server to only allow connections for
+# users who are in the group specified.
+# We do not want any Administrator to have ssh access.
+# We want only the "service" user to have ssh access, and we control that
+# by controlling the login shell (/bin/sh -vs- /bin/nologin).
+# Ideally we would use this parameter to give us a second level of defense,
+# however, we also need forward compatability for development images,
+# specifically root and service accounts.  But there is no group in common
+# between these users which admins do not also have, so we leave off this
+# protection for now.
+DROPBEAR_EXTRA_ARGS=""
