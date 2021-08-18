@@ -10,8 +10,8 @@ inherit meson pkgconfig
 inherit python3native
 inherit systemd
 
-SRC_URI += "git://github.com/ibm-openbmc/phosphor-networkd;nobranch=1"
-SRCREV = "001dac3e70398da4d1f6d4a8063315f1e534b218"
+SRC_URI += "git://github.com/openbmc/phosphor-networkd"
+SRCREV = "cb2d408387eb58b83c90f7c4318e9af0b43298af"
 
 DEPENDS += "systemd"
 DEPENDS += "sdbusplus ${PYTHON_PN}-sdbus++-native"
