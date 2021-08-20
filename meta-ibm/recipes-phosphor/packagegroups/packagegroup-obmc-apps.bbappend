@@ -27,7 +27,7 @@ EXTRA_IBM_LOGGING_PKGS:p10bmc = " \
 "
 
 RDEPENDS:${PN}-inventory:append:ibm-ac-server = " openpower-fru-vpd openpower-occ-control phosphor-cooling-type virtual/obmc-gpio-presence"
-RDEPENDS:${PN}-inventory:append:p10bmc = " ibm-vpd-parser openpower-fru-vpd openpower-occ-control virtual/obmc-gpio-presence"
+RDEPENDS:${PN}-inventory:append:p10bmc = " ibm-vpd-parser openpower-occ-control virtual/obmc-gpio-presence"
 RDEPENDS:${PN}-inventory:append:mihawk = " openpower-fru-vpd openpower-occ-control virtual/obmc-gpio-presence id-button phosphor-cooling-type"
 RDEPENDS:${PN}-fan-control:append:ibm-ac-server = " fan-watchdog"
 RDEPENDS:${PN}-fan-control:append:p10bmc = " fan-watchdog sensor-monitor"
