@@ -1,11 +1,13 @@
-SUMMARY     = "To get hardware procedures attributes xml files"
-DESCRIPTION = "To boot the server hwp attributes also required and those attributes will be include in power specific system device tree"
+SUMMARY     = "To get required hardware procedure attribute xml files"
+DESCRIPTION = "Copy all the required hardware procedures attributes xml file \
+with respective directory structures"
+
 PR = "r1"
 PV = "1.0+git${SRCPV}"
 LICENSE     = "Apache-2.0"
-LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/Apache-2.0;md5=89aea4e17d99a7cacdbeed46a0096b10"
+LIC_FILES_CHKSUM = "file://${S}/LICENSE_PROLOG;md5=d8e5f403c98fd80dcea90b9cc8cd083c"
 
-require ekb_p10.inc
+require ekb.inc
 
 SRC_URI = "${EKB_URI}"
 SRCREV = "${EKB_REV}"
