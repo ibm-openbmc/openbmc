@@ -16,11 +16,6 @@ pkg_postinst:${PN}:append() {
 	TARGET="../openpower-debug-collector-watchdog@.service"
 	ln -s $TARGET $LINK
 
-	LINK="$D$systemd_system_unitdir/obmc-host-timeout@0.target.wants/openpower-debug-collector-watchdog-timeout@0.service"
-	TARGET="../openpower-debug-collector-watchdog-timeout.service"
-	ln -s $TARGET $LINK
-
-
         if [ "${@bb.utils.filter('PACKAGECONFIG', 'openpower_dump_collection', d)}" == openpower_dump_collection ]; then
                LINK="$D$systemd_system_unitdir/obmc-host-startmin@0.target.wants/org.open_power.Dump.Manager.service"
                TARGET="../org.open_power.Dump.Manager.service"
@@ -34,8 +29,6 @@ pkg_prerm:${PN}:append() {
 		rm $LINK
 	fi
 	LINK="$D$systemd_system_unitdir/obmc-host-timeout@0.target.wants/openpower-debug-collector-watchdog@0.service"
-	rm $LINK
-	LINK="$D$systemd_system_unitdir/obmc-host-timeout@0.target.wants/openpower-debug-collector-watchdog-timeout@0.service"
 	rm $LINK
         if [ "${@bb.utils.filter('DISTRO_FEATURES', 'mpreboot', d)}" != mpreboot ]; then
                 LINK="$D$systemd_system_unitdir/obmc-host-startmin@0.target.wants/org.open_power.Dump.Manager.service"
