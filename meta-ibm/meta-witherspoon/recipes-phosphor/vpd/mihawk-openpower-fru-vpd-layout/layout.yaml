@@ -4,6 +4,7 @@ BMC:
         OPFR,VS: SerialNumber
         OPFR,VN: Manufacturer
         VNDR,IN: Model
+        VINI,B3: SubModel
     xyz.openbmc_project.Inventory.Item:
         VINI,DR: PrettyName
     xyz.openbmc_project.Inventory.Item.Bmc:
