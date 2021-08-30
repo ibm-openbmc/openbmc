@@ -1,0 +1,14 @@
+[Unit]
+Description=Stop the ethernet link failover
+After=op-vpd-parser.service
+
+[Service]
+Restart=no
+ExecStart=/usr/bin/env ncsi-netlink --set -x 2 -p 0 -c 0
+ExecStartPost=sh /usr/bin/disableETH1.sh
+SyslogIdentifier=disableETH1.sh
+Type=oneshot
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
