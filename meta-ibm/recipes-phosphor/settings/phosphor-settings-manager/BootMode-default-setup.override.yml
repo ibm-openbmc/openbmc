@@ -7,3 +7,7 @@
       Properties:
           BootMode:
               Default: Mode::Modes::Setup
+    - Interface: xyz.openbmc_project.Object.Enable
+      Properties:
+          Enabled:
+              Default: 'false'
