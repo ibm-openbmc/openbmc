@@ -451,6 +451,7 @@
     "/sys/bus/spi/drivers/at25/spi12.0/eeprom": [
       {
           "inventoryPath": "/system/chassis/motherboard/dcm0/cpu0",
+          "cpuType" : "primary",
           "powerOffOnly" : true,
           "offset": 196608,
           "size": 65504,
