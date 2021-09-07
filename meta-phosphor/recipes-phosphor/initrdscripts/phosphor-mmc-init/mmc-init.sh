@@ -48,15 +48,48 @@ if ! mount /dev/disk/by-partlabel/"$(get_root)" $rodir -t ext4 -o ro; then
     /bin/sh
 fi
 
-rwfsdev="/dev/disk/by-partlabel/rwfs"
+# Determine if a factory reset has been requested
 mkdir -p /var/lock
-if test $(fw_printenv -n rwreset) = "true"; then
+resetval=$(fw_printenv -n rwreset 2>/dev/null)
+gpiopresent=$(gpiofind factory-reset-toggle)
+gpioval=$(gpioget $gpiopresent)
+# Prevent unnecessary resets on first boot
+if [ -n "$gpiopresent" ] && [ -z "$resetval" ]; then
+    fw_setenv rwreset $gpioval
+    resetval=$gpioval
+    mkdir -p /var/lib/openpower-pnor-code-mgmt
+    echo "First boot" > /var/lib/openpower-pnor-code-mgmt/reset-done
+fi
+rwfsdev="/dev/disk/by-partlabel/rwfs"
+if ([ -z "$gpiopresent" ] && [ -n "$resetval" ]) ||
+        ([ -n "$gpiopresent" ] && [ "$resetval" != "$gpioval" ]); then
     echo "Factory reset requested."
     if ! mkfs.ext4 -F "${rwfsdev}"; then
         echo "Reformat for factory reset failed."
         /bin/sh
+    # Perform a bios reset only if a gpio change triggered the reset
     else
-        fw_setenv rwreset
+        if [ "$resetval" = "0" ] || [ "$resetval" = "1" ]; then
+            echo "Performing bios reset."
+            mkdir -p /media/hostfw
+            mount /dev/disk/by-partlabel/hostfw /media/hostfw
+            mv /media/hostfw/hostfw-a /var
+            mv /media/hostfw/hostfw-b /var
+            umount /media/hostfw
+            if ! mkfs.ext4 -F /dev/disk/by-partlabel/hostfw; then
+                echo "Bios reset failed."
+                /bin/sh
+            fi
+            mount /dev/disk/by-partlabel/hostfw /media/hostfw
+            mv /var/hostfw-a /media/hostfw
+            mv /var/hostfw-b /media/hostfw
+            umount /media/hostfw
+        fi
+        if [ -n "$gpiopresent" ]; then
+            fw_setenv rwreset $gpioval
+        else
+            fw_setenv rwreset
+        fi
         echo "Formatting of rwfs is complete."
     fi
 fi
