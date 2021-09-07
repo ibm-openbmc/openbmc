@@ -16,14 +16,19 @@ SRC_URI = "http://www.openssl.org/source/openssl-${PV}.tar.gz \
            file://0001-skip-test_symbol_presence.patch \
            file://0001-buildinfo-strip-sysroot-and-debug-prefix-map-from-co.patch \
            file://afalg.patch \
+           file://reproducible.patch \
            "
 
 SRC_URI_append_class-nativesdk = " \
            file://environment.d-openssl.sh \
            "
 
-SRC_URI[md5sum] = "3be209000dbc7e1b95bcdf47980a3baa"
-SRC_URI[sha256sum] = "1e3a91bc1f9dfce01af26026f856e064eab4c8ee0a8f457b5ae30b40b8b711f2"
+SRC_URI_append_riscv32 = " \
+           file://0003-Add-support-for-io_pgetevents_time64-syscall.patch \
+           file://0004-Fixup-support-for-io_pgetevents_time64-syscall.patch \
+           "
+
+SRC_URI[sha256sum] = "892a0875b9872acd04a9fde79b1f943075d5ea162415de3047c327df33fbaee5"
 
 inherit lib_package multilib_header multilib_script ptest
 MULTILIB_SCRIPTS = "${PN}-bin:${bindir}/c_rehash"
@@ -32,7 +37,9 @@ PACKAGECONFIG ?= ""
 PACKAGECONFIG_class-native = ""
 PACKAGECONFIG_class-nativesdk = ""
 
-PACKAGECONFIG[cryptodev-linux] = "enable-devcryptoeng,disable-devcryptoeng,cryptodev-linux"
+PACKAGECONFIG[cryptodev-linux] = "enable-devcryptoeng,disable-devcryptoeng,cryptodev-linux,,cryptodev-module"
+PACKAGECONFIG[no-tls1] = "no-tls1"
+PACKAGECONFIG[no-tls1_1] = "no-tls1_1"
 
 B = "${WORKDIR}/build"
 do_configure[cleandirs] = "${B}"
@@ -51,6 +58,20 @@ EXTRA_OECONF_class-nativesdk = "--with-rand-seed=os,devrandom"
 # Relying on hardcoded built-in paths causes openssl-native to not be relocateable from sstate.
 CFLAGS_append_class-native = " -DOPENSSLDIR=/not/builtin -DENGINESDIR=/not/builtin"
 CFLAGS_append_class-nativesdk = " -DOPENSSLDIR=/not/builtin -DENGINESDIR=/not/builtin"
+
+# Disable deprecated crypto algorithms
+# Retained for compatibilty
+# des (curl)
+# dh (python-ssl)
+# dsa (rpm)
+# md4 (cyrus-sasl freeradius hostapd)
+# bf (wvstreams postgresql x11vnc crda znc cfengine)
+# rc4 (freerdp librtorrent ettercap xrdp transmission pam-ssh-agent-auth php)
+# rc2 (mailx)
+# psk (qt5)
+# srp (libest)
+# whirlpool (qca)
+DEPRECATED_CRYPTO_FLAGS = "no-ssl no-idea no-rc5 no-md2 no-camellia no-mdc2 no-scrypt no-seed no-siphash no-sm2 no-sm3 no-sm4"
 
 do_configure () {
 	os=${HOST_OS}
@@ -101,6 +122,9 @@ do_configure () {
 	linux-powerpc64)
 		target=linux-ppc64
 		;;
+	linux-powerpc64le)
+		target=linux-ppc64le
+		;;
 	linux-riscv32)
 		target=linux-generic32
 		;;
@@ -110,6 +134,9 @@ do_configure () {
 	linux-sparc | linux-supersparc)
 		target=linux-sparcv9
 		;;
+	mingw32-x86_64)
+		target=mingw64
+		;;
 	esac
 
 	useprefix=${prefix}
@@ -118,8 +145,8 @@ do_configure () {
 	fi
 	# WARNING: do not set compiler/linker flags (-I/-D etc.) in EXTRA_OECONF, as they will fully replace the
 	# environment variables set by bitbake. Adjust the environment variables instead.
-	PERL5LIB="${S}/external/perl/Text-Template-1.46/lib/" \
-	perl ${S}/Configure ${EXTRA_OECONF} ${PACKAGECONFIG_CONFARGS} --prefix=$useprefix --openssldir=${libdir}/ssl-1.1 --libdir=${libdir} $target
+	HASHBANGPERL="/usr/bin/env perl" PERL=perl PERL5LIB="${S}/external/perl/Text-Template-1.46/lib/" \
+	perl ${S}/Configure ${EXTRA_OECONF} ${PACKAGECONFIG_CONFARGS} ${DEPRECATED_CRYPTO_FLAGS} --prefix=$useprefix --openssldir=${libdir}/ssl-1.1 --libdir=${libdir} $target
 	perl ${B}/configdata.pm --dump
 }
 
@@ -148,7 +175,7 @@ do_install_append_class-native () {
 	    OPENSSL_CONF=${libdir}/ssl-1.1/openssl.cnf \
 	    SSL_CERT_DIR=${libdir}/ssl-1.1/certs \
 	    SSL_CERT_FILE=${libdir}/ssl-1.1/cert.pem \
-	    OPENSSL_ENGINES=${libdir}/ssl-1.1/engines
+	    OPENSSL_ENGINES=${libdir}/engines-1.1
 }
 
 do_install_append_class-nativesdk () {
@@ -177,6 +204,10 @@ do_install_ptest () {
 
 	install -d ${D}${PTEST_PATH}/engines
 	install -m755 ${B}/engines/ossltest.so ${D}${PTEST_PATH}/engines
+
+        # seems to be needed with perl 5.32.1
+        install -d ${D}${PTEST_PATH}/util/perl/recipes
+        cp ${D}${PTEST_PATH}/test/recipes/tconversion.pl ${D}${PTEST_PATH}/util/perl/recipes/
 }
 
 # Add the openssl.cnf file to the openssl-conf package. Make the libcrypto
@@ -188,17 +219,30 @@ PACKAGES =+ "libcrypto libssl openssl-conf ${PN}-engines ${PN}-misc"
 
 FILES_libcrypto = "${libdir}/libcrypto${SOLIBS}"
 FILES_libssl = "${libdir}/libssl${SOLIBS}"
-FILES_openssl-conf = "${sysconfdir}/ssl/openssl.cnf"
+FILES_openssl-conf = "${sysconfdir}/ssl/openssl.cnf \
+                      ${libdir}/ssl-1.1/openssl.cnf* \
+                      "
 FILES_${PN}-engines = "${libdir}/engines-1.1"
-FILES_${PN}-misc = "${libdir}/ssl-1.1/misc"
+# ${prefix} comes from what we pass into --prefix at configure time (which is used for INSTALLTOP)
+FILES_${PN}-engines_append_mingw32_class-nativesdk = " ${prefix}${libdir}/engines-1_1"
+FILES_${PN}-misc = "${libdir}/ssl-1.1/misc ${bindir}/c_rehash"
 FILES_${PN} =+ "${libdir}/ssl-1.1/*"
 FILES_${PN}_append_class-nativesdk = " ${SDKPATHNATIVE}/environment-setup.d/openssl.sh"
 
 CONFFILES_openssl-conf = "${sysconfdir}/ssl/openssl.cnf"
 
 RRECOMMENDS_libcrypto += "openssl-conf"
+RDEPENDS_${PN}-misc = "perl"
 RDEPENDS_${PN}-ptest += "openssl-bin perl perl-modules bash"
+
+RDEPENDS_${PN}-bin += "openssl-conf"
 
 BBCLASSEXTEND = "native nativesdk"
 
 CVE_PRODUCT = "openssl:openssl"
+
+CVE_VERSION_SUFFIX = "alphabetical"
+
+# Only affects OpenSSL >= 1.1.1 in combination with Apache < 2.4.37
+# Apache in meta-webserver is already recent enough
+CVE_CHECK_WHITELIST += "CVE-2019-0190"
