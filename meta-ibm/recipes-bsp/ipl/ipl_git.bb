@@ -12,7 +12,7 @@ inherit autotools
 S = "${WORKDIR}/git"
 
 SRC_URI = "git://git@github.com/open-power/ipl;branch="main""
-SRCREV = "84ca31e5a15d12e358e4879bed6ea20947b0c1b3"
+SRCREV = "82037bdaf23ab07fc8c9aafd719d89c753be64d7"
 
 SRC_URI += "file://enable-istep0-procedures-only-p9.patch"
 
