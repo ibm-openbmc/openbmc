@@ -33,6 +33,7 @@ RDEPENDS:${PN}-extras:append:ibm-ac-server = " ${POWER_SERVICE_PACKAGES_AC_SERVE
 RDEPENDS:${PN}-extras:append:p10bmc = " ${POWER_SERVICE_PACKAGES_P10} webui-vue dbus-sensors phosphor-virtual-sensor kexec-tools makedumpfile kdump vmcore-dmesg"
 RDEPENDS:${PN}-extras:append:p10bmc = " pldm openpower-hw-diags srvcfg-manager biosconfig-manager phosphor-post-code-manager phosphor-host-postd debug-trigger libmctp panel  mux-workarounds"
 RDEPENDS:${PN}-extras:append:p10bmc = " gdbserver strace opkg"
+RDEPENDS:${PN}-extras:append:p10bmc = " platform-fru-detect"
 RDEPENDS:${PN}-extras:append:witherspoon-tacoma = " pldm srvcfg-manager webui-vue biosconfig-manager phosphor-post-code-manager phosphor-host-postd kexec-tools makedumpfile kdump vmcore-dmesg debug-trigger"
 RDEPENDS:${PN}-extras:append:witherspoon-tacoma = " openpower-hw-diags panel"
 RDEPENDS:${PN}-debug-collector:append:p10bmc = " openpower-debug-collector-openpower-dump-manager"
@@ -47,9 +48,6 @@ RDEPENDS:${PN}-devtools:remove:witherspoon = "rsync"
 RDEPENDS:${PN}-leds:remove:p10bmc = "phosphor-led-manager-faultmonitor"
 
 ${PN}-software-extras:append:ibm-ac-server = " phosphor-software-manager-sync"
-<<<<<<< HEAD
 ${PN}-software-extras:append:p10bmc = " phosphor-software-manager-usb"
 ${PN}-software-extras:append:p10bmc = " phosphor-software-manager-side-switch"
-=======
 RDEPENDS:${PN}-extras:append:p10bmc = " license-manager"
->>>>>>> 34a5cf74cf (Add new license-manager app)
