@@ -351,8 +351,7 @@
                         "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane0",
                         "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane1",
                         "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane2",
-                        "/xyz/openbmc_project/inventory/system/board/Blyth_Panel",
-                        "/xyz/openbmc_project/inventory/system/board/Nisqually_Backplane"
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard"
                     ]
                 }
             ]
