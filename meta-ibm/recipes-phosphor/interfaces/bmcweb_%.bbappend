@@ -1,6 +1,7 @@
 EXTRA_OEMESON:append = " \
     -Dinsecure-tftp-update=enabled \
     -Dibm-management-console=enabled \
+    -Dredfish-new-powersubsystem-thermalsubsystem=enabled \
 "
 
 EXTRA_OEMESON:append:p10bmc = " \
