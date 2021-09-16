@@ -1094,6 +1094,10 @@
           "xyz.openbmc_project.Inventory.Item.FabricAdapter": null,
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P0-C0"
+          },
+          "xyz.openbmc_project.Inventory.Decorator.I2CDevice": {
+              "Bus": 20,
+              "Address": 80
           }
         }
       },
@@ -1141,6 +1145,10 @@
           "xyz.openbmc_project.Inventory.Item.FabricAdapter": null,
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P0-C3"
+          },
+          "xyz.openbmc_project.Inventory.Decorator.I2CDevice": {
+              "Bus": 23,
+              "Address": 80
           }
         }
       },
@@ -1188,6 +1196,10 @@
           "xyz.openbmc_project.Inventory.Item.FabricAdapter": null,
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P0-C4"
+          },
+          "xyz.openbmc_project.Inventory.Decorator.I2CDevice": {
+              "Bus": 24,
+              "Address": 81
           }
         }
       },
@@ -1235,6 +1247,10 @@
           "xyz.openbmc_project.Inventory.Item.FabricAdapter": null,
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P0-C10"
+          },
+          "xyz.openbmc_project.Inventory.Decorator.I2CDevice": {
+              "Bus": 29,
+              "Address": 80
           }
         }
       },
@@ -1281,6 +1297,10 @@
           "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P0-C2"
+          },
+          "xyz.openbmc_project.Inventory.Decorator.I2CDevice": {
+              "Bus": 22,
+              "Address": 82
           }
         }
       }
@@ -1329,6 +1349,10 @@
           "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P0-C7"
+          },
+          "xyz.openbmc_project.Inventory.Decorator.I2CDevice": {
+              "Bus": 26,
+              "Address": 82
           }
         }
       }
@@ -1353,6 +1377,10 @@
           "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P0-C9"
+          },
+          "xyz.openbmc_project.Inventory.Decorator.I2CDevice": {
+              "Bus": 27,
+              "Address": 80
           }
         }
       }
@@ -1377,6 +1405,10 @@
           "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P0-C11"
+          },
+          "xyz.openbmc_project.Inventory.Decorator.I2CDevice": {
+              "Bus": 30,
+              "Address": 81
           }
         }
       }
@@ -1401,6 +1433,10 @@
           "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P0-C1"
+          },
+          "xyz.openbmc_project.Inventory.Decorator.I2CDevice": {
+              "Bus": 21,
+              "Address": 81
           }
         }
       }
@@ -1425,6 +1461,10 @@
           "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P0-C8"
+          },
+          "xyz.openbmc_project.Inventory.Decorator.I2CDevice": {
+              "Bus": 28,
+              "Address": 81
           }
         }
       }
