@@ -47,5 +47,9 @@ RDEPENDS:${PN}-devtools:remove:witherspoon = "rsync"
 RDEPENDS:${PN}-leds:remove:p10bmc = "phosphor-led-manager-faultmonitor"
 
 ${PN}-software-extras:append:ibm-ac-server = " phosphor-software-manager-sync"
+<<<<<<< HEAD
 ${PN}-software-extras:append:p10bmc = " phosphor-software-manager-usb"
 ${PN}-software-extras:append:p10bmc = " phosphor-software-manager-side-switch"
+=======
+RDEPENDS:${PN}-extras:append:p10bmc = " license-manager"
+>>>>>>> 34a5cf74cf (Add new license-manager app)
