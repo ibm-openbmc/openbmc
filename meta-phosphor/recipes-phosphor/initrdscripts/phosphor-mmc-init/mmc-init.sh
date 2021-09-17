@@ -57,11 +57,9 @@ gpioval=$(gpioget $gpiopresent)
 if [ -n "$gpiopresent" ] && [ -z "$resetval" ]; then
     fw_setenv rwreset $gpioval
     resetval=$gpioval
-    mkdir -p /var/lib/openpower-pnor-code-mgmt
-    echo "First boot" > /var/lib/openpower-pnor-code-mgmt/reset-done
 fi
 rwfsdev="/dev/disk/by-partlabel/rwfs"
-if ([ -z "$gpiopresent" ] && [ -n "$resetval" ]) ||
+if ([ -z "$gpiopresent" ] && [ "$resetval" = "true" ]) ||
         ([ -n "$gpiopresent" ] && [ "$resetval" != "$gpioval" ]); then
     echo "Factory reset requested."
     if ! mkfs.ext4 -F "${rwfsdev}"; then
