@@ -1,6 +1,7 @@
 EXTRA_OEMESON:append = " \
     -Dinsecure-tftp-update=enabled \
     -Dibm-management-console=enabled \
+    -Dredfish-allow-deprecated-power-thermal=disabled \
     -Dredfish-new-powersubsystem-thermalsubsystem=enabled \
     -Dredfish-dump-log=enabled \
     -Dredfish-oem-manager-fan-data=disabled \
