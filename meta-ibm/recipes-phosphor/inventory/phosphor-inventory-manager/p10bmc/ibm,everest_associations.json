@@ -288,6 +288,8 @@
                         "/xyz/openbmc_project/inventory/system/chassis/motherboard/bmc/tod_battery",
                         "/xyz/openbmc_project/inventory/system/chassis/motherboard/dasd_backplane",
                         "/xyz/openbmc_project/inventory/system/chassis/motherboard/tpm",
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/dasd_backplane/panel0",
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/dasd_backplane/panel1",
                         "/xyz/openbmc_project/inventory/system/chassis/motherboard"
                     ]
                 },
