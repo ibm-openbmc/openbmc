@@ -1,0 +1,14 @@
+[Unit]
+Description=Clears all fault LED to %i and remove critical associations
+After=obmc-chassis-powerreset@0.target
+Wants=obmc-power-reset-on@0.target
+After=obmc-power-reset-on@0.target
+ConditionPathExists=!/run/openbmc/chassis@0-on
+
+[Service]
+Type=oneshot
+Restart=no
+EnvironmentFile={envfiledir}/obmc/led/clear-all/faults/config
+ExecStart=/bin/bash -c "clear-all-fault-leds.sh %i ${{EXCLUDED_GROUPS}}"
+ExecStart=/usr/bin/remove-association
+SyslogIdentifier=obmc-clear-all-fault-leds-and-remove-crit-association
