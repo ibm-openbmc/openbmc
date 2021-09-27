@@ -428,7 +428,13 @@
     "/sys/bus/i2c/drivers/at24/7-0051/eeprom": [
       {
         "inventoryPath": "/system/chassis/motherboard/lcd_op_panel_hill",
-        "bind" : "7-0051",
+        "devAddress" : "7-0051",
+        "driverType" : "at24",
+        "busType" : "i2c",
+        "presence": {
+          "pin" : "RUSSEL_OPPANEL_PRESENCE_N",
+          "value" : 0
+        },
         "preAction" : {
           "pin" : "RUSSEL_FW_I2C_ENABLE_N",
           "value" : 0
@@ -1059,7 +1065,11 @@
     "/sys/bus/i2c/drivers/at24/20-0050/eeprom": [
       {
         "inventoryPath": "/system/chassis/motherboard/pcieslot0/pcie_card0",
-        "bind" : "20-0050",
+        "devAddress" : "20-0050",
+        "replaceableAtStandby" : true,
+        "busType" : "i2c",
+        "driverType" : "at24",
+        "concurrentlyMaintainable" : true,
         "preAction" : {
           "pin" : "SLOT0_PRSNT_EN_RSVD",
           "value" : 1
@@ -1102,7 +1112,11 @@
     "/sys/bus/i2c/drivers/at24/23-0050/eeprom": [
       {
         "inventoryPath": "/system/chassis/motherboard/pcieslot3/pcie_card3",
-        "bind" : "23-0050",
+        "devAddress" : "23-0050",
+        "replaceableAtStandby" : true,
+        "busType" : "i2c",
+        "driverType" : "at24",
+        "concurrentlyMaintainable" : true,
         "preAction" : {
           "pin" : "SLOT3_PRSNT_EN_RSVD",
           "value" : 1
@@ -1145,7 +1159,11 @@
     "/sys/bus/i2c/drivers/at24/24-0051/eeprom": [
       {
         "inventoryPath": "/system/chassis/motherboard/pcieslot4/pcie_card4",
-        "bind" : "24-0051",
+        "devAddress" : "24-0051",
+        "replaceableAtStandby" : true,
+        "busType" : "i2c",
+        "driverType" : "at24",
+        "concurrentlyMaintainable" : true,
         "preAction" : {
           "pin" : "SLOT4_PRSNT_EN_RSVD",
           "value" : 1
@@ -1188,7 +1206,11 @@
     "/sys/bus/i2c/drivers/at24/29-0050/eeprom": [
       {
         "inventoryPath": "/system/chassis/motherboard/pcieslot10/pcie_card10",
-        "bind" : "29-0050",
+        "devAddress" : "29-0050",
+        "replaceableAtStandby" : true,
+        "busType" : "i2c",
+        "driverType" : "at24",
+        "concurrentlyMaintainable" : true,
         "preAction" : {
           "pin" : "SLOT10_PRSNT_EN_RSVD",
           "value" : 1
@@ -1231,7 +1253,11 @@
     "/sys/bus/i2c/drivers/at24/22-0052/eeprom": [
       {
         "inventoryPath": "/system/chassis/motherboard/pcieslot2/pcie_card2",
-        "bind" : "22-0052",
+        "devAddress" : "22-0052",
+        "replaceableAtStandby" : true,
+        "busType" : "i2c",
+        "driverType" : "at24",
+        "concurrentlyMaintainable" : true,
         "preAction" : {
           "pin" : "SLOT2_PRSNT_EN_RSVD",
           "value" : 1
@@ -1251,7 +1277,11 @@
     "/sys/bus/i2c/drivers/at24/25-0053/eeprom": [
       {
         "inventoryPath": "/system/chassis/motherboard/pcieslot6/pcie_card6",
-        "bind" : "25-0053",
+        "devAddress" : "25-0053",
+        "replaceableAtStandby" : true,
+        "busType" : "i2c",
+        "driverType" : "at24",
+        "concurrentlyMaintainable" : true,
         "preAction" : {
           "pin" : "SLOT6_PRSNT_EN_RSVD",
           "value" : 1
@@ -1271,7 +1301,11 @@
     "/sys/bus/i2c/drivers/at24/26-0052/eeprom": [
       {
         "inventoryPath": "/system/chassis/motherboard/pcieslot7/pcie_card7",
-        "bind" : "26-0052",
+        "devAddress" : "26-0052",
+        "replaceableAtStandby" : true,
+        "busType" : "i2c",
+        "driverType" : "at24",
+        "concurrentlyMaintainable" : true,
         "preAction" : {
           "pin" : "SLOT7_PRSNT_EN_RSVD",
           "value" : 1
@@ -1291,7 +1325,11 @@
     "/sys/bus/i2c/drivers/at24/27-0050/eeprom": [
       {
         "inventoryPath": "/system/chassis/motherboard/pcieslot9/pcie_card9",
-        "bind" : "27-0050",
+        "devAddress" : "27-0050",
+        "replaceableAtStandby" : true,
+        "busType" : "i2c",
+        "driverType" : "at24",
+        "concurrentlyMaintainable" : true,
         "preAction" : {
           "pin" : "SLOT9_PRSNT_EN_RSVD",
           "value" : 1
@@ -1311,7 +1349,11 @@
     "/sys/bus/i2c/drivers/at24/30-0051/eeprom": [
       {
         "inventoryPath": "/system/chassis/motherboard/pcieslot11/pcie_card11",
-        "bind" : "30-0051",
+        "devAddress" : "30-0051",
+        "replaceableAtStandby" : true,
+        "busType" : "i2c",
+        "driverType" : "at24",
+        "concurrentlyMaintainable" : true,
         "preAction" : {
           "pin" : "SLOT11_PRSNT_EN_RSVD",
           "value" : 1
@@ -1331,7 +1373,11 @@
     "/sys/bus/i2c/drivers/at24/21-0051/eeprom": [
       {
         "inventoryPath": "/system/chassis/motherboard/pcieslot1/pcie_card1",
-        "bind" : "21-0051",
+        "devAddress" : "21-0051",
+        "replaceableAtStandby" : true,
+        "busType" : "i2c",
+        "driverType" : "at24",
+        "concurrentlyMaintainable" : true,
         "preAction" : {
           "pin" : "SLOT1_PRSNT_EN_RSVD",
           "value" : 1
@@ -1351,7 +1397,11 @@
     "/sys/bus/i2c/drivers/at24/28-0051/eeprom": [
       {
         "inventoryPath": "/system/chassis/motherboard/pcieslot8/pcie_card8",
-        "bind" : "28-0051",
+        "devAddress" : "28-0051",
+        "replaceableAtStandby" : true,
+        "busType" : "i2c",
+        "driverType" : "at24",
+        "concurrentlyMaintainable" : true,
         "preAction" : {
           "pin" : "SLOT8_PRSNT_EN_RSVD",
           "value" : 1
