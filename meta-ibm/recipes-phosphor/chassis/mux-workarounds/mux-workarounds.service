@@ -2,6 +2,7 @@
 Description=Perform workarounds for I2C Muxes
 Wants=sysinit.target
 After=sysinit.target
+Before=obmc-mapper.target
 
 [Service]
 ExecStart=/usr/bin/mux-workarounds.sh
