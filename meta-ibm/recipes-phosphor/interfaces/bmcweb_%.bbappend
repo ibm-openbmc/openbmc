@@ -22,6 +22,11 @@ EXTRA_OEMESON:append:witherspoon-tacoma = " \
 EXTRA_OEMESON_append_rainier = " \
     -Dibm-lamp-test=enabled \
     -Dhw-isolation=enabled \
+    -Dhypervisor-serial-socket=enabled \
+"
+
+EXTRA_OEMESON:append:witherspoon-tacoma = " \
+    -Dhypervisor-serial-socket=enabled \
 "
 
 inherit obmc-phosphor-discovery-service
