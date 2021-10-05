@@ -1,2 +1,7 @@
 PACKAGECONFIG:append:p10bmc = " ibm-hypervisor-cert"
 PACKAGECONFIG:append:witherspoon-tacoma = " ibm-hypervisor-cert"
+PACKAGECONFIG:append:p10bmc = " ibm-acf "
+PACKAGECONFIG:append:witherspoon-tacoma = " ibm-acf "
+DEPENDS += " ibm-acf "
+PACKAGECONFIG[ibm-acf] = "--enable-acf-cert-extension,,"
+SYSTEMD_SERVICE:${PN} += "${@bb.utils.contains('PACKAGECONFIG', 'ibm-acf', 'bmc-acf-manager.service', '', d)}"
