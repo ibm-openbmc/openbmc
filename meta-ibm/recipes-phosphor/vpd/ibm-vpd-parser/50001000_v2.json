@@ -85,6 +85,7 @@
         "inherit": false,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
+          "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P0-C0"
           }
@@ -95,6 +96,7 @@
         "inherit": false,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
+          "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P0-C1"
           }
@@ -105,6 +107,7 @@
         "inherit": false,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
+          "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P0-C2"
           }
@@ -115,6 +118,7 @@
         "inherit": false,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
+          "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P0-C3"
           }
@@ -125,6 +129,7 @@
         "inherit": false,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
+          "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P0-C4"
           }
@@ -135,6 +140,7 @@
         "inherit": false,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
+          "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P0-C6"
           }
@@ -145,6 +151,7 @@
         "inherit": false,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
+          "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P0-C7"
           }
@@ -155,6 +162,7 @@
         "inherit": false,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
+          "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P0-C8"
           }
@@ -165,6 +173,7 @@
         "inherit": false,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
+          "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P0-C9"
           }
@@ -175,6 +184,7 @@
         "inherit": false,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
+          "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P0-C10"
           }
@@ -185,6 +195,7 @@
         "inherit": false,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
+          "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P0-C11"
           }
@@ -1433,6 +1444,7 @@
         "inherit": false,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
+          "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P1-C0"
           }
@@ -1443,6 +1455,7 @@
         "inherit": false,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
+          "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P1-C1"
           }
@@ -1453,6 +1466,7 @@
         "inherit": false,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
+          "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P1-C2"
           }
@@ -1463,6 +1477,7 @@
         "inherit": false,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
+          "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P1-C3"
           }
@@ -1473,6 +1488,7 @@
         "inherit": false,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
+          "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P1-C4"
           }
@@ -1483,6 +1499,7 @@
         "inherit": false,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
+          "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P1-C5"
           }
@@ -1493,6 +1510,7 @@
         "inherit": false,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
+          "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P1-C6"
           }
@@ -1503,6 +1521,7 @@
         "inherit": false,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
+          "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P1-C7"
           }
@@ -1524,6 +1543,7 @@
         "inherit": false,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
+          "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P2-C0"
           }
@@ -1534,6 +1554,7 @@
         "inherit": false,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
+          "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P2-C1"
           }
@@ -1544,6 +1565,7 @@
         "inherit": false,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
+          "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P2-C2"
           }
@@ -1554,6 +1576,7 @@
         "inherit": false,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
+          "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P2-C3"
           }
@@ -1564,6 +1587,7 @@
         "inherit": false,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
+          "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P2-C4"
           }
@@ -1574,6 +1598,7 @@
         "inherit": false,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
+          "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P2-C5"
           }
@@ -1584,6 +1609,7 @@
         "inherit": false,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
+          "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P2-C6"
           }
@@ -1594,6 +1620,7 @@
         "inherit": false,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
+          "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P2-C7"
           }
@@ -1615,6 +1642,7 @@
         "inherit": false,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
+          "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P3-C0"
           }
@@ -1625,6 +1653,7 @@
         "inherit": false,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
+          "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P3-C1"
           }
@@ -1635,6 +1664,7 @@
         "inherit": false,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
+          "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P3-C2"
           }
@@ -1645,6 +1675,7 @@
         "inherit": false,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
+          "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P3-C3"
           }
@@ -1655,6 +1686,7 @@
         "inherit": false,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
+          "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P3-C4"
           }
@@ -1665,6 +1697,7 @@
         "inherit": false,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
+          "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P3-C5"
           }
@@ -1675,6 +1708,7 @@
         "inherit": false,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
+          "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P3-C6"
           }
@@ -1685,6 +1719,7 @@
         "inherit": false,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
+          "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P3-C7"
           }
