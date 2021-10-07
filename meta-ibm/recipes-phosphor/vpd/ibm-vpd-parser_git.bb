@@ -31,17 +31,14 @@ S = "${WORKDIR}/git"
 
 SYSTEMD_SERVICE:${PN} := "ibm-vpd-parser@.service"
 SYSTEMD_SERVICE:${PN} += "system-vpd.service"
-SYSTEMD_SERVICE:${PN} += "dbus-com.ibm.VPD.Manager.service"
+SYSTEMD_SERVICE:${PN} += "com.ibm.VPD.Manager.service"
 EXTRA_OEMESON := " -Dibm-parser=enabled -Dtests=disabled -Dvpd-manager=enabled"
 
 FILES:${PN} += "${datadir}/vpd/*.json"
-FILES:${PN} += "${datadir}/dbus-1/system-services/*.service"
 
 do_install:append() {
     install -d ${D}/${base_libdir}/udev/rules.d/
     install -d ${D}${datadir}/vpd/
-    install -d ${D}${datadir}/dbus-1/system-services
     install -m 0644 ${WORKDIR}/70-ibm-vpd-parser.rules ${D}/${base_libdir}/udev/rules.d/
     install ${WORKDIR}/*.json ${D}${datadir}/vpd/
-    install -m 0644 ${WORKDIR}/com.ibm.VPD.Manager.service ${D}/${datadir}/dbus-1/system-services
 }
