@@ -1,5 +1,15 @@
-[D-BUS Service]
-Name=com.ibm.VPD.Manager
-Exec=/bin/false
-User=root
-SystemdService=dbus-com.ibm.VPD.Manager.service
+[Unit]
+Description=IBM VPD Manager
+StopWhenUnneeded=false
+Requires=system-vpd.service
+After=system-vpd.service
+
+[Service]
+BusName=com.ibm.VPD.Manager
+Type=dbus
+Restart=always
+RestartSec=5
+ExecStart=/usr/bin/vpd-manager
+
+[Install]
+WantedBy=multi-user.target
