@@ -23,6 +23,7 @@ OPENPOWER_DUMP_DEPENDS = " \
         phosphor-dbus-interfaces \
         pdbg \
         pdata \
+        ipl \
         "
 
 DEPENDS = " \
@@ -65,5 +66,6 @@ DEPENDS:remove:class-nativesdk = " \
         sdbusplus \
         pdbg \
         pdata \
+        ipl \
         "
 
