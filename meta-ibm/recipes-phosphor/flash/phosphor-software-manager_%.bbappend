@@ -18,5 +18,5 @@ PACKAGECONFIG:append:ibm-ac-server = " sync_bmc_files"
 PACKAGECONFIG:append:mihawk = " sync_bmc_files"
 
 # Set BMC Minimum Ship Level
-EXTRA_OEMESON:append:p10bmc = " -Dbmc-msl='fw1020.00-30'"
+EXTRA_OEMESON:append:p10bmc = " -Dbmc-msl='fw1020.00-31'"
 EXTRA_OEMESON:append:p10bmc = " -Dregex-bmc-msl='([a-z]+[0-9]{2})+([0-9]+).([0-9]+).([0-9]+)'"
