@@ -7,15 +7,15 @@ PV = "1.0+git${SRCPV}"
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://${S}/LICENSE;md5=3b83ef96387f14655fc854ddc3c6bd57"
 
-inherit autotools
+inherit autotools pkgconfig
 
 S = "${WORKDIR}/git"
 
 SRC_URI = "git://git@github.com/open-power/ipl;branch="main""
-SRCREV = "0d1b6aeadee888efb3fd3f58faabf368cc5627cf"
+SRCREV = "27e2e03b4c3a9fc4822931d0ecfa768dca8b0e77"
 
 DEPENDS = " \
-        libekb pdbg autoconf-archive guard \
+        libekb pdbg autoconf-archive guard pdata \
         "
 
 RDEPENDS:${PN} = "phal-devtree"
