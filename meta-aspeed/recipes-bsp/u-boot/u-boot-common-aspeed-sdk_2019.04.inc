@@ -10,7 +10,6 @@ PE = "1"
 # repo during parse
 SRCREV = "a570745a1a836e351bd4b1131f23a4fa5013d6dd"
 SRC_URI = "git://git@github.com/openbmc/u-boot.git;nobranch=1;protocol=https"
-SRC_URI += "file://0001-aspeed-hace-Reset-when-error-occurs.patch"
 
 S = "${WORKDIR}/git"
 B = "${WORKDIR}/build"
