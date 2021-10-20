@@ -7,7 +7,7 @@ LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=e3fc50a88d0a364313df4b21ef20c29e"
 
 SRC_URI = "git://github.com/ibm-openbmc/license-manager.git;nobranch=1"
-SRCREV = "a3adebd0c672c459cf012afe6e27780552085f0a"
+SRCREV = "3d56ee1fd128d69d6f04de27fa0d16b76c69fd18"
 
 inherit meson systemd
 
