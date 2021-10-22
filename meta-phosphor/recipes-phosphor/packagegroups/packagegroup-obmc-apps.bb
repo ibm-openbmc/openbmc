@@ -196,4 +196,5 @@ RDEPENDS:${PN}-user-mgmt-ldap = " \
         ${PN}-user-mgmt \
         nss-pam-ldapd \
         phosphor-ldap \
+        phosphor-nslcd-cert-config \
         "
