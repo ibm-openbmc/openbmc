@@ -32,9 +32,7 @@ FILES:phosphor-ldap += " \
         ${bindir}/phosphor-ldap-mapper \
 "
 FILES:${PN} += " \
-        ${base_libdir}/systemd \
         ${datadir}/dbus-1 \
-        ${datadir}/phosphor-certificate-manager \
 "
 DBUS_SERVICE:phosphor-ldap = " \
         xyz.openbmc_project.Ldap.Config.service \
