@@ -6,7 +6,7 @@ FILES:${PN} += "${datadir}/network/*.json"
 
 PACKAGECONFIG:append = " sync-mac"
 
-PACKAGECONFIG[hyp-nw-config] = "-Dhyp-nw-config=enabled, -Dhyp-nw-config=disabled,,"
+PACKAGECONFIG[hyp-nw-config] = "-Dhyp-nw-config=true, -Dhyp-nw-config=false,,"
 SYSTEMD_SERVICE_${PN} += "${@bb.utils.contains('PACKAGECONFIG', 'hyp-nw-config', 'xyz.openbmc_project.Network.Hypervisor.service', '', d)}"
 
 install_network_configuration(){
