@@ -10,7 +10,7 @@ inherit meson
 inherit pkgconfig
 
 SRC_URI = "git://git@github.com/open-power/ecmd-pdbg.git"
-SRCREV = "4c5462290039c863f10b1dbc5ef82a82220bab2e"
+SRCREV = "349e04048409b4a619f4bc979aa5dd76e2bbc665"
 
 S = "${WORKDIR}/git"
 
