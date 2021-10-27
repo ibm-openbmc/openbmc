@@ -9,9 +9,9 @@ inherit autotools pkgconfig
 HOMEPAGE = "https://github.com/openbmc/libmctp"
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=0d30807bb7a4f16d36e96b78f9ed8fae"
-SRC_URI = "git://github.com/openbmc/libmctp \
+SRC_URI = "git://github.com/openbmc/libmctp;nobranch=1 \
 	   file://default"
-SRCREV = "ae59f4fe3a3ceaf52a682ada2a2b54855fad2408"
+SRCREV = "460a756f28c935abbf61aae32c762cc3ab0d867d"
 CONFFILES:${PN} = "${sysconfdir}/default/mctp"
 
 DEPENDS += "autoconf-archive-native \
