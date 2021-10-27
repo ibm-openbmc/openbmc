@@ -11,7 +11,7 @@ LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=0d30807bb7a4f16d36e96b78f9ed8fae"
 SRC_URI = "git://github.com/openbmc/libmctp;nobranch=1 \
 	   file://default"
-SRCREV = "460a756f28c935abbf61aae32c762cc3ab0d867d"
+SRCREV = "0f22eaa000b51d18d09eedbb7906449fdd75253d"
 
 DEPENDS += "autoconf-archive-native \
             systemd \
