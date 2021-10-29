@@ -45,7 +45,6 @@ RDEPENDS:${PN}-extras:remove:witherspoon-tacoma = "obmc-ikvm liberation-fonts ua
 RDEPENDS:${PN}-logging:append = " ${EXTRA_IBM_LOGGING_PKGS}"
 RDEPENDS:${PN}-leds:remove:witherspoon-tacoma = "phosphor-led-manager-faultmonitor"
 RDEPENDS:${PN}-devtools:remove:witherspoon = "rsync"
-RDEPENDS:${PN}-leds:remove:p10bmc = "phosphor-led-manager-faultmonitor"
 
 ${PN}-software-extras:append:ibm-ac-server = " phosphor-software-manager-sync"
 ${PN}-software-extras:append:p10bmc = " phosphor-software-manager-usb"
