@@ -5,11 +5,11 @@ SRC_URI = "git://git@github.com/ibm-openbmc/platform-fru-detect.git;protocol=ssh
 
 # Modify these as desired
 PV = "0.1+git${SRCPV}"
-SRCREV = "a1cb0c44e42822be67bfc5e3d5c11fc3221f0e37"
+SRCREV = "fab55ff386e41d1065b627fe860b2b827ac873b3"
 
 S = "${WORKDIR}/git"
 
-DEPENDS += "sdbusplus libgpiod phosphor-logging"
+DEPENDS += "sdbusplus libgpiod phosphor-logging googletest i2c-tools"
 
 inherit meson
 inherit systemd
