@@ -11,6 +11,7 @@ require panel.inc
 
 DEPENDS += "sdbusplus"
 DEPENDS += "systemd"
+DEPENDS += "pldm"
 
 S = "${WORKDIR}/git"
 
