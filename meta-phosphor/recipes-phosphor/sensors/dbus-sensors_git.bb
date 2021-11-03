@@ -78,7 +78,7 @@ DEPENDS = " \
     phosphor-logging \
     sdbusplus \
     "
-inherit meson systemd
+inherit pkgconfig meson systemd
 
 S = "${WORKDIR}/git"
 
