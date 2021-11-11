@@ -376,7 +376,7 @@
          {
             "inventoryPath":"/system/chassis/motherboard/cpu6",
             "type":"fruAndModule",
-	    "offset": 196608,
+            "offset": 196608,
             "extraInterfaces":{
                "xyz.openbmc_project.Inventory.Item.Cpu":null,
                "com.ibm.ipzvpd.Location":{
@@ -387,7 +387,7 @@
          {
             "inventoryPath":"/system/chassis/motherboard/cpu7",
             "type":"moduleOnly",
-	    "inheritEI": false,
+            "inheritEI": false,
             "extraInterfaces":{
                "xyz.openbmc_project.Inventory.Item.Cpu":null,
                "com.ibm.ipzvpd.Location":{
@@ -400,8 +400,8 @@
          {
             "inventoryPath":"/system/chassis/motherboard/cpu7",
             "type":"moduleOnly",
-	    "offset": 196608,
-	    "inherit": false,
+            "offset": 196608,
+            "inherit": false,
             "extraInterfaces":{
                "xyz.openbmc_project.Inventory.Item.Cpu":null,
                "com.ibm.ipzvpd.Location":{
@@ -413,8 +413,9 @@
     "/sys/bus/spi/drivers/at25/spi32.0/eeprom": [
          {
             "inventoryPath":"/system/chassis/motherboard/cpu0",
+            "cpuType" : "primary",
             "type":"fruAndModule",
-	    "offset": 196608,
+            "offset": 196608,
             "extraInterfaces":{
                "xyz.openbmc_project.Inventory.Item.Cpu":null,
                "com.ibm.ipzvpd.Location":{
@@ -425,7 +426,7 @@
          {
             "inventoryPath":"/system/chassis/motherboard/cpu1",
             "type":"moduleOnly",
-	    "inheritEI": false,
+            "inheritEI": false,
             "extraInterfaces":{
                "xyz.openbmc_project.Inventory.Item.Cpu":null,
                "com.ibm.ipzvpd.Location":{
@@ -438,8 +439,8 @@
          {
             "inventoryPath":"/system/chassis/motherboard/cpu1",
             "type":"moduleOnly",
-	    "offset": 196608,
-	    "inherit": false,
+            "offset": 196608,
+            "inherit": false,
             "extraInterfaces":{
                "xyz.openbmc_project.Inventory.Item.Cpu":null,
                "com.ibm.ipzvpd.Location":{
@@ -452,7 +453,7 @@
          {
             "inventoryPath":"/system/chassis/motherboard/cpu2",
             "type":"fruAndModule",
-	    "offset": 196608,
+            "offset": 196608,
             "extraInterfaces":{
                "xyz.openbmc_project.Inventory.Item.Cpu":null,
                "com.ibm.ipzvpd.Location":{
@@ -463,7 +464,7 @@
          {
             "inventoryPath":"/system/chassis/motherboard/cpu3",
             "type":"moduleOnly",
-	    "inheritEI": false,
+            "inheritEI": false,
             "extraInterfaces":{
                "xyz.openbmc_project.Inventory.Item.Cpu":null,
                "com.ibm.ipzvpd.Location":{
@@ -476,8 +477,8 @@
          {
             "inventoryPath":"/system/chassis/motherboard/cpu3",
             "type":"moduleOnly",
-	    "offset": 196608,
-	    "inherit": false,
+            "offset": 196608,
+            "inherit": false,
             "extraInterfaces":{
                "xyz.openbmc_project.Inventory.Item.Cpu":null,
                "com.ibm.ipzvpd.Location":{
@@ -490,7 +491,7 @@
          {
             "inventoryPath":"/system/chassis/motherboard/cpu4",
             "type":"fruAndModule",
-	    "offset": 196608,
+            "offset": 196608,
             "extraInterfaces":{
                "xyz.openbmc_project.Inventory.Item.Cpu":null,
                "com.ibm.ipzvpd.Location":{
@@ -501,7 +502,7 @@
          {
             "inventoryPath":"/system/chassis/motherboard/cpu5",
             "type":"moduleOnly",
-	    "inheritEI": false,
+            "inheritEI": false,
             "extraInterfaces":{
                "xyz.openbmc_project.Inventory.Item.Cpu":null,
                "com.ibm.ipzvpd.Location":{
@@ -514,8 +515,8 @@
          {
             "inventoryPath":"/system/chassis/motherboard/cpu5",
             "type":"moduleOnly",
-	    "inherit": false,
-	    "offset": 196608,
+            "inherit": false,
+            "offset": 196608,
             "extraInterfaces":{
                "xyz.openbmc_project.Inventory.Item.Cpu":null,
                "com.ibm.ipzvpd.Location":{
