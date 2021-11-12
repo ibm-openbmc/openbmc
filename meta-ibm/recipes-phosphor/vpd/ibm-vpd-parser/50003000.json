@@ -413,6 +413,7 @@
     "/sys/bus/spi/drivers/at25/spi32.0/eeprom": [
          {
             "inventoryPath":"/system/chassis/motherboard/cpu0",
+            "cpuType" : "primary",
             "type":"fruAndModule",
 	    "offset": 196608,
             "extraInterfaces":{
