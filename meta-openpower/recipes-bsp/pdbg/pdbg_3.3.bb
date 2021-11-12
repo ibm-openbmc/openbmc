@@ -4,9 +4,7 @@ LICENSE     = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://${S}/COPYING;md5=3b83ef96387f14655fc854ddc3c6bd57"
 
 SRC_URI += "git://github.com/open-power/pdbg.git"
-SRCREV = "af93bdf1fec460940b81aa4bb80e86d360fffe00"
-
-SRC_URI += "file://0001-libpdbg_sbe-fix-SBE-state-api-s-assert.patch"
+SRCREV = "3a3329e470e13b333af02ae42c144c7de5ee9a80"
 
 DEPENDS += "dtc-native"
 
