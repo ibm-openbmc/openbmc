@@ -7,3 +7,5 @@ RDEPENDS_${PN}-extras_append_mihawk = " phosphor-webui phosphor-image-signing wi
 RDEPENDS_${PN}-extras_append_mowgli = " phosphor-webui phosphor-image-signing phosphor-misc usb-network witherspoon-pfault-analysis"
 
 ${PN}-software-extras_append_ibm-ac-server = " phosphor-software-manager-sync"
+${PN}-software-extras_append_mihawk = " phosphor-software-manager-sync"
+${PN}-software-extras_append_mowgli = " phosphor-software-manager-sync"
