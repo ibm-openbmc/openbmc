@@ -1,0 +1,32 @@
+From 053e60ef43555eebe21d49ae7bebdfd55232193a Mon Sep 17 00:00:00 2001
+From: Andrew Geissler <geissonator@yahoo.com>
+Date: Tue, 16 Nov 2021 15:55:13 +0000
+Subject: [PATCH] dts:mowgli: disable flash side switch on watchdog
+
+This feature is causing more confusion that solutions. Just have the
+watchdog reset the BMC and continue running on the current side of
+flash.
+
+Signed-off-by: Andrew Geissler <geissonator@yahoo.com>
+---
+ arch/arm/boot/dts/aspeed-bmc-opp-mowgli.dts | 4 ----
+ 1 file changed, 4 deletions(-)
+
+diff --git a/arch/arm/boot/dts/aspeed-bmc-opp-mowgli.dts b/arch/arm/boot/dts/aspeed-bmc-opp-mowgli.dts
+index f5b9027e13e0..141e1d61fd5b 100644
+--- a/arch/arm/boot/dts/aspeed-bmc-opp-mowgli.dts
++++ b/arch/arm/boot/dts/aspeed-bmc-opp-mowgli.dts
+@@ -647,10 +647,6 @@
+ 	pinctrl-0 = <&pinctrl_wdtrst1_default>;
+ };
+ 
+-&wdt2 {
+-	aspeed,alt-boot;
+-};
+-
+ &ibt {
+ 	status = "okay";
+ };
+-- 
+2.25.1
+
