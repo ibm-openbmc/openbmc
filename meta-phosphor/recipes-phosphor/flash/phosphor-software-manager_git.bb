@@ -26,6 +26,9 @@ DBUS_PACKAGES = "${SOFTWARE_MGR_PACKAGES}"
 # handles the rest.
 SYSTEMD_PACKAGES = ""
 
+PACKAGECONFIG[verify-update-access-key] = " \
+    -Dverify-update-access-key=enabled, \
+    -Dverify-update-access-key=disabled"
 PACKAGECONFIG[verify_signature] = " \
     -Dverify-full-signature=enabled, \
     -Dverify-full-signature=disabled"
