@@ -4,6 +4,7 @@ EXTRA_OEMESON:append = " \
     -Dredfish-allow-deprecated-power-thermal=disabled \
     -Dredfish-new-powersubsystem-thermalsubsystem=enabled \
     -Drest=disabled \
+    -Dmutual-tls-auth=disabled \
 "
 
 EXTRA_OEMESON:append:p10bmc = " \
