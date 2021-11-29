@@ -47,6 +47,9 @@ IMAGE_FEATURES:remove:p10bmc = "obmc-fru-ipmi"
 IBM_EXTRA_USERS_PARAMS += " \
   groupadd wheel; \
   groupadd shellaccess; \
+  groupadd hostconsoleaccess; \
+  groupadd hypervisorconsoleaccess; \
+  groupadd priv-oemibmserviceagent; \
   "
 
 IBM_EXTRA_USERS_PARAMS += " \
@@ -64,7 +67,7 @@ IBM_EXTRA_USERS_PARAMS += " \
 
 # Add the "service" account.
 IBM_EXTRA_USERS_PARAMS += " \
-  useradd -M -d / --groups priv-oemibmserviceagent,redfish,web,wheel,shellaccess service; \
+  useradd -M -d / --groups priv-oemibmserviceagent,hostconsoleaccess,hypervisorconsoleaccess,redfish,web,wheel,shellaccess service; \
   "
 
 # This is recipe specific to ensure it takes effect.
