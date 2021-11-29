@@ -45,22 +45,25 @@ IMAGE_FEATURES:remove:p10bmc = "obmc-fru-ipmi"
 IBM_EXTRA_USERS_PARAMS += " \
   groupadd wheel; \
   groupadd shellaccess; \
+  groupadd hostconsoleaccess; \
+  groupadd hypervisorconsoleaccess; \
+  groupadd priv-oemibmserviceagent; \
   "
 
 IBM_EXTRA_USERS_PARAMS += " \
   usermod -p '\$6\$UGMqyqdG\$GqTb3tXPFx9AJlzTw/8X5RoW2Z.100dT.acuk8AFJfNQYr.ZRL8itMIgLqsdq46RNHgiv78XayOSl.IbR4DFU.' root; \
-  usermod --append --groups shellaccess root; \
+  usermod --append --groups hypervisorconsoleaccess,hostconsoleaccess,shellaccess root; \
   "
 
 # Add the "admin" account.
 IBM_EXTRA_USERS_PARAMS += " \
-  useradd -M -d / --groups priv-admin,redfish,web -s /sbin/nologin admin; \
+  useradd -M -d / --groups hostconsoleaccess,priv-admin,redfish,web -s /sbin/nologin admin; \
   usermod -p ${DEFAULT_OPENBMC_PASSWORD} admin; \
   "
 
 # Add the "service" account.
 IBM_EXTRA_USERS_PARAMS += " \
-  useradd -M -d / --groups priv-oemibmserviceagent,redfish,web,wheel,shellaccess service; \
+  useradd -M -d / --groups priv-oemibmserviceagent,hostconsoleaccess,hypervisorconsoleaccess,redfish,web,wheel,shellaccess service; \
   "
 
 # This is recipe specific to ensure it takes effect.
