@@ -3,6 +3,21 @@ FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 SRC_URI:remove = "file://${BPN}.conf"
 SRC_URI += "file://server.ttyVUART0.conf"
 
+do_configure:append() {
+    if [ -e ${S}/conf/obmc-console-ssh@.service.in ] ; then
+        if ! grep -q "DROPBEAR_EXTRA_ARGS $DROPBEAR_PERMISSION_ARGS" ${S}/conf/obmc-console-ssh@.service.in 2>/dev/null ; then
+            sed -i.bak 's/DROPBEAR_EXTRA_ARGS"*\([^"]*\)"*/DROPBEAR_EXTRA_ARGS $DROPBEAR_PERMISSION_ARGS%i/' ${S}/conf/obmc-console-ssh@.service.in
+            if [ $? -ne 0 ]; then
+                echo "sed replacement failed"
+                exit 1
+            fi
+        fi
+    else
+        echo '${S}/conf/obmc-console-ssh@.service.in not found'
+        exit 1
+    fi
+}
+
 install_concurrent_console_config() {
         # Install configuration for the servers and clients. Keep commandline
         # compatibility with previous configurations by defaulting to not
@@ -44,6 +59,7 @@ EXTRA_OECONF:append:p10bmc = " --enable-concurrent-servers"
 do_install:append:p10bmc() {
         install_concurrent_console_config
 }
+
 
 SRC_URI:append:witherspoon-tacoma = " file://client.2201.conf"
 SRC_URI:append:witherspoon-tacoma = " file://server.ttyVUART1.conf"
