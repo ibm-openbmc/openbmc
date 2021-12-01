@@ -13,12 +13,20 @@ events:
                 - /system/chassis/motherboard/cpu1
                 - /system/chassis/motherboard/cpu2
                 - /system/chassis/motherboard/cpu3
+                - /system/chassis/motherboard/cpu4
+                - /system/chassis/motherboard/cpu5
+                - /system/chassis/motherboard/cpu6
+                - /system/chassis/motherboard/cpu7
                 - /system/chassis/motherboard/pcieslot5
                 - /system/chassis/motherboard/pcie_cable_card0
                 - /system/chassis/motherboard/pcie_cable_card0/cxp_top
                 - /system/chassis/motherboard/pcie_cable_card0/cxp_bot
                 - /system/chassis/motherboard/pcie_cable_card1
+                - /system/chassis/motherboard/pcie_cable_card1/cxp_top
+                - /system/chassis/motherboard/pcie_cable_card1/cxp_bot
                 - /system/chassis/motherboard/pcie_cable_card2
+                - /system/chassis/motherboard/pcie_cable_card2/cxp_top
+                - /system/chassis/motherboard/pcie_cable_card2/cxp_bot
                 - /system/chassis/motherboard/pcie_cable_card3
                 - /system/chassis/motherboard/pcie_cable_card3/cxp_top
                 - /system/chassis/motherboard/pcie_cable_card3/cxp_bot
@@ -26,10 +34,20 @@ events:
                 - /system/chassis/motherboard/pcie_cable_card4/cxp_top
                 - /system/chassis/motherboard/pcie_cable_card4/cxp_bot
                 - /system/chassis/motherboard/pcie_cable_card6
+                - /system/chassis/motherboard/pcie_cable_card6/cxp_top
+                - /system/chassis/motherboard/pcie_cable_card6/cxp_bot
                 - /system/chassis/motherboard/pcie_cable_card7
+                - /system/chassis/motherboard/pcie_cable_card7/cxp_top
+                - /system/chassis/motherboard/pcie_cable_card7/cxp_bot
                 - /system/chassis/motherboard/pcie_cable_card8
+                - /system/chassis/motherboard/pcie_cable_card8/cxp_top
+                - /system/chassis/motherboard/pcie_cable_card8/cxp_bot
                 - /system/chassis/motherboard/pcie_cable_card9
+                - /system/chassis/motherboard/pcie_cable_card9/cxp_top
+                - /system/chassis/motherboard/pcie_cable_card9/cxp_bot
                 - /system/chassis/motherboard/pcie_cable_card10
                 - /system/chassis/motherboard/pcie_cable_card10/cxp_top
                 - /system/chassis/motherboard/pcie_cable_card10/cxp_bot
                 - /system/chassis/motherboard/pcie_cable_card11
+                - /system/chassis/motherboard/pcie_cable_card11/cxp_top
+                - /system/chassis/motherboard/pcie_cable_card11/cxp_bot
