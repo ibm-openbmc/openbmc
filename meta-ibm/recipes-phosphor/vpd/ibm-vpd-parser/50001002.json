@@ -84,8 +84,10 @@
         "inventoryPath": "/system/chassis/motherboard/pcieslot6",
         "inherit": false,
         "extraInterfaces": {
-          "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
           "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
+          "xyz.openbmc_project.Inventory.Item.PCIeSlot": {
+              "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.FullLength"
+          },
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P0-C6"
           }
@@ -95,8 +97,10 @@
         "inventoryPath": "/system/chassis/motherboard/pcieslot7",
         "inherit": false,
         "extraInterfaces": {
-          "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
           "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
+          "xyz.openbmc_project.Inventory.Item.PCIeSlot": {
+              "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.FullLength"
+          },
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P0-C7"
           }
@@ -106,8 +110,10 @@
         "inventoryPath": "/system/chassis/motherboard/pcieslot8",
         "inherit": false,
         "extraInterfaces": {
-          "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
           "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
+          "xyz.openbmc_project.Inventory.Item.PCIeSlot": {
+              "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.FullLength"
+          },
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P0-C8"
           }
@@ -117,8 +123,10 @@
         "inventoryPath": "/system/chassis/motherboard/pcieslot9",
         "inherit": false,
         "extraInterfaces": {
-          "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
           "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
+          "xyz.openbmc_project.Inventory.Item.PCIeSlot": {
+              "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.FullLength"
+          },
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P0-C9"
           }
@@ -128,8 +136,10 @@
         "inventoryPath": "/system/chassis/motherboard/pcieslot10",
         "inherit": false,
         "extraInterfaces": {
-          "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
           "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
+          "xyz.openbmc_project.Inventory.Item.PCIeSlot": {
+              "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.FullLength"
+          },
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P0-C10"
           }
@@ -139,8 +149,10 @@
         "inventoryPath": "/system/chassis/motherboard/pcieslot11",
         "inherit": false,
         "extraInterfaces": {
-          "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
           "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
+          "xyz.openbmc_project.Inventory.Item.PCIeSlot": {
+              "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.FullLength"
+          },
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P0-C11"
           }
@@ -930,8 +942,10 @@
         "inventoryPath": "/system/chassis/motherboard/disk_backplane0/nvme0",
         "inherit": false,
         "extraInterfaces": {
-          "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
           "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
+          "xyz.openbmc_project.Inventory.Item.PCIeSlot": {
+              "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.U_2"
+          },
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P1-C0"
           }
@@ -941,8 +955,10 @@
         "inventoryPath": "/system/chassis/motherboard/disk_backplane0/nvme1",
         "inherit": false,
         "extraInterfaces": {
-          "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
           "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
+          "xyz.openbmc_project.Inventory.Item.PCIeSlot": {
+              "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.U_2"
+          },
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P1-C1"
           }
@@ -952,8 +968,10 @@
         "inventoryPath": "/system/chassis/motherboard/disk_backplane0/nvme2",
         "inherit": false,
         "extraInterfaces": {
-          "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
           "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
+          "xyz.openbmc_project.Inventory.Item.PCIeSlot": {
+              "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.U_2"
+          },
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P1-C2"
           }
@@ -963,8 +981,10 @@
         "inventoryPath": "/system/chassis/motherboard/disk_backplane0/nvme3",
         "inherit": false,
         "extraInterfaces": {
-          "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
           "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
+          "xyz.openbmc_project.Inventory.Item.PCIeSlot": {
+              "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.U_2"
+          },
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P1-C3"
           }
@@ -974,8 +994,10 @@
         "inventoryPath": "/system/chassis/motherboard/disk_backplane0/nvme4",
         "inherit": false,
         "extraInterfaces": {
-          "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
           "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
+          "xyz.openbmc_project.Inventory.Item.PCIeSlot": {
+              "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.U_2"
+          },
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P1-C4"
           }
@@ -985,8 +1007,10 @@
         "inventoryPath": "/system/chassis/motherboard/disk_backplane0/nvme5",
         "inherit": false,
         "extraInterfaces": {
-          "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
           "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
+          "xyz.openbmc_project.Inventory.Item.PCIeSlot": {
+              "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.U_2"
+          },
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P1-C5"
           }
@@ -996,8 +1020,10 @@
         "inventoryPath": "/system/chassis/motherboard/disk_backplane0/nvme6",
         "inherit": false,
         "extraInterfaces": {
-          "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
           "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
+          "xyz.openbmc_project.Inventory.Item.PCIeSlot": {
+              "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.U_2"
+          },
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P1-C6"
           }
@@ -1007,8 +1033,10 @@
         "inventoryPath": "/system/chassis/motherboard/disk_backplane0/nvme7",
         "inherit": false,
         "extraInterfaces": {
-          "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
           "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
+          "xyz.openbmc_project.Inventory.Item.PCIeSlot": {
+              "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.U_2"
+          },
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P1-C7"
           }
@@ -1029,8 +1057,10 @@
         "inventoryPath": "/system/chassis/motherboard/disk_backplane1/nvme0",
         "inherit": false,
         "extraInterfaces": {
-          "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
           "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
+          "xyz.openbmc_project.Inventory.Item.PCIeSlot": {
+              "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.U_2"
+          },
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P2-C0"
           }
@@ -1040,8 +1070,10 @@
         "inventoryPath": "/system/chassis/motherboard/disk_backplane1/nvme1",
         "inherit": false,
         "extraInterfaces": {
-          "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
           "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
+          "xyz.openbmc_project.Inventory.Item.PCIeSlot": {
+              "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.U_2"
+          },
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P2-C1"
           }
@@ -1051,8 +1083,10 @@
         "inventoryPath": "/system/chassis/motherboard/disk_backplane1/nvme2",
         "inherit": false,
         "extraInterfaces": {
-          "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
           "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
+          "xyz.openbmc_project.Inventory.Item.PCIeSlot": {
+              "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.U_2"
+          },
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P2-C2"
           }
@@ -1062,8 +1096,10 @@
         "inventoryPath": "/system/chassis/motherboard/disk_backplane1/nvme3",
         "inherit": false,
         "extraInterfaces": {
-          "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
           "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
+          "xyz.openbmc_project.Inventory.Item.PCIeSlot": {
+              "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.U_2"
+          },
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P2-C3"
           }
@@ -1073,8 +1109,10 @@
         "inventoryPath": "/system/chassis/motherboard/disk_backplane1/nvme4",
         "inherit": false,
         "extraInterfaces": {
-          "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
           "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
+          "xyz.openbmc_project.Inventory.Item.PCIeSlot": {
+              "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.U_2"
+          },
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P2-C4"
           }
@@ -1084,8 +1122,10 @@
         "inventoryPath": "/system/chassis/motherboard/disk_backplane1/nvme5",
         "inherit": false,
         "extraInterfaces": {
-          "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
           "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
+          "xyz.openbmc_project.Inventory.Item.PCIeSlot": {
+              "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.U_2"
+          },
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P2-C5"
           }
@@ -1095,8 +1135,10 @@
         "inventoryPath": "/system/chassis/motherboard/disk_backplane1/nvme6",
         "inherit": false,
         "extraInterfaces": {
-          "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
           "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
+          "xyz.openbmc_project.Inventory.Item.PCIeSlot": {
+              "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.U_2"
+          },
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P2-C6"
           }
@@ -1106,8 +1148,10 @@
         "inventoryPath": "/system/chassis/motherboard/disk_backplane1/nvme7",
         "inherit": false,
         "extraInterfaces": {
-          "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
           "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
+          "xyz.openbmc_project.Inventory.Item.PCIeSlot": {
+              "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.U_2"
+          },
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P2-C7"
           }
@@ -1128,8 +1172,10 @@
         "inventoryPath": "/system/chassis/motherboard/disk_backplane2/nvme0",
         "inherit": false,
         "extraInterfaces": {
-          "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
           "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
+          "xyz.openbmc_project.Inventory.Item.PCIeSlot": {
+              "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.U_2"
+          },
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P3-C0"
           }
@@ -1139,8 +1185,10 @@
         "inventoryPath": "/system/chassis/motherboard/disk_backplane2/nvme1",
         "inherit": false,
         "extraInterfaces": {
-          "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
           "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
+          "xyz.openbmc_project.Inventory.Item.PCIeSlot": {
+              "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.U_2"
+          },
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P3-C1"
           }
@@ -1150,8 +1198,10 @@
         "inventoryPath": "/system/chassis/motherboard/disk_backplane2/nvme2",
         "inherit": false,
         "extraInterfaces": {
-          "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
           "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
+          "xyz.openbmc_project.Inventory.Item.PCIeSlot": {
+              "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.U_2"
+          },
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P3-C2"
           }
@@ -1161,8 +1211,10 @@
         "inventoryPath": "/system/chassis/motherboard/disk_backplane2/nvme3",
         "inherit": false,
         "extraInterfaces": {
-          "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
           "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
+          "xyz.openbmc_project.Inventory.Item.PCIeSlot": {
+              "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.U_2"
+          },
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P3-C3"
           }
@@ -1172,8 +1224,10 @@
         "inventoryPath": "/system/chassis/motherboard/disk_backplane2/nvme4",
         "inherit": false,
         "extraInterfaces": {
-          "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
           "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
+          "xyz.openbmc_project.Inventory.Item.PCIeSlot": {
+              "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.U_2"
+          },
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P3-C4"
           }
@@ -1183,8 +1237,10 @@
         "inventoryPath": "/system/chassis/motherboard/disk_backplane2/nvme5",
         "inherit": false,
         "extraInterfaces": {
-          "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
           "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
+          "xyz.openbmc_project.Inventory.Item.PCIeSlot": {
+              "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.U_2"
+          },
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P3-C5"
           }
@@ -1194,8 +1250,10 @@
         "inventoryPath": "/system/chassis/motherboard/disk_backplane2/nvme6",
         "inherit": false,
         "extraInterfaces": {
-          "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
           "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
+          "xyz.openbmc_project.Inventory.Item.PCIeSlot": {
+              "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.U_2"
+          },
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P3-C6"
           }
@@ -1205,8 +1263,10 @@
         "inventoryPath": "/system/chassis/motherboard/disk_backplane2/nvme7",
         "inherit": false,
         "extraInterfaces": {
-          "xyz.openbmc_project.Inventory.Item.PCIeSlot": null,
           "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
+          "xyz.openbmc_project.Inventory.Item.PCIeSlot": {
+              "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.U_2"
+          },
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P3-C7"
           }
