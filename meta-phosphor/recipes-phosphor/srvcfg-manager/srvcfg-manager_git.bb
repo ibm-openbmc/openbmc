@@ -12,11 +12,11 @@ DEPENDS = " \
     sdbusplus \
     systemd \
     "
-SRCREV = "a1292a69769414c7661ca407e3d567cfd01cf0ae"
+SRCREV = "91a858cd796d38d7425f8bf55e5d036c8cfe6e18"
 PV = "1.0+git${SRCPV}"
 PR = "r1"
 
-SRC_URI = "git://github.com/openbmc/service-config-manager;branch=master;protocol=https"
+SRC_URI = "git://github.com/ibm-openbmc/service-config-manager;nobranch=1;protocol=https"
 
 S = "${WORKDIR}/git"
 SYSTEMD_SERVICE:${PN} = "srvcfg-manager.service"
