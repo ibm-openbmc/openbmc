@@ -259,7 +259,7 @@
         "inherit": false,
         "extraInterfaces": {
           "com.ibm.ipzvpd.Location" : {
-              "LocationCode" : "Ufcs-A3"
+              "LocationCode" : "Ufcs-A4"
           },
           "com.ibm.ipzvpd.VINI" : {
               "FN": [48, 50, 89, 75, 51, 50, 51],
@@ -282,6 +282,196 @@
               "LocationCode" : "Ufcs-P0-E0"
           }
         }
+      },
+      {
+      "inventoryPath": "/system/chassis/motherboard/connector0",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-T0"
+          }
+        }
+      },
+      {
+      "inventoryPath": "/system/chassis/motherboard/connector1",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-T1"
+          }
+        }
+      },
+      {
+      "inventoryPath": "/system/chassis/motherboard/connector2",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-T2"
+          }
+        }
+      },
+      {
+      "inventoryPath": "/system/chassis/motherboard/connector3",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-T3"
+          }
+        }
+      },
+      {
+      "inventoryPath": "/system/chassis/motherboard/connector4",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-T4"
+          }
+        }
+      },
+      {
+      "inventoryPath": "/system/chassis/motherboard/connector7",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-T7"
+          }
+        }
+      },
+      {
+      "inventoryPath": "/system/chassis/motherboard/connector8",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-T8"
+          }
+        }
+      },
+      {
+      "inventoryPath": "/system/chassis/motherboard/connector9",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-T9"
+          }
+        }
+      },
+      {
+      "inventoryPath": "/system/chassis/motherboard/connector11",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-T11"
+          }
+        }
+      },
+      {
+      "inventoryPath": "/system/chassis/motherboard/connector12",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-T12"
+          }
+        }
+      },
+      {
+      "inventoryPath": "/system/chassis/motherboard/connector13",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-T13"
+          }
+        }
+      },
+      {
+      "inventoryPath": "/system/chassis/motherboard/connector14",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-T14"
+          }
+        }
+      },
+      {
+      "inventoryPath": "/system/chassis/motherboard/connector15",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-T15"
+          }
+        }
+      },
+      {
+      "inventoryPath": "/system/chassis/motherboard/connector17",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-T17"
+          }
+        }
+      },
+      {
+      "inventoryPath": "/system/chassis/motherboard/connector18",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-T18"
+          }
+        }
+      },
+      {
+      "inventoryPath": "/system/chassis/motherboard/rdx0",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Board": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P4"
+          }
+        }
+      },
+      {
+      "inventoryPath": "/system/chassis/motherboard/rdx0/media0",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Drive": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P4-D0"
+          }
+        }
+      },
+      {
+      "inventoryPath": "/system/chassis/motherboard/rdx0/rdx_power_connector",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P4-T0"
+          }
+        }
+      },
+      {
+      "inventoryPath": "/system/chassis/motherboard/rdx0/rdx_usb_connector",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P4-T1"
+          }
+        }
       }
     ],
     "/sys/bus/i2c/drivers/at24/8-0051/eeprom": [
@@ -300,6 +490,7 @@
         "noprime": true,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.Ethernet": null,
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P0-C5-T0"
           },
@@ -318,6 +509,7 @@
         "noprime": true,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.Ethernet": null,
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P0-C5-T1"
           },
@@ -327,6 +519,36 @@
               "keywordName": "Z1",
               "encoding": "MAC"
             }
+          }
+        }
+      },
+      {
+      "inventoryPath": "/system/chassis/motherboard/ebmc_card_bmc/usb0",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-C5-T2"
+          }
+        }
+      },
+      {
+      "inventoryPath": "/system/chassis/motherboard/ebmc_card_bmc/displayport0",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-C5-T3"
+          }
+        }
+      },
+      {
+      "inventoryPath": "/system/chassis/motherboard/ebmc_card_bmc/usb1",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-C5-T4"
           }
         }
       }
@@ -1041,6 +1263,66 @@
               "LocationCode" : "Ufcs-P1-C7"
           }
         }
+      },
+      {
+      "inventoryPath": "/system/chassis/motherboard/disk_backplane0/dp0_connector0",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P1-T0"
+          }
+        }
+      },
+      {
+      "inventoryPath": "/system/chassis/motherboard/disk_backplane0/dp0_connector1",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P1-T1"
+          }
+        }
+      },
+      {
+      "inventoryPath": "/system/chassis/motherboard/disk_backplane0/dp0_connector2",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P1-T2"
+          }
+        }
+      },
+      {
+      "inventoryPath": "/system/chassis/motherboard/disk_backplane0/dp0_connector3",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P1-T3"
+          }
+        }
+      },
+      {
+      "inventoryPath": "/system/chassis/motherboard/disk_backplane0/dp0_connector4",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P1-T4"
+          }
+        }
+      },
+      {
+      "inventoryPath": "/system/chassis/motherboard/disk_backplane0/dp0_connector5",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P1-T5"
+          }
+        }
       }
     ],
     "/sys/bus/i2c/drivers/at24/14-0050/eeprom": [
@@ -1156,6 +1438,66 @@
               "LocationCode" : "Ufcs-P2-C7"
           }
         }
+      },
+      {
+      "inventoryPath": "/system/chassis/motherboard/disk_backplane1/dp1_connector0",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P2-T0"
+          }
+        }
+      },
+      {
+      "inventoryPath": "/system/chassis/motherboard/disk_backplane1/dp1_connector1",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P2-T1"
+          }
+        }
+      },
+      {
+      "inventoryPath": "/system/chassis/motherboard/disk_backplane1/dp1_connector2",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P2-T2"
+          }
+        }
+      },
+      {
+      "inventoryPath": "/system/chassis/motherboard/disk_backplane1/dp1_connector3",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P2-T3"
+          }
+        }
+      },
+      {
+      "inventoryPath": "/system/chassis/motherboard/disk_backplane1/dp1_connector4",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P2-T4"
+          }
+        }
+      },
+      {
+      "inventoryPath": "/system/chassis/motherboard/disk_backplane1/dp1_connector5",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P2-T5"
+          }
+        }
       }
     ],
     "/sys/bus/i2c/drivers/at24/15-0050/eeprom": [
@@ -1269,6 +1611,66 @@
           },
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P3-C7"
+          }
+        }
+      },
+      {
+      "inventoryPath": "/system/chassis/motherboard/disk_backplane2/dp2_connector0",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P3-T0"
+          }
+        }
+      },
+      {
+      "inventoryPath": "/system/chassis/motherboard/disk_backplane2/dp2_connector1",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P3-T1"
+          }
+        }
+      },
+      {
+      "inventoryPath": "/system/chassis/motherboard/disk_backplane2/dp2_connector2",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P3-T2"
+          }
+        }
+      },
+      {
+      "inventoryPath": "/system/chassis/motherboard/disk_backplane2/dp2_connector3",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P3-T3"
+          }
+        }
+      },
+      {
+      "inventoryPath": "/system/chassis/motherboard/disk_backplane2/dp2_connector4",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P3-T4"
+          }
+        }
+      },
+      {
+      "inventoryPath": "/system/chassis/motherboard/disk_backplane2/dp2_connector5",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P3-T5"
           }
         }
       }
