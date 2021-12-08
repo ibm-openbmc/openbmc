@@ -11,7 +11,14 @@ inherit meson obmc-phosphor-utils pkgconfig
 inherit systemd
 
 SRC_URI += "git://github.com/openbmc/openpower-proc-control"
-SRCREV = "0ac7c38f64ce2c5a170ab6fe219d26e599713da3"
+SRCREV = "b5fa942a4fa02fe4500674b32ee16e31e802f1de"
+
+# Added the patch to disable a feature called "Reinit CEC device tree
+# during boot" because its needs system-specific r/o DEVTREE.
+# But currently, the BMC single image pointing the Rainer r/o DEVTREE
+# instead of the respective system device tree so disabled until
+# adding the support because we could not boot the system with this feature.
+SRC_URI += "file://0001-Revert-PHAL-enabled-devtree-attributes-reinit-during.patch"
 
 DEPENDS += " \
         phosphor-logging \
