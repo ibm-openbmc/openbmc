@@ -1419,6 +1419,12 @@
         "inventoryPath": "/system/chassis/motherboard/pcieslot0/pcie_card0/cxp_top",
         "inherit": false,
         "noprime": true,
+        "ccin": [
+          "2CE2",
+          "58FF",
+          "6B92",
+          "6B99"
+        ],
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.Connector": null,
           "com.ibm.ipzvpd.Location" : {
@@ -1430,6 +1436,12 @@
         "inventoryPath": "/system/chassis/motherboard/pcieslot0/pcie_card0/cxp_bot",
         "inherit": false,
         "noprime": true,
+        "ccin": [
+          "2CE2",
+          "58FF",
+          "6B92",
+          "6B99"
+        ],
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.Connector": null,
           "com.ibm.ipzvpd.Location" : {
@@ -1470,6 +1482,12 @@
         "inventoryPath": "/system/chassis/motherboard/pcieslot3/pcie_card3/cxp_top",
         "inherit": false,
         "noprime": true,
+        "ccin": [
+          "2CE2",
+          "58FF",
+          "6B92",
+          "6B99"
+        ],
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.Connector": null,
           "com.ibm.ipzvpd.Location" : {
@@ -1481,6 +1499,12 @@
         "inventoryPath": "/system/chassis/motherboard/pcieslot3/pcie_card3/cxp_bot",
         "inherit": false,
         "noprime": true,
+        "ccin": [
+          "2CE2",
+          "58FF",
+          "6B92",
+          "6B99"
+        ],
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.Connector": null,
           "com.ibm.ipzvpd.Location" : {
@@ -1521,6 +1545,12 @@
         "inventoryPath": "/system/chassis/motherboard/pcieslot4/pcie_card4/cxp_top",
         "inherit": false,
         "noprime": true,
+        "ccin": [
+          "2CE2",
+          "58FF",
+          "6B92",
+          "6B99"
+        ],
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.Connector": null,
           "com.ibm.ipzvpd.Location" : {
@@ -1532,6 +1562,12 @@
         "inventoryPath": "/system/chassis/motherboard/pcieslot4/pcie_card4/cxp_bot",
         "inherit": false,
         "noprime": true,
+        "ccin": [
+          "2CE2",
+          "58FF",
+          "6B92",
+          "6B99"
+        ],
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.Connector": null,
           "com.ibm.ipzvpd.Location" : {
@@ -1572,6 +1608,12 @@
         "inventoryPath": "/system/chassis/motherboard/pcieslot10/pcie_card10/cxp_top",
         "inherit": false,
         "noprime": true,
+        "ccin": [
+          "2CE2",
+          "58FF",
+          "6B92",
+          "6B99"
+        ],
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.Connector": null,
           "com.ibm.ipzvpd.Location" : {
@@ -1583,11 +1625,65 @@
         "inventoryPath": "/system/chassis/motherboard/pcieslot10/pcie_card10/cxp_bot",
         "inherit": false,
         "noprime": true,
+        "ccin": [
+          "2CE2",
+          "58FF",
+          "6B92",
+          "6B99"
+        ],
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.Connector": null,
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P0-C10-T1"
           }
+        }
+      },
+      {
+        "inventoryPath": "/system/chassis/motherboard/pcieslot10/pcie_card10/c10_connector1",
+        "inherit": false,
+        "noprime": true,
+        "ccin": [
+          "6B87",
+          "6B89"
+        ],
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null
+        }
+      },
+      {
+        "inventoryPath": "/system/chassis/motherboard/pcieslot10/pcie_card10/c10_connector2",
+        "inherit": false,
+        "noprime": true,
+        "ccin": [
+          "6B87",
+          "6B89"
+        ],
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null
+        }
+      },
+      {
+        "inventoryPath": "/system/chassis/motherboard/pcieslot10/pcie_card10/c10_connector3",
+        "inherit": false,
+        "noprime": true,
+        "ccin": [
+          "6B87",
+          "6B89"
+        ],
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null
+        }
+      },
+      {
+        "inventoryPath": "/system/chassis/motherboard/pcieslot10/pcie_card10/c10_connector4",
+        "inherit": false,
+        "noprime": true,
+        "ccin": [
+          "6B87",
+          "6B89"
+        ],
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null
         }
       }
     ],
@@ -1725,6 +1821,54 @@
               "Address": 81
           }
         }
+      },
+      {
+        "inventoryPath": "/system/chassis/motherboard/pcieslot11/pcie_card11/c11_connector1",
+        "inherit": false,
+        "noprime": true,
+        "ccin": [
+          "6B87",
+          "6B89"
+        ],
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null
+        }
+      },
+      {
+        "inventoryPath": "/system/chassis/motherboard/pcieslot11/pcie_card11/c11_connector2",
+        "inherit": false,
+        "noprime": true,
+        "ccin": [
+          "6B87",
+          "6B89"
+        ],
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null
+        }
+      },
+      {
+        "inventoryPath": "/system/chassis/motherboard/pcieslot11/pcie_card11/c11_connector3",
+        "inherit": false,
+        "noprime": true,
+        "ccin": [
+          "6B87",
+          "6B89"
+        ],
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null
+        }
+      },
+      {
+        "inventoryPath": "/system/chassis/motherboard/pcieslot11/pcie_card11/c11_connector4",
+        "inherit": false,
+        "noprime": true,
+        "ccin": [
+          "6B87",
+          "6B89"
+        ],
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null
+        }
       }
     ],
     "/sys/bus/i2c/drivers/at24/4-0051/eeprom": [
@@ -1780,6 +1924,54 @@
               "Bus": 6,
               "Address": 81
           }
+        }
+      },
+      {
+        "inventoryPath": "/system/chassis/motherboard/pcieslot8/pcie_card8/c8_connector1",
+        "inherit": false,
+        "noprime": true,
+        "ccin": [
+          "6B87",
+          "6B89"
+        ],
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null
+        }
+      },
+      {
+        "inventoryPath": "/system/chassis/motherboard/pcieslot8/pcie_card8/c8_connector2",
+        "inherit": false,
+        "noprime": true,
+        "ccin": [
+          "6B87",
+          "6B89"
+        ],
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null
+        }
+      },
+      {
+        "inventoryPath": "/system/chassis/motherboard/pcieslot8/pcie_card8/c8_connector3",
+        "inherit": false,
+        "noprime": true,
+        "ccin": [
+          "6B87",
+          "6B89"
+        ],
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null
+        }
+      },
+      {
+        "inventoryPath": "/system/chassis/motherboard/pcieslot8/pcie_card8/c8_connector4",
+        "inherit": false,
+        "noprime": true,
+        "ccin": [
+          "6B87",
+          "6B89"
+        ],
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null
         }
       }
     ],
