@@ -974,8 +974,7 @@
         "inherit": false,
         "noprime": true,
         "ccin": [
-          "6B87",
-          "6B89"
+          "6B87"
         ],
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.Connector": null
@@ -986,8 +985,7 @@
         "inherit": false,
         "noprime": true,
         "ccin": [
-          "6B87",
-          "6B89"
+          "6B87"
         ],
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.Connector": null
@@ -998,8 +996,7 @@
         "inherit": false,
         "noprime": true,
         "ccin": [
-          "6B87",
-          "6B89"
+          "6B87"
         ],
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.Connector": null
@@ -1010,8 +1007,7 @@
         "inherit": false,
         "noprime": true,
         "ccin": [
-          "6B87",
-          "6B89"
+          "6B87"
         ],
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.Connector": null
@@ -1158,8 +1154,7 @@
         "inherit": false,
         "noprime": true,
         "ccin": [
-          "6B87",
-          "6B89"
+          "6B87"
         ],
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.Connector": null
@@ -1170,8 +1165,7 @@
         "inherit": false,
         "noprime": true,
         "ccin": [
-          "6B87",
-          "6B89"
+          "6B87"
         ],
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.Connector": null
@@ -1182,8 +1176,7 @@
         "inherit": false,
         "noprime": true,
         "ccin": [
-          "6B87",
-          "6B89"
+          "6B87"
         ],
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.Connector": null
@@ -1194,8 +1187,7 @@
         "inherit": false,
         "noprime": true,
         "ccin": [
-          "6B87",
-          "6B89"
+          "6B87"
         ],
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.Connector": null
@@ -1262,8 +1254,7 @@
         "inherit": false,
         "noprime": true,
         "ccin": [
-          "6B87",
-          "6B89"
+          "6B87"
         ],
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.Connector": null
@@ -1274,8 +1265,7 @@
         "inherit": false,
         "noprime": true,
         "ccin": [
-          "6B87",
-          "6B89"
+          "6B87"
         ],
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.Connector": null
@@ -1286,8 +1276,7 @@
         "inherit": false,
         "noprime": true,
         "ccin": [
-          "6B87",
-          "6B89"
+          "6B87"
         ],
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.Connector": null
@@ -1298,8 +1287,7 @@
         "inherit": false,
         "noprime": true,
         "ccin": [
-          "6B87",
-          "6B89"
+          "6B87"
         ],
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.Connector": null
