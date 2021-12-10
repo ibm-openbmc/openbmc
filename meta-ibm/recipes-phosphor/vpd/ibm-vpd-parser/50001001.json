@@ -1531,6 +1531,17 @@
         }
       },
       {
+        "inventoryPath": "/system/chassis/motherboard/pcieslot10/pcie_card10/c10_connector0",
+        "inherit": false,
+        "noprime": true,
+        "ccin": [
+          "6B87"
+        ],
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null
+        }
+      },
+      {
         "inventoryPath": "/system/chassis/motherboard/pcieslot10/pcie_card10/c10_connector1",
         "inherit": false,
         "noprime": true,
@@ -1554,17 +1565,6 @@
       },
       {
         "inventoryPath": "/system/chassis/motherboard/pcieslot10/pcie_card10/c10_connector3",
-        "inherit": false,
-        "noprime": true,
-        "ccin": [
-          "6B87"
-        ],
-        "extraInterfaces": {
-          "xyz.openbmc_project.Inventory.Item.Connector": null
-        }
-      },
-      {
-        "inventoryPath": "/system/chassis/motherboard/pcieslot10/pcie_card10/c10_connector4",
         "inherit": false,
         "noprime": true,
         "ccin": [
@@ -1711,6 +1711,17 @@
         }
       },
       {
+        "inventoryPath": "/system/chassis/motherboard/pcieslot11/pcie_card11/c11_connector0",
+        "inherit": false,
+        "noprime": true,
+        "ccin": [
+          "6B87"
+        ],
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null
+        }
+      },
+      {
         "inventoryPath": "/system/chassis/motherboard/pcieslot11/pcie_card11/c11_connector1",
         "inherit": false,
         "noprime": true,
@@ -1734,17 +1745,6 @@
       },
       {
         "inventoryPath": "/system/chassis/motherboard/pcieslot11/pcie_card11/c11_connector3",
-        "inherit": false,
-        "noprime": true,
-        "ccin": [
-          "6B87"
-        ],
-        "extraInterfaces": {
-          "xyz.openbmc_project.Inventory.Item.Connector": null
-        }
-      },
-      {
-        "inventoryPath": "/system/chassis/motherboard/pcieslot11/pcie_card11/c11_connector4",
         "inherit": false,
         "noprime": true,
         "ccin": [
@@ -1811,6 +1811,17 @@
         }
       },
       {
+        "inventoryPath": "/system/chassis/motherboard/pcieslot8/pcie_card8/c8_connector0",
+        "inherit": false,
+        "noprime": true,
+        "ccin": [
+          "6B87"
+        ],
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null
+        }
+      },
+      {
         "inventoryPath": "/system/chassis/motherboard/pcieslot8/pcie_card8/c8_connector1",
         "inherit": false,
         "noprime": true,
@@ -1834,17 +1845,6 @@
       },
       {
         "inventoryPath": "/system/chassis/motherboard/pcieslot8/pcie_card8/c8_connector3",
-        "inherit": false,
-        "noprime": true,
-        "ccin": [
-          "6B87"
-        ],
-        "extraInterfaces": {
-          "xyz.openbmc_project.Inventory.Item.Connector": null
-        }
-      },
-      {
-        "inventoryPath": "/system/chassis/motherboard/pcieslot8/pcie_card8/c8_connector4",
         "inherit": false,
         "noprime": true,
         "ccin": [
