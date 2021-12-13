@@ -67,7 +67,6 @@
       },
       {
         "inventoryPath": "/system/chassis",
-        "inherit": false,
         "isSystemVpd": true,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.Chassis": null,
