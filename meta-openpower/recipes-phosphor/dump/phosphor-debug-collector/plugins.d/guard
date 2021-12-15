@@ -7,7 +7,7 @@
 . $DREPORT_INCLUDE/functions
 
 desc="GUARD Records"
-file_name="/var/lib/phosphor-software-manager/pnor/prsv/GUARD"
+file_name="/var/lib/phosphor-software-manager/hostfw/running/GUARD"
 
 # Check file is present and not empty.
 if [ ! -s "$file_name" ]; then
