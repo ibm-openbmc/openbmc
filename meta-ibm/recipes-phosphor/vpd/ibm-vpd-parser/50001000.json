@@ -2145,6 +2145,38 @@
               "LocationCode" : "Ufcs-P1-T5"
           }
         }
+      },
+      {
+        "inventoryPath": "/cables/dp0_cable0",
+        "inherit": false,
+        "noprime": true,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Cable": null
+        }
+      },
+      {
+        "inventoryPath": "/cables/dp0_cable1",
+        "inherit": false,
+        "noprime": true,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Cable": null
+        }
+      },
+      {
+        "inventoryPath": "/cables/dp0_cable2",
+        "inherit": false,
+        "noprime": true,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Cable": null
+        }
+      },
+      {
+        "inventoryPath": "/cables/dp0_cable3",
+        "inherit": false,
+        "noprime": true,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Cable": null
+        }
       }
     ],
     "/sys/bus/i2c/drivers/at24/14-0050/eeprom": [
@@ -2319,6 +2351,38 @@
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P2-T5"
           }
+        }
+      },
+      {
+        "inventoryPath": "/cables/dp1_cable0",
+        "inherit": false,
+        "noprime": true,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Cable": null
+        }
+      },
+      {
+        "inventoryPath": "/cables/dp1_cable1",
+        "inherit": false,
+        "noprime": true,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Cable": null
+        }
+      },
+      {
+        "inventoryPath": "/cables/dp1_cable2",
+        "inherit": false,
+        "noprime": true,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Cable": null
+        }
+      },
+      {
+        "inventoryPath": "/cables/dp1_cable3",
+        "inherit": false,
+        "noprime": true,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Cable": null
         }
       }
     ],
