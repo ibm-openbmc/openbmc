@@ -66,6 +66,19 @@ create_otp() {
         cd ${B}
         create_otp_helper
     fi
+    if [ "${SOCSEC_SIGN_ENABLE}" = "1" ] ; then
+        if [ -n "${UBOOT_CONFIG}" ]; then
+            for config in ${UBOOT_MACHINE}; do
+                CONFIG_B_PATH="${config}"
+                cd ${B}/${config}
+                create_otp_helper
+            done
+        else
+            CONFIG_B_PATH=""
+            cd ${B}
+            create_otp_helper
+        fi
+    fi
 }
 
 do_deploy:prepend() {
