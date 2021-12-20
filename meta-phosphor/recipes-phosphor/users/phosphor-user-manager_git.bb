@@ -29,6 +29,7 @@ FILES:phosphor-ldap += " \
 FILES:${PN} += " \
         ${systemd_unitdir} \
         ${datadir}/dbus-1 \
+        ${datadir}/phosphor-certificate-manager \
 "
 
 USERADD_PACKAGES = "${PN} phosphor-ldap"

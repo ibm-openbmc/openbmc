@@ -57,13 +57,13 @@ IBM_EXTRA_USERS_PARAMS += " \
 
 # Add the "admin" account.
 IBM_EXTRA_USERS_PARAMS += " \
-  useradd -M -d / --groups hostconsoleaccess,priv-admin,redfish,web -s /sbin/nologin admin; \
+  useradd -M -d / --groups hostconsoleaccess,priv-admin,redfish,web -s /bin/sh admin; \
   usermod -p ${DEFAULT_OPENBMC_PASSWORD} admin; \
   "
 
 # Add the "service" account.
 IBM_EXTRA_USERS_PARAMS += " \
-  useradd -M -d / --groups priv-oemibmserviceagent,hostconsoleaccess,hypervisorconsoleaccess,redfish,web,wheel,shellaccess service; \
+  useradd --groups priv-oemibmserviceagent,hostconsoleaccess,hypervisorconsoleaccess,redfish,web,wheel,shellaccess service; \
   "
 
 # This is recipe specific to ensure it takes effect.
