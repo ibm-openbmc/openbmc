@@ -13,10 +13,12 @@ DEPENDS += "autoconf-archive-native"
 DEPENDS += "sdbusplus"
 DEPENDS += "phosphor-logging"
 DEPENDS += "phosphor-dbus-interfaces"
+DEPENDS += "bash"
 DEPENDS += "boost"
 DEPENDS += "nss-pam-ldapd"
 DEPENDS += "systemd"
 PACKAGE_BEFORE_PN = "phosphor-ldap"
+RDEPENDS:${PN} += "bash"
 
 inherit useradd
 
@@ -41,3 +43,12 @@ DBUS_SERVICE:phosphor-ldap = " \
 SRC_URI += "git://github.com/ibm-openbmc/phosphor-user-manager;nobranch=1"
 SRCREV = "debb6213db253d6cb8228b5e35eebb94143deada"
 S = "${WORKDIR}/git"
+
+SRC_URI += "file://upgrade_ibm_service_account.sh"
+FILES:${PN} += " /home/service/.profile "
+do_install:append() {
+  install -d ${D}/home/service
+  echo "/usr/bin/sudo -s;exit" >${D}/home/service/.profile
+  install -d ${D}${bindir}
+  install -m 0755 ${WORKDIR}/upgrade_ibm_service_account.sh ${D}${bindir}/upgrade_ibm_service_account.sh
+}
