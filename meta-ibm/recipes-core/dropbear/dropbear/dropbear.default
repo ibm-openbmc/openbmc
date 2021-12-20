@@ -10,6 +10,6 @@
 # between these users which admins do not also have, so we leave off this
 # protection for now.
 DROPBEAR_EXTRA_ARGS=""
-DROPBEAR_PERMISSION_ARGS="-G shellaccess -B"
+DROPBEAR_PERMISSION_ARGS="-G shellaccess "
 DROPBEAR_PERMISSION_ARGS2200="-G hostconsoleaccess "
 DROPBEAR_PERMISSION_ARGS2201="-G hypervisorconsoleaccess "
