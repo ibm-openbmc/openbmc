@@ -44,6 +44,15 @@
         }
       },
       {
+          "inventoryPath": "/system/chassis/motherboard/unit0",
+          "inherit": false,
+          "extraInterfaces": {
+              "xyz.openbmc_project.Inventory.Item": {
+                  "PrettyName": "Oscillator Reference Clock"
+              }
+          }
+      },
+      {
         "inventoryPath": "/system",
         "inherit": false,
         "isSystemVpd": true,
