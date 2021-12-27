@@ -15,6 +15,7 @@ S = "${WORKDIR}/git"
 
 POWER_SERVICE_PACKAGES = " \
     ${PN}-cold-redundancy \
+    ${PN}-ibm-ups \
     ${PN}-monitor \
     ${PN}-psu-monitor \
     ${PN}-regulators \
@@ -46,6 +47,7 @@ DEPENDS += " \
 # should only build when told to.
 PACKAGECONFIG[monitor] = "-Dsupply-monitor=true, -Dsupply-monitor=false"
 
+IBM_UPS_SVC = "ibm-ups.service"
 SEQ_MONITOR_SVC = "pseq-monitor.service"
 SEQ_PGOOD_SVC = "pseq-monitor-pgood.service"
 PSU_MONITOR_TMPL = "power-supply-monitor@.service"
@@ -57,6 +59,7 @@ REGS_MON_DIS_SVC = "phosphor-regulators-monitor-disable.service"
 
 RDEPENDS:phosphor-power-psu-monitor = "entity-manager"
 
+SYSTEMD_SERVICE:${PN}-ibm-ups = "${IBM_UPS_SVC}"
 SYSTEMD_SERVICE:${PN}-sequencer = "${SEQ_MONITOR_SVC} ${SEQ_PGOOD_SVC}"
 SYSTEMD_SERVICE:${PN}-monitor = "${@bb.utils.contains('PACKAGECONFIG', 'monitor', '${PSU_MONITOR_TMPL}', '', d)}"
 SYSTEMD_SERVICE:${PN}-psu-monitor = "${PSU_MONITOR_SVC}"
@@ -66,6 +69,7 @@ SYSTEMD_SERVICE:${PN}-regulators = "${REGS_SVC} ${REGS_CONF_SVC} ${REGS_MON_ENA_
 # TODO: cold-redundancy is not installed in the repo yet
 # FILES:${PN}-cold-redundancy = "${bindir}/cold-redundancy"
 
+FILES:${PN}-ibm-ups = "${bindir}/ibm-ups"
 FILES:${PN}-monitor = "${bindir}/psu-monitor"
 FILES:${PN}-psu-monitor = "${bindir}/phosphor-psu-monitor ${datadir}/phosphor-psu-monitor"
 FILES:${PN}-regulators = "${bindir}/phosphor-regulators ${datadir}/phosphor-regulators"
