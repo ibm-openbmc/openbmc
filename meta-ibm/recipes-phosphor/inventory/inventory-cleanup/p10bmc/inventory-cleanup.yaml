@@ -51,3 +51,18 @@ events:
                 - /system/chassis/motherboard/pcie_cable_card11
                 - /system/chassis/motherboard/pcie_cable_card11/cxp_top
                 - /system/chassis/motherboard/pcie_cable_card11/cxp_bot
+                - /system/chassis/motherboard/disk_backplane2
+                - /system/chassis/motherboard/disk_backplane2/nvme0
+                - /system/chassis/motherboard/disk_backplane2/nvme1
+                - /system/chassis/motherboard/disk_backplane2/nvme2
+                - /system/chassis/motherboard/disk_backplane2/nvme3
+                - /system/chassis/motherboard/disk_backplane2/nvme4
+                - /system/chassis/motherboard/disk_backplane2/nvme5
+                - /system/chassis/motherboard/disk_backplane2/nvme6
+                - /system/chassis/motherboard/disk_backplane2/nvme7
+                - /system/chassis/motherboard/disk_backplane2/dp2_connector0
+                - /system/chassis/motherboard/disk_backplane2/dp2_connector1
+                - /system/chassis/motherboard/disk_backplane2/dp2_connector2
+                - /system/chassis/motherboard/disk_backplane2/dp2_connector3
+                - /system/chassis/motherboard/disk_backplane2/dp2_connector4
+                - /system/chassis/motherboard/disk_backplane2/dp2_connector5
