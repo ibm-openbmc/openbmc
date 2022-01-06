@@ -26,6 +26,7 @@ EXTRA_OEMESON_append_rainier = " \
     -Dhw-isolation=enabled \
     -Dhypervisor-serial-socket=enabled \
     -Dredfish-license=enabled \
+    -Dibm-usb-code-update=enabled \
 "
 
 EXTRA_OEMESON:append:witherspoon-tacoma = " \
