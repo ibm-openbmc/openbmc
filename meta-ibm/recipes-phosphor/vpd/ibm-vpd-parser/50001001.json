@@ -1981,22 +1981,6 @@
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.Cable": null
         }
-      },
-      {
-        "inventoryPath": "/cables/dp0_cable2",
-        "inherit": false,
-        "noprime": true,
-        "extraInterfaces": {
-          "xyz.openbmc_project.Inventory.Item.Cable": null
-        }
-      },
-      {
-        "inventoryPath": "/cables/dp0_cable3",
-        "inherit": false,
-        "noprime": true,
-        "extraInterfaces": {
-          "xyz.openbmc_project.Inventory.Item.Cable": null
-        }
       }
     ],
     "/sys/bus/i2c/drivers/at24/14-0050/eeprom": [
@@ -2111,22 +2095,6 @@
       },
       {
         "inventoryPath": "/cables/dp1_cable1",
-        "inherit": false,
-        "noprime": true,
-        "extraInterfaces": {
-          "xyz.openbmc_project.Inventory.Item.Cable": null
-        }
-      },
-      {
-        "inventoryPath": "/cables/dp1_cable2",
-        "inherit": false,
-        "noprime": true,
-        "extraInterfaces": {
-          "xyz.openbmc_project.Inventory.Item.Cable": null
-        }
-      },
-      {
-        "inventoryPath": "/cables/dp1_cable3",
         "inherit": false,
         "noprime": true,
         "extraInterfaces": {
