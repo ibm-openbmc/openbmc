@@ -12,6 +12,7 @@ EXTRA_OEMESON:append:p10bmc = " \
     -Dhw-isolation=enabled \
     -Dhypervisor-serial-socket=enabled \
     -Dredfish-license=enabled \
+    -Dibm-usb-code-update=enabled \
 "
 
 EXTRA_OEMESON:append:witherspoon-tacoma = " \
