@@ -11,6 +11,7 @@ EXTRA_OEMESON:append:p10bmc = " \
     -Dibm-lamp-test=enabled \
     -Dhw-isolation=enabled \
     -Dhypervisor-serial-socket=enabled \
+    -Dbmc-shell-socket=enabled \
     -Dredfish-license=enabled \
     -Dibm-usb-code-update=enabled \
 "
