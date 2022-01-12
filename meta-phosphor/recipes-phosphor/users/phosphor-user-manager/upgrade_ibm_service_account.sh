@@ -53,7 +53,7 @@ fi
 if ! test -d /home/service; then
     echo "Adding /home/service directory"
     mkdir /home/service/
-    echo "/usr/bin/sudo -s;exit" >/home/service/.profile 
+    echo "/usr/bin/sudo -i /bin/sh;exit" >/home/service/.profile 
     chown service:service /home/service /home/service/.profile 
     usermod --home /home/service service
 else
