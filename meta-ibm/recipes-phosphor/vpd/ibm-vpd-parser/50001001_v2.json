@@ -1869,6 +1869,7 @@
         "inventoryPath": "/system/chassis/motherboard/disk_backplane0",
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.DiskBackplane": null,
+          "xyz.openbmc_project.Inventory.Item.FabricAdapter": null,
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P1"
           }
@@ -1988,6 +1989,7 @@
         "inventoryPath": "/system/chassis/motherboard/disk_backplane1",
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.DiskBackplane": null,
+          "xyz.openbmc_project.Inventory.Item.FabricAdapter": null,
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P2"
           }
