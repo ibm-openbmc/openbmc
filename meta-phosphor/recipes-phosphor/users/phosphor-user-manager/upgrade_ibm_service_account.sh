@@ -59,3 +59,20 @@ if ! test -d /home/service; then
 else
     echo "/home/service directory already exists"
 fi
+
+# Fixup so the service user can write into hostfw patch directories.
+if id -nG service | grep -q "root"; then
+    # Add the service user to the root group.
+    usermod -a -G root service
+fi
+if test -d /media/hostfw/patch-a; then
+    if test 'drwxr-xr-x' = $(ls -ld /media/hostfw/patch-a | cut -c1-10); then
+        # Allow group members to write into the patch directories.
+        # Note these directories are owned by the "root group, of which "service" is now a member.
+        chmod -R g+w /media/hostfw/patch-?
+        if test $((ls /media/hostfw/patch-a; ls /media/hostfw/patch-b) | wc -l) != 0; then
+            # Modify patch files (if any) to be owned by the service user.
+            chown -R service /media/hostfw/patch-?/*
+        fi
+    fi
+fi
