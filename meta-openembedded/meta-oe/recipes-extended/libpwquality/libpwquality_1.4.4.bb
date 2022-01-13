@@ -18,11 +18,7 @@ S = "${WORKDIR}/${SRCNAME}-${PV}"
 
 DEPENDS = "cracklib virtual/gettext"
 
-# The OpenBMC copy of this recipe is modified.  To reduce image size it
-# builds libpwquality with --enable-python-bindings=no and does not import
-# distutils3-base.  The proposal is to add a new PACKAGECONFIG
-# "python-bindings" to control this.  How to do that?
-inherit autotools gettext
+inherit autotools distutils3-base gettext
 
 B = "${S}"
 
@@ -33,10 +29,8 @@ export HOST_SYS
 EXTRA_OECONF += "--with-python-rev=${PYTHON_BASEVERSION} \
                  --with-python-binary=${STAGING_BINDIR_NATIVE}/${PYTHON_PN}-native/${PYTHON_PN} \
                  --with-pythonsitedir=${PYTHON_SITEPACKAGES_DIR} \
-                 --enable-python-bindings=no \
                  --libdir=${libdir} \
 "
-
 
 PACKAGECONFIG ??= "${@bb.utils.contains('DISTRO_FEATURES', 'pam', 'pam', '', d)}"
 PACKAGECONFIG[pam] = "--enable-pam, --disable-pam, libpam"

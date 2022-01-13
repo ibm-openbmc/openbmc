@@ -4,6 +4,13 @@
  Supported Release Manuals
 ===========================
 
+*****************************
+Release Series 3.4 (honister)
+*****************************
+
+- :yocto_docs:`3.4 Documentation </3.4>`
+- :yocto_docs:`3.4.1 Documentation </3.4.1>`
+
 ******************************
 Release Series 3.3 (hardknott)
 ******************************
@@ -11,17 +18,8 @@ Release Series 3.3 (hardknott)
 - :yocto_docs:`3.3 Documentation </3.3>`
 - :yocto_docs:`3.3.1 Documentation </3.3.1>`
 - :yocto_docs:`3.3.2 Documentation </3.3.2>`
-- :yocto_docs:`3.3.2 Documentation </3.3.3>`
-
-*******************************
-Release Series 3.2 (gatesgarth)
-*******************************
-
-- :yocto_docs:`3.2 Documentation </3.2>`
-- :yocto_docs:`3.2.1 Documentation </3.2.1>`
-- :yocto_docs:`3.2.2 Documentation </3.2.2>`
-- :yocto_docs:`3.2.3 Documentation </3.2.3>`
-- :yocto_docs:`3.2.4 Documentation </3.2.4>`
+- :yocto_docs:`3.3.3 Documentation </3.3.3>`
+- :yocto_docs:`3.3.4 Documentation </3.3.4>`
 
 ****************************
 Release Series 3.1 (dunfell)
@@ -39,10 +37,21 @@ Release Series 3.1 (dunfell)
 - :yocto_docs:`3.1.9 Documentation </3.1.9>`
 - :yocto_docs:`3.1.10 Documentation </3.1.10>`
 - :yocto_docs:`3.1.11 Documentation </3.1.11>`
+- :yocto_docs:`3.1.12 Documentation </3.1.12>`
 
 ==========================
  Outdated Release Manuals
 ==========================
+
+*******************************
+Release Series 3.2 (gatesgarth)
+*******************************
+
+- :yocto_docs:`3.2 Documentation </3.2>`
+- :yocto_docs:`3.2.1 Documentation </3.2.1>`
+- :yocto_docs:`3.2.2 Documentation </3.2.2>`
+- :yocto_docs:`3.2.3 Documentation </3.2.3>`
+- :yocto_docs:`3.2.4 Documentation </3.2.4>`
 
 *************************
 Release Series 3.0 (zeus)

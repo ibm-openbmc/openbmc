@@ -24,7 +24,7 @@ HOMEPAGE = "http://www.rpm.org"
 LICENSE = "GPL-2.0"
 LIC_FILES_CHKSUM = "file://COPYING;md5=c4eec0c20c6034b9407a09945b48a43f"
 
-SRC_URI = "git://github.com/rpm-software-management/rpm;branch=rpm-4.16.x \
+SRC_URI = "git://github.com/rpm-software-management/rpm;branch=rpm-4.16.x;protocol=https \
            file://environment.d-rpm.sh \
            file://0001-Do-not-add-an-unsatisfiable-dependency-when-building.patch \
            file://0001-Do-not-read-config-files-from-HOME.patch \
@@ -59,7 +59,8 @@ AUTOTOOLS_AUXDIR = "${S}/build-aux"
 # OE-core patches autoreconf to additionally run gnu-configize, which fails with this recipe
 EXTRA_AUTORECONF:append = " --exclude=gnu-configize"
 
-EXTRA_OECONF:append = " --without-lua --enable-python --with-crypto=libgcrypt"
+# Vendor is detected differently on x86 and aarch64 hosts and can feed into target packages
+EXTRA_OECONF:append = " --without-lua --enable-python --with-crypto=libgcrypt --with-vendor=pc"
 EXTRA_OECONF:append:libc-musl = " --disable-nls --disable-openmp"
 
 # --sysconfdir prevents rpm from attempting to access machine-specific configuration in sysroot/etc; we need to have it in rootfs
@@ -131,6 +132,9 @@ do_install:append:class-nativesdk() {
 # Rpm's make install creates var/tmp which clashes with base-files packaging
 do_install:append:class-target() {
     rm -rf ${D}/var
+}
+do_install:append:class-nativesdk() {
+    rm -rf ${D}${SDKPATHNATIVE}/var
 }
 
 do_install:append () {

@@ -20,7 +20,7 @@ from devtool import exec_fakeroot, setup_tinfoil, check_workspace_recipe, Devtoo
 
 logger = logging.getLogger('devtool')
 
-deploylist_path = '/tmp/.devtool'
+deploylist_path = '/.devtool'
 
 def _prepare_remote_script(deploy, verbose=False, dryrun=False, undeployall=False, nopreserve=False, nocheckspace=False):
     """

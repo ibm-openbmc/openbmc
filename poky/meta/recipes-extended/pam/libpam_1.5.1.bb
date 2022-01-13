@@ -81,7 +81,7 @@ RDEPENDS:${PN}-xtests = "${PN}-${libpam_suffix} \
 
 # FIXME: Native suffix breaks here, disable it for now
 RRECOMMENDS:${PN} = "${PN}-runtime-${libpam_suffix}"
-RRECOMMENDS:${PN}_class-native = ""
+RRECOMMENDS:${PN}:class-native = ""
 
 python populate_packages:prepend () {
     def pam_plugin_hook(file, pkg, pattern, format, basename):
@@ -158,7 +158,7 @@ do_install_ptest() {
     fi
 }
 
-pkg_postinst_${PN}() {
+pkg_postinst:${PN}() {
          if [ -z "$D" ] && [ -e /etc/init.d/populate-volatile.sh ] ; then
                  /etc/init.d/populate-volatile.sh update
          fi
