@@ -1583,7 +1583,10 @@
           "6B87"
         ],
         "extraInterfaces": {
-          "xyz.openbmc_project.Inventory.Item.Connector": null
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
+          "com.ibm.ipzvpd.Location": {
+            "LocationCode": "Ufcs-P0-C10-T0"
+          }
         }
       },
       {
@@ -1594,7 +1597,10 @@
           "6B87"
         ],
         "extraInterfaces": {
-          "xyz.openbmc_project.Inventory.Item.Connector": null
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
+          "com.ibm.ipzvpd.Location": {
+            "LocationCode": "Ufcs-P0-C10-T1"
+          }
         }
       },
       {
@@ -1605,7 +1611,10 @@
           "6B87"
         ],
         "extraInterfaces": {
-          "xyz.openbmc_project.Inventory.Item.Connector": null
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
+          "com.ibm.ipzvpd.Location": {
+            "LocationCode": "Ufcs-P0-C10-T2"
+          }
         }
       },
       {
@@ -1616,7 +1625,10 @@
           "6B87"
         ],
         "extraInterfaces": {
-          "xyz.openbmc_project.Inventory.Item.Connector": null
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
+          "com.ibm.ipzvpd.Location": {
+            "LocationCode": "Ufcs-P0-C10-T3"
+          }
         }
       }
     ],
@@ -1763,7 +1775,10 @@
           "6B87"
         ],
         "extraInterfaces": {
-          "xyz.openbmc_project.Inventory.Item.Connector": null
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
+          "com.ibm.ipzvpd.Location": {
+            "LocationCode": "Ufcs-P0-C11-T0"
+          }
         }
       },
       {
@@ -1774,7 +1789,10 @@
           "6B87"
         ],
         "extraInterfaces": {
-          "xyz.openbmc_project.Inventory.Item.Connector": null
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
+          "com.ibm.ipzvpd.Location": {
+            "LocationCode": "Ufcs-P0-C11-T1"
+          }
         }
       },
       {
@@ -1785,7 +1803,10 @@
           "6B87"
         ],
         "extraInterfaces": {
-          "xyz.openbmc_project.Inventory.Item.Connector": null
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
+          "com.ibm.ipzvpd.Location": {
+            "LocationCode": "Ufcs-P0-C11-T2"
+          }
         }
       },
       {
@@ -1796,7 +1817,10 @@
           "6B87"
         ],
         "extraInterfaces": {
-          "xyz.openbmc_project.Inventory.Item.Connector": null
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
+          "com.ibm.ipzvpd.Location": {
+            "LocationCode": "Ufcs-P0-C11-T3"
+          }
         }
       }
     ],
@@ -1863,7 +1887,10 @@
           "6B87"
         ],
         "extraInterfaces": {
-          "xyz.openbmc_project.Inventory.Item.Connector": null
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
+          "com.ibm.ipzvpd.Location": {
+            "LocationCode": "Ufcs-P0-C8-T0"
+          }
         }
       },
       {
@@ -1874,7 +1901,10 @@
           "6B87"
         ],
         "extraInterfaces": {
-          "xyz.openbmc_project.Inventory.Item.Connector": null
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
+          "com.ibm.ipzvpd.Location": {
+            "LocationCode": "Ufcs-P0-C8-T1"
+          }
         }
       },
       {
@@ -1885,7 +1915,10 @@
           "6B87"
         ],
         "extraInterfaces": {
-          "xyz.openbmc_project.Inventory.Item.Connector": null
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
+          "com.ibm.ipzvpd.Location": {
+            "LocationCode": "Ufcs-P0-C8-T2"
+          }
         }
       },
       {
@@ -1896,7 +1929,10 @@
           "6B87"
         ],
         "extraInterfaces": {
-          "xyz.openbmc_project.Inventory.Item.Connector": null
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
+          "com.ibm.ipzvpd.Location": {
+            "LocationCode": "Ufcs-P0-C8-T3"
+          }
         }
       }
     ],
