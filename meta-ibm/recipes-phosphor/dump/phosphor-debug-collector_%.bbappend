@@ -15,6 +15,8 @@ EXTRA_OEMESON:append:p10bmc += "-DHOSTBOOT_DUMP_TMP_FILE_DIR=${hostboot_dump_tem
 EXTRA_OEMESON:append:p10bmc += "-DHARDWARE_DUMP_PATH=${hardware_dump_path}"
 EXTRA_OEMESON:append:p10bmc += "-DHARDWARE_DUMP_TMP_FILE_DIR=${hardware_dump_temp_path}"
 
+SYSTEMD_SERVICE:${PN}-manager += "clear_hostdumps_poweroff.service"
+
 SRC_URI += "file://plugins.d/ibm_elogall"
 SRC_URI += "file://plugins.d/pels"
 

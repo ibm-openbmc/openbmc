@@ -1,7 +1,8 @@
 pkg_postinst:${PN}:append() {
-	mkdir -p $D$systemd_system_unitdir/obmc-host-crash@0.target.wants
-	mkdir -p $D$systemd_system_unitdir/obmc-host-timeout@0.target.wants
-        mkdir -p $D$systemd_system_unitdir/obmc-host-startmin@0.target.wants
+  mkdir -p $D$systemd_system_unitdir/obmc-host-crash@0.target.wants
+  mkdir -p $D$systemd_system_unitdir/obmc-host-timeout@0.target.wants
+  mkdir -p $D$systemd_system_unitdir/obmc-host-startmin@0.target.wants
+  mkdir -p $D$systemd_system_unitdir/obmc-host-stop@0.target.wants
 
 	# The obmc-host-crash target is repurposed for the memory preserving reboot
 	# feature when it is enabled. If not enabled, then install the standard
@@ -26,6 +27,10 @@ pkg_postinst:${PN}:append() {
          TARGET="../org.open_power.Dump.Manager.service"
          ln -s $TARGET $LINK
   fi
+
+  LINK="$D$systemd_system_unitdir/obmc-host-stop@0.target.wants/clear_hostdumps_poweroff.service"
+  TARGET="../clear_hostdumps_poweroff.service"
+  ln -s $TARGET $LINK
 }
 
 pkg_prerm:${PN}:append() {
@@ -43,4 +48,6 @@ pkg_prerm:${PN}:append() {
           LINK="$D$systemd_system_unitdir/obmc-host-startmin@0.target.wants/org.open_power.Dump.Manager.service"
           rm $LINK
   fi
+  LINK="$D$systemd_system_unitdir/obmc-host-stop@0.target.wants/clear_hostdumps_poweroff.service"
+  rm $LINK
 }
