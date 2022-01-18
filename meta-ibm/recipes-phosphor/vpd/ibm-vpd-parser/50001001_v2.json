@@ -850,6 +850,15 @@
                   "PrettyName": "OBUS End Point"
               }
           }
+      },
+      {
+          "inventoryPath": "/system/chassis/motherboard/dcm0/cpu0/unit14",
+          "inherit": false,
+          "extraInterfaces": {
+              "xyz.openbmc_project.Inventory.Item": {
+                  "PrettyName": "Cache-Only Core"
+              }
+          }
       }
     ],
     "/sys/bus/spi/drivers/at25/spi22.0/eeprom": [
@@ -990,6 +999,15 @@
           "extraInterfaces": {
               "xyz.openbmc_project.Inventory.Item": {
                   "PrettyName": "OBUS End Point"
+              }
+          }
+      },
+      {
+          "inventoryPath": "/system/chassis/motherboard/dcm0/cpu0/unit14",
+          "inherit": false,
+          "extraInterfaces": {
+              "xyz.openbmc_project.Inventory.Item": {
+                  "PrettyName": "Cache-Only Core"
               }
           }
       }
@@ -1144,6 +1162,15 @@
                   "PrettyName": "OBUS End Point"
               }
           }
+      },
+      {
+          "inventoryPath": "/system/chassis/motherboard/dcm0/cpu0/unit14",
+          "inherit": false,
+          "extraInterfaces": {
+              "xyz.openbmc_project.Inventory.Item": {
+                  "PrettyName": "Cache-Only Core"
+              }
+          }
       }
     ],
     "/sys/bus/spi/drivers/at25/spi42.0/eeprom": [
@@ -1284,6 +1311,15 @@
           "extraInterfaces": {
               "xyz.openbmc_project.Inventory.Item": {
                   "PrettyName": "OBUS End Point"
+              }
+          }
+      },
+      {
+          "inventoryPath": "/system/chassis/motherboard/dcm0/cpu0/unit14",
+          "inherit": false,
+          "extraInterfaces": {
+              "xyz.openbmc_project.Inventory.Item": {
+                  "PrettyName": "Cache-Only Core"
               }
           }
       }
