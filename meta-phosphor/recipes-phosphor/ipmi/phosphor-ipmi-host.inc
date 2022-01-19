@@ -1,5 +1,5 @@
 HOMEPAGE = "http://github.com/openbmc/phosphor-host-ipmid"
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=fa818a259cbed7ce8bc2a22d35a464fc"
-SRC_URI += "git://github.com/openbmc/phosphor-host-ipmid;branch=master;protocol=https"
-SRCREV = "9a9ac0bcfc2df48873ca0f9725eb5255f7191d84"
+SRC_URI += "git://github.com/ibm-openbmc/phosphor-host-ipmid;nobranch=1;protocol=https"
+SRCREV = "0baed04e7bde2e1c905940dd209fa2496d2436e3"
