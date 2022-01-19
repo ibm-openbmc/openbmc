@@ -41,7 +41,7 @@ DBUS_SERVICE:phosphor-ldap = " \
         xyz.openbmc_project.LDAP.PrivilegeMapper.service \
 "
 SRC_URI += "git://github.com/ibm-openbmc/phosphor-user-manager;nobranch=1"
-SRCREV = "debb6213db253d6cb8228b5e35eebb94143deada"
+SRCREV = "bf76797e2ed1dfa4697871151e1e9623c8401c63"
 S = "${WORKDIR}/git"
 
 SRC_URI += "file://upgrade_ibm_service_account.sh"
