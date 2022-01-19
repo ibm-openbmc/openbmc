@@ -5,7 +5,7 @@ SRC_URI = "git://git@github.com/ibm-openbmc/platform-fru-detect.git;protocol=ssh
 
 # Modify these as desired
 PV = "0.1+git${SRCPV}"
-SRCREV = "32699a11dcb82f0fc0272e3dd91f48d42ae41eee"
+SRCREV = "fed28fa4418b16c9b55899616b14393ff9652176"
 
 S = "${WORKDIR}/git"
 
