@@ -416,7 +416,6 @@
                         "/xyz/openbmc_project/inventory/system/chassis/motherboard/lcd_op_panel_hill",
                         "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane0",
                         "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane1",
-                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane2",
                         "/xyz/openbmc_project/inventory/system/chassis/motherboard",
                         "/xyz/openbmc_project/inventory/system/chassis/motherboard/connector0",
                         "/xyz/openbmc_project/inventory/system/chassis/motherboard/connector1",
@@ -457,12 +456,6 @@
                         "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane1/dp1_connector3",
                         "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane1/dp1_connector4",
                         "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane1/dp1_connector5",
-                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane2/dp2_connector0",
-                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane2/dp2_connector1",
-                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane2/dp2_connector2",
-                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane2/dp2_connector3",
-                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane2/dp2_connector4",
-                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane2/dp2_connector5",
                         "/xyz/openbmc_project/inventory/system/chassis/motherboard/rdx0",
                         "/xyz/openbmc_project/inventory/system/chassis/motherboard/rdx0/media0",
                         "/xyz/openbmc_project/inventory/system/chassis/motherboard/rdx0/rdx_power_connector",
@@ -1068,6 +1061,146 @@
                     },
                     "paths":
                     [
+                        "/xyz/openbmc_project/led/groups/ddimm16_fault"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/ddimm16_identify"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "system/chassis/motherboard/dimm1",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "fault_identified_by",
+                        "fType": "fault_identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/ddimm17_fault"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/ddimm17_identify"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "system/chassis/motherboard/dimm10",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "fault_identified_by",
+                        "fType": "fault_identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/ddimm26_fault"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/ddimm26_identify"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "system/chassis/motherboard/dimm9",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "fault_identified_by",
+                        "fType": "fault_identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/ddimm25_fault"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/ddimm25_identify"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "system/chassis/motherboard/dimm8",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "fault_identified_by",
+                        "fType": "fault_identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/ddimm24_fault"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/ddimm24_identify"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "system/chassis/motherboard/dimm16",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "fault_identified_by",
+                        "fType": "fault_identifying"
+                    },
+                    "paths":
+                    [
                         "/xyz/openbmc_project/led/groups/ddimm0_fault"
                     ]
                 },
@@ -1085,7 +1218,7 @@
             ]
         },
         {
-            "path": "system/chassis/motherboard/dimm1",
+            "path": "system/chassis/motherboard/dimm17",
             "endpoints":
             [
                 {
@@ -1113,7 +1246,7 @@
             ]
         },
         {
-            "path": "system/chassis/motherboard/dimm10",
+            "path": "system/chassis/motherboard/dimm18",
             "endpoints":
             [
                 {
@@ -1136,146 +1269,6 @@
                     "paths":
                     [
                         "/xyz/openbmc_project/led/groups/ddimm2_identify"
-                    ]
-                }
-            ]
-        },
-        {
-            "path": "system/chassis/motherboard/dimm9",
-            "endpoints":
-            [
-                {
-                    "types":
-                    {
-                        "rType": "fault_identified_by",
-                        "fType": "fault_identifying"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/ddimm3_fault"
-                    ]
-                },
-                {
-                    "types":
-                    {
-                        "rType": "identified_by",
-                        "fType": "identifying"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/ddimm3_identify"
-                    ]
-                }
-            ]
-        },
-        {
-            "path": "system/chassis/motherboard/dimm8",
-            "endpoints":
-            [
-                {
-                    "types":
-                    {
-                        "rType": "fault_identified_by",
-                        "fType": "fault_identifying"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/ddimm4_fault"
-                    ]
-                },
-                {
-                    "types":
-                    {
-                        "rType": "identified_by",
-                        "fType": "identifying"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/ddimm4_identify"
-                    ]
-                }
-            ]
-        },
-        {
-            "path": "system/chassis/motherboard/dimm16",
-            "endpoints":
-            [
-                {
-                    "types":
-                    {
-                        "rType": "fault_identified_by",
-                        "fType": "fault_identifying"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/ddimm5_fault"
-                    ]
-                },
-                {
-                    "types":
-                    {
-                        "rType": "identified_by",
-                        "fType": "identifying"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/ddimm5_identify"
-                    ]
-                }
-            ]
-        },
-        {
-            "path": "system/chassis/motherboard/dimm17",
-            "endpoints":
-            [
-                {
-                    "types":
-                    {
-                        "rType": "fault_identified_by",
-                        "fType": "fault_identifying"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/ddimm6_fault"
-                    ]
-                },
-                {
-                    "types":
-                    {
-                        "rType": "identified_by",
-                        "fType": "identifying"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/ddimm6_identify"
-                    ]
-                }
-            ]
-        },
-        {
-            "path": "system/chassis/motherboard/dimm18",
-            "endpoints":
-            [
-                {
-                    "types":
-                    {
-                        "rType": "fault_identified_by",
-                        "fType": "fault_identifying"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/ddimm7_fault"
-                    ]
-                },
-                {
-                    "types":
-                    {
-                        "rType": "identified_by",
-                        "fType": "identifying"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/ddimm7_identify"
                     ]
                 }
             ]
@@ -1348,230 +1341,6 @@
                     },
                     "paths":
                     [
-                        "/xyz/openbmc_project/led/groups/ddimm10_fault"
-                    ]
-                },
-                {
-                    "types":
-                    {
-                        "rType": "identified_by",
-                        "fType": "identifying"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/ddimm10_identify"
-                    ]
-                }
-            ]
-        },
-        {
-            "path": "system/chassis/motherboard/dimm4",
-            "endpoints":
-            [
-                {
-                    "types":
-                    {
-                        "rType": "fault_identified_by",
-                        "fType": "fault_identifying"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/ddimm11_fault"
-                    ]
-                },
-                {
-                    "types":
-                    {
-                        "rType": "identified_by",
-                        "fType": "identifying"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/ddimm11_identify"
-                    ]
-                }
-            ]
-        },
-        {
-            "path": "system/chassis/motherboard/dimm5",
-            "endpoints":
-            [
-                {
-                    "types":
-                    {
-                        "rType": "fault_identified_by",
-                        "fType": "fault_identifying"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/ddimm12_fault"
-                    ]
-                },
-                {
-                    "types":
-                    {
-                        "rType": "identified_by",
-                        "fType": "identifying"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/ddimm12_identify"
-                    ]
-                }
-            ]
-        },
-        {
-            "path": "system/chassis/motherboard/dimm7",
-            "endpoints":
-            [
-                {
-                    "types":
-                    {
-                        "rType": "fault_identified_by",
-                        "fType": "fault_identifying"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/ddimm13_fault"
-                    ]
-                },
-                {
-                    "types":
-                    {
-                        "rType": "identified_by",
-                        "fType": "identifying"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/ddimm13_identify"
-                    ]
-                }
-            ]
-        },
-        {
-            "path": "system/chassis/motherboard/dimm6",
-            "endpoints":
-            [
-                {
-                    "types":
-                    {
-                        "rType": "fault_identified_by",
-                        "fType": "fault_identifying"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/ddimm14_fault"
-                    ]
-                },
-                {
-                    "types":
-                    {
-                        "rType": "identified_by",
-                        "fType": "identifying"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/ddimm14_identify"
-                    ]
-                }
-            ]
-        },
-        {
-            "path": "system/chassis/motherboard/dimm3",
-            "endpoints":
-            [
-                {
-                    "types":
-                    {
-                        "rType": "fault_identified_by",
-                        "fType": "fault_identifying"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/ddimm15_fault"
-                    ]
-                },
-                {
-                    "types":
-                    {
-                        "rType": "identified_by",
-                        "fType": "identifying"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/ddimm15_identify"
-                    ]
-                }
-            ]
-        },
-        {
-            "path": "system/chassis/motherboard/dimm15",
-            "endpoints":
-            [
-                {
-                    "types":
-                    {
-                        "rType": "fault_identified_by",
-                        "fType": "fault_identifying"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/ddimm16_fault"
-                    ]
-                },
-                {
-                    "types":
-                    {
-                        "rType": "identified_by",
-                        "fType": "identifying"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/ddimm16_identify"
-                    ]
-                }
-            ]
-        },
-        {
-            "path": "system/chassis/motherboard/dimm14",
-            "endpoints":
-            [
-                {
-                    "types":
-                    {
-                        "rType": "fault_identified_by",
-                        "fType": "fault_identifying"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/ddimm17_fault"
-                    ]
-                },
-                {
-                    "types":
-                    {
-                        "rType": "identified_by",
-                        "fType": "identifying"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/ddimm17_identify"
-                    ]
-                }
-            ]
-        },
-        {
-            "path": "system/chassis/motherboard/dimm11",
-            "endpoints":
-            [
-                {
-                    "types":
-                    {
-                        "rType": "fault_identified_by",
-                        "fType": "fault_identifying"
-                    },
-                    "paths":
-                    [
                         "/xyz/openbmc_project/led/groups/ddimm18_fault"
                     ]
                 },
@@ -1589,35 +1358,7 @@
             ]
         },
         {
-            "path": "system/chassis/motherboard/dimm13",
-            "endpoints":
-            [
-                {
-                    "types":
-                    {
-                        "rType": "fault_identified_by",
-                        "fType": "fault_identifying"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/ddimm19_fault"
-                    ]
-                },
-                {
-                    "types":
-                    {
-                        "rType": "identified_by",
-                        "fType": "identifying"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/ddimm19_identify"
-                    ]
-                }
-            ]
-        },
-        {
-            "path": "system/chassis/motherboard/dimm12",
+            "path": "system/chassis/motherboard/dimm4",
             "endpoints":
             [
                 {
@@ -1645,7 +1386,7 @@
             ]
         },
         {
-            "path": "system/chassis/motherboard/dimm20",
+            "path": "system/chassis/motherboard/dimm5",
             "endpoints":
             [
                 {
@@ -1673,35 +1414,7 @@
             ]
         },
         {
-            "path": "system/chassis/motherboard/dimm21",
-            "endpoints":
-            [
-                {
-                    "types":
-                    {
-                        "rType": "fault_identified_by",
-                        "fType": "fault_identifying"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/ddimm22_fault"
-                    ]
-                },
-                {
-                    "types":
-                    {
-                        "rType": "identified_by",
-                        "fType": "identifying"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/ddimm22_identify"
-                    ]
-                }
-            ]
-        },
-        {
-            "path": "system/chassis/motherboard/dimm19",
+            "path": "system/chassis/motherboard/dimm7",
             "endpoints":
             [
                 {
@@ -1729,7 +1442,7 @@
             ]
         },
         {
-            "path": "system/chassis/motherboard/dimm22",
+            "path": "system/chassis/motherboard/dimm6",
             "endpoints":
             [
                 {
@@ -1740,7 +1453,7 @@
                     },
                     "paths":
                     [
-                        "/xyz/openbmc_project/led/groups/ddimm24_fault"
+                        "/xyz/openbmc_project/led/groups/ddimm22_fault"
                     ]
                 },
                 {
@@ -1751,13 +1464,13 @@
                     },
                     "paths":
                     [
-                        "/xyz/openbmc_project/led/groups/ddimm24_identify"
+                        "/xyz/openbmc_project/led/groups/ddimm22_identify"
                     ]
                 }
             ]
         },
         {
-            "path": "system/chassis/motherboard/dimm23",
+            "path": "system/chassis/motherboard/dimm3",
             "endpoints":
             [
                 {
@@ -1768,7 +1481,7 @@
                     },
                     "paths":
                     [
-                        "/xyz/openbmc_project/led/groups/ddimm25_fault"
+                        "/xyz/openbmc_project/led/groups/ddimm19_fault"
                     ]
                 },
                 {
@@ -1779,13 +1492,13 @@
                     },
                     "paths":
                     [
-                        "/xyz/openbmc_project/led/groups/ddimm25_identify"
+                        "/xyz/openbmc_project/led/groups/ddimm19_identify"
                     ]
                 }
             ]
         },
         {
-            "path": "system/chassis/motherboard/dimm27",
+            "path": "system/chassis/motherboard/dimm15",
             "endpoints":
             [
                 {
@@ -1796,7 +1509,7 @@
                     },
                     "paths":
                     [
-                        "/xyz/openbmc_project/led/groups/ddimm26_fault"
+                        "/xyz/openbmc_project/led/groups/ddimm31_fault"
                     ]
                 },
                 {
@@ -1807,97 +1520,13 @@
                     },
                     "paths":
                     [
-                        "/xyz/openbmc_project/led/groups/ddimm26_identify"
+                        "/xyz/openbmc_project/led/groups/ddimm31_identify"
                     ]
                 }
             ]
         },
         {
-            "path": "system/chassis/motherboard/dimm30",
-            "endpoints":
-            [
-                {
-                    "types":
-                    {
-                        "rType": "fault_identified_by",
-                        "fType": "fault_identifying"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/ddimm27_fault"
-                    ]
-                },
-                {
-                    "types":
-                    {
-                        "rType": "identified_by",
-                        "fType": "identifying"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/ddimm27_identify"
-                    ]
-                }
-            ]
-        },
-        {
-            "path": "system/chassis/motherboard/dimm31",
-            "endpoints":
-            [
-                {
-                    "types":
-                    {
-                        "rType": "fault_identified_by",
-                        "fType": "fault_identifying"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/ddimm28_fault"
-                    ]
-                },
-                {
-                    "types":
-                    {
-                        "rType": "identified_by",
-                        "fType": "identifying"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/ddimm28_identify"
-                    ]
-                }
-            ]
-        },
-        {
-            "path": "system/chassis/motherboard/dimm29",
-            "endpoints":
-            [
-                {
-                    "types":
-                    {
-                        "rType": "fault_identified_by",
-                        "fType": "fault_identifying"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/ddimm29_fault"
-                    ]
-                },
-                {
-                    "types":
-                    {
-                        "rType": "identified_by",
-                        "fType": "identifying"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/ddimm29_identify"
-                    ]
-                }
-            ]
-        },
-        {
-            "path": "system/chassis/motherboard/dimm28",
+            "path": "system/chassis/motherboard/dimm14",
             "endpoints":
             [
                 {
@@ -1925,6 +1554,370 @@
             ]
         },
         {
+            "path": "system/chassis/motherboard/dimm11",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "fault_identified_by",
+                        "fType": "fault_identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/ddimm27_fault"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/ddimm27_identify"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "system/chassis/motherboard/dimm13",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "fault_identified_by",
+                        "fType": "fault_identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/ddimm29_fault"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/ddimm29_identify"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "system/chassis/motherboard/dimm12",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "fault_identified_by",
+                        "fType": "fault_identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/ddimm28_fault"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/ddimm28_identify"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "system/chassis/motherboard/dimm20",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "fault_identified_by",
+                        "fType": "fault_identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/ddimm4_fault"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/ddimm4_identify"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "system/chassis/motherboard/dimm21",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "fault_identified_by",
+                        "fType": "fault_identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/ddimm5_fault"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/ddimm5_identify"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "system/chassis/motherboard/dimm19",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "fault_identified_by",
+                        "fType": "fault_identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/ddimm3_fault"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/ddimm3_identify"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "system/chassis/motherboard/dimm22",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "fault_identified_by",
+                        "fType": "fault_identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/ddimm6_fault"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/ddimm6_identify"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "system/chassis/motherboard/dimm23",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "fault_identified_by",
+                        "fType": "fault_identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/ddimm7_fault"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/ddimm7_identify"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "system/chassis/motherboard/dimm27",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "fault_identified_by",
+                        "fType": "fault_identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/ddimm11_fault"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/ddimm11_identify"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "system/chassis/motherboard/dimm30",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "fault_identified_by",
+                        "fType": "fault_identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/ddimm14_fault"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/ddimm14_identify"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "system/chassis/motherboard/dimm31",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "fault_identified_by",
+                        "fType": "fault_identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/ddimm15_fault"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/ddimm15_identify"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "system/chassis/motherboard/dimm29",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "fault_identified_by",
+                        "fType": "fault_identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/ddimm13_fault"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/ddimm13_identify"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "system/chassis/motherboard/dimm28",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "fault_identified_by",
+                        "fType": "fault_identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/ddimm12_fault"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/ddimm12_identify"
+                    ]
+                }
+            ]
+        },
+        {
             "path": "system/chassis/motherboard/dimm26",
             "endpoints":
             [
@@ -1936,7 +1929,7 @@
                     },
                     "paths":
                     [
-                        "/xyz/openbmc_project/led/groups/ddimm31_fault"
+                        "/xyz/openbmc_project/led/groups/ddimm10_fault"
                     ]
                 },
                 {
@@ -1947,7 +1940,7 @@
                     },
                     "paths":
                     [
-                        "/xyz/openbmc_project/led/groups/ddimm31_identify"
+                        "/xyz/openbmc_project/led/groups/ddimm10_identify"
                     ]
                 }
             ]
@@ -2033,6 +2026,17 @@
                     [
                         "/xyz/openbmc_project/led/groups/rtc_battery_identify"
                     ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "sensors"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/sensors/voltage/Battery_Voltage"
+                    ]
                 }
             ]
         },
@@ -2100,7 +2104,18 @@
                     [
                         "/xyz/openbmc_project/inventory/system/chassis"
                     ]
-                }
+                },
+                {
+                    "types":
+                    {
+                        "rType": "pcie_slot",
+                        "fType": "upstream_processor"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/dcm1/cpu1"
+                    ]
+                 }
             ]
         },
         {
@@ -2138,6 +2153,17 @@
                     "paths":
                     [
                         "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "pcie_slot",
+                        "fType": "upstream_processor"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/dcm1/cpu1"
                     ]
                 }
             ]
@@ -2178,6 +2204,17 @@
                     [
                         "/xyz/openbmc_project/inventory/system/chassis"
                     ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "pcie_slot",
+                        "fType": "upstream_processor"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/dcm1/cpu1"
+                    ]
                 }
             ]
         },
@@ -2217,6 +2254,17 @@
                     [
                         "/xyz/openbmc_project/inventory/system/chassis"
                     ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "pcie_slot",
+                        "fType": "upstream_processor"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/dcm1/cpu0"
+                    ]
                 }
             ]
         },
@@ -2255,6 +2303,17 @@
                     "paths":
                     [
                         "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "pcie_slot",
+                        "fType": "upstream_processor"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/dcm1/cpu0"
                     ]
                 }
             ]
@@ -2334,6 +2393,17 @@
                     [
                         "/xyz/openbmc_project/inventory/system/chassis"
                     ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "pcie_slot",
+                        "fType": "upstream_processor"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/dcm0/cpu1"
+                    ]
                 }
             ]
         },
@@ -2372,6 +2442,17 @@
                     "paths":
                     [
                         "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "pcie_slot",
+                        "fType": "upstream_processor"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/dcm0/cpu1"
                     ]
                 }
             ]
@@ -2412,6 +2493,17 @@
                     [
                         "/xyz/openbmc_project/inventory/system/chassis"
                     ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "pcie_slot",
+                        "fType": "upstream_processor"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/dcm0/cpu1"
+                    ]
                 }
             ]
         },
@@ -2451,6 +2543,17 @@
                     [
                         "/xyz/openbmc_project/inventory/system/chassis"
                     ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "pcie_slot",
+                        "fType": "upstream_processor"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/dcm0/cpu0"
+                    ]
                 }
             ]
         },
@@ -2489,6 +2592,245 @@
                     "paths":
                     [
                         "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "pcie_slot",
+                        "fType": "upstream_processor"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/dcm0/cpu0"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "system/chassis/motherboard/pcieslot0/pcie_card0",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "sensors"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/sensors/temperature/PCIe_Cable_Card_C0_Temp",
+                        "/xyz/openbmc_project/sensors/temperature/PCIe_Cable_Card_C0_Local_Temp"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "system/chassis/motherboard/pcieslot1/pcie_card1",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "sensors"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/sensors/temperature/PCIe_Cable_Card_C1_Temp",
+                        "/xyz/openbmc_project/sensors/temperature/PCIe_Cable_Card_C1_Local_Temp"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "system/chassis/motherboard/pcieslot2/pcie_card2",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "sensors"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/sensors/temperature/PCIe_Cable_Card_C2_Temp",
+                        "/xyz/openbmc_project/sensors/temperature/PCIe_Cable_Card_C2_Local_Temp"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "system/chassis/motherboard/pcieslot3/pcie_card3",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "sensors"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/sensors/temperature/PCIe_Cable_Card_C3_Temp",
+                        "/xyz/openbmc_project/sensors/temperature/PCIe_Cable_Card_C3_Local_Temp"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "system/chassis/motherboard/pcieslot4/pcie_card4",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "sensors"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/sensors/temperature/PCIe_Cable_Card_C4_Temp",
+                        "/xyz/openbmc_project/sensors/temperature/PCIe_Cable_Card_C4_Local_Temp"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "system/chassis/motherboard/pcieslot6/pcie_card6",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "sensors"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/sensors/temperature/PCIe_Cable_Card_C6_Temp",
+                        "/xyz/openbmc_project/sensors/temperature/PCIe_Cable_Card_C6_Local_Temp"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "system/chassis/motherboard/pcieslot7/pcie_card7",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "sensors"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/sensors/temperature/PCIe_Cable_Card_C7_Temp",
+                        "/xyz/openbmc_project/sensors/temperature/PCIe_Cable_Card_C7_Local_Temp"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "system/chassis/motherboard/pcieslot8/pcie_card8",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "sensors"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/sensors/temperature/PCIe_Cable_Card_C8_Temp",
+                        "/xyz/openbmc_project/sensors/temperature/PCIe_Cable_Card_C8_Local_Temp",
+                        "/xyz/openbmc_project/sensors/temperature/NVMe_JBOF_Card_C8_Temp",
+                        "/xyz/openbmc_project/sensors/temperature/NVMe_JBOF_Card_C8_Local_Temp"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "system/chassis/motherboard/pcieslot9/pcie_card9",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "sensors"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/sensors/temperature/PCIe_Cable_Card_C9_Temp",
+                        "/xyz/openbmc_project/sensors/temperature/PCIe_Cable_Card_C9_Local_Temp",
+                        "/xyz/openbmc_project/sensors/temperature/NVMe_JBOF_Card_C9_Temp",
+                        "/xyz/openbmc_project/sensors/temperature/NVMe_JBOF_Card_C9_Local_Temp"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "system/chassis/motherboard/pcieslot10/pcie_card10",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "sensors"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/sensors/temperature/PCIe_Cable_Card_C10_Temp",
+                        "/xyz/openbmc_project/sensors/temperature/PCIe_Cable_Card_C10_Local_Temp",
+                        "/xyz/openbmc_project/sensors/temperature/NVMe_JBOF_Card_C10_Temp",
+                        "/xyz/openbmc_project/sensors/temperature/NVMe_JBOF_Card_C10_Local_Temp"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "system/chassis/motherboard/pcieslot11/pcie_card11",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "sensors"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/sensors/temperature/PCIe_Cable_Card_C11_Temp",
+                        "/xyz/openbmc_project/sensors/temperature/PCIe_Cable_Card_C11_Local_Temp",
+                        "/xyz/openbmc_project/sensors/temperature/NVMe_JBOF_Card_C11_Temp",
+                        "/xyz/openbmc_project/sensors/temperature/NVMe_JBOF_Card_C11_Local_Temp"
                     ]
                 }
             ]
@@ -2752,17 +3094,6 @@
                     [
                         "/xyz/openbmc_project/led/groups/cablecard10_cxp_top_identify"
                     ]
-                },
-                {
-                    "types":
-                    {
-                        "rType": "inventory",
-                        "fType": "chassis"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/inventory/system/chassis"
-                    ]
                 }
             ]
         },
@@ -2790,17 +3121,6 @@
                     "paths":
                     [
                         "/xyz/openbmc_project/led/groups/cablecard10_cxp_bot_identify"
-                    ]
-                },
-                {
-                    "types":
-                    {
-                        "rType": "inventory",
-                        "fType": "chassis"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/inventory/system/chassis"
                     ]
                 }
             ]
@@ -2862,34 +3182,6 @@
             ]
         },
         {
-            "path": "system/chassis/motherboard/disk_backplane2",
-            "endpoints":
-            [
-                {
-                    "types":
-                    {
-                        "rType": "fault_identified_by",
-                        "fType": "fault_identifying"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/dasd_pyramid2_fault"
-                    ]
-                },
-                {
-                    "types":
-                    {
-                        "rType": "identified_by",
-                        "fType": "identifying"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/dasd_pyramid2_identify"
-                    ]
-                }
-            ]
-        },
-        {
             "path": "system/chassis/motherboard/disk_backplane0/nvme0",
             "endpoints":
             [
@@ -2924,6 +3216,17 @@
                     "paths":
                     [
                         "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "contained_by",
+                        "fType": "contains"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane0/nvme0/dp0_drive0"
                     ]
                 }
             ]
@@ -2964,6 +3267,17 @@
                     [
                         "/xyz/openbmc_project/inventory/system/chassis"
                     ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "contained_by",
+                        "fType": "contains"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane0/nvme1/dp0_drive1"
+                    ]
                 }
             ]
         },
@@ -3002,6 +3316,17 @@
                     "paths":
                     [
                         "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "contained_by",
+                        "fType": "contains"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane0/nvme2/dp0_drive2"
                     ]
                 }
             ]
@@ -3042,6 +3367,17 @@
                     [
                         "/xyz/openbmc_project/inventory/system/chassis"
                     ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "contained_by",
+                        "fType": "contains"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane0/nvme3/dp0_drive3"
+                    ]
                 }
             ]
         },
@@ -3080,6 +3416,17 @@
                     "paths":
                     [
                         "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "contained_by",
+                        "fType": "contains"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane0/nvme4/dp0_drive4"
                     ]
                 }
             ]
@@ -3120,6 +3467,17 @@
                     [
                         "/xyz/openbmc_project/inventory/system/chassis"
                     ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "contained_by",
+                        "fType": "contains"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane0/nvme5/dp0_drive5"
+                    ]
                 }
             ]
         },
@@ -3158,6 +3516,17 @@
                     "paths":
                     [
                         "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "contained_by",
+                        "fType": "contains"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane0/nvme6/dp0_drive6"
                     ]
                 }
             ]
@@ -3198,6 +3567,17 @@
                     [
                         "/xyz/openbmc_project/inventory/system/chassis"
                     ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "contained_by",
+                        "fType": "contains"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane0/nvme7/dp0_drive7"
+                    ]
                 }
             ]
         },
@@ -3236,6 +3616,17 @@
                     "paths":
                     [
                         "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "contained_by",
+                        "fType": "contains"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane1/nvme0/dp1_drive0"
                     ]
                 }
             ]
@@ -3276,6 +3667,17 @@
                     [
                         "/xyz/openbmc_project/inventory/system/chassis"
                     ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "contained_by",
+                        "fType": "contains"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane1/nvme1/dp1_drive1"
+                    ]
                 }
             ]
         },
@@ -3314,6 +3716,17 @@
                     "paths":
                     [
                         "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "contained_by",
+                        "fType": "contains"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane1/nvme2/dp1_drive2"
                     ]
                 }
             ]
@@ -3354,6 +3767,17 @@
                     [
                         "/xyz/openbmc_project/inventory/system/chassis"
                     ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "contained_by",
+                        "fType": "contains"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane1/nvme3/dp1_drive3"
+                    ]
                 }
             ]
         },
@@ -3392,6 +3816,17 @@
                     "paths":
                     [
                         "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "contained_by",
+                        "fType": "contains"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane1/nvme4/dp1_drive4"
                     ]
                 }
             ]
@@ -3432,6 +3867,17 @@
                     [
                         "/xyz/openbmc_project/inventory/system/chassis"
                     ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "contained_by",
+                        "fType": "contains"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane1/nvme5/dp1_drive5"
+                    ]
                 }
             ]
         },
@@ -3470,6 +3916,17 @@
                     "paths":
                     [
                         "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "contained_by",
+                        "fType": "contains"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane1/nvme6/dp1_drive6"
                     ]
                 }
             ]
@@ -3510,24 +3967,24 @@
                     [
                         "/xyz/openbmc_project/inventory/system/chassis"
                     ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "contained_by",
+                        "fType": "contains"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane1/nvme7/dp1_drive7"
+                    ]
                 }
             ]
         },
         {
-            "path": "system/chassis/motherboard/disk_backplane2/nvme0",
+            "path": "/system/chassis/motherboard/connector0",
             "endpoints":
             [
-                {
-                    "types":
-                    {
-                        "rType": "fault_identified_by",
-                        "fType": "fault_identifying"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/nvme16_fault"
-                    ]
-                },
                 {
                     "types":
                     {
@@ -3536,7 +3993,7 @@
                     },
                     "paths":
                     [
-                        "/xyz/openbmc_project/led/groups/nvme16_identify"
+                        "/xyz/openbmc_project/led/groups/connector0_identify"
                     ]
                 },
                 {
@@ -3553,20 +4010,9 @@
             ]
         },
         {
-            "path": "system/chassis/motherboard/disk_backplane2/nvme1",
+            "path": "/system/chassis/motherboard/connector1",
             "endpoints":
             [
-                {
-                    "types":
-                    {
-                        "rType": "fault_identified_by",
-                        "fType": "fault_identifying"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/nvme17_fault"
-                    ]
-                },
                 {
                     "types":
                     {
@@ -3575,7 +4021,7 @@
                     },
                     "paths":
                     [
-                        "/xyz/openbmc_project/led/groups/nvme17_identify"
+                        "/xyz/openbmc_project/led/groups/connector1_identify"
                     ]
                 },
                 {
@@ -3592,20 +4038,9 @@
             ]
         },
         {
-            "path": "system/chassis/motherboard/disk_backplane2/nvme2",
+            "path": "/system/chassis/motherboard/connector2",
             "endpoints":
             [
-                {
-                    "types":
-                    {
-                        "rType": "fault_identified_by",
-                        "fType": "fault_identifying"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/nvme18_fault"
-                    ]
-                },
                 {
                     "types":
                     {
@@ -3614,7 +4049,7 @@
                     },
                     "paths":
                     [
-                        "/xyz/openbmc_project/led/groups/nvme18_identify"
+                        "/xyz/openbmc_project/led/groups/connector2_identify"
                     ]
                 },
                 {
@@ -3631,20 +4066,9 @@
             ]
         },
         {
-            "path": "system/chassis/motherboard/disk_backplane2/nvme3",
+            "path": "/system/chassis/motherboard/connector3",
             "endpoints":
             [
-                {
-                    "types":
-                    {
-                        "rType": "fault_identified_by",
-                        "fType": "fault_identifying"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/nvme19_fault"
-                    ]
-                },
                 {
                     "types":
                     {
@@ -3653,7 +4077,7 @@
                     },
                     "paths":
                     [
-                        "/xyz/openbmc_project/led/groups/nvme19_identify"
+                        "/xyz/openbmc_project/led/groups/connector3_identify"
                     ]
                 },
                 {
@@ -3670,20 +4094,9 @@
             ]
         },
         {
-            "path": "system/chassis/motherboard/disk_backplane2/nvme4",
+            "path": "/system/chassis/motherboard/connector4",
             "endpoints":
             [
-                {
-                    "types":
-                    {
-                        "rType": "fault_identified_by",
-                        "fType": "fault_identifying"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/nvme20_fault"
-                    ]
-                },
                 {
                     "types":
                     {
@@ -3692,7 +4105,7 @@
                     },
                     "paths":
                     [
-                        "/xyz/openbmc_project/led/groups/nvme20_identify"
+                        "/xyz/openbmc_project/led/groups/connector4_identify"
                     ]
                 },
                 {
@@ -3709,20 +4122,9 @@
             ]
         },
         {
-            "path": "system/chassis/motherboard/disk_backplane2/nvme5",
+            "path": "/system/chassis/motherboard/connector5",
             "endpoints":
             [
-                {
-                    "types":
-                    {
-                        "rType": "fault_identified_by",
-                        "fType": "fault_identifying"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/nvme21_fault"
-                    ]
-                },
                 {
                     "types":
                     {
@@ -3731,7 +4133,7 @@
                     },
                     "paths":
                     [
-                        "/xyz/openbmc_project/led/groups/nvme21_identify"
+                        "/xyz/openbmc_project/led/groups/connector5_identify"
                     ]
                 },
                 {
@@ -3748,20 +4150,9 @@
             ]
         },
         {
-            "path": "system/chassis/motherboard/disk_backplane2/nvme6",
+            "path": "/system/chassis/motherboard/connector6",
             "endpoints":
             [
-                {
-                    "types":
-                    {
-                        "rType": "fault_identified_by",
-                        "fType": "fault_identifying"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/nvme22_fault"
-                    ]
-                },
                 {
                     "types":
                     {
@@ -3770,7 +4161,7 @@
                     },
                     "paths":
                     [
-                        "/xyz/openbmc_project/led/groups/nvme22_identify"
+                        "/xyz/openbmc_project/led/groups/connector6_identify"
                     ]
                 },
                 {
@@ -3787,20 +4178,9 @@
             ]
         },
         {
-            "path": "system/chassis/motherboard/disk_backplane2/nvme7",
+            "path": "/system/chassis/motherboard/connector7",
             "endpoints":
             [
-                {
-                    "types":
-                    {
-                        "rType": "fault_identified_by",
-                        "fType": "fault_identifying"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/nvme23_fault"
-                    ]
-                },
                 {
                     "types":
                     {
@@ -3809,7 +4189,7 @@
                     },
                     "paths":
                     [
-                        "/xyz/openbmc_project/led/groups/nvme23_identify"
+                        "/xyz/openbmc_project/led/groups/connector7_identify"
                     ]
                 },
                 {
@@ -3821,6 +4201,2002 @@
                     "paths":
                     [
                         "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/connector8",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/connector8_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/connector9",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/connector9_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/connector10",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/connector10_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/connector11",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/connector11_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/connector12",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/connector12_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/connector13",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/connector13_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/connector14",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/connector14_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/connector15",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/connector15_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/connector16",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/connector16_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/connector17",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/connector17_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/connector18",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/connector18_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/connector19",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/connector19_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/connector20",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/connector20_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/connector21",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/connector21_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/rdx0",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/rdx0_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/rdx0/media0",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/media0_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/rdx0/rdx_power_connector",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/rdx_power_connector_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/rdx0/rdx_usb_connector",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/rdx_usb_connector_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/ebmc_card_bmc/ethernet0",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/ethernet0_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/ebmc_card_bmc/ethernet1",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/ethernet1_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/ebmc_card_bmc/usb0",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/usb0_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/ebmc_card_bmc/displayport0",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/displayport0_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/ebmc_card_bmc/usb1",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/usb1_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/pcieslot0/pcie_card0/cxp_top",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/c0_cxp_top_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/pcieslot0/pcie_card0/cxp_bot",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/c0_cxp_bot_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/pcieslot3/pcie_card3/cxp_top",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/c3_cxp_top_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/pcieslot3/pcie_card3/cxp_bot",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/c3_cxp_bot_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/pcieslot4/pcie_card4/cxp_top",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/c4_cxp_top_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/pcieslot4/pcie_card4/cxp_bot",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/c4_cxp_bot_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/pcieslot10/pcie_card10/cxp_top",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/c10_cxp_top_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/pcieslot10/pcie_card10/cxp_bot",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/c10_cxp_bot_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/pcieslot10/pcie_card10/c10_connector0",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/c10_connector0_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/pcieslot10/pcie_card10/c10_connector1",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/c10_connector1_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/pcieslot10/pcie_card10/c10_connector2",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/c10_connector2_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/pcieslot10/pcie_card10/c10_connector3",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/c10_connector3_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/pcieslot11/pcie_card11/c11_connector0",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/c11_connector0_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/pcieslot11/pcie_card11/c11_connector1",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/c11_connector1_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/pcieslot11/pcie_card11/c11_connector2",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/c11_connector2_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/pcieslot11/pcie_card11/c11_connector3",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/c11_connector3_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/pcieslot8/pcie_card8/c8_connector0",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/c8_connector0_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/pcieslot8/pcie_card8/c8_connector1",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/c8_connector1_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/pcieslot8/pcie_card8/c8_connector2",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/c8_connector2_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/pcieslot8/pcie_card8/c8_connector3",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/c8_connector3_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/disk_backplane0/dp0_connector0",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/dp0_connector0_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/disk_backplane0/dp0_connector1",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/dp0_connector1_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/disk_backplane0/dp0_connector2",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/dp0_connector2_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/disk_backplane0/dp0_connector3",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/dp0_connector3_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/disk_backplane0/dp0_connector4",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/dp0_connector4_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/disk_backplane0/dp0_connector5",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/dp0_connector5_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/disk_backplane1/dp1_connector0",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/dp1_connector0_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/disk_backplane1/dp1_connector1",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/dp1_connector1_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/disk_backplane1/dp1_connector2",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/dp1_connector2_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/disk_backplane1/dp1_connector3",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/dp1_connector3_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/disk_backplane1/dp1_connector4",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/dp1_connector4_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/disk_backplane1/dp1_connector5",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "identified_by",
+                        "fType": "identifying"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/led/groups/dp1_connector5_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/disk_backplane0",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "slots"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane0/nvme0",
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane0/nvme1",
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane0/nvme2",
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane0/nvme3",
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane0/nvme4",
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane0/nvme5",
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane0/nvme6",
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane0/nvme7"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/system/chassis/motherboard/disk_backplane1",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "slots"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane1/nvme0",
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane1/nvme1",
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane1/nvme2",
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane1/nvme3",
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane1/nvme4",
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane1/nvme5",
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane1/nvme6",
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane1/nvme7"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "cables/dp0_cable0",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "attached_cables",
+                        "fType": "upstream_resource"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/pcieslot8/pcie_card8",
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/pcieslot10/pcie_card10"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "attached_cables",
+                        "fType": "downstream_resource"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane0"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "attached_cables",
+                        "fType": "upstream_connector"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/pcieslot8/pcie_card8/c8_connector0",
+			                  "/xyz/openbmc_project/inventory/system/chassis/motherboard/pcieslot10/pcie_card10/c10_connector0"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "attached_cables",
+                        "fType": "downstream_connector"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane0/dp0_connector1"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "cables/dp0_cable1",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "attached_cables",
+                        "fType": "upstream_resource"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/pcieslot8/pcie_card8",
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/pcieslot10/pcie_card10"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "attached_cables",
+                        "fType": "downstream_resource"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane0"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "attached_cables",
+                        "fType": "upstream_connector"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/pcieslot8/pcie_card8/c8_connector1",
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/pcieslot10/pcie_card10/c10_connector1"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "attached_cables",
+                        "fType": "downstream_connector"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane0/dp0_connector2"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "cables/dp0_cable2",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "attached_cables",
+                        "fType": "upstream_resource"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/pcieslot8/pcie_card8",
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/pcieslot10/pcie_card10"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "attached_cables",
+                        "fType": "downstream_resource"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane0"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "attached_cables",
+                        "fType": "upstream_connector"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/pcieslot8/pcie_card8/c8_connector2",
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/pcieslot10/pcie_card10/c10_connector2"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "attached_cables",
+                        "fType": "downstream_connector"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane0/dp0_connector4"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "cables/dp0_cable3",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "attached_cables",
+                        "fType": "upstream_resource"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/pcieslot8/pcie_card8",
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/pcieslot10/pcie_card10"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "attached_cables",
+                        "fType": "downstream_resource"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane0"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "attached_cables",
+                        "fType": "upstream_connector"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/pcieslot8/pcie_card8/c8_connector3",
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/pcieslot10/pcie_card10/c10_connector3"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "attached_cables",
+                        "fType": "downstream_connector"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane0/dp0_connector5"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "cables/dp1_cable0",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "attached_cables",
+                        "fType": "upstream_resource"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/pcieslot11/pcie_card11"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "attached_cables",
+                        "fType": "downstream_resource"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane1"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "attached_cables",
+                        "fType": "upstream_connector"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/pcieslot11/pcie_card11/c11_connector0"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "attached_cables",
+                        "fType": "downstream_connector"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane1/dp1_connector1"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "cables/dp1_cable1",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "attached_cables",
+                        "fType": "upstream_resource"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/pcieslot11/pcie_card11"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "attached_cables",
+                        "fType": "downstream_resource"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane1"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "attached_cables",
+                        "fType": "upstream_connector"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/pcieslot11/pcie_card11/c11_connector1"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "attached_cables",
+                        "fType": "downstream_connector"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane1/dp1_connector2"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "cables/dp1_cable2",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "attached_cables",
+                        "fType": "upstream_resource"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/pcieslot11/pcie_card11"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "attached_cables",
+                        "fType": "downstream_resource"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane1"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "attached_cables",
+                        "fType": "upstream_connector"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/pcieslot11/pcie_card11/c11_connector2"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "attached_cables",
+                        "fType": "downstream_connector"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane1/dp1_connector4"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "cables/dp1_cable3",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "attached_cables",
+                        "fType": "upstream_resource"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/pcieslot11/pcie_card11"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "attached_cables",
+                        "fType": "downstream_resource"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane1"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "attached_cables",
+                        "fType": "upstream_connector"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/pcieslot11/pcie_card11/c11_connector3"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "attached_cables",
+                        "fType": "downstream_connector"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane1/dp1_connector5"
                     ]
                 }
             ]
