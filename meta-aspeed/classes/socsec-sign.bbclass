@@ -21,28 +21,40 @@ DEPENDS += '${@oe.utils.conditional("SOCSEC_SIGN_ENABLE", "1", " socsec-native",
 # Signs the SPL binary with a pre-established key
 sign_spl_helper() {
     signing_helper_args=""
+    keyname_arg=""
 
     if [ "${SOC_FAMILY}" != "aspeed-g6" ] ; then
         bbwarn "SPL signing is only supported on AST2600 boards"
+        return
+    fi
+
+    case "${SOCSEC_SIGN_ALGO}" in
+        RSA*_SHA*)
+            keyname_arg="--rsa_sign_key ${SOCSEC_SIGN_KEY}"
+            ;;
+        *)
+            bbfatal "socsec signing algorithm ${SOCSEC_SIGN_ALGO} is not" \
+                "supported"
+            ;;
+    esac
+
+    if [ -n "${SOCSEC_SIGN_HELPER}" ] ; then
+        signing_helper_args="--signing_helper ${SOCSEC_SIGN_HELPER}"
     elif [ ! -e "${SOCSEC_SIGN_KEY}" ] ; then
         bbfatal "Invalid socsec signing key: ${SOCSEC_SIGN_KEY}"
-    else
-        rm -f ${SPL_BINARY}.staged
-
-        if [ -n "${SOCSEC_SIGN_HELPER}" ] ; then
-            signing_helper_args="--signing_helper ${SOCSEC_SIGN_HELPER}"
-        fi
-        socsec make_secure_bl1_image \
-            --soc ${SOCSEC_SIGN_SOC}  \
-            --algorithm ${SOCSEC_SIGN_ALGO} \
-            --rsa_sign_key ${SOCSEC_SIGN_KEY} \
-            --bl1_image ${DEPLOYDIR}/${SPL_IMAGE} \
-            $signing_helper_args \
-            ${SOCSEC_SIGN_EXTRA_OPTS} \
-            --output ${SPL_BINARY}.staged
-        cp -f ${SPL_BINARY}.staged ${B}/$CONFIG_B_PATH/${SPL_BINARY}
-        mv -f ${SPL_BINARY}.staged ${DEPLOYDIR}/${SPL_IMAGE}
     fi
+
+    rm -f ${SPL_BINARY}.staged
+    socsec make_secure_bl1_image \
+        --soc ${SOCSEC_SIGN_SOC}  \
+        --algorithm ${SOCSEC_SIGN_ALGO} \
+        $keyname_arg \
+        --bl1_image ${DEPLOYDIR}/${SPL_IMAGE} \
+        $signing_helper_args \
+        ${SOCSEC_SIGN_EXTRA_OPTS} \
+        --output ${SPL_BINARY}.staged
+    cp -f ${SPL_BINARY}.staged ${B}/$CONFIG_B_PATH/${SPL_BINARY}
+    mv -f ${SPL_BINARY}.staged ${DEPLOYDIR}/${SPL_IMAGE}
 }
 
 sign_spl() {
