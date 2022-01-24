@@ -4,7 +4,7 @@ LICENSE     = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://${S}/COPYING;md5=3b83ef96387f14655fc854ddc3c6bd57"
 
 SRC_URI += "git://github.com/open-power/pdbg.git"
-SRCREV = "v3.4"
+SRCREV = "ae97f20eb8370dbd904345deae207626ee76c008"
 
 DEPENDS += "dtc-native"
 
