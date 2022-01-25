@@ -279,7 +279,7 @@
         }
       },
       {
-        "inventoryPath": "/system/chassis/motherboard/fan3",
+        "inventoryPath": "/system/chassis/motherboard/fan4",
         "inherit": false,
         "extraInterfaces": {
           "com.ibm.ipzvpd.Location" : {
