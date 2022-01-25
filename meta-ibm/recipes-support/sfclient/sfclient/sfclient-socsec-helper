@@ -1,0 +1,56 @@
+#!/bin/sh
+set -eu
+
+output="$(mktemp)"
+input="$(mktemp)"
+trap 'rm -f $output $input' EXIT
+
+if [ -z "$SF_PKCS11_CONFIG" ]; then
+    echo "${0##*/}: SF_PKCS11_CONFIG is unset" >&2
+    exit 1
+fi
+
+if [ ! -r "$SF_PKCS11_CONFIG" ]; then
+    echo "${0##*/}: cannot read $SF_PKCS11_CONFIG" >&2
+    exit 1
+fi
+
+url=$(jq -r '.url' "$SF_PKCS11_CONFIG")
+epwd=$(jq -r '.epwd' "$SF_PKCS11_CONFIG")
+pkey=$(jq -r '."private-key"' "$SF_PKCS11_CONFIG")
+
+# When using socsec with --signing_helper, socsec will launch the specified
+# program and:
+#   1 - pass the user selected key name as argv[1]
+#   2 - write the hash to be signed to stdin
+#   3 - read the signed hash from stdout
+#
+# sfclient takes the hash to be signed from a file specified by the -payload
+# option and writes the signed hash to a file specified by the -output option.
+#
+# To meet the above socsec helper program requirements, redirect stdin to a
+# temporary file for use with the -payload option, and create a temporary file,
+# have sfclient write the signed data there, and then write the content of that
+# file to stdout.
+#
+# socsec will also verify the signed hash.  To do this with sfclient we must
+# fetch a public key from the signing framework, and write it in a file with
+# the same name as the user selected key name (argv[1] of this script).
+cat - > "$input"
+sf_client \
+    -project "$1" \
+    -epwd "$epwd" \
+    -comments "testing" \
+    -url "$url" \
+    -pkey "$pkey" \
+    -payload "$input" \
+    -output "$output" >/dev/null
+sf_client \
+    -project "getpubkey" \
+    -param "-signproject $1 -format pem" \
+    -epwd "$epwd" \
+    -comments "obtain pubkey" \
+    -url "$url" \
+    -pkey "$pkey" \
+    -output "$1" > /dev/null
+cat "$output"
