@@ -212,14 +212,20 @@
           },
           "com.ibm.ipzvpd.VINI" : {
               "FN": [48, 50, 89, 75, 51, 50, 51],
-              "CC": [55, 66, 53, 70]
+              "CC": [55, 66, 53, 70],
+              "PN": [48, 50, 89, 75, 51, 50, 51],
+              "DR": [66, 108, 111, 119, 101, 114],
+              "SN": [66, 70, 77, 49, 48, 49, 50, 69, 72, 45, 48, 48, 69, 89, 87]
           },
           "com.ibm.ipzvpd.DINF" : {
               "RI": [0, 5, 33, 0]
           },
           "xyz.openbmc_project.Inventory.Decorator.Asset" : {
               "Model": "7B5F",
-              "SparePartNumber": "02YK323"
+              "SparePartNumber": "02YK323",
+              "Manufacturer": "Delta",
+              "PartNumber": "02YK323",
+              "SerialNumber": "BFM1012EH-00EYW"
           }
         }
       },
@@ -232,14 +238,20 @@
           },
           "com.ibm.ipzvpd.VINI" : {
               "FN": [48, 50, 89, 75, 51, 50, 51],
-              "CC": [55, 66, 53, 70]
+              "CC": [55, 66, 53, 70],
+              "PN": [48, 50, 89, 75, 51, 50, 51],
+              "DR": [66, 108, 111, 119, 101, 114],
+              "SN": [66, 70, 77, 49, 48, 49, 50, 69, 72, 45, 48, 48, 69, 89, 87]
           },
           "com.ibm.ipzvpd.DINF" : {
               "RI": [0, 5, 33, 1]
           },
           "xyz.openbmc_project.Inventory.Decorator.Asset" : {
               "Model": "7B5F",
-              "SparePartNumber": "02YK323"
+              "SparePartNumber": "02YK323",
+              "Manufacturer": "Delta",
+              "PartNumber": "02YK323",
+              "SerialNumber": "BFM1012EH-00EYW"
           }
         }
       },
@@ -252,14 +264,20 @@
           },
           "com.ibm.ipzvpd.VINI" : {
               "FN": [48, 50, 89, 75, 51, 50, 51],
-              "CC": [55, 66, 53, 70]
+              "CC": [55, 66, 53, 70],
+              "PN": [48, 50, 89, 75, 51, 50, 51],
+              "DR": [66, 108, 111, 119, 101, 114],
+              "SN": [66, 70, 77, 49, 48, 49, 50, 69, 72, 45, 48, 48, 69, 89, 87]
           },
           "com.ibm.ipzvpd.DINF" : {
               "RI": [0, 5, 33, 2]
           },
           "xyz.openbmc_project.Inventory.Decorator.Asset" : {
               "Model": "7B5F",
-              "SparePartNumber": "02YK323"
+              "SparePartNumber": "02YK323",
+              "Manufacturer": "Delta",
+              "PartNumber": "02YK323",
+              "SerialNumber": "BFM1012EH-00EYW"
           }
         }
       },
@@ -272,14 +290,20 @@
           },
           "com.ibm.ipzvpd.VINI" : {
               "FN": [48, 50, 89, 75, 51, 50, 51],
-              "CC": [55, 66, 53, 70]
+              "CC": [55, 66, 53, 70],
+              "PN": [48, 50, 89, 75, 51, 50, 51],
+              "DR": [66, 108, 111, 119, 101, 114],
+              "SN": [66, 70, 77, 49, 48, 49, 50, 69, 72, 45, 48, 48, 69, 89, 87]
           },
           "com.ibm.ipzvpd.DINF" : {
               "RI": [0, 5, 33, 3]
           },
           "xyz.openbmc_project.Inventory.Decorator.Asset" : {
               "Model": "7B5F",
-              "SparePartNumber": "02YK323"
+              "SparePartNumber": "02YK323",
+              "Manufacturer": "Delta",
+              "PartNumber": "02YK323",
+              "SerialNumber": "BFM1012EH-00EYW"
           }
         }
       },
