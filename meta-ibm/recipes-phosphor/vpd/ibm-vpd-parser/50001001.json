@@ -259,14 +259,20 @@
           },
           "com.ibm.ipzvpd.VINI" : {
               "FN": [48, 50, 89, 75, 50, 51, 55],
-              "CC": [55, 66, 53, 71]
+              "CC": [55, 66, 53, 71],
+              "PN": [48, 50, 89, 75, 50, 48, 48],
+              "DR": [70, 97, 110],
+              "SN": [70, 65, 49, 50, 49, 65, 48, 54, 45, 75, 50, 56]
           },
           "com.ibm.ipzvpd.DINF" : {
               "RI": [0, 5, 33, 0]
           },
           "xyz.openbmc_project.Inventory.Decorator.Asset" : {
               "Model": "7B5G",
-              "SparePartNumber": "02YK237"
+              "SparePartNumber": "02YK237",
+              "Manufacturer": "Delta",
+              "PartNumber": "02YK200",
+              "SerialNumber": "FA121A06-K28"
           }
         }
       },
@@ -279,14 +285,20 @@
           },
           "com.ibm.ipzvpd.VINI" : {
               "FN": [48, 50, 89, 75, 50, 51, 55],
-              "CC": [55, 66, 53, 71]
+              "CC": [55, 66, 53, 71],
+              "PN": [48, 50, 89, 75, 50, 48, 48],
+              "DR": [70, 97, 110],
+              "SN": [70, 65, 49, 50, 49, 65, 48, 54, 45, 75, 50, 56]
           },
           "com.ibm.ipzvpd.DINF" : {
               "RI": [0, 5, 33, 1]
           },
           "xyz.openbmc_project.Inventory.Decorator.Asset" : {
               "Model": "7B5G",
-              "SparePartNumber": "02YK237"
+              "SparePartNumber": "02YK237",
+              "Manufacturer": "Delta",
+              "PartNumber": "02YK200",
+              "SerialNumber": "FA121A06-K28"
           }
         }
       },
@@ -299,14 +311,20 @@
           },
           "com.ibm.ipzvpd.VINI" : {
               "FN": [48, 50, 89, 75, 50, 51, 55],
-              "CC": [55, 66, 53, 71]
+              "CC": [55, 66, 53, 71],
+              "PN": [48, 50, 89, 75, 50, 48, 48],
+              "DR": [70, 97, 110],
+              "SN": [70, 65, 49, 50, 49, 65, 48, 54, 45, 75, 50, 56]
           },
           "com.ibm.ipzvpd.DINF" : {
               "RI": [0, 5, 33, 2]
           },
           "xyz.openbmc_project.Inventory.Decorator.Asset" : {
               "Model": "7B5G",
-              "SparePartNumber": "02YK237"
+              "SparePartNumber": "02YK237",
+              "Manufacturer": "Delta",
+              "PartNumber": "02YK200",
+              "SerialNumber": "FA121A06-K28"
           }
         }
       },
@@ -319,14 +337,20 @@
           },
           "com.ibm.ipzvpd.VINI" : {
               "FN": [48, 50, 89, 75, 50, 51, 55],
-              "CC": [55, 66, 53, 71]
+              "CC": [55, 66, 53, 71],
+              "PN": [48, 50, 89, 75, 50, 48, 48],
+              "DR": [70, 97, 110],
+              "SN": [70, 65, 49, 50, 49, 65, 48, 54, 45, 75, 50, 56]
           },
           "com.ibm.ipzvpd.DINF" : {
               "RI": [0, 5, 33, 3]
           },
           "xyz.openbmc_project.Inventory.Decorator.Asset" : {
               "Model": "7B5G",
-              "SparePartNumber": "02YK237"
+              "SparePartNumber": "02YK237",
+              "Manufacturer": "Delta",
+              "PartNumber": "02YK200",
+              "SerialNumber": "FA121A06-K28"
           }
         }
       },
@@ -339,14 +363,20 @@
           },
           "com.ibm.ipzvpd.VINI" : {
               "FN": [48, 50, 89, 75, 50, 51, 55],
-              "CC": [55, 66, 53, 71]
+              "CC": [55, 66, 53, 71],
+              "PN": [48, 50, 89, 75, 50, 48, 48],
+              "DR": [70, 97, 110],
+              "SN": [70, 65, 49, 50, 49, 65, 48, 54, 45, 75, 50, 56]
           },
           "com.ibm.ipzvpd.DINF" : {
               "RI": [0, 5, 33, 4]
           },
           "xyz.openbmc_project.Inventory.Decorator.Asset" : {
               "Model": "7B5G",
-              "SparePartNumber": "02YK237"
+              "SparePartNumber": "02YK237",
+              "Manufacturer": "Delta",
+              "PartNumber": "02YK200",
+              "SerialNumber": "FA121A06-K28"
           }
         }
       },
@@ -359,14 +389,20 @@
           },
           "com.ibm.ipzvpd.VINI" : {
               "FN": [48, 50, 89, 75, 50, 51, 55],
-              "CC": [55, 66, 53, 71]
+              "CC": [55, 66, 53, 71],
+              "PN": [48, 50, 89, 75, 50, 48, 48],
+              "DR": [70, 97, 110],
+              "SN": [70, 65, 49, 50, 49, 65, 48, 54, 45, 75, 50, 56]
           },
           "com.ibm.ipzvpd.DINF" : {
               "RI": [0, 5, 33, 5]
           },
           "xyz.openbmc_project.Inventory.Decorator.Asset" : {
               "Model": "7B5G",
-              "SparePartNumber": "02YK237"
+              "SparePartNumber": "02YK237",
+              "Manufacturer": "Delta",
+              "PartNumber": "02YK200",
+              "SerialNumber": "FA121A06-K28"
           }
         }
       },
