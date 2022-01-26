@@ -269,7 +269,6 @@
           },
           "xyz.openbmc_project.Inventory.Decorator.Asset" : {
               "Model": "7B5G",
-              "SparePartNumber": "02YK237",
               "Manufacturer": "Delta",
               "PartNumber": "02YK200",
               "SerialNumber": "FA121A06-K28"
@@ -295,7 +294,6 @@
           },
           "xyz.openbmc_project.Inventory.Decorator.Asset" : {
               "Model": "7B5G",
-              "SparePartNumber": "02YK237",
               "Manufacturer": "Delta",
               "PartNumber": "02YK200",
               "SerialNumber": "FA121A06-K28"
@@ -321,7 +319,6 @@
           },
           "xyz.openbmc_project.Inventory.Decorator.Asset" : {
               "Model": "7B5G",
-              "SparePartNumber": "02YK237",
               "Manufacturer": "Delta",
               "PartNumber": "02YK200",
               "SerialNumber": "FA121A06-K28"
@@ -347,7 +344,6 @@
           },
           "xyz.openbmc_project.Inventory.Decorator.Asset" : {
               "Model": "7B5G",
-              "SparePartNumber": "02YK237",
               "Manufacturer": "Delta",
               "PartNumber": "02YK200",
               "SerialNumber": "FA121A06-K28"
@@ -373,7 +369,6 @@
           },
           "xyz.openbmc_project.Inventory.Decorator.Asset" : {
               "Model": "7B5G",
-              "SparePartNumber": "02YK237",
               "Manufacturer": "Delta",
               "PartNumber": "02YK200",
               "SerialNumber": "FA121A06-K28"
@@ -399,7 +394,6 @@
           },
           "xyz.openbmc_project.Inventory.Decorator.Asset" : {
               "Model": "7B5G",
-              "SparePartNumber": "02YK237",
               "Manufacturer": "Delta",
               "PartNumber": "02YK200",
               "SerialNumber": "FA121A06-K28"
