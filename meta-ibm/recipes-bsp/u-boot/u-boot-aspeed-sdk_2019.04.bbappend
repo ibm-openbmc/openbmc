@@ -1,6 +1,6 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
-SRC_URI:append:p10bmc = " file://ibm.json file://ips.json file://keys/"
+SRC_URI:append:p10bmc = " file://ibm.json file://ips.json file://keys/ file://p10bmc.cfg"
 
 OTPTOOL_CONFIGS:p10bmc = "${WORKDIR}/ibm.json ${WORKDIR}/ips.json"
 OTPTOOL_KEY_DIR:p10bmc = "${WORKDIR}/keys/"
@@ -13,6 +13,10 @@ OTPTOOL_KEY_DIR:p10bmc = "${WORKDIR}/keys/"
 #
 # https://gerrit.openbmc-project.xyz/c/openbmc/openbmc/+/50716
 SOCSEC_SIGN_EXTRA_OPTS = "--rsa_key_order=little"
+
+# We use a recent enough u-boot that the stack does not intersect the 64KiB SRAM region that is
+# verified by the AST2600 secure-boot controller.
+SOCSEC_SIGN_EXTRA_OPTS += " --stack_intersects_verification_region=false"
 
 do_deploy:prepend:p10bmc() {
 
