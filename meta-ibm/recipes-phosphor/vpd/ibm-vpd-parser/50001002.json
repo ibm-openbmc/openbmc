@@ -222,7 +222,6 @@
           },
           "xyz.openbmc_project.Inventory.Decorator.Asset" : {
               "Model": "7B5F",
-              "SparePartNumber": "02YK323",
               "Manufacturer": "Delta",
               "PartNumber": "02YK323",
               "SerialNumber": "BFM1012EH-00EYW"
@@ -248,7 +247,6 @@
           },
           "xyz.openbmc_project.Inventory.Decorator.Asset" : {
               "Model": "7B5F",
-              "SparePartNumber": "02YK323",
               "Manufacturer": "Delta",
               "PartNumber": "02YK323",
               "SerialNumber": "BFM1012EH-00EYW"
@@ -274,7 +272,6 @@
           },
           "xyz.openbmc_project.Inventory.Decorator.Asset" : {
               "Model": "7B5F",
-              "SparePartNumber": "02YK323",
               "Manufacturer": "Delta",
               "PartNumber": "02YK323",
               "SerialNumber": "BFM1012EH-00EYW"
@@ -300,7 +297,6 @@
           },
           "xyz.openbmc_project.Inventory.Decorator.Asset" : {
               "Model": "7B5F",
-              "SparePartNumber": "02YK323",
               "Manufacturer": "Delta",
               "PartNumber": "02YK323",
               "SerialNumber": "BFM1012EH-00EYW"
