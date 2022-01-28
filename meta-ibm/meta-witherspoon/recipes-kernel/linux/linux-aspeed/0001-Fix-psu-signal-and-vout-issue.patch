@@ -1,0 +1,55 @@
+From 474bb3dafd9fcf79f821b27cc3024cd4aa382504 Mon Sep 17 00:00:00 2001
+From: LuluTHSu <Lulu_Su@wistron.com>
+Date: Fri, 10 Dec 2021 11:05:00 +0800
+Subject: [PATCH] Fix psu signal and vout issue
+
+Due to mowgli's psu(Artesyn) doesn't support PMBus PEC checking,
+thermal reading and linear-16-conversion- formula, need to remove
+them by updating driver patch for fixing psu reading error.
+
+Signed-off-by: Andy YF Wang <Andy_YF_Wang@wistron.com>
+Signed-off-by: LuluTHSu <Lulu_Su@wistron.com>
+---
+ drivers/hwmon/pmbus/ibm-cffps.c  | 5 ++---
+ drivers/hwmon/pmbus/pmbus_core.c | 2 +-
+ 2 files changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/hwmon/pmbus/ibm-cffps.c b/drivers/hwmon/pmbus/ibm-cffps.c
+index 7cf4cc5..e199f24 100644
+--- a/drivers/hwmon/pmbus/ibm-cffps.c
++++ b/drivers/hwmon/pmbus/ibm-cffps.c
+@@ -444,8 +444,7 @@ static struct pmbus_driver_info ibm_cffps_info[] = {
+ 	[cffps1] = {
+ 		.pages = 1,
+ 		.func[0] = PMBUS_HAVE_VIN | PMBUS_HAVE_VOUT | PMBUS_HAVE_IOUT |
+-			PMBUS_HAVE_PIN | PMBUS_HAVE_FAN12 | PMBUS_HAVE_TEMP |
+-			PMBUS_HAVE_TEMP2 | PMBUS_HAVE_TEMP3 |
++			PMBUS_HAVE_PIN | PMBUS_HAVE_FAN12 |
+ 			PMBUS_HAVE_STATUS_VOUT | PMBUS_HAVE_STATUS_IOUT |
+ 			PMBUS_HAVE_STATUS_INPUT | PMBUS_HAVE_STATUS_TEMP |
+ 			PMBUS_HAVE_STATUS_FAN12,
+@@ -469,7 +468,7 @@ static struct pmbus_driver_info ibm_cffps_info[] = {
+ };
+ 
+ static struct pmbus_platform_data ibm_cffps_pdata = {
+-	.flags = PMBUS_SKIP_STATUS_CHECK,
++	.flags = PMBUS_SKIP_STATUS_CHECK | PMBUS_NO_CAPABILITY,
+ };
+ 
+ static int ibm_cffps_probe(struct i2c_client *client,
+diff --git a/drivers/hwmon/pmbus/pmbus_core.c b/drivers/hwmon/pmbus/pmbus_core.c
+index f7fc388..b2c375a 100644
+--- a/drivers/hwmon/pmbus/pmbus_core.c
++++ b/drivers/hwmon/pmbus/pmbus_core.c
+@@ -635,7 +635,7 @@ static long pmbus_reg2data_linear(struct pmbus_data *data,
+ 	s32 mantissa;
+ 	long val;
+ 
+-	if (sensor->class == PSC_VOLTAGE_OUT) {	/* LINEAR16 */
++	if (sensor->class == PSC_VOLTAGE_OUT && !(data->flags & PMBUS_NO_CAPABILITY)) {	/* LINEAR16 */
+ 		exponent = data->exponent[sensor->page];
+ 		mantissa = (u16) sensor->data;
+ 	} else {				/* LINEAR11 */
+-- 
+2.7.4
+
