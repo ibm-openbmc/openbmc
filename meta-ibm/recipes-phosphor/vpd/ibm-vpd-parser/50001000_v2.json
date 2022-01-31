@@ -808,6 +808,7 @@
         "driverType" : "at24",
         "busType" : "i2c",
         "presence": {
+          "pollingRequired" : true,
           "pin" : "RUSSEL_OPPANEL_PRESENCE_N",
           "value" : 0
         },
@@ -1460,6 +1461,10 @@
         "busType" : "i2c",
         "driverType" : "at24",
         "concurrentlyMaintainable" : true,
+        "presence" : {
+          "pin" : "SLOT0_EXPANDER_PRSNT_N",
+          "value" : 0
+        },
         "preAction" : {
           "pin" : "SLOT0_PRSNT_EN_RSVD",
           "value" : 1
@@ -1523,6 +1528,10 @@
         "busType" : "i2c",
         "driverType" : "at24",
         "concurrentlyMaintainable" : true,
+        "presence" : {
+          "pin" : "SLOT3_EXPANDER_PRSNT_N",
+          "value" : 0
+        },
         "preAction" : {
           "pin" : "SLOT3_PRSNT_EN_RSVD",
           "value" : 1
@@ -1586,6 +1595,10 @@
         "busType" : "i2c",
         "driverType" : "at24",
         "concurrentlyMaintainable" : true,
+        "presence" : {
+          "pin" : "SLOT4_EXPANDER_PRSNT_N",
+          "value" : 0
+        },
         "preAction" : {
           "pin" : "SLOT4_PRSNT_EN_RSVD",
           "value" : 1
@@ -1649,6 +1662,10 @@
         "busType" : "i2c",
         "driverType" : "at24",
         "concurrentlyMaintainable" : true,
+        "presence" : {
+          "pin" : "SLOT10_EXPANDER_PRSNT_N",
+          "value" : 0
+        },
         "preAction" : {
           "pin" : "SLOT10_PRSNT_EN_RSVD",
           "value" : 1
@@ -1768,6 +1785,10 @@
         "busType" : "i2c",
         "driverType" : "at24",
         "concurrentlyMaintainable" : true,
+        "presence" : {
+          "pin" : "SLOT2_EXPANDER_PRSNT_N",
+          "value" : 0
+        },
         "preAction" : {
           "pin" : "SLOT2_PRSNT_EN_RSVD",
           "value" : 1
@@ -1796,6 +1817,10 @@
         "busType" : "i2c",
         "driverType" : "at24",
         "concurrentlyMaintainable" : true,
+        "presence" : {
+          "pin" : "SLOT6_EXPANDER_PRSNT_N",
+          "value" : 0
+        },
         "preAction" : {
           "pin" : "SLOT6_PRSNT_EN_RSVD",
           "value" : 1
@@ -1820,6 +1845,10 @@
         "busType" : "i2c",
         "driverType" : "at24",
         "concurrentlyMaintainable" : true,
+        "presence" : {
+          "pin" : "SLOT7_EXPANDER_PRSNT_N",
+          "value" : 0
+        },
         "preAction" : {
           "pin" : "SLOT7_PRSNT_EN_RSVD",
           "value" : 1
@@ -1848,6 +1877,10 @@
         "busType" : "i2c",
         "driverType" : "at24",
         "concurrentlyMaintainable" : true,
+        "presence" : {
+          "pin" : "SLOT9_EXPANDER_PRSNT_N",
+          "value" : 0
+        },
         "preAction" : {
           "pin" : "SLOT9_PRSNT_EN_RSVD",
           "value" : 1
@@ -1876,6 +1909,10 @@
         "busType" : "i2c",
         "driverType" : "at24",
         "concurrentlyMaintainable" : true,
+        "presence" : {
+          "pin" : "SLOT11_EXPANDER_PRSNT_N",
+          "value" : 0
+        },
         "preAction" : {
           "pin" : "SLOT11_PRSNT_EN_RSVD",
           "value" : 1
@@ -1960,6 +1997,10 @@
         "busType" : "i2c",
         "driverType" : "at24",
         "concurrentlyMaintainable" : true,
+        "presence" : {
+          "pin" : "SLOT1_EXPANDER_PRSNT_N",
+          "value" : 0
+        },
         "preAction" : {
           "pin" : "SLOT1_PRSNT_EN_RSVD",
           "value" : 1
@@ -1988,6 +2029,10 @@
         "busType" : "i2c",
         "driverType" : "at24",
         "concurrentlyMaintainable" : true,
+        "presence" : {
+          "pin" : "SLOT8_EXPANDER_PRSNT_N",
+          "value" : 0
+        },
         "preAction" : {
           "pin" : "SLOT8_PRSNT_EN_RSVD",
           "value" : 1
