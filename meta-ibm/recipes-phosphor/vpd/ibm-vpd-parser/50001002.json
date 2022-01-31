@@ -1605,7 +1605,7 @@
               "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.U_2"
           },
           "com.ibm.ipzvpd.Location" : {
-              "LocationCode" : "Ufcs-P2-C0"
+              "LocationCode" : "Ufcs-P2-C8"
           }
         }
       },
@@ -1618,7 +1618,7 @@
               "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.U_2"
           },
           "com.ibm.ipzvpd.Location" : {
-              "LocationCode" : "Ufcs-P2-C1"
+              "LocationCode" : "Ufcs-P2-C9"
           }
         }
       },
@@ -1631,7 +1631,7 @@
               "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.U_2"
           },
           "com.ibm.ipzvpd.Location" : {
-              "LocationCode" : "Ufcs-P2-C2"
+              "LocationCode" : "Ufcs-P2-C10"
           }
         }
       },
@@ -1644,7 +1644,7 @@
               "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.U_2"
           },
           "com.ibm.ipzvpd.Location" : {
-              "LocationCode" : "Ufcs-P2-C3"
+              "LocationCode" : "Ufcs-P2-C11"
           }
         }
       },
@@ -1657,7 +1657,7 @@
               "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.U_2"
           },
           "com.ibm.ipzvpd.Location" : {
-              "LocationCode" : "Ufcs-P2-C4"
+              "LocationCode" : "Ufcs-P2-C12"
           }
         }
       },
@@ -1670,7 +1670,7 @@
               "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.U_2"
           },
           "com.ibm.ipzvpd.Location" : {
-              "LocationCode" : "Ufcs-P2-C5"
+              "LocationCode" : "Ufcs-P2-C13"
           }
         }
       },
@@ -1683,7 +1683,7 @@
               "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.U_2"
           },
           "com.ibm.ipzvpd.Location" : {
-              "LocationCode" : "Ufcs-P2-C6"
+              "LocationCode" : "Ufcs-P2-C14"
           }
         }
       },
@@ -1696,12 +1696,12 @@
               "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.U_2"
           },
           "com.ibm.ipzvpd.Location" : {
-              "LocationCode" : "Ufcs-P2-C7"
+              "LocationCode" : "Ufcs-P2-C15"
           }
         }
       },
       {
-      "inventoryPath": "/system/chassis/motherboard/disk_backplane1/dp1_connector0",
+        "inventoryPath": "/system/chassis/motherboard/disk_backplane1/dp1_connector0",
         "inherit": false,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.Connector": null,
