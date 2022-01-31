@@ -700,6 +700,7 @@
         "driverType" : "at24",
         "busType" : "i2c",
         "presence": {
+          "pollingRequired" : true,
           "pin" : "RUSSEL_OPPANEL_PRESENCE_N",
           "value" : 0
         },
