@@ -2106,7 +2106,7 @@
               "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.U_2"
           },
           "com.ibm.ipzvpd.Location" : {
-              "LocationCode" : "Ufcs-P2-C2"
+              "LocationCode" : "Ufcs-P2-C10"
           }
         }
       },
@@ -2119,7 +2119,7 @@
               "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.U_2"
           },
           "com.ibm.ipzvpd.Location" : {
-              "LocationCode" : "Ufcs-P2-C3"
+              "LocationCode" : "Ufcs-P2-C11"
           }
         }
       },
@@ -2132,7 +2132,7 @@
               "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.U_2"
           },
           "com.ibm.ipzvpd.Location" : {
-              "LocationCode" : "Ufcs-P2-C4"
+              "LocationCode" : "Ufcs-P2-C12"
           }
         }
       },
@@ -2145,12 +2145,12 @@
               "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.U_2"
           },
           "com.ibm.ipzvpd.Location" : {
-              "LocationCode" : "Ufcs-P2-C5"
+              "LocationCode" : "Ufcs-P2-C13"
           }
         }
       },
       {
-      "inventoryPath": "/system/chassis/motherboard/disk_backplane1/dp1_connector1",
+        "inventoryPath": "/system/chassis/motherboard/disk_backplane1/dp1_connector1",
         "inherit": false,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.Connector": null,
