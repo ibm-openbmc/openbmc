@@ -16,7 +16,6 @@ inherit python3native setuptools3
 RDEPENDS:${PN} += "python3-bitarray"
 RDEPENDS:${PN} += "python3-core"
 RDEPENDS:${PN} += "python3-ecdsa"
-RDEPENDS:${PN} += "python3-hexdump"
 RDEPENDS:${PN} += "python3-jsonschema"
 RDEPENDS:${PN} += "python3-jstyleson"
 RDEPENDS:${PN} += "python3-pycryptodome"
