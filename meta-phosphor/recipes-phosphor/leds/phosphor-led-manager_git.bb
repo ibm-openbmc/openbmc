@@ -13,6 +13,8 @@ PACKAGECONFIG[use-json] = "-Duse-json=enabled, -Duse-json=disabled"
 PACKAGECONFIG[use-lamp-test] = "-Duse-lamp-test=enabled, -Duse-lamp-test=disabled"
 PACKAGECONFIG[monitor-operational-status] = "-Dmonitor-operational-status=enabled, \
                                              -Dmonitor-operational-status=disabled"
+PACKAGECONFIG[monitor-sai-status] = "-Dmonitor-sai-status=enabled, \
+                                     -Dmonitor-sai-status=disabled"
 
 SYSTEMD_PACKAGES = "${PN} ${PN}-faultmonitor"
 PACKAGE_BEFORE_PN += "${PN}-faultmonitor"
