@@ -12,9 +12,7 @@ SOCSEC_SIGN_HELPER ?= ""
 # intersects the stack. The parameter below can be used to instruct
 # socsec to work in either mode (ommitting it throws a warning), but
 # newer (post v00.03.03) u-boot-aspeed-sdk need this set to false
-# A1 rsa order is little endian and A3 is big endian
-# Set big endian for A3 support
-SOCSEC_SIGN_EXTRA_OPTS ?= "--stack_intersects_verification_region=false --rsa_key_order=big"
+SOCSEC_SIGN_EXTRA_OPTS ?= "--stack_intersects_verification_region=false"
 DEPENDS += '${@oe.utils.conditional("SOCSEC_SIGN_ENABLE", "1", " socsec-native", "", d)}'
 
 
@@ -72,20 +70,9 @@ sign_spl() {
     fi
 }
 
-verify_spl_otp() {
-    socsec verify \
-        --sec_image ${DEPLOYDIR}/${SPL_IMAGE} \
-        --otp_image ${DEPLOYDIR}/otp-all.image
-
-    if [ $? -ne 0 ]; then
-        echo "Verified OTP image failed."
-        exit 1
-    fi
-}
 
 do_deploy:append() {
     if [ "${SOCSEC_SIGN_ENABLE}" = "1" -a -n "${SPL_BINARY}" ] ; then
         sign_spl
-        verify_spl_otp
     fi
 }
