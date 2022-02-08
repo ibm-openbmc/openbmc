@@ -11,8 +11,7 @@ POWER_SERVICE_PACKAGES_AC_SERVER = " \
 POWER_SERVICE_PACKAGES_P10 = " \
     phosphor-power-control \
     phosphor-power-ibm-ups \
-    phosphor-power-sequencer \
-    phosphor-power-systemd-links-sequencer \
+    phosphor-power-control \
     phosphor-power-utils \
     phosphor-power \
     phosphor-power-regulators \
