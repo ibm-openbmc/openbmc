@@ -48,7 +48,7 @@ SRC_URI += "file://upgrade_ibm_service_account.sh"
 FILES:${PN} += " /home/service/.profile "
 do_install:append() {
   install -d ${D}/home/service
-  echo "/usr/bin/sudo -i /bin/sh;exit" >${D}/home/service/.profile
+  echo "/usr/bin/sudo -i;exit" >${D}/home/service/.profile
   install -d ${D}${bindir}
   install -m 0755 ${WORKDIR}/upgrade_ibm_service_account.sh ${D}${bindir}/upgrade_ibm_service_account.sh
 }
