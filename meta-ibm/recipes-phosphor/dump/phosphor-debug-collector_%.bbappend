@@ -57,7 +57,13 @@ python link_ibm_bad_vpd() {
     install_dreport_user_script(script, d)
 }
 
+#Install gendumpinfo script from dreport/ibm.d to dreport/include.d
+install_gendumpinfo() {
+    install -d ${D}${dreport_include_dir}
+    install -m 0755 ${S}/tools/dreport.d/ibm.d/gendumpinfo ${D}${dreport_include_dir}/
+}
+
 IBM_INSTALL_POSTFUNCS = "install_ibm_plugins link_ibm_plugins"
-IBM_INSTALL_POSTFUNCS:p10bmc += "install_dreport_header install_ibm_bad_vpd link_ibm_bad_vpd"
+IBM_INSTALL_POSTFUNCS:p10bmc += "install_dreport_header install_ibm_bad_vpd link_ibm_bad_vpd install_gendumpinfo"
 
 do_install[postfuncs] += "${IBM_INSTALL_POSTFUNCS}"
