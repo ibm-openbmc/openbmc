@@ -744,22 +744,11 @@
     "/sys/bus/spi/drivers/at25/spi12.0/eeprom": [
       {
           "inventoryPath": "/system/chassis/motherboard/dcm0/cpu0",
+          "redundantEeprom": "/sys/bus/spi/drivers/at25/spi13.0/eeprom",
           "cpuType" : "primary",
           "powerOffOnly" : true,
           "offset": 196608,
           "size": 65504,
-          "type": "fruAndModule",
-          "extraInterfaces": {
-              "xyz.openbmc_project.Inventory.Item.Cpu": null,
-              "com.ibm.ipzvpd.Location" : {
-                  "LocationCode" : "Ufcs-P0-C15"
-              }
-          }
-      },
-      {
-          "inventoryPath": "/system/chassis/motherboard/dcm0/cpu1",
-          "inheritEI": false,
-          "type": "moduleOnly",
           "extraInterfaces": {
               "xyz.openbmc_project.Inventory.Item.Cpu": null,
               "com.ibm.ipzvpd.Location" : {
@@ -906,11 +895,11 @@
     "/sys/bus/spi/drivers/at25/spi22.0/eeprom": [
       {
           "inventoryPath": "/system/chassis/motherboard/dcm0/cpu1",
+          "redundantEeprom": "/sys/bus/spi/drivers/at25/spi23.0/eeprom",
           "powerOffOnly" : true,
           "offset": 196608,
           "size": 65504,
           "inherit": false,
-          "type": "moduleOnly",
           "extraInterfaces": {
               "xyz.openbmc_project.Inventory.Item.Cpu": null,
               "com.ibm.ipzvpd.Location" : {
@@ -1057,21 +1046,10 @@
     "/sys/bus/spi/drivers/at25/spi32.0/eeprom": [
       {
           "inventoryPath": "/system/chassis/motherboard/dcm1/cpu0",
+          "redundantEeprom": "/sys/bus/spi/drivers/at25/spi33.0/eeprom",
           "powerOffOnly" : true,
           "offset": 196608,
           "size": 65504,
-          "type": "fruAndModule",
-          "extraInterfaces": {
-              "xyz.openbmc_project.Inventory.Item.Cpu": null,
-              "com.ibm.ipzvpd.Location" : {
-                  "LocationCode" : "Ufcs-P0-C24"
-              }
-          }
-      },
-      {
-          "inventoryPath": "/system/chassis/motherboard/dcm1/cpu1",
-          "inheritEI": false,
-          "type": "moduleOnly",
           "extraInterfaces": {
               "xyz.openbmc_project.Inventory.Item.Cpu": null,
               "com.ibm.ipzvpd.Location" : {
@@ -1218,11 +1196,11 @@
     "/sys/bus/spi/drivers/at25/spi42.0/eeprom": [
       {
           "inventoryPath": "/system/chassis/motherboard/dcm1/cpu1",
+          "redundantEeprom": "/sys/bus/spi/drivers/at25/spi43.0/eeprom",
           "powerOffOnly" : true,
           "offset": 196608,
           "size": 65504,
           "inherit": false,
-          "type": "moduleOnly",
           "extraInterfaces": {
               "xyz.openbmc_project.Inventory.Item.Cpu": null,
               "com.ibm.ipzvpd.Location" : {
