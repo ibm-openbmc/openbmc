@@ -15,6 +15,10 @@ EXTRA_OEMESON:append:p10bmc += "-DHOSTBOOT_DUMP_TMP_FILE_DIR=${hostboot_dump_tem
 EXTRA_OEMESON:append:p10bmc += "-DHARDWARE_DUMP_PATH=${hardware_dump_path}"
 EXTRA_OEMESON:append:p10bmc += "-DHARDWARE_DUMP_TMP_FILE_DIR=${hardware_dump_temp_path}"
 
+#Dump values is in KB
+EXTRA_OEMESON:append:p10bmc += "-DBMC_DUMP_MAX_SIZE=20480"
+EXTRA_OEMESON:append:p10bmc += "-DBMC_DUMP_TOTAL_SIZE=409600"
+
 SYSTEMD_SERVICE:${PN}-manager += "clear_hostdumps_poweroff.service"
 
 SRC_URI += "file://plugins.d/ibm_elogall"
