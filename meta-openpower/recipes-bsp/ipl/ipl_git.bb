@@ -12,7 +12,7 @@ inherit autotools pkgconfig
 S = "${WORKDIR}/git"
 
 SRC_URI = "git://git@github.com/open-power/ipl;branch="main""
-SRCREV = "19061e0567bf41ddefc13be6ec078d695973dca4"
+SRCREV = "ef4cdf04412134b32d806e933449eec3025267e5"
 
 DEPENDS = " \
         libekb pdbg autoconf-archive guard pdata \
