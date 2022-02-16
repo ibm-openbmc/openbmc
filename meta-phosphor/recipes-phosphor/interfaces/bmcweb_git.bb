@@ -11,9 +11,8 @@ LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=175792518e4ac015ab6696d16c4f607e"
 
 SRC_URI = "git://github.com/ibm-openbmc/bmcweb.git;nobranch=1"
-
 PV = "1.0+git${SRCPV}"
-SRCREV = "9e2b085d69982177dfd7241842a2c67d8e9ac006"
+SRCREV = "a5d2d172d99370af10d012aa838e404c06b12e4f"
 
 S = "${WORKDIR}/git"
 
