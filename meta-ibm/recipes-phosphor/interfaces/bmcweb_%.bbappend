@@ -14,10 +14,14 @@ EXTRA_OEMESON:append:p10bmc = " \
     -Dbmc-shell-socket=enabled \
     -Dredfish-license=enabled \
     -Dibm-usb-code-update=enabled \
+    -Dkvm=disabled \
+    -Dvm-websocket=disabled \
 "
 
 EXTRA_OEMESON:append:witherspoon-tacoma = " \
     -Dhypervisor-serial-socket=enabled \
+    -Dkvm=disabled \
+    -Dvm-websocket=disabled \
 "
 
 inherit obmc-phosphor-discovery-service
