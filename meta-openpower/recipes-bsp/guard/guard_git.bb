@@ -11,7 +11,7 @@ inherit meson
 S = "${WORKDIR}/git"
 
 SRC_URI = "git://git@github.com/open-power/guard;branch="main""
-SRCREV = "c47ab670d0f972b009efbbc1a41649d467c33708"
+SRCREV = "c5fcfb51e4fd51bc9adf11ca41e67c490d6a8cf7"
 
 DEPENDS = "cli11"
 
