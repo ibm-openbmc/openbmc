@@ -58,6 +58,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -85,6 +87,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -112,6 +116,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -139,6 +145,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -166,6 +174,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -193,6 +203,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -220,6 +232,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -247,6 +261,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -274,6 +290,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -301,6 +319,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -328,6 +348,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -355,6 +377,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -382,6 +406,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -409,6 +435,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -436,6 +464,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -463,6 +493,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -490,6 +522,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -517,6 +551,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -544,6 +580,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -571,6 +609,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -598,6 +638,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -625,6 +667,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -652,6 +696,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -679,6 +725,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -706,6 +754,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -733,6 +783,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -760,6 +812,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -787,6 +841,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -814,6 +870,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -841,6 +899,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -868,6 +928,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -895,6 +957,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -922,6 +986,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -949,6 +1015,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -976,6 +1044,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -1003,6 +1073,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -1030,6 +1102,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -1057,6 +1131,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -1084,6 +1160,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -1111,6 +1189,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -1138,6 +1218,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -1165,6 +1247,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -1192,6 +1276,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -1219,6 +1305,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -1246,6 +1334,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -1273,6 +1363,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -1300,6 +1392,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -1327,6 +1421,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -1354,6 +1450,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -1381,6 +1479,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -1408,6 +1508,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -1435,6 +1537,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -1462,6 +1566,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -1489,6 +1595,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -1516,6 +1624,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -1543,6 +1653,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -1570,6 +1682,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -1597,6 +1711,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -1624,6 +1740,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -1651,6 +1769,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -1678,6 +1798,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -1705,6 +1827,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -1732,6 +1856,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
@@ -1759,6 +1885,8 @@
           IPMIFruSection: Product
         PartNumber:
           IPMIFruProperty: Part Number
+        Model:
+          IPMIFruProperty: Model Number
           IPMIFruSection: Product
       xyz.openbmc_project.Inventory.Decorator.Revision:
         Version:
