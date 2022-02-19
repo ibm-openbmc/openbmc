@@ -2042,7 +2042,7 @@
     "/sys/bus/i2c/drivers/at24/16-0052/eeprom": [
          {
             "inventoryPath": "/system/chassis/motherboard/pcieslot1/pcie_card1",
-            "bind" : "16-0052",
+            "devAddress" : "16-0052",
             "presence" : {
               "pin" : "expander-cable-card1",
               "value" : 0
@@ -2093,7 +2093,7 @@
     "/sys/bus/i2c/drivers/at24/17-0050/eeprom": [
           {
              "inventoryPath": "/system/chassis/motherboard/pcieslot2/pcie_card2",
-             "bind" : "17-0050",
+             "devAddress" : "17-0050",
              "presence" : {
                "pin" : "expander-cable-card2",
                "value" : 0
@@ -2144,7 +2144,7 @@
     "/sys/bus/i2c/drivers/at24/18-0051/eeprom": [
           {
              "inventoryPath": "/system/chassis/motherboard/pcieslot3/pcie_card3",
-             "bind" : "18-0051",
+             "devAddress" : "18-0051",
              "presence" : {
                 "pin" : "expander-cable-card3",
                 "value" : 0
@@ -2195,7 +2195,7 @@
     "/sys/bus/i2c/drivers/at24/19-0050/eeprom": [
           {
              "inventoryPath": "/system/chassis/motherboard/pcieslot4/pcie_card4",
-             "bind" : "19-0050",
+             "devAddress" : "19-0050",
              "presence" : {
                "pin" : "expander-cable-card4",
                "value" : 0
@@ -2246,7 +2246,7 @@
     "/sys/bus/i2c/drivers/at24/20-0051/eeprom": [
           {
              "inventoryPath": "/system/chassis/motherboard/pcieslot5/pcie_card5",
-             "bind" : "20-0051",
+             "devAddress" : "20-0051",
              "presence" : {
                "pin" : "expander-cable-card5",
                "value" : 0
@@ -2297,7 +2297,7 @@
     "/sys/bus/i2c/drivers/at24/21-0051/eeprom": [
           {
              "inventoryPath": "/system/chassis/motherboard/pcieslot6/pcie_card6",
-             "bind" : "21-0051",
+             "devAddress" : "21-0051",
              "presence" : {
                "pin" : "expander-cable-card6",
                "value" : 0
@@ -2326,7 +2326,7 @@
     "/sys/bus/i2c/drivers/at24/22-0053/eeprom": [
           {
              "inventoryPath": "/system/chassis/motherboard/pcieslot7/pcie_card7",
-             "bind" : "22-0053",
+             "devAddress" : "22-0053",
              "presence" : {
                "pin" : "expander-cable-card7",
                "value" : 0
@@ -2377,7 +2377,7 @@
     "/sys/bus/i2c/drivers/at24/23-0050/eeprom": [
           {
              "inventoryPath": "/system/chassis/motherboard/pcieslot8/pcie_card8",
-             "bind" : "23-0050",
+             "devAddress" : "23-0050",
              "presence" : {
                "pin" : "expander-cable-card8",
                "value" : 0
@@ -2428,7 +2428,7 @@
     "/sys/bus/i2c/drivers/at24/24-0052/eeprom": [
           {
              "inventoryPath": "/system/chassis/motherboard/pcieslot9/pcie_card9",
-             "bind" : "24-0052",
+             "devAddress" : "24-0052",
              "presence" : {
                "pin" : "expander-cable-card9",
                "value" : 0
@@ -2457,7 +2457,7 @@
     "/sys/bus/i2c/drivers/at24/25-0053/eeprom": [
           {
              "inventoryPath": "/system/chassis/motherboard/pcieslot10/pcie_card10",
-             "bind" : "25-0053",
+             "devAddress" : "25-0053",
              "presence" : {
                "pin" : "expander-cable-card10",
                "value" : 0
@@ -2508,7 +2508,7 @@
     "/sys/bus/i2c/drivers/at24/26-0051/eeprom": [
           {
              "inventoryPath": "/system/chassis/motherboard/pcieslot11/pcie_card11",
-             "bind" : "26-0051",
+             "devAddress" : "26-0051",
              "presence" : {
                "pin" : "expander-cable-card11",
                "value" : 0
