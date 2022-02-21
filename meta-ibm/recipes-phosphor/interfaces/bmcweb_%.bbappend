@@ -28,6 +28,7 @@ EXTRA_OEMESON_append_rainier = " \
     -Dbmc-shell-socket=enabled \
     -Dredfish-license=enabled \
     -Dibm-usb-code-update=enabled \
+    -Dibm-sai=enabled \
     -Dkvm=disabled \
     -Dvm-websocket=disabled \
 "
