@@ -60,7 +60,6 @@ IBM_EXTRA_USERS_PARAMS += " \
 IBM_EXTRA_USERS_PARAMS += " \
   useradd -M -d / --groups hostconsoleaccess,priv-admin,redfish,web -s /bin/sh admin; \
   usermod -p ${DEFAULT_OPENBMC_PASSWORD} admin; \
-  passwd-expire admin; \
   "
 
 # Add the "service" account.
