@@ -807,7 +807,6 @@
           "powerOffOnly" : true,
           "offset": 196608,
           "size": 65504,
-          "inherit": false,
           "extraInterfaces": {
               "xyz.openbmc_project.Inventory.Item.Cpu": null,
               "com.ibm.ipzvpd.Location" : {
