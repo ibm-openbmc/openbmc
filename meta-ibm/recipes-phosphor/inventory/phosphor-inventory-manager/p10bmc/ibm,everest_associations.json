@@ -4024,7 +4024,7 @@
                     },
                     "paths":
                     [
-                        "/xyz/openbmc_project/led/groups/ddim55_identify"
+                        "/xyz/openbmc_project/led/groups/ddimm55_identify"
                     ]
                 }
             ]
