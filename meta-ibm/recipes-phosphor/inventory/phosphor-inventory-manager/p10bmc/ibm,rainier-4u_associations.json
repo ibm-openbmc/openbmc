@@ -1833,6 +1833,17 @@
                     [
                         "/xyz/openbmc_project/led/groups/rtc_battery_identify"
                     ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "sensors"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/sensors/voltage/Battery_Voltage"
+                    ]
                 }
             ]
         },
