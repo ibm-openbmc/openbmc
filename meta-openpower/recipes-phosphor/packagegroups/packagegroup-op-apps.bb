@@ -43,7 +43,7 @@ SUMMARY:${PN}-flash = "OpenPOWER Flash"
 RDEPENDS:${PN}-flash = " \
         openpower-software-manager\
         "
-RDEPENDS:${PN}-system:append:p10bmc = " guard openpower-hw-isolation"
+RDEPENDS:${PN}-system:append:p10bmc = " guard openpower-hw-isolation powervm-handler"
 
 SUMMARY:${PN}-system = "OpenPOWER System"
 RDEPENDS:${PN}-system = " \
