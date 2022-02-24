@@ -38,6 +38,9 @@ PV = "1.0+git${SRCPV}"
 PR = "r1"
 
 SRC_URI += "file://coretemp.conf"
+SRC_URI += "file://dumpoffloadtemp.conf"
+
+
 
 SYSTEMD_PACKAGES = "${PN}-monitor"
 SYSTEMD_SUBSTITUTIONS += "BMC_DUMP_PATH:${bmc_dump_path}:${MGR_SVC}"
@@ -58,6 +61,8 @@ EXTRA_OEMESON = " \
 do_install:append() {
     install -d ${D}${exec_prefix}/lib/tmpfiles.d
     install -m 644 ${WORKDIR}/coretemp.conf ${D}${exec_prefix}/lib/tmpfiles.d/
+    install -m 644 ${WORKDIR}/dumpoffloadtemp.conf ${D}${exec_prefix}/lib/tmpfiles.d/
+
 }
 do_install[postfuncs] += "install_dreport"
 do_install[postfuncs] += "install_dreport_conf_file"
@@ -82,6 +87,7 @@ FILES:${PN}-manager += " \
     ${bindir}/phosphor-dump-manager \
     ${bindir}/phosphor-offload-handler \
     ${exec_prefix}/lib/tmpfiles.d/coretemp.conf \
+    ${exec_prefix}/lib/tmpfiles.d/dumpoffloadtemp.conf \
     ${datadir}/dump/ \
     "
 FILES:${PN}-monitor += "${bindir}/phosphor-dump-monitor"
