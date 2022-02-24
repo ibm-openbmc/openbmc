@@ -48,7 +48,7 @@ pkg_postinst:${PN}() {
 	ln -s $TARGET $LINK
 
 	# Only install certain units if phal enabled
-	if [ "${@bb.utils.filter('MACHINE_FEATURES', 'phal', d)}" = phal ]; then
+	if [ "${@bb.utils.filter('OBMC_MACHINE_FEATURES', 'phal', d)}" = phal ]; then
 		LINK="$D$systemd_system_unitdir/obmc-host-stop@0.target.wants/op-clear-sys-dump-active@0.service"
 		TARGET="../op-clear-sys-dump-active@.service"
 		ln -s $TARGET $LINK
@@ -135,7 +135,7 @@ pkg_prerm:${PN}() {
 	rm $LINK
 
 	# Remove phal specific units if enabled
-	if [ "${@bb.utils.filter('MACHINE_FEATURES', 'phal', d)}" = phal ]; then
+	if [ "${@bb.utils.filter('OBMC_MACHINE_FEATURES', 'phal', d)}" = phal ]; then
 		LINK="$D$systemd_system_unitdir/obmc-host-start@0.target.requires/phal-reinit-devtree.service"
 		rm $LINK
 
