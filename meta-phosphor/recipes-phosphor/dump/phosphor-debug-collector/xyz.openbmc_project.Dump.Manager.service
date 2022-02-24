@@ -3,6 +3,7 @@ Description=Phosphor Dump Manager
 
 [Service]
 ExecStartPre=/bin/sh -c 'mkdir -p {BMC_DUMP_PATH}'
+ExecStartPre=/bin/sh -c 'mkdir -p /tmp/DumpOffloadSockets'
 ExecStart=/usr/bin/env phosphor-dump-manager
 SyslogIdentifier=phosphor-dump-manager
 Restart=always
