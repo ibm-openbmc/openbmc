@@ -67,6 +67,7 @@ SYSTEMD_SUBSTITUTIONS += "BMC_DUMP_PATH:${bmc_dump_path}:${MGR_SVC}"
 FILES:${PN}-manager +=  " \
     ${bindir}/phosphor-dump-manager \
     ${exec_prefix}/lib/tmpfiles.d/coretemp.conf \
+    ${exec_prefix}/lib/tmpfiles.d/dumpoffloadtemp.conf \
     ${datadir}/dump/ \
     "
 FILES:${PN}-monitor += "${bindir}/phosphor-dump-monitor"
@@ -85,10 +86,12 @@ EXTRA_OEMESON = " \
 
 S = "${WORKDIR}/git"
 SRC_URI += "file://coretemp.conf"
+SRC_URI += "file://dumpoffloadtemp.conf"
 
 do_install:append() {
     install -d ${D}${exec_prefix}/lib/tmpfiles.d
     install -m 644 ${WORKDIR}/coretemp.conf ${D}${exec_prefix}/lib/tmpfiles.d/
+    install -m 644 ${WORKDIR}/dumpoffloadtemp.conf ${D}${exec_prefix}/lib/tmpfiles.d/
 }
 
 # Install dreport script
