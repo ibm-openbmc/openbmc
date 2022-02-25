@@ -63,7 +63,9 @@ install_gendumpinfo() {
     install -m 0755 ${S}/tools/dreport.d/ibm.d/gendumpinfo ${D}${dreport_include_dir}/
 }
 
-IBM_INSTALL_POSTFUNCS = "install_ibm_plugins link_ibm_plugins"
-IBM_INSTALL_POSTFUNCS:p10bmc += "install_dreport_header install_ibm_bad_vpd link_ibm_bad_vpd install_gendumpinfo"
+IBM_INSTALL_POSTFUNCS:append:witherspoon-tacoma = " install_ibm_plugins link_ibm_plugins"
+IBM_INSTALL_POSTFUNCS:append:p10bmc = " install_dreport_header install_ibm_bad_vpd \
+                                 link_ibm_bad_vpd install_gendumpinfo \
+                                 install_ibm_plugins link_ibm_plugins"
 
 do_install[postfuncs] += "${IBM_INSTALL_POSTFUNCS}"
