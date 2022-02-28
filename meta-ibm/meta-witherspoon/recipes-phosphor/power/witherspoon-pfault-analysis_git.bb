@@ -22,7 +22,7 @@ DEPENDS += " \
          "
 
 EXTRA_OECONF_append_ibm-ac-server = "UCD90160_DEF_YAML_FILE=${STAGING_DIR_HOST}${datadir}/power-sequencer/ucd90160.yaml"
-EXTRA_OECONF_append_mowgli = "MOWGLICPLD_DEVICE_ACCESS=yes"
+EXTRA_OECONF_append_mowgli = "--enable-turn-on-mowglicpld-access"
 
 CHASSIS_ON_TGT = "obmc-chassis-poweron@0.target"
 SEQ_MONITOR_SVC = "pseq-monitor.service"
