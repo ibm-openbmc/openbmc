@@ -14,5 +14,7 @@ EXTRA_OEMESON:p10bmc = " \
     -Dfru-yaml-gen=${STAGING_DIR_HOST}${datadir}/p10bmc-yaml-config/ipmi-fru-read.yaml \
     "
 EXTRA_OECONF:p10bmc = " \
+    SENSOR_YAML_GEN=${STAGING_DIR_HOST}${datadir}/p10bmc-yaml-config/ipmi-sensors.yaml \
+    INVSENSOR_YAML_GEN=${STAGING_DIR_HOST}${datadir}/p10bmc-yaml-config/ipmi-inventory-sensors.yaml \
     FRU_YAML_GEN=${STAGING_DIR_HOST}${datadir}/p10bmc-yaml-config/ipmi-fru-read.yaml \
     "
