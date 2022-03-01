@@ -1986,6 +1986,19 @@
         }
       },
       {
+        "inventoryPath": "/system/chassis/motherboard/disk_backplane0/nvme2/drive2",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P1-C2"
+          },
+          "xyz.openbmc_project.Inventory.Item": {
+                  "PrettyName": "NVMe Drive"
+          }
+        }
+      },
+      {
         "inventoryPath": "/system/chassis/motherboard/disk_backplane0/nvme3",
         "inherit": false,
         "extraInterfaces": {
@@ -1995,6 +2008,19 @@
           },
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P1-C3"
+          }
+        }
+      },
+      {
+        "inventoryPath": "/system/chassis/motherboard/disk_backplane0/nvme3/drive3",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P1-C3"
+          },
+          "xyz.openbmc_project.Inventory.Item": {
+                  "PrettyName": "NVMe Drive"
           }
         }
       },
@@ -2012,6 +2038,19 @@
         }
       },
       {
+        "inventoryPath": "/system/chassis/motherboard/disk_backplane0/nvme4/drive4",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P1-C4"
+          },
+          "xyz.openbmc_project.Inventory.Item": {
+                  "PrettyName": "NVMe Drive"
+          }
+        }
+      },
+      {
         "inventoryPath": "/system/chassis/motherboard/disk_backplane0/nvme5",
         "inherit": false,
         "extraInterfaces": {
@@ -2021,6 +2060,19 @@
           },
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P1-C5"
+          }
+        }
+      },
+      {
+        "inventoryPath": "/system/chassis/motherboard/disk_backplane0/nvme5/drive5",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P1-C5"
+          },
+          "xyz.openbmc_project.Inventory.Item": {
+                  "PrettyName": "NVMe Drive"
           }
         }
       },
@@ -2106,6 +2158,19 @@
         }
       },
       {
+        "inventoryPath": "/system/chassis/motherboard/disk_backplane1/nvme2/drive2",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P2-C2"
+          },
+          "xyz.openbmc_project.Inventory.Item": {
+                  "PrettyName": "NVMe Drive"
+          }
+        }
+      },
+      {
         "inventoryPath": "/system/chassis/motherboard/disk_backplane1/nvme3",
         "inherit": false,
         "extraInterfaces": {
@@ -2115,6 +2180,19 @@
           },
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P2-C11"
+          }
+        }
+      },
+      {
+        "inventoryPath": "/system/chassis/motherboard/disk_backplane1/nvme3/drive3",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P2-C3"
+          },
+          "xyz.openbmc_project.Inventory.Item": {
+                  "PrettyName": "NVMe Drive"
           }
         }
       },
@@ -2132,6 +2210,19 @@
         }
       },
       {
+        "inventoryPath": "/system/chassis/motherboard/disk_backplane1/nvme4/drive4",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P2-C4"
+          },
+          "xyz.openbmc_project.Inventory.Item": {
+                  "PrettyName": "NVMe Drive"
+          }
+        }
+      },
+      {
         "inventoryPath": "/system/chassis/motherboard/disk_backplane1/nvme5",
         "inherit": false,
         "extraInterfaces": {
@@ -2145,7 +2236,20 @@
         }
       },
       {
-        "inventoryPath": "/system/chassis/motherboard/disk_backplane1/dp1_connector1",
+        "inventoryPath": "/system/chassis/motherboard/disk_backplane1/nvme5/drive5",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P2-C5"
+          },
+          "xyz.openbmc_project.Inventory.Item": {
+                  "PrettyName": "NVMe Drive"
+          }
+        }
+      },
+      {
+      "inventoryPath": "/system/chassis/motherboard/disk_backplane1/dp1_connector1",
         "inherit": false,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.Connector": null,
