@@ -1840,6 +1840,19 @@
         }
       },
       {
+        "inventoryPath": "/system/chassis/motherboard/dasd_backplane/nvme0/drive0",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P1-C0"
+          },
+          "xyz.openbmc_project.Inventory.Item": {
+                  "PrettyName": "NVMe Drive"
+          }
+        }
+      },
+      {
         "inventoryPath": "/system/chassis/motherboard/dasd_backplane/nvme1",
         "inherit": false,
         "extraInterfaces": {
@@ -1849,6 +1862,19 @@
           },
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P1-C1"
+          }
+        }
+      },
+      {
+        "inventoryPath": "/system/chassis/motherboard/dasd_backplane/nvme1/drive1",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P1-C1"
+          },
+          "xyz.openbmc_project.Inventory.Item": {
+                  "PrettyName": "NVMe Drive"
           }
         }
       },
@@ -1866,6 +1892,19 @@
         }
       },
       {
+        "inventoryPath": "/system/chassis/motherboard/dasd_backplane/nvme2/drive2",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P1-C2"
+          },
+          "xyz.openbmc_project.Inventory.Item": {
+                  "PrettyName": "NVMe Drive"
+          }
+        }
+      },
+      {
         "inventoryPath": "/system/chassis/motherboard/dasd_backplane/nvme3",
         "inherit": false,
         "extraInterfaces": {
@@ -1875,6 +1914,19 @@
           },
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P1-C3"
+          }
+        }
+      },
+      {
+        "inventoryPath": "/system/chassis/motherboard/dasd_backplane/nvme3/drive3",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P1-C3"
+          },
+          "xyz.openbmc_project.Inventory.Item": {
+                  "PrettyName": "NVMe Drive"
           }
         }
       },
@@ -1892,6 +1944,19 @@
         }
       },
       {
+        "inventoryPath": "/system/chassis/motherboard/dasd_backplane/nvme4/drive4",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P1-C4"
+          },
+          "xyz.openbmc_project.Inventory.Item": {
+                  "PrettyName": "NVMe Drive"
+          }
+        }
+      },
+      {
         "inventoryPath": "/system/chassis/motherboard/dasd_backplane/nvme5",
         "inherit": false,
         "extraInterfaces": {
@@ -1901,6 +1966,19 @@
           },
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P1-C5"
+          }
+        }
+      },
+      {
+        "inventoryPath": "/system/chassis/motherboard/dasd_backplane/nvme5/drive5",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P1-C5"
+          },
+          "xyz.openbmc_project.Inventory.Item": {
+                  "PrettyName": "NVMe Drive"
           }
         }
       },
@@ -1918,6 +1996,19 @@
         }
       },
       {
+        "inventoryPath": "/system/chassis/motherboard/dasd_backplane/nvme6/drive6",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P1-C6"
+          },
+          "xyz.openbmc_project.Inventory.Item": {
+                  "PrettyName": "NVMe Drive"
+          }
+        }
+      },
+      {
         "inventoryPath": "/system/chassis/motherboard/dasd_backplane/nvme7",
         "inherit": false,
         "extraInterfaces": {
@@ -1927,6 +2018,19 @@
           },
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P1-C7"
+          }
+        }
+      },
+      {
+        "inventoryPath": "/system/chassis/motherboard/dasd_backplane/nvme7/drive7",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P1-C7"
+          },
+          "xyz.openbmc_project.Inventory.Item": {
+                  "PrettyName": "NVMe Drive"
           }
         }
       },
@@ -1944,6 +2048,19 @@
         }
       },
       {
+        "inventoryPath": "/system/chassis/motherboard/dasd_backplane/nvme8/drive8",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P1-C8"
+          },
+          "xyz.openbmc_project.Inventory.Item": {
+                  "PrettyName": "NVMe Drive"
+          }
+        }
+      },
+      {
         "inventoryPath": "/system/chassis/motherboard/dasd_backplane/nvme9",
         "inherit": false,
         "extraInterfaces": {
@@ -1953,6 +2070,19 @@
           },
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P1-C9"
+          }
+        }
+      },
+      {
+        "inventoryPath": "/system/chassis/motherboard/dasd_backplane/nvme9/drive9",
+        "inherit": false,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P1-C9"
+          },
+          "xyz.openbmc_project.Inventory.Item": {
+                  "PrettyName": "NVMe Drive"
           }
         }
       },
