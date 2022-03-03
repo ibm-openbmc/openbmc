@@ -1486,6 +1486,9 @@
           "xyz.openbmc_project.Inventory.Decorator.I2CDevice": {
               "Bus": 20,
               "Address": 80
+          },
+          "xyz.openbmc_project.Inventory.Decorator.Slot": {
+              "SlotNumber": 0
           }
         }
       },
@@ -1553,6 +1556,9 @@
           "xyz.openbmc_project.Inventory.Decorator.I2CDevice": {
               "Bus": 23,
               "Address": 80
+          },
+          "xyz.openbmc_project.Inventory.Decorator.Slot": {
+              "SlotNumber": 3
           }
         }
       },
@@ -1620,6 +1626,9 @@
           "xyz.openbmc_project.Inventory.Decorator.I2CDevice": {
               "Bus": 24,
               "Address": 81
+          },
+          "xyz.openbmc_project.Inventory.Decorator.Slot": {
+              "SlotNumber": 4
           }
         }
       },
@@ -1687,6 +1696,9 @@
           "xyz.openbmc_project.Inventory.Decorator.I2CDevice": {
               "Bus": 29,
               "Address": 80
+          },
+          "xyz.openbmc_project.Inventory.Decorator.Slot": {
+              "SlotNumber": 10
           }
         }
       },
@@ -1809,6 +1821,9 @@
           "xyz.openbmc_project.Inventory.Decorator.I2CDevice": {
               "Bus": 22,
               "Address": 82
+          },
+          "xyz.openbmc_project.Inventory.Decorator.Slot": {
+              "SlotNumber": 2
           }
         }
       }
@@ -1869,6 +1884,9 @@
           "xyz.openbmc_project.Inventory.Decorator.I2CDevice": {
               "Bus": 26,
               "Address": 82
+          },
+          "xyz.openbmc_project.Inventory.Decorator.Slot": {
+              "SlotNumber": 7
           }
         }
       }
@@ -1901,6 +1919,9 @@
           "xyz.openbmc_project.Inventory.Decorator.I2CDevice": {
               "Bus": 27,
               "Address": 80
+          },
+          "xyz.openbmc_project.Inventory.Decorator.Slot": {
+              "SlotNumber": 9
           }
         }
       }
@@ -1933,6 +1954,9 @@
           "xyz.openbmc_project.Inventory.Decorator.I2CDevice": {
               "Bus": 30,
               "Address": 81
+          },
+          "xyz.openbmc_project.Inventory.Decorator.Slot": {
+              "SlotNumber": 11
           }
         }
       },
@@ -2021,6 +2045,9 @@
           "xyz.openbmc_project.Inventory.Decorator.I2CDevice": {
               "Bus": 21,
               "Address": 81
+          },
+          "xyz.openbmc_project.Inventory.Decorator.Slot": {
+              "SlotNumber": 1
           }
         }
       }
@@ -2053,6 +2080,9 @@
           "xyz.openbmc_project.Inventory.Decorator.I2CDevice": {
               "Bus": 28,
               "Address": 81
+          },
+          "xyz.openbmc_project.Inventory.Decorator.Slot": {
+              "SlotNumber": 8
           }
         }
       },
