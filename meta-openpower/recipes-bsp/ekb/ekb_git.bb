@@ -10,6 +10,7 @@ LIC_FILES_CHKSUM = "file://${S}/LICENSE_PROLOG;md5=d8e5f403c98fd80dcea90b9cc8cd0
 require ekb.inc
 
 SRC_URI = "${EKB_URI}"
+SRC_URI += "file://001-Change-ATTR-FREQ_MC_MHZ-to-1466.patch"
 SRCREV = "${EKB_REV}"
 
 S = "${WORKDIR}/git"
