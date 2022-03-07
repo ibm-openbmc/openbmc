@@ -8,13 +8,12 @@ EXTRA_OEMESON:append = " \
 "
 
 EXTRA_OEMESON:append:p10bmc = " \
-    -Dibm-lamp-test=enabled \
+    -Dibm-led-extensions=enabled \
     -Dhw-isolation=enabled \
     -Dhypervisor-serial-socket=enabled \
     -Dbmc-shell-socket=enabled \
     -Dredfish-license=enabled \
     -Dibm-usb-code-update=enabled \
-    -Dibm-sai=enabled \
     -Dkvm=disabled \
     -Dvm-websocket=disabled \
 "
