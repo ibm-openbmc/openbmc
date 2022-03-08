@@ -917,6 +917,204 @@
             ]
         },
         {
+            "path": "system/chassis/motherboard/pcieslot1/pcie_card1",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "sensors"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/sensors/temperature/PCIe_Cable_Card_C1_Temp",
+                        "/xyz/openbmc_project/sensors/temperature/PCIe_Cable_Card_C1_Local_Temp"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "system/chassis/motherboard/pcieslot2/pcie_card2",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "sensors"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/sensors/temperature/PCIe_Cable_Card_C2_Temp",
+                        "/xyz/openbmc_project/sensors/temperature/PCIe_Cable_Card_C2_Local_Temp"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "system/chassis/motherboard/pcieslot3/pcie_card3",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "sensors"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/sensors/temperature/PCIe_Cable_Card_C3_Temp",
+                        "/xyz/openbmc_project/sensors/temperature/PCIe_Cable_Card_C3_Local_Temp"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "system/chassis/motherboard/pcieslot4/pcie_card4",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "sensors"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/sensors/temperature/PCIe_Cable_Card_C4_Temp",
+                        "/xyz/openbmc_project/sensors/temperature/PCIe_Cable_Card_C4_Local_Temp"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "system/chassis/motherboard/pcieslot5/pcie_card5",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "sensors"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/sensors/temperature/PCIe_Cable_Card_C5_Temp",
+                        "/xyz/openbmc_project/sensors/temperature/PCIe_Cable_Card_C5_Local_Temp"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "system/chassis/motherboard/pcieslot6/pcie_card6",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "sensors"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/sensors/temperature/PCIe_Cable_Card_C6_Temp",
+                        "/xyz/openbmc_project/sensors/temperature/PCIe_Cable_Card_C6_Local_Temp"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "system/chassis/motherboard/pcieslot7/pcie_card7",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "sensors"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/sensors/temperature/PCIe_Cable_Card_C7_Temp",
+                        "/xyz/openbmc_project/sensors/temperature/PCIe_Cable_Card_C7_Local_Temp"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "system/chassis/motherboard/pcieslot8/pcie_card8",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "sensors"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/sensors/temperature/PCIe_Cable_Card_C8_Temp",
+                        "/xyz/openbmc_project/sensors/temperature/PCIe_Cable_Card_C8_Local_Temp"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "system/chassis/motherboard/pcieslot9/pcie_card9",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "sensors"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/sensors/temperature/PCIe_Cable_Card_C9_Temp",
+                        "/xyz/openbmc_project/sensors/temperature/PCIe_Cable_Card_C9_Local_Temp"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "system/chassis/motherboard/pcieslot10/pcie_card10",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "sensors"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/sensors/temperature/PCIe_Cable_Card_C10_Temp",
+                        "/xyz/openbmc_project/sensors/temperature/PCIe_Cable_Card_C10_Local_Temp"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "system/chassis/motherboard/pcieslot11/pcie_card11",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "sensors"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/sensors/temperature/PCIe_Cable_Card_C11_Temp",
+                        "/xyz/openbmc_project/sensors/temperature/PCIe_Cable_Card_C11_Local_Temp"
+                    ]
+                }
+            ]
+        },
+        {
             "path": "system/chassis/motherboard/pcieslot1/pcie_card1/cxp_top",
             "endpoints":
             [
