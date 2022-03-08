@@ -1,6 +1,6 @@
 EKB_BRANCH = "main-p10"
 EKB_URI = "git://git@github.com/open-power/pub-ekb;branch=${EKB_BRANCH}"
-EKB_REV = "79f40fbad5c15d41347a739cd3bcb9ff66e5bac9"
+EKB_REV = "d8f32d1b052c546e61d47361cbe115badf0a7983"
 
 REQ_ATTRS_XMLS = "hwpf/fapi2/xml/attribute_info/chip_attributes.xml \
            hwpf/fapi2/xml/attribute_info/common_attributes.xml \
