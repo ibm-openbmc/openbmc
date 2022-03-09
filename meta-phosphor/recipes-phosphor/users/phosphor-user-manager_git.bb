@@ -44,6 +44,8 @@ SRC_URI += "git://github.com/ibm-openbmc/phosphor-user-manager;nobranch=1"
 SRCREV = "dc8727a7ad9e2820fbfa8500f61b7f8346e4c669"
 S = "${WORKDIR}/git"
 
+EXTRA_OECONF:append = "enable_root_user_mgmt=no"
+
 SRC_URI += "file://upgrade_ibm_service_account.sh"
 FILES:${PN} += " /home/service/.profile "
 do_install:append() {

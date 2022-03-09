@@ -17,7 +17,7 @@ IMAGE_FEATURES:remove:p10bmc = "obmc-fru-ipmi"
 #
 # The service account policy is as follows:
 #   root - The root account remains present.  It is needed for internal
-#     accounting purposes and for debugging service access.
+#     accounting purposes.  Root login is disabled.
 #   admin - Provides administrative control over the BMC.  The role is
 #     SystemAdministrator.  Admin users have access to interfaces including:
 #     Redfish, REST APIs, Web.  No access to the BMC via: the BMC's physical
@@ -34,8 +34,6 @@ IMAGE_FEATURES:remove:p10bmc = "obmc-fru-ipmi"
 #     The service account is not authorized to IPMI because of the inherent
 #     security weakness in the IPMI spec and also because the IPMI
 #     implementation was not enhanced to use the ACF support.
-#     The service account does not have a home directory.  The home directory is
-#     set to / (the root directory) to allow dropbear ssh connections.
 
 # Override defaults from meta-phosphor/conf/distro/include/phosphor-defaults.inc
 inherit extrausers
@@ -54,6 +52,8 @@ IBM_EXTRA_USERS_PARAMS += " \
 IBM_EXTRA_USERS_PARAMS += " \
   usermod -p '\$6\$UGMqyqdG\$GqTb3tXPFx9AJlzTw/8X5RoW2Z.100dT.acuk8AFJfNQYr.ZRL8itMIgLqsdq46RNHgiv78XayOSl.IbR4DFU.' root; \
   usermod --append --groups hypervisorconsoleaccess,hostconsoleaccess,shellaccess root; \
+  usermod --lock root; \
+  usermod --expiredate 1970-01-01; \
   "
 
 # Add the "admin" account.
