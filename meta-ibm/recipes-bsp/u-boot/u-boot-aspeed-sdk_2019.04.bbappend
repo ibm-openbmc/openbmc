@@ -15,6 +15,25 @@ OTPTOOL_KEY_DIR:p10bmc = "${WORKDIR}/keys/"
 SOCSEC_SIGN_EXTRA_OPTS = "--rsa_key_order=little"
 
 do_deploy:prepend:p10bmc() {
-	# otptool needs access to the public and private socsec signing keys in the keys/ directory
-	openssl rsa -in ${SOCSEC_SIGN_KEY} -pubout > ${WORKDIR}/keys/rsa_pub_oem_dss_key.pem
+
+	pubkey="${WORKDIR}/keys/rsa_pub_oem_dss_key.pem"
+	# When secureboot signing with a signing server, SOCSEC_SIGN_KEY is the name of the
+	# signing server project and not a local private key.
+	if [ "${SFCLIENT_SIGN_ENABLE}" = "1" ]
+	then
+		url=`jq -r '.url' "${SF_PKCS11_CONFIG}"`
+		epwd=`jq -r '.epwd' "${SF_PKCS11_CONFIG}"`
+		pkey=`jq -r '."private-key"' "${SF_PKCS11_CONFIG}"`
+		SSH_AGENT_PID=${SSH_AGENT_PID} SSH_AUTH_SOCK=${SSH_AUTH_SOCK} sf_client \
+			-project  "getpubkey" \
+			-param    "-signproject ${SOCSEC_SIGN_KEY} -format pem" \
+			-epwd     "${epwd}" \
+			-comments "obtain pubkey" \
+			-url      "${url}" \
+			-pkey     "${pkey}" \
+			-output   "${pubkey}"
+	else
+		# otptool needs access to the public and private socsec signing keys in the keys/ directory
+		openssl rsa -in ${SOCSEC_SIGN_KEY} -pubout > ${pubkey}
+	fi
 }
