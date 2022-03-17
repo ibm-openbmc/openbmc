@@ -12,7 +12,7 @@ PR = "r1"
 PV = "0.1+git${SRCPV}"
 
 SRC_URI = "git://github.com/ibm-openbmc/powervm-handler;branch=main"
-SRCREV = "85561aba00fe5812dcf3762ea8c4e749534560f6"
+SRCREV = "5794038e5e8dc31e178a530e7ca8d19b508e4e51"
 
 S = "${WORKDIR}/git"
 
