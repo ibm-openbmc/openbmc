@@ -339,6 +339,7 @@
         "inventoryPath": "/system/chassis/motherboard/ebmc_card_bmc/ethernet0",
         "inherit": false,
         "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
           "xyz.openbmc_project.Inventory.Item.Ethernet": null,
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P0-C5-T0"
@@ -356,6 +357,7 @@
         "inventoryPath": "/system/chassis/motherboard/ebmc_card_bmc/ethernet1",
         "inherit": false,
         "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Connector": null,
           "xyz.openbmc_project.Inventory.Item.Ethernet": null,
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P0-C5-T1"
