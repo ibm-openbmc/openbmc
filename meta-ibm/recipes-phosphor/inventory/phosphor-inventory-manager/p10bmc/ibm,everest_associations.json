@@ -268,7 +268,13 @@
                         "/xyz/openbmc_project/inventory/system/chassis/motherboard/connector4",
                         "/xyz/openbmc_project/inventory/system/chassis/motherboard/connector5",
                         "/xyz/openbmc_project/inventory/system/chassis/motherboard/dasd_backplane/dp_connector0",
-                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/dasd_backplane/dp_connector1"
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/dasd_backplane/dp_connector1",
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/bmc/ethernet0",
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/bmc/ethernet1",
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/bmc/usb2_conn0",
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/bmc/usb2_conn1",
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/bmc/usb3_conn0",
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/bmc/usb3_conn1"
                     ]
                 },
                 {
