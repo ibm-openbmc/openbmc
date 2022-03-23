@@ -3,6 +3,7 @@ Description=Clears all fault LED to %i and remove critical associations
 After=obmc-chassis-powerreset@0.target
 Wants=obmc-power-reset-on@0.target
 After=obmc-power-reset-on@0.target
+Before=op-power-start@0.service
 ConditionPathExists=!/run/openbmc/chassis@0-on
 
 [Service]
