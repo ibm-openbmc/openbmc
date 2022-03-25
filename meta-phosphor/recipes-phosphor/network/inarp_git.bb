@@ -12,7 +12,7 @@ inherit obmc-phosphor-systemd
 DEPENDS += "autoconf-archive-native"
 RDEPENDS_${PN} += "phosphor-network"
 
-SRC_URI += "git://github.com/openbmc/inarp"
+SRC_URI += "git://github.com/openbmc/inarp;branch=master;protocol=https"
 SRCREV = "6d579909fc8e623e8a0dd6d4a32a4aee725c32f7"
 
 S = "${WORKDIR}/git"

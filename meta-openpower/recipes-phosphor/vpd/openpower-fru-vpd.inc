@@ -1,5 +1,5 @@
 HOMEPAGE = "https://github.com/openbmc/openpower-vpd-parser"
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=e3fc50a88d0a364313df4b21ef20c29e"
-SRC_URI += "git://github.com/ibm-openbmc/openpower-vpd-parser;branch=OP940"
+SRC_URI += "git://github.com/ibm-openbmc/openpower-vpd-parser;branch=OP940;protocol=https"
 SRCREV = "c8da64ddca44ce8601ee2147dee45913a7e1300b"

@@ -16,7 +16,7 @@ DEPENDS += "systemd"
 DEPENDS += "phosphor-ipmi-host"
 
 
-SRC_URI += "git://github.com/ibm-openbmc/phosphor-net-ipmid;branch=OP940"
+SRC_URI += "git://github.com/ibm-openbmc/phosphor-net-ipmid;branch=OP940;protocol=https"
 SRC_URI += "file://ipmi-net-firewall.sh"
 SRCREV = "1f722357c223413924355f3a26b1409739373f90"
 

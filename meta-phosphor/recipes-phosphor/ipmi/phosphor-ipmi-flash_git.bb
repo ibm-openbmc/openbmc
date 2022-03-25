@@ -22,7 +22,7 @@ PACKAGECONFIG[cleanup-delete] = "--enable-cleanup-delete, --disable-cleanup-dele
 EXTRA_OECONF = "--disable-tests --disable-build-host-tool"
 
 S = "${WORKDIR}/git"
-SRC_URI = "git://github.com/openbmc/phosphor-ipmi-flash"
+SRC_URI = "git://github.com/openbmc/phosphor-ipmi-flash;branch=master;protocol=https"
 SRCREV = "33311b47b3b656cfc16568b4b971730cb79130bc"
 
 FILES_${PN}_append = " ${libdir}/ipmid-providers/lib*${SOLIBS}"

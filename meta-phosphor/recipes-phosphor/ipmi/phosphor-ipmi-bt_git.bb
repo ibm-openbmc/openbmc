@@ -18,7 +18,7 @@ DEPENDS += "autoconf-archive-native"
 DEPENDS += "systemd"
 
 S = "${WORKDIR}/git"
-SRC_URI += "git://github.com/openbmc/btbridge"
+SRC_URI += "git://github.com/openbmc/btbridge;branch=master;protocol=https"
 SRCREV="aa5511d28ff9acee4a404c6397d09f5187812ed8"
 
 # This is how linux-libc-headers says to include custom uapi headers

@@ -13,7 +13,7 @@ RDEPENDS_${PN} += " \
         "
 
 S = "${WORKDIR}/git"
-SRC_URI += "git://github.com/openbmc/phosphor-debug-collector"
+SRC_URI += "git://github.com/openbmc/phosphor-debug-collector;branch=master;protocol=https"
 
 SRCREV = "5ba7176ca2755080e35daba0b5417386abf17f6d"
 

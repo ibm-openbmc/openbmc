@@ -2,7 +2,7 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
 DEPENDS += "systemd"
 
-SRC_URI = "git://github.com/ipmitool/ipmitool.git;protocol=https"
+SRC_URI = "git://github.com/ipmitool/ipmitool.git;protocol=https;branch=master"
 SRCREV = "d818c2ff85c011be29c8d3047e516a5e032a1923"
 
 # this patch has been submitted to ipmitool upstream and is in review

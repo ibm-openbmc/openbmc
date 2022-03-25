@@ -9,7 +9,7 @@ inherit meson pkgconfig allarch
 
 EXTRA_OEMESON = "-Dusb-ctrl=enabled"
 
-SRC_URI += "git://github.com/openbmc/phosphor-misc"
+SRC_URI += "git://github.com/openbmc/phosphor-misc;branch=master;protocol=https"
 SRCREV = "4285bbf84013b0469b220567d8bfccc73d809cd9"
 
 S = "${WORKDIR}/git"

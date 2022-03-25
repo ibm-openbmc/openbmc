@@ -1,7 +1,7 @@
 HOMEPAGE = "https://github.com/open-power"
 LICENSE = "Apache-2.0"
 
-SRC_URI += "git://github.com/open-power/skiboot.git"
+SRC_URI += "git://github.com/open-power/skiboot.git;branch=master;protocol=https"
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/skiboot:"
 

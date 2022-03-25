@@ -47,7 +47,7 @@ SYSTEMD_PACKAGES += "${PN}-expired-password"
 SYSTEMD_SERVICE_${PN}-expired-password += "first-boot-expire-password.service"
 
 SRC_URI += "file://add_groups_workaround.sh"
-SRC_URI += "git://github.com/ibm-openbmc/phosphor-user-manager;branch=OP940"
+SRC_URI += "git://github.com/ibm-openbmc/phosphor-user-manager;branch=OP940;protocol=https"
 SRCREV = "c10f815d8d29e702afbbbbbf6ae1807d1566274b"
 S = "${WORKDIR}/git"
 

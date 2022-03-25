@@ -3,7 +3,7 @@ DESCRIPTION = "eCMD is a hardware access API for IBM Systems"
 LICENSE= "Apache-2.0"
 LIC_FILES_CHKSUM = "file://${S}/NOTICE;md5=fee220301a2af3faf8f211524b4248ea"
 
-SRC_URI = "git://github.com/open-power/eCMD.git"
+SRC_URI = "git://github.com/open-power/eCMD.git;branch=master;protocol=https"
 SRCREV = "46282c03e686dfed51173e04eba06b96b2552401"
 DEPENDS += "python-native zlib"
 

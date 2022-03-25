@@ -13,7 +13,7 @@ EXTRA_OEMESON = " \
         -Dtests=disabled \
         "
 
-SRC_URI += "git://github.com/openbmc/gpioplus"
+SRC_URI += "git://github.com/openbmc/gpioplus;branch=master;protocol=https"
 SRCREV = "48e6288da8486a25fd52e944fb0f7148fc1c02db"
 
 S = "${WORKDIR}/git"
