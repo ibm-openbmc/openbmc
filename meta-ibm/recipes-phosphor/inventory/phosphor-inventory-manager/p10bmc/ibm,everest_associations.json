@@ -4554,7 +4554,7 @@
                     },
                     "paths":
                     [
-                        "/xyz/openbmc_project/led/groups/misc_identify"
+                        "/xyz/openbmc_project/led/groups/connector0_identify"
                     ]
                 },
                 {
@@ -4582,7 +4582,7 @@
                     },
                     "paths":
                     [
-                        "/xyz/openbmc_project/led/groups/misc_identify"
+                        "/xyz/openbmc_project/led/groups/connector1_identify"
                     ]
                 },
                 {
@@ -4610,7 +4610,7 @@
                     },
                     "paths":
                     [
-                        "/xyz/openbmc_project/led/groups/misc_identify"
+                        "/xyz/openbmc_project/led/groups/connector2_identify"
                     ]
                 },
                 {
@@ -4638,7 +4638,7 @@
                     },
                     "paths":
                     [
-                        "/xyz/openbmc_project/led/groups/misc_identify"
+                        "/xyz/openbmc_project/led/groups/connector3_identify"
                     ]
                 },
                 {
@@ -4666,7 +4666,7 @@
                     },
                     "paths":
                     [
-                        "/xyz/openbmc_project/led/groups/misc_identify"
+                        "/xyz/openbmc_project/led/groups/connector4_identify"
                     ]
                 },
                 {
@@ -4694,7 +4694,7 @@
                     },
                     "paths":
                     [
-                        "/xyz/openbmc_project/led/groups/misc_identify"
+                        "/xyz/openbmc_project/led/groups/connector5_identify"
                     ]
                 },
                 {
@@ -4722,7 +4722,7 @@
                     },
                     "paths":
                     [
-                        "/xyz/openbmc_project/led/groups/misc_identify"
+                        "/xyz/openbmc_project/led/groups/ethernet0_identify"
                     ]
                 },
                 {
@@ -4750,7 +4750,7 @@
                     },
                     "paths":
                     [
-                        "/xyz/openbmc_project/led/groups/misc_identify"
+                        "/xyz/openbmc_project/led/groups/ethernet1_identify"
                     ]
                 },
                 {
@@ -4778,7 +4778,7 @@
                     },
                     "paths":
                     [
-                        "/xyz/openbmc_project/led/groups/misc_identify"
+                        "/xyz/openbmc_project/led/groups/usb2_conn0_identify"
                     ]
                 },
                 {
@@ -4806,7 +4806,7 @@
                     },
                     "paths":
                     [
-                        "/xyz/openbmc_project/led/groups/misc_identify"
+                        "/xyz/openbmc_project/led/groups/usb2_conn1_identify"
                     ]
                 },
                 {
@@ -4834,7 +4834,7 @@
                     },
                     "paths":
                     [
-                        "/xyz/openbmc_project/led/groups/misc_identify"
+                        "/xyz/openbmc_project/led/groups/usb3_conn0_identify"
                     ]
                 },
                 {
@@ -4862,7 +4862,7 @@
                     },
                     "paths":
                     [
-                        "/xyz/openbmc_project/led/groups/misc_identify"
+                        "/xyz/openbmc_project/led/groups/usb3_conn1_identify"
                     ]
                 },
                 {
@@ -4890,7 +4890,7 @@
                     },
                     "paths":
                     [
-                        "/xyz/openbmc_project/led/groups/misc_identify"
+                        "/xyz/openbmc_project/led/groups/dp_connector0_identify"
                     ]
                 },
                 {
@@ -4918,7 +4918,7 @@
                     },
                     "paths":
                     [
-                        "/xyz/openbmc_project/led/groups/misc_identify"
+                        "/xyz/openbmc_project/led/groups/dp_connector1_identify"
                     ]
                 },
                 {
@@ -4946,7 +4946,7 @@
                     },
                     "paths":
                     [
-                        "/xyz/openbmc_project/led/groups/misc_identify"
+                        "/xyz/openbmc_project/led/groups/c1_cxp_top_identify"
                     ]
                 },
                 {
@@ -4974,7 +4974,7 @@
                     },
                     "paths":
                     [
-                        "/xyz/openbmc_project/led/groups/misc_identify"
+                        "/xyz/openbmc_project/led/groups/c1_cxp_bot_identify"
                     ]
                 },
                 {
@@ -5002,7 +5002,7 @@
                     },
                     "paths":
                     [
-                        "/xyz/openbmc_project/led/groups/misc_identify"
+                        "/xyz/openbmc_project/led/groups/c2_cxp_top_identify"
                     ]
                 },
                 {
@@ -5030,7 +5030,7 @@
                     },
                     "paths":
                     [
-                        "/xyz/openbmc_project/led/groups/misc_identify"
+                        "/xyz/openbmc_project/led/groups/c2_cxp_bot_identify"
                     ]
                 },
                 {
@@ -5058,7 +5058,7 @@
                     },
                     "paths":
                     [
-                        "/xyz/openbmc_project/led/groups/misc_identify"
+                        "/xyz/openbmc_project/led/groups/c3_cxp_top_identify"
                     ]
                 },
                 {
@@ -5086,7 +5086,7 @@
                     },
                     "paths":
                     [
-                        "/xyz/openbmc_project/led/groups/misc_identify"
+                        "/xyz/openbmc_project/led/groups/c3_cxp_bot_identify"
                     ]
                 },
                 {
@@ -5114,7 +5114,7 @@
                     },
                     "paths":
                     [
-                        "/xyz/openbmc_project/led/groups/misc_identify"
+                        "/xyz/openbmc_project/led/groups/c4_cxp_top_identify"
                     ]
                 },
                 {
@@ -5142,7 +5142,7 @@
                     },
                     "paths":
                     [
-                        "/xyz/openbmc_project/led/groups/misc_identify"
+                        "/xyz/openbmc_project/led/groups/c4_cxp_bot_identify"
                     ]
                 },
                 {
@@ -5170,7 +5170,7 @@
                     },
                     "paths":
                     [
-                        "/xyz/openbmc_project/led/groups/misc_identify"
+                        "/xyz/openbmc_project/led/groups/c5_cxp_top_identify"
                     ]
                 },
                 {
@@ -5198,7 +5198,7 @@
                     },
                     "paths":
                     [
-                        "/xyz/openbmc_project/led/groups/misc_identify"
+                        "/xyz/openbmc_project/led/groups/c5_cxp_bot_identify"
                     ]
                 },
                 {
@@ -5226,7 +5226,7 @@
                     },
                     "paths":
                     [
-                        "/xyz/openbmc_project/led/groups/misc_identify"
+                        "/xyz/openbmc_project/led/groups/c7_cxp_top_identify"
                     ]
                 },
                 {
@@ -5254,7 +5254,7 @@
                     },
                     "paths":
                     [
-                        "/xyz/openbmc_project/led/groups/misc_identify"
+                        "/xyz/openbmc_project/led/groups/c7_cxp_bot_identify"
                     ]
                 },
                 {
@@ -5282,7 +5282,7 @@
                     },
                     "paths":
                     [
-                        "/xyz/openbmc_project/led/groups/misc_identify"
+                        "/xyz/openbmc_project/led/groups/c8_cxp_top_identify"
                     ]
                 },
                 {
@@ -5310,7 +5310,7 @@
                     },
                     "paths":
                     [
-                        "/xyz/openbmc_project/led/groups/misc_identify"
+                        "/xyz/openbmc_project/led/groups/c8_cxp_bot_identify"
                     ]
                 },
                 {
@@ -5338,7 +5338,7 @@
                     },
                     "paths":
                     [
-                        "/xyz/openbmc_project/led/groups/misc_identify"
+                        "/xyz/openbmc_project/led/groups/c10_cxp_top_identify"
                     ]
                 },
                 {
@@ -5366,7 +5366,7 @@
                     },
                     "paths":
                     [
-                        "/xyz/openbmc_project/led/groups/misc_identify"
+                        "/xyz/openbmc_project/led/groups/c10_cxp_bot_identify"
                     ]
                 },
                 {
@@ -5394,7 +5394,7 @@
                     },
                     "paths":
                     [
-                        "/xyz/openbmc_project/led/groups/misc_identify"
+                        "/xyz/openbmc_project/led/groups/c11_cxp_top_identify"
                     ]
                 },
                 {
@@ -5422,7 +5422,7 @@
                     },
                     "paths":
                     [
-                        "/xyz/openbmc_project/led/groups/misc_identify"
+                        "/xyz/openbmc_project/led/groups/c11_cxp_bot_identify"
                     ]
                 },
                 {
