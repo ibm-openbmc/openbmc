@@ -52,13 +52,15 @@ IBM_EXTRA_USERS_PARAMS += " \
 
 IBM_EXTRA_USERS_PARAMS += " \
   usermod -p '\$6\$UGMqyqdG\$GqTb3tXPFx9AJlzTw/8X5RoW2Z.100dT.acuk8AFJfNQYr.ZRL8itMIgLqsdq46RNHgiv78XayOSl.IbR4DFU.' root; \
-  usermod --append --groups hypervisorconsoleaccess,hostconsoleaccess,shellaccess root; \
+  usermod --groups priv-oemibmserviceagent,hypervisorconsoleaccess,hostconsoleaccess,shellaccess,redfish,web,root root; \
+  usermod --lock root; \
   "
 
 # Add the "admin" account.
 IBM_EXTRA_USERS_PARAMS += " \
   useradd -M -d / --groups hostconsoleaccess,priv-admin,redfish,web -s /bin/sh admin; \
-  usermod -p ${DEFAULT_OPENBMC_PASSWORD} admin; \
+  usermod -p '\$6\$kkSXteT7FmlZdKMQ\$e4w/O1sXkPwi9Pzu2ZjKq/l2wZm4JScj7bsVvuPzb6aA6creBixr/7pl0GDWQLpt4nklSNbij8Yttr7esIlfQ0' admin; \
+  passwd-expire admin; \
   "
 
 # Add the "service" account.
