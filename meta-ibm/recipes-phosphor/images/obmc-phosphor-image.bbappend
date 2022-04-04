@@ -59,7 +59,7 @@ IBM_EXTRA_USERS_PARAMS += " \
 # Add the "admin" account.
 IBM_EXTRA_USERS_PARAMS += " \
   useradd -M -d / --groups hostconsoleaccess,priv-admin,redfish,web -s /bin/sh admin; \
-  usermod -p ${DEFAULT_OPENBMC_PASSWORD} admin; \
+  usermod -p '\$6\$kkSXteT7FmlZdKMQ\$e4w/O1sXkPwi9Pzu2ZjKq/l2wZm4JScj7bsVvuPzb6aA6creBixr/7pl0GDWQLpt4nklSNbij8Yttr7esIlfQ0' admin; \
   passwd-expire admin; \
   "
 
