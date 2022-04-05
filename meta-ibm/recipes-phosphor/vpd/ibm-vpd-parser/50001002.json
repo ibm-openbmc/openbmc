@@ -1061,7 +1061,7 @@
           }
       },
       {
-          "inventoryPath": "/system/chassis/motherboard/dcm0/cpu0/unit14",
+          "inventoryPath": "/system/chassis/motherboard/dcm0/cpu1/unit14",
           "inherit": false,
           "extraInterfaces": {
               "xyz.openbmc_project.Inventory.Item": {
