@@ -19,5 +19,5 @@ auth    [default=die]                   pam_faillock.so authfail
 auth    requisite			pam_deny.so
 # Control gets here when authentication succeeds.  Check if the user is locked
 # out due to consecutive authentication failures and return status accordingly.
-auth    sufficient                      pam_faillock.so authsucc
+auth    required                        pam_faillock.so authsucc
 # and here are more per-package modules (the "Additional" block)
