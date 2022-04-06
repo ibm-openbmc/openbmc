@@ -5,6 +5,7 @@ DEPENDS:append:ibm-ac-server = " inventory-cleanup"
 
 PACKAGECONFIG:append:p10bmc = " associations"
 DEPENDS:append:p10bmc = " inventory-cleanup"
+DEPENDS:remove:p10bmc = " phosphor-inventory-manager-assettag"
 SRC_URI:append:p10bmc = " \
     file://ibm,rainier-2u_associations.json \
     file://ibm,rainier-4u_associations.json \
