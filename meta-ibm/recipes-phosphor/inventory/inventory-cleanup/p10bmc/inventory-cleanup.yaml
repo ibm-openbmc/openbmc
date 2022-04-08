@@ -65,3 +65,4 @@ events:
                 - /system/chassis/motherboard/disk_backplane2/dp2_connector3
                 - /system/chassis/motherboard/disk_backplane2/dp2_connector4
                 - /system/chassis/motherboard/disk_backplane2/dp2_connector5
+                - /system/chassis/motherboard/power_distribution
