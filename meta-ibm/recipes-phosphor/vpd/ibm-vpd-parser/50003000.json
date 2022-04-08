@@ -738,20 +738,6 @@
             }
          }
       ],
-    "/sys/bus/i2c/drivers/at24/3-0054/eeprom": [
-         {
-            "inventoryPath":"/system/chassis/motherboard/power_distribution",
-            "extraInterfaces":{
-               "xyz.openbmc_project.Inventory.Item.PowerDistribution":null,
-               "com.ibm.ipzvpd.Location":{
-                  "LocationCode":"Ufcs-P2"
-               },
-	       "xyz.openbmc_project.Inventory.Item": {
-                  "PrettyName": "Power Distribution"
-               }
-            }
-         }
-      ],
     "/sys/bus/spi/drivers/at25/spi12.0/eeprom": [
          {
             "inventoryPath":"/system/chassis/motherboard/dcm0/cpu0",
