@@ -20,6 +20,6 @@ PACKAGECONFIG:append:mihawk = " sync_bmc_files"
 # Enable USB code update
 PACKAGECONFIG:append:p10bmc = " usb_code_update"
 
-# Set BMC Minimum Ship Level
-EXTRA_OEMESON:append:p10bmc = " -Dbmc-msl='fw1020.00-31'"
-EXTRA_OEMESON:append:p10bmc = " -Dregex-bmc-msl='([a-z]+[0-9]{2})+([0-9]+).([0-9]+).([0-9]+)'"
+# Enable Side Switch Boot
+PACKAGECONFIG:append:p10bmc = " side_switch_on_boot"
+
