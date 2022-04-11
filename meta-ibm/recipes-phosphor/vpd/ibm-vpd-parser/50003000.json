@@ -2371,11 +2371,13 @@
             },
             "preAction" : {
               "pin" : "presence-cable-card1",
-              "value" : 1
+              "value" : 1,
+              "gpioI2CAddress" : "4-0065"
             },
             "postActionFail" : {
               "pin" : "presence-cable-card1",
-              "value" : 0
+              "value" : 0,
+              "gpioI2CAddress" : "4-0065"
             },
             "extraInterfaces": {
               "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
@@ -2438,11 +2440,13 @@
              },
              "preAction" : {
                "pin" : "presence-cable-card2",
-               "value" : 1
+               "value" : 1,
+               "gpioI2CAddress" : "4-0065"
              },
              "postActionFail" : {
                "pin" : "presence-cable-card2",
-               "value" : 0
+               "value" : 0,
+               "gpioI2CAddress" : "4-0065"
              },
              "extraInterfaces": {
                "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
@@ -2505,11 +2509,13 @@
              },
              "preAction" : {
                "pin" : "presence-cable-card3",
-               "value" : 1
+               "value" : 1,
+               "gpioI2CAddress" : "4-0065"
              },
              "postActionFail" : {
                "pin" : "presence-cable-card3",
-               "value" : 0
+               "value" : 0,
+               "gpioI2CAddress" : "4-0065"
              },
              "extraInterfaces": {
                "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
@@ -2572,11 +2578,13 @@
              },
              "preAction" : {
                "pin" : "presence-cable-card4",
-               "value" : 1
+               "value" : 1,
+               "gpioI2CAddress" : "4-0065"
              },
              "postActionFail" : {
                "pin" : "presence-cable-card4",
-               "value" : 0
+               "value" : 0,
+               "gpioI2CAddress" : "4-0065"
              },
              "extraInterfaces": {
                "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
@@ -2639,11 +2647,13 @@
              },
              "preAction" : {
                "pin" : "presence-cable-card5",
-               "value" : 1
+               "value" : 1,
+               "gpioI2CAddress" : "4-0065"
              },
              "postActionFail" : {
                "pin" : "presence-cable-card5",
-               "value" : 0
+               "value" : 0,
+               "gpioI2CAddress" : "4-0065"
              },
              "extraInterfaces": {
                "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
@@ -2706,11 +2716,13 @@
              },
              "preAction" : {
                "pin" : "presence-cable-card6",
-               "value" : 1
+               "value" : 1,
+               "gpioI2CAddress" : "5-0066"
              },
              "postActionFail" : {
                "pin" : "presence-cable-card6",
-               "value" : 0
+               "value" : 0,
+               "gpioI2CAddress" : "5-0066"
              },
              "extraInterfaces": {
                "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
@@ -2745,11 +2757,13 @@
              },
              "preAction" : {
                "pin" : "presence-cable-card7",
-               "value" : 1
+               "value" : 1,
+               "gpioI2CAddress" : "5-0066"
              },
              "postActionFail" : {
                "pin" : "presence-cable-card7",
-               "value" : 0
+               "value" : 0,
+               "gpioI2CAddress" : "5-0066"
              },
              "extraInterfaces": {
                "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
@@ -2812,11 +2826,13 @@
              },
              "preAction" : {
                "pin" : "presence-cable-card8",
-               "value" : 1
+               "value" : 1,
+               "gpioI2CAddress" : "5-0066"
              },
              "postActionFail" : {
                "pin" : "presence-cable-card8",
-               "value" : 0
+               "value" : 0,
+               "gpioI2CAddress" : "5-0066"
              },
              "extraInterfaces": {
                "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
@@ -2879,11 +2895,13 @@
              },
              "preAction" : {
                "pin" : "presence-cable-card9",
-               "value" : 1
+               "value" : 1,
+               "gpioI2CAddress" : "5-0066"
              },
              "postActionFail" : {
                "pin" : "presence-cable-card9",
-               "value" : 0
+               "value" : 0,
+               "gpioI2CAddress" : "5-0066"
              },
              "extraInterfaces": {
                "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
@@ -2918,11 +2936,13 @@
              },
              "preAction" : {
                "pin" : "presence-cable-card10",
-               "value" : 1
+               "value" : 1,
+               "gpioI2CAddress" : "5-0066"
              },
              "postActionFail" : {
                "pin" : "presence-cable-card10",
-               "value" : 0
+               "value" : 0,
+               "gpioI2CAddress" : "5-0066"
              },
              "extraInterfaces": {
                "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
@@ -2985,11 +3005,13 @@
              },
              "preAction" : {
                "pin" : "presence-cable-card11",
-               "value" : 1
+               "value" : 1,
+               "gpioI2CAddress" : "5-0066"
              },
              "postActionFail" : {
                "pin" : "presence-cable-card11",
-               "value" : 0
+               "value" : 0,
+               "gpioI2CAddress" : "5-0066"
              },
              "extraInterfaces": {
                "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
