@@ -26,6 +26,7 @@ SRC_URI += " file://50001002.json"
 SRC_URI += " file://com.ibm.VPD.Manager.service"
 SRC_URI += " file://50003000.json"
 SRC_URI += " file://systems.json"
+SRC_URI += " file://libvpdecc.so.1.0"
 
 S = "${WORKDIR}/git"
 
@@ -35,10 +36,13 @@ SYSTEMD_SERVICE:${PN} += "com.ibm.VPD.Manager.service"
 EXTRA_OEMESON := " -Dibm-parser=enabled -Dtests=disabled -Dvpd-manager=enabled"
 
 FILES:${PN} += "${datadir}/vpd/*.json"
+FILES:${PN} += "${libdir}/libvpdecc.so.1.0"
 
 do_install:append() {
     install -d ${D}/${base_libdir}/udev/rules.d/
     install -d ${D}${datadir}/vpd/
+    install -d ${D}${libdir}
     install -m 0644 ${WORKDIR}/70-ibm-vpd-parser.rules ${D}/${base_libdir}/udev/rules.d/
     install ${WORKDIR}/*.json ${D}${datadir}/vpd/
+    install -m 0755 ${WORKDIR}/libvpdecc.so.1.0 ${D}/${libdir}/libvpdecc.so.1.0
 }
