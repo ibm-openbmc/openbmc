@@ -821,15 +821,18 @@
         "presence": {
           "pollingRequired" : true,
           "pin" : "RUSSEL_OPPANEL_PRESENCE_N",
-          "value" : 0
+          "value" : 0,
+          "gpioI2CAddress" : "0-0020"
         },
         "preAction" : {
           "pin" : "RUSSEL_FW_I2C_ENABLE_N",
-          "value" : 0
+          "value" : 0,
+          "gpioI2CAddress" : "0-0020"
         },
         "postActionFail" : {
           "pin" : "RUSSEL_FW_I2C_ENABLE_N",
-          "value" : 1
+          "value" : 1,
+          "gpioI2CAddress" : "0-0020"
         },
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.Panel": null,
@@ -1493,11 +1496,13 @@
         "concurrentlyMaintainable" : true,
         "preAction" : {
           "pin" : "SLOT0_PRSNT_EN_RSVD",
-          "value" : 1
+          "value" : 1,
+          "gpioI2CAddress" : "3-0061"
         },
         "postActionFail" : {
           "pin" : "SLOT0_PRSNT_EN_RSVD",
-          "value" : 0
+          "value" : 0,
+          "gpioI2CAddress" : "3-0061"
         },
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
@@ -1568,11 +1573,13 @@
         "concurrentlyMaintainable" : true,
         "preAction" : {
           "pin" : "SLOT3_PRSNT_EN_RSVD",
-          "value" : 1
+          "value" : 1,
+          "gpioI2CAddress" : "3-0061"
         },
         "postActionFail" : {
           "pin" : "SLOT3_PRSNT_EN_RSVD",
-          "value" : 0
+          "value" : 0,
+          "gpioI2CAddress" : "3-0061"
         },
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
@@ -1643,11 +1650,13 @@
         "concurrentlyMaintainable" : true,
         "preAction" : {
           "pin" : "SLOT4_PRSNT_EN_RSVD",
-          "value" : 1
+          "value" : 1,
+          "gpioI2CAddress" : "3-0061"
         },
         "postActionFail" : {
           "pin" : "SLOT4_PRSNT_EN_RSVD",
-          "value" : 0
+          "value" : 0,
+          "gpioI2CAddress" : "3-0061"
         },
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
@@ -1718,11 +1727,13 @@
         "concurrentlyMaintainable" : true,
         "preAction" : {
           "pin" : "SLOT10_PRSNT_EN_RSVD",
-          "value" : 1
+          "value" : 1,
+          "gpioI2CAddress" : "8-0061"
         },
         "postActionFail" : {
           "pin" : "SLOT10_PRSNT_EN_RSVD",
-          "value" : 0
+          "value" : 0,
+          "gpioI2CAddress" : "8-0061"
         },
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
@@ -1861,11 +1872,13 @@
         "concurrentlyMaintainable" : true,
         "preAction" : {
           "pin" : "SLOT2_PRSNT_EN_RSVD",
-          "value" : 1
+          "value" : 1,
+          "gpioI2CAddress" : "3-0061"
         },
         "postActionFail" : {
           "pin" : "SLOT2_PRSNT_EN_RSVD",
-          "value" : 0
+          "value" : 0,
+          "gpioI2CAddress" : "3-0061"
         },
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
@@ -1895,11 +1908,13 @@
         "concurrentlyMaintainable" : true,
         "preAction" : {
           "pin" : "SLOT6_PRSNT_EN_RSVD",
-          "value" : 1
+          "value" : 1,
+          "gpioI2CAddress" : "8-0061"
         },
         "postActionFail" : {
           "pin" : "SLOT6_PRSNT_EN_RSVD",
-          "value" : 0
+          "value" : 0,
+          "gpioI2CAddress" : "8-0061"
         },
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
@@ -1922,11 +1937,13 @@
         "concurrentlyMaintainable" : true,
         "preAction" : {
           "pin" : "SLOT7_PRSNT_EN_RSVD",
-          "value" : 1
+          "value" : 1,
+          "gpioI2CAddress" : "8-0061"
         },
         "postActionFail" : {
           "pin" : "SLOT7_PRSNT_EN_RSVD",
-          "value" : 0
+          "value" : 0,
+          "gpioI2CAddress" : "8-0061"
         },
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
@@ -1956,11 +1973,13 @@
         "concurrentlyMaintainable" : true,
         "preAction" : {
           "pin" : "SLOT9_PRSNT_EN_RSVD",
-          "value" : 1
+          "value" : 1,
+          "gpioI2CAddress" : "8-0061"
         },
         "postActionFail" : {
           "pin" : "SLOT9_PRSNT_EN_RSVD",
-          "value" : 0
+          "value" : 0,
+          "gpioI2CAddress" : "8-0061"
         },
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
@@ -1990,11 +2009,13 @@
         "concurrentlyMaintainable" : true,
         "preAction" : {
           "pin" : "SLOT11_PRSNT_EN_RSVD",
-          "value" : 1
+          "value" : 1,
+          "gpioI2CAddress" : "8-0061"
         },
         "postActionFail" : {
           "pin" : "SLOT11_PRSNT_EN_RSVD",
-          "value" : 0
+          "value" : 0,
+          "gpioI2CAddress" : "8-0061"
         },
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
@@ -2092,11 +2113,13 @@
         "concurrentlyMaintainable" : true,
         "preAction" : {
           "pin" : "SLOT1_PRSNT_EN_RSVD",
-          "value" : 1
+          "value" : 1,
+          "gpioI2CAddress" : "3-0061"
         },
         "postActionFail" : {
           "pin" : "SLOT1_PRSNT_EN_RSVD",
-          "value" : 0
+          "value" : 0,
+          "gpioI2CAddress" : "3-0061"
         },
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
@@ -2126,11 +2149,13 @@
         "concurrentlyMaintainable" : true,
         "preAction" : {
           "pin" : "SLOT8_PRSNT_EN_RSVD",
-          "value" : 1
+          "value" : 1,
+          "gpioI2CAddress" : "8-0061"
         },
         "postActionFail" : {
           "pin" : "SLOT8_PRSNT_EN_RSVD",
-          "value" : 0
+          "value" : 0,
+          "gpioI2CAddress" : "8-0061"
         },
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
