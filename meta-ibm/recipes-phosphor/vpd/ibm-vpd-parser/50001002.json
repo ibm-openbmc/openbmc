@@ -2004,7 +2004,7 @@
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
           "com.ibm.ipzvpd.Location" : {
-              "LocationCode" : "Ufcs-P2-C0"
+              "LocationCode" : "Ufcs-P2-C8"
           },
           "xyz.openbmc_project.Inventory.Item": {
                   "PrettyName": "NVMe Drive"
@@ -2033,7 +2033,7 @@
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
           "com.ibm.ipzvpd.Location" : {
-              "LocationCode" : "Ufcs-P2-C1"
+              "LocationCode" : "Ufcs-P2-C9"
           },
           "xyz.openbmc_project.Inventory.Item": {
                   "PrettyName": "NVMe Drive"
@@ -2062,7 +2062,7 @@
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
           "com.ibm.ipzvpd.Location" : {
-              "LocationCode" : "Ufcs-P2-C2"
+              "LocationCode" : "Ufcs-P2-C10"
           },
           "xyz.openbmc_project.Inventory.Item": {
                   "PrettyName": "NVMe Drive"
@@ -2091,7 +2091,7 @@
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
           "com.ibm.ipzvpd.Location" : {
-              "LocationCode" : "Ufcs-P2-C3"
+              "LocationCode" : "Ufcs-P2-C11"
           },
           "xyz.openbmc_project.Inventory.Item": {
                   "PrettyName": "NVMe Drive"
@@ -2120,7 +2120,7 @@
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
           "com.ibm.ipzvpd.Location" : {
-              "LocationCode" : "Ufcs-P2-C4"
+              "LocationCode" : "Ufcs-P2-C12"
           },
           "xyz.openbmc_project.Inventory.Item": {
                   "PrettyName": "NVMe Drive"
@@ -2149,7 +2149,7 @@
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
           "com.ibm.ipzvpd.Location" : {
-              "LocationCode" : "Ufcs-P2-C5"
+              "LocationCode" : "Ufcs-P2-C13"
           },
           "xyz.openbmc_project.Inventory.Item": {
                   "PrettyName": "NVMe Drive"
@@ -2178,7 +2178,7 @@
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
           "com.ibm.ipzvpd.Location" : {
-              "LocationCode" : "Ufcs-P2-C6"
+              "LocationCode" : "Ufcs-P2-C14"
           },
           "xyz.openbmc_project.Inventory.Item": {
                   "PrettyName": "NVMe Drive"
@@ -2207,7 +2207,7 @@
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
           "com.ibm.ipzvpd.Location" : {
-              "LocationCode" : "Ufcs-P2-C7"
+              "LocationCode" : "Ufcs-P2-C15"
           },
           "xyz.openbmc_project.Inventory.Item": {
                   "PrettyName": "NVMe Drive"
