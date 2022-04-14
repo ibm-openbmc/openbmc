@@ -270,6 +270,8 @@
       {
         "inventoryPath": "/system/chassis/motherboard/powersupply0",
         "inherit": false,
+        "embedded": false,
+        "synthesized": true,
         "extraInterfaces": {
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-E0"
@@ -279,6 +281,8 @@
       {
         "inventoryPath": "/system/chassis/motherboard/powersupply1",
         "inherit": false,
+        "embedded": false,
+        "synthesized": true,
         "extraInterfaces": {
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-E1"
@@ -288,6 +292,8 @@
       {
         "inventoryPath": "/system/chassis/motherboard/powersupply2",
         "inherit": false,
+        "embedded": false,
+        "synthesized": true,
         "extraInterfaces": {
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-E2"
@@ -297,6 +303,8 @@
       {
         "inventoryPath": "/system/chassis/motherboard/powersupply3",
         "inherit": false,
+        "embedded": false,
+        "synthesized": true,
         "extraInterfaces": {
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-E3"
@@ -1987,6 +1995,7 @@
       {
         "inventoryPath": "/system/chassis/motherboard/dasd_backplane/nvme0/drive0",
         "inherit": false,
+        "embedded": false,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
           "com.ibm.ipzvpd.Location" : {
@@ -2016,6 +2025,7 @@
       {
         "inventoryPath": "/system/chassis/motherboard/dasd_backplane/nvme1/drive1",
         "inherit": false,
+        "embedded": false,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
           "com.ibm.ipzvpd.Location" : {
@@ -2045,6 +2055,7 @@
       {
         "inventoryPath": "/system/chassis/motherboard/dasd_backplane/nvme2/drive2",
         "inherit": false,
+        "embedded": false,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
           "com.ibm.ipzvpd.Location" : {
@@ -2074,6 +2085,7 @@
       {
         "inventoryPath": "/system/chassis/motherboard/dasd_backplane/nvme3/drive3",
         "inherit": false,
+        "embedded": false,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
           "com.ibm.ipzvpd.Location" : {
@@ -2103,6 +2115,7 @@
       {
         "inventoryPath": "/system/chassis/motherboard/dasd_backplane/nvme4/drive4",
         "inherit": false,
+        "embedded": false,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
           "com.ibm.ipzvpd.Location" : {
@@ -2132,6 +2145,7 @@
       {
         "inventoryPath": "/system/chassis/motherboard/dasd_backplane/nvme5/drive5",
         "inherit": false,
+        "embedded": false,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
           "com.ibm.ipzvpd.Location" : {
@@ -2161,6 +2175,7 @@
       {
         "inventoryPath": "/system/chassis/motherboard/dasd_backplane/nvme6/drive6",
         "inherit": false,
+        "embedded": false,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
           "com.ibm.ipzvpd.Location" : {
@@ -2190,6 +2205,7 @@
       {
         "inventoryPath": "/system/chassis/motherboard/dasd_backplane/nvme7/drive7",
         "inherit": false,
+        "embedded": false,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
           "com.ibm.ipzvpd.Location" : {
@@ -2219,6 +2235,7 @@
       {
         "inventoryPath": "/system/chassis/motherboard/dasd_backplane/nvme8/drive8",
         "inherit": false,
+        "embedded": false,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
           "com.ibm.ipzvpd.Location" : {
@@ -2248,6 +2265,7 @@
       {
         "inventoryPath": "/system/chassis/motherboard/dasd_backplane/nvme9/drive9",
         "inherit": false,
+        "embedded": false,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
           "com.ibm.ipzvpd.Location" : {
