@@ -607,7 +607,7 @@
               "LocationCode" : "Ufcs-P0-T11"
           },
 	  "xyz.openbmc_project.Inventory.Item": {
-                  "PrettyName": "Op Panel LCD Display cable Connector"
+                  "PrettyName": "Op Panel Cable Connector"
           }
         }
       },
@@ -633,7 +633,7 @@
               "LocationCode" : "Ufcs-P0-T13"
           },
 	  "xyz.openbmc_project.Inventory.Item": {
-                  "PrettyName": "Op Panel Cable Connector"
+                  "PrettyName": "Op Panel LCD Display cable Connector"
           }
         }
       },
