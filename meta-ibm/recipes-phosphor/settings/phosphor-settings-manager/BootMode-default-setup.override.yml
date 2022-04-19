@@ -6,7 +6,7 @@
     - Interface: xyz.openbmc_project.Control.Boot.Mode
       Properties:
           BootMode:
-              Default: Mode::Modes::Setup
+              Default: Mode::Modes::Regular
     - Interface: xyz.openbmc_project.Object.Enable
       Properties:
           Enabled:
