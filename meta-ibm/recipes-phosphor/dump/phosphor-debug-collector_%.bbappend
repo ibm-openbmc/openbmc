@@ -21,14 +21,11 @@ EXTRA_OEMESON:append:p10bmc += "-DBMC_DUMP_TOTAL_SIZE=409600"
 
 SYSTEMD_SERVICE:${PN}-manager += "clear_hostdumps_poweroff.service"
 
-SRC_URI += "file://plugins.d/ibm_elogall"
-SRC_URI += "file://plugins.d/pels"
-
 install_ibm_plugins() {
     install ${S}/tools/dreport.d/ibm.d/plugins.d/* ${D}${dreport_plugin_dir}/
 }
 
-#Link in the plugins so dreport run them at the appropriate time
+#Link the plugins so that dreport can run them based on dump type
 python link_ibm_plugins() {
     source = d.getVar('S', True)
     source_path = os.path.join(source, "tools", "dreport.d", "ibm.d", "plugins.d")
@@ -44,19 +41,6 @@ install_dreport_header() {
     install -m 0755 ${S}/tools/dreport.d/ibm.d/gendumpheader ${D}${dreport_include_dir}/
 }
 
-#Install ibm bad vpd script from dreport/ibm.d to dreport/plugins.d
-install_ibm_bad_vpd() {
-    install -d ${D}${dreport_plugin_dir}
-    install -m 0755 ${S}/tools/dreport.d/ibm.d/badvpd ${D}${dreport_plugin_dir}
-}
-
-#Link in the plugins so dreport run them at the appropriate time based on the plugin type
-python link_ibm_bad_vpd() {
-    sourcedir = d.getVar('S', True)
-    script = os.path.join(sourcedir, "tools", "dreport.d", "ibm.d", "badvpd")
-    install_dreport_user_script(script, d)
-}
-
 #Install gendumpinfo script from dreport/ibm.d to dreport/include.d
 install_gendumpinfo() {
     install -d ${D}${dreport_include_dir}
@@ -70,8 +54,8 @@ install_dump_package() {
 }
 
 IBM_INSTALL_POSTFUNCS:append:witherspoon-tacoma = " install_ibm_plugins link_ibm_plugins"
-IBM_INSTALL_POSTFUNCS:append:p10bmc = " install_dreport_header install_ibm_bad_vpd \
-                                 link_ibm_bad_vpd install_gendumpinfo \
+IBM_INSTALL_POSTFUNCS:append:p10bmc = " install_dreport_header \
+                                 install_gendumpinfo \
                                  install_ibm_plugins link_ibm_plugins install_dump_package"
 
 do_install[postfuncs] += "${IBM_INSTALL_POSTFUNCS}"
