@@ -53,7 +53,6 @@ IBM_EXTRA_USERS_PARAMS += " \
   usermod -p '\$6\$UGMqyqdG\$GqTb3tXPFx9AJlzTw/8X5RoW2Z.100dT.acuk8AFJfNQYr.ZRL8itMIgLqsdq46RNHgiv78XayOSl.IbR4DFU.' root; \
   usermod --groups priv-oemibmserviceagent,hypervisorconsoleaccess,hostconsoleaccess,shellaccess,redfish,web,root root; \
   usermod --lock root; \
-  usermod --expiredate 1970-01-01; \
   "
 
 # Add the "admin" account.
