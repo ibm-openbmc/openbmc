@@ -2202,34 +2202,6 @@
             ]
         },
         {
-            "path": "system/chassis/motherboard/power_distribution",
-            "endpoints":
-            [
-                {
-                    "types":
-                    {
-                        "rType": "fault_inventory_object",
-                        "fType": "fault_led_group"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/power_distribution_fault"
-                    ]
-                },
-                {
-                    "types":
-                    {
-                        "rType": "identify_inventory_object",
-                        "fType": "identify_led_group"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/power_distribution_identify"
-                    ]
-                }
-            ]
-        },
-        {
             "path": "system/chassis/motherboard/dcm1/cpu0",
             "endpoints":
             [
