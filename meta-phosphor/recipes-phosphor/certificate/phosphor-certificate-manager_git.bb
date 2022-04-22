@@ -9,7 +9,7 @@ LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=86d3f3a95c324c9479bd8986968f4327"
 
 SRC_URI = "git://github.com/ibm-openbmc/phosphor-certificate-manager;nobranch=1"
-SRCREV = "dbc22eff06165a5b786fb3a2402c81cb8f384551"
+SRCREV = "8a223e0f52158cfb98d8d0d7ded5230310885bc0"
 
 inherit autotools \
         pkgconfig \
