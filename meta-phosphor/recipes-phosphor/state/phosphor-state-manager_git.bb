@@ -138,6 +138,7 @@ HOST_SYNCH_TARGETS = "start-pre starting started stop-pre stopping stopped reset
 #             be called by reboot and start target.
 # - stop:     Services to run to shutdown the host
 # - quiesce:  Target to enter on host boot failure
+# - graceful-quiesce:  Target to enter on host boot failure (allow host graceful shutdown)
 # - shutdown: Tell host to shutdown, then stop system
 # - reset:   Services to check if host is running and update host "start" target
 # - crash:   Target to run when host crashes. it is very much similar to
@@ -150,7 +151,7 @@ HOST_SYNCH_TARGETS = "start-pre starting started stop-pre stopping stopped reset
 #                      notifying the host.
 # - diagnostic-mode: This will be entered when the host is collecting diagnostic
 #                    data for itself.
-HOST_ACTION_TARGETS = "start startmin stop quiesce reset shutdown crash timeout "
+HOST_ACTION_TARGETS = "start startmin stop quiesce graceful-quiesce reset shutdown crash timeout "
 HOST_ACTION_TARGETS += "reboot warm-reboot force-warm-reboot diagnostic-mode"
 
 CHASSIS_SYNCH_FMT = "obmc-power-{0}@.target"
@@ -193,6 +194,6 @@ SYSTEMD_LINK:${PN}-obmc-targets += "${@compose_list(d, 'QUIESCE_FMT', 'HOST_ERRO
 
 
 SRC_URI += "git://github.com/ibm-openbmc/phosphor-state-manager;nobranch=1"
-SRCREV = "f52019720b0063fc304bdbb0831b69f1f59e54ef"
+SRCREV = "de0fb3627929d1e65de8e7978b46fb65adc9161c"
 
 S = "${WORKDIR}/git"

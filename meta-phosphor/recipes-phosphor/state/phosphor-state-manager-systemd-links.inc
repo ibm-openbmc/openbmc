@@ -88,6 +88,16 @@ pkg_postinst:${PN}-obmc-targets:append() {
     LINK="$D$systemd_system_unitdir/obmc-chassis-poweroff@0.target.wants/phosphor-clear-one-time@0.service"
     TARGET="../phosphor-clear-one-time@.service"
     ln -s $TARGET $LINK
+
+    mkdir -p $D$systemd_system_unitdir/obmc-host-graceful-quiesce@0.target.wants
+    LINK="$D$systemd_system_unitdir/obmc-host-graceful-quiesce@0.target.wants/obmc-host-quiesce@0.target"
+    TARGET="../obmc-host-quiesce@.target"
+    ln -s $TARGET $LINK
+
+    mkdir -p $D$systemd_system_unitdir/obmc-host-graceful-quiesce@0.target.wants
+    LINK="$D$systemd_system_unitdir/obmc-host-graceful-quiesce@0.target.wants/pldmSoftPowerOff.service"
+    TARGET="../pldmSoftPowerOff.service"
+    ln -s $TARGET $LINK
 }
 
 pkg_postinst:${PN}-chassis-check-power-status:append() {
