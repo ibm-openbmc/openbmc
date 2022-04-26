@@ -2203,7 +2203,8 @@
             "devAddress" : "16-0052",
             "presence" : {
               "pin" : "expander-cable-card1",
-              "value" : 0
+              "value" : 0,
+              "gpioI2CAddress" : "4-0065"
             },
             "preAction" : {
               "pin" : "presence-cable-card1",
@@ -2263,7 +2264,8 @@
              "concurrentlyMaintainable" : true,
              "presence" : {
                "pin" : "expander-cable-card2",
-               "value" : 0
+               "value" : 0,
+               "gpioI2CAddress" : "4-0065"
              },
              "preAction" : {
                "pin" : "presence-cable-card2",
@@ -2323,7 +2325,8 @@
              "concurrentlyMaintainable" : true,
              "presence" : {
                 "pin" : "expander-cable-card3",
-                "value" : 0
+                "value" : 0,
+                "gpioI2CAddress" : "4-0065"
              },
              "preAction" : {
                "pin" : "presence-cable-card3",
@@ -2383,7 +2386,8 @@
              "concurrentlyMaintainable" : true,
              "presence" : {
                "pin" : "expander-cable-card4",
-               "value" : 0
+               "value" : 0,
+               "gpioI2CAddress" : "4-0065"
              },
              "preAction" : {
                "pin" : "presence-cable-card4",
@@ -2443,7 +2447,8 @@
              "concurrentlyMaintainable" : true,
              "presence" : {
                "pin" : "expander-cable-card5",
-               "value" : 0
+               "value" : 0,
+               "gpioI2CAddress" : "4-0065"
              },
              "preAction" : {
                "pin" : "presence-cable-card5",
@@ -2503,7 +2508,8 @@
              "concurrentlyMaintainable" : true,
              "presence" : {
                "pin" : "expander-cable-card6",
-               "value" : 0
+               "value" : 0,
+               "gpioI2CAddress" : "5-0066"
              },
              "preAction" : {
                "pin" : "presence-cable-card6",
@@ -2541,7 +2547,8 @@
              "concurrentlyMaintainable" : true,
              "presence" : {
                "pin" : "expander-cable-card7",
-               "value" : 0
+               "value" : 0,
+               "gpioI2CAddress" : "5-0066"
              },
              "preAction" : {
                "pin" : "presence-cable-card7",
@@ -2601,7 +2608,8 @@
              "concurrentlyMaintainable" : true,
              "presence" : {
                "pin" : "expander-cable-card8",
-               "value" : 0
+               "value" : 0,
+               "gpioI2CAddress" : "5-0066"
              },
              "preAction" : {
                "pin" : "presence-cable-card8",
@@ -2661,7 +2669,8 @@
              "concurrentlyMaintainable" : true,
              "presence" : {
                "pin" : "expander-cable-card9",
-               "value" : 0
+               "value" : 0,
+               "gpioI2CAddress" : "5-0066"
              },
              "preAction" : {
                "pin" : "presence-cable-card9",
@@ -2699,7 +2708,8 @@
              "concurrentlyMaintainable" : true,
              "presence" : {
                "pin" : "expander-cable-card10",
-               "value" : 0
+               "value" : 0,
+               "gpioI2CAddress" : "5-0066"
              },
              "preAction" : {
                "pin" : "presence-cable-card10",
@@ -2759,7 +2769,8 @@
              "concurrentlyMaintainable" : true,
              "presence" : {
                "pin" : "expander-cable-card11",
-               "value" : 0
+               "value" : 0,
+               "gpioI2CAddress" : "5-0066"
              },
              "preAction" : {
                "pin" : "presence-cable-card11",
