@@ -104,9 +104,6 @@
           },
 	  "xyz.openbmc_project.Inventory.Item": {
                   "PrettyName": "PCIe Slot"
-          },
-	  "xyz.openbmc_project.Inventory.Item": {
-                  "PrettyName": "PCIe Slot"
           }
         }
       },
