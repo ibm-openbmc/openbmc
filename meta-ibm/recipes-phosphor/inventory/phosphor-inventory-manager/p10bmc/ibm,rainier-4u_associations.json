@@ -5362,6 +5362,234 @@
                     ]
                 }
             ]
+        },
+        {
+            "path": "cables/dp0_cable0",
+            "endpoints": 
+            [
+                {
+                    "types": 
+                    {
+                        "rType": "attached_cables",
+                        "fType": "upstream_resource"
+                    },
+                    "paths": 
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/pcieslot8/pcie_card8",
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/pcieslot10/pcie_card10"
+                    ]
+                },
+                {
+                    "types": 
+                    {
+                        "rType": "attached_cables",
+                        "fType": "downstream_resource"
+                    },
+                    "paths": 
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane0"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "cables/dp0_cable1",
+            "endpoints": 
+            [
+                {
+                    "types": 
+                    {
+                        "rType": "attached_cables",
+                        "fType": "upstream_resource"
+                    },
+                    "paths": 
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/pcieslot8/pcie_card8",
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/pcieslot10/pcie_card10"
+                    ]
+                },
+                {
+                    "types": 
+                    {
+                        "rType": "attached_cables",
+                        "fType": "downstream_resource"
+                    },
+                    "paths": 
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane0"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "cables/dp0_cable2",
+            "endpoints": 
+            [
+                {
+                    "types": 
+                    {
+                        "rType": "attached_cables",
+                        "fType": "upstream_resource"
+                    },
+                    "paths": 
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/pcieslot8/pcie_card8",
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/pcieslot10/pcie_card10"
+                    ]
+                },
+                {
+                    "types": 
+                    {
+                        "rType": "attached_cables",
+                        "fType": "downstream_resource"
+                    },
+                    "paths": 
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane0"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "cables/dp0_cable3",
+            "endpoints": 
+            [
+                {
+                    "types": 
+                    {
+                        "rType": "attached_cables",
+                        "fType": "upstream_resource"
+                    },
+                    "paths": 
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/pcieslot8/pcie_card8",
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/pcieslot10/pcie_card10"
+                    ]
+                },
+                {
+                    "types": 
+                    {
+                        "rType": "attached_cables",
+                        "fType": "downstream_resource"
+                    },
+                    "paths": 
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane0"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "cables/dp1_cable0",
+            "endpoints": 
+            [
+                {
+                    "types": 
+                    {
+                        "rType": "attached_cables",
+                        "fType": "upstream_resource"
+                    },
+                    "paths": 
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/pcieslot11/pcie_card11"
+                    ]
+                },
+                {
+                    "types": 
+                    {
+                        "rType": "attached_cables",
+                        "fType": "downstream_resource"
+                    },
+                    "paths": 
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane1"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "cables/dp1_cable1",
+            "endpoints": 
+            [
+                {
+                    "types": 
+                    {
+                        "rType": "attached_cables",
+                        "fType": "upstream_resource"
+                    },
+                    "paths": 
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/pcieslot11/pcie_card11"
+                    ]
+                },
+                {
+                    "types": 
+                    {
+                        "rType": "attached_cables",
+                        "fType": "downstream_resource"
+                    },
+                    "paths": 
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane1"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "cables/dp1_cable2",
+            "endpoints": 
+            [
+                {
+                    "types": 
+                    {
+                        "rType": "attached_cables",
+                        "fType": "upstream_resource"
+                    },
+                    "paths": 
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/pcieslot11/pcie_card11"
+                    ]
+                },
+                {
+                    "types": 
+                    {
+                        "rType": "attached_cables",
+                        "fType": "downstream_resource"
+                    },
+                    "paths": 
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane1"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "cables/dp1_cable3",
+            "endpoints": 
+            [
+                {
+                    "types": 
+                    {
+                        "rType": "attached_cables",
+                        "fType": "upstream_resource"
+                    },
+                    "paths": 
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/pcieslot11/pcie_card11"
+                    ]
+                },
+                {
+                    "types": 
+                    {
+                        "rType": "attached_cables",
+                        "fType": "downstream_resource"
+                    },
+                    "paths": 
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/disk_backplane1"
+                    ]
+                }
+            ]
         }
     ]
 }
