@@ -95,6 +95,7 @@
         "inventoryPath": "/system/chassis/motherboard/pcieslot0",
         "inherit": false,
         "extraInterfaces": {
+          "com.ibm.Control.Host.PCIeLink": null,
           "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
           "xyz.openbmc_project.Inventory.Item.PCIeSlot": {
               "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.FullLength"
@@ -111,6 +112,7 @@
         "inventoryPath": "/system/chassis/motherboard/pcieslot1",
         "inherit": false,
         "extraInterfaces": {
+          "com.ibm.Control.Host.PCIeLink": null,
           "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
           "xyz.openbmc_project.Inventory.Item.PCIeSlot": {
               "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.FullLength"
@@ -127,6 +129,7 @@
         "inventoryPath": "/system/chassis/motherboard/pcieslot2",
         "inherit": false,
         "extraInterfaces": {
+          "com.ibm.Control.Host.PCIeLink": null,
           "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
           "xyz.openbmc_project.Inventory.Item.PCIeSlot": {
               "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.FullLength"
@@ -143,6 +146,7 @@
         "inventoryPath": "/system/chassis/motherboard/pcieslot3",
         "inherit": false,
         "extraInterfaces": {
+          "com.ibm.Control.Host.PCIeLink": null,
           "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
           "xyz.openbmc_project.Inventory.Item.PCIeSlot": {
               "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.FullLength"
@@ -159,6 +163,7 @@
         "inventoryPath": "/system/chassis/motherboard/pcieslot4",
         "inherit": false,
         "extraInterfaces": {
+          "com.ibm.Control.Host.PCIeLink": null,
           "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
           "xyz.openbmc_project.Inventory.Item.PCIeSlot": {
               "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.FullLength"
@@ -175,6 +180,7 @@
         "inventoryPath": "/system/chassis/motherboard/pcieslot6",
         "inherit": false,
         "extraInterfaces": {
+          "com.ibm.Control.Host.PCIeLink": null,
           "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
           "xyz.openbmc_project.Inventory.Item.PCIeSlot": {
               "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.FullLength"
@@ -191,6 +197,7 @@
         "inventoryPath": "/system/chassis/motherboard/pcieslot7",
         "inherit": false,
         "extraInterfaces": {
+          "com.ibm.Control.Host.PCIeLink": null,
           "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
           "xyz.openbmc_project.Inventory.Item.PCIeSlot": {
               "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.FullLength"
@@ -207,6 +214,7 @@
         "inventoryPath": "/system/chassis/motherboard/pcieslot8",
         "inherit": false,
         "extraInterfaces": {
+          "com.ibm.Control.Host.PCIeLink": null,
           "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
           "xyz.openbmc_project.Inventory.Item.PCIeSlot": {
               "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.FullLength"
@@ -223,6 +231,7 @@
         "inventoryPath": "/system/chassis/motherboard/pcieslot9",
         "inherit": false,
         "extraInterfaces": {
+          "com.ibm.Control.Host.PCIeLink": null,
           "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
           "xyz.openbmc_project.Inventory.Item.PCIeSlot": {
               "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.FullLength"
@@ -239,6 +248,7 @@
         "inventoryPath": "/system/chassis/motherboard/pcieslot10",
         "inherit": false,
         "extraInterfaces": {
+          "com.ibm.Control.Host.PCIeLink": null,
           "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
           "xyz.openbmc_project.Inventory.Item.PCIeSlot": {
               "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.FullLength"
@@ -255,6 +265,7 @@
         "inventoryPath": "/system/chassis/motherboard/pcieslot11",
         "inherit": false,
         "extraInterfaces": {
+          "com.ibm.Control.Host.PCIeLink": null,
           "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
           "xyz.openbmc_project.Inventory.Item.PCIeSlot": {
               "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.FullLength"
@@ -2427,6 +2438,7 @@
         "inventoryPath": "/system/chassis/motherboard/disk_backplane0/nvme0",
         "inherit": false,
         "extraInterfaces": {
+          "com.ibm.Control.Host.PCIeLink": null,
           "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
           "xyz.openbmc_project.Inventory.Item.PCIeSlot": {
               "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.U_2"
@@ -2457,6 +2469,7 @@
         "inventoryPath": "/system/chassis/motherboard/disk_backplane0/nvme1",
         "inherit": false,
         "extraInterfaces": {
+          "com.ibm.Control.Host.PCIeLink": null,
           "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
           "xyz.openbmc_project.Inventory.Item.PCIeSlot": {
               "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.U_2"
@@ -2487,6 +2500,7 @@
         "inventoryPath": "/system/chassis/motherboard/disk_backplane0/nvme2",
         "inherit": false,
         "extraInterfaces": {
+          "com.ibm.Control.Host.PCIeLink": null,
           "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
           "xyz.openbmc_project.Inventory.Item.PCIeSlot": {
               "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.U_2"
@@ -2517,6 +2531,7 @@
         "inventoryPath": "/system/chassis/motherboard/disk_backplane0/nvme3",
         "inherit": false,
         "extraInterfaces": {
+          "com.ibm.Control.Host.PCIeLink": null,
           "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
           "xyz.openbmc_project.Inventory.Item.PCIeSlot": {
               "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.U_2"
@@ -2547,6 +2562,7 @@
         "inventoryPath": "/system/chassis/motherboard/disk_backplane0/nvme4",
         "inherit": false,
         "extraInterfaces": {
+          "com.ibm.Control.Host.PCIeLink": null,
           "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
           "xyz.openbmc_project.Inventory.Item.PCIeSlot": {
               "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.U_2"
@@ -2577,6 +2593,7 @@
         "inventoryPath": "/system/chassis/motherboard/disk_backplane0/nvme5",
         "inherit": false,
         "extraInterfaces": {
+          "com.ibm.Control.Host.PCIeLink": null,
           "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
           "xyz.openbmc_project.Inventory.Item.PCIeSlot": {
               "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.U_2"
@@ -2607,6 +2624,7 @@
         "inventoryPath": "/system/chassis/motherboard/disk_backplane0/nvme6",
         "inherit": false,
         "extraInterfaces": {
+          "com.ibm.Control.Host.PCIeLink": null,
           "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
           "xyz.openbmc_project.Inventory.Item.PCIeSlot": {
               "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.U_2"
@@ -2637,6 +2655,7 @@
         "inventoryPath": "/system/chassis/motherboard/disk_backplane0/nvme7",
         "inherit": false,
         "extraInterfaces": {
+          "com.ibm.Control.Host.PCIeLink": null,
           "xyz.openbmc_project.State.Decorator.PowerState": "xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
           "xyz.openbmc_project.Inventory.Item.PCIeSlot": {
               "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.U_2"
