@@ -1251,48 +1251,6 @@
         }
       }
     ],
-    "/sys/bus/i2c/drivers/at24/22-0052/eeprom": [
-      {
-        "inventoryPath": "/system/chassis/motherboard/pcieslot2/pcie_card2",
-        "devAddress" : "22-0052",
-	"pcaChipAddress" : "22-0062",
-        "replaceableAtStandby" : true,
-        "busType" : "i2c",
-        "driverType" : "at24",
-        "concurrentlyMaintainable" : true,
-        "presence" : {
-          "pin" : "SLOT2_EXPANDER_PRSNT_N",
-          "value" : 0,
-          "gpioI2CAddress" : "3-0061"
-        },
-        "preAction" : {
-          "pin" : "SLOT2_PRSNT_EN_RSVD",
-          "value" : 1,
-          "gpioI2CAddress" : "3-0061"
-        },
-        "postActionFail" : {
-          "pin" : "SLOT2_PRSNT_EN_RSVD",
-          "value" : 0,
-          "gpioI2CAddress" : "3-0061"
-        },
-        "extraInterfaces": {
-          "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
-          "com.ibm.ipzvpd.Location" : {
-              "LocationCode" : "Ufcs-P0-C2"
-          },
-          "xyz.openbmc_project.Inventory.Decorator.I2CDevice": {
-              "Bus": 22,
-              "Address": 82
-          },
-          "xyz.openbmc_project.Inventory.Decorator.Slot": {
-              "SlotNumber": 2
-	  },
-	  "xyz.openbmc_project.Inventory.Item": {
-                  "PrettyName": "PCIe Cable Card"
-          }
-        }
-      }
-    ],
     "/sys/bus/i2c/drivers/at24/25-0053/eeprom": [
       {
         "inventoryPath": "/system/chassis/motherboard/pcieslot6/pcie_card6",
@@ -1517,48 +1475,6 @@
 	  },
 	  "xyz.openbmc_project.Inventory.Item": {
                   "PrettyName": "NVMe Internal Connector"
-          }
-        }
-      }
-    ],
-    "/sys/bus/i2c/drivers/at24/21-0051/eeprom": [
-      {
-        "inventoryPath": "/system/chassis/motherboard/pcieslot1/pcie_card1",
-        "devAddress" : "21-0051",
-	"pcaChipAddress" : "21-0061",
-        "replaceableAtStandby" : true,
-        "busType" : "i2c",
-        "driverType" : "at24",
-        "concurrentlyMaintainable" : true,
-        "presence" : {
-          "pin" : "SLOT1_EXPANDER_PRSNT_N",
-          "value" : 0,
-          "gpioI2CAddress" : "3-0061"
-        },
-        "preAction" : {
-          "pin" : "SLOT1_PRSNT_EN_RSVD",
-          "value" : 1,
-          "gpioI2CAddress" : "3-0061"
-        },
-        "postActionFail" : {
-          "pin" : "SLOT1_PRSNT_EN_RSVD",
-          "value" : 0,
-          "gpioI2CAddress" : "3-0061"
-        },
-        "extraInterfaces": {
-          "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
-          "com.ibm.ipzvpd.Location" : {
-              "LocationCode" : "Ufcs-P0-C1"
-          },
-          "xyz.openbmc_project.Inventory.Decorator.I2CDevice": {
-              "Bus": 21,
-              "Address": 81
-          },
-          "xyz.openbmc_project.Inventory.Decorator.Slot": {
-              "SlotNumber": 1
-	  },
-	  "xyz.openbmc_project.Inventory.Item": {
-                  "PrettyName": "PCIe Cable Card"
           }
         }
       }
