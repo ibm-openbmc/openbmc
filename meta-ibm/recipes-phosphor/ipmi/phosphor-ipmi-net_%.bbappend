@@ -9,3 +9,5 @@ SYSTEMD_SERVICE:${PN}:append:p10bmc += " \
     ${PN}@${ALT_RMCPP_IFACE}.service \
     ${PN}@${ALT_RMCPP_IFACE}.socket \
     "
+
+SYSTEMD_AUTO_ENABLE:${PN}:p10bmc = "disable"
