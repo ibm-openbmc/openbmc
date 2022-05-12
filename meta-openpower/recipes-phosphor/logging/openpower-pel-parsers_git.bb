@@ -12,8 +12,8 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=fa818a259cbed7ce8bc2a22d35a464fc"
 PR = "r1"
 PV = "0.1+git${SRCPV}"
 
-SRC_URI = "git://github.com/ibm-openbmc/openpower-pel-parsers"
-SRCREV = "4bb873290591adadc8b082e88ac21d0f951f0d77"
+SRC_URI = "git://github.com/ibm-openbmc/openpower-pel-parsers;branch=master"
+SRCREV = "d95d66668f28efcd5c987c777ac5b764dad46bca"
 
 S = "${WORKDIR}/git"
 
