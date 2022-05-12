@@ -5,7 +5,7 @@ pkg_postinst:${PN}-obmc-targets:append() {
     TARGET="../obmc-host-reset@.target"
     ln -s $TARGET $LINK
 
-    LINK="$D$systemd_system_unitdir/multi-user.target.requires/phosphor-discover-system-state@0.service"
+    LINK="$D$systemd_system_unitdir/multi-user.target.wants/phosphor-discover-system-state@0.service"
     TARGET="../phosphor-discover-system-state@.service"
     ln -s $TARGET $LINK
 
@@ -113,7 +113,7 @@ pkg_prerm:${PN}-obmc-targets:append() {
     LINK="$D$systemd_system_unitdir/multi-user.target.requires/obmc-host-reset@0.target"
     rm $LINK
 
-    LINK="$D$systemd_system_unitdir/multi-user.target.requires/phosphor-discover-system-state@0.service"
+    LINK="$D$systemd_system_unitdir/multi-user.target.wants/phosphor-discover-system-state@0.service"
     rm $LINK
 
     LINK="$D$systemd_system_unitdir/obmc-chassis-poweron@0.target.wants/phosphor-reset-host-recovery@0.service"
