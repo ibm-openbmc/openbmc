@@ -2402,7 +2402,7 @@
         }
       },
       {
-        "inventoryPath": "/system/chassis/motherboard/disk_backplane0/nvme2/drive2",
+        "inventoryPath": "/system/chassis/motherboard/disk_backplane0/nvme2/dp0_drive2",
         "inherit": false,
         "embedded": false,
         "extraInterfaces": {
@@ -2433,7 +2433,7 @@
         }
       },
       {
-        "inventoryPath": "/system/chassis/motherboard/disk_backplane0/nvme3/drive3",
+        "inventoryPath": "/system/chassis/motherboard/disk_backplane0/nvme3/dp0_drive3",
         "inherit": false,
         "embedded": false,
         "extraInterfaces": {
@@ -2464,7 +2464,7 @@
         }
       },
       {
-        "inventoryPath": "/system/chassis/motherboard/disk_backplane0/nvme4/drive4",
+        "inventoryPath": "/system/chassis/motherboard/disk_backplane0/nvme4/dp0_drive4",
         "inherit": false,
         "embedded": false,
         "extraInterfaces": {
@@ -2495,7 +2495,7 @@
         }
       },
       {
-        "inventoryPath": "/system/chassis/motherboard/disk_backplane0/nvme5/drive5",
+        "inventoryPath": "/system/chassis/motherboard/disk_backplane0/nvme5/dp0_drive5",
         "inherit": false,
         "embedded": false,
         "extraInterfaces": {
@@ -2615,7 +2615,7 @@
         }
       },
       {
-        "inventoryPath": "/system/chassis/motherboard/disk_backplane1/nvme2/drive2",
+        "inventoryPath": "/system/chassis/motherboard/disk_backplane1/nvme2/dp1_drive2",
         "inherit": false,
         "embedded": false,
         "extraInterfaces": {
@@ -2646,7 +2646,7 @@
         }
       },
       {
-        "inventoryPath": "/system/chassis/motherboard/disk_backplane1/nvme3/drive3",
+        "inventoryPath": "/system/chassis/motherboard/disk_backplane1/nvme3/dp1_drive3",
         "inherit": false,
         "embedded": false,
         "extraInterfaces": {
@@ -2677,7 +2677,7 @@
         }
       },
       {
-        "inventoryPath": "/system/chassis/motherboard/disk_backplane1/nvme4/drive4",
+        "inventoryPath": "/system/chassis/motherboard/disk_backplane1/nvme4/dp1_drive4",
         "inherit": false,
         "embedded": false,
         "extraInterfaces": {
@@ -2708,7 +2708,7 @@
         }
       },
       {
-        "inventoryPath": "/system/chassis/motherboard/disk_backplane1/nvme5/drive5",
+        "inventoryPath": "/system/chassis/motherboard/disk_backplane1/nvme5/dp1_drive5",
         "inherit": false,
         "embedded": false,
         "extraInterfaces": {

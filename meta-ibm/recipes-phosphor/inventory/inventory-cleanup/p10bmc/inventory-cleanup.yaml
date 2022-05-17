@@ -66,3 +66,19 @@ events:
                 - /system/chassis/motherboard/disk_backplane2/dp2_connector4
                 - /system/chassis/motherboard/disk_backplane2/dp2_connector5
                 - /system/chassis/motherboard/power_distribution
+                - /system/chassis/motherboard/disk_backplane0/nvme0/drive0
+                - /system/chassis/motherboard/disk_backplane0/nvme1/drive1
+                - /system/chassis/motherboard/disk_backplane0/nvme2/drive2
+                - /system/chassis/motherboard/disk_backplane0/nvme3/drive3
+                - /system/chassis/motherboard/disk_backplane0/nvme4/drive4
+                - /system/chassis/motherboard/disk_backplane0/nvme5/drive5
+                - /system/chassis/motherboard/disk_backplane0/nvme6/drive6
+                - /system/chassis/motherboard/disk_backplane0/nvme7/drive7
+                - /system/chassis/motherboard/disk_backplane1/nvme0/drive0
+                - /system/chassis/motherboard/disk_backplane1/nvme1/drive1
+                - /system/chassis/motherboard/disk_backplane1/nvme2/drive2
+                - /system/chassis/motherboard/disk_backplane1/nvme3/drive3
+                - /system/chassis/motherboard/disk_backplane1/nvme4/drive4
+                - /system/chassis/motherboard/disk_backplane1/nvme5/drive5
+                - /system/chassis/motherboard/disk_backplane1/nvme6/drive6
+                - /system/chassis/motherboard/disk_backplane1/nvme7/drive7
