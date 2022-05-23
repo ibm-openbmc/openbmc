@@ -2158,3 +2158,55 @@
   sensorReadingType: 0x6F
   sensorType: 0x07
   serviceInterface: xyz.openbmc_project.Inventory.Manager
+0x4B:
+  entityID: 0x22
+  entityInstance: 0x01
+  interfaces:
+    xyz.openbmc_project.State.Boot.Progress:
+      BootProgress:
+        Offsets:
+          0x00:
+            set: xyz.openbmc_project.State.Boot.Progress.ProgressStages.Unspecified
+            type: string
+          0x01:
+            set: xyz.openbmc_project.State.Boot.Progress.ProgressStages.MemoryInit
+            type: string
+          0x03:
+            set: xyz.openbmc_project.State.Boot.Progress.ProgressStages.SecondaryProcInit
+            type: string
+          0x07:
+            set: xyz.openbmc_project.State.Boot.Progress.ProgressStages.PCIInit
+            type: string
+          0x13:
+            set: xyz.openbmc_project.State.Boot.Progress.ProgressStages.OSStart
+            type: string
+          0x14:
+            set: xyz.openbmc_project.State.Boot.Progress.ProgressStages.MotherboardInit
+            type: string
+  mutability: Mutability::Write|Mutability::Read
+  path: /xyz/openbmc_project/state/host0
+  readingType: eventdata2
+  sensorNamePattern: nameProperty
+  sensorReadingType: 0x6F
+  sensorType: 0x0F
+  serviceInterface: org.freedesktop.DBus.Properties
+0x4C:
+  entityID: 0x23
+  entityInstance: 0x01
+  interfaces:
+    xyz.openbmc_project.Control.Boot.RebootPolicy:
+      AutoReboot:
+         Offsets:
+            0:
+              assert: false
+              type: bool
+            1:
+              assert: true
+              type: bool
+  mutability: Mutability::Write|Mutability::Read
+  path: /xyz/openbmc_project/control/host0/auto_reboot
+  readingType: assertion
+  sensorNamePattern: nameLeaf
+  sensorReadingType: 0x6F
+  sensorType: 0xC3
+  serviceInterface: org.freedesktop.DBus.Properties
