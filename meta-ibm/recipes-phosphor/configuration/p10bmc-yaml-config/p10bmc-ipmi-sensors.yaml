@@ -1928,7 +1928,6 @@
           0x07:
             assert: true
             deassert: false
-            skipOn: deassert
             type: bool
     xyz.openbmc_project.State.Decorator.OperationalStatus:
       Functional:
@@ -1958,7 +1957,6 @@
           0x07:
             assert: true
             deassert: false
-            skipOn: deassert
             type: bool
     xyz.openbmc_project.State.Decorator.OperationalStatus:
       Functional:
@@ -1988,7 +1986,6 @@
           0x07:
             assert: true
             deassert: false
-            skipOn: deassert
             type: bool
     xyz.openbmc_project.State.Decorator.OperationalStatus:
       Functional:
@@ -2018,7 +2015,6 @@
           0x07:
             assert: true
             deassert: false
-            skipOn: deassert
             type: bool
     xyz.openbmc_project.State.Decorator.OperationalStatus:
       Functional:
@@ -2048,7 +2044,6 @@
           0x07:
             assert: true
             deassert: false
-            skipOn: deassert
             type: bool
     xyz.openbmc_project.State.Decorator.OperationalStatus:
       Functional:
@@ -2078,7 +2073,6 @@
           0x07:
             assert: true
             deassert: false
-            skipOn: deassert
             type: bool
     xyz.openbmc_project.State.Decorator.OperationalStatus:
       Functional:
@@ -2108,7 +2102,6 @@
           0x07:
             assert: true
             deassert: false
-            skipOn: deassert
             type: bool
     xyz.openbmc_project.State.Decorator.OperationalStatus:
       Functional:
@@ -2138,7 +2131,6 @@
           0x07:
             assert: true
             deassert: false
-            skipOn: deassert
             type: bool
     xyz.openbmc_project.State.Decorator.OperationalStatus:
       Functional:
