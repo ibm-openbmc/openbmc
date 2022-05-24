@@ -13,7 +13,7 @@ PR = "r1"
 PV = "0.1+git${SRCPV}"
 
 SRC_URI = "git://github.com/ibm-openbmc/openpower-pel-parsers;branch=master"
-SRCREV = "d95d66668f28efcd5c987c777ac5b764dad46bca"
+SRCREV = "8741e0fe8db545a7349c96a1d5206c0e489c2504"
 
 S = "${WORKDIR}/git"
 
