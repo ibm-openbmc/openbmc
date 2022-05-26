@@ -2404,6 +2404,7 @@
             "driverType" : "at24",
             "concurrentlyMaintainable" : true,
             "devAddress" : "16-0052",
+            "pcaChipAddress" : "16-0062",
             "preAction" : {
               "pin" : "presence-cable-card1",
               "value" : 1,
@@ -2465,6 +2466,7 @@
           {
              "inventoryPath": "/system/chassis/motherboard/pcieslot2/pcie_card2",
              "devAddress" : "17-0050",
+             "pcaChipAddress" : "17-0060",
              "replaceableAtStandby" : true,
              "busType" : "i2c",
              "driverType" : "at24",
@@ -2530,6 +2532,7 @@
           {
              "inventoryPath": "/system/chassis/motherboard/pcieslot3/pcie_card3",
              "devAddress" : "18-0051",
+             "pcaChipAddress" : "18-0061",
              "replaceableAtStandby" : true,
              "busType" : "i2c",
              "driverType" : "at24",
@@ -2595,6 +2598,7 @@
           {
              "inventoryPath": "/system/chassis/motherboard/pcieslot4/pcie_card4",
              "devAddress" : "19-0050",
+             "pcaChipAddress" : "19-0060",
              "replaceableAtStandby" : true,
              "busType" : "i2c",
              "driverType" : "at24",
@@ -2660,6 +2664,7 @@
           {
              "inventoryPath": "/system/chassis/motherboard/pcieslot5/pcie_card5",
              "devAddress" : "20-0051",
+             "pcaChipAddress" : "20-0061",
              "replaceableAtStandby" : true,
              "busType" : "i2c",
              "driverType" : "at24",
@@ -2725,6 +2730,7 @@
           {
              "inventoryPath": "/system/chassis/motherboard/pcieslot6/pcie_card6",
              "devAddress" : "21-0051",
+             "pcaChipAddress" : "21-0061",
              "replaceableAtStandby" : true,
              "busType" : "i2c",
              "driverType" : "at24",
@@ -2762,6 +2768,7 @@
           {
              "inventoryPath": "/system/chassis/motherboard/pcieslot7/pcie_card7",
              "devAddress" : "22-0053",
+             "pcaChipAddress" : "22-0063",
              "replaceableAtStandby" : true,
              "busType" : "i2c",
              "driverType" : "at24",
@@ -2827,6 +2834,7 @@
           {
              "inventoryPath": "/system/chassis/motherboard/pcieslot8/pcie_card8",
              "devAddress" : "23-0050",
+             "pcaChipAddress" : "23-0060",
              "replaceableAtStandby" : true,
              "busType" : "i2c",
              "driverType" : "at24",
@@ -2892,6 +2900,7 @@
           {
              "inventoryPath": "/system/chassis/motherboard/pcieslot9/pcie_card9",
              "devAddress" : "24-0052",
+             "pcaChipAddress" : "24-0062",
              "replaceableAtStandby" : true,
              "busType" : "i2c",
              "driverType" : "at24",
@@ -2929,6 +2938,7 @@
           {
              "inventoryPath": "/system/chassis/motherboard/pcieslot10/pcie_card10",
              "devAddress" : "25-0053",
+             "pcaChipAddress" : "25-0063",
              "replaceableAtStandby" : true,
              "busType" : "i2c",
              "driverType" : "at24",
@@ -2994,6 +3004,7 @@
           {
              "inventoryPath": "/system/chassis/motherboard/pcieslot11/pcie_card11",
              "devAddress" : "26-0051",
+             "pcaChipAddress" : "26-0061",
              "replaceableAtStandby" : true,
              "busType" : "i2c",
              "driverType" : "at24",
