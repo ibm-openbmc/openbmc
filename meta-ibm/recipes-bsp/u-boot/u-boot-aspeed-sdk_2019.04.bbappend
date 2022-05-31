@@ -1,6 +1,6 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
-SRC_URI:append:p10bmc += "file://a3.json file://keys/"
+SRC_URI:append:p10bmc += "file://a3.json file://keys/ file://p10bmc.cfg"
 
 OTPTOOL_CONFIG:p10bmc = "${WORKDIR}/a3.json"
 OTPTOOL_KEY_DIR:p10bmc = "${WORKDIR}/keys/"
