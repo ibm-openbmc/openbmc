@@ -279,6 +279,37 @@
         }
       },
       {
+        "inventoryPath": "/system/chassis/motherboard/pcieslot12",
+        "inherit": false,
+        "extraInterfaces": {
+          "com.ibm.Control.Host.PCIeLink": null,
+          "xyz.openbmc_project.Inventory.Item.PCIeSlot": {
+              "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.OEM"
+          },
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-T18"
+          },
+          "xyz.openbmc_project.Inventory.Item": {
+                  "PrettyName": "Dummy PCIe USB Adapter Slot"
+          }
+        }
+      },
+      {
+        "inventoryPath": "/system/chassis/motherboard/pcieslot12/pcie_card12",
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
+          "com.ibm.ipzvpd.Location" : {
+              "LocationCode" : "Ufcs-P0-T18"
+          },
+          "xyz.openbmc_project.Inventory.Decorator.Slot": {
+              "SlotNumber": 12
+          },
+          "xyz.openbmc_project.Inventory.Item": {
+                  "PrettyName": "Dummy PCIe USB Adapter"
+           }
+        }
+      },
+      {
         "inventoryPath": "/system/chassis/motherboard/powersupply0",
         "inherit": false,
         "embedded": false,
