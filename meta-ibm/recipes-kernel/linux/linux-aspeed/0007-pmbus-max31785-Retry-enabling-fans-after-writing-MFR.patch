@@ -1,7 +1,7 @@
-From 1b50d4b0ec688a76e5620998166ff5006bdf1402 Mon Sep 17 00:00:00 2001
+From 430639a2df91bdb8ced913996b9659e80f4a64ba Mon Sep 17 00:00:00 2001
 From: Andrew Jeffery <andrew@aj.id.au>
 Date: Thu, 27 Aug 2020 23:00:00 +0930
-Subject: [PATCH 07/15] pmbus: (max31785) Retry enabling fans after writing
+Subject: [PATCH 07/22] pmbus: (max31785) Retry enabling fans after writing
  MFR_FAN_CONFIG
 
 It has been observed across large fleets of systems that a small subset

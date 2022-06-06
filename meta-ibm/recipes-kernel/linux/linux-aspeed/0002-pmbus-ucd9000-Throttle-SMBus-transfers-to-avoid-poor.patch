@@ -1,7 +1,7 @@
-From 9b169b70db290cae2f8ace86005cea76edf5c43d Mon Sep 17 00:00:00 2001
+From e7a12e4405a543de1691af3f6b5d5a0ade27fc13 Mon Sep 17 00:00:00 2001
 From: Andrew Jeffery <andrew@aj.id.au>
 Date: Tue, 1 Sep 2020 21:05:45 +0930
-Subject: [PATCH 02/15] pmbus: (ucd9000) Throttle SMBus transfers to avoid poor
+Subject: [PATCH 02/22] pmbus: (ucd9000) Throttle SMBus transfers to avoid poor
  behaviour
 
 Short turn-around times between transfers to UCD9000 devices can lead to

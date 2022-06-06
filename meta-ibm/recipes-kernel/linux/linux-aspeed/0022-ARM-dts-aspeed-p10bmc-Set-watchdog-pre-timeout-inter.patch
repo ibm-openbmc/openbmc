@@ -1,0 +1,55 @@
+From 317451c37ab0e58b2303abaff31ccd7b05e3be8e Mon Sep 17 00:00:00 2001
+From: Eddie James <eajames@linux.ibm.com>
+Date: Tue, 18 Oct 2022 16:43:53 -0500
+Subject: [PATCH 22/22] ARM: dts: aspeed: p10bmc: Set watchdog pre-timeout
+ interrupt
+
+Specify the pre-timeout interrupt time to enable the interrupt on
+P10 BMC systems.
+
+Signed-off-by: Eddie James <eajames@linux.ibm.com>
+---
+ arch/arm/boot/dts/aspeed-bmc-ibm-bonnell.dts | 1 +
+ arch/arm/boot/dts/aspeed-bmc-ibm-everest.dts | 1 +
+ arch/arm/boot/dts/aspeed-bmc-ibm-rainier.dts | 1 +
+ 3 files changed, 3 insertions(+)
+
+diff --git a/arch/arm/boot/dts/aspeed-bmc-ibm-bonnell.dts b/arch/arm/boot/dts/aspeed-bmc-ibm-bonnell.dts
+index 6789c1ec286a..7acdda8791a0 100644
+--- a/arch/arm/boot/dts/aspeed-bmc-ibm-bonnell.dts
++++ b/arch/arm/boot/dts/aspeed-bmc-ibm-bonnell.dts
+@@ -889,6 +889,7 @@ &wdt1 {
+ };
+ 
+ &wdt2 {
++	aspeed,pre-timeout-irq-us = <600000>;
+ 	status = "okay";
+ };
+ 
+diff --git a/arch/arm/boot/dts/aspeed-bmc-ibm-everest.dts b/arch/arm/boot/dts/aspeed-bmc-ibm-everest.dts
+index 1f0823236513..a0e7ee3c836e 100644
+--- a/arch/arm/boot/dts/aspeed-bmc-ibm-everest.dts
++++ b/arch/arm/boot/dts/aspeed-bmc-ibm-everest.dts
+@@ -3690,6 +3690,7 @@ &wdt1 {
+ };
+ 
+ &wdt2 {
++	aspeed,pre-timeout-irq-us = <600000>;
+ 	status = "okay";
+ };
+ 
+diff --git a/arch/arm/boot/dts/aspeed-bmc-ibm-rainier.dts b/arch/arm/boot/dts/aspeed-bmc-ibm-rainier.dts
+index 9fc1970aad5b..ab92301877ab 100644
+--- a/arch/arm/boot/dts/aspeed-bmc-ibm-rainier.dts
++++ b/arch/arm/boot/dts/aspeed-bmc-ibm-rainier.dts
+@@ -2419,6 +2419,7 @@ &wdt1 {
+ };
+ 
+ &wdt2 {
++	aspeed,pre-timeout-irq-us = <600000>;
+ 	status = "okay";
+ };
+ 
+-- 
+2.25.1
+

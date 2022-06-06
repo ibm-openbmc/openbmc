@@ -1,7 +1,7 @@
-From 7a85dd77a9059c5f868624caab7b7df9c87c843e Mon Sep 17 00:00:00 2001
+From 0d8129df74ec740aefd9d1f61cd9598e12056bd0 Mon Sep 17 00:00:00 2001
 From: Eddie James <eajames@linux.ibm.com>
 Date: Fri, 30 Apr 2021 10:39:11 -0500
-Subject: [PATCH 09/15] ARM: dts: aspeed: Everest: Add fan controller
+Subject: [PATCH 09/22] ARM: dts: aspeed: Everest: Add fan controller
  properties
 
 Add the necessary Max chip specific fan properties.
@@ -13,10 +13,10 @@ Signed-off-by: Joel Stanley <joel@jms.id.au>
  1 file changed, 28 insertions(+)
 
 diff --git a/arch/arm/boot/dts/aspeed-bmc-ibm-everest.dts b/arch/arm/boot/dts/aspeed-bmc-ibm-everest.dts
-index 1bba5ad7378e..b83337d546d0 100644
+index 3bdd79506704..11ae6150946f 100644
 --- a/arch/arm/boot/dts/aspeed-bmc-ibm-everest.dts
 +++ b/arch/arm/boot/dts/aspeed-bmc-ibm-everest.dts
-@@ -2027,24 +2027,52 @@ fan@0 {
+@@ -2026,24 +2026,52 @@ fan@0 {
  					compatible = "pmbus-fan";
  					reg = <0>;
  					tach-pulses = <2>;

@@ -1,7 +1,7 @@
-From a318aa05ada3d0b1443621960f2a54d711f82963 Mon Sep 17 00:00:00 2001
+From c00f09a8af74cb8f0b8940e949dfd49edeffa393 Mon Sep 17 00:00:00 2001
 From: Eddie James <eajames@us.ibm.com>
 Date: Wed, 27 Apr 2022 09:44:16 -0500
-Subject: [PATCH 14/15] hwmon (occ): Delay hwmon registration until user
+Subject: [PATCH 14/22] hwmon (occ): Delay hwmon registration until user
  request (#165)
 
 Instead of registering the hwmon device at probe time, use the
@@ -23,10 +23,10 @@ Signed-off-by: Joel Stanley <joel@jms.id.au>
  5 files changed, 156 insertions(+), 90 deletions(-)
 
 diff --git a/drivers/hwmon/occ/common.c b/drivers/hwmon/occ/common.c
-index f00cd59f1d19..d78f4bebc718 100644
+index 1757f3ab842e..351bd2b47c88 100644
 --- a/drivers/hwmon/occ/common.c
 +++ b/drivers/hwmon/occ/common.c
-@@ -1149,44 +1149,75 @@ static void occ_parse_poll_response(struct occ *occ)
+@@ -1150,44 +1150,75 @@ static void occ_parse_poll_response(struct occ *occ)
  		sizeof(*header), size + sizeof(*header));
  }
  
@@ -132,7 +132,7 @@ index f00cd59f1d19..d78f4bebc718 100644
  	rc = occ_setup_sysfs(occ);
  	if (rc)
  		dev_err(occ->bus_dev, "failed to setup sysfs: %d\n", rc);
-@@ -1195,6 +1226,15 @@ int occ_setup(struct occ *occ, const char *name)
+@@ -1196,6 +1227,15 @@ int occ_setup(struct occ *occ, const char *name)
  }
  EXPORT_SYMBOL_GPL(occ_setup);
  
@@ -149,10 +149,10 @@ index f00cd59f1d19..d78f4bebc718 100644
  MODULE_DESCRIPTION("Common OCC hwmon code");
  MODULE_LICENSE("GPL");
 diff --git a/drivers/hwmon/occ/common.h b/drivers/hwmon/occ/common.h
-index 2dd4a4d240c0..64d5ec7e169b 100644
+index 726943af9a07..7ac4b2febce6 100644
 --- a/drivers/hwmon/occ/common.h
 +++ b/drivers/hwmon/occ/common.h
-@@ -106,6 +106,7 @@ struct occ {
+@@ -107,6 +107,7 @@ struct occ {
  	struct attribute_group group;
  	const struct attribute_group *groups[2];
  
@@ -160,7 +160,7 @@ index 2dd4a4d240c0..64d5ec7e169b 100644
  	int error;                      /* final transfer error after retry */
  	int last_error;			/* latest transfer error */
  	unsigned int error_count;       /* number of xfr errors observed */
-@@ -123,9 +124,11 @@ struct occ {
+@@ -124,9 +125,11 @@ struct occ {
  	u8 prev_mode;
  };
  
@@ -174,10 +174,10 @@ index 2dd4a4d240c0..64d5ec7e169b 100644
  int occ_update_response(struct occ *occ);
  
 diff --git a/drivers/hwmon/occ/p8_i2c.c b/drivers/hwmon/occ/p8_i2c.c
-index 9e61e1fb5142..da39ea28df31 100644
+index c35c07964d85..b221be1f35f3 100644
 --- a/drivers/hwmon/occ/p8_i2c.c
 +++ b/drivers/hwmon/occ/p8_i2c.c
-@@ -223,7 +223,7 @@ static int p8_i2c_occ_probe(struct i2c_client *client)
+@@ -224,7 +224,7 @@ static int p8_i2c_occ_probe(struct i2c_client *client)
  	occ->poll_cmd_data = 0x10;		/* P8 OCC poll data */
  	occ->send_cmd = p8_i2c_occ_send_cmd;
  
@@ -187,7 +187,7 @@ index 9e61e1fb5142..da39ea28df31 100644
  
  static int p8_i2c_occ_remove(struct i2c_client *client)
 diff --git a/drivers/hwmon/occ/p9_sbe.c b/drivers/hwmon/occ/p9_sbe.c
-index d34d6a007e8d..41c0f7a18877 100644
+index 037046c3921d..3e11704ab9b5 100644
 --- a/drivers/hwmon/occ/p9_sbe.c
 +++ b/drivers/hwmon/occ/p9_sbe.c
 @@ -151,7 +151,7 @@ static int p9_sbe_occ_probe(struct platform_device *pdev)

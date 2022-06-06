@@ -1,7 +1,7 @@
-From e56ee640d1213b83c2c926ecb8c0b4e709cd0049 Mon Sep 17 00:00:00 2001
+From 2ef50361e3b76e91d0300d715bc7cc41b7868483 Mon Sep 17 00:00:00 2001
 From: Andrew Jeffery <andrew@aj.id.au>
 Date: Tue, 1 Sep 2020 20:58:21 +0930
-Subject: [PATCH 01/15] i2c: Allow throttling of transfers to client devices
+Subject: [PATCH 01/22] i2c: Allow throttling of transfers to client devices
 
 Some devices fail to cope in disastrous ways with the small command
 turn-around times enabled by in-kernel device drivers.
@@ -18,7 +18,7 @@ Signed-off-by: Joel Stanley <joel@jms.id.au>
  4 files changed, 172 insertions(+), 31 deletions(-)
 
 diff --git a/drivers/i2c/i2c-core-base.c b/drivers/i2c/i2c-core-base.c
-index 0ebde16bef33..dba7d358344c 100644
+index 7e9c796af5b3..8f1012910761 100644
 --- a/drivers/i2c/i2c-core-base.c
 +++ b/drivers/i2c/i2c-core-base.c
 @@ -914,13 +914,17 @@ int i2c_dev_irq_from_resources(const struct resource *resources,

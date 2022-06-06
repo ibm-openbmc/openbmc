@@ -1,7 +1,7 @@
-From 7ad4cda324282be582761adba697b7175b9f8d72 Mon Sep 17 00:00:00 2001
+From ac60c84eafccbd873e5518b6ec66573b45dbc2b1 Mon Sep 17 00:00:00 2001
 From: Andrew Jeffery <andrew@aj.id.au>
 Date: Thu, 27 Aug 2020 23:00:01 +0930
-Subject: [PATCH 06/15] pmbus: (max31785) Add a local pmbus_set_page()
+Subject: [PATCH 06/22] pmbus: (max31785) Add a local pmbus_set_page()
  implementation
 
 Extensive testing and tracing has shown that the MAX31785 is unreliable

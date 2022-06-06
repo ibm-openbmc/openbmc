@@ -17,6 +17,13 @@ SRC_URI:append:p10bmc = " \
     file://0013-ARM-dts-aspeed-everest-Specify-I2C8-mux-reset-gpio.patch \
     file://0014-hwmon-occ-Delay-hwmon-registration-until-user-reques.patch \
     file://0015-leds-pca955x-throttle-i2c-transfers.patch \
+    file://0016-hwmon-occ-Lock-mutex-in-shutdown-to-prevent-race-wit.patch \
+    file://0017-spi-fsi-Increase-timeout-and-ensure-status-is-checke.patch \
+    file://0018-ARM-dts-aspeed-Fix-pca9551-nodes-on-Rainier-182.patch \
+    file://0019-ipmi-kcs-Poll-OBF-briefly-to-reduce-OBE-latency-183.patch \
+    file://0020-watchdog-aspeed-Add-pre-timeout-interrupt-support.patch \
+    file://0021-ARM-dts-aspeed-Setup-watchdog-pre-timeout-interrupt.patch \
+    file://0022-ARM-dts-aspeed-p10bmc-Set-watchdog-pre-timeout-inter.patch \
     "
 
 SRC_URI:append:ibm-ac-server = " file://witherspoon.cfg"

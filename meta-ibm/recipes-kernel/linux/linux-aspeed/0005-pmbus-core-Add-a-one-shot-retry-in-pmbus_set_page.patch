@@ -1,7 +1,7 @@
-From d87921fb593a828ab5722cbb177d5c1e9ca6023d Mon Sep 17 00:00:00 2001
+From 91cbffde7fea93ba48a7a0a3c6a1c08b9c509e84 Mon Sep 17 00:00:00 2001
 From: Andrew Jeffery <andrew@aj.id.au>
 Date: Thu, 27 Aug 2020 23:00:02 +0930
-Subject: [PATCH 05/15] pmbus: (core) Add a one-shot retry in pmbus_set_page()
+Subject: [PATCH 05/22] pmbus: (core) Add a one-shot retry in pmbus_set_page()
 
 From extensive testing and tracing it was discovered that the MAX31785
 occasionally fails to switch pages despite ACK'ing the PAGE PMBus data
@@ -22,7 +22,7 @@ Signed-off-by: Joel Stanley <joel@jms.id.au>
  1 file changed, 20 insertions(+), 11 deletions(-)
 
 diff --git a/drivers/hwmon/pmbus/pmbus_core.c b/drivers/hwmon/pmbus/pmbus_core.c
-index 97f2951bb7e5..5d8db50c7244 100644
+index d7458778cff4..65ca28af449c 100644
 --- a/drivers/hwmon/pmbus/pmbus_core.c
 +++ b/drivers/hwmon/pmbus/pmbus_core.c
 @@ -162,25 +162,34 @@ int pmbus_set_page(struct i2c_client *client, int page, int phase)

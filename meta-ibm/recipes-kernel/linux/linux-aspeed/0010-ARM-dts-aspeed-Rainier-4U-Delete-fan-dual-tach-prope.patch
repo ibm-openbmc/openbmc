@@ -1,7 +1,7 @@
-From 33eadb31fefaaacad15e591d340fe034c91aa1c0 Mon Sep 17 00:00:00 2001
+From 79abd194848c45057c1b3b5acebbed12b21fbf91 Mon Sep 17 00:00:00 2001
 From: Eddie James <eajames@linux.ibm.com>
 Date: Fri, 30 Apr 2021 14:05:32 -0500
-Subject: [PATCH 10/15] ARM: dts: aspeed: Rainier 4U: Delete fan dual-tach
+Subject: [PATCH 10/22] ARM: dts: aspeed: Rainier 4U: Delete fan dual-tach
  properties
 
 The fans in the 4U chassis do not have dual tachometers, so remove those

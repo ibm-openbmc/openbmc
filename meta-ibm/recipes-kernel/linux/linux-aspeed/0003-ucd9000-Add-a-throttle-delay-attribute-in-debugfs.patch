@@ -1,7 +1,7 @@
-From 3d4eeefe94d7909fde919380c2d8d0deb49bdd77 Mon Sep 17 00:00:00 2001
+From d02a42c6bbac51d670fe03a78ec0292cab1914d4 Mon Sep 17 00:00:00 2001
 From: Andrew Jeffery <andrew@aj.id.au>
 Date: Tue, 1 Sep 2020 22:34:50 +0930
-Subject: [PATCH 03/15] ucd9000: Add a throttle delay attribute in debugfs
+Subject: [PATCH 03/22] ucd9000: Add a throttle delay attribute in debugfs
 
 Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
 Signed-off-by: Joel Stanley <joel@jms.id.au>

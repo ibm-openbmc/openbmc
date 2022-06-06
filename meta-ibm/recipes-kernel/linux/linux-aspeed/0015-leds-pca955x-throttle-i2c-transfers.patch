@@ -1,7 +1,7 @@
-From c199eb04c32327706da17f6c9e25eb55728c5157 Mon Sep 17 00:00:00 2001
+From 599f3a891f4b88e71dd5b238a2cc5c5be95849f7 Mon Sep 17 00:00:00 2001
 From: Eddie James <eajames@linux.ibm.com>
 Date: Thu, 7 Apr 2022 14:22:24 -0500
-Subject: [PATCH 15/15] leds: pca955x: throttle i2c transfers
+Subject: [PATCH 15/22] leds: pca955x: throttle i2c transfers
 
 Errors during device start up have been observed, and it's suspected
 that rapid i2c transfers are to blame, so implement the existing
@@ -13,7 +13,7 @@ Signed-off-by: Eddie James <eajames@linux.ibm.com>
  1 file changed, 4 insertions(+)
 
 diff --git a/drivers/leds/leds-pca955x.c b/drivers/leds/leds-pca955x.c
-index da93f04e4d10..04a62aa30d15 100644
+index cba9876b1187..2c5a26d98dac 100644
 --- a/drivers/leds/leds-pca955x.c
 +++ b/drivers/leds/leds-pca955x.c
 @@ -674,6 +674,10 @@ static int pca955x_probe(struct i2c_client *client)

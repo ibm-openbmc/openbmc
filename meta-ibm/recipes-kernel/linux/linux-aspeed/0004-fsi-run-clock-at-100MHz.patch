@@ -1,7 +1,7 @@
-From 8058172a280e9a6fefd7793c0a7e4a28ff7d403d Mon Sep 17 00:00:00 2001
+From 81fc2bca049fbd4af289674b22b08d0c5a292326 Mon Sep 17 00:00:00 2001
 From: Andrew Geissler <geisonator@yahoo.com>
 Date: Mon, 27 Jul 2020 10:33:46 -0500
-Subject: [PATCH 04/15] fsi: run clock at 100MHz
+Subject: [PATCH 04/22] fsi: run clock at 100MHz
 
 This is a workaround requested by bringup team to see if some of the
 instabilities being seen in the lab clear up.

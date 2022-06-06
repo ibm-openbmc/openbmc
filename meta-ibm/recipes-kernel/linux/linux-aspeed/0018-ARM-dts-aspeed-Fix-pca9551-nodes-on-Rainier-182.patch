@@ -1,0 +1,534 @@
+From fa608520f582ba2de5b3dd53abd53dd95a2e9991 Mon Sep 17 00:00:00 2001
+From: Santosh Puranik <santosh.puranik@in.ibm.com>
+Date: Thu, 11 Aug 2022 19:30:09 +0530
+Subject: [PATCH 18/22] ARM: dts: aspeed: Fix pca9551 nodes on Rainier (#182)
+
+The pca9551 compatible LED drivers are under the pca9546 mux
+on Rainier pass > 1. On pass 1, they are directly connected to
+the aspeed i2c.
+
+Signed-off-by: Santosh Puranik <santosh.puranik@in.ibm.com>
+---
+ .../boot/dts/aspeed-bmc-ibm-rainier-4u-p1.dts | 104 +++++++++
+ .../boot/dts/aspeed-bmc-ibm-rainier-p1.dts    | 104 +++++++++
+ arch/arm/boot/dts/aspeed-bmc-ibm-rainier.dts  | 208 +++++++++---------
+ 3 files changed, 312 insertions(+), 104 deletions(-)
+
+diff --git a/arch/arm/boot/dts/aspeed-bmc-ibm-rainier-4u-p1.dts b/arch/arm/boot/dts/aspeed-bmc-ibm-rainier-4u-p1.dts
+index e35a3efd9d22..2e55f294f51a 100644
+--- a/arch/arm/boot/dts/aspeed-bmc-ibm-rainier-4u-p1.dts
++++ b/arch/arm/boot/dts/aspeed-bmc-ibm-rainier-4u-p1.dts
+@@ -39,6 +39,32 @@ eeprom@52 {
+ 		compatible = "atmel,24c64";
+ 		reg = <0x52>;
+ 	};
++
++	pca9551@60 {
++		compatible = "nxp,pca9551";
++		reg = <0x60>;
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		gpio-controller;
++		#gpio-cells = <2>;
++
++		led@0 {
++			label = "cablecard0-cxp-top";
++			reg = <0>;
++			retain-state-shutdown;
++			default-state = "keep";
++			type = <PCA955X_TYPE_LED>;
++		};
++
++		led@1 {
++			label = "cablecard0-cxp-bot";
++			reg = <1>;
++			retain-state-shutdown;
++			default-state = "keep";
++			type = <PCA955X_TYPE_LED>;
++		};
++	};
+ };
+ 
+ &i2c5 {
+@@ -53,6 +79,58 @@ eeprom@51 {
+ 		compatible = "atmel,24c64";
+ 		reg = <0x51>;
+ 	};
++
++	pca9551@60 {
++		compatible = "nxp,pca9551";
++		reg = <0x60>;
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		gpio-controller;
++		#gpio-cells = <2>;
++
++		led@0 {
++			label = "cablecard3-cxp-top";
++			reg = <0>;
++			retain-state-shutdown;
++			default-state = "keep";
++			type = <PCA955X_TYPE_LED>;
++		};
++
++		led@1 {
++			label = "cablecard3-cxp-bot";
++			reg = <1>;
++			retain-state-shutdown;
++			default-state = "keep";
++			type = <PCA955X_TYPE_LED>;
++		};
++	};
++
++	pca9551@61 {
++		compatible = "nxp,pca9551";
++		reg = <0x61>;
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		gpio-controller;
++		#gpio-cells = <2>;
++
++		led@0 {
++			label = "cablecard4-cxp-top";
++			reg = <0>;
++			retain-state-shutdown;
++			default-state = "keep";
++			type = <PCA955X_TYPE_LED>;
++		};
++
++		led@1 {
++			label = "cablecard4-cxp-bot";
++			reg = <1>;
++			retain-state-shutdown;
++			default-state = "keep";
++			type = <PCA955X_TYPE_LED>;
++		};
++	};
+ };
+ 
+ &i2c6 {
+@@ -91,4 +169,30 @@ eeprom@51 {
+ 		compatible = "atmel,24c64";
+ 		reg = <0x51>;
+ 	};
++
++	pca9551@60 {
++		compatible = "nxp,pca9551";
++		reg = <0x60>;
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		gpio-controller;
++		#gpio-cells = <2>;
++
++		led@0 {
++			label = "cablecard10-cxp-top";
++			reg = <0>;
++			retain-state-shutdown;
++			default-state = "keep";
++			type = <PCA955X_TYPE_LED>;
++		};
++
++		led@1 {
++			label = "cablecard10-cxp-bot";
++			reg = <1>;
++			retain-state-shutdown;
++			default-state = "keep";
++			type = <PCA955X_TYPE_LED>;
++		};
++	};
+ };
+diff --git a/arch/arm/boot/dts/aspeed-bmc-ibm-rainier-p1.dts b/arch/arm/boot/dts/aspeed-bmc-ibm-rainier-p1.dts
+index b3c923f1838b..2da6f2e54f87 100644
+--- a/arch/arm/boot/dts/aspeed-bmc-ibm-rainier-p1.dts
++++ b/arch/arm/boot/dts/aspeed-bmc-ibm-rainier-p1.dts
+@@ -39,6 +39,32 @@ eeprom@52 {
+ 		compatible = "atmel,24c64";
+ 		reg = <0x52>;
+ 	};
++
++	pca9551@60 {
++		compatible = "nxp,pca9551";
++		reg = <0x60>;
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		gpio-controller;
++		#gpio-cells = <2>;
++
++		led@0 {
++			label = "cablecard0-cxp-top";
++			reg = <0>;
++			retain-state-shutdown;
++			default-state = "keep";
++			type = <PCA955X_TYPE_LED>;
++		};
++
++		led@1 {
++			label = "cablecard0-cxp-bot";
++			reg = <1>;
++			retain-state-shutdown;
++			default-state = "keep";
++			type = <PCA955X_TYPE_LED>;
++		};
++	};
+ };
+ 
+ &i2c5 {
+@@ -53,6 +79,58 @@ eeprom@51 {
+ 		compatible = "atmel,24c64";
+ 		reg = <0x51>;
+ 	};
++
++	pca9551@60 {
++		compatible = "nxp,pca9551";
++		reg = <0x60>;
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		gpio-controller;
++		#gpio-cells = <2>;
++
++		led@0 {
++			label = "cablecard3-cxp-top";
++			reg = <0>;
++			retain-state-shutdown;
++			default-state = "keep";
++			type = <PCA955X_TYPE_LED>;
++		};
++
++		led@1 {
++			label = "cablecard3-cxp-bot";
++			reg = <1>;
++			retain-state-shutdown;
++			default-state = "keep";
++			type = <PCA955X_TYPE_LED>;
++		};
++	};
++
++	pca9551@61 {
++		compatible = "nxp,pca9551";
++		reg = <0x61>;
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		gpio-controller;
++		#gpio-cells = <2>;
++
++		led@0 {
++			label = "cablecard4-cxp-top";
++			reg = <0>;
++			retain-state-shutdown;
++			default-state = "keep";
++			type = <PCA955X_TYPE_LED>;
++		};
++
++		led@1 {
++			label = "cablecard4-cxp-bot";
++			reg = <1>;
++			retain-state-shutdown;
++			default-state = "keep";
++			type = <PCA955X_TYPE_LED>;
++		};
++	};
+ };
+ 
+ &i2c6 {
+@@ -91,4 +169,30 @@ eeprom@51 {
+ 		compatible = "atmel,24c64";
+ 		reg = <0x51>;
+ 	};
++
++	pca9551@60 {
++		compatible = "nxp,pca9551";
++		reg = <0x60>;
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		gpio-controller;
++		#gpio-cells = <2>;
++
++		led@0 {
++			label = "cablecard10-cxp-top";
++			reg = <0>;
++			retain-state-shutdown;
++			default-state = "keep";
++			type = <PCA955X_TYPE_LED>;
++		};
++
++		led@1 {
++			label = "cablecard10-cxp-bot";
++			reg = <1>;
++			retain-state-shutdown;
++			default-state = "keep";
++			type = <PCA955X_TYPE_LED>;
++		};
++	};
+ };
+diff --git a/arch/arm/boot/dts/aspeed-bmc-ibm-rainier.dts b/arch/arm/boot/dts/aspeed-bmc-ibm-rainier.dts
+index 13981415b607..9fc1970aad5b 100644
+--- a/arch/arm/boot/dts/aspeed-bmc-ibm-rainier.dts
++++ b/arch/arm/boot/dts/aspeed-bmc-ibm-rainier.dts
+@@ -998,32 +998,6 @@ tmp275@4a {
+ 		reg = <0x4a>;
+ 	};
+ 
+-	pca9551@60 {
+-		compatible = "nxp,pca9551";
+-		reg = <0x60>;
+-		#address-cells = <1>;
+-		#size-cells = <0>;
+-
+-		gpio-controller;
+-		#gpio-cells = <2>;
+-
+-		led@0 {
+-			label = "cablecard0-cxp-top";
+-			reg = <0>;
+-			retain-state-shutdown;
+-			default-state = "keep";
+-			type = <PCA955X_TYPE_LED>;
+-		};
+-
+-		led@1 {
+-			label = "cablecard0-cxp-bot";
+-			reg = <1>;
+-			retain-state-shutdown;
+-			default-state = "keep";
+-			type = <PCA955X_TYPE_LED>;
+-		};
+-	};
+-
+ 	pca9546@70 {
+ 		compatible = "nxp,pca9546";
+ 		reg = <0x70>;
+@@ -1041,6 +1015,32 @@ eeprom@50 {
+ 				compatible = "atmel,24c64";
+ 				reg = <0x50>;
+ 			};
++
++			pca9551@60 {
++				compatible = "nxp,pca9551";
++				reg = <0x60>;
++				#address-cells = <1>;
++				#size-cells = <0>;
++
++				gpio-controller;
++				#gpio-cells = <2>;
++
++				led@0 {
++					label = "cablecard0-cxp-top";
++					reg = <0>;
++					retain-state-shutdown;
++					default-state = "keep";
++					type = <PCA955X_TYPE_LED>;
++				};
++
++				led@1 {
++					label = "cablecard0-cxp-bot";
++					reg = <1>;
++					retain-state-shutdown;
++					default-state = "keep";
++					type = <PCA955X_TYPE_LED>;
++				};
++			};
+ 		};
+ 
+ 		i2c4mux0chn1: i2c@1 {
+@@ -1080,58 +1080,6 @@ tmp275@49 {
+ 		reg = <0x49>;
+ 	};
+ 
+-	pca9551@60 {
+-		compatible = "nxp,pca9551";
+-		reg = <0x60>;
+-		#address-cells = <1>;
+-		#size-cells = <0>;
+-
+-		gpio-controller;
+-		#gpio-cells = <2>;
+-
+-		led@0 {
+-			label = "cablecard3-cxp-top";
+-			reg = <0>;
+-			retain-state-shutdown;
+-			default-state = "keep";
+-			type = <PCA955X_TYPE_LED>;
+-		};
+-
+-		led@1 {
+-			label = "cablecard3-cxp-bot";
+-			reg = <1>;
+-			retain-state-shutdown;
+-			default-state = "keep";
+-			type = <PCA955X_TYPE_LED>;
+-		};
+-	};
+-
+-	pca9551@61 {
+-		compatible = "nxp,pca9551";
+-		reg = <0x61>;
+-		#address-cells = <1>;
+-		#size-cells = <0>;
+-
+-		gpio-controller;
+-		#gpio-cells = <2>;
+-
+-		led@0 {
+-			label = "cablecard4-cxp-top";
+-			reg = <0>;
+-			retain-state-shutdown;
+-			default-state = "keep";
+-			type = <PCA955X_TYPE_LED>;
+-		};
+-
+-		led@1 {
+-			label = "cablecard4-cxp-bot";
+-			reg = <1>;
+-			retain-state-shutdown;
+-			default-state = "keep";
+-			type = <PCA955X_TYPE_LED>;
+-		};
+-	};
+-
+ 	pca9546@70 {
+ 		compatible = "nxp,pca9546";
+ 		reg = <0x70>;
+@@ -1149,6 +1097,32 @@ eeprom@50 {
+ 				compatible = "atmel,24c64";
+ 				reg = <0x50>;
+ 			};
++
++			pca9551@60 {
++				compatible = "nxp,pca9551";
++				reg = <0x60>;
++				#address-cells = <1>;
++				#size-cells = <0>;
++
++				gpio-controller;
++				#gpio-cells = <2>;
++
++				led@0 {
++					label = "cablecard3-cxp-top";
++					reg = <0>;
++					retain-state-shutdown;
++					default-state = "keep";
++					type = <PCA955X_TYPE_LED>;
++				};
++
++				led@1 {
++					label = "cablecard3-cxp-bot";
++					reg = <1>;
++					retain-state-shutdown;
++					default-state = "keep";
++					type = <PCA955X_TYPE_LED>;
++				};
++			};
+ 		};
+ 
+ 		i2c5mux0chn1: i2c@1 {
+@@ -1160,6 +1134,32 @@ eeprom@51 {
+ 				compatible = "atmel,24c64";
+ 				reg = <0x51>;
+ 			};
++
++			pca9551@61 {
++				compatible = "nxp,pca9551";
++				reg = <0x61>;
++				#address-cells = <1>;
++				#size-cells = <0>;
++
++				gpio-controller;
++				#gpio-cells = <2>;
++
++				led@0 {
++					label = "cablecard4-cxp-top";
++					reg = <0>;
++					retain-state-shutdown;
++					default-state = "keep";
++					type = <PCA955X_TYPE_LED>;
++				};
++
++				led@1 {
++					label = "cablecard4-cxp-bot";
++					reg = <1>;
++					retain-state-shutdown;
++					default-state = "keep";
++					type = <PCA955X_TYPE_LED>;
++				};
++			};
+ 		};
+ 	};
+ };
+@@ -2054,32 +2054,6 @@ tmp275@49 {
+ 		reg = <0x49>;
+ 	};
+ 
+-	pca9551@60 {
+-		compatible = "nxp,pca9551";
+-		reg = <0x60>;
+-		#address-cells = <1>;
+-		#size-cells = <0>;
+-
+-		gpio-controller;
+-		#gpio-cells = <2>;
+-
+-		led@0 {
+-			label = "cablecard10-cxp-top";
+-			reg = <0>;
+-			retain-state-shutdown;
+-			default-state = "keep";
+-			type = <PCA955X_TYPE_LED>;
+-		};
+-
+-		led@1 {
+-			label = "cablecard10-cxp-bot";
+-			reg = <1>;
+-			retain-state-shutdown;
+-			default-state = "keep";
+-			type = <PCA955X_TYPE_LED>;
+-		};
+-	};
+-
+ 	pca9546@70 {
+ 		compatible = "nxp,pca9546";
+ 		reg = <0x70>;
+@@ -2097,6 +2071,32 @@ eeprom@50 {
+ 				compatible = "atmel,24c64";
+ 				reg = <0x50>;
+ 			};
++
++			pca9551@60 {
++				compatible = "nxp,pca9551";
++				reg = <0x60>;
++				#address-cells = <1>;
++				#size-cells = <0>;
++
++				gpio-controller;
++				#gpio-cells = <2>;
++
++				led@0 {
++					label = "cablecard10-cxp-top";
++					reg = <0>;
++					retain-state-shutdown;
++					default-state = "keep";
++					type = <PCA955X_TYPE_LED>;
++				};
++
++				led@1 {
++					label = "cablecard10-cxp-bot";
++					reg = <1>;
++					retain-state-shutdown;
++					default-state = "keep";
++					type = <PCA955X_TYPE_LED>;
++				};
++			};
+ 		};
+ 
+ 		i2c11mux0chn1: i2c@1 {
+-- 
+2.25.1
+

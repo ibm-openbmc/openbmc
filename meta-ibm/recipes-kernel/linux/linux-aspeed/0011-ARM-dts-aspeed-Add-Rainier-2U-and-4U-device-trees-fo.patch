@@ -1,7 +1,7 @@
-From 0dd1122d02e6f789414dc78e0fc3257a2af806d1 Mon Sep 17 00:00:00 2001
+From 7c02b4a83c3b8aae7b75029715a0507712deabda Mon Sep 17 00:00:00 2001
 From: Eddie James <eajames@linux.ibm.com>
 Date: Fri, 30 Apr 2021 15:15:20 -0500
-Subject: [PATCH 11/15] ARM: dts: aspeed: Add Rainier 2U and 4U device trees
+Subject: [PATCH 11/22] ARM: dts: aspeed: Add Rainier 2U and 4U device trees
  for pass 1 hardware
 
 The original BMC card must be supported in the device tree, so add
@@ -18,11 +18,11 @@ Signed-off-by: Joel Stanley <joel@jms.id.au>
  create mode 100644 arch/arm/boot/dts/aspeed-bmc-ibm-rainier-p1.dts
 
 diff --git a/arch/arm/boot/dts/Makefile b/arch/arm/boot/dts/Makefile
-index dc225e354791..c18c88a13a1a 100644
+index 3d2fbff3a249..427e871fb27f 100644
 --- a/arch/arm/boot/dts/Makefile
 +++ b/arch/arm/boot/dts/Makefile
-@@ -1479,8 +1479,10 @@ dtb-$(CONFIG_ARCH_ASPEED) += \
- 	aspeed-bmc-facebook-yosemitev2.dtb \
+@@ -1481,8 +1481,10 @@ dtb-$(CONFIG_ARCH_ASPEED) += \
+ 	aspeed-bmc-ibm-bonnell.dtb \
  	aspeed-bmc-ibm-everest.dtb \
  	aspeed-bmc-ibm-rainier.dtb \
 +	aspeed-bmc-ibm-rainier-p1.dtb \
