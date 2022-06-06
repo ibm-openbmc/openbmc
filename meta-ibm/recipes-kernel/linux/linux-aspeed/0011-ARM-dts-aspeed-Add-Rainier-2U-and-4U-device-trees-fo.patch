@@ -1,0 +1,237 @@
+From 0dd1122d02e6f789414dc78e0fc3257a2af806d1 Mon Sep 17 00:00:00 2001
+From: Eddie James <eajames@linux.ibm.com>
+Date: Fri, 30 Apr 2021 15:15:20 -0500
+Subject: [PATCH 11/15] ARM: dts: aspeed: Add Rainier 2U and 4U device trees
+ for pass 1 hardware
+
+The original BMC card must be supported in the device tree, so add
+new pass 1 device trees for the two relevant Rainier systems.
+
+Signed-off-by: Eddie James <eajames@linux.ibm.com>
+Signed-off-by: Joel Stanley <joel@jms.id.au>
+---
+ arch/arm/boot/dts/Makefile                    |  2 +
+ .../boot/dts/aspeed-bmc-ibm-rainier-4u-p1.dts | 94 +++++++++++++++++++
+ .../boot/dts/aspeed-bmc-ibm-rainier-p1.dts    | 94 +++++++++++++++++++
+ 3 files changed, 190 insertions(+)
+ create mode 100644 arch/arm/boot/dts/aspeed-bmc-ibm-rainier-4u-p1.dts
+ create mode 100644 arch/arm/boot/dts/aspeed-bmc-ibm-rainier-p1.dts
+
+diff --git a/arch/arm/boot/dts/Makefile b/arch/arm/boot/dts/Makefile
+index dc225e354791..c18c88a13a1a 100644
+--- a/arch/arm/boot/dts/Makefile
++++ b/arch/arm/boot/dts/Makefile
+@@ -1479,8 +1479,10 @@ dtb-$(CONFIG_ARCH_ASPEED) += \
+ 	aspeed-bmc-facebook-yosemitev2.dtb \
+ 	aspeed-bmc-ibm-everest.dtb \
+ 	aspeed-bmc-ibm-rainier.dtb \
++	aspeed-bmc-ibm-rainier-p1.dtb \
+ 	aspeed-bmc-ibm-rainier-1s4u.dtb \
+ 	aspeed-bmc-ibm-rainier-4u.dtb \
++	aspeed-bmc-ibm-rainier-4u-p1.dtb \
+ 	aspeed-bmc-intel-s2600wf.dtb \
+ 	aspeed-bmc-inspur-fp5280g2.dtb \
+ 	aspeed-bmc-inspur-nf5280m6.dtb \
+diff --git a/arch/arm/boot/dts/aspeed-bmc-ibm-rainier-4u-p1.dts b/arch/arm/boot/dts/aspeed-bmc-ibm-rainier-4u-p1.dts
+new file mode 100644
+index 000000000000..e35a3efd9d22
+--- /dev/null
++++ b/arch/arm/boot/dts/aspeed-bmc-ibm-rainier-4u-p1.dts
+@@ -0,0 +1,94 @@
++// SPDX-License-Identifier: GPL-2.0-or-later
++// Copyright 2021 IBM Corp.
++/dts-v1/;
++
++#include "aspeed-bmc-ibm-rainier-4u.dts"
++
++/ {
++	model = "Rainier 4U Pass 1";
++
++	aliases {
++		/delete-property/ i2c20;
++		/delete-property/ i2c21;
++		/delete-property/ i2c22;
++		/delete-property/ i2c23;
++		/delete-property/ i2c24;
++		/delete-property/ i2c25;
++		/delete-property/ i2c26;
++		/delete-property/ i2c27;
++		/delete-property/ i2c28;
++		/delete-property/ i2c29;
++		/delete-property/ i2c30;
++	};
++};
++
++&i2c4 {
++	/delete-node/ pca9546@70;
++
++	eeprom@50 {
++		compatible = "atmel,24c64";
++		reg = <0x50>;
++	};
++
++	eeprom@51 {
++		compatible = "atmel,24c64";
++		reg = <0x51>;
++	};
++
++	eeprom@52 {
++		compatible = "atmel,24c64";
++		reg = <0x52>;
++	};
++};
++
++&i2c5 {
++	/delete-node/ pca9546@70;
++
++	eeprom@50 {
++		compatible = "atmel,24c64";
++		reg = <0x50>;
++	};
++
++	eeprom@51 {
++		compatible = "atmel,24c64";
++		reg = <0x51>;
++	};
++};
++
++&i2c6 {
++	/delete-node/ pca9546@70;
++
++	eeprom@50 {
++		compatible = "atmel,24c64";
++		reg = <0x50>;
++	};
++
++	eeprom@51 {
++		compatible = "atmel,24c64";
++		reg = <0x51>;
++	};
++
++	eeprom@52 {
++		compatible = "atmel,24c64";
++		reg = <0x52>;
++	};
++
++	eeprom@53 {
++		compatible = "atmel,24c64";
++		reg = <0x53>;
++	};
++};
++
++&i2c11 {
++	/delete-node/ pca9546@70;
++
++	eeprom@50 {
++		compatible = "atmel,24c64";
++		reg = <0x50>;
++	};
++
++	eeprom@51 {
++		compatible = "atmel,24c64";
++		reg = <0x51>;
++	};
++};
+diff --git a/arch/arm/boot/dts/aspeed-bmc-ibm-rainier-p1.dts b/arch/arm/boot/dts/aspeed-bmc-ibm-rainier-p1.dts
+new file mode 100644
+index 000000000000..b3c923f1838b
+--- /dev/null
++++ b/arch/arm/boot/dts/aspeed-bmc-ibm-rainier-p1.dts
+@@ -0,0 +1,94 @@
++// SPDX-License-Identifier: GPL-2.0-or-later
++// Copyright 2021 IBM Corp.
++/dts-v1/;
++
++#include "aspeed-bmc-ibm-rainier.dts"
++
++/ {
++	model = "Rainier 2U Pass 1";
++
++	aliases {
++		/delete-property/ i2c20;
++		/delete-property/ i2c21;
++		/delete-property/ i2c22;
++		/delete-property/ i2c23;
++		/delete-property/ i2c24;
++		/delete-property/ i2c25;
++		/delete-property/ i2c26;
++		/delete-property/ i2c27;
++		/delete-property/ i2c28;
++		/delete-property/ i2c29;
++		/delete-property/ i2c30;
++	};
++};
++
++&i2c4 {
++	/delete-node/ pca9546@70;
++
++	eeprom@50 {
++		compatible = "atmel,24c64";
++		reg = <0x50>;
++	};
++
++	eeprom@51 {
++		compatible = "atmel,24c64";
++		reg = <0x51>;
++	};
++
++	eeprom@52 {
++		compatible = "atmel,24c64";
++		reg = <0x52>;
++	};
++};
++
++&i2c5 {
++	/delete-node/ pca9546@70;
++
++	eeprom@50 {
++		compatible = "atmel,24c64";
++		reg = <0x50>;
++	};
++
++	eeprom@51 {
++		compatible = "atmel,24c64";
++		reg = <0x51>;
++	};
++};
++
++&i2c6 {
++	/delete-node/ pca9546@70;
++
++	eeprom@50 {
++		compatible = "atmel,24c64";
++		reg = <0x50>;
++	};
++
++	eeprom@51 {
++		compatible = "atmel,24c64";
++		reg = <0x51>;
++	};
++
++	eeprom@52 {
++		compatible = "atmel,24c64";
++		reg = <0x52>;
++	};
++
++	eeprom@53 {
++		compatible = "atmel,24c64";
++		reg = <0x53>;
++	};
++};
++
++&i2c11 {
++	/delete-node/ pca9546@70;
++
++	eeprom@50 {
++		compatible = "atmel,24c64";
++		reg = <0x50>;
++	};
++
++	eeprom@51 {
++		compatible = "atmel,24c64";
++		reg = <0x51>;
++	};
++};
+-- 
+2.25.1
+
