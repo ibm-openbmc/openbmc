@@ -1,0 +1,44 @@
+From 9b169b70db290cae2f8ace86005cea76edf5c43d Mon Sep 17 00:00:00 2001
+From: Andrew Jeffery <andrew@aj.id.au>
+Date: Tue, 1 Sep 2020 21:05:45 +0930
+Subject: [PATCH 02/15] pmbus: (ucd9000) Throttle SMBus transfers to avoid poor
+ behaviour
+
+Short turn-around times between transfers to UCD9000 devices can lead to
+problematic behaviour, including unnecessary clock stretching, bus
+lockups and potential corruption of the device's volatile state.
+
+Introduce transfer throttling for the device with a minimum access
+delay of 1ms.
+
+Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
+Signed-off-by: Joel Stanley <joel@jms.id.au>
+---
+ drivers/hwmon/pmbus/ucd9000.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/drivers/hwmon/pmbus/ucd9000.c b/drivers/hwmon/pmbus/ucd9000.c
+index 75fc770c9e40..699942e20dbb 100644
+--- a/drivers/hwmon/pmbus/ucd9000.c
++++ b/drivers/hwmon/pmbus/ucd9000.c
+@@ -487,6 +487,8 @@ static int ucd9000_init_debugfs(struct i2c_client *client,
+ }
+ #endif /* CONFIG_DEBUG_FS */
+ 
++#define UCD9000_SMBUS_THROTTLE_US	1000
++
+ static int ucd9000_probe(struct i2c_client *client)
+ {
+ 	u8 block_buffer[I2C_SMBUS_BLOCK_MAX + 1];
+@@ -501,6 +503,8 @@ static int ucd9000_probe(struct i2c_client *client)
+ 				     I2C_FUNC_SMBUS_BLOCK_DATA))
+ 		return -ENODEV;
+ 
++	i2c_smbus_throttle_client(client, UCD9000_SMBUS_THROTTLE_US);
++
+ 	ret = i2c_smbus_read_block_data(client, UCD9000_DEVICE_ID,
+ 					block_buffer);
+ 	if (ret < 0) {
+-- 
+2.25.1
+

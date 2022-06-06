@@ -1,0 +1,34 @@
+From 8058172a280e9a6fefd7793c0a7e4a28ff7d403d Mon Sep 17 00:00:00 2001
+From: Andrew Geissler <geisonator@yahoo.com>
+Date: Mon, 27 Jul 2020 10:33:46 -0500
+Subject: [PATCH 04/15] fsi: run clock at 100MHz
+
+This is a workaround requested by bringup team to see if some of the
+instabilities being seen in the lab clear up.
+
+This should not be upstreamed until the hardware team gets some more
+data on the issue.
+
+Signed-off-by: Andrew Geissler <geisonator@yahoo.com>
+Signed-off-by: Joel Stanley <joel@jms.id.au>
+---
+ drivers/fsi/fsi-master-aspeed.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/fsi/fsi-master-aspeed.c b/drivers/fsi/fsi-master-aspeed.c
+index 7cec1772820d..c5effca260f8 100644
+--- a/drivers/fsi/fsi-master-aspeed.c
++++ b/drivers/fsi/fsi-master-aspeed.c
+@@ -87,7 +87,8 @@ static const u32 fsi_base = 0xa0000000;
+ #define FSI_LINK_ENABLE_SETUP_TIME	10	/* in mS */
+ 
+ /* Run the bus at maximum speed by default */
+-#define FSI_DIVISOR_DEFAULT            1
++/* TODO - Run at 100MHz for now to help hw bringup debug */
++#define FSI_DIVISOR_DEFAULT            2
+ #define FSI_DIVISOR_CABLED             2
+ static u16 aspeed_fsi_divisor = FSI_DIVISOR_DEFAULT;
+ module_param_named(bus_div,aspeed_fsi_divisor, ushort, 0);
+-- 
+2.25.1
+
