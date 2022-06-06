@@ -1,0 +1,75 @@
+From 430639a2df91bdb8ced913996b9659e80f4a64ba Mon Sep 17 00:00:00 2001
+From: Andrew Jeffery <andrew@aj.id.au>
+Date: Thu, 27 Aug 2020 23:00:00 +0930
+Subject: [PATCH 07/22] pmbus: (max31785) Retry enabling fans after writing
+ MFR_FAN_CONFIG
+
+It has been observed across large fleets of systems that a small subset
+of those systems occasionally loose control of some number of fans
+across a BMC reboot (their hwmon fan attributes are missing from sysfs).
+
+>From extensive testing and tracing it was discovered that writes
+enabling a fan in FAN_CONFIG_1_2 failed to stick on the system under
+test with a frequency of about 1 in 1000 re-binds of the driver.
+
+The MAX31785 datasheet recommends in the documentation for
+MFR_FAN_CONFIG that the asssociated fan(s) be disabled before updating
+the register. The sequence in question implements this suggestion, and
+the observed loss-of-fans symptom occurs when the write to re-enable the
+fan in FAN_CONFIG_1_2 fails to stick.
+
+The trace data suggests a one-shot retry is enough to successfully
+update FAN_CONFIG_1_2. With the workaround, no loss of fans was observed
+in over 20,000 consecutive rebinds of the driver.
+
+OpenBMC-Staging-Count: 1
+Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
+Signed-off-by: Joel Stanley <joel@jms.id.au>
+---
+ drivers/hwmon/pmbus/max31785.c | 23 +++++++++++++++++++----
+ 1 file changed, 19 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/hwmon/pmbus/max31785.c b/drivers/hwmon/pmbus/max31785.c
+index 6eec62fe8c0e..a68e52841e15 100644
+--- a/drivers/hwmon/pmbus/max31785.c
++++ b/drivers/hwmon/pmbus/max31785.c
+@@ -398,6 +398,7 @@ static int max31785_of_fan_config(struct i2c_client *client,
+ 	u32 page;
+ 	u32 uval;
+ 	int ret;
++	int i;
+ 
+ 	if (!of_device_is_compatible(child, "pmbus-fan"))
+ 		return 0;
+@@ -574,10 +575,24 @@ static int max31785_of_fan_config(struct i2c_client *client,
+ 	if (ret < 0)
+ 		return ret;
+ 
+-	ret = max31785_i2c_smbus_write_byte_data(client, PMBUS_FAN_CONFIG_12,
+-						 pb_cfg);
+-	if (ret < 0)
+-		return ret;
++	for (i = 0; i < 2; i++) {
++		ret = max31785_i2c_smbus_write_byte_data(client,
++							 PMBUS_FAN_CONFIG_12,
++							 pb_cfg);
++		if (ret < 0)
++			continue;
++
++		ret = max31785_i2c_smbus_read_byte_data(client,
++							PMBUS_FAN_CONFIG_12);
++		if (ret < 0)
++			continue;
++
++		if (ret == pb_cfg)
++			break;
++	}
++
++	if (i == 2)
++		return -EIO;
+ 
+ 	/*
+ 	 * Fans are on pages 0 - 5. If the page property of a fan node is
+-- 
+2.25.1
+

@@ -1,0 +1,43 @@
+From a3403f2abe4c8f40abd60054d216eaa8d3bfed0d Mon Sep 17 00:00:00 2001
+From: Eddie James <eajames@us.ibm.com>
+Date: Wed, 8 Jun 2022 09:20:41 -0500
+Subject: [PATCH 16/22] hwmon: (occ) Lock mutex in shutdown to prevent race
+ with occ_active (#177)
+
+Unbinding the driver or removing the parent device at the same time
+as using the OCC active sysfs file can cause the driver to unregister
+the hwmon device twice. Prevent this by locking the occ mutex in the
+shutdown function.
+
+Signed-off-by: Eddie James <eajames@linux.ibm.com>
+Link: https://lore.kernel.org/r/20220606185455.21126-1-eajames@linux.ibm.com
+Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+
+Co-authored-by: Eddie James <eajames@linux.ibm.com>
+---
+ drivers/hwmon/occ/common.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/drivers/hwmon/occ/common.c b/drivers/hwmon/occ/common.c
+index 351bd2b47c88..157b73a3da29 100644
+--- a/drivers/hwmon/occ/common.c
++++ b/drivers/hwmon/occ/common.c
+@@ -1229,10 +1229,15 @@ EXPORT_SYMBOL_GPL(occ_setup);
+ 
+ void occ_shutdown(struct occ *occ)
+ {
++	mutex_lock(&occ->lock);
++
+ 	occ_shutdown_sysfs(occ);
+ 
+ 	if (occ->hwmon)
+ 		hwmon_device_unregister(occ->hwmon);
++	occ->hwmon = NULL;
++
++	mutex_unlock(&occ->lock);
+ }
+ EXPORT_SYMBOL_GPL(occ_shutdown);
+ 
+-- 
+2.25.1
+

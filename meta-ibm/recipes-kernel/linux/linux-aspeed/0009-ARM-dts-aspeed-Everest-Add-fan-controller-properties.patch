@@ -1,0 +1,74 @@
+From 0d8129df74ec740aefd9d1f61cd9598e12056bd0 Mon Sep 17 00:00:00 2001
+From: Eddie James <eajames@linux.ibm.com>
+Date: Fri, 30 Apr 2021 10:39:11 -0500
+Subject: [PATCH 09/22] ARM: dts: aspeed: Everest: Add fan controller
+ properties
+
+Add the necessary Max chip specific fan properties.
+
+Signed-off-by: Eddie James <eajames@linux.ibm.com>
+Signed-off-by: Joel Stanley <joel@jms.id.au>
+---
+ arch/arm/boot/dts/aspeed-bmc-ibm-everest.dts | 28 ++++++++++++++++++++
+ 1 file changed, 28 insertions(+)
+
+diff --git a/arch/arm/boot/dts/aspeed-bmc-ibm-everest.dts b/arch/arm/boot/dts/aspeed-bmc-ibm-everest.dts
+index 3bdd79506704..11ae6150946f 100644
+--- a/arch/arm/boot/dts/aspeed-bmc-ibm-everest.dts
++++ b/arch/arm/boot/dts/aspeed-bmc-ibm-everest.dts
+@@ -2026,24 +2026,52 @@ fan@0 {
+ 					compatible = "pmbus-fan";
+ 					reg = <0>;
+ 					tach-pulses = <2>;
++					maxim,fan-rotor-input = "tach";
++					maxim,fan-pwm-freq = <25000>;
++					maxim,fan-dual-tach;
++					maxim,fan-no-watchdog;
++					maxim,fan-no-fault-ramp;
++					maxim,fan-ramp = <2>;
++					maxim,fan-fault-pin-mon;
+ 				};
+ 
+ 				fan@1 {
+ 					compatible = "pmbus-fan";
+ 					reg = <1>;
+ 					tach-pulses = <2>;
++					maxim,fan-rotor-input = "tach";
++					maxim,fan-pwm-freq = <25000>;
++					maxim,fan-dual-tach;
++					maxim,fan-no-watchdog;
++					maxim,fan-no-fault-ramp;
++					maxim,fan-ramp = <2>;
++					maxim,fan-fault-pin-mon;
+ 				};
+ 
+ 				fan@2 {
+ 					compatible = "pmbus-fan";
+ 					reg = <2>;
+ 					tach-pulses = <2>;
++					maxim,fan-rotor-input = "tach";
++					maxim,fan-pwm-freq = <25000>;
++					maxim,fan-dual-tach;
++					maxim,fan-no-watchdog;
++					maxim,fan-no-fault-ramp;
++					maxim,fan-ramp = <2>;
++					maxim,fan-fault-pin-mon;
+ 				};
+ 
+ 				fan@3 {
+ 					compatible = "pmbus-fan";
+ 					reg = <3>;
+ 					tach-pulses = <2>;
++					maxim,fan-rotor-input = "tach";
++					maxim,fan-pwm-freq = <25000>;
++					maxim,fan-dual-tach;
++					maxim,fan-no-watchdog;
++					maxim,fan-no-fault-ramp;
++					maxim,fan-ramp = <2>;
++					maxim,fan-fault-pin-mon;
+ 				};
+ 			};
+ 
+-- 
+2.25.1
+

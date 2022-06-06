@@ -1,0 +1,46 @@
+From 084be863e29fb985d180ac399850c18dbcd944e9 Mon Sep 17 00:00:00 2001
+From: Eddie James <eajames@us.ibm.com>
+Date: Wed, 9 Feb 2022 13:40:56 -0600
+Subject: [PATCH 12/22] ARM: dts: aspeed: Everest and Rainier: Add
+ bmc-management-ready GPIO
+
+Set the bmc-management-ready GPIO line name defined by [1].
+
+[1] https://gerrit.openbmc-project.xyz/c/openbmc/docs/+/44838
+
+Signed-off-by: Eddie James <eajames@linux.ibm.com>
+Signed-off-by: Joel Stanley <joel@jms.id.au>
+---
+ arch/arm/boot/dts/aspeed-bmc-ibm-everest.dts | 2 +-
+ arch/arm/boot/dts/aspeed-bmc-ibm-rainier.dts | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/arch/arm/boot/dts/aspeed-bmc-ibm-everest.dts b/arch/arm/boot/dts/aspeed-bmc-ibm-everest.dts
+index 11ae6150946f..e05262399ff4 100644
+--- a/arch/arm/boot/dts/aspeed-bmc-ibm-everest.dts
++++ b/arch/arm/boot/dts/aspeed-bmc-ibm-everest.dts
+@@ -265,7 +265,7 @@ &pinctrl_adc12_default &pinctrl_adc13_default
+ &gpio0 {
+ 	gpio-line-names =
+ 	/*A0-A7*/	"","","","","","","","",
+-	/*B0-B7*/	"USERSPACE_RSTIND_BUFF","","","","","","checkstop","",
++	/*B0-B7*/	"bmc-management-ready","","","","","","checkstop","",
+ 	/*C0-C7*/	"","","","","","","","",
+ 	/*D0-D7*/	"","","","","","","","",
+ 	/*E0-E7*/	"","","","","","","","",
+diff --git a/arch/arm/boot/dts/aspeed-bmc-ibm-rainier.dts b/arch/arm/boot/dts/aspeed-bmc-ibm-rainier.dts
+index e5ca6d46950f..13981415b607 100644
+--- a/arch/arm/boot/dts/aspeed-bmc-ibm-rainier.dts
++++ b/arch/arm/boot/dts/aspeed-bmc-ibm-rainier.dts
+@@ -249,7 +249,7 @@ &uhci {
+ &gpio0 {
+ 	gpio-line-names =
+ 	/*A0-A7*/	"","","","","","","","",
+-	/*B0-B7*/	"","","","","","","checkstop","",
++	/*B0-B7*/	"bmc-management-ready","","","","","","checkstop","",
+ 	/*C0-C7*/	"","","","","","","","",
+ 	/*D0-D7*/	"","","","","","","","",
+ 	/*E0-E7*/	"","","","","","","","",
+-- 
+2.25.1
+

@@ -1,0 +1,33 @@
+From 2f2b1bedcbe7ae644094bf617b94b93fc83d9173 Mon Sep 17 00:00:00 2001
+From: Eddie James <eajames@linux.ibm.com>
+Date: Mon, 4 Apr 2022 13:05:01 -0500
+Subject: [PATCH 13/22] ARM: dts: aspeed: everest: Specify I2C8 mux reset gpio
+
+The PCA9546 on some Everest systems requires resetting before
+it will operate properly, so specify the pin on the BMC that will
+reset the mux before probing.
+
+The mux reset is only necessary for non-GA level Tola (Everest system)
+cards, so it is held in GHE instead of upstreaming.
+
+Signed-off-by: Eddie James <eajames@linux.ibm.com>
+Signed-off-by: Joel Stanley <joel@jms.id.au>
+---
+ arch/arm/boot/dts/aspeed-bmc-ibm-everest.dts | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/arch/arm/boot/dts/aspeed-bmc-ibm-everest.dts b/arch/arm/boot/dts/aspeed-bmc-ibm-everest.dts
+index e05262399ff4..1f0823236513 100644
+--- a/arch/arm/boot/dts/aspeed-bmc-ibm-everest.dts
++++ b/arch/arm/boot/dts/aspeed-bmc-ibm-everest.dts
+@@ -1796,6 +1796,7 @@ i2c-switch@70 {
+ 		#size-cells = <0>;
+ 		status = "okay";
+ 		i2c-mux-idle-disconnect;
++		reset-gpio = <&gpio0 ASPEED_GPIO(S, 5) GPIO_ACTIVE_LOW>;
+ 
+ 		i2c8mux0chn0: i2c@0 {
+ 			#address-cells = <1>;
+-- 
+2.25.1
+

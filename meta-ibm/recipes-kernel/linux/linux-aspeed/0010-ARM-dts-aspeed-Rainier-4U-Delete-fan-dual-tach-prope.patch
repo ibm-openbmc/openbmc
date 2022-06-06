@@ -1,0 +1,50 @@
+From 79abd194848c45057c1b3b5acebbed12b21fbf91 Mon Sep 17 00:00:00 2001
+From: Eddie James <eajames@linux.ibm.com>
+Date: Fri, 30 Apr 2021 14:05:32 -0500
+Subject: [PATCH 10/22] ARM: dts: aspeed: Rainier 4U: Delete fan dual-tach
+ properties
+
+The fans in the 4U chassis do not have dual tachometers, so remove those
+properties in the device tree.
+
+Signed-off-by: Eddie James <eajames@linux.ibm.com>
+Signed-off-by: Joel Stanley <joel@jms.id.au>
+---
+ .../boot/dts/aspeed-bmc-ibm-rainier-4u.dts    | 24 +++++++++++++++++++
+ 1 file changed, 24 insertions(+)
+
+diff --git a/arch/arm/boot/dts/aspeed-bmc-ibm-rainier-4u.dts b/arch/arm/boot/dts/aspeed-bmc-ibm-rainier-4u.dts
+index 342546a3c0f5..24283cc3d486 100644
+--- a/arch/arm/boot/dts/aspeed-bmc-ibm-rainier-4u.dts
++++ b/arch/arm/boot/dts/aspeed-bmc-ibm-rainier-4u.dts
+@@ -19,3 +19,27 @@ power-supply@6b {
+ 		reg = <0x6b>;
+ 	};
+ };
++
++&fan0 {
++	/delete-property/ maxim,fan-dual-tach;
++};
++
++&fan1 {
++	/delete-property/ maxim,fan-dual-tach;
++};
++
++&fan2 {
++	/delete-property/ maxim,fan-dual-tach;
++};
++
++&fan3 {
++	/delete-property/ maxim,fan-dual-tach;
++};
++
++&fan4 {
++	/delete-property/ maxim,fan-dual-tach;
++};
++
++&fan5 {
++	/delete-property/ maxim,fan-dual-tach;
++};
+-- 
+2.25.1
+

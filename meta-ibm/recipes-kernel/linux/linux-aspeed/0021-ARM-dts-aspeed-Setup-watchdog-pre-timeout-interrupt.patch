@@ -1,0 +1,74 @@
+From cf527a38e12c015fe4329dd6ff19c7144eb666ff Mon Sep 17 00:00:00 2001
+From: Eddie James <eajames@linux.ibm.com>
+Date: Tue, 18 Oct 2022 10:46:54 -0500
+Subject: [PATCH 21/22] ARM: dts: aspeed: Setup watchdog pre-timeout interrupt
+
+Specify the interrupt lines for the base SOCs that support it.
+
+Signed-off-by: Eddie James <eajames@linux.ibm.com>
+---
+ arch/arm/boot/dts/aspeed-g5.dtsi | 3 +++
+ arch/arm/boot/dts/aspeed-g6.dtsi | 4 ++++
+ 2 files changed, 7 insertions(+)
+
+diff --git a/arch/arm/boot/dts/aspeed-g5.dtsi b/arch/arm/boot/dts/aspeed-g5.dtsi
+index 29bf017899b6..994a04487b8c 100644
+--- a/arch/arm/boot/dts/aspeed-g5.dtsi
++++ b/arch/arm/boot/dts/aspeed-g5.dtsi
+@@ -402,18 +402,21 @@ wdt1: watchdog@1e785000 {
+ 				compatible = "aspeed,ast2500-wdt";
+ 				reg = <0x1e785000 0x20>;
+ 				clocks = <&syscon ASPEED_CLK_APB>;
++				interrupts = <27>;
+ 			};
+ 
+ 			wdt2: watchdog@1e785020 {
+ 				compatible = "aspeed,ast2500-wdt";
+ 				reg = <0x1e785020 0x20>;
+ 				clocks = <&syscon ASPEED_CLK_APB>;
++				interrupts = <27>;
+ 			};
+ 
+ 			wdt3: watchdog@1e785040 {
+ 				compatible = "aspeed,ast2500-wdt";
+ 				reg = <0x1e785040 0x20>;
+ 				clocks = <&syscon ASPEED_CLK_APB>;
++				interrupts = <27>;
+ 				status = "disabled";
+ 			};
+ 
+diff --git a/arch/arm/boot/dts/aspeed-g6.dtsi b/arch/arm/boot/dts/aspeed-g6.dtsi
+index 8c0de3f27883..7365d93726fd 100644
+--- a/arch/arm/boot/dts/aspeed-g6.dtsi
++++ b/arch/arm/boot/dts/aspeed-g6.dtsi
+@@ -531,23 +531,27 @@ uart5: serial@1e784000 {
+ 
+ 			wdt1: watchdog@1e785000 {
+ 				compatible = "aspeed,ast2600-wdt";
++				interrupts = <GIC_SPI 24 IRQ_TYPE_LEVEL_HIGH>;
+ 				reg = <0x1e785000 0x40>;
+ 			};
+ 
+ 			wdt2: watchdog@1e785040 {
+ 				compatible = "aspeed,ast2600-wdt";
++				interrupts = <GIC_SPI 24 IRQ_TYPE_LEVEL_HIGH>;
+ 				reg = <0x1e785040 0x40>;
+ 				status = "disabled";
+ 			};
+ 
+ 			wdt3: watchdog@1e785080 {
+ 				compatible = "aspeed,ast2600-wdt";
++				interrupts = <GIC_SPI 24 IRQ_TYPE_LEVEL_HIGH>;
+ 				reg = <0x1e785080 0x40>;
+ 				status = "disabled";
+ 			};
+ 
+ 			wdt4: watchdog@1e7850c0 {
+ 				compatible = "aspeed,ast2600-wdt";
++				interrupts = <GIC_SPI 24 IRQ_TYPE_LEVEL_HIGH>;
+ 				reg = <0x1e7850C0 0x40>;
+ 				status = "disabled";
+ 			};
+-- 
+2.25.1
+
