@@ -23,14 +23,8 @@ do_install:append() {
             sed -i.bak "/${COMMON_AUTH_PATTERN}/i auth [success=4 default=2 ignore=ignore] pam_ibmacf.so" ${D}${sysconfdir}/pam.d/common-auth
         fi
 
-        grep -q ${COMMON_ACCOUNT_PATTERN} ${D}${sysconfdir}/pam.d/common-account || err=$?
-        if [ "$err" != "0" ]; then
-            echo "ERROR: common-account file changed, breaking to ensure pam config is intended..."
-            echo "exit $err"
-            exit $err
-        else
-            sed -i.bak "/pam_unix.*/i account [success=3 default=ignore] pam_ibmacf.so" ${D}${sysconfdir}/pam.d/common-account
-        fi
+        # The service account "account" checks (expired account, etc.) are
+        # performed by pam_unix, so no changes are needed to common-account.
 
         grep -q ${COMMON_SESSION_PATTERN} ${D}${sysconfdir}/pam.d/common-session || err=$?
         if [ "$err" != "0" ]; then
