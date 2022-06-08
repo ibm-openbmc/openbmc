@@ -2202,3 +2202,68 @@
   sensorReadingType: 0x6F
   sensorType: 0xC3
   serviceInterface: org.freedesktop.DBus.Properties
+0x4D: &FAN_RPM_DEFAULTS
+  bExp: 0x00
+  entityID: 0x27
+  entityInstance: 0x01
+  interfaces:
+    xyz.openbmc_project.Sensor.Value:
+      Value:
+        Offsets:
+          0xFF:
+            type: double
+  multiplierM: 0x64
+  offsetB: 0x00
+  path: /xyz/openbmc_project/sensors/fan_tach/fan0_0
+  rExp: 0x00
+  readingType: readingData
+  scale: 0x00
+  sensorNamePattern: nameLeaf
+  sensorReadingType: 0x01
+  sensorType: 0x04
+  serviceInterface: org.freedesktop.DBus.Properties
+  unit: xyz.openbmc_project.Sensor.Value.Unit.RPMS
+0x4E:
+  <<: *FAN_RPM_DEFAULTS
+  entityInstance: 0x02
+  path: /xyz/openbmc_project/sensors/fan_tach/fan0_1
+0x4F:
+  <<: *FAN_RPM_DEFAULTS
+  entityInstance: 0x03
+  path: /xyz/openbmc_project/sensors/fan_tach/fan1_0
+0x50:
+  <<: *FAN_RPM_DEFAULTS
+  entityInstance: 0x04
+  path: /xyz/openbmc_project/sensors/fan_tach/fan1_1
+0x51:
+  <<: *FAN_RPM_DEFAULTS
+  entityInstance: 0x05
+  path: /xyz/openbmc_project/sensors/fan_tach/fan2_0
+0x52:
+  <<: *FAN_RPM_DEFAULTS
+  entityInstance: 0x06
+  path: /xyz/openbmc_project/sensors/fan_tach/fan2_1
+0x53:
+  <<: *FAN_RPM_DEFAULTS
+  entityInstance: 0x07
+  path: /xyz/openbmc_project/sensors/fan_tach/fan3_0
+0x54:
+  <<: *FAN_RPM_DEFAULTS
+  entityInstance: 0x08
+  path: /xyz/openbmc_project/sensors/fan_tach/fan3_1
+0x55:
+  <<: *FAN_RPM_DEFAULTS
+  entityInstance: 0x09
+  path: /xyz/openbmc_project/sensors/fan_tach/fan4_0
+0x56:
+  <<: *FAN_RPM_DEFAULTS
+  entityInstance: 0x0A
+  path: /xyz/openbmc_project/sensors/fan_tach/fan4_1
+0x57:
+  <<: *FAN_RPM_DEFAULTS
+  entityInstance: 0x0B
+  path: /xyz/openbmc_project/sensors/fan_tach/fan5_0
+0x58:
+  <<: *FAN_RPM_DEFAULTS
+  entityInstance: 0x0C
+  path: /xyz/openbmc_project/sensors/fan_tach/fan5_1
