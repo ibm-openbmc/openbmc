@@ -1,4 +1,24 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
+
+
+SRC_URI:append:p10bmc = " \
+    file://0001-i2c-Allow-throttling-of-transfers-to-client-devices.patch \
+    file://0002-pmbus-ucd9000-Throttle-SMBus-transfers-to-avoid-poor.patch \
+    file://0003-ucd9000-Add-a-throttle-delay-attribute-in-debugfs.patch \
+    file://0004-fsi-run-clock-at-100MHz.patch \
+    file://0005-pmbus-core-Add-a-one-shot-retry-in-pmbus_set_page.patch \
+    file://0006-pmbus-max31785-Add-a-local-pmbus_set_page-implementa.patch \
+    file://0007-pmbus-max31785-Retry-enabling-fans-after-writing-MFR.patch \
+    file://0008-ARM-dts-aspeed-Rainier-Add-fan-controller-properties.patch \
+    file://0009-ARM-dts-aspeed-Everest-Add-fan-controller-properties.patch \
+    file://0010-ARM-dts-aspeed-Rainier-4U-Delete-fan-dual-tach-prope.patch \
+    file://0011-ARM-dts-aspeed-Add-Rainier-2U-and-4U-device-trees-fo.patch \
+    file://0012-ARM-dts-aspeed-Everest-and-Rainier-Add-bmc-managemen.patch \
+    file://0013-ARM-dts-aspeed-everest-Specify-I2C8-mux-reset-gpio.patch \
+    file://0014-hwmon-occ-Delay-hwmon-registration-until-user-reques.patch \
+    file://0015-leds-pca955x-throttle-i2c-transfers.patch \
+    "
+
 SRC_URI:append:ibm-ac-server = " file://witherspoon.cfg"
 SRC_URI:append:p10bmc = " file://p10bmc.cfg"
 SRC_URI:append:mihawk = " file://mihawk.cfg"
