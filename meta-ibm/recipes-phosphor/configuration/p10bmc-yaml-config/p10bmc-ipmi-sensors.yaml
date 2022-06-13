@@ -2267,3 +2267,59 @@
   <<: *FAN_RPM_DEFAULTS
   entityInstance: 0x0C
   path: /xyz/openbmc_project/sensors/fan_tach/fan5_1
+0x59: &AMBIENT_TEMP_DEFAULTS
+  bExp: 0x00
+  entityID: 0x28
+  entityInstance: 0x01
+  interfaces:
+    xyz.openbmc_project.Sensor.Value:
+      Value:
+        Offsets:
+          0xFF:
+            type: double
+  multiplierM: 0x01
+  mutability: Mutability::Write|Mutability::Read
+  offsetB: 0x00
+  path: /xyz/openbmc_project/sensors/temperature/Ambient_0_Temp
+  rExp: 0x00
+  readingType: readingData
+  scale: 0x00
+  sensorNamePattern: nameLeaf
+  sensorReadingType: 0x01
+  sensorType: 0x01
+  serviceInterface: org.freedesktop.DBus.Properties
+  unit: xyz.openbmc_project.Sensor.Value.Unit.DegreesC
+0x5A:
+  <<: *AMBIENT_TEMP_DEFAULTS
+  entityInstance: 0x02
+  path: /xyz/openbmc_project/sensors/temperature/Ambient_1_Temp
+0x5B:
+  <<: *AMBIENT_TEMP_DEFAULTS
+  entityInstance: 0x03
+  path: /xyz/openbmc_project/sensors/temperature/Ambient_2_Temp
+0x5C: &PCIE_TEMP_DEFAULTS
+  bExp: 0x00
+  entityID: 0x29
+  entityInstance: 0x01
+  interfaces:
+    xyz.openbmc_project.Sensor.Value:
+      Value:
+        Offsets:
+          0xFF:
+            type: double
+  multiplierM: 0x01
+  mutability: Mutability::Write|Mutability::Read
+  offsetB: 0x00
+  path: /xyz/openbmc_project/sensors/temperature/PCIE_0_Temp
+  rExp: 0x00
+  readingType: readingData
+  scale: 0x00
+  sensorNamePattern: nameLeaf
+  sensorReadingType: 0x01
+  sensorType: 0x01
+  serviceInterface: org.freedesktop.DBus.Properties
+  unit: xyz.openbmc_project.Sensor.Value.Unit.DegreesC
+0x5D:
+  <<: *PCIE_TEMP_DEFAULTS
+  entityInstance: 0x02
+  path: /xyz/openbmc_project/sensors/temperature/PCIE_1_Temp
