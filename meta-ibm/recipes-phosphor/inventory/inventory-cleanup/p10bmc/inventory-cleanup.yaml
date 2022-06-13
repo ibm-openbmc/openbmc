@@ -17,7 +17,6 @@ events:
                 - /system/chassis/motherboard/cpu5
                 - /system/chassis/motherboard/cpu6
                 - /system/chassis/motherboard/cpu7
-                - /system/chassis/motherboard/pcieslot5
                 - /system/chassis/motherboard/pcie_cable_card0
                 - /system/chassis/motherboard/pcie_cable_card0/cxp_top
                 - /system/chassis/motherboard/pcie_cable_card0/cxp_bot
