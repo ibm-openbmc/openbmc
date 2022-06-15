@@ -2323,3 +2323,359 @@
   <<: *PCIE_TEMP_DEFAULTS
   entityInstance: 0x02
   path: /xyz/openbmc_project/sensors/temperature/PCIE_1_Temp
+0x5E: &CPU_CORE_TEMP_DEFAULTS
+  bExp: 0x00
+  entityID: 0x2A
+  entityInstance: 0x01
+  interfaces:
+    xyz.openbmc_project.Sensor.Value:
+      Value:
+        Offsets:
+          0xFF:
+            type: double
+  multiplierM: 0x01
+  mutability: Mutability::Write|Mutability::Read
+  offsetB: 0x00
+  path: /xyz/openbmc_project/sensors/temperature/proc0_core0_0_temp
+  rExp: 0x00
+  readingType: readingData
+  scale: 0x00
+  sensorNamePattern: nameLeaf
+  sensorReadingType: 0x01
+  sensorType: 0x01
+  serviceInterface: org.freedesktop.DBus.Properties
+  unit: xyz.openbmc_project.Sensor.Value.Unit.DegreesC
+0x5F:
+  <<: *CPU_CORE_TEMP_DEFAULTS
+  entityInstance: 0x02
+  path: /xyz/openbmc_project/sensors/temperature/proc0_core0_1_temp
+0x60:
+  <<: *CPU_CORE_TEMP_DEFAULTS
+  entityInstance: 0x03
+  path: /xyz/openbmc_project/sensors/temperature/proc1_core0_0_temp
+0x61:
+  <<: *CPU_CORE_TEMP_DEFAULTS
+  entityInstance: 0x04
+  path: /xyz/openbmc_project/sensors/temperature/proc1_core0_1_temp
+0x62:
+  <<: *CPU_CORE_TEMP_DEFAULTS
+  entityInstance: 0x05
+  path: /xyz/openbmc_project/sensors/temperature/proc2_core0_0_temp
+0x63:
+  <<: *CPU_CORE_TEMP_DEFAULTS
+  entityInstance: 0x06
+  path: /xyz/openbmc_project/sensors/temperature/proc2_core0_1_temp
+0x64:
+  <<: *CPU_CORE_TEMP_DEFAULTS
+  entityInstance: 0x07
+  path: /xyz/openbmc_project/sensors/temperature/proc3_core0_0_temp
+0x65:
+  <<: *CPU_CORE_TEMP_DEFAULTS
+  entityInstance: 0x08
+  path: /xyz/openbmc_project/sensors/temperature/proc3_core0_1_temp
+0x66:
+  <<: *CPU_CORE_TEMP_DEFAULTS
+  entityInstance: 0x09
+  path: /xyz/openbmc_project/sensors/temperature/proc4_core0_0_temp
+0x67:
+  <<: *CPU_CORE_TEMP_DEFAULTS
+  entityInstance: 0x0A
+  path: /xyz/openbmc_project/sensors/temperature/proc4_core0_1_temp
+0x68:
+  <<: *CPU_CORE_TEMP_DEFAULTS
+  entityInstance: 0x0B
+  path: /xyz/openbmc_project/sensors/temperature/proc5_core0_0_temp
+0x69:
+  <<: *CPU_CORE_TEMP_DEFAULTS
+  entityInstance: 0x0C
+  path: /xyz/openbmc_project/sensors/temperature/proc5_core0_1_temp
+0x6A:
+  <<: *CPU_CORE_TEMP_DEFAULTS
+  entityInstance: 0x0D
+  path: /xyz/openbmc_project/sensors/temperature/proc6_core0_0_temp
+0x6B:
+  <<: *CPU_CORE_TEMP_DEFAULTS
+  entityInstance: 0x0E
+  path: /xyz/openbmc_project/sensors/temperature/proc6_core0_1_temp
+0x6C:
+  <<: *CPU_CORE_TEMP_DEFAULTS
+  entityInstance: 0x0F
+  path: /xyz/openbmc_project/sensors/temperature/proc7_core0_0_temp
+0x6D:
+  <<: *CPU_CORE_TEMP_DEFAULTS
+  entityInstance: 0x10
+  path: /xyz/openbmc_project/sensors/temperature/proc7_core0_1_temp
+0x6E: &DIMM_TEMP_DEFAULTS
+  bExp: 0x00
+  entityID: 0x2B
+  entityInstance: 0x01
+  interfaces:
+    xyz.openbmc_project.Sensor.Value:
+      Value:
+        Offsets:
+          0xFF:
+            type: double
+  multiplierM: 0x01
+  mutability: Mutability::Write|Mutability::Read
+  offsetB: 0x00
+  path: /xyz/openbmc_project/sensors/temperature/dimm0_dram_temp
+  rExp: 0x00
+  readingType: readingData
+  scale: 0x00
+  sensorNamePattern: nameLeaf
+  sensorReadingType: 0x01
+  sensorType: 0x01
+  serviceInterface: org.freedesktop.DBus.Properties
+  unit: xyz.openbmc_project.Sensor.Value.Unit.DegreesC
+0x6F:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x02
+  path: /xyz/openbmc_project/sensors/temperature/dimm1_dram_temp
+0x70:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x03
+  path: /xyz/openbmc_project/sensors/temperature/dimm2_dram_temp
+0x71:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x04
+  path: /xyz/openbmc_project/sensors/temperature/dimm3_dram_temp
+0x72:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x05
+  path: /xyz/openbmc_project/sensors/temperature/dimm4_dram_temp
+0x73:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x06
+  path: /xyz/openbmc_project/sensors/temperature/dimm5_dram_temp
+0x74:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x07
+  path: /xyz/openbmc_project/sensors/temperature/dimm6_dram_temp
+0x75:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x08
+  path: /xyz/openbmc_project/sensors/temperature/dimm7_dram_temp
+0x76:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x09
+  path: /xyz/openbmc_project/sensors/temperature/dimm8_dram_temp
+0x77:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x0A
+  path: /xyz/openbmc_project/sensors/temperature/dimm9_dram_temp
+0x78:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x0B
+  path: /xyz/openbmc_project/sensors/temperature/dimm10_dram_temp
+0x79:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x0C
+  path: /xyz/openbmc_project/sensors/temperature/dimm11_dram_temp
+0x7A:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x0D
+  path: /xyz/openbmc_project/sensors/temperature/dimm12_dram_temp
+0x7B:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x0E
+  path: /xyz/openbmc_project/sensors/temperature/dimm13_dram_temp
+0x7C:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x0F
+  path: /xyz/openbmc_project/sensors/temperature/dimm14_dram_temp
+0x7D:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x10
+  path: /xyz/openbmc_project/sensors/temperature/dimm15_dram_temp
+0x7E:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x11
+  path: /xyz/openbmc_project/sensors/temperature/dimm16_dram_temp
+0x7F:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x12
+  path: /xyz/openbmc_project/sensors/temperature/dimm17_dram_temp
+0x80:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x13
+  path: /xyz/openbmc_project/sensors/temperature/dimm18_dram_temp
+0x81:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x14
+  path: /xyz/openbmc_project/sensors/temperature/dimm19_dram_temp
+0x82:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x15
+  path: /xyz/openbmc_project/sensors/temperature/dimm20_dram_temp
+0x83:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x16
+  path: /xyz/openbmc_project/sensors/temperature/dimm21_dram_temp
+0x84:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x17
+  path: /xyz/openbmc_project/sensors/temperature/dimm22_dram_temp
+0x85:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x18
+  path: /xyz/openbmc_project/sensors/temperature/dimm23_dram_temp
+0x86:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x19
+  path: /xyz/openbmc_project/sensors/temperature/dimm24_dram_temp
+0x87:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x1A
+  path: /xyz/openbmc_project/sensors/temperature/dimm25_dram_temp
+0x88:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x1B
+  path: /xyz/openbmc_project/sensors/temperature/dimm26_dram_temp
+0x89:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x1C
+  path: /xyz/openbmc_project/sensors/temperature/dimm27_dram_temp
+0x8A:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x1D
+  path: /xyz/openbmc_project/sensors/temperature/dimm28_dram_temp
+0x8B:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x1E
+  path: /xyz/openbmc_project/sensors/temperature/dimm29_dram_temp
+0x8C:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x1F
+  path: /xyz/openbmc_project/sensors/temperature/dimm30_dram_temp
+0x8D:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x20
+  path: /xyz/openbmc_project/sensors/temperature/dimm31_dram_temp
+0x8E:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x21
+  path: /xyz/openbmc_project/sensors/temperature/dimm32_dram_temp
+0x8F:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x22
+  path: /xyz/openbmc_project/sensors/temperature/dimm33_dram_temp
+0x90:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x23
+  path: /xyz/openbmc_project/sensors/temperature/dimm34_dram_temp
+0x91:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x24
+  path: /xyz/openbmc_project/sensors/temperature/dimm35_dram_temp
+0x92:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x25
+  path: /xyz/openbmc_project/sensors/temperature/dimm36_dram_temp
+0x93:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x26
+  path: /xyz/openbmc_project/sensors/temperature/dimm37_dram_temp
+0x94:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x27
+  path: /xyz/openbmc_project/sensors/temperature/dimm38_dram_temp
+0x95:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x28
+  path: /xyz/openbmc_project/sensors/temperature/dimm39_dram_temp
+0x96:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x29
+  path: /xyz/openbmc_project/sensors/temperature/dimm40_dram_temp
+0x97:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x2A
+  path: /xyz/openbmc_project/sensors/temperature/dimm41_dram_temp
+0x98:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x2B
+  path: /xyz/openbmc_project/sensors/temperature/dimm42_dram_temp
+0x99:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x2C
+  path: /xyz/openbmc_project/sensors/temperature/dimm43_dram_temp
+0x9A:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x2D
+  path: /xyz/openbmc_project/sensors/temperature/dimm44_dram_temp
+0x9B:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x2E
+  path: /xyz/openbmc_project/sensors/temperature/dimm45_dram_temp
+0x9C:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x2F
+  path: /xyz/openbmc_project/sensors/temperature/dimm46_dram_temp
+0x9D:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x30
+  path: /xyz/openbmc_project/sensors/temperature/dimm47_dram_temp
+0x9E:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x31
+  path: /xyz/openbmc_project/sensors/temperature/dimm48_dram_temp
+0x9F:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x32
+  path: /xyz/openbmc_project/sensors/temperature/dimm49_dram_temp
+0xA0:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x33
+  path: /xyz/openbmc_project/sensors/temperature/dimm50_dram_temp
+0xA1:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x34
+  path: /xyz/openbmc_project/sensors/temperature/dimm51_dram_temp
+0xA2:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x35
+  path: /xyz/openbmc_project/sensors/temperature/dimm52_dram_temp
+0xA3:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x36
+  path: /xyz/openbmc_project/sensors/temperature/dimm53_dram_temp
+0xA4:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x37
+  path: /xyz/openbmc_project/sensors/temperature/dimm54_dram_temp
+0xA5:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x38
+  path: /xyz/openbmc_project/sensors/temperature/dimm55_dram_temp
+0xA6:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x39
+  path: /xyz/openbmc_project/sensors/temperature/dimm56_dram_temp
+0xA7:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x3A
+  path: /xyz/openbmc_project/sensors/temperature/dimm57_dram_temp
+0xA8:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x3B
+  path: /xyz/openbmc_project/sensors/temperature/dimm58_dram_temp
+0xA9:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x3C
+  path: /xyz/openbmc_project/sensors/temperature/dimm59_dram_temp
+0xAA:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x3D
+  path: /xyz/openbmc_project/sensors/temperature/dimm60_dram_temp
+0xAB:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x3E
+  path: /xyz/openbmc_project/sensors/temperature/dimm61_dram_temp
+0xAC:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x3F
+  path: /xyz/openbmc_project/sensors/temperature/dimm62_dram_temp
+0xAD:
+  <<: *DIMM_TEMP_DEFAULTS
+  entityInstance: 0x40
+  path: /xyz/openbmc_project/sensors/temperature/dimm63_dram_temp
