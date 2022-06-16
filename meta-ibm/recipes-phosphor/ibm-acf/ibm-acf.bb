@@ -28,6 +28,8 @@ do_install:append(){
                    ${D}/${servicedir}/ibm-acf/ibmacf-prod.key
     install -m 755 ${S}/subprojects/ce-login/p10-celogin-prod-backup-pub.der \
                    ${D}/${servicedir}/ibm-acf/ibmacf-prod-backup.key
+    install -m 755 ${S}/subprojects/ce-login/p10-celogin-prod-backup2-pub.der \
+                   ${D}/${servicedir}/ibm-acf/ibmacf-prod-backup2.key
 }
 
 
