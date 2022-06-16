@@ -1,0 +1,18 @@
+diff --git a/Makefile.am b/Makefile.am
+index 4e5cffc..daa05db 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -200,11 +200,12 @@ include Makefile.proc.am
+ OPTFLAGS = -Os -O2
+ LOCALCFLAGS = $(OPTFLAGS) -g -Wall -std=gnu11 $(TARGET_ENDIAN)
+ 
++# TODO #libekb_p10/issues/15 remove -fno-stack-protector
+ # Our own platform include files (hwpf/fapi2/include/plat) shoud
+ # appear before the ekb ones in this list as we need the compiler to
+ # choose some of ours. Specifically return_code_defs.H.
+ LOCALCXXFLAGS = $(OPTFLAGS) -Wall -std=gnu++11 \
+-		-fpermissive -fno-exceptions -fno-rtti \
++		-fpermissive -fno-exceptions -fno-stack-protector -fno-rtti \
+ 		$(TARGET_ENDIAN) \
+ 		-I$(ATTRIB_DIR) \
+ 		-I$(ERROR_INFO_DIR) \
