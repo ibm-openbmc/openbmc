@@ -296,6 +296,7 @@
       },
       {
         "inventoryPath": "/system/chassis/motherboard/pcieslot12/pcie_card12",
+        "inherit": false,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
           "com.ibm.ipzvpd.Location" : {
