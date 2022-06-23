@@ -2183,6 +2183,7 @@
     "/sys/bus/i2c/drivers/at24/28-0051/eeprom": [
 	 {
             "inventoryPath":"/system/chassis/motherboard/dasd_backplane/panel1",
+            "essentialFru":true,
             "extraInterfaces":{
                "xyz.openbmc_project.Inventory.Item.Panel":null,
                "com.ibm.ipzvpd.Location":{
@@ -2194,6 +2195,7 @@
     "/sys/bus/i2c/drivers/at24/29-0050/eeprom": [
 	 {
             "inventoryPath":"/system/chassis/motherboard/dasd_backplane/panel0",
+            "essentialFru":true,
             "extraInterfaces":{
                "xyz.openbmc_project.Inventory.Item.Panel":null,
                "com.ibm.ipzvpd.Location":{
