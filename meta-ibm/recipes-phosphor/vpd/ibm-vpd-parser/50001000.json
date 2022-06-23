@@ -1003,6 +1003,7 @@
     "/sys/bus/i2c/drivers/at24/7-0050/eeprom": [
       {
         "inventoryPath": "/system/chassis/motherboard/base_op_panel_blyth",
+        "essentialFru":true,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.Panel": null,
           "com.ibm.ipzvpd.Location" : {
