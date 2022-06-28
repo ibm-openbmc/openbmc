@@ -23,6 +23,5 @@ SRCREV_ekb = "${EKB_REV}"
 SRC_URI = "git://git@github.com/open-power/libekb_p10;branch="main";name=libekb \
            ${EKB_URI};name=ekb;destsuffix=git/ekb \
            "
-SRC_URI += "file://001_rm_stack_protector_gcc_flag.patch"
 
 DEPENDS = "pdbg libxml-simple-perl-native"
