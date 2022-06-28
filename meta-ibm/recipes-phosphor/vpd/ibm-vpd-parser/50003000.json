@@ -2463,7 +2463,7 @@
                   "SlotNumber": 1
               },
 	      "xyz.openbmc_project.Inventory.Item": {
-                  "PrettyName": "PCIe Cable Card"
+                  "PrettyName": "PCIe Card"
                }
             }
           },
@@ -2529,7 +2529,7 @@
                   "SlotNumber": 2
               },
 	      "xyz.openbmc_project.Inventory.Item": {
-                  "PrettyName": "PCIe Cable Card"
+                  "PrettyName": "PCIe Card"
               }
             }
           },
@@ -2595,7 +2595,7 @@
                   "SlotNumber": 3
                },
 	       "xyz.openbmc_project.Inventory.Item": {
-                  "PrettyName": "PCIe Cable Card"
+                  "PrettyName": "PCIe Card"
                }
              }
           },
@@ -2661,7 +2661,7 @@
                   "SlotNumber": 4
                },
 	       "xyz.openbmc_project.Inventory.Item": {
-                  "PrettyName": "PCIe Cable Card"
+                  "PrettyName": "PCIe Card"
                }
              }
           },
@@ -2727,7 +2727,7 @@
                   "SlotNumber": 5
                },
 	       "xyz.openbmc_project.Inventory.Item": {
-                  "PrettyName": "PCIe Cable Card"
+                  "PrettyName": "PCIe Card"
                }
              }
           },
@@ -2793,7 +2793,7 @@
                   "SlotNumber": 6
                },
 	       "xyz.openbmc_project.Inventory.Item": {
-                  "PrettyName": "PCIe Cable Card"
+                  "PrettyName": "PCIe Card"
                }
              }
           }
@@ -2831,7 +2831,7 @@
                   "SlotNumber": 7
                },
 	       "xyz.openbmc_project.Inventory.Item": {
-                  "PrettyName": "PCIe Cable Card"
+                  "PrettyName": "PCIe Card"
                }
              }
           },
@@ -2897,7 +2897,7 @@
                   "SlotNumber": 8
                },
 	       "xyz.openbmc_project.Inventory.Item": {
-                  "PrettyName": "PCIe Cable Card"
+                  "PrettyName": "PCIe Card"
                }
              }
           },
@@ -2963,7 +2963,7 @@
                   "SlotNumber": 9
                },
 	       "xyz.openbmc_project.Inventory.Item": {
-                  "PrettyName": "PCIe Cable Card"
+                  "PrettyName": "PCIe Card"
                }
              }
           }
@@ -3001,7 +3001,7 @@
                   "SlotNumber": 10
                },
 	       "xyz.openbmc_project.Inventory.Item": {
-                  "PrettyName": "PCIe Cable Card"
+                  "PrettyName": "PCIe Card"
                }
              }
           },
@@ -3067,7 +3067,7 @@
                   "SlotNumber": 11
                },
 	       "xyz.openbmc_project.Inventory.Item": {
-                  "PrettyName": "PCIe Cable Card"
+                  "PrettyName": "PCIe Card"
                }
              }
           },
