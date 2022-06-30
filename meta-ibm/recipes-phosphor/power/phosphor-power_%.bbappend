@@ -22,3 +22,7 @@ FILES:${PN} += "${datadir}/phosphor-power/psu.json"
 
 PSU_MONITOR_ENV_FMT = "obmc/power-supply-monitor/power-supply-monitor-{0}.conf"
 SYSTEMD_ENVIRONMENT_FILE:${PN}-monitor:append:ibm-ac-server += "${@compose_list(d, 'PSU_MONITOR_ENV_FMT', 'OBMC_POWER_SUPPLY_INSTANCES')}"
+
+RDEPENDS:${PN}-regulators:append:p10bmc = " python3-core"
+SYSTEMD_SERVICE:${PN}-regulators:append:p10bmc = " reset_voltage_regulators.service"
+FILES:${PN}-regulators:append:p10bmc = " ${bindir}/reset_voltage_regulators"
