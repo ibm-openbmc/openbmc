@@ -2,6 +2,8 @@
 Description=First Boot Disable IPMI Network
 After=phosphor-ipmi-net@eth0.service
 After=phosphor-ipmi-net@eth1.service
+After=phosphor-ipmi-net@eth0.socket
+After=phosphor-ipmi-net@eth1.socket
 Before=srvcfg-manager.service
 ConditionFileNotEmpty=!/etc/ipmi-net-disable-one-time
 
