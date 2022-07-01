@@ -32,6 +32,7 @@ FILES:${PN} += "${datadir}/network/*.json"
 PACKAGECONFIG:append = " sync-mac"
 
 PACKAGECONFIG:append:p10bmc = " hyp-nw-config"
+PACKAGECONFIG:remove:p10bmc = "default-ipv6-accept-ra"
 SYSTEMD_SERVICE:${PN} += "${@bb.utils.contains('PACKAGECONFIG', 'hyp-nw-config', 'xyz.openbmc_project.Network.Hypervisor.service', '', d)}"
 
 install_network_configuration(){
