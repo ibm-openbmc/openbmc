@@ -12,6 +12,7 @@ DEPENDS:append = "\
 "
 SRCREV = "bbf22d8127d9f3830e2d413408ad00d2e07a3ddd"
 PR = "r1"
+PV = "1.0+git${SRCPV}"
 
 SRC_URI = "git://github.com/openbmc/phosphor-virtual-sensor.git;protocol=https;branch=master"
 

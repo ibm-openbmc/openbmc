@@ -1,5 +1,6 @@
 SUMMARY = "eCMD"
 DESCRIPTION = "eCMD is a hardware access API for IBM Systems"
+PV = "1.0+git${SRCPV}"
 LICENSE= "Apache-2.0"
 LIC_FILES_CHKSUM = "file://${S}/NOTICE;md5=fee220301a2af3faf8f211524b4248ea"
 
