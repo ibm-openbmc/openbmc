@@ -2,6 +2,7 @@ SUMMARY = "BMC Health Monitoring"
 DESCRIPTION = "Daemon to collect and monitor bmc health statistics"
 HOMEPAGE = "https://github.com/openbmc/phosphor-health-monitor"
 PR = "r1"
+PV = "1.0+git${SRCPV}"
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=9e69ba356fa59848ffd865152a3ccc13"
 
