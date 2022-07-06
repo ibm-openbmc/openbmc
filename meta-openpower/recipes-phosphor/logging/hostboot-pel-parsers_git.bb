@@ -8,6 +8,6 @@ LIC_FILES_CHKSUM = "file://${S}/LICENSE;md5=34400b68072d710fecd0a2940a0d1658"
 
 S = "${WORKDIR}/git"
 SRC_URI += "git://git@github.com/open-power/hostboot;branch="release-fw1020";protocol=ssh"
-SRCREV = "dc16e1e4691672a9dac15f73feb9b248b95a669e"
+SRCREV = "84dabbd78a64232785d888e03f67edafbc13e09a"
 
 inherit setuptools3
