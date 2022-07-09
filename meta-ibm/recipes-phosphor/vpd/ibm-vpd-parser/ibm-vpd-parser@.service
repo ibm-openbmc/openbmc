@@ -4,6 +4,7 @@ Wants=mapper-wait@-xyz-openbmc_project-inventory.service
 After=mapper-wait@-xyz-openbmc_project-inventory.service
 Requires=system-vpd.service
 After=system-vpd.service
+Before=phosphor-discover-system-state@0.service
 
 [Service]
 ExecStart=/usr/bin/env ibm-read-vpd --file %f/nvmem
