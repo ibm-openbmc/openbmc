@@ -7,7 +7,7 @@ LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://${S}/LICENSE;md5=34400b68072d710fecd0a2940a0d1658"
 
 S = "${WORKDIR}/git"
-SRC_URI += "git://git@github.com/open-power/hostboot;branch="release-fw1020";protocol=ssh"
-SRCREV = "0e01d6bd1fe946ee71c7f35539f6af10a3e9e56a"
+SRC_URI += "git://git@github.com/open-power/hostboot;branch="master-p10";protocol=ssh"
+SRCREV = "292102db395ec3f61433a841beee481ba4fd2c7d"
 
 inherit setuptools3
