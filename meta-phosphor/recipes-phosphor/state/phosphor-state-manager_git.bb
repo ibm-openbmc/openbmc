@@ -59,10 +59,12 @@ DEPENDS += "cli11"
 DEPENDS += "libgpiod"
 
 RDEPENDS:${PN}-chassis += "bash"
+RDEPENDS:${PN}-host += "bash"
 
 EXTRA_OEMESON:append = " -Dtests=disabled"
 
 FILES:${PN}-host = "${bindir}/phosphor-host-state-manager"
+FILES:${PN}-host += "${libexecdir}/host-reboot"
 DBUS_SERVICE:${PN}-host += "xyz.openbmc_project.State.Host.service"
 DBUS_SERVICE:${PN}-host += "phosphor-reboot-host@.service"
 SYSTEMD_SERVICE:${PN}-host += "phosphor-reset-host-reboot-attempts@.service"
@@ -198,6 +200,6 @@ SYSTEMD_LINK:${PN}-obmc-targets += "${@compose_list(d, 'QUIESCE_FMT', 'HOST_ERRO
 
 
 SRC_URI += "git://github.com/ibm-openbmc/phosphor-state-manager;nobranch=1"
-SRCREV = "683013a7c19906ffd185bdca16963db5c35167cb"
+SRCREV = "10768ef46888da8c9e6c5cc97a57ecd1f13368da"
 
 S = "${WORKDIR}/git"
