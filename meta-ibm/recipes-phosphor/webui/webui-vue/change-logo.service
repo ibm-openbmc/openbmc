@@ -1,0 +1,13 @@
+[Unit]
+Description=Start the change logo script
+After=basic.targe
+Before=bmcweb.service
+
+[Service]
+Restart=no
+ExecStart=/usr/share/www/changeLogo.sh
+Type=oneshot
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
