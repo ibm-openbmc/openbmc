@@ -1,6 +1,6 @@
 [Unit]
 Description=Start the change logo script
-After=basic.targe
+After=system-vpd.service
 Before=bmcweb.service
 
 [Service]
