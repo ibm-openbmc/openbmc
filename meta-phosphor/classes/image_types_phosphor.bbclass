@@ -504,7 +504,7 @@ python do_generate_phosphor_manifest() {
     version = do_get_version(d)
     build_id = do_get_buildID(d)
     target_machine = d.getVar('MACHINE', True)
-    extended_version = (d.getVar('EXTENDED_VERSION', True) or "")
+    extended_version = do_get_extended_version(d)
     with open('MANIFEST', 'w') as fd:
         fd.write('purpose={}\n'.format(purpose))
         fd.write('version={}\n'.format(version.strip('"')))
