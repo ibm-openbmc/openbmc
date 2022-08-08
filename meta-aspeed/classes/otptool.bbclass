@@ -19,8 +19,12 @@ create_otp_helper() {
         echo "Error: Invalid otptool signing key directory: ${OTPTOOL_KEY_DIR}"
         exit 1
     else
+        otptool_config_slug="$(basename ${OTPTOOL_CONFIG} .json)"
+        otptool_config_outdir="${B}"/"${CONFIG_B_PATH}"/"${otptool_config_slug}"
+        mkdir -p "${otptool_config_outdir}"
         otptool make_otp_image \
             --key_folder ${OTPTOOL_KEY_DIR} \
+            --output_folder "${otptool_config_outdir}" \
             ${OTPTOOL_CONFIG} \
             ${OTPTOOL_EXTRA_OPTS}
 
@@ -29,8 +33,15 @@ create_otp_helper() {
             exit 1
         fi
 
-        install -m 0644 ${B}/${CONFIG_B_PATH}/otp-* \
-        ${DEPLOYDIR}/.
+        otptool print "${otptool_config_outdir}"/otp-all.image
+
+        if [ $? -ne 0 ]; then
+            bbfatal "Printed OTP image failed."
+        fi
+
+        install -m 0644 -T \
+            "${otptool_config_outdir}"/otp-all.image \
+            ${DEPLOYDIR}/"${otptool_config_slug}"-otp-all.image
     fi
 }
 
