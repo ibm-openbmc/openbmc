@@ -2183,6 +2183,10 @@
     "/sys/bus/i2c/drivers/at24/28-0051/eeprom": [
 	 {
             "inventoryPath":"/system/chassis/motherboard/dasd_backplane/panel1",
+            "devAddress": "28-0051",
+            "driverType": "at24",
+            "busType": "i2c",
+            "concurrentlyMaintainable":true,
             "essentialFru":true,
             "extraInterfaces":{
                "xyz.openbmc_project.Inventory.Item.Panel":null,
@@ -2195,6 +2199,10 @@
     "/sys/bus/i2c/drivers/at24/29-0050/eeprom": [
 	 {
             "inventoryPath":"/system/chassis/motherboard/dasd_backplane/panel0",
+            "devAddress": "29-0050",
+            "driverType": "at24",
+            "busType": "i2c",
+            "concurrentlyMaintainable":true,
             "essentialFru":true,
             "extraInterfaces":{
                "xyz.openbmc_project.Inventory.Item.Panel":null,
