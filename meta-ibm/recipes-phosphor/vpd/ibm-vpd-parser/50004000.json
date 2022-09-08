@@ -1,0 +1,89 @@
+{
+  "commonInterfaces": {
+    "xyz.openbmc_project.Inventory.Decorator.Asset": {
+      "PartNumber": {
+        "recordName": "VINI",
+        "keywordName": "PN"
+      },
+      "SerialNumber": {
+        "recordName": "VINI",
+        "keywordName": "SN"
+      },
+      "SparePartNumber": {
+        "recordName": "VINI",
+        "keywordName": "FN"
+      },
+      "Model": {
+        "recordName": "VINI",
+        "keywordName": "CC"
+      },
+      "BuildDate": {
+        "recordName": "VR10",
+        "keywordName": "DC",
+        "encoding": "DATE"
+      }
+    }
+  },
+  "frus": {
+    "/sys/bus/i2c/drivers/at24/8-0050/eeprom": [
+      {
+        "inventoryPath": "/system/chassis/motherboard",
+        "isSystemVpd": true,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Board.Motherboard": null,
+          "com.ibm.ipzvpd.Location": {
+            "LocationCode": "Ufcs-P0"
+          },
+          "xyz.openbmc_project.Inventory.Item": {
+            "PrettyName": "System Backplane"
+          }
+        }
+      },
+      {
+        "inventoryPath": "/system",
+        "inherit": false,
+        "isSystemVpd": true,
+        "copyRecords": [
+          "VSYS"
+        ],
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.System": null,
+          "xyz.openbmc_project.Inventory.Decorator.Asset": {
+            "SerialNumber": {
+              "recordName": "VSYS",
+              "keywordName": "SE"
+            },
+            "Model": {
+              "recordName": "VSYS",
+              "keywordName": "TM"
+            },
+            "SubModel": {
+              "recordName": "VSYS",
+              "keywordName": "BR"
+            }
+          },
+          "com.ibm.ipzvpd.Location": {
+            "LocationCode": "Umts"
+          },
+          "xyz.openbmc_project.Inventory.Item": {
+            "PrettyName": "System"
+          }
+        }
+      },
+      {
+        "inventoryPath": "/system/chassis",
+        "isSystemVpd": true,
+        "extraInterfaces": {
+          "xyz.openbmc_project.Inventory.Item.Chassis": null,
+          "xyz.openbmc_project.Inventory.Item.Global": null,
+          "com.ibm.ipzvpd.Location": {
+            "LocationCode": "Ufcs"
+          },
+          "xyz.openbmc_project.Inventory.Item": {
+            "PrettyName": "Chassis"
+          }
+        }
+      }
+    ]
+  }
+}
