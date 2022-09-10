@@ -11,8 +11,8 @@ inherit meson \
 
 S = "${WORKDIR}/git"
 
-SRC_URI = "git://git@github.com/ibm-openbmc/openpower-hw-isolation;branch="1020""
-SRCREV = "6a7792caa199c441a96e11bfd0138f1c755f402f"
+SRC_URI = "git://git@github.com/ibm-openbmc/openpower-hw-isolation;branch="main""
+SRCREV = "a5c8c37d20f750ef36e1a7455e9418e96ebcf6cc"
 
 DEPENDS = "sdbusplus \
            phosphor-dbus-interfaces \
