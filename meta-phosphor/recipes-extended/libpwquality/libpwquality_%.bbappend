@@ -20,5 +20,6 @@ do_install:append() {
         -e '/^# ocredit =/s/.*/ocredit=0/' \
         -e '/^# dcredit =/s/.*/dcredit=0/' \
         -e '/^# ucredit =/s/.*/ucredit=0/' \
+        -e '/^# minclass =/s/.*/minclass=2/' \
         ${D}${sysconfdir}/security/pwquality.conf
 }
