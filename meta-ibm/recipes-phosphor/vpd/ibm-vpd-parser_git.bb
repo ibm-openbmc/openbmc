@@ -26,6 +26,7 @@ SRC_URI += " file://50001002.json"
 SRC_URI += " file://com.ibm.VPD.Manager.service"
 SRC_URI += " file://50003000.json"
 SRC_URI += " file://50003000_v2.json"
+SRC_URI += " file://50004000.json"
 SRC_URI += " file://systems.json"
 SRC_URI += " file://libvpdecc.so.1.0"
 
