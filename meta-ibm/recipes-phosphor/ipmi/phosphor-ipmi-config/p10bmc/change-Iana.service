@@ -1,0 +1,13 @@
+[Unit]
+Description=Start the change IANA script
+After=system-vpd.service
+Before=phosphor-ipmi-host.service
+
+[Service]
+Restart=no
+ExecStart=/usr/share/ipmi-providers/changeIana.sh
+Type=oneshot
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
