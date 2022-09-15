@@ -46,3 +46,23 @@ python do_patch:ibm-ac-server() {
         data["aux"] = int(auxVer, 16)
         json.dump(data, jsonFile)
 }
+
+inherit obmc-phosphor-systemd
+
+SRC_URI:append:p10bmc = " \
+    file://dev_id_ips.json \
+    file://change-Iana.service \
+    file://changeIana.sh \
+    "
+
+FILES:${PN}:append:p10bmc = " \
+    ${datadir}/ipmi-providers/* \
+    "
+
+SYSTEMD_SERVICE:${PN}:append:p10bmc = " change-Iana.service"
+
+do_install:append:p10bmc() {
+    install -m 0644 -D ${WORKDIR}/dev_id_ips.json \
+        ${D}${datadir}/ipmi-providers/dev_id_ips.json
+    install -m 0755 ${WORKDIR}/changeIana.sh ${D}${datadir}/ipmi-providers
+}
