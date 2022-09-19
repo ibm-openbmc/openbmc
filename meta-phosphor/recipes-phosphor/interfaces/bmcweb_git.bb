@@ -24,6 +24,7 @@ SRC_URI += " \
 "
 
 DEPENDS = " \
+    audit \
     openssl \
     zlib \
     boost \
@@ -38,6 +39,7 @@ DEPENDS = " \
 "
 
 RDEPENDS:${PN} += " \
+    audit \
     jsnbd \
     phosphor-mapper \
 "
