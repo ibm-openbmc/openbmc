@@ -1,0 +1,12 @@
+[Unit]
+Description=Reset the AssetTag file for IPS
+After=system-vpd.service
+
+[Service]
+ExecStart=/usr/bin/ips-asset-tag.sh recover
+Restart=no
+Type=oneshot
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
