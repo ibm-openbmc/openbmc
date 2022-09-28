@@ -37,3 +37,5 @@ if [ $(fw_printenv fitconfig | grep everest) ]; then
 
     echo gpio-keys-polled > $gpiopath/bind
 fi
+
+exit 0
