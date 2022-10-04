@@ -11,7 +11,6 @@ SRC_URI:append:df-phosphor-mmc = " file://u-boot-env-ast2600.txt"
 SRC_URI += " \
             file://rsa_oem_dss_key.pem;sha256sum=64a379979200d39949d3e5b0038e3fdd5548600b2f7077a17e35422336075ad4 \
             file://rsa_pub_oem_dss_key.pem;sha256sum=40132a694a10af2d1b094b1cb5adab4d6b4db2a35e02d848b2b6a85e60738264 \
-            file://0001-ARM-dts-aspeed-p10bmc-Disable-ECC.patch \
            "
 
 SOCSEC_SIGN_KEY ?= "${WORKDIR}/rsa_oem_dss_key.pem"
