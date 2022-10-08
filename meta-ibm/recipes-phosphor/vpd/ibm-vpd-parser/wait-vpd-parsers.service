@@ -1,0 +1,12 @@
+[Unit]
+Description=Wait for VPD Collection Services to complete
+After=system-vpd.service
+After=set-spi-mux.service
+
+[Service]
+ExecStart=/usr/bin/wait-vpd-parsers.sh
+Type=oneshot
+
+[Install]
+WantedBy=multi-user.target
+WantedBy=obmc-chassis-poweroff@0.target
