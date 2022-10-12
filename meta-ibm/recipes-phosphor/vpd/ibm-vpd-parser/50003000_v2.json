@@ -2397,6 +2397,10 @@
     "/sys/bus/i2c/drivers/at24/31-0050/eeprom": [
 	 {
             "inventoryPath":"/system/chassis/motherboard/fan0",
+            "devAddress": "31-0050",
+            "driverType": "at24",
+            "busType": "i2c",
+            "concurrentlyMaintainable":true,
             "extraInterfaces":{
                "xyz.openbmc_project.Inventory.Item.Fan":null,
                "com.ibm.ipzvpd.Location":{
@@ -2408,6 +2412,10 @@
     "/sys/bus/i2c/drivers/at24/32-0050/eeprom": [
 	 {
             "inventoryPath":"/system/chassis/motherboard/fan1",
+            "devAddress": "32-0050",
+            "driverType": "at24",
+            "busType": "i2c",
+            "concurrentlyMaintainable":true,
             "extraInterfaces":{
                "xyz.openbmc_project.Inventory.Item.Fan":null,
                "com.ibm.ipzvpd.Location":{
@@ -2419,6 +2427,10 @@
     "/sys/bus/i2c/drivers/at24/33-0050/eeprom": [
 	 {
             "inventoryPath":"/system/chassis/motherboard/fan2",
+            "devAddress": "33-0050",
+            "driverType": "at24",
+            "busType": "i2c",
+            "concurrentlyMaintainable":true,
             "extraInterfaces":{
                "xyz.openbmc_project.Inventory.Item.Fan":null,
                "com.ibm.ipzvpd.Location":{
@@ -2430,6 +2442,10 @@
     "/sys/bus/i2c/drivers/at24/34-0050/eeprom": [
 	 {
             "inventoryPath":"/system/chassis/motherboard/fan3",
+            "devAddress": "34-0050",
+            "driverType": "at24",
+            "busType": "i2c",
+            "concurrentlyMaintainable":true,
             "extraInterfaces":{
                "xyz.openbmc_project.Inventory.Item.Fan":null,
                "com.ibm.ipzvpd.Location":{
