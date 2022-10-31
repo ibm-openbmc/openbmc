@@ -1,0 +1,14 @@
+[Unit]
+Description=Disable Host Tpm by default
+After=system-vpd.service
+After=xyz.openbmc_project.Settings.service
+ConditionFileNotEmpty=!/var/lib/phosphor-settings-manager/settings/xyz/openbmc_project/control/host0/TPMEnable__
+
+[Service]
+Restart=no
+ExecStart=/usr/bin/disableHostTpm.sh
+Type=oneshot
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
