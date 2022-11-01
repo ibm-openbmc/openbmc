@@ -69,6 +69,7 @@ FILES:${PN}-download-mgr += "${bindir}/phosphor-download-manager"
 FILES:${PN}-updater += " \
     ${bindir}/phosphor-image-updater \
     ${bindir}/obmc-flash-bmc \
+    ${bindir}/software-manager-tool \
     /usr/local \
     "
 FILES:${PN}-sync += " \
