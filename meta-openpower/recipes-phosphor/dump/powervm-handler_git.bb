@@ -12,7 +12,7 @@ PR = "r1"
 PV = "0.1+git${SRCPV}"
 
 SRC_URI = "git://github.com/ibm-openbmc/powervm-handler;branch=main"
-SRCREV = "842b5029cec03321d26801775aaa4ff532aa3f4d"
+SRCREV = "47d718de1b205d63a17f4c3d242dab9a687bc926"
 
 S = "${WORKDIR}/git"
 
@@ -27,4 +27,5 @@ DEPENDS += " \
         sdbusplus \
         systemd \
         "
-SYSTEMD_SERVICE:${PN} = "pvm_dump_offload.service"
+SYSTEMD_SERVICE:${PN} = "pvm_dump_offload@.service"
+FILES:${PN}:append = " ${systemd_system_unitdir}/* "
