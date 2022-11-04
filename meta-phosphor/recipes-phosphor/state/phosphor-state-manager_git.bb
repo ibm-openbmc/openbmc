@@ -65,7 +65,7 @@ EXTRA_OEMESON:append = " -Dtests=disabled"
 
 FILES:${PN}-host = "${bindir}/phosphor-host-state-manager"
 FILES:${PN}-host += "${libexecdir}/host-reboot"
-DBUS_SERVICE:${PN}-host += "xyz.openbmc_project.State.Host@.service"
+DBUS_SERVICE:${PN}-host += "xyz.openbmc_project.State.Host.service"
 DBUS_SERVICE:${PN}-host += "phosphor-reboot-host@.service"
 SYSTEMD_SERVICE:${PN}-host += "phosphor-reset-host-reboot-attempts@.service"
 SYSTEMD_SERVICE:${PN}-host += "phosphor-clear-one-time@.service"
@@ -73,7 +73,7 @@ SYSTEMD_SERVICE:${PN}-host += "phosphor-set-host-transition-to-running@.service"
 SYSTEMD_SERVICE:${PN}-host += "phosphor-set-host-transition-to-off@.service"
 
 FILES:${PN}-chassis = "${bindir}/phosphor-chassis-state-manager"
-DBUS_SERVICE:${PN}-chassis += "xyz.openbmc_project.State.Chassis@.service"
+DBUS_SERVICE:${PN}-chassis += "xyz.openbmc_project.State.Chassis.service"
 
 FILES:${PN}-chassis += "${bindir}/obmcutil"
 
@@ -106,7 +106,7 @@ FILES:${PN}-systemd-target-monitor = " \
 SYSTEMD_SERVICE:${PN}-systemd-target-monitor += "phosphor-systemd-target-monitor.service"
 
 FILES:${PN}-scheduled-host-transition = "${bindir}/phosphor-scheduled-host-transition"
-DBUS_SERVICE:${PN}-scheduled-host-transition += "xyz.openbmc_project.State.ScheduledHostTransition@.service"
+DBUS_SERVICE:${PN}-scheduled-host-transition += "xyz.openbmc_project.State.ScheduledHostTransition.service"
 
 FILES:${PN}-chassis-check-power-status = "${bindir}/phosphor-chassis-check-power-status"
 SYSTEMD_SERVICE:${PN}-chassis-check-power-status += "phosphor-chassis-check-power-status@.service"
@@ -125,8 +125,7 @@ CHASSIS_SYNCH_TARGETS = "start-pre start on stop-pre stop off reset-on"
 # - powered-off: Services to run once chassis power is off
 # - reset: Services to check chassis power state and update chassis "on" target
 # - hard-off: Services to force an immediate power off of the chassis
-# - blackout: Target to enter when chassis experiences blackout
-CHASSIS_ACTION_TARGETS = "poweron poweroff powered-off powerreset hard-poweroff blackout"
+CHASSIS_ACTION_TARGETS = "poweron poweroff powered-off powerreset hard-poweroff"
 
 # Track all host synchronization point targets
 # - start-pre:                 Services to run before we start host boot
@@ -200,7 +199,7 @@ SYSTEMD_LINK:${PN}-obmc-targets += "${@compose_list(d, 'FAN_LINK_FMT', 'OBMC_CHA
 SYSTEMD_LINK:${PN}-obmc-targets += "${@compose_list(d, 'QUIESCE_FMT', 'HOST_ERROR_TARGETS', 'OBMC_HOST_INSTANCES')}"
 
 
-SRC_URI += "git://github.com/openbmc/phosphor-state-manager;branch=master;protocol=https"
-SRCREV = "55324b49a0d9a27949809f06376404d6cd85cbd6"
+SRC_URI += "git://github.com/ibm-openbmc/phosphor-state-manager;nobranch=1;protocol=https"
+SRCREV = "7c865e8d4215561c313c809c4df5dcfd8331f6d7"
 
 S = "${WORKDIR}/git"
