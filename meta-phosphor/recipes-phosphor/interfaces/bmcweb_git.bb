@@ -12,16 +12,25 @@ DEPENDS = " \
     ${@bb.utils.contains('PTEST_ENABLED', '1', 'gtest', '', d)} \
     ${@bb.utils.contains('PTEST_ENABLED', '1', 'gmock', '', d)} \
 "
-SRCREV = "28f4b387a0f448f0be1b746a85fc58458ece8db3"
+SRCREV = "a195e684a30f24b2cb369eb76516da833ae85925"
 PV = "1.0+git${SRCPV}"
 
-SRC_URI = "git://github.com/openbmc/bmcweb.git;branch=master;protocol=https"
+SRC_URI = "git://github.com/ibm-openbmc/bmcweb.git;protocol=https;nobranch=1;protocol=https"
 SRC_URI += " \
     file://run-ptest \
 "
 
 S = "${WORKDIR}/git"
 SYSTEMD_SERVICE:${PN} += "bmcweb.service bmcweb.socket"
+
+do_install_ptest() {
+        install -d ${D}${PTEST_PATH}/test
+        cp -rf ${B}/*_test ${D}${PTEST_PATH}/test/
+}
+
+PACKAGECONFIG ??= ""
+
+FILES:${PN} += "${datadir}/** "
 
 inherit systemd
 inherit useradd
