@@ -1,0 +1,10 @@
+[Unit]
+Description=Monitor the AssetTag file for IPS
+After=system-vpd.service
+
+[Path]
+PathModified=/var/lib/phosphor-inventory-manager/xyz/openbmc_project/inventory/system/xyz.openbmc_project.Inventory.Decorator.AssetTag
+Unit=ips-update-asset-tag.service
+
+[Install]
+WantedBy=multi-user.target
