@@ -5,32 +5,25 @@ inherit openpower-dump
 PACKAGECONFIG:append:p10bmc = " host-dump-transport-pldm"
 PACKAGECONFIG:append:witherspoon-tacoma = " host-dump-transport-pldm"
 
-
 PACKAGECONFIG:append:p10bmc = " openpower-dumps-extension"
 PACKAGECONFIG:append:witherspoon-tacoma = " openpower-dumps-extension"
 
 SYSTEMD_SERVICE:${PN}-manager:p10bmc += "clear_hostdumps_poweroff.service"
 SYSTEMD_SERVICE:${PN}-manager:witherspoon-tacoma += "clear_hostdumps_poweroff.service"
-
+EXTRA_OEMESON:append:p10bmc = " -DHOSTBOOT_DUMP_PATH=${hostboot_dump_path} "
+EXTRA_OEMESON:append:p10bmc = " -DHOSTBOOT_DUMP_TMP_FILE_DIR=${hostboot_dump_temp_path} "
+EXTRA_OEMESON:append:p10bmc = " -DHARDWARE_DUMP_PATH=${hardware_dump_path} "
+EXTRA_OEMESON:append:p10bmc = " -DHARDWARE_DUMP_TMP_FILE_DIR=${hardware_dump_temp_path} "
+EXTRA_OEMESON:append:p10bmc = " -DBMC_DUMP_FILENAME_REGEX='BMCDUMP.([a-zA-Z0-9]+).([0-9]+).([0-9]+)'"
+EXTRA_OEMESON:append:p10bmc = " -DFILENAME_DUMP_ID_POS=2"
+EXTRA_OEMESON:append:p10bmc = " -DFILENAME_EPOCHTIME_POS=3"
 EXTRA_OEMESON:append:p10bmc = " -DBMC_DUMP_TOTAL_SIZE=409600"
-EXTRA_OEMESON:append:p10bmc = " -DBMC_DUMP_MAX_SIZE=20480"
-EXTRA_OEMESON:append:p10bmc += "-DHOSTBOOT_DUMP_PATH=${hostboot_dump_path}"
-EXTRA_OEMESON:append:p10bmc += "-DHOSTBOOT_DUMP_TMP_FILE_DIR=${hostboot_dump_temp_path}"
-
-EXTRA_OEMESON:append:p10bmc += "-DHARDWARE_DUMP_PATH=${hardware_dump_path}"
-EXTRA_OEMESON:append:p10bmc += "-DHARDWARE_DUMP_TMP_FILE_DIR=${hardware_dump_temp_path}"
-
-#Dump values is in KB
-EXTRA_OEMESON:append:p10bmc += "-DBMC_DUMP_MAX_SIZE=20480"
-EXTRA_OEMESON:append:p10bmc += "-DBMC_DUMP_TOTAL_SIZE=409600"
-
-SYSTEMD_SERVICE:${PN}-manager += "clear_hostdumps_poweroff.service"
 
 install_ibm_plugins() {
     install ${S}/tools/dreport.d/ibm.d/plugins.d/* ${D}${dreport_plugin_dir}/
 }
 
-#Link the plugins so that dreport can run them based on dump type
+#Link in the plugins so dreport run them at the appropriate time
 python link_ibm_plugins() {
     source = d.getVar('S', True)
     source_path = os.path.join(source, "tools", "dreport.d", "ibm.d", "plugins.d")
@@ -58,9 +51,8 @@ install_dump_package() {
     install -m 0755 ${S}/tools/dreport.d/ibm.d/package ${D}${dreport_include_dir}/
 }
 
-IBM_INSTALL_POSTFUNCS:append:witherspoon-tacoma = " install_ibm_plugins link_ibm_plugins"
-IBM_INSTALL_POSTFUNCS:append:p10bmc = " install_dreport_header \
-                                 install_gendumpinfo \
-                                 install_ibm_plugins link_ibm_plugins install_dump_package"
+IBM_INSTALL_POSTFUNCS = "install_ibm_plugins link_ibm_plugins"
+IBM_INSTALL_POSTFUNCS:p10bmc += "install_dreport_header install_gendumpinfo install_dump_package"
+IBM_INSTALL_POSTFUNCS:witherspoon-tacoma += "install_dreport_header"
 
 do_install[postfuncs] += "${IBM_INSTALL_POSTFUNCS}"
