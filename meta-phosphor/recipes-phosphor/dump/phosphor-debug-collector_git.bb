@@ -15,12 +15,6 @@ DEPENDS += " \
         ${PYTHON_PN}-setuptools-native \
         ${PYTHON_PN}-mako-native \
         fmt \
-        pldm \
-        ${PYTHON_PN}-native \
-        ${PYTHON_PN}-pyyaml-native \
-        ${PYTHON_PN}-setuptools-native \
-        ${PYTHON_PN}-mako-native \
-        pldm \
 "
 PACKAGECONFIG ??= "${@bb.utils.contains_any('DISTRO_FEATURES', \
          'obmc-ubi-fs phosphor-mmc', '', 'jffs-workaround', d)}"
@@ -38,9 +32,6 @@ PV = "1.0+git${SRCPV}"
 PR = "r1"
 
 SRC_URI += "file://coretemp.conf"
-SRC_URI += "file://dumpoffloadtemp.conf"
-
-
 
 SYSTEMD_PACKAGES = "${PN}-monitor"
 SYSTEMD_SUBSTITUTIONS += "BMC_DUMP_PATH:${bmc_dump_path}:${MGR_SVC}"
@@ -61,8 +52,6 @@ EXTRA_OEMESON = " \
 do_install:append() {
     install -d ${D}${exec_prefix}/lib/tmpfiles.d
     install -m 644 ${WORKDIR}/coretemp.conf ${D}${exec_prefix}/lib/tmpfiles.d/
-    install -m 644 ${WORKDIR}/dumpoffloadtemp.conf ${D}${exec_prefix}/lib/tmpfiles.d/
-
 }
 do_install[postfuncs] += "install_dreport"
 do_install[postfuncs] += "install_dreport_conf_file"
@@ -87,7 +76,6 @@ FILES:${PN}-manager += " \
     ${bindir}/phosphor-dump-manager \
     ${bindir}/phosphor-offload-handler \
     ${exec_prefix}/lib/tmpfiles.d/coretemp.conf \
-    ${exec_prefix}/lib/tmpfiles.d/dumpoffloadtemp.conf \
     ${datadir}/dump/ \
     "
 FILES:${PN}-monitor += "${bindir}/phosphor-dump-monitor"
@@ -134,17 +122,9 @@ install_dreport_plugins_scripts() {
 # From tools/dreport.d/include.d to /usr/share/dreport.d/include.d
 install_dreport_include_scripts() {
     install -d ${D}${dreport_include_dir}
-    install -m 0755 ${S}/tools/dreport.d/include.d/functions \
+    install -m 0755 ${S}/tools/dreport.d/include.d/* \
                 ${D}${dreport_include_dir}/
 }
-
-# Install dcommon script
-# From tools/dreport.d/dcommon to /usr/share/dreport.d/dcommon
-install_dcommon_script() {
-    install -d ${D}${dreport_dir}
-    install -m 0755 ${S}/tools/dreport.d/include.d/dcommon ${D}${dreport_dir}/
-}
-
 # Make the links for a single user plugin script
 # Create user directories based on the dump type value in the config section
 # Create softlinks for the base scripts in the user directories
@@ -197,25 +177,3 @@ python install_dreport_user_scripts() {
         srcname = os.path.join(source_path, script)
         install_dreport_user_script(srcname, d)
 }
-
-PACKAGECONFIG ??= "${@bb.utils.contains_any('DISTRO_FEATURES', \
-         'obmc-ubi-fs phosphor-mmc', '', 'jffs-workaround', d)}"
-PACKAGECONFIG[jffs-workaround] = "-Djffs-workaround=enabled, \
-        -Djffs-workaround=disabled"
-
-PACKAGECONFIG[host-dump-transport-pldm] = " \
-        -Dhost-transport=pldm,, \
-        pldm \
-        "
-
-PACKAGECONFIG[openpower-dumps-extension] = " \
-       -Dopenpower-dumps-extension=enabled, \
-       -Dopenpower-dumps-extension=disabled  \
-"
-
-do_install[postfuncs] += "install_dreport"
-do_install[postfuncs] += "install_dreport_conf_file"
-do_install[postfuncs] += "install_dreport_plugins_scripts"
-do_install[postfuncs] += "install_dreport_include_scripts"
-do_install[postfuncs] += "install_dreport_user_scripts"
-do_install[postfuncs] += "install_dcommon_script"
