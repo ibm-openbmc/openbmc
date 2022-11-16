@@ -22,12 +22,6 @@ EXTRA_OEMESON:append:witherspoon-tacoma = " \
 "
 
 EXTRA_OEMESON:append:p10bmc = " \
-    -Dibm-led-extensions=enabled \
-    -Dhw-isolation=enabled \
-    -Dhypervisor-serial-socket=enabled \
-    -Dbmc-shell-socket=enabled \
-    -Dredfish-license=enabled \
-    -Dibm-usb-code-update=enabled \
     -Dkvm=disabled \
     -Dvm-websocket=disabled \
 "
@@ -42,4 +36,3 @@ inherit obmc-phosphor-discovery-service
 
 REGISTERED_SERVICES:${PN} += "obmc_redfish:tcp:443:"
 REGISTERED_SERVICES:${PN} += "obmc_rest:tcp:443:"
-PACKAGECONFIG = "ibm-mc-console"
