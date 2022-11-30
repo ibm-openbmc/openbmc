@@ -4,7 +4,6 @@ DEPENDS = " \
     openssl \
     zlib \
     boost \
-    boost-url \
     libpam \
     sdbusplus \
     gtest \
