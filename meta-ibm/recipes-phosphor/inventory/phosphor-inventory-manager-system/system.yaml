@@ -1,0 +1,13 @@
+events:
+    - name: Add System interface
+      description: >
+          Add the system interface on the system inventory path
+      type: startup
+      actions:
+          - name: createObjects
+            objs:
+              /system:
+                xyz.openbmc_project.Inventory.Decorator.Asset:
+                  Manufacturer:
+                    value: "Inspur Power Systems"
+                    type: string
