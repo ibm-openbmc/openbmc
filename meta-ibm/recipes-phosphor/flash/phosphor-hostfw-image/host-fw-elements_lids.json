@@ -49,7 +49,8 @@
             "platform" : "p10_all",
             "description" : "EECACHE desc",
             "comment" : "NA",
-            "not_supported_yet" : "false"
+            "not_supported_yet" : "false",
+            "zero_CRC_in_fips_hdr" : "false"
         },
         {
             "element_name": "HBB",
@@ -59,7 +60,8 @@
             "platform" : "p10_all",
             "description" : "HBB desc",
             "comment" : "NA",
-            "not_supported_yet" : "false"
+            "not_supported_yet" : "false",
+            "zero_CRC_in_fips_hdr" : "false"
         },
         {
             "element_name": "HBBL",
@@ -189,7 +191,8 @@
             "platform" : "p10_all",
             "description" : "GUARD",
             "comment" : "NA",
-            "not_supported_yet" : "false"
+            "not_supported_yet" : "false",
+            "zero_CRC_in_fips_hdr" : "false"
         },
         {
             "element_name": "HBEL",
@@ -199,7 +202,8 @@
             "platform" : "p10_all",
             "description" : "HBEL",
             "comment" : "NA",
-            "not_supported_yet" : "false"
+            "not_supported_yet" : "false",
+            "zero_CRC_in_fips_hdr" : "false"
         },
         {
             "element_name": "NVRAM",
@@ -209,7 +213,8 @@
             "platform" : "p10_all",
             "description" : "NVRAM",
             "comment" : "NA",
-            "not_supported_yet" : "false"
+            "not_supported_yet" : "false",
+            "zero_CRC_in_fips_hdr" : "false"
         },
         {
             "element_name": "SECBOOT",
@@ -219,7 +224,8 @@
             "platform" : "p10_all",
             "description" : "SECBOOT",
             "comment" : "NA",
-            "not_supported_yet" : "false"
+            "not_supported_yet" : "false",
+            "zero_CRC_in_fips_hdr" : "false"
         },
         {
             "element_name": "BMC_INV",
@@ -228,7 +234,7 @@
             "order": "99",
             "platform" : "p10_all",
             "description" : "BMC inventory",
-            "comment" : "is this still needed?",
+            "comment" : "Not used since p8.. is a lid still needed?",
             "not_supported_yet" : "false"
         },
         {
@@ -361,7 +367,8 @@
             "platform" : "p10_all",
             "description" : "EECACHE",
             "comment" : "NA",
-            "not_supported_yet" : "false"
+            "not_supported_yet" : "false",
+            "zero_CRC_in_fips_hdr" : "false"
         },
         {
             "element_name": "HBB.P10",
@@ -371,7 +378,8 @@
             "platform" : "p10_all",
             "description" : "HBB",
             "comment" : "NA",
-            "not_supported_yet" : "false"
+            "not_supported_yet" : "false",
+            "zero_CRC_in_fips_hdr" : "false"
         },
         {
             "element_name": "HBBL.P10",
@@ -573,7 +581,8 @@
             "platform" : "p10_all",
             "description" : "Guard",
             "comment" : "NA",
-            "not_supported_yet" : "false"
+            "not_supported_yet" : "false",
+            "zero_CRC_in_fips_hdr" : "false"
         },
         {
             "element_name": "HBEL.P10",
@@ -583,7 +592,8 @@
             "platform" : "p10_all",
             "description" : "HBEL",
             "comment" : "NA",
-            "not_supported_yet" : "false"
+            "not_supported_yet" : "false",
+            "zero_CRC_in_fips_hdr" : "false"
         },
         {
             "element_name": "NVRAM.P10",
@@ -593,7 +603,8 @@
             "platform" : "p10_all",
             "description" : "NVRAM",
             "comment" : "NA",
-            "not_supported_yet" : "false"
+            "not_supported_yet" : "false",
+            "zero_CRC_in_fips_hdr" : "false"
         },
         {
             "element_name": "SECBOOT.P10",
@@ -603,7 +614,8 @@
             "platform" : "p10_all",
             "description" : "SECBOOT",
             "comment" : "NA",
-            "not_supported_yet" : "false"
+            "not_supported_yet" : "false",
+            "zero_CRC_in_fips_hdr" : "false"
         },
         {
             "element_name": "BMC_INV.P10",
@@ -631,8 +643,8 @@
             "short_lid_name": "81e00670",
             "order": "99",
             "platform" : "p10_all",
-            "description" : "part (legacy from pnor.squashfs)",
-            "comment" : "transition image - do not need to lid-ify and sign",
+            "description" : "part",
+            "comment" : "mbox is needed to load HBB into memory, so this element is still required (at least through p10)",
             "not_supported_yet" : "false"
         },
         {
@@ -641,7 +653,7 @@
             "short_lid_name": "81e00670",
             "order": "99",
             "platform" : "p10_all",
-            "description" : "PART",
+            "description" : "See description for element_name, part",
             "comment" : "NA",
             "not_supported_yet" : "false"
         },
@@ -651,8 +663,8 @@
             "short_lid_name": "81e00994",
             "order": "99",
             "platform" : "p10_all",
-            "description" : "PNOR toc (legacy)",
-            "comment" : "transition image - do not need to lid-ify and sign, so 81e00994 is a dummy placeholder lid",
+            "description" : "PNOR toc",
+            "comment" : "mbox is needed to load HBB into memory, so this element is still required (at least through p10)",
             "not_supported_yet" : "false"
         },
         {
@@ -662,7 +674,7 @@
             "order": "99",
             "platform" : "p10_all",
             "description" : "PNOR toc",
-            "comment" : "transition image - do not need to lid-ify and sign",
+            "comment" : "See description for pnor.toc",
             "not_supported_yet" : "false"
         },
         {
@@ -736,43 +748,18 @@
             "not_supported_yet" : "false" 
         },
         {    
-            "element_name": "HBD_RW.RAINIER_2U_XML.iplTime", 
+            "element_name": "HBD_RW.iplTime", 
             "container_text_name": "NOSBCNTI", 
             "short_lid_name": "81e00676", 
             "order": "99", 
-            "platform" : "p10le", 
-            "description" : "HBD_RW 2U - ipl-time lid", 
-            "comment" : "There is no run-time equivalent, so thus there are only model-specific entries", 
+            "platform" : "p10_all", 
+            "description" : "HBD_RW ipl-time lid", 
+            "comment" : "There is no run-time equivalent and no model-specific versions of this binary", 
             "not_supported_yet" : "false",
-            "model_specific_elements" : "true",
-            "strip_string" : ".RAINIER_2U_XML.iplTime",
-            "optional_element" : "true"
-        },
-        {    
-            "element_name": "HBD_RW.RAINIER_4U_XML.iplTime", 
-            "container_text_name": "NOSBCNTI", 
-            "short_lid_name": "81e00683", 
-            "order": "99", 
-            "platform" : "p10le", 
-            "description" : "HBD_RW 4U -ipl time lid", 
-            "comment" : "NA", 
-            "not_supported_yet" : "false",
-            "model_specific_elements" : "true",
-            "strip_string" : ".RAINIER_4U_XML.iplTime",
-            "optional_element" : "true"
-        },
-        {    
-            "element_name": "HBD_RW.EVEREST_XML.iplTime", 
-            "container_text_name": "NOSBCNTI", 
-            "short_lid_name": "81e00684", 
-            "order": "99", 
-            "platform" : "p10mr", 
-            "description" : "HBD everest -ipl time lid", 
-            "comment" : "NA", 
-            "not_supported_yet" : "false",
-            "model_specific_elements" : "true",
-            "strip_string" : ".EVEREST_XML.iplTime",
-            "optional_element" : "true"
+            "model_specific_elements" : "false",
+            "ipltime_only" : "true",
+            "strip_string" : ".content",
+            "zero_CRC_in_fips_hdr" : "false"
         },
         {    
             "element_name": "HBRT.iplTime", 
@@ -841,6 +828,16 @@
             "order": "99", 
             "platform" : "p10_all", 
             "description" : "HBICORE_SYMS-ipl time lid", 
+            "comment" : "NA", 
+            "not_supported_yet" : "false" 
+        },
+        {    
+            "element_name": "OCCSTRINGFILE.iplTime", 
+            "container_text_name": "NOSBCNTI", 
+            "short_lid_name": "81e00687", 
+            "order": "99", 
+            "platform" : "p10_all", 
+            "description" : "OCC string file -ipl time lid", 
             "comment" : "NA", 
             "not_supported_yet" : "false" 
         },
