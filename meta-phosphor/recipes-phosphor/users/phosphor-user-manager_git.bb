@@ -9,11 +9,11 @@ DEPENDS += "phosphor-dbus-interfaces"
 DEPENDS += "boost"
 DEPENDS += "nss-pam-ldapd"
 DEPENDS += "systemd"
-SRCREV = "e47c09d3cce9391b96453778caa98deb97e88988"
+SRCREV = "0154677425f9b004d56290e871f5638412629403"
 PV = "1.0+git${SRCPV}"
 PR = "r1"
 
-SRC_URI += "git://github.com/openbmc/phosphor-user-manager;branch=master;protocol=https"
+SRC_URI += "git://github.com/ibm-openbmc/phosphor-user-manager;nobranch=1;protocol=https"
 
 S = "${WORKDIR}/git"
 
