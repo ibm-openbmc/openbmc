@@ -11,6 +11,7 @@ PACKAGECONFIG = "\
         sysusers \
         timedated \
         timesyncd \
+        sysvinit \
         zstd \
         "
 
