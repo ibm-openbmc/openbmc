@@ -6,6 +6,7 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=e3fc50a88d0a364313df4b21ef20c29e"
 DEPENDS += "sdbusplus"
 DEPENDS += "phosphor-logging"
 DEPENDS += "phosphor-dbus-interfaces"
+DEPENDS += "bash"
 DEPENDS += "boost"
 DEPENDS += "nss-pam-ldapd"
 DEPENDS += "systemd"
@@ -15,6 +16,7 @@ PR = "r1"
 
 SRC_URI = "git://github.com/openbmc/phosphor-user-manager;branch=master;protocol=https"
 SRC_URI += "file://upgrade_hostconsole_group.sh"
+SRC_URI += "file://upgrade_ibm_service_account.sh"
 
 S = "${WORKDIR}/git"
 
@@ -27,7 +29,13 @@ EXTRA_OEMESON = "-Dtests=disabled"
 do_install:append() {
   install -d ${D}${libexecdir}
   install -m 0755 ${WORKDIR}/upgrade_hostconsole_group.sh ${D}${libexecdir}/upgrade_hostconsole_group.sh
+  install -d ${D}/home/service
+  echo "/usr/bin/sudo -s;exit" >${D}/home/service/.profile
+  install -d ${D}${bindir}
+  install -m 0755 ${WORKDIR}/upgrade_ibm_service_account.sh ${D}${bindir}/upgrade_ibm_service_account.sh
 }
+
+RDEPENDS:${PN} += "bash"
 
 FILES:phosphor-ldap += " \
         ${bindir}/phosphor-ldap-conf \
@@ -37,6 +45,7 @@ FILES:${PN} += " \
         ${datadir}/dbus-1 \
         ${datadir}/phosphor-certificate-manager \
 "
+FILES:${PN} += " /home/service/.profile "
 
 USERADD_PACKAGES = "${PN} phosphor-ldap"
 
