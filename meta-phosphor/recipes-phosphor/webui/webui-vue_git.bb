@@ -9,13 +9,13 @@
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=e3fc50a88d0a364313df4b21ef20c29e"
 DEPENDS:prepend = "nodejs-native "
-SRCREV = "0f6147ca2518bd7401e94e5551322a7892e27d77"
+SRCREV = "203a27a3dc33eae03f0e250478d3f304a8dceda5"
 PV = "1.0+git${SRCPV}"
 # This recipe requires online access to build, as it uses NPM for dependency
 # management and resolution.
 PR = "r1"
 
-SRC_URI = "git://github.com/openbmc/webui-vue.git;branch=master;protocol=https"
+SRC_URI = "git://github.com/ibm-openbmc/webui-vue.git;nobranch=1;protocol=https"
 
 S = "${WORKDIR}/git"
 
