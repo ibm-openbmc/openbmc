@@ -42,6 +42,7 @@ DEPENDS += " \
          ${PYTHON_PN}-mako-native \
          boost \
          libgpiod \
+         phosphor-dbus-interfaces \
          "
 
 # The monitor packages use an org.open_power D-Bus interface and so
