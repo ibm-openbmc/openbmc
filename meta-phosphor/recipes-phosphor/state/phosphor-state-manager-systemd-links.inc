@@ -1,172 +1,112 @@
+DEFAULT_TARGETS = " \
+    multi-user.target.requires/obmc-host-reset@{}.target \
+    multi-user.target.wants/phosphor-discover-system-state@{}.service \
+    obmc-chassis-poweron@{}.target.wants/phosphor-reset-host-recovery@{}.service \
+    obmc-chassis-poweron@{}.target.requires/obmc-power-start@{}.service \
+    obmc-chassis-poweroff@{}.target.requires/obmc-power-stop@{}.service \
+    obmc-chassis-poweroff@{}.target.requires/obmc-powered-off@{}.service \
+    obmc-host-start@{}.target.requires/obmc-host-startmin@{}.target \
+    obmc-host-start@{}.target.requires/phosphor-reset-host-reboot-attempts@{}.service \
+    obmc-host-startmin@{}.target.wants/phosphor-set-host-transition-to-running@{}.service \
+    obmc-host-stop@{}.target.wants/phosphor-set-host-transition-to-off@{}.service \
+    obmc-host-reset@{}.target.requires/phosphor-reset-host-running@{}.service \
+    obmc-host-stop@{}.target.wants/phosphor-reset-sensor-states@{}.service \
+    obmc-host-graceful-quiesce@{}.target.wants/obmc-host-quiesce@{}.target \
+    obmc-host-graceful-quiesce@{}.target.wants/pldmSoftPowerOff.service \
+    obmc-host-quiesce@{}.target.wants/phosphor-reset-sensor-states@{}.service \
+    obmc-host-shutdown@{}.target.requires/obmc-chassis-poweroff@{}.target \
+    obmc-host-reboot@{}.target.requires/obmc-host-shutdown@{}.target \
+    obmc-host-reboot@{}.target.requires/phosphor-reboot-host@{}.service \
+    obmc-host-warm-reboot@{}.target.requires/xyz.openbmc_project.Ipmi.Internal.SoftPowerOff.service \
+    obmc-host-force-warm-reboot@{}.target.requires/obmc-host-stop@{}.target \
+    obmc-host-force-warm-reboot@{}.target.requires/phosphor-reboot-host@{}.service \
+    obmc-host-warm-reboot@{}.target.requires/obmc-host-force-warm-reboot@{}.target \
+    obmc-chassis-poweroff@{}.target.wants/phosphor-clear-one-time@{}.service \
+    obmc-chassis-blackout@{}.target.wants/phosphor-reset-sensor-states@{}.service \
+    obmc-chassis-powerreset@{}.target.requires/phosphor-reset-chassis-on@{}.service \
+    obmc-chassis-powerreset@{}.target.requires/phosphor-reset-chassis-running@{}.service \
+"
+
+# TODO: There are some targets that are chassis oriented, but there is no
+#       obvious way to map HOST<->CHASSIS relationships.  Making an assumption
+#       currently that there is a 1-to-1 relationship between the two.
+
 pkg_postinst:${PN}-obmc-targets:append() {
-
-    mkdir -p $D$systemd_system_unitdir/multi-user.target.requires
-    LINK="$D$systemd_system_unitdir/multi-user.target.requires/obmc-host-reset@0.target"
-    TARGET="../obmc-host-reset@.target"
-    ln -s $TARGET $LINK
-
-    LINK="$D$systemd_system_unitdir/multi-user.target.wants/phosphor-discover-system-state@0.service"
-    TARGET="../phosphor-discover-system-state@.service"
-    ln -s $TARGET $LINK
-
-    LINK="$D$systemd_system_unitdir/obmc-bmc-service-quiesce@0.target"
-    TARGET="./obmc-bmc-service-quiesce@.target"
-    ln -s $TARGET $LINK
-
-    mkdir -p $D$systemd_system_unitdir/obmc-chassis-poweron@0.target.wants
-    LINK="$D$systemd_system_unitdir/obmc-chassis-poweron@0.target.wants/phosphor-reset-host-recovery@0.service"
-    TARGET="../phosphor-reset-host-recovery@.service"
-    ln -s $TARGET $LINK
-
-    mkdir -p $D$systemd_system_unitdir/obmc-host-start@0.target.requires
-    LINK="$D$systemd_system_unitdir/obmc-host-start@0.target.requires/obmc-host-startmin@0.target"
-    TARGET="../obmc-host-startmin@.target"
-    ln -s $TARGET $LINK
-
-    LINK="$D$systemd_system_unitdir/obmc-host-start@0.target.requires/phosphor-reset-host-reboot-attempts@0.service"
-    TARGET="../phosphor-reset-host-reboot-attempts@.service"
-    ln -s $TARGET $LINK
-
-    mkdir -p $D$systemd_system_unitdir/obmc-host-startmin@0.target.wants
-    LINK="$D$systemd_system_unitdir/obmc-host-startmin@0.target.wants/phosphor-set-host-transition-to-running@0.service"
-    TARGET="../phosphor-set-host-transition-to-running@.service"
-    ln -s $TARGET $LINK
-
-    mkdir -p $D$systemd_system_unitdir/obmc-host-stop@0.target.wants
-    LINK="$D$systemd_system_unitdir/obmc-host-stop@0.target.wants/phosphor-set-host-transition-to-off@0.service"
-    TARGET="../phosphor-set-host-transition-to-off@.service"
-    ln -s $TARGET $LINK
-
-    mkdir -p $D$systemd_system_unitdir/obmc-host-reset@0.target.requires
-    LINK="$D$systemd_system_unitdir/obmc-host-reset@0.target.requires/phosphor-reset-host-running@0.service"
-    TARGET="../phosphor-reset-host-running@.service"
-    ln -s $TARGET $LINK
-
-    mkdir -p $D$systemd_system_unitdir/obmc-host-stop@0.target.wants
-    LINK="$D$systemd_system_unitdir/obmc-host-stop@0.target.wants/phosphor-reset-sensor-states@0.service"
-    TARGET="../phosphor-reset-sensor-states@.service"
-    ln -s $TARGET $LINK
-
-    mkdir -p $D$systemd_system_unitdir/obmc-host-quiesce@0.target.wants
-    LINK="$D$systemd_system_unitdir/obmc-host-quiesce@0.target.wants/phosphor-reset-sensor-states@0.service"
-    TARGET="../phosphor-reset-sensor-states@.service"
-    ln -s $TARGET $LINK
-
-    mkdir -p $D$systemd_system_unitdir/obmc-host-shutdown@0.target.requires
-    LINK="$D$systemd_system_unitdir/obmc-host-shutdown@0.target.requires/obmc-chassis-poweroff@0.target"
-    TARGET="../obmc-chassis-poweroff@.target"
-    ln -s $TARGET $LINK
-
-    mkdir -p $D$systemd_system_unitdir/obmc-host-reboot@0.target.requires
-    LINK="$D$systemd_system_unitdir/obmc-host-reboot@0.target.requires/obmc-host-shutdown@0.target"
-    TARGET="../obmc-host-shutdown@.target"
-    ln -s $TARGET $LINK
-
-    LINK="$D$systemd_system_unitdir/obmc-host-reboot@0.target.requires/phosphor-reboot-host@0.service"
-    TARGET="../phosphor-reboot-host@.service"
-    ln -s $TARGET $LINK
-
-    mkdir -p $D$systemd_system_unitdir/obmc-host-warm-reboot@0.target.requires
-    LINK="$D$systemd_system_unitdir/obmc-host-warm-reboot@0.target.requires/xyz.openbmc_project.Ipmi.Internal.SoftPowerOff.service"
-    TARGET="../xyz.openbmc_project.Ipmi.Internal.SoftPowerOff.service"
-    ln -s $TARGET $LINK
-
-    mkdir -p $D$systemd_system_unitdir/obmc-host-force-warm-reboot@0.target.requires
-    LINK="$D$systemd_system_unitdir/obmc-host-force-warm-reboot@0.target.requires/obmc-host-stop@0.target"
-    TARGET="../obmc-host-stop@.target"
-    ln -s $TARGET $LINK
-
-    LINK="$D$systemd_system_unitdir/obmc-host-force-warm-reboot@0.target.requires/phosphor-reboot-host@0.service"
-    TARGET="../phosphor-reboot-host@.service"
-    ln -s $TARGET $LINK
-
-    LINK="$D$systemd_system_unitdir/obmc-host-warm-reboot@0.target.requires/obmc-host-force-warm-reboot@0.target"
-    TARGET="../obmc-host-force-warm-reboot@.target"
-    ln -s $TARGET $LINK
-
-    mkdir -p $D$systemd_system_unitdir/obmc-chassis-poweroff@0.target.wants
-    LINK="$D$systemd_system_unitdir/obmc-chassis-poweroff@0.target.wants/phosphor-clear-one-time@0.service"
-    TARGET="../phosphor-clear-one-time@.service"
-    ln -s $TARGET $LINK
-
-    mkdir -p $D$systemd_system_unitdir/obmc-host-graceful-quiesce@0.target.wants
-    LINK="$D$systemd_system_unitdir/obmc-host-graceful-quiesce@0.target.wants/obmc-host-quiesce@0.target"
-    TARGET="../obmc-host-quiesce@.target"
-    ln -s $TARGET $LINK
-
-    mkdir -p $D$systemd_system_unitdir/obmc-host-graceful-quiesce@0.target.wants
-    LINK="$D$systemd_system_unitdir/obmc-host-graceful-quiesce@0.target.wants/pldmSoftPowerOff.service"
-    TARGET="../pldmSoftPowerOff.service"
-    ln -s $TARGET $LINK
-}
-
-pkg_postinst:${PN}-chassis-check-power-status:append() {
-
-    mkdir -p $D$systemd_system_unitdir/obmc-chassis-poweron@0.target.requires
-    LINK="$D$systemd_system_unitdir/obmc-chassis-poweron@0.target.requires/phosphor-chassis-check-power-status@0.service"
-    TARGET="../phosphor-chassis-check-power-status@.service"
-    ln -s $TARGET $LINK
+    for i in ${OBMC_HOST_INSTANCES};
+    do
+        for j in ${DEFAULT_TARGETS};
+        do
+            LINK="$D$systemd_system_unitdir/${j}"
+            LINK="$(echo ${LINK} | sed s/{}/${i}/g )"
+            TARGET="../$(basename ${j} | sed s/{}//g )"
+            mkdir -p "$(dirname ${LINK})"
+            ln -s "${TARGET}" "${LINK}"
+        done
+    done
 }
 
 pkg_prerm:${PN}-obmc-targets:append() {
+    for i in ${OBMC_HOST_INSTANCES};
+    do
+        for j in ${DEFAULT_TARGETS};
+        do
+            LINK="$D$systemd_system_unitdir/${j}"
+            LINK="$(echo ${LINK} | sed s/{}/${i}/g )"
+            rm "${LINK}"
+        done
+    done
+}
 
-    LINK="$D$systemd_system_unitdir/multi-user.target.requires/obmc-host-reset@0.target"
-    rm $LINK
+pkg_postinst:${PN}-chassis:append() {
+    for i in ${OBMC_CHASSIS_INSTANCES};
+    do
+        mkdir -p $D$systemd_system_unitdir/multi-user.target.requires
+        LINK="$D$systemd_system_unitdir/multi-user.target.requires/xyz.openbmc_project.State.Chassis@${i}.service"
+        TARGET="../xyz.openbmc_project.State.Chassis@.service"
+        ln -s $TARGET $LINK
+    done
+}
 
-    LINK="$D$systemd_system_unitdir/multi-user.target.wants/phosphor-discover-system-state@0.service"
-    rm $LINK
+pkg_prerm:${PN}-chassis:append() {
+    for i in ${OBMC_CHASSIS_INSTANCES};
+    do
+        LINK="$D$systemd_system_unitdir/multi-user.target.requires/xyz.openbmc_project.State.Chassis@${i}.service"
+        rm $LINK
+    done
+}
 
-    LINK="$D$systemd_system_unitdir/obmc-chassis-poweron@0.target.wants/phosphor-reset-host-recovery@0.service"
-    rm $LINK
-
-    LINK="$D$systemd_system_unitdir/obmc-host-start@0.target.requires/obmc-host-startmin@0.target"
-    rm $LINK
-
-    LINK="$D$systemd_system_unitdir/obmc-host-start@0.target.requires/phosphor-reset-host-reboot-attempts@0.service"
-    rm $LINK
-
-    LINK="$D$systemd_system_unitdir/obmc-host-startmin@0.target.wants/phosphor-set-host-transition-to-running@0.service"
-    rm $LINK
-
-    LINK="$D$systemd_system_unitdir/obmc-host-stop@0.target.wants/phosphor-set-host-transition-to-off@0.service"
-    rm $LINK
-
-    LINK="$D$systemd_system_unitdir/obmc-host-stop@0.target.wants/phosphor-reset-sensor-states@0.service"
-    rm $LINK
-
-    LINK="$D$systemd_system_unitdir/obmc-host-quiesce@0.target.wants/phosphor-reset-sensor-states@0.service"
-    rm $LINK
-
-    LINK="$D$systemd_system_unitdir/obmc-host-reset@0.target.requires/phosphor-reset-host-running@0.service"
-    rm $LINK
-
-    LINK="$D$systemd_system_unitdir/obmc-host-shutdown@0.target.requires/obmc-chassis-poweroff@0.target"
-    rm $LINK
-
-    LINK="$D$systemd_system_unitdir/obmc-host-reboot@0.target.requires/obmc-host-shutdown@0.target"
-    rm $LINK
-
-    LINK="$D$systemd_system_unitdir/obmc-host-reboot@0.target.requires/phosphor-reboot-host@0.service"
-    rm $LINK
-
-    LINK="$D$systemd_system_unitdir/obmc-host-warm-reboot@0.target.requires/xyz.openbmc_project.Ipmi.Internal.SoftPowerOff.service"
-    rm $LINK
-
-    LINK="$D$systemd_system_unitdir/obmc-host-force-warm-reboot@0.target.requires/obmc-host-stop@0.target"
-    rm $LINK
-
-    LINK="$D$systemd_system_unitdir/obmc-host-force-warm-reboot@0.target.requires/phosphor-reboot-host@0.service"
-    rm $LINK
-
-    LINK="$D$systemd_system_unitdir/obmc-host-warm-reboot@0.target.requires/obmc-host-force-warm-reboot@0.target"
-    rm $LINK
-
-    LINK="$D$systemd_system_unitdir/obmc-chassis-poweroff@0.target.wants/phosphor-clear-one-time@0.service"
-    rm $LINK
+pkg_postinst:${PN}-chassis-check-power-status:append() {
+    for i in ${OBMC_HOST_INSTANCES};
+    do
+        mkdir -p $D$systemd_system_unitdir/obmc-chassis-poweron@${i}.target.requires
+        LINK="$D$systemd_system_unitdir/obmc-chassis-poweron@${i}.target.requires/phosphor-chassis-check-power-status@${i}.service"
+        TARGET="../phosphor-chassis-check-power-status@.service"
+        ln -s $TARGET $LINK
+    done
 }
 
 pkg_prerm:${PN}-chassis-check-power-status:append() {
+    for i in ${OBMC_HOST_INSTANCES};
+    do
+        LINK="$D$systemd_system_unitdir/obmc-chassis-poweron@${i}.target.requires/phosphor-chassis-check-power-status@${i}.service"
+        rm $LINK
+    done
+}
 
-    LINK="$D$systemd_system_unitdir/obmc-chassis-poweron@0.target.requires/phosphor-chassis-check-power-status@0.service"
-    rm $LINK
+pkg_postinst:${PN}-host:append() {
+    for i in ${OBMC_HOST_INSTANCES};
+    do
+        mkdir -p $D$systemd_system_unitdir/multi-user.target.requires
+        LINK="$D$systemd_system_unitdir/multi-user.target.requires/xyz.openbmc_project.State.Host@${i}.service"
+        TARGET="../xyz.openbmc_project.State.Host@.service"
+        ln -s $TARGET $LINK
+    done
+}
+
+pkg_prerm:${PN}-host:append() {
+    for i in ${OBMC_HOST_INSTANCES};
+    do
+        LINK="$D$systemd_system_unitdir/multi-user.target.requires/xyz.openbmc_project.State.Host@${i}.service"
+        rm $LINK
+    done
 }

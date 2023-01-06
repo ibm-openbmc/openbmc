@@ -65,7 +65,7 @@ EXTRA_OEMESON:append = " -Dtests=disabled"
 
 FILES:${PN}-host = "${bindir}/phosphor-host-state-manager"
 FILES:${PN}-host += "${libexecdir}/host-reboot"
-DBUS_SERVICE:${PN}-host += "xyz.openbmc_project.State.Host.service"
+DBUS_SERVICE:${PN}-host += "xyz.openbmc_project.State.Host@.service"
 DBUS_SERVICE:${PN}-host += "phosphor-reboot-host@.service"
 SYSTEMD_SERVICE:${PN}-host += "phosphor-reset-host-reboot-attempts@.service"
 SYSTEMD_SERVICE:${PN}-host += "phosphor-clear-one-time@.service"
@@ -73,7 +73,12 @@ SYSTEMD_SERVICE:${PN}-host += "phosphor-set-host-transition-to-running@.service"
 SYSTEMD_SERVICE:${PN}-host += "phosphor-set-host-transition-to-off@.service"
 
 FILES:${PN}-chassis = "${bindir}/phosphor-chassis-state-manager"
-DBUS_SERVICE:${PN}-chassis += "xyz.openbmc_project.State.Chassis.service"
+DBUS_SERVICE:${PN}-chassis += "xyz.openbmc_project.State.Chassis@.service"
+SYSTEMD_SERVICE:${PN}-chassis += "obmc-power-start@.service"
+SYSTEMD_SERVICE:${PN}-chassis += "obmc-power-stop@.service"
+SYSTEMD_SERVICE:${PN}-chassis += "obmc-powered-off@.service"
+SYSTEMD_SERVICE:${PN}-chassis += "phosphor-reset-chassis-on@.service"
+SYSTEMD_SERVICE:${PN}-chassis += "phosphor-reset-chassis-running@.service"
 
 FILES:${PN}-chassis += "${bindir}/obmcutil"
 
@@ -106,7 +111,7 @@ FILES:${PN}-systemd-target-monitor = " \
 SYSTEMD_SERVICE:${PN}-systemd-target-monitor += "phosphor-systemd-target-monitor.service"
 
 FILES:${PN}-scheduled-host-transition = "${bindir}/phosphor-scheduled-host-transition"
-DBUS_SERVICE:${PN}-scheduled-host-transition += "xyz.openbmc_project.State.ScheduledHostTransition.service"
+DBUS_SERVICE:${PN}-scheduled-host-transition += "xyz.openbmc_project.State.ScheduledHostTransition@.service"
 
 FILES:${PN}-chassis-check-power-status = "${bindir}/phosphor-chassis-check-power-status"
 SYSTEMD_SERVICE:${PN}-chassis-check-power-status += "phosphor-chassis-check-power-status@.service"
@@ -122,10 +127,12 @@ CHASSIS_SYNCH_TARGETS = "start-pre start on stop-pre stop off reset-on"
 # Chassis action power targets
 # - on:  Services to run to power on the chassis
 # - off: Services to run to power off the chassis
+# - cycle: Services to run to cycle power to the chassis
 # - powered-off: Services to run once chassis power is off
 # - reset: Services to check chassis power state and update chassis "on" target
 # - hard-off: Services to force an immediate power off of the chassis
-CHASSIS_ACTION_TARGETS = "poweron poweroff powered-off powerreset hard-poweroff"
+# - blackout: Target to enter when chassis experiences blackout
+CHASSIS_ACTION_TARGETS = "poweron poweroff powercycle powered-off powerreset hard-poweroff blackout"
 
 # Track all host synchronization point targets
 # - start-pre:                 Services to run before we start host boot
@@ -198,8 +205,37 @@ SYSTEMD_LINK:${PN}-obmc-targets += "${@compose_list(d, 'HOST_LINK_ACTION_FMT', '
 SYSTEMD_LINK:${PN}-obmc-targets += "${@compose_list(d, 'FAN_LINK_FMT', 'OBMC_CHASSIS_INSTANCES')}"
 SYSTEMD_LINK:${PN}-obmc-targets += "${@compose_list(d, 'QUIESCE_FMT', 'HOST_ERROR_TARGETS', 'OBMC_HOST_INSTANCES')}"
 
+# Create target relationships
 
-SRC_URI += "git://github.com/ibm-openbmc/phosphor-state-manager;nobranch=1;protocol=https"
-SRCREV = "7c865e8d4215561c313c809c4df5dcfd8331f6d7"
+# Starting the host requires chassis power on
+START_TMPL_CTRL = "obmc-chassis-poweron@.target"
+START_TGTFMT_CTRL = "obmc-host-startmin@{1}.target"
+START_INSTFMT_CTRL = "obmc-chassis-poweron@{0}.target"
+START_FMT_CTRL = "../${START_TMPL_CTRL}:${START_TGTFMT_CTRL}.requires/${START_INSTFMT_CTRL}"
+SYSTEMD_LINK:${PN}-obmc-targets += "${@compose_list_zip(d, 'START_FMT_CTRL', 'OBMC_POWER_INSTANCES', 'OBMC_CHASSIS_INSTANCES')}"
+
+# Chassis off requires host off
+STOP_TMPL_CTRL = "obmc-host-stop@.target"
+STOP_TGTFMT_CTRL = "obmc-chassis-poweroff@{0}.target"
+STOP_INSTFMT_CTRL = "obmc-host-stop@{1}.target"
+STOP_FMT_CTRL = "../${STOP_TMPL_CTRL}:${STOP_TGTFMT_CTRL}.requires/${STOP_INSTFMT_CTRL}"
+SYSTEMD_LINK:${PN}-obmc-targets += "${@compose_list_zip(d, 'STOP_FMT_CTRL', 'OBMC_CHASSIS_INSTANCES', 'OBMC_HOST_INSTANCES')}"
+
+# Hard power off requires chassis off
+HARD_OFF_TMPL_CTRL = "obmc-chassis-poweroff@.target"
+HARD_OFF_TGTFMT_CTRL = "obmc-chassis-hard-poweroff@{0}.target"
+HARD_OFF_INSTFMT_CTRL = "obmc-chassis-poweroff@{0}.target"
+HARD_OFF_FMT_CTRL = "../${HARD_OFF_TMPL_CTRL}:${HARD_OFF_TGTFMT_CTRL}.requires/${HARD_OFF_INSTFMT_CTRL}"
+SYSTEMD_LINK:${PN}-obmc-targets += "${@compose_list_zip(d, 'HARD_OFF_FMT_CTRL', 'OBMC_CHASSIS_INSTANCES')}"
+
+# Force the standby target to run the chassis reset check target
+RESET_TMPL_CTRL = "obmc-chassis-powerreset@.target"
+SYSD_TGT = "multi-user.target"
+RESET_INSTFMT_CTRL = "obmc-chassis-powerreset@{0}.target"
+RESET_FMT_CTRL = "../${RESET_TMPL_CTRL}:${SYSD_TGT}.wants/${RESET_INSTFMT_CTRL}"
+SYSTEMD_LINK:${PN}-obmc-targets += "${@compose_list_zip(d, 'RESET_FMT_CTRL', 'OBMC_CHASSIS_INSTANCES')}"
+
+SRC_URI += "git://github.com/openbmc/phosphor-state-manager;branch=master;protocol=https"
+SRCREV = "c4c702c9b76220003b3534c15085994714c4f213"
 
 S = "${WORKDIR}/git"
