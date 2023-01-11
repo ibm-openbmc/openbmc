@@ -1,4 +1,4 @@
-PACKAGECONFIG ??= "${@bb.utils.filter('OBMC_MACHINE_FEATURES', 'phal op-fsi', d)}"
+PACKAGECONFIG ??= "${@bb.utils.filter('MACHINE_FEATURES', 'phal op-fsi', d)}"
 
 PACKAGECONFIG[phal] = "-Dphal=enabled, -Dphal=disabled -Dp9=enabled, ipl pdata"
 
