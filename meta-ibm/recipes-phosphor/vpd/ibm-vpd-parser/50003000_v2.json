@@ -2040,6 +2040,10 @@
         "inventoryPath": "/system/chassis/motherboard/dasd_backplane/nvme0/drive0",
         "inherit": false,
         "embedded": false,
+        "devAddress" : "27-0050",
+        "busType" : "i2c",
+        "driverType" : "at24",
+        "concurrentlyMaintainable" : true,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
           "com.ibm.ipzvpd.Location" : {
@@ -2071,6 +2075,10 @@
         "inventoryPath": "/system/chassis/motherboard/dasd_backplane/nvme1/drive1",
         "inherit": false,
         "embedded": false,
+        "devAddress" : "27-0050",
+        "busType" : "i2c",
+        "driverType" : "at24",
+        "concurrentlyMaintainable" : true,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
           "com.ibm.ipzvpd.Location" : {
@@ -2102,6 +2110,10 @@
         "inventoryPath": "/system/chassis/motherboard/dasd_backplane/nvme2/drive2",
         "inherit": false,
         "embedded": false,
+        "devAddress" : "27-0050",
+        "busType" : "i2c",
+        "driverType" : "at24",
+        "concurrentlyMaintainable" : true,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
           "com.ibm.ipzvpd.Location" : {
@@ -2133,6 +2145,10 @@
         "inventoryPath": "/system/chassis/motherboard/dasd_backplane/nvme3/drive3",
         "inherit": false,
         "embedded": false,
+        "devAddress" : "27-0050",
+        "busType" : "i2c",
+        "driverType" : "at24",
+        "concurrentlyMaintainable" : true,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
           "com.ibm.ipzvpd.Location" : {
@@ -2164,6 +2180,10 @@
         "inventoryPath": "/system/chassis/motherboard/dasd_backplane/nvme4/drive4",
         "inherit": false,
         "embedded": false,
+        "devAddress" : "27-0050",
+        "busType" : "i2c",
+        "driverType" : "at24",
+        "concurrentlyMaintainable" : true,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
           "com.ibm.ipzvpd.Location" : {
@@ -2195,6 +2215,10 @@
         "inventoryPath": "/system/chassis/motherboard/dasd_backplane/nvme5/drive5",
         "inherit": false,
         "embedded": false,
+        "devAddress" : "27-0050",
+        "busType" : "i2c",
+        "driverType" : "at24",
+        "concurrentlyMaintainable" : true,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
           "com.ibm.ipzvpd.Location" : {
@@ -2226,6 +2250,10 @@
         "inventoryPath": "/system/chassis/motherboard/dasd_backplane/nvme6/drive6",
         "inherit": false,
         "embedded": false,
+        "devAddress" : "27-0050",
+        "busType" : "i2c",
+        "driverType" : "at24",
+        "concurrentlyMaintainable" : true,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
           "com.ibm.ipzvpd.Location" : {
@@ -2257,6 +2285,10 @@
         "inventoryPath": "/system/chassis/motherboard/dasd_backplane/nvme7/drive7",
         "inherit": false,
         "embedded": false,
+        "devAddress" : "27-0050",
+        "busType" : "i2c",
+        "driverType" : "at24",
+        "concurrentlyMaintainable" : true,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
           "com.ibm.ipzvpd.Location" : {
@@ -2288,6 +2320,10 @@
         "inventoryPath": "/system/chassis/motherboard/dasd_backplane/nvme8/drive8",
         "inherit": false,
         "embedded": false,
+        "devAddress" : "27-0050",
+        "busType" : "i2c",
+        "driverType" : "at24",
+        "concurrentlyMaintainable" : true,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
           "com.ibm.ipzvpd.Location" : {
@@ -2319,6 +2355,10 @@
         "inventoryPath": "/system/chassis/motherboard/dasd_backplane/nvme9/drive9",
         "inherit": false,
         "embedded": false,
+        "devAddress" : "27-0050",
+        "busType" : "i2c",
+        "driverType" : "at24",
+        "concurrentlyMaintainable" : true,
         "extraInterfaces": {
           "xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
           "com.ibm.ipzvpd.Location" : {
