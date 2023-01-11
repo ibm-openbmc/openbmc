@@ -427,13 +427,11 @@
                         "/xyz/openbmc_project/inventory/system/chassis/motherboard/connector7",
                         "/xyz/openbmc_project/inventory/system/chassis/motherboard/connector8",
                         "/xyz/openbmc_project/inventory/system/chassis/motherboard/connector9",
-                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/connector10",
                         "/xyz/openbmc_project/inventory/system/chassis/motherboard/connector11",
                         "/xyz/openbmc_project/inventory/system/chassis/motherboard/connector12",
                         "/xyz/openbmc_project/inventory/system/chassis/motherboard/connector13",
                         "/xyz/openbmc_project/inventory/system/chassis/motherboard/connector14",
                         "/xyz/openbmc_project/inventory/system/chassis/motherboard/connector15",
-                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/connector16",
                         "/xyz/openbmc_project/inventory/system/chassis/motherboard/connector17",
                         "/xyz/openbmc_project/inventory/system/chassis/motherboard/connector18",
                         "/xyz/openbmc_project/inventory/system/chassis/motherboard/connector19",
@@ -4130,34 +4128,6 @@
             ]
         },
         {
-            "path": "/system/chassis/motherboard/connector10",
-            "endpoints":
-            [
-                {
-                    "types":
-                    {
-                        "rType": "identify_inventory_object",
-                        "fType": "identify_led_group"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/connector10_identify"
-                    ]
-                },
-                {
-                    "types":
-                    {
-                        "rType": "inventory",
-                        "fType": "chassis"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/inventory/system/chassis"
-                    ]
-                }
-            ]
-        },
-        {
             "path": "/system/chassis/motherboard/connector11",
             "endpoints":
             [
@@ -4282,34 +4252,6 @@
                     "paths":
                     [
                         "/xyz/openbmc_project/led/groups/connector15_identify"
-                    ]
-                },
-                {
-                    "types":
-                    {
-                        "rType": "inventory",
-                        "fType": "chassis"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/inventory/system/chassis"
-                    ]
-                }
-            ]
-        },
-        {
-            "path": "/system/chassis/motherboard/connector16",
-            "endpoints":
-            [
-                {
-                    "types":
-                    {
-                        "rType": "identify_inventory_object",
-                        "fType": "identify_led_group"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/connector16_identify"
                     ]
                 },
                 {

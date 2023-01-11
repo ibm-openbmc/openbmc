@@ -677,19 +677,6 @@
         }
       },
       {
-      "inventoryPath": "/system/chassis/motherboard/connector10",
-        "inherit": false,
-        "extraInterfaces": {
-          "xyz.openbmc_project.Inventory.Item.Connector": null,
-          "com.ibm.ipzvpd.Location" : {
-              "LocationCode" : "Ufcs-P0-T10"
-          },
-	  "xyz.openbmc_project.Inventory.Item": {
-                  "PrettyName": "Fan Card Connector"
-          }
-        }
-      },
-      {
       "inventoryPath": "/system/chassis/motherboard/connector11",
         "inherit": false,
         "extraInterfaces": {
@@ -748,19 +735,6 @@
           "xyz.openbmc_project.Inventory.Item.Connector": null,
           "com.ibm.ipzvpd.Location" : {
               "LocationCode" : "Ufcs-P0-T15"
-          },
-	  "xyz.openbmc_project.Inventory.Item": {
-                  "PrettyName": "NVMe Backplane Power Cable Connector"
-          }
-        }
-      },
-      {
-      "inventoryPath": "/system/chassis/motherboard/connector16",
-        "inherit": false,
-        "extraInterfaces": {
-          "xyz.openbmc_project.Inventory.Item.Connector": null,
-          "com.ibm.ipzvpd.Location" : {
-              "LocationCode" : "Ufcs-P0-T16"
           },
 	  "xyz.openbmc_project.Inventory.Item": {
                   "PrettyName": "NVMe Backplane Power Cable Connector"
