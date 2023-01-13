@@ -8,7 +8,7 @@ DEPENDS += " \
         systemd \
         "
 SRC_URI = "git://github.com/ibm-openbmc/phosphor-dbus-interfaces;nobranch=1;protocol=https"
-SRCREV = "30be684be633f3c4a2b39ff083c5727b59817ce9"
+SRCREV = "c3dd3660ead50a219c4b6a00843e50356e50937c"
 PV = "1.0+git${SRCPV}"
 PR = "r1"
 
