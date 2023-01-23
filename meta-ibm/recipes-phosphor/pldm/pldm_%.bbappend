@@ -8,4 +8,5 @@ EXTRA_OEMESON += " \
 SYSTEMD_SERVICE:${PN} += "${@bb.utils.contains('PACKAGECONFIG', 'oem-ibm', \
     'pldm-create-phyp-nvram.service \
      pldm-create-phyp-nvram-cksum.service \
+     pldm-clear-dma.service \
     ', '', d)}"
