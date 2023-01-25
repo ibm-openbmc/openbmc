@@ -11,6 +11,8 @@ FILES:${PN} += "${@bb.utils.contains('PACKAGECONFIG', 'astlpc-raw-kcs', \
     " ${systemd_system_unitdir}/mctp-demux.service.d/service-override.conf ", '', d)}"
 
 do_install:append:p10bmc() {
+     install -d ${D}${sysconfdir}/default
+     install -m 0644 ${WORKDIR}/mctp ${D}${sysconfdir}/default/mctp
      install -d ${D}${systemd_system_unitdir}/mctp-demux.service.d
      install -D -m 0644 ${WORKDIR}/service-override.conf ${D}${systemd_system_unitdir}/mctp-demux.service.d/
 }
