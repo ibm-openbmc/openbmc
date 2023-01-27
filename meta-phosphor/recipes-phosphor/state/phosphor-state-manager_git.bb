@@ -236,6 +236,6 @@ RESET_FMT_CTRL = "../${RESET_TMPL_CTRL}:${SYSD_TGT}.wants/${RESET_INSTFMT_CTRL}"
 SYSTEMD_LINK:${PN}-obmc-targets += "${@compose_list_zip(d, 'RESET_FMT_CTRL', 'OBMC_CHASSIS_INSTANCES')}"
 
 SRC_URI += "git://github.com/ibm-openbmc/phosphor-state-manager;branch=master;protocol=https;nobranch=1"
-SRCREV = "3a33a1b505f15d39d8b367db033666a121084a82"
+SRCREV = "e766625f0d1279b7f021374e040edb8b982a782a"
 
 S = "${WORKDIR}/git"
