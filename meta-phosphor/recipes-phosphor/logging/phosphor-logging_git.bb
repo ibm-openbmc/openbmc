@@ -48,6 +48,7 @@ FILES:${PN}-base += " \
         ${datadir}/dbus-1 \
         ${bindir}/phosphor-log-manager \
         ${libdir}/libphosphor_logging.so.* \
+        ${datadir}/dbus-1/system-services/xyz.openbmc_project.Logging.service \
 "
 FILES:phosphor-rsyslog-config += " \
         ${bindir}/phosphor-rsyslog-conf \
