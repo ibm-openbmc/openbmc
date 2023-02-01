@@ -1,89 +1,1264 @@
 {
-  "commonInterfaces": {
-    "xyz.openbmc_project.Inventory.Decorator.Asset": {
-      "PartNumber": {
-        "recordName": "VINI",
-        "keywordName": "PN"
-      },
-      "SerialNumber": {
-        "recordName": "VINI",
-        "keywordName": "SN"
-      },
-      "SparePartNumber": {
-        "recordName": "VINI",
-        "keywordName": "FN"
-      },
-      "Model": {
-        "recordName": "VINI",
-        "keywordName": "CC"
-      },
-      "BuildDate": {
-        "recordName": "VR10",
-        "keywordName": "DC",
-        "encoding": "DATE"
+   "commonInterfaces":{
+      "xyz.openbmc_project.Inventory.Decorator.Asset":{
+         "PartNumber":{
+            "recordName":"VINI",
+            "keywordName":"PN"
+         },
+         "SerialNumber":{
+            "recordName":"VINI",
+            "keywordName":"SN"
+         },
+         "SparePartNumber":{
+            "recordName":"VINI",
+            "keywordName":"FN"
+         },
+         "Model":{
+            "recordName":"VINI",
+            "keywordName":"CC"
+         },
+         "BuildDate":{
+            "recordName":"VR10",
+            "keywordName":"DC",
+            "encoding":"DATE"
+         }
       }
-    }
-  },
-  "frus": {
-    "/sys/bus/i2c/drivers/at24/8-0050/eeprom": [
-      {
-        "inventoryPath": "/system/chassis/motherboard",
-        "isSystemVpd": true,
-        "extraInterfaces": {
-          "xyz.openbmc_project.Inventory.Item.Board.Motherboard": null,
-          "com.ibm.ipzvpd.Location": {
-            "LocationCode": "Ufcs-P0"
-          },
-          "xyz.openbmc_project.Inventory.Item": {
-            "PrettyName": "System Backplane"
-          }
-        }
-      },
-      {
-        "inventoryPath": "/system",
-        "inherit": false,
-        "isSystemVpd": true,
-        "copyRecords": [
-          "VSYS"
-        ],
-        "extraInterfaces": {
-          "xyz.openbmc_project.Inventory.Item.System": null,
-          "xyz.openbmc_project.Inventory.Decorator.Asset": {
-            "SerialNumber": {
-              "recordName": "VSYS",
-              "keywordName": "SE"
-            },
-            "Model": {
-              "recordName": "VSYS",
-              "keywordName": "TM"
-            },
-            "SubModel": {
-              "recordName": "VSYS",
-              "keywordName": "BR"
+   },
+   "frus":{
+      "/sys/bus/i2c/drivers/at24/8-0050/eeprom":[
+         {
+            "inventoryPath":"/system/chassis/motherboard",
+            "isSystemVpd":true,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item.Board.Motherboard":null,
+               "com.ibm.ipzvpd.Location":{
+                  "LocationCode":"Ufcs-P0"
+               },
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"System Backplane"
+               }
             }
-          },
-          "com.ibm.ipzvpd.Location": {
-            "LocationCode": "Umts"
-          },
-          "xyz.openbmc_project.Inventory.Item": {
-            "PrettyName": "System"
-          }
-        }
-      },
-      {
-        "inventoryPath": "/system/chassis",
-        "isSystemVpd": true,
-        "extraInterfaces": {
-          "xyz.openbmc_project.Inventory.Item.Chassis": null,
-          "xyz.openbmc_project.Inventory.Item.Global": null,
-          "com.ibm.ipzvpd.Location": {
-            "LocationCode": "Ufcs"
-          },
-          "xyz.openbmc_project.Inventory.Item": {
-            "PrettyName": "Chassis"
-          }
-        }
-      }
-    ]
-  }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/unit0",
+            "inherit":false,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"Oscillator Reference Clock"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system",
+            "inherit":false,
+            "isSystemVpd":true,
+            "copyRecords":[
+               "VSYS"
+            ],
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item.System":null,
+               "xyz.openbmc_project.Inventory.Decorator.Asset":{
+                  "SerialNumber":{
+                     "recordName":"VSYS",
+                     "keywordName":"SE"
+                  },
+                  "Model":{
+                     "recordName":"VSYS",
+                     "keywordName":"TM"
+                  },
+                  "SubModel":{
+                     "recordName":"VSYS",
+                     "keywordName":"BR"
+                  }
+               },
+               "com.ibm.ipzvpd.Location":{
+                  "LocationCode":"Umts"
+               },
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"System"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis",
+            "isSystemVpd":true,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item.Chassis":null,
+               "xyz.openbmc_project.Inventory.Item.Global":null,
+               "com.ibm.ipzvpd.Location":{
+                  "LocationCode":"Ufcs"
+               },
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"Chassis"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/pcieslot0",
+            "inherit":false,
+            "extraInterfaces":{
+               "com.ibm.Control.Host.PCIeLink":null,
+               "xyz.openbmc_project.State.Decorator.PowerState":"xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
+               "xyz.openbmc_project.Inventory.Item.PCIeSlot":{
+                  "SlotType":"xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.FullLength"
+               },
+               "com.ibm.ipzvpd.Location":{
+                  "LocationCode":"Ufcs-P0-C0"
+               },
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"PCIe Slot"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/pcieslot1",
+            "inherit":false,
+            "extraInterfaces":{
+               "com.ibm.Control.Host.PCIeLink":null,
+               "xyz.openbmc_project.State.Decorator.PowerState":"xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
+               "xyz.openbmc_project.Inventory.Item.PCIeSlot":{
+                  "SlotType":"xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.FullLength"
+               },
+               "com.ibm.ipzvpd.Location":{
+                  "LocationCode":"Ufcs-P0-C1"
+               },
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"PCIe Slot"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/pcieslot2",
+            "inherit":false,
+            "extraInterfaces":{
+               "com.ibm.Control.Host.PCIeLink":null,
+               "xyz.openbmc_project.State.Decorator.PowerState":"xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
+               "xyz.openbmc_project.Inventory.Item.PCIeSlot":{
+                  "SlotType":"xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.FullLength"
+               },
+               "com.ibm.ipzvpd.Location":{
+                  "LocationCode":"Ufcs-P0-C2"
+               },
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"PCIe Slot"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/pcieslot3",
+            "inherit":false,
+            "extraInterfaces":{
+               "com.ibm.Control.Host.PCIeLink":null,
+               "xyz.openbmc_project.State.Decorator.PowerState":"xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
+               "xyz.openbmc_project.Inventory.Item.PCIeSlot":{
+                  "SlotType":"xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.FullLength"
+               },
+               "com.ibm.ipzvpd.Location":{
+                  "LocationCode":"Ufcs-P0-C3"
+               },
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"PCIe Slot"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/fan0",
+            "inherit":false,
+            "embedded":false,
+            "synthesized":true,
+            "extraInterfaces":{
+               "com.ibm.ipzvpd.Location":{
+                  "LocationCode":"Ufcs-A0"
+               },
+               "com.ibm.ipzvpd.VINI":{
+                  "FN":[
+                     48,
+                     50,
+                     89,
+                     75,
+                     51,
+                     50,
+                     51
+                  ],
+                  "CC":[
+                     55,
+                     66,
+                     53,
+                     70
+                  ],
+                  "PN":[
+                     48,
+                     50,
+                     89,
+                     75,
+                     51,
+                     50,
+                     51
+                  ],
+                  "DR":[
+                     66,
+                     108,
+                     111,
+                     119,
+                     101,
+                     114
+                  ],
+                  "SN":[
+                     89,
+                     76,
+                     49,
+                     50,
+                     74,
+                     80,
+                     49,
+                     67,
+                     49,
+                     50,
+                     51,
+                     52
+                  ],
+                  "RT":[
+                     86,
+                     73,
+                     78,
+                     73
+                  ]
+               },
+               "com.ibm.ipzvpd.DINF":{
+                  "RI":[
+                     0,
+                     5,
+                     33,
+                     0
+                  ],
+                  "RT":[
+                     68,
+                     73,
+                     78,
+                     70
+                  ]
+               },
+               "xyz.openbmc_project.Inventory.Decorator.Asset":{
+                  "Model":"7B5F",
+                  "Manufacturer":"Delta",
+                  "PartNumber":"02YK323",
+                  "SparePartNumber":"02YK323",
+                  "SerialNumber":"YL12JP1C1234"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/fan1",
+            "inherit":false,
+            "embedded":false,
+            "synthesized":true,
+            "extraInterfaces":{
+               "com.ibm.ipzvpd.Location":{
+                  "LocationCode":"Ufcs-A1"
+               },
+               "com.ibm.ipzvpd.VINI":{
+                  "FN":[
+                     48,
+                     50,
+                     89,
+                     75,
+                     51,
+                     50,
+                     51
+                  ],
+                  "CC":[
+                     55,
+                     66,
+                     53,
+                     70
+                  ],
+                  "PN":[
+                     48,
+                     50,
+                     89,
+                     75,
+                     51,
+                     50,
+                     51
+                  ],
+                  "DR":[
+                     66,
+                     108,
+                     111,
+                     119,
+                     101,
+                     114
+                  ],
+                  "SN":[
+                     89,
+                     76,
+                     49,
+                     50,
+                     74,
+                     80,
+                     49,
+                     67,
+                     49,
+                     50,
+                     51,
+                     52
+                  ],
+                  "RT":[
+                     86,
+                     73,
+                     78,
+                     73
+                  ]
+               },
+               "com.ibm.ipzvpd.DINF":{
+                  "RI":[
+                     0,
+                     5,
+                     33,
+                     1
+                  ],
+                  "RT":[
+                     68,
+                     73,
+                     78,
+                     70
+                  ]
+               },
+               "xyz.openbmc_project.Inventory.Decorator.Asset":{
+                  "Model":"7B5F",
+                  "Manufacturer":"Delta",
+                  "PartNumber":"02YK323",
+                  "SparePartNumber":"02YK323",
+                  "SerialNumber":"YL12JP1C1234"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/powersupply0",
+            "inherit":false,
+            "embedded":false,
+            "synthesized":true,
+            "extraInterfaces":{
+               "com.ibm.ipzvpd.Location":{
+                  "LocationCode":"Ufcs-E0"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/powersupply1",
+            "inherit":false,
+            "embedded":false,
+            "synthesized":true,
+            "extraInterfaces":{
+               "com.ibm.ipzvpd.Location":{
+                  "LocationCode":"Ufcs-E1"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/usb0",
+            "inherit":false,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item.Connector":null,
+               "com.ibm.ipzvpd.Location":{
+                  "LocationCode":"Ufcs-P0-T0"
+               },
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"Connector for UPS"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/connector0",
+            "inherit":false,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item.Connector":null,
+               "com.ibm.ipzvpd.Location":{
+                  "LocationCode":"Ufcs-P0-T0"
+               },
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"Connector for UPS"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/ethernet0",
+            "inherit":false,
+            "noprime":true,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item.Ethernet":null,
+               "xyz.openbmc_project.Inventory.Item.Connector":null,
+               "com.ibm.ipzvpd.Location":{
+                  "LocationCode":"Ufcs-P0-T1"
+               },
+               "xyz.openbmc_project.Inventory.Item.NetworkInterface":{
+                  "MACAddress":{
+                     "recordName":"VCFG",
+                     "keywordName":"Z0",
+                     "encoding":"MAC"
+                  }
+               },
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"Connector for RJ45 1 GbE_0"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/connector2",
+            "inherit":false,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item.Connector":null,
+               "com.ibm.ipzvpd.Location":{
+                  "LocationCode":"Ufcs-P0-T2"
+               },
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"Connector for PDB signals cable"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/connector3",
+            "inherit":false,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item.Connector":null,
+               "com.ibm.ipzvpd.Location":{
+                  "LocationCode":"Ufcs-P0-T3"
+               },
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"OCuLink connector (D2-D3)"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/connector4",
+            "inherit":false,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item.Connector":null,
+               "com.ibm.ipzvpd.Location":{
+                  "LocationCode":"Ufcs-P0-T4"
+               },
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"OcuLink connector (D0-D1)"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/connector5",
+            "inherit":false,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item.Connector":null,
+               "com.ibm.ipzvpd.Location":{
+                  "LocationCode":"Ufcs-P0-T5"
+               },
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"Connector for Front USB 3.0 and RDX USB 3.0"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/connector6",
+            "inherit":false,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item.Connector":null,
+               "com.ibm.ipzvpd.Location":{
+                  "LocationCode":"Ufcs-P0-T6"
+               },
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"Connectors (2x) for A0 fan – self docking from top"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/connector7",
+            "inherit":false,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item.Connector":null,
+               "com.ibm.ipzvpd.Location":{
+                  "LocationCode":"Ufcs-P0-T7"
+               },
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"Connector for RDX power cable"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/connector8",
+            "inherit":false,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item.Connector":null,
+               "com.ibm.ipzvpd.Location":{
+                  "LocationCode":"Ufcs-P0-T8"
+               },
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"Connector for Op Panel LCD Display cable"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/connector9",
+            "inherit":false,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item.Connector":null,
+               "com.ibm.ipzvpd.Location":{
+                  "LocationCode":"Ufcs-P0-T9"
+               },
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"Connectors (2x) for A1 fan – self docking from top"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/connector10",
+            "inherit":false,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item.Connector":null,
+               "com.ibm.ipzvpd.Location":{
+                  "LocationCode":"Ufcs-P0-T10"
+               },
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"Connector for Op Panel cable"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/connector11",
+            "inherit":false,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item.Connector":null,
+               "com.ibm.ipzvpd.Location":{
+                  "LocationCode":"Ufcs-P0-T11"
+               },
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"Connector for NVMe backplane power cable"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/connector12",
+            "inherit":false,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item.Connector":null,
+               "com.ibm.ipzvpd.Location":{
+                  "LocationCode":"Ufcs-P0-T12"
+               },
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"Connector for NVMe backplane signal cable"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/connector13",
+            "inherit":false,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item.Connector":null,
+               "com.ibm.ipzvpd.Location":{
+                  "LocationCode":"Ufcs-P0-T13"
+               },
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"Connector for Front USB"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/rdx0",
+            "inherit":false,
+            "embedded":false,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item.Board":null,
+               "com.ibm.ipzvpd.Location":{
+                  "LocationCode":"Ufcs-P2"
+               },
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"RDX Docking Station"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/rdx0/media0",
+            "inherit":false,
+            "embedded":false,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item.Drive":null,
+               "com.ibm.ipzvpd.Location":{
+                  "LocationCode":"Ufcs-P2-D0"
+               },
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"RDX media"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/rdx0/rdx_power_connector",
+            "inherit":false,
+            "embedded":false,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item.Connector":null,
+               "com.ibm.ipzvpd.Location":{
+                  "LocationCode":"Ufcs-P2-T0"
+               },
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"Power connector for RDX"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/rdx0/rdx_usb_connector",
+            "inherit":false,
+            "embedded":false,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item.Connector":null,
+               "com.ibm.ipzvpd.Location":{
+                  "LocationCode":"Ufcs-P2-T1"
+               },
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"USB connector for RDX"
+               }
+            }
+         }
+      ],
+      "/sys/bus/i2c/drivers/at24/0-0051/eeprom":[
+         {
+            "inventoryPath":"/system/chassis/motherboard/tpm_wilson",
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item.Tpm":null,
+               "com.ibm.ipzvpd.Location":{
+                  "LocationCode":"Ufcs-P0-C4"
+               },
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"TPM Card"
+               }
+            }
+         }
+      ],
+      "/sys/bus/i2c/drivers/at24/7-0050/eeprom":[
+         {
+            "inventoryPath":"/system/chassis/motherboard/base_op_panel_blyth",
+            "essentialFru":true,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item.Panel":null,
+               "com.ibm.ipzvpd.Location":{
+                  "LocationCode":"Ufcs-D0"
+               },
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"Operator Panel Base"
+               }
+            }
+         }
+      ],
+      "/sys/bus/i2c/drivers/at24/7-0051/eeprom":[
+         {
+            "inventoryPath":"/system/chassis/motherboard/lcd_op_panel_hill",
+            "devAddress":"7-0051",
+            "driverType":"at24",
+            "busType":"i2c",
+            "presence":{
+               "pollingRequired":true,
+               "pin":"RUSSEL_OPPANEL_PRESENCE_N",
+               "value":0,
+               "gpioI2CAddress":"0-0020"
+            },
+            "preAction":{
+               "pin":"RUSSEL_FW_I2C_ENABLE_N",
+               "value":0,
+               "gpioI2CAddress":"0-0020"
+            },
+            "postActionFail":{
+               "pin":"RUSSEL_FW_I2C_ENABLE_N",
+               "value":1,
+               "gpioI2CAddress":"0-0020"
+            },
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item.Panel":null,
+               "com.ibm.ipzvpd.Location":{
+                  "LocationCode":"Ufcs-D1"
+               },
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"Operator Panel LCD"
+               }
+            }
+         }
+      ],
+      "/sys/bus/spi/drivers/at25/spi12.0/eeprom":[
+         {
+            "inventoryPath":"/system/chassis/motherboard/dcm0/cpu0",
+            "redundantEeprom":"/sys/bus/spi/drivers/at25/spi13.0/eeprom",
+            "cpuType":"primary",
+            "powerOffOnly":true,
+            "offset":196608,
+            "size":65504,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item.Cpu":null,
+               "com.ibm.ipzvpd.Location":{
+                  "LocationCode":"Ufcs-P0-C5"
+               },
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"Processor Module"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/dcm0/cpu0/unit0",
+            "inherit":false,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"Quad"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/dcm0/cpu0/unit1",
+            "inherit":false,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"High speed SMP/OpenCAPI Link"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/dcm0/cpu0/unit2",
+            "inherit":false,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"Memory Controller"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/dcm0/cpu0/unit3",
+            "inherit":false,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"Memory Controller Channel"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/dcm0/cpu0/unit4",
+            "inherit":false,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"Processor To Memory Buffer Interface"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/dcm0/cpu0/unit5",
+            "inherit":false,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"Nest Memory Management Unit"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/dcm0/cpu0/unit6",
+            "inherit":false,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"Accelerator"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/dcm0/cpu0/unit7",
+            "inherit":false,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"OpenCAPI Memory Interface"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/dcm0/cpu0/unit8",
+            "inherit":false,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"OpenCAPI Memory Interface Controller"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/dcm0/cpu0/unit9",
+            "inherit":false,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"POWER Accelerator Unit"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/dcm0/cpu0/unit10",
+            "inherit":false,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"POWER Accelerator Unit Controller"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/dcm0/cpu0/unit11",
+            "inherit":false,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"PCI Express controllers"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/dcm0/cpu0/unit12",
+            "inherit":false,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"PCIe host bridge (PHB)"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/dcm0/cpu0/unit13",
+            "inherit":false,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"OBUS End Point"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/dcm0/cpu0/unit14",
+            "inherit":false,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"Cache-Only Core"
+               }
+            }
+         }
+      ],
+      "/sys/bus/spi/drivers/at25/spi22.0/eeprom":[
+         {
+            "inventoryPath":"/system/chassis/motherboard/dcm0/cpu1",
+            "redundantEeprom":"/sys/bus/spi/drivers/at25/spi23.0/eeprom",
+            "powerOffOnly":true,
+            "offset":196608,
+            "size":65504,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item.Cpu":null,
+               "com.ibm.ipzvpd.Location":{
+                  "LocationCode":"Ufcs-P0-C5"
+               },
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"Processor Module"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/dcm0/cpu1/unit0",
+            "inherit":false,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"Quad"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/dcm0/cpu1/unit1",
+            "inherit":false,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"High speed SMP/OpenCAPI Link"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/dcm0/cpu1/unit2",
+            "inherit":false,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"Memory Controller"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/dcm0/cpu1/unit3",
+            "inherit":false,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"Memory Controller Channel"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/dcm0/cpu1/unit4",
+            "inherit":false,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"Processor To Memory Buffer Interface"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/dcm0/cpu1/unit5",
+            "inherit":false,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"Nest Memory Management Unit"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/dcm0/cpu1/unit6",
+            "inherit":false,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"Accelerator"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/dcm0/cpu1/unit7",
+            "inherit":false,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"OpenCAPI Memory Interface"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/dcm0/cpu1/unit8",
+            "inherit":false,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"OpenCAPI Memory Interface Controller"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/dcm0/cpu1/unit9",
+            "inherit":false,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"POWER Accelerator Unit"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/dcm0/cpu1/unit10",
+            "inherit":false,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"POWER Accelerator Unit Controller"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/dcm0/cpu1/unit11",
+            "inherit":false,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"PCI Express controllers"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/dcm0/cpu1/unit12",
+            "inherit":false,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"PCIe host bridge (PHB)"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/dcm0/cpu1/unit13",
+            "inherit":false,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"OBUS End Point"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/dcm0/cpu1/unit14",
+            "inherit":false,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"Cache-Only Core"
+               }
+            }
+         }
+      ],
+      "/sys/bus/i2c/drivers/at24/13-0050/eeprom":[
+         {
+            "inventoryPath":"/system/chassis/motherboard/disk_backplane0",
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item.DiskBackplane":null,
+               "xyz.openbmc_project.Inventory.Item.FabricAdapter":null,
+               "com.ibm.ipzvpd.Location":{
+                  "LocationCode":"Ufcs-P1"
+               },
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"NVMe Backplane"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/disk_backplane0/nvme0",
+            "inherit":false,
+            "extraInterfaces":{
+               "com.ibm.Control.Host.PCIeLink":null,
+               "xyz.openbmc_project.State.Decorator.PowerState":"xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
+               "xyz.openbmc_project.Inventory.Item.PCIeSlot":{
+                  "SlotType":"xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.U_2"
+               },
+               "com.ibm.ipzvpd.Location":{
+                  "LocationCode":"Ufcs-P1-C0"
+               },
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"NVMe U.2"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/disk_backplane0/nvme0/dp0_drive0",
+            "inherit":false,
+            "embedded":false,
+            "devAddress":"13-0050",
+            "busType":"i2c",
+            "driverType":"at24",
+            "concurrentlyMaintainable":true,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item.PCIeDevice":null,
+               "com.ibm.ipzvpd.Location":{
+                  "LocationCode":"Ufcs-P1-C0"
+               },
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"NVMe Drive"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/disk_backplane0/nvme1",
+            "inherit":false,
+            "extraInterfaces":{
+               "com.ibm.Control.Host.PCIeLink":null,
+               "xyz.openbmc_project.State.Decorator.PowerState":"xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
+               "xyz.openbmc_project.Inventory.Item.PCIeSlot":{
+                  "SlotType":"xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.U_2"
+               },
+               "com.ibm.ipzvpd.Location":{
+                  "LocationCode":"Ufcs-P1-C1"
+               },
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"NVMe U.2"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/disk_backplane0/nvme1/dp0_drive1",
+            "inherit":false,
+            "embedded":false,
+            "devAddress":"13-0050",
+            "busType":"i2c",
+            "driverType":"at24",
+            "concurrentlyMaintainable":true,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item.PCIeDevice":null,
+               "com.ibm.ipzvpd.Location":{
+                  "LocationCode":"Ufcs-P1-C1"
+               },
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"NVMe Drive"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/disk_backplane0/nvme2",
+            "inherit":false,
+            "extraInterfaces":{
+               "com.ibm.Control.Host.PCIeLink":null,
+               "xyz.openbmc_project.State.Decorator.PowerState":"xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
+               "xyz.openbmc_project.Inventory.Item.PCIeSlot":{
+                  "SlotType":"xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.U_2"
+               },
+               "com.ibm.ipzvpd.Location":{
+                  "LocationCode":"Ufcs-P1-C2"
+               },
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"NVMe U.2"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/disk_backplane0/nvme2/dp0_drive2",
+            "inherit":false,
+            "embedded":false,
+            "devAddress":"13-0050",
+            "busType":"i2c",
+            "driverType":"at24",
+            "concurrentlyMaintainable":true,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item.PCIeDevice":null,
+               "com.ibm.ipzvpd.Location":{
+                  "LocationCode":"Ufcs-P1-C2"
+               },
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"NVMe Drive"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/disk_backplane0/nvme3",
+            "inherit":false,
+            "extraInterfaces":{
+               "com.ibm.Control.Host.PCIeLink":null,
+               "xyz.openbmc_project.State.Decorator.PowerState":"xyz.openbmc_project.State.Decorator.PowerState.State.Unknown",
+               "xyz.openbmc_project.Inventory.Item.PCIeSlot":{
+                  "SlotType":"xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.U_2"
+               },
+               "com.ibm.ipzvpd.Location":{
+                  "LocationCode":"Ufcs-P1-C3"
+               },
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"NVMe U.2"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/disk_backplane0/nvme3/dp0_drive3",
+            "inherit":false,
+            "embedded":false,
+            "devAddress":"13-0050",
+            "busType":"i2c",
+            "driverType":"at24",
+            "concurrentlyMaintainable":true,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item.PCIeDevice":null,
+               "com.ibm.ipzvpd.Location":{
+                  "LocationCode":"Ufcs-P1-C3"
+               },
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"NVMe Drive"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/disk_backplane0/dp0_connector0",
+            "inherit":false,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item.Connector":null,
+               "com.ibm.ipzvpd.Location":{
+                  "LocationCode":"Ufcs-P1-T0"
+               },
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"OCuLink connector D0/D1 on NVMe Backplane"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/disk_backplane0/dp0_connector1",
+            "inherit":false,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item.Connector":null,
+               "com.ibm.ipzvpd.Location":{
+                  "LocationCode":"Ufcs-P1-T1"
+               },
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"OCuLink connector D2/D3 on NVMe Backplane"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/disk_backplane0/dp0_connector2",
+            "inherit":false,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item.Connector":null,
+               "com.ibm.ipzvpd.Location":{
+                  "LocationCode":"Ufcs-P1-T2"
+               },
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"Signals connector for NVMe Backplane cable"
+               }
+            }
+         },
+         {
+            "inventoryPath":"/system/chassis/motherboard/disk_backplane0/dp0_connector3",
+            "inherit":false,
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item.Connector":null,
+               "com.ibm.ipzvpd.Location":{
+                  "LocationCode":"Ufcs-P1-T3"
+               },
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"Power connector for NVMe Backplane cable"
+               }
+            }
+         }
+      ],
+      "/sys/bus/i2c/drivers/at24/101-0050/eeprom":[
+         {
+            "inventoryPath":"/system/chassis/motherboard/dimm0",
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item.Dimm":null,
+               "com.ibm.ipzvpd.Location":{
+                  "LocationCode":"Ufcs-P0-C6"
+               },
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"ISDIMM module"
+               },
+               "xyz.openbmc_project.State.Decorator.Availability":{
+                  "Available":false
+               }
+            }
+         }
+      ],
+      "/sys/bus/i2c/drivers/at24/101-0051/eeprom":[
+         {
+            "inventoryPath":"/system/chassis/motherboard/dimm1",
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item.Dimm":null,
+               "com.ibm.ipzvpd.Location":{
+                  "LocationCode":"Ufcs-P0-C7"
+               },
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"ISDIMM module"
+               },
+               "xyz.openbmc_project.State.Decorator.Availability":{
+                  "Available":false
+               }
+            }
+         }
+      ],
+      "/sys/bus/i2c/drivers/at24/101-0052/eeprom":[
+         {
+            "inventoryPath":"/system/chassis/motherboard/dimm2",
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item.Dimm":null,
+               "com.ibm.ipzvpd.Location":{
+                  "LocationCode":"Ufcs-P0-C8"
+               },
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"ISDIMM module"
+               },
+               "xyz.openbmc_project.State.Decorator.Availability":{
+                  "Available":false
+               }
+            }
+         }
+      ],
+      "/sys/bus/i2c/drivers/at24/101-0053/eeprom":[
+         {
+            "inventoryPath":"/system/chassis/motherboard/dimm3",
+            "extraInterfaces":{
+               "xyz.openbmc_project.Inventory.Item.Dimm":null,
+               "com.ibm.ipzvpd.Location":{
+                  "LocationCode":"Ufcs-P0-C9"
+               },
+               "xyz.openbmc_project.Inventory.Item":{
+                  "PrettyName":"ISDIMM module"
+               },
+               "xyz.openbmc_project.State.Decorator.Availability":{
+                  "Available":false
+               }
+            }
+         }
+      ]
+   }
 }
