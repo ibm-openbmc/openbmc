@@ -28,4 +28,5 @@ DEPENDS += " \
         sdbusplus \
         systemd \
         "
-SYSTEMD_SERVICE:${PN} = "pvm_dump_offload.service"
+SYSTEMD_SERVICE:${PN} = "pvm_dump_offload@.service"
+FILES:${PN}:append = " ${systemd_system_unitdir}/* "
