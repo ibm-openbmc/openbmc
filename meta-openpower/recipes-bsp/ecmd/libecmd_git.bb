@@ -3,8 +3,10 @@ DESCRIPTION = "eCMD is a hardware access API for POWER Systems"
 LICENSE= "Apache-2.0"
 LIC_FILES_CHKSUM = "file://${S}/NOTICE;md5=fee220301a2af3faf8f211524b4248ea"
 
-SRC_URI = "git://github.com/open-power/eCMD.git;branch=ecmd15;protocol=https"
-SRCREV = "16add4aa4d1502b1a61e7ac304e9ee5c28887962"
+require recipes-bsp/ecmd/libecmd.inc
+
+SRC_URI = "${ECMD_URI}"
+SRCREV = "${ECMD_REV}"
 
 inherit python3native
 DEPENDS = "zlib"
