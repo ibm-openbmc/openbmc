@@ -9,8 +9,17 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=34400b68072d710fecd0a2940a0d1658"
 inherit meson
 inherit pkgconfig
 
-SRC_URI = "git://git@github.com/open-power/ecmd-pdbg.git;branch=master;protocol=https"
-SRCREV = "f57f664d32228b5325f8302e05f9ddced4328ed1"
+require recipes-bsp/ecmd/libecmd.inc
+
+SRCREV_FORMAT = "ecmd-pdbg"
+
+SRCREV_ecmd_pdbg = "afb4a7173b66aa51a53b53efe405ac5edbe16809"
+SRCREV_ecmd = "${ECMD_REV}"
+
+SRC_URI = "git://git@github.com/open-power/ecmd-pdbg.git;protocol=https;name=ecmd_pdbg;protocol=https \
+           ${ECMD_URI};name=ecmd;destsuffix=git/ecmd \
+           "
+
 
 S = "${WORKDIR}/git"
 
