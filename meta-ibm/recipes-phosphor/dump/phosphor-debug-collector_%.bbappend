@@ -34,7 +34,13 @@ install_gendumpinfo() {
     install -m 0755 ${S}/tools/dreport.d/ibm.d/gendumpinfo ${D}${dreport_include_dir}/
 }
 
+#Install dump package script from dreport/ibm.d to dreport/include.d
+install_dump_package() {
+    install -d ${D}${dreport_include_dir}
+    install -m 0755 ${S}/tools/dreport.d/ibm.d/package ${D}${dreport_include_dir}/
+}
+
 IBM_INSTALL_POSTFUNCS = "install_ibm_plugins link_ibm_plugins"
-IBM_INSTALL_POSTFUNCS:p10bmc += "install_dreport_header install_gendumpinfo"
+IBM_INSTALL_POSTFUNCS:p10bmc += "install_dreport_header install_gendumpinfo install_dump_package"
 
 do_install[postfuncs] += "${IBM_INSTALL_POSTFUNCS}"
