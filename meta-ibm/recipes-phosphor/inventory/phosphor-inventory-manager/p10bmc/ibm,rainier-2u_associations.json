@@ -2855,6 +2855,17 @@
                     [
                         "/xyz/openbmc_project/led/groups/cablecard3_cxp_bot_identify"
                     ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
                 }
             ]
         },
@@ -2882,6 +2893,17 @@
                     "paths":
                     [
                         "/xyz/openbmc_project/led/groups/cablecard4_cxp_top_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
                     ]
                 }
             ]
@@ -2911,6 +2933,17 @@
                     [
                         "/xyz/openbmc_project/led/groups/cablecard4_cxp_bot_identify"
                     ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
                 }
             ]
         },
@@ -2939,6 +2972,17 @@
                     [
                         "/xyz/openbmc_project/led/groups/cablecard10_cxp_top_identify"
                     ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
                 }
             ]
         },
@@ -2966,6 +3010,17 @@
                     "paths":
                     [
                         "/xyz/openbmc_project/led/groups/cablecard10_cxp_bot_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
                     ]
                 }
             ]
@@ -4027,230 +4082,6 @@
                     "paths":
                     [
                         "/xyz/openbmc_project/led/groups/usb1_identify"
-                    ]
-                },
-                {
-                    "types":
-                    {
-                        "rType": "inventory",
-                        "fType": "chassis"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/inventory/system/chassis"
-                    ]
-                }
-            ]
-        },
-        {
-            "path": "/system/chassis/motherboard/pcieslot0/pcie_card0/cxp_top",
-            "endpoints":
-            [
-                {
-                    "types":
-                    {
-                        "rType": "identified_by",
-                        "fType": "identifying"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/c0_cxp_top_identify"
-                    ]
-                },
-                {
-                    "types":
-                    {
-                        "rType": "inventory",
-                        "fType": "chassis"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/inventory/system/chassis"
-                    ]
-                }
-            ]
-        },
-        {
-            "path": "/system/chassis/motherboard/pcieslot0/pcie_card0/cxp_bot",
-            "endpoints":
-            [
-                {
-                    "types":
-                    {
-                        "rType": "identified_by",
-                        "fType": "identifying"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/c0_cxp_bot_identify"
-                    ]
-                },
-                {
-                    "types":
-                    {
-                        "rType": "inventory",
-                        "fType": "chassis"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/inventory/system/chassis"
-                    ]
-                }
-            ]
-        },
-        {
-            "path": "/system/chassis/motherboard/pcieslot3/pcie_card3/cxp_top",
-            "endpoints":
-            [
-                {
-                    "types":
-                    {
-                        "rType": "identified_by",
-                        "fType": "identifying"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/c3_cxp_top_identify"
-                    ]
-                },
-                {
-                    "types":
-                    {
-                        "rType": "inventory",
-                        "fType": "chassis"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/inventory/system/chassis"
-                    ]
-                }
-            ]
-        },
-        {
-            "path": "/system/chassis/motherboard/pcieslot3/pcie_card3/cxp_bot",
-            "endpoints":
-            [
-                {
-                    "types":
-                    {
-                        "rType": "identified_by",
-                        "fType": "identifying"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/c3_cxp_bot_identify"
-                    ]
-                },
-                {
-                    "types":
-                    {
-                        "rType": "inventory",
-                        "fType": "chassis"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/inventory/system/chassis"
-                    ]
-                }
-            ]
-        },
-        {
-            "path": "/system/chassis/motherboard/pcieslot4/pcie_card4/cxp_top",
-            "endpoints":
-            [
-                {
-                    "types":
-                    {
-                        "rType": "identified_by",
-                        "fType": "identifying"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/c4_cxp_top_identify"
-                    ]
-                },
-                {
-                    "types":
-                    {
-                        "rType": "inventory",
-                        "fType": "chassis"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/inventory/system/chassis"
-                    ]
-                }
-            ]
-        },
-        {
-            "path": "/system/chassis/motherboard/pcieslot4/pcie_card4/cxp_bot",
-            "endpoints":
-            [
-                {
-                    "types":
-                    {
-                        "rType": "identified_by",
-                        "fType": "identifying"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/c4_cxp_bot_identify"
-                    ]
-                },
-                {
-                    "types":
-                    {
-                        "rType": "inventory",
-                        "fType": "chassis"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/inventory/system/chassis"
-                    ]
-                }
-            ]
-        },
-        {
-            "path": "/system/chassis/motherboard/pcieslot10/pcie_card10/cxp_top",
-            "endpoints":
-            [
-                {
-                    "types":
-                    {
-                        "rType": "identified_by",
-                        "fType": "identifying"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/c10_cxp_top_identify"
-                    ]
-                },
-                {
-                    "types":
-                    {
-                        "rType": "inventory",
-                        "fType": "chassis"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/inventory/system/chassis"
-                    ]
-                }
-            ]
-        },
-        {
-            "path": "/system/chassis/motherboard/pcieslot10/pcie_card10/cxp_bot",
-            "endpoints":
-            [
-                {
-                    "types":
-                    {
-                        "rType": "identified_by",
-                        "fType": "identifying"
-                    },
-                    "paths":
-                    [
-                        "/xyz/openbmc_project/led/groups/c10_cxp_top_identify"
                     ]
                 },
                 {
