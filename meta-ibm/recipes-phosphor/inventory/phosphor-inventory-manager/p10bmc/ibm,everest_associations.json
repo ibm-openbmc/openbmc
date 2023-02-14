@@ -51,8 +51,8 @@
                 {
                     "types":
                     {
-                        "rType": "inventory",
-                        "fType": "chassis"
+                        "rType": "cooled_by",
+                        "fType": "cooling"
                     },
                     "paths":
                     [
@@ -102,8 +102,8 @@
                 {
                     "types":
                     {
-                        "rType": "inventory",
-                        "fType": "chassis"
+                        "rType": "cooled_by",
+                        "fType": "cooling"
                     },
                     "paths":
                     [
@@ -153,8 +153,8 @@
                 {
                     "types":
                     {
-                        "rType": "inventory",
-                        "fType": "chassis"
+                        "rType": "cooled_by",
+                        "fType": "cooling"
                     },
                     "paths":
                     [
@@ -204,8 +204,8 @@
                 {
                     "types":
                     {
-                        "rType": "inventory",
-                        "fType": "chassis"
+                        "rType": "cooled_by",
+                        "fType": "cooling"
                     },
                     "paths":
                     [
