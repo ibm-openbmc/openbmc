@@ -1,0 +1,857 @@
+From 78085e55eac22e69682abbcc9932afed0074410d Mon Sep 17 00:00:00 2001
+From: Alpana Kumari <alpankum@in.ibm.com>
+Date: Thu, 7 Apr 2022 07:35:51 -0500
+Subject: [PATCH] Create new ECC patch
+
+Signed-off-by: Alpana Kumari <alpankum@in.ibm.com>
+Change-Id: I23de0980269b8140b8349fa90c3da8fadab2d920
+---
+ vpdecc/vpdecc.c         | 141 ++++++++++++++-
+ vpdecc/vpdecc.h         |  30 ++--
+ vpdecc/vpdecc_support.c | 370 +++++++++++++++++++++++++++++++++++++---
+ vpdecc/vpdecc_support.h | 150 ++++++++++++++--
+ 4 files changed, 633 insertions(+), 58 deletions(-)
+
+diff --git a/vpdecc/vpdecc.c b/vpdecc/vpdecc.c
+index 64e2f54..46f4404 100644
+--- a/vpdecc/vpdecc.c
++++ b/vpdecc/vpdecc.c
+@@ -1,19 +1,150 @@
+-#include "vpdecc.h"
++/******************************************************************************
++ *
++ * IBM Confidential
++ *
++ * Licensed Internal Code Source Materials
++ *
++ * IBM Flexible Support Processor Licensed Internal Code
++ *
++ * (c) Copyright IBM Corp. 2004
++ *
++ * The source code is for this program is not published or otherwise divested
++ * of its trade secrets, irrespective of what has been deposited with the
++ * U.S. Copyright Office.
++ *
++ *****************************************************************************/
++
++static const char copyright [] __attribute__((unused)) =
++	"Licensed Internal Code - Property of IBM\n"
++	"IBM Flexible Support Processor Licensed Internal Code\n"
++	"(c) Copyright IBM Corp 2004 All Rights Reserved\n"
++	"US Government Users Restricted Rights - Use, duplication\n"
++	"or disclosure restricted by GSA ADP Schedule Contract\n"
++	"with IBM Corp.";
++
+ 
+ #include <string.h>
++#include "vpdecc.h"
++#include "vpdecc_support.h"
+ 
+ int vpdecc_create_ecc(const unsigned char* data, size_t data_length,
+                       unsigned char* ecc, size_t* ecc_buffersize)
+ {
+-    int i, vRet = -1;
++   size_t i;
++   int vPosition,vRet = 0;
++   /********************************************/
++   /* to make sure that it is accessable       */
++   /* with a block size of 44 bytes            */
++   /* 4Bytes ECC <-> 11 bit scrambling         */
++   /********************************************/
++   size_t vBlocks       = (data_length+3)/4;
++   size_t vBufferLength = vBlocks*4;
++   size_t vEccLength    = vBlocks;
++
++   
++   unsigned char* pRawDataBuffer  = NULL;
++   unsigned char* pDataBuffer  = NULL;
++   unsigned char* pEccBuffer  = NULL;
++   
++   /********************************************/
++   /* check if the buffer delivered by the     */
++   /* invoking procedure is large enough       */
++   /* to store the ecc                         */
++   /********************************************/
+ 
+-    return vRet;
++   if(vEccLength > *ecc_buffersize)
++   {
++      return VPD_ECC_NOT_ENOUGH_BUFFER;
++   }
++   
++   pRawDataBuffer = malloc(vBufferLength);
++   pDataBuffer = malloc(vBufferLength);
++   pEccBuffer = malloc(vEccLength);
++   
++   /***********************************************************************************/
++   /* first of all the data will be scrabled for a higher probability to be able to   */
++   /* correct the errors. The bits used for one ecc-word are ditributed over the      */
++   /* whole memory. Therefore it does not matter if a specific byte is not readable   */
++   /***********************************************************************************/
++
++   memset(pRawDataBuffer,0x00,vBufferLength);
++   memset(pDataBuffer,0x00,vBufferLength);
++
++   memcpy(pRawDataBuffer,data,data_length);
++   
++   seepromScramble(VPD_ECC_DATA_BIT_OFFSET, pRawDataBuffer, vBufferLength, 
++                     pDataBuffer, vBufferLength);
++
++   for (i=0; i < vEccLength; i++)
++   {
++      vPosition = i*4;
++      pEccBuffer[i] = seepromGetEcc(&pDataBuffer[vPosition]);
++   }
++   seepromUnscramble(VPD_ECC_ECC_BIT_OFFSET, pEccBuffer, vEccLength, ecc, vEccLength);
++   
++   *ecc_buffersize = vEccLength;
++    
++   free (pRawDataBuffer);
++   free (pDataBuffer);
++   free (pEccBuffer);
++   return vRet;
+ }
+ 
+ int vpdecc_check_data(unsigned char* data, size_t data_length,
+                       const unsigned char* ecc, size_t ecc_length)
+ {
+-    int vRet = 0;
++   int vRet = 0;
++
++   /********************************************/
++   /* to make sure that it is accessable       */
++   /* with a block size of 44 bytes            */
++   /* 4Bytes ECC <-> 11 bit scrambling         */
++   /********************************************/
++   size_t vBlocks       = (data_length+3)/4;
++   size_t vBufferLength = vBlocks*4;
++   size_t vEccLength    = vBlocks;
++
++   
++   unsigned char* pRawDataBuffer  = NULL;
++   unsigned char* pDataBuffer  = NULL;
++   unsigned char* pEccBuffer  = NULL;
+ 
+-    return vRet;
++   if(vEccLength > ecc_length)
++   {
++      return VPD_ECC_WRONG_ECC_SIZE;
++   }
++   
++   
++   pRawDataBuffer = (unsigned char*)malloc(vBufferLength);
++   pDataBuffer = (unsigned char*)malloc(vBufferLength);
++   pEccBuffer  = (unsigned char*)malloc(vEccLength);
++
++   memset(pRawDataBuffer,0x00,vBufferLength);
++   memset(pDataBuffer,0x00,vBufferLength);
++
++   memcpy(pRawDataBuffer,data,data_length);
++         
++   seepromScramble(VPD_ECC_DATA_BIT_OFFSET, pRawDataBuffer, vBufferLength,
++                     pDataBuffer, vBufferLength);
++
++
++   seepromScramble(VPD_ECC_ECC_BIT_OFFSET, ecc, vEccLength,
++                     pEccBuffer, vEccLength);
++
++
++   vRet = seepromEccCheck(pDataBuffer, pEccBuffer, vEccLength);
++
++   if(vRet == VPD_ECC_CORRECTABLE_DATA)
++   {
++      seepromUnscramble(VPD_ECC_DATA_BIT_OFFSET, pDataBuffer, vBufferLength,
++                     pRawDataBuffer,vBufferLength);
++   }
++   memcpy(data,pRawDataBuffer,data_length);
++
++   free (pRawDataBuffer);
++   free (pDataBuffer);
++   free (pEccBuffer);
++
++   return vRet;
+ }
++
+diff --git a/vpdecc/vpdecc.h b/vpdecc/vpdecc.h
+index 6d4175d..d6e4e2a 100644
+--- a/vpdecc/vpdecc.h
++++ b/vpdecc/vpdecc.h
+@@ -14,23 +14,22 @@
+  *
+  *****************************************************************************/
+ 
++
+ #ifndef _VPDECC_H_
+ #define _VPDECC_H_
+ 
+-#pragma GCC diagnostic ignored "-Wunused-variable"
+-#pragma GCC diagnostic ignored "-Wunused-parameter"
+-
+ #include <stdlib.h>
+ 
+ #define VPD_ECC_OK 0
+-#define VPD_ECC_NOT_ENOUGH_BUFFER 1
+-#define VPD_ECC_WRONG_ECC_SIZE 2
+-#define VPD_ECC_WRONG_BUFFER_SIZE 9
+-#define VPD_ECC_UNCORRECTABLE_DATA 90
+-#define VPD_ECC_CORRECTABLE_DATA 91
++#define VPD_ECC_NOT_ENOUGH_BUFFER   1
++#define VPD_ECC_WRONG_ECC_SIZE      2
++#define VPD_ECC_WRONG_BUFFER_SIZE   9
++#define VPD_ECC_UNCORRECTABLE_DATA  90
++#define VPD_ECC_CORRECTABLE_DATA    91
++
+ 
+ #ifdef __cplusplus
+-extern "C" {
++   extern "C" {
+ #endif
+ 
+ /* TODO  doxygen !!!!!!!! */
+@@ -47,7 +46,7 @@ extern "C" {
+ /* @param     vDataLength     In        should contain the length of the Data */
+ /*                                      in the buffer given to vData          */
+ /*                                                                            */
+-/* @param     pEcc            Out-Buffer after execution this will be the     */
++/* @param     pEcc            Out-Buffer after execution this will be the     */ 
+ /*                                      buffer for the calculated Ecc         */
+ /*                                                                            */
+ /* @param     pEccLenght      In/Out    In : size of buffer                   */
+@@ -73,18 +72,21 @@ int vpdecc_create_ecc(const unsigned char* data, size_t datalength,
+ /* @param     vDataLength     In        should contain the length of the Data */
+ /*                                      in the buffer given to vData          */
+ /*                                                                            */
+-/* @param     pEcc            In-Buffer should contain the Ecc for the data   */
++/* @param     pEcc            In-Buffer should contain the Ecc for the data   */ 
+ /*                                                                            */
+ /*                                                                            */
+-/* @param     vEccLenght      In        should contain the length of the Ecc  */
++/* @param     vEccLenght      In        should contain the length of the Ecc  */ 
+ /*                                                                            */
+ /* @return Error returncode                                                   */
+ /******************************************************************************/
+ int vpdecc_check_data(unsigned char* data, size_t data_length,
+                       const unsigned char* ecc, size_t ecc_length);
+ 
++
++
++
+ #ifdef __cplusplus
+-} /* end extern "C" */
++   } /* end extern "C" */
+ #endif
+ 
+-#endif /* endif _VPDECC_H_ */
++#endif  /* endif _VPDECC_H_ */
+diff --git a/vpdecc/vpdecc_support.c b/vpdecc/vpdecc_support.c
+index 674f236..8bad113 100644
+--- a/vpdecc/vpdecc_support.c
++++ b/vpdecc/vpdecc_support.c
+@@ -1,7 +1,22 @@
++/******************************************************************************
++ *
++ * IBM Confidential
++ *
++ * Licensed Internal Code Source Materials
++ *
++ * IBM Flexible Support Processor Licensed Internal Code
++ *
++ * (c) Copyright IBM Corp. 2004
++ *
++ * The source code is for this program is not published or otherwise divested
++ * of its trade secrets, irrespective of what has been deposited with the
++ * U.S. Copyright Office.
++ *
++ *****************************************************************************/
+ 
++#include <string.h>
+ #include "vpdecc_support.h"
+ 
+-#include <string.h>
+ 
+ /******************************************************************************/
+ /* seepromGetEcc                                                              */
+@@ -11,30 +26,245 @@
+ /******************************************************************************/
+ inline unsigned char seepromGetEcc(const unsigned char* data)
+ {
+-    unsigned char vResult = 0x00;
+-    return vResult;
++   static const unsigned char aSyndromMask[] = {   0x07,0xFF,0x80,0xC0,0xFF,0x00,0xA0,0xB4,
++                                                   0x39,0x07,0x54,0x6A,0x4A,0x19,0x4A,0x19,
++                                                   0x54,0x6A,0x39,0x07,0xA0,0xB4,0xFF,0x00,
++                                                   0x80,0xC0,0x07,0xFF
++                                                };
++   unsigned char vWork[4];
++   unsigned char vBuffer = 0x00;
++   unsigned char vResult = 0x00;
++   unsigned int i;
++
++   vResult = 0;
++   for (i=0; i<7; i++)
++   {
++      vWork[0] = data[0] & aSyndromMask[i*4];
++      vWork[1] = data[1] & aSyndromMask[i*4+1];
++      vWork[2] = data[2] & aSyndromMask[i*4+2];
++      vWork[3] = data[3] & aSyndromMask[i*4+3];
++
++      /* shift by 16 */
++      vWork[3] = vWork[3] ^ vWork[1];
++      vWork[2] = vWork[2] ^ vWork[0];
++      vWork[1] = vWork[1] ^ 0x00;
++      vWork[0] = vWork[0] ^ 0x00;
++
++      /* shift by 8 */
++      vWork[3] = vWork[3] ^ vWork[2];
++      vWork[2] = vWork[2] ^ vWork[1];
++      vWork[1] = vWork[1] ^ vWork[0];
++      vWork[0] = vWork[0] ^ 0x00;
++
++      /* shift by 4 */
++      vWork[3] = vWork[3] ^ ((vWork[2]<<4) | (vWork[3]>>4));
++      vWork[2] = vWork[2] ^ ((vWork[1]<<4) | (vWork[2]>>4));
++      vWork[1] = vWork[1] ^ ((vWork[0]<<4) | (vWork[1]>>4));
++      vWork[0] = vWork[0] ^ (                (vWork[0]>>4));
++
++      /* shift by 2 */
++      vWork[3] = vWork[3] ^ ((vWork[2]<<6) | (vWork[3]>>2));
++      vWork[2] = vWork[2] ^ ((vWork[1]<<6) | (vWork[2]>>2));
++      vWork[1] = vWork[1] ^ ((vWork[0]<<6) | (vWork[1]>>2));
++      vWork[0] = vWork[0] ^ (                (vWork[0]>>2));
++
++      /* shift by 1 */
++      vWork[3] = vWork[3] ^ ((vWork[2]<<7) | (vWork[3]>>1));
++      vWork[2] = vWork[2] ^ ((vWork[1]<<7) | (vWork[2]>>1));
++      vWork[1] = vWork[1] ^ ((vWork[0]<<7) | (vWork[1]>>1));
++      vWork[0] = vWork[0] ^ (                (vWork[0]>>1));
++
++      
++      vBuffer = vWork[3] & 0x01;
++      
++      vResult = vResult | (vBuffer <<(6-i));
++   } /* endfor i */
++   vResult = vResult ^ 0x7F;
++   return vResult;
+ }
+ 
++
+ /******************************************************************************/
+ /*                                                                            */
+ /******************************************************************************/
+-int seepromScramble(const int bitOffset, const unsigned char* cleanData,
+-                    size_t cleanSize, unsigned char* scrambledData,
+-                    size_t scrambledSize)
++int seepromScramble(const int   bitOffset,
++                     const unsigned char* cleanData,
++                     size_t cleanSize,
++                     unsigned char* scrambledData,
++                     size_t scrambledSize)
+ {
+-    int vRet = 0;
+-    return vRet;
++   int   vRet = 0;
++/*
++   int   i,j;
++   int   byteNumber, bitPosition;
++   long  scrambledPosition, numOfSteps, numOfBits;   
++   char  bitBuffer;
++
++   numOfSteps  = cleanSize * 8 / bitOffset;
++
++   if(cleanSize > scrambledSize)
++   {
++      return VPD_ECC_WRONG_BUFFER_SIZE;
++   }
++         
++   memset(scrambledData,0x00,scrambledSize);
++   for (i=0; i<bitOffset ;i++)
++   {
++      for (j=0; j<numOfSteps ;j++)
++      {                    
++         byteNumber =  (j*bitOffset+i)/ 8;
++         bitPosition = (j*bitOffset+i)% 8;
++         
++         scrambledPosition = i*numOfSteps+j;
++
++         bitBuffer = cleanData[byteNumber] & (0x80>>bitPosition);
++         if(bitBuffer != 0)
++         {
++            scrambledData[scrambledPosition/8] = scrambledData[scrambledPosition/8] | (0x80>>(scrambledPosition%8));
++         }
++      }
++   }
++*/
++   size_t i;
++   int j;
++
++   int vBitNum, vStartBit, vMaxBits;
++   int vByteNum, vBitInByte;
++   unsigned char vInitialBitMask,vBitMask;
++   unsigned char vByteBitMask;
++
++   vBitNum   = 0;
++   vStartBit = 0;
++   vInitialBitMask = 0x80;
++   vMaxBits = scrambledSize * 8;
++
++   if(cleanSize > scrambledSize)
++   {
++      return VPD_ECC_WRONG_BUFFER_SIZE;
++   }
++
++
++   memset(scrambledData, 0x00, scrambledSize );
++
++   for (i=0; i < scrambledSize; i++)
++   {
++      vBitMask = vInitialBitMask;
++      for (j=0; j < 8; j++)
++      {
++         vByteNum = vBitNum / 8;
++         vBitInByte = vBitNum %8 ;
++
++         vByteBitMask = (unsigned char) (0x80 >> vBitInByte);
++
++         if ((cleanData[vByteNum] & vByteBitMask) != 0x00)
++         {
++            scrambledData[i] = scrambledData[i] | vBitMask;
++         } /* endif */
++
++         vBitMask = vBitMask >> 1;
++         vBitNum = vBitNum + bitOffset;
++         if (vBitNum >= vMaxBits)
++         {
++            vStartBit++;
++            vBitNum = vStartBit;
++         } 
++      } 
++   } 
++
++   return vRet;
+ }
+ 
++
+ /******************************************************************************/
+ /*                                                                            */
+ /******************************************************************************/
+-int seepromUnscramble(const int bitOffset, const unsigned char* scrambledData,
+-                      size_t scrambledSize, unsigned char* cleanData,
+-                      size_t cleanSize)
++int seepromUnscramble(const int   bitOffset,
++                        const unsigned char* scrambledData,
++                        size_t scrambledSize,
++                        unsigned char* cleanData,
++                        size_t cleanSize)
+ {
+-    int vRet = 0;
+-    return vRet;
++   int   vRet = 0;
++/*
++   int   i,j;
++   int   byteNumber, bitPosition;
++   long  scrambledPosition, numOfSteps, numOfBits, numOfBytes;
++   char  bitBuffer;
++
++   numOfBits  = cleanSize * 8;
++   numOfBytes = cleanSize;
++   numOfSteps = numOfBits / bitOffset;
++
++   if(cleanSize < scrambledSize)
++   {
++      return VPD_ECC_WRONG_BUFFER_SIZE;
++   }
++      
++   memset(cleanData,0x00,cleanSize);
++   for (i=0; i<bitOffset ;i++)
++   {
++      for (j=0; j<numOfSteps ;j++)
++      {                    
++         scrambledPosition = i*numOfSteps+j;
++         bitBuffer = scrambledData[scrambledPosition/8] & (0x80>>(scrambledPosition%8));
++         
++         if(bitBuffer != 0)
++         {
++            byteNumber =  (j*bitOffset+i)/ 8;
++            bitPosition = (j*bitOffset+i)% 8;
++         
++
++            cleanData[byteNumber] = cleanData[byteNumber] | (0x80>>bitPosition);
++         }
++      }
++   }
++*/
++
++   size_t i;
++   long j;
++   long vBitNum, vStartBit, vMaxBits;
++   long vByteNum, vBitInByte;
++   unsigned char vInitialWordBitMask, vWordBitMask;
++   unsigned char vByteBitMask;
++
++   vBitNum   = 0;
++   vStartBit = 0;
++   vInitialWordBitMask = 0x80;
++   vMaxBits = scrambledSize * 8;
++
++   if(cleanSize < scrambledSize)
++   {
++      return VPD_ECC_WRONG_BUFFER_SIZE;
++   }
++
++   memset(cleanData, 0x00, cleanSize);
++
++   for (i=0; i < scrambledSize; i++)
++   {
++      vWordBitMask = vInitialWordBitMask;
++      for (j=0; j < 8; j++)
++      {
++         vByteNum = vBitNum /8;
++         vBitInByte = vBitNum %8;
++
++         vByteBitMask = (unsigned char) (0x80 >> vBitInByte);
++         if ( (scrambledData[i] & vWordBitMask) != 0)
++         {
++            cleanData[vByteNum] = (cleanData[vByteNum] | vByteBitMask);
++         } /* endif */
++
++         vWordBitMask = vWordBitMask >> 1;
++         vBitNum = vBitNum + bitOffset;
++         if (vBitNum >= vMaxBits)
++         {
++            vStartBit++;
++            vBitNum = vStartBit;
++         }
++      } 
++   } 
++
++   return vRet;
++
+ }
+ 
+ /******************************************************************************/
+@@ -42,24 +272,77 @@ int seepromUnscramble(const int bitOffset, const unsigned char* scrambledData,
+ /*                                                                            */
+ /*                                                                            */
+ /******************************************************************************/
+-void seepromGenCsDecode(const unsigned char numBits,
+-                        const unsigned char syndrom,
+-                        const unsigned char* csdSyndroms,
+-                        unsigned char* vResult)
++void seepromGenCsDecode(const unsigned char  numBits,
++                          const unsigned char  syndrom,
++                          const unsigned char* csdSyndroms,
++                                     unsigned char* vResult)
+ {
++   unsigned char vBitMask[4];
++   unsigned char i;
++   int bitpos;
++   
++   i        = 0;
++
++   bitpos = 32- numBits;
++   while ( (i == 0) && (bitpos < numBits) )
++   {
++      vResult[0] = vBitMask[0]=0x00;
++      vResult[1] = vBitMask[1]=0x00;
++      vResult[2] = vBitMask[2]=0x00;
++      vResult[3] = vBitMask[3]=0x00;
++      vBitMask[bitpos/8] = (0x80 >> (bitpos%8));
++      if (syndrom == csdSyndroms[bitpos])
++      {
++         vResult[0] = vBitMask[0];
++         vResult[1] = vBitMask[1];
++         vResult[2] = vBitMask[2];
++         vResult[3] = vBitMask[3];
++         i++;
++      }  /* endif */
++      bitpos++;
++   } /* endwhile */
+ }
+ 
++
+ /******************************************************************************/
+ /* seepromGenerateCheckSyndromDecode                                          */
+ /*                                                                            */
+ /*                                                                            */
+ /******************************************************************************/
+-void seepromGenerateCheckSyndromDecode(const unsigned char checkSyndrom,
+-                                       unsigned char* csdData,
+-                                       unsigned char* csdEcc)
++void seepromGenerateCheckSyndromDecode(const unsigned char  checkSyndrom,
++                                             unsigned char* csdData,
++                                             unsigned char* csdEcc)
+ {
++   unsigned char vEccbytes[4];
++   
++   static unsigned char aCsdDataSyndroms[] = { 0x23, 0x2C, 0x32, 0x34, 0x38, 0x64,
++                                        0x68, 0x70, 0x43, 0x45, 0x46, 0x4A,
++                                        0x4C, 0x52, 0x54, 0x58, 0x62, 0x1A,
++                                        0x26, 0x16, 0x0E, 0x13, 0x0B, 0x07,
++                                        0x61, 0x51, 0x31, 0x29, 0x19, 0x25,
++                                        0x15, 0x0D
++                                      };
++
++   static unsigned char aCsdEccSyndroms[]  = { 0x01, 0x02, 0x04, 0x08, 0x10, 0x20,
++                                        0x40
++                                      };
++
++   vEccbytes[0]=0x00;
++   vEccbytes[1]=0x00;
++   vEccbytes[2]=0x00;
++   vEccbytes[3]=0x00;
++   
++   seepromGenCsDecode( 32, checkSyndrom, aCsdDataSyndroms,csdData);
++   seepromGenCsDecode( 7, checkSyndrom, aCsdEccSyndroms,vEccbytes);
++   *csdEcc = vEccbytes[3];
++
+ }
+ 
++
++
++
++
++
+ /******************************************************************************/
+ /* seepromEccCheck                                                            */
+ /*                                                                            */
+@@ -67,9 +350,48 @@ void seepromGenerateCheckSyndromDecode(const unsigned char checkSyndrom,
+ /*                                                                            */
+ /******************************************************************************/
+ 
+-int seepromEccCheck(unsigned char* vData, unsigned char* vEcc,
+-                    size_t numOfWords)
++int seepromEccCheck(unsigned char* vData, unsigned char* vEcc, size_t numOfWords)
+ {
+-    int vRet = 0;
+-    return vRet;
++   int vPosition;
++   int vFoundPosCounter;
++   int vRet = 0;
++   unsigned char vCheckSyndrom;
++   unsigned char vCheckSyndromDecodeData[4];
++   unsigned char vCheckSyndromDecodeEcc[1];
++   size_t i;
++   int j;
++
++   for (i=0; i < numOfWords; i++)
++   {
++
++      vCheckSyndrom = vEcc[i] ^ seepromGetEcc((const unsigned char*)&vData[i*4]);
++      if (vCheckSyndrom != 0)  // if error occurs
++      {
++         seepromGenerateCheckSyndromDecode(vCheckSyndrom,
++                                    vCheckSyndromDecodeData,
++                                    vCheckSyndromDecodeEcc);
++         vPosition = 0;
++         vFoundPosCounter = 0;     
++         for(j=0;j<4;j++)
++         {
++            if(vCheckSyndromDecodeData[j] != 0x00)
++            {
++                  vPosition = j;
++                  vFoundPosCounter++;  
++            }
++         }
++         if ((vFoundPosCounter == 0) && (vCheckSyndromDecodeEcc[0] == 0))
++         {
++            vRet = VPD_ECC_UNCORRECTABLE_DATA;
++            break;
++         }
++         else
++         {
++            vRet = VPD_ECC_CORRECTABLE_DATA;
++            vData[i*4+vPosition]   = (vData[i*4+vPosition] ^ vCheckSyndromDecodeData[vPosition]);
++         }
++      }
++   }
++   return vRet;
+ }
++
+diff --git a/vpdecc/vpdecc_support.h b/vpdecc/vpdecc_support.h
+index 6f71c03..2bfe6b9 100644
+--- a/vpdecc/vpdecc_support.h
++++ b/vpdecc/vpdecc_support.h
+@@ -1,45 +1,165 @@
++/******************************************************************************
++ *
++ * IBM Confidential
++ *
++ * Licensed Internal Code Source Materials
++ *
++ * IBM Flexible Support Processor Licensed Internal Code
++ *
++ * (c) Copyright IBM Corp. 2004
++ *
++ * The source code is for this program is not published or otherwise divested
++ * of its trade secrets, irrespective of what has been deposited with the
++ * U.S. Copyright Office.
++ *
++ *****************************************************************************/
++
++
++#ifndef _VPDECC_SUPPORT_H_
++#define _VPDECC_SUPPORT_H_
++
+ #include "vpdecc.h"
+ 
++#define VPD_ECC_DATA_BIT_OFFSET  11
++#define VPD_ECC_ECC_BIT_OFFSET   11
++
++#ifdef __cplusplus
++   extern "C" {
++#endif
++
++/******************************************************************************/
++/* seepromGetEcc                                                              */
++/*                                                                            */
++/* Calculates the 7 bit ECC code of a 32 bit data word and returns it         */
++/* @param data Data Byte                                                      */
++/* @return 7 Bit ECC for the Data Byte                                        */
++/*                                                                            */
+ /******************************************************************************/
+ unsigned char seepromGetEcc(const unsigned char* data);
+ 
++
+ /******************************************************************************/
+ /* seepromScramble                                                            */
++/*                                                                            */
++/* scrambles each Bit of the buffer "dataByte" into the Buffer "dataWord" .   */
++/* The neighbour Bits of "dataWord" have had the distance "bitOffset"         */
++/* before they were scrambled. Both buffers are seen as an continous stream   */
++/* of Bits. The scramble routine is done for the n = bitsInWord most right    */
++/* Bits of each "numOfWord" "dataWord".                                       */
++/* @param bitOffset Distance of scrambled Bits before scambling               */
++/* @param bitsInWord Number of used Bits of each dataWord                     */
++/* @param dataByte  In-buffer of Byte organized Bits to be scrambled          */
++/* @param numOfByte Size of in-buffer                                         */
++/* @param dataWord  Out-Buffer of Word organized Bits after scrambling        */
++/* @param numOfWord Size of out-buffer                                        */
++/* @return none                                                               */
+ /******************************************************************************/
+ 
+-int seepromScramble(const int bitOffset, const unsigned char* cleanData,
+-                    size_t cleanSize, unsigned char* scrambledData,
+-                    size_t scrambledSize);
++int seepromScramble(const int   bitOffset,
++                     const unsigned char* cleanData,
++                     size_t cleanSize,
++                     unsigned char* scrambledData,
++                     size_t scrambledSize);
+ 
+ /******************************************************************************/
++/* seepromUnscramble                                                          */
++/*                                                                            */
++/* scrambles each Bit of the buffer "dataWord" into the Buffer "dataBytes".   */
++/* The neighbour Bits of "dataWord" will have the discance "bitOffset"        */
++/* when they are scrambled back to the out-buffer "dataByte"                  */
++/* Both buffers are seen as an continous stream of Bits                       */
++/* The scramble routine is done for the n = bitsInWord most right Bits        */
++/* of each "numOfWord" "dataWord".                                            */
++/* @param bitOffset Distance of scrambled Bits after scrambling               */
++/* @param bitsInWord Number of used Bits of each dataWord                     */
++/* @param dataWord  In-buffer of Word organized Bits to be scrambled          */
++/* @param numOfByte Size of in-buffer                                         */
++/* @param dataWord  Out-Buffer of Byte organized Bits after scrambling        */
++/* @param numOfWord Size of out-buffer                                        */
++/* @return none                                                               */
+ /******************************************************************************/
+-int seepromUnscramble(const int bitOffset, const unsigned char* scrambledData,
+-                      size_t scrambledSize, unsigned char* cleanData,
+-                      size_t cleanSize);
++int seepromUnscramble(const int   bitOffset,
++                        const unsigned char* scrambledData,
++                        size_t scrambledSize,
++                        unsigned char* cleanData,
++                        size_t cleanSize);
+ 
+ /******************************************************************************/
++/* seepromGenCsDecode                                                         */
++/*                                                                            */
++/* genrates Position of Bit to be corrected based on syndorm and array of     */
++/* valid syndroms.                                                            */
++/* @param numBits Number of compares done for syndrom in the array of         */
++/*                csdSyndroms                                                 */
++/* @param syndrom Bitpattern describing the positon of Bit to be corrected    */
++/* @param csdSyndrom Array of Bitpatterns each representing a correctable Bit */
++/*                   error. The position in the Array is pointing to the Bit  */
++/*                   possition in the code word                               */
++/* @return Bit position of the Bit to be corrected                            */
++/*         if 0x0 syndrom not found in csdSyndroms => uncorrectable           */
+ /******************************************************************************/
+-void seepromGenCsDecode(const unsigned char numBits,
+-                        const unsigned char syndrom,
+-                        const unsigned char* csdSyndroms,
+-                        unsigned char* vResult);
++void seepromGenCsDecode(const unsigned char  numBits,
++                                 const unsigned char  syndrom,
++                                 const unsigned char* csdSyndroms,
++                                       unsigned char* vResult);
++
+ 
+ /******************************************************************************/
+ /* seepromGenerateCheckSyndromDecode                                          */
++/*                                                                            */
++/*                                                                            */
++/* check if "checkSyndrom" is a valid syndrom for the data of ECC word.       */
++/* @param checkSyndrom syndrom to be checked                                  */
++/* @param csdData Bit position of Bit to be corrected if valid data syndrom   */
++/* @param csdEcc  Bit position of Bit to be corrected if valid ECC syndrom    */
++/* @return none                                                               */
+ /******************************************************************************/
+-void seepromGenerateCheckSyndromDecode(const unsigned char checkSyndrom,
+-                                       unsigned char* csdData,
+-                                       unsigned char* csdEcc);
++void seepromGenerateCheckSyndromDecode(const unsigned char  checkSyndrom,
++                                             unsigned char* csdData,
++                                             unsigned char* csdEcc);
++
+ 
+ /******************************************************************************/
++/* seepromEccCheck                                                            */
++/*                                                                            */
++/* Checks the data integrety and correct it if possible                       */
++/* @param userWord In-Buffer containing the user data                         */
++/* @param eccWord  In-Buffer containing the ecc data for the related userWord */
++/* @param numOfWord Length of both In-Buffers                                 */
++/* @return Error returncode                                                   */
+ /******************************************************************************/
+-int seepromEccCheck(unsigned char* vData, unsigned char* vEcc,
+-                    size_t numOfDataBytes);
++int seepromEccCheck(unsigned char* vData, unsigned char* vEcc, size_t numOfDataBytes);
++
+ 
+ /******************************************************************************/
++/* seepromCheckData  (for 2K SEEPROMs only)                                   */
++/*                                                                            */
++/* Checks a page (256 bytes) of a 2K SEEPROM and correct it if possible       */
++/* @param seepromData In-Buffer containing the raw data of the SEEPROM        */
++/*                   Out-Buffer containing the corrected user data if possible*/
++/* @return Error returncode                                                   */
+ /******************************************************************************/
+ /*int seepromCheckData(unsigned char* seepromData);*/
+ 
++
+ /******************************************************************************/
++/* seepromCreateEcc (for 2K SEEPROMs only)                                    */
++/*                                                                            */
++/* create for the first 208 bytes user data, 48 ECC bytes and append it       */
++/* seepromData is a 256 byte buffer, which contains in the first 208 bytes    */
++/* the user data. The last 48 bytes contains the ECC after returning the      */
++/* function                                                                   */
++/* @param seepromData In-Buffer containing the user data                      */
++/*                   Out-Buffer containing the user data with the appended ECC*/
++/* @return Error returncode                                                   */
+ /******************************************************************************/
+ /*int seepromCreateEcc(unsigned char* seepromData);*/
++
++
++
++
++#ifdef __cplusplus
++   } /* end extern "C" */
++#endif
++
++#endif  /* endif _PXESCSEEPROMSUPPORT_H_ */
+-- 
+2.17.1
+
