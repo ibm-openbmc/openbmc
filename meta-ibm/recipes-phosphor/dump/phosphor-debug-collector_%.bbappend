@@ -16,6 +16,7 @@ EXTRA_OEMESON:append:p10bmc = " -DHARDWARE_DUMP_TMP_FILE_DIR=${hardware_dump_tem
 EXTRA_OEMESON:append:p10bmc = " -DBMC_DUMP_FILENAME_REGEX='BMCDUMP.([a-zA-Z0-9]+).([0-9]+).([0-9]+)'"
 EXTRA_OEMESON:append:p10bmc = " -DFILENAME_DUMP_ID_POS=2"
 EXTRA_OEMESON:append:p10bmc = " -DFILENAME_EPOCHTIME_POS=3"
+EXTRA_OEMESON:append:p10bmc = " -DBMC_DUMP_TOTAL_SIZE=409600"
 
 install_ibm_plugins() {
     install ${S}/tools/dreport.d/ibm.d/plugins.d/* ${D}${dreport_plugin_dir}/
