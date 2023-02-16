@@ -16,7 +16,7 @@ SRCREV_FORMAT = "ecmd-pdbg"
 SRCREV_ecmd_pdbg = "afb4a7173b66aa51a53b53efe405ac5edbe16809"
 SRCREV_ecmd = "${ECMD_REV}"
 
-SRC_URI = "git://git@github.com/open-power/ecmd-pdbg.git;protocol=https;name=ecmd_pdbg;protocol=https \
+SRC_URI = "git://git@github.com/open-power/ecmd-pdbg.git;branch=master;protocol=https;name=ecmd_pdbg;protocol=https \
            ${ECMD_URI};name=ecmd;destsuffix=git/ecmd \
            "
 
