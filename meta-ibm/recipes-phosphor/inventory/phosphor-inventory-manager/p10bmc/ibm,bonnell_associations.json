@@ -28,8 +28,8 @@
             },
             {
                "types":{
-                  "rType":"fault_inventory_object",
-                  "fType":"fault_led_group"
+                  "rType":"fault_identified_by",
+                  "fType":"fault_identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/fan0_fault"
@@ -70,8 +70,8 @@
             },
             {
                "types":{
-                  "rType":"fault_inventory_object",
-                  "fType":"fault_led_group"
+                  "rType":"fault_identified_by",
+                  "fType":"fault_identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/fan1_fault"
@@ -102,8 +102,8 @@
          "endpoints":[
             {
                "types":{
-                  "rType":"fault_inventory_object",
-                  "fType":"fault_led_group"
+                  "rType":"fault_identified_by",
+                  "fType":"fault_identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/enclosure_fault"
@@ -193,8 +193,8 @@
          "endpoints":[
             {
                "types":{
-                  "rType":"fault_inventory_object",
-                  "fType":"fault_led_group"
+                  "rType":"fault_identified_by",
+                  "fType":"fault_identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/partition_system_attention_indicator",
@@ -286,8 +286,8 @@
          "endpoints":[
             {
                "types":{
-                  "rType":"fault_inventory_object",
-                  "fType":"fault_led_group"
+                  "rType":"fault_identified_by",
+                  "fType":"fault_identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/enclosure_fault"
@@ -319,8 +319,8 @@
          "endpoints":[
             {
                "types":{
-                  "rType":"fault_inventory_object",
-                  "fType":"fault_led_group"
+                  "rType":"fault_identified_by",
+                  "fType":"fault_identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/enclosure_fault"
@@ -355,8 +355,8 @@
          "endpoints":[
             {
                "types":{
-                  "rType":"fault_inventory_object",
-                  "fType":"fault_led_group"
+                  "rType":"fault_identified_by",
+                  "fType":"fault_identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/enclosure_fault"
@@ -378,8 +378,8 @@
          "endpoints":[
             {
                "types":{
-                  "rType":"fault_inventory_object",
-                  "fType":"fault_led_group"
+                  "rType":"fault_identified_by",
+                  "fType":"fault_identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/enclosure_fault"
@@ -410,8 +410,8 @@
          "endpoints":[
             {
                "types":{
-                  "rType":"fault_inventory_object",
-                  "fType":"fault_led_group"
+                  "rType":"fault_identified_by",
+                  "fType":"fault_identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/enclosure_fault"
@@ -433,8 +433,8 @@
          "endpoints":[
             {
                "types":{
-                  "rType":"fault_inventory_object",
-                  "fType":"fault_led_group"
+                  "rType":"fault_identified_by",
+                  "fType":"fault_identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/enclosure_fault"
@@ -456,8 +456,8 @@
          "endpoints":[
             {
                "types":{
-                  "rType":"fault_inventory_object",
-                  "fType":"fault_led_group"
+                  "rType":"fault_identified_by",
+                  "fType":"fault_identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/enclosure_fault"
@@ -479,8 +479,8 @@
          "endpoints":[
             {
                "types":{
-                  "rType":"fault_inventory_object",
-                  "fType":"fault_led_group"
+                  "rType":"fault_identified_by",
+                  "fType":"fault_identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/enclosure_fault"
@@ -502,8 +502,8 @@
          "endpoints":[
             {
                "types":{
-                  "rType":"fault_inventory_object",
-                  "fType":"fault_led_group"
+                  "rType":"fault_identified_by",
+                  "fType":"fault_identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/enclosure_fault"
@@ -525,8 +525,8 @@
          "endpoints":[
             {
                "types":{
-                  "rType":"fault_inventory_object",
-                  "fType":"fault_led_group"
+                  "rType":"fault_identified_by",
+                  "fType":"fault_identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/enclosure_fault"
@@ -557,8 +557,8 @@
          "endpoints":[
             {
                "types":{
-                  "rType":"fault_inventory_object",
-                  "fType":"fault_led_group"
+                  "rType":"fault_identified_by",
+                  "fType":"fault_identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/enclosure_fault"
@@ -580,8 +580,8 @@
          "endpoints":[
             {
                "types":{
-                  "rType":"fault_inventory_object",
-                  "fType":"fault_led_group"
+                  "rType":"fault_identified_by",
+                  "fType":"fault_identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/enclosure_fault"
@@ -621,8 +621,8 @@
          "endpoints":[
             {
                "types":{
-                  "rType":"fault_inventory_object",
-                  "fType":"fault_led_group"
+                  "rType":"fault_identified_by",
+                  "fType":"fault_identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/enclosure_fault"
@@ -662,8 +662,8 @@
          "endpoints":[
             {
                "types":{
-                  "rType":"fault_inventory_object",
-                  "fType":"fault_led_group"
+                  "rType":"fault_identified_by",
+                  "fType":"fault_identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/enclosure_fault"
@@ -703,8 +703,8 @@
          "endpoints":[
             {
                "types":{
-                  "rType":"fault_inventory_object",
-                  "fType":"fault_led_group"
+                  "rType":"fault_identified_by",
+                  "fType":"fault_identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/enclosure_fault"
@@ -744,8 +744,8 @@
          "endpoints":[
             {
                "types":{
-                  "rType":"fault_inventory_object",
-                  "fType":"fault_led_group"
+                  "rType":"fault_identified_by",
+                  "fType":"fault_identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/nvme0_fault"
@@ -785,8 +785,8 @@
          "endpoints":[
             {
                "types":{
-                  "rType":"fault_inventory_object",
-                  "fType":"fault_led_group"
+                  "rType":"fault_identified_by",
+                  "fType":"fault_identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/nvme1_fault"
@@ -826,8 +826,8 @@
          "endpoints":[
             {
                "types":{
-                  "rType":"fault_inventory_object",
-                  "fType":"fault_led_group"
+                  "rType":"fault_identified_by",
+                  "fType":"fault_identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/nvme2_fault"
@@ -867,8 +867,8 @@
          "endpoints":[
             {
                "types":{
-                  "rType":"fault_inventory_object",
-                  "fType":"fault_led_group"
+                  "rType":"fault_identified_by",
+                  "fType":"fault_identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/nvme3_fault"
