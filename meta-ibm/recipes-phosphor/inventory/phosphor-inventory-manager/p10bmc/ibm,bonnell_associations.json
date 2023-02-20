@@ -37,8 +37,8 @@
             },
             {
                "types":{
-                  "rType":"identify_inventory_object",
-                  "fType":"identify_led_group"
+                  "rType":"identified_by",
+                  "fType":"identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/fan0_identify"
@@ -79,8 +79,8 @@
             },
             {
                "types":{
-                  "rType":"identify_inventory_object",
-                  "fType":"identify_led_group"
+                  "rType":"identified_by",
+                  "fType":"identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/fan1_identify"
@@ -111,8 +111,8 @@
             },
             {
                "types":{
-                  "rType":"identify_inventory_object",
-                  "fType":"identify_led_group"
+                  "rType":"identified_by",
+                  "fType":"identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/enclosure_identify"
@@ -295,8 +295,8 @@
             },
             {
                "types":{
-                  "rType":"identify_inventory_object",
-                  "fType":"identify_led_group"
+                  "rType":"identified_by",
+                  "fType":"identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/enclosure_identify"
@@ -328,8 +328,8 @@
             },
             {
                "types":{
-                  "rType":"identify_inventory_object",
-                  "fType":"identify_led_group"
+                  "rType":"identified_by",
+                  "fType":"identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/enclosure_identify"
@@ -364,8 +364,8 @@
             },
             {
                "types":{
-                  "rType":"identify_inventory_object",
-                  "fType":"identify_led_group"
+                  "rType":"identified_by",
+                  "fType":"identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/enclosure_identify"
@@ -387,8 +387,8 @@
             },
             {
                "types":{
-                  "rType":"identify_inventory_object",
-                  "fType":"identify_led_group"
+                  "rType":"identified_by",
+                  "fType":"identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/enclosure_identify"
@@ -396,8 +396,8 @@
             },
             {
                "types":{
-                  "rType":"identify_inventory_object",
-                  "fType":"identify_led_group"
+                  "rType":"identified_by",
+                  "fType":"identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/enclosure_identify"
@@ -419,8 +419,8 @@
             },
             {
                "types":{
-                  "rType":"identify_inventory_object",
-                  "fType":"identify_led_group"
+                  "rType":"identified_by",
+                  "fType":"identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/enclosure_identify"
@@ -442,8 +442,8 @@
             },
             {
                "types":{
-                  "rType":"identify_inventory_object",
-                  "fType":"identify_led_group"
+                  "rType":"identified_by",
+                  "fType":"identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/enclosure_identify"
@@ -465,8 +465,8 @@
             },
             {
                "types":{
-                  "rType":"identify_inventory_object",
-                  "fType":"identify_led_group"
+                  "rType":"identified_by",
+                  "fType":"identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/enclosure_identify"
@@ -488,8 +488,8 @@
             },
             {
                "types":{
-                  "rType":"identify_inventory_object",
-                  "fType":"identify_led_group"
+                  "rType":"identified_by",
+                  "fType":"identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/enclosure_identify"
@@ -511,8 +511,8 @@
             },
             {
                "types":{
-                  "rType":"identify_inventory_object",
-                  "fType":"identify_led_group"
+                  "rType":"identified_by",
+                  "fType":"identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/enclosure_identify"
@@ -534,8 +534,8 @@
             },
             {
                "types":{
-                  "rType":"identify_inventory_object",
-                  "fType":"identify_led_group"
+                  "rType":"identified_by",
+                  "fType":"identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/enclosure_identify"
@@ -566,8 +566,8 @@
             },
             {
                "types":{
-                  "rType":"identify_inventory_object",
-                  "fType":"identify_led_group"
+                  "rType":"identified_by",
+                  "fType":"identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/enclosure_identify"
@@ -589,8 +589,8 @@
             },
             {
                "types":{
-                  "rType":"identify_inventory_object",
-                  "fType":"identify_led_group"
+                  "rType":"identified_by",
+                  "fType":"identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/enclosure_identify"
@@ -630,8 +630,8 @@
             },
             {
                "types":{
-                  "rType":"identify_inventory_object",
-                  "fType":"identify_led_group"
+                  "rType":"identified_by",
+                  "fType":"identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/enclosure_identify"
@@ -671,8 +671,8 @@
             },
             {
                "types":{
-                  "rType":"identify_inventory_object",
-                  "fType":"identify_led_group"
+                  "rType":"identified_by",
+                  "fType":"identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/enclosure_identify"
@@ -712,8 +712,8 @@
             },
             {
                "types":{
-                  "rType":"identify_inventory_object",
-                  "fType":"identify_led_group"
+                  "rType":"identified_by",
+                  "fType":"identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/enclosure_identify"
@@ -753,8 +753,8 @@
             },
             {
                "types":{
-                  "rType":"identify_inventory_object",
-                  "fType":"identify_led_group"
+                  "rType":"identified_by",
+                  "fType":"identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/nvme0_identify"
@@ -794,8 +794,8 @@
             },
             {
                "types":{
-                  "rType":"identify_inventory_object",
-                  "fType":"identify_led_group"
+                  "rType":"identified_by",
+                  "fType":"identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/nvme1_identify"
@@ -835,8 +835,8 @@
             },
             {
                "types":{
-                  "rType":"identify_inventory_object",
-                  "fType":"identify_led_group"
+                  "rType":"identified_by",
+                  "fType":"identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/nvme2_identify"
@@ -876,8 +876,8 @@
             },
             {
                "types":{
-                  "rType":"identify_inventory_object",
-                  "fType":"identify_led_group"
+                  "rType":"identified_by",
+                  "fType":"identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/nvme3_identify"
@@ -908,8 +908,8 @@
          "endpoints":[
             {
                "types":{
-                  "rType":"identify_inventory_object",
-                  "fType":"identify_led_group"
+                  "rType":"identified_by",
+                  "fType":"identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/enclosure_identify"
@@ -931,8 +931,8 @@
          "endpoints":[
             {
                "types":{
-                  "rType":"identify_inventory_object",
-                  "fType":"identify_led_group"
+                  "rType":"identified_by",
+                  "fType":"identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/enclosure_identify"
@@ -954,8 +954,8 @@
          "endpoints":[
             {
                "types":{
-                  "rType":"identify_inventory_object",
-                  "fType":"identify_led_group"
+                  "rType":"identified_by",
+                  "fType":"identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/enclosure_identify"
@@ -977,8 +977,8 @@
          "endpoints":[
             {
                "types":{
-                  "rType":"identify_inventory_object",
-                  "fType":"identify_led_group"
+                  "rType":"identified_by",
+                  "fType":"identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/enclosure_identify"
@@ -1000,8 +1000,8 @@
          "endpoints":[
             {
                "types":{
-                  "rType":"identify_inventory_object",
-                  "fType":"identify_led_group"
+                  "rType":"identified_by",
+                  "fType":"identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/enclosure_identify"
@@ -1023,8 +1023,8 @@
          "endpoints":[
             {
                "types":{
-                  "rType":"identify_inventory_object",
-                  "fType":"identify_led_group"
+                  "rType":"identified_by",
+                  "fType":"identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/enclosure_identify"
@@ -1046,8 +1046,8 @@
          "endpoints":[
             {
                "types":{
-                  "rType":"identify_inventory_object",
-                  "fType":"identify_led_group"
+                  "rType":"identified_by",
+                  "fType":"identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/enclosure_identify"
@@ -1069,8 +1069,8 @@
          "endpoints":[
             {
                "types":{
-                  "rType":"identify_inventory_object",
-                  "fType":"identify_led_group"
+                  "rType":"identified_by",
+                  "fType":"identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/enclosure_identify"
@@ -1092,8 +1092,8 @@
          "endpoints":[
             {
                "types":{
-                  "rType":"identify_inventory_object",
-                  "fType":"identify_led_group"
+                  "rType":"identified_by",
+                  "fType":"identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/enclosure_identify"
@@ -1115,8 +1115,8 @@
          "endpoints":[
             {
                "types":{
-                  "rType":"identify_inventory_object",
-                  "fType":"identify_led_group"
+                  "rType":"identified_by",
+                  "fType":"identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/enclosure_identify"
@@ -1138,8 +1138,8 @@
          "endpoints":[
             {
                "types":{
-                  "rType":"identify_inventory_object",
-                  "fType":"identify_led_group"
+                  "rType":"identified_by",
+                  "fType":"identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/enclosure_identify"
@@ -1161,8 +1161,8 @@
          "endpoints":[
             {
                "types":{
-                  "rType":"identify_inventory_object",
-                  "fType":"identify_led_group"
+                  "rType":"identified_by",
+                  "fType":"identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/enclosure_identify"
@@ -1184,8 +1184,8 @@
          "endpoints":[
             {
                "types":{
-                  "rType":"identify_inventory_object",
-                  "fType":"identify_led_group"
+                  "rType":"identified_by",
+                  "fType":"identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/enclosure_identify"
@@ -1207,8 +1207,8 @@
          "endpoints":[
             {
                "types":{
-                  "rType":"identify_inventory_object",
-                  "fType":"identify_led_group"
+                  "rType":"identified_by",
+                  "fType":"identifying"
                },
                "paths":[
                   "/xyz/openbmc_project/led/groups/enclosure_identify"
