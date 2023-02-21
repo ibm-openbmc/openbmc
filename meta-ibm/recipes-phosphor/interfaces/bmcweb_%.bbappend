@@ -13,6 +13,7 @@ EXTRA_OEMESON:append:p10bmc = " \
     -Dmutual-tls-auth=disabled \
     -Dkvm=disabled \
     -Dvm-websocket=disabled \
+    -Dredfish-license=enabled \
 "
 
 EXTRA_OEMESON:append:witherspoon-tacoma = " \
