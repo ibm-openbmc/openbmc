@@ -13,7 +13,7 @@ require recipes-bsp/ecmd/libecmd.inc
 
 SRCREV_FORMAT = "ecmd-pdbg"
 
-SRCREV_ecmd_pdbg = "afb4a7173b66aa51a53b53efe405ac5edbe16809"
+SRCREV_ecmd_pdbg = "a045bd839e42020d307c9fed2d3daffda22ce74f"
 SRCREV_ecmd = "${ECMD_REV}"
 
 SRC_URI = "git://git@github.com/open-power/ecmd-pdbg.git;branch=master;protocol=https;name=ecmd_pdbg;protocol=https \
@@ -24,6 +24,9 @@ SRC_URI = "git://git@github.com/open-power/ecmd-pdbg.git;branch=master;protocol=
 S = "${WORKDIR}/git"
 
 DEPENDS = "pdbg zlib libyaml ipl"
+
+PACKAGECONFIG ??= "${@bb.utils.filter('MACHINE_FEATURES', 'phal', d)}"
+PACKAGECONFIG[phal] = "-Djournal=enabled, -Djournal=disabled, systemd"
 
 FILES:${PN} += "${prefix}/help"
 
