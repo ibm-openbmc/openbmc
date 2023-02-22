@@ -10,6 +10,7 @@ EXTRA_OEMESON:append = " \
 "
 
 EXTRA_OEMESON:append:p10bmc = " \
+    -Dibm-led-extensions=enabled \
     -Dmutual-tls-auth=disabled \
     -Dkvm=disabled \
     -Dvm-websocket=disabled \
