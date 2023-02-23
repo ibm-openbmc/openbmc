@@ -1,5 +1,0 @@
-[Unit]
-Description=Copy the AssetTag file for IPS
-
-[Service]
-ExecStart=/usr/bin/ips-asset-tag.sh update
