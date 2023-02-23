@@ -21,11 +21,6 @@ EXTRA_OEMESON:append:witherspoon-tacoma = " \
     -Dvm-websocket=disabled \
 "
 
-EXTRA_OEMESON:append:p10bmc = " \
-    -Dkvm=disabled \
-    -Dvm-websocket=disabled \
-"
-
 EXTRA_OEMESON:append:witherspoon-tacoma = " \
     -Dhypervisor-serial-socket=enabled \
     -Dkvm=disabled \
