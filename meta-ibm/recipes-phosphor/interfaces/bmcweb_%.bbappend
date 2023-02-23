@@ -19,12 +19,7 @@ EXTRA_OEMESON:append:witherspoon-tacoma = " \
     -Dmutual-tls-auth=disabled \
     -Dkvm=disabled \
     -Dvm-websocket=disabled \
-"
-
-EXTRA_OEMESON:append:witherspoon-tacoma = " \
     -Dhypervisor-serial-socket=enabled \
-    -Dkvm=disabled \
-    -Dvm-websocket=disabled \
 "
 
 inherit obmc-phosphor-discovery-service
