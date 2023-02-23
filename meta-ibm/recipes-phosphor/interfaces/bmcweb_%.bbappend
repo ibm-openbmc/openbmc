@@ -9,10 +9,14 @@ EXTRA_OEMESON:append = " \
 
 EXTRA_OEMESON:append:p10bmc = " \
     -Dibm-led-extensions=enabled \
+    -Dhw-isolation=enabled \
+    -Dhypervisor-serial-socket=enabled \
+    -Dbmc-shell-socket=enabled \
+    -Dredfish-license=enabled \
+    -Dibm-usb-code-update=enabled \
     -Dmutual-tls-auth=disabled \
     -Dkvm=disabled \
     -Dvm-websocket=disabled \
-    -Dredfish-license=enabled \
 "
 
 EXTRA_OEMESON:append:witherspoon-tacoma = " \
