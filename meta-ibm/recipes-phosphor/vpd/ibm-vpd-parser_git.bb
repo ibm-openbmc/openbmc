@@ -30,6 +30,7 @@ SRC_URI += " file://50004000.json"
 SRC_URI += " file://systems.json"
 SRC_URI += " file://wait-vpd-parsers.sh"
 SRC_URI += " file://libvpdecc.so.1.0"
+SRC_URI += " file://0001-Add-AssetTag-persistence.patch"
 
 S = "${WORKDIR}/git"
 
