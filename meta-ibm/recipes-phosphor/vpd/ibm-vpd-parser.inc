@@ -2,6 +2,6 @@ HOMEPAGE = "https://github.com/openbmc/openpower-vpd-parser"
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://${COREBASE}/meta/files/common-licenses/Apache-2.0;md5=89aea4e17d99a7cacdbeed46a0096b10"
 SRC_URI += "git://github.com/ibm-openbmc/openpower-vpd-parser;nobranch=1"
-SRCREV = "5af86babb58172f002cd84e8609e875fa64203b2"
+SRCREV = "8ab3c4762ad9a54a069888cc02c3cc1e658b00f1"
 
 
