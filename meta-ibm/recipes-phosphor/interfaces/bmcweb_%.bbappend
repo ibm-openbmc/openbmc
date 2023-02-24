@@ -5,33 +5,25 @@ EXTRA_OEMESON:append = " \
     -Dredfish-new-powersubsystem-thermalsubsystem=enabled \
     -Dredfish-dump-log=enabled \
     -Dredfish-oem-manager-fan-data=disabled \
-    -Drest=disabled \
-    -Dmutual-tls-auth=disabled \
 "
 
 EXTRA_OEMESON:append:p10bmc = " \
     -Dibm-led-extensions=enabled \
-    -Dmutual-tls-auth=disabled \
-    -Dkvm=disabled \
-    -Dvm-websocket=disabled \
-    -Dredfish-license=enabled \
-"
-
-EXTRA_OEMESON:append:witherspoon-tacoma = " \
-    -Dmutual-tls-auth=disabled \
-    -Dkvm=disabled \
-    -Dvm-websocket=disabled \
-"
-
-EXTRA_OEMESON:append:p10bmc = " \
-    -Dkvm=disabled \
-    -Dvm-websocket=disabled \
-"
-
-EXTRA_OEMESON:append:witherspoon-tacoma = " \
+    -Dhw-isolation=enabled \
     -Dhypervisor-serial-socket=enabled \
+    -Dbmc-shell-socket=enabled \
+    -Dredfish-license=enabled \
+    -Dibm-usb-code-update=enabled \
+    -Dmutual-tls-auth=disabled \
     -Dkvm=disabled \
     -Dvm-websocket=disabled \
+"
+
+EXTRA_OEMESON:append:witherspoon-tacoma = " \
+    -Dmutual-tls-auth=disabled \
+    -Dkvm=disabled \
+    -Dvm-websocket=disabled \
+    -Dhypervisor-serial-socket=enabled \
 "
 
 inherit obmc-phosphor-discovery-service
