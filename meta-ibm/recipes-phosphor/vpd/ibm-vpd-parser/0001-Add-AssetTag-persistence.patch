@@ -1,0 +1,67 @@
+From 5948bca58d9d2433a358d98ed14396b36d0bd265 Mon Sep 17 00:00:00 2001
+From: George Liu <liuxiwei@inspur.com>
+Date: Fri, 24 Feb 2023 17:26:53 +0800
+Subject: [PATCH] Add AssetTag persistence
+
+Signed-off-by: George Liu <liuxiwei@inspur.com>
+---
+ ibm_vpd_app.cpp         | 24 +++++++++++++++++++++---
+ vpd-manager/manager.cpp |  2 ++
+ 2 files changed, 23 insertions(+), 3 deletions(-)
+
+diff --git a/ibm_vpd_app.cpp b/ibm_vpd_app.cpp
+index c62a90b..3d920e2 100644
+--- a/ibm_vpd_app.cpp
++++ b/ibm_vpd_app.cpp
+@@ -565,14 +565,32 @@ static void preAction(const nlohmann::json& json, const string& file)
+ static void fillAssetTag(inventory::InterfaceMap& interfaces,
+                          const Parsed& vpdMap)
+ {
++    std::string defaultAssetTag;
++    vector<string> output = executeCmd("/sbin/fw_printenv");
++    for (const auto& entry : output)
++    {
++        size_t pos = entry.find("=");
++        string key = entry.substr(0, pos);
++        if (key != "ipsAssetTag")
++        {
++            continue;
++        }
++
++        defaultAssetTag = entry.substr(pos + 1);
++        break;
++    }
++
+     // Read the system serial number and MTM
+     // Default asset tag is Server-MTM-System Serial
+     inventory::Interface assetIntf{
+         "xyz.openbmc_project.Inventory.Decorator.AssetTag"};
+     inventory::PropertyMap assetTagProps;
+-    std::string defaultAssetTag =
+-        std::string{"Server-"} + getKwVal(vpdMap, "VSYS", "TM") +
+-        std::string{"-"} + getKwVal(vpdMap, "VSYS", "SE");
++    if (defaultAssetTag.empty())
++    {
++        defaultAssetTag = std::string{"Server-"} +
++                          getKwVal(vpdMap, "VSYS", "TM") + std::string{"-"} +
++                          getKwVal(vpdMap, "VSYS", "SE");
++    }
+     assetTagProps.emplace("AssetTag", defaultAssetTag);
+     insertOrMerge(interfaces, assetIntf, std::move(assetTagProps));
+ }
+diff --git a/vpd-manager/manager.cpp b/vpd-manager/manager.cpp
+index b8aeea1..e9358f7 100644
+--- a/vpd-manager/manager.cpp
++++ b/vpd-manager/manager.cpp
+@@ -272,6 +272,8 @@ void Manager::assetTagCallback(sdbusplus::message::message& msg)
+                    {{"AssetTag", *assetTag}}}}}};
+ 
+             common::utility::callPIM(std::move(objectMap));
++            executeCmd("/sbin/fw_setenv", std::string{"ipsAssetTag"},
++                       *assetTag);
+         }
+         else
+         {
+-- 
+2.34.1
+
