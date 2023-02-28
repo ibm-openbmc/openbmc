@@ -5,6 +5,7 @@ EXTRA_OEMESON:append = " \
     -Dredfish-new-powersubsystem-thermalsubsystem=enabled \
     -Dredfish-dump-log=enabled \
     -Dredfish-oem-manager-fan-data=disabled \
+    -Dinsecure-enable-redfish-query=enabled \
 "
 
 EXTRA_OEMESON:append:p10bmc = " \
