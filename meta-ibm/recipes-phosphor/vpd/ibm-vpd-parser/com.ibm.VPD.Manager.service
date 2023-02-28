@@ -1,15 +1,15 @@
 [Unit]
 Description=IBM VPD Manager
 StopWhenUnneeded=false
-Requires=system-vpd.service
-After=system-vpd.service
+Wants=mapper-wait@-xyz-openbmc_project-inventory.service
+After=mapper-wait@-xyz-openbmc_project-inventory.service
 
 [Service]
 BusName=com.ibm.VPD.Manager
 Type=dbus
 Restart=always
 RestartSec=5
-ExecStart=/usr/bin/vpd-manager
+ExecStart=/usr/bin/vpd-manager --file /sys/bus/i2c/drivers/at24/8-0050/eeprom
 
 [Install]
 WantedBy=multi-user.target
