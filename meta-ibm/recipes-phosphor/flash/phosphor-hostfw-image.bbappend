@@ -2,7 +2,7 @@ FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
 HOST_FW_LICENSE = "Proprietary"
 
-VERSION:p10bmc ?= "1030.2249.20221130a"
+VERSION:p10bmc ?= "1030.2307.20230228i"
 
 SRC_URI:append:p10bmc = " file://host-fw-elements_lids.json"
 SRC_URI:append:p10bmc = " file://image-hostfw-${VERSION}"
