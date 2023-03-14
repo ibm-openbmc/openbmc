@@ -13,6 +13,7 @@ EXTRA_OEMESON:append:p10bmc = " \
     -Dmutual-tls-auth=disabled \
     -Dkvm=disabled \
     -Dvm-websocket=disabled \
+    -Daudit-events=enabled \
 "
 
 EXTRA_OEMESON:append:witherspoon-tacoma = " \
@@ -30,6 +31,9 @@ EXTRA_OEMESON:append:sbp1 = " \
      -Dhttp-body-limit=400 \
      -Dredfish-dbus-log=enabled \
 "
+
+DEPENDS:append:p10bmc = " audit"
+RDEPENDS:${PN}:append:p10bmc = " auditd"
 
 inherit obmc-phosphor-discovery-service
 

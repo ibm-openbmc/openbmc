@@ -1,0 +1,2 @@
+## Filters all BPF events to avoid spamming the log
+-a always,exclude -F msgtype=BPF
