@@ -18,7 +18,7 @@ EXTRA_OEMESON:append:p10bmc = " -DBMC_DUMP_FILENAME_REGEX='(BMCDUMP|NAGDUMP).([a
 EXTRA_OEMESON:append:p10bmc = " -DFILENAME_DUMP_ID_POS=3"
 EXTRA_OEMESON:append:p10bmc = " -DFILENAME_EPOCHTIME_POS=4"
 EXTRA_OEMESON:append:p10bmc = " -DBMC_DUMP_TOTAL_SIZE=409600"
-EXTRA_OEMESON:append:p10bmc = " -DBMC_DUMP_MAX_SIZE=20480"
+EXTRA_OEMESON:append:p10bmc = " -DBMC_DUMP_MAX_SIZE=25600"
 EXTRA_OEMESON:append:p10bmc = " -Dlog_pel_on_dump_delete=enabled"
 EXTRA_OEMESON:append:p10bmc = " -Dfault_data_dump=enabled"
 
