@@ -7,11 +7,11 @@ DEPENDS += " \
         sdbusplus \
         systemd \
         "
-SRCREV = "3b9c8cc6b4fbd3db17226f98e348182668a1e2ca"
+SRCREV = "0353ecfe5c34b31b129ced21466777a86648788d"
 PV = "1.0+git${SRCPV}"
 PR = "r1"
 
-SRC_URI = "git://github.com/openbmc/phosphor-dbus-interfaces;branch=master;protocol=https;nobranch=1"
+SRC_URI = "git://github.com/ibm-openbmc/phosphor-dbus-interfaces;branch=master;protocol=https;nobranch=1"
 
 S = "${WORKDIR}/git"
 
