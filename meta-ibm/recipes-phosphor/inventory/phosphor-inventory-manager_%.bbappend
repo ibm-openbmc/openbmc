@@ -10,6 +10,7 @@ SRC_URI:append:p10bmc = " \
     file://ibm,rainier-2u_associations.json \
     file://ibm,rainier-4u_associations.json \
     file://ibm,everest_associations.json \
+    file://ibm,bonnell_associations.json \
     "
 
 SYSTEMD_SERVICE:${PN}:append:p10bmc = " obmc-clear-all-fault-leds-and-remove-crit-association@.service"
