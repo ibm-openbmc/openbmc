@@ -33,6 +33,8 @@ SRC_URI += " file://wait-vpd-parsers.sh"
 S = "${WORKDIR}/git"
 
 SYSTEMD_SERVICE:${PN} := "ibm-vpd-parser@.service"
+SYSTEMD_SERVICE:${PN} += "ibm-isdimm-vpd-parser@.service"
+SYSTEMD_SERVICE:${PN} += "ibm-spi-vpd-parser@.service"
 SYSTEMD_SERVICE:${PN} += "system-vpd.service"
 SYSTEMD_SERVICE:${PN} += "com.ibm.VPD.Manager.service"
 SYSTEMD_SERVICE:${PN} += "wait-vpd-parsers.service"

@@ -7,8 +7,8 @@ After=system-vpd.service
 Before=phosphor-discover-system-state@0.service
 
 [Service]
-ExecStart=/usr/bin/env ibm-read-vpd --file %f/eeprom
-SyslogIdentifier=ibm-vpd-parser
+ExecStart=/usr/bin/env ibm-read-vpd --file %f --driver ee1004
+SyslogIdentifier=ibm-isdimm-vpd-parser
 
 [Install]
 WantedBy=multi-user.target

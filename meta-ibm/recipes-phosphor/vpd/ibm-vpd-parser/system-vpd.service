@@ -10,7 +10,7 @@ After=set-spi-mux.service
 Before=phosphor-discover-system-state@0.service
 
 [Service]
-ExecStart=/usr/bin/env ibm-read-vpd --file /sys/bus/i2c/drivers/at24/8-0050/eeprom
+ExecStart=/usr/bin/env ibm-read-vpd --file /sys/bus/i2c/drivers/at24/8-0050/eeprom --driver at24
 SyslogIdentifier=ibm-vpd-parser
 Type=oneshot
 RemainAfterExit=yes
