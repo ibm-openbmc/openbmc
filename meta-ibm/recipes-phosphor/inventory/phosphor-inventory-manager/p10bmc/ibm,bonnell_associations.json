@@ -402,6 +402,17 @@
                "paths":[
                   "/xyz/openbmc_project/led/groups/enclosure_identify"
                ]
+            },
+            {
+                "types":
+                {
+                    "rType": "proc_instance",
+                    "fType": "occ_instance"
+                },
+                "paths":
+                [
+                    "/org/open_power/control/occ0"
+                ]
             }
          ]
       },
@@ -425,6 +436,17 @@
                "paths":[
                   "/xyz/openbmc_project/led/groups/enclosure_identify"
                ]
+            },
+            {
+                "types":
+                {
+                    "rType": "proc_instance",
+                    "fType": "occ_instance"
+                },
+                "paths":
+                [
+                    "/org/open_power/control/occ1"
+                ]
             }
          ]
       },

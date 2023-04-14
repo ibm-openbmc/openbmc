@@ -918,6 +918,17 @@
                     [
                         "/xyz/openbmc_project/led/groups/cpu0_identify"
                     ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "proc_instance",
+                        "fType": "occ_instance"
+                    },
+                    "paths":
+                    [
+                        "/org/open_power/control/occ0"
+                    ]
                 }
             ]
         },
@@ -945,6 +956,17 @@
                     "paths":
                     [
                         "/xyz/openbmc_project/led/groups/cpu0_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "proc_instance",
+                        "fType": "occ_instance"
+                    },
+                    "paths":
+                    [
+                        "/org/open_power/control/occ1"
                     ]
                 }
             ]
@@ -974,6 +996,17 @@
                     [
                         "/xyz/openbmc_project/led/groups/cpu1_identify"
                     ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "proc_instance",
+                        "fType": "occ_instance"
+                    },
+                    "paths":
+                    [
+                        "/org/open_power/control/occ2"
+                    ]
                 }
             ]
         },
@@ -1001,6 +1034,17 @@
                     "paths":
                     [
                         "/xyz/openbmc_project/led/groups/cpu1_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "proc_instance",
+                        "fType": "occ_instance"
+                    },
+                    "paths":
+                    [
+                        "/org/open_power/control/occ3"
                     ]
                 }
             ]
