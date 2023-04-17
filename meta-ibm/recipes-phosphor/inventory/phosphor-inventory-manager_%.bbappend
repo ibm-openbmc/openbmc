@@ -51,5 +51,5 @@ do_install:append:p10bmc() {
     install -m 0755 ${WORKDIR}/ibm,rainier-2u_associations.json ${D}${base_datadir}/ibm,rainier-2u_associations.json
     install -m 0755 ${WORKDIR}/ibm,rainier-4u_associations.json ${D}${base_datadir}/ibm,rainier-4u_associations.json
     install -m 0755 ${WORKDIR}/ibm,everest_associations.json ${D}${base_datadir}/ibm,everest_associations.json
-    install -m 0755 ${WORKDIR}/ibm,everest_associations.json ${D}${base_datadir}/ibm,bonnell_associations.json
+    install -m 0755 ${WORKDIR}/ibm,bonnell_associations.json ${D}${base_datadir}/ibm,bonnell_associations.json
 }
