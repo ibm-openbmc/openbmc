@@ -5,7 +5,7 @@ LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=86d3f3a95c324c9479bd8986968f4327"
 
 SRC_URI = "git://github.com/ibm-openbmc/phosphor-certificate-manager;nobranch=1;protocol=https"
-SRCREV = "000a62776a616bb35491af0f1fc0ecae1490bb17"
+SRCREV = "4532a2afaa2f70c53a8edec9fed5f3cba5fc6d3f"
 PV = "0.1+git${SRCPV}"
 PR = "r1"
 
