@@ -54,7 +54,7 @@ install_dump_package() {
 }
 
 IBM_INSTALL_POSTFUNCS = "install_ibm_plugins link_ibm_plugins"
-IBM_INSTALL_POSTFUNCS:p10bmc += "install_dreport_header install_gendumpinfo install_dump_package"
-IBM_INSTALL_POSTFUNCS:witherspoon-tacoma += "install_dreport_header"
+IBM_INSTALL_POSTFUNCS:append:p10bmc = " install_dreport_header install_gendumpinfo install_dump_package"
+IBM_INSTALL_POSTFUNCS:append:witherspoon-tacoma = " install_dreport_header"
 
 do_install[postfuncs] += "${IBM_INSTALL_POSTFUNCS}"
