@@ -32,6 +32,7 @@ FILES:${PN} += "${datadir}/network/*.json"
 
 PACKAGECONFIG:append = " sync-mac"
 PACKAGECONFIG:append:p10bmc = " hyp-nw-config"
+PACKAGECONFIG:append:p10bmc = " persist-mac"
 
 PACKAGECONFIG:append:p10bmc = " hyp-nw-config"
 PACKAGECONFIG:remove:p10bmc = "default-ipv6-accept-ra"
