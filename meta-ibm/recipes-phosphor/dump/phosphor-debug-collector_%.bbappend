@@ -14,12 +14,13 @@ EXTRA_OEMESON:append:p10bmc = " -DHOSTBOOT_DUMP_PATH=${hostboot_dump_path} "
 EXTRA_OEMESON:append:p10bmc = " -DHOSTBOOT_DUMP_TMP_FILE_DIR=${hostboot_dump_temp_path} "
 EXTRA_OEMESON:append:p10bmc = " -DHARDWARE_DUMP_PATH=${hardware_dump_path} "
 EXTRA_OEMESON:append:p10bmc = " -DHARDWARE_DUMP_TMP_FILE_DIR=${hardware_dump_temp_path} "
-EXTRA_OEMESON:append:p10bmc = " -DBMC_DUMP_FILENAME_REGEX='BMCDUMP.([a-zA-Z0-9]+).([0-9]+).([0-9]+)'"
-EXTRA_OEMESON:append:p10bmc = " -DFILENAME_DUMP_ID_POS=2"
-EXTRA_OEMESON:append:p10bmc = " -DFILENAME_EPOCHTIME_POS=3"
+EXTRA_OEMESON:append:p10bmc = " -DBMC_DUMP_FILENAME_REGEX='(BMCDUMP|NAGDUMP).([a-zA-Z0-9]+).([0-9]+).([0-9]+)'"
+EXTRA_OEMESON:append:p10bmc = " -DFILENAME_DUMP_ID_POS=3"
+EXTRA_OEMESON:append:p10bmc = " -DFILENAME_EPOCHTIME_POS=4"
 EXTRA_OEMESON:append:p10bmc = " -DBMC_DUMP_TOTAL_SIZE=409600"
 EXTRA_OEMESON:append:p10bmc = " -DBMC_DUMP_MAX_SIZE=20480"
 EXTRA_OEMESON:append:p10bmc = " -Dlog_pel_on_dump_delete=enabled"
+EXTRA_OEMESON:append:p10bmc = " -Dfault_data_dump=enabled"
 
 install_ibm_plugins() {
     install ${S}/tools/dreport.d/ibm.d/plugins.d/* ${D}${dreport_plugin_dir}/
