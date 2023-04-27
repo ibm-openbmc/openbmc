@@ -15,3 +15,9 @@
       Properties:
           Enabled:
               Default: 'true'
+
+/xyz/openbmc_project/ibmacf/allow_unauth_upload:
+    - Interface: xyz.openbmc_project.Object.Enable
+      Properties:
+          Enabled:
+              Default: 'false'
