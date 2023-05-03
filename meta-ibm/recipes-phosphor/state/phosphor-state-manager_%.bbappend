@@ -22,6 +22,10 @@ RRECOMMENDS:${PN}-host:append:p10bmc = " ${PN}-secure-check"
 # system power on if chassis power is in a bad state
 RRECOMMENDS:${PN}-chassis:append = " ${PN}-chassis-check-power-status"
 
+# IBM systems want an informational log created each time
+# the chassis transitions from off to on
+RRECOMMENDS:${PN}-chassis:append = " ${PN}-chassis-poweron-log"
+
 # Override critical services to monitor with IBM file
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 FILES:${PN}-bmc:append = " ${sysconfdir}/phosphor-service-monitor-default.json"
