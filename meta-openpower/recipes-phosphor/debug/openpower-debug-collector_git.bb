@@ -46,9 +46,6 @@ SYSTEMD_SERVICE:${PN} += "${@compose_list(d, 'DEBUG_TMPL', 'APPS')}"
 SYSTEMD_SERVICE:${PN} = "${@bb.utils.contains('PACKAGECONFIG', 'openpower_dump_collection', 'org.open_power.Dump.Manager.service', '', d)}"
 FILES:${PN}:append = " ${systemd_system_unitdir}/* "
 
-SYSTEMD_SERVICE:${PN} = "org.open_power.Dump.Manager@.service"
-FILES:${PN}:append = " ${systemd_system_unitdir}/* "
-
 DBUS_PACKAGES = "${@bb.utils.contains('PACKAGECONFIG','openpower_dump_collection','${OP_DEBUG_COLLECTOR_PKGS}','',d)}"
 
 # Do not depend on phosphor-logging for native build

@@ -27,14 +27,6 @@ pkg_postinst:${PN}:append() {
 	ln -s $TARGET $LINK
 }
 
-pkg_postinst:${PN}:append:p10bmc() {
-        mkdir -p $D$systemd_system_unitdir/obmc-host-stop@0.target.wants
-
-        LINK="$D$systemd_system_unitdir/obmc-host-stop@0.target.wants/clear_hostdumps_poweroff.service"
-        TARGET="../clear_hostdumps_poweroff.service"
-        ln -s $TARGET $LINK
-}
-
 pkg_prerm:${PN}:append() {
 	if [ "${@bb.utils.filter('DISTRO_FEATURES', 'mpreboot', d)}" != mpreboot ]; then
 		LINK="$D$systemd_system_unitdir/obmc-host-crash@0.target.wants/openpower-debug-collector-checkstop@0.service"
@@ -48,9 +40,4 @@ pkg_prerm:${PN}:append() {
 	fi
 	LINK="$D$systemd_system_unitdir/obmc-host-stop@0.target.wants/clear_hostdumps_poweroff.service"
 	rm $LINK
-}
-
-pkg_prerm:${PN}:append:p10bmc() {
-        LINK="$D$systemd_system_unitdir/obmc-host-stop@0.target.wants/clear_hostdumps_poweroff.service"
-        rm $LINK
 }
