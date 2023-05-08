@@ -80,6 +80,7 @@ FILES:${PN}-updater += " \
     ${bindir}/phosphor-image-updater \
     ${bindir}/obmc-flash-bmc \
     ${bindir}/software-manager-tool \
+    ${bindir}/gen-lids-image-tar \
     /usr/local \
     "
 FILES:${PN}-sync += " \
@@ -104,3 +105,27 @@ DBUS_SERVICE:${PN}-version += "xyz.openbmc_project.Software.Version.service"
 DBUS_SERVICE:${PN}-download-mgr += "xyz.openbmc_project.Software.Download.service"
 DBUS_SERVICE:${PN}-updater += "xyz.openbmc_project.Software.BMC.Updater.service"
 DBUS_SERVICE:${PN}-sync += "xyz.openbmc_project.Software.Sync.service"
+
+SYSTEMD_SERVICE:${PN}-updater += " \
+    force-reboot.service \
+    obmc-flash-bmc-setenv@.service \
+    reboot-guard-disable.service \
+    reboot-guard-enable.service \
+    assemble-lids.service \
+    usr-local.mount \
+"
+
+SYSTEMD_SERVICE:${PN}-updater += "${@bb.utils.contains('PACKAGECONFIG', 'flash_bios', 'obmc-flash-host-bios@.service', '', d)}"
+SYSTEMD_SERVICE:${PN}-usb += "${@bb.utils.contains('PACKAGECONFIG', 'usb_code_update', 'usb-code-update@.service', '', d)}"
+SYSTEMD_SERVICE:${PN}-side-switch += "${@bb.utils.contains('PACKAGECONFIG', 'side_switch_on_boot', 'phosphor-bmc-side-switch.service', '', d)}"
+SYSTEMD_SERVICE:${PN}-updater += "${@bb.utils.contains('PACKAGECONFIG', 'static-dual-image', 'obmc-flash-bmc-alt@.service', '', d)}"
+SYSTEMD_SERVICE:${PN}-updater += "${@bb.utils.contains('PACKAGECONFIG', 'static-dual-image', 'obmc-flash-bmc-static-mount-alt.service', '', d)}"
+SYSTEMD_SERVICE:${PN}-updater += "${@bb.utils.contains('PACKAGECONFIG', 'static-dual-image', 'obmc-flash-bmc-prepare-for-sync.service', '', d)}"
+
+S = "${WORKDIR}/git"
+
+EXTRA_OEMESON:append = " -Dtests=disabled"
+
+do_install:append() {
+    install -d ${D}/usr/local
+}
