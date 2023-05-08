@@ -42,8 +42,8 @@ APPS =  " \
         ${@bb.utils.contains('MACHINE_FEATURES', 'phal', '', 'watchdog-timeout', d)} \
         "
 DEBUG_TMPL = "openpower-debug-collector-{0}@.service"
-SYSTEMD_SERVICE:${PN} += "${@compose_list(d, 'DEBUG_TMPL', 'APPS')}"
-SYSTEMD_SERVICE:${PN} = "${@bb.utils.contains('PACKAGECONFIG', 'openpower_dump_collection', 'org.open_power.Dump.Manager.service', '', d)}"
+SYSTEMD_SERVICE:${PN} = "${@compose_list(d, 'DEBUG_TMPL', 'APPS')}"
+SYSTEMD_SERVICE:${PN} += "${@bb.utils.contains('PACKAGECONFIG', 'openpower_dump_collection', 'org.open_power.Dump.Manager.service', '', d)}"
 FILES:${PN}:append = " ${systemd_system_unitdir}/* "
 
 DBUS_PACKAGES = "${@bb.utils.contains('PACKAGECONFIG','openpower_dump_collection','${OP_DEBUG_COLLECTOR_PKGS}','',d)}"
