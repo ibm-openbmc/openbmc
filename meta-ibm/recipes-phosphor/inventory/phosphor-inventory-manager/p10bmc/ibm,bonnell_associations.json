@@ -395,6 +395,15 @@
            "paths": [
              "/xyz/openbmc_project/led/groups/enclosure_identify"
            ]
+         },
+         {
+           "types": {
+             "rType": "power_managing",
+             "fType": "power_managed_by"
+           },
+           "paths": [
+             "/org/open_power/control/occ0"
+           ]
          }
        ]
      },
@@ -417,6 +426,15 @@
            },
            "paths": [
              "/xyz/openbmc_project/led/groups/enclosure_identify"
+           ]
+         },
+         {
+           "types": {
+             "rType": "power_managing",
+             "fType": "power_managed_by"
+         },
+           "paths": [
+             "/org/open_power/control/occ1"
            ]
          }
        ]
