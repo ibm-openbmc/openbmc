@@ -129,3 +129,18 @@ EXTRA_OEMESON:append = " -Dtests=disabled"
 do_install:append() {
     install -d ${D}/usr/local
 }
+
+pkg_postinst:${PN}-side-switch() {
+    if ${@bb.utils.contains('PACKAGECONFIG', 'side_switch_on_boot', 'true', 'false', d)} ; then
+        mkdir -p $D$systemd_system_unitdir/obmc-host-startmin@0.target.wants
+        LINK="$D$systemd_system_unitdir/obmc-host-startmin@0.target.wants/phosphor-bmc-side-switch.service"
+        TARGET="../phosphor-bmc-side-switch.service"
+        ln -s $TARGET $LINK
+    fi
+}
+pkg_prerm:${PN}-side-switch() {
+    if ${@bb.utils.contains('PACKAGECONFIG', 'side_switch_on_boot', 'true', 'false', d)} ; then
+        LINK="$D$systemd_system_unitdir/obmc-host-startmin@0.target.wants/phosphor-bmc-side-switch.service"
+        rm $LINK
+    fi
+}
