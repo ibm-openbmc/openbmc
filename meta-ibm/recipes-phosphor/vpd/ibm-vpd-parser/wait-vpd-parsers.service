@@ -9,4 +9,4 @@ Type=oneshot
 
 [Install]
 WantedBy=multi-user.target
-WantedBy=obmc-chassis-poweroff@0.target
+#WantedBy=obmc-chassis-poweroff@0.target

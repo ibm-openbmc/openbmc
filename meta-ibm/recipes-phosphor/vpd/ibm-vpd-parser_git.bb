@@ -49,3 +49,14 @@ do_install:append() {
     install ${WORKDIR}/*.json ${D}${datadir}/vpd/
     install -m 0755 ${WORKDIR}/wait-vpd-parsers.sh ${D}/${bindir}/
 }
+pkg_postinst:${PN}:p10bmc() {
+    mkdir -p $D$systemd_system_unitdir/obmc-chassis-poweroff@0.target.wants
+    LINK="$D$systemd_system_unitdir/obmc-chassis-poweroff@0.target.wants/wait-vpd-parsers.service"
+    TARGET="../wait-vpd-parsers.service"
+    ln -s $TARGET $LINK
+}
+
+pkg_prerm:${PN}:p10bmc() {
+    LINK="$D$systemd_system_unitdir/obmc-chassis-poweroff@0.target.wants/wait-vpd-parsers.service"
+    rm $LINK
+}
