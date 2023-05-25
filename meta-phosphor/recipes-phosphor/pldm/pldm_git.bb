@@ -29,6 +29,8 @@ pkg_prerm:${PN} () {
     rm $LINK
     LINK="$D$systemd_system_unitdir/obmc-host-warm-reboot@0.target.wants/pldmSoftPowerOff.service"
     rm $LINK
+    LINK="$D$systemd_system_unitdir/obmc-host-stop@0.target.wants/pldm-clear-dma.service"
+    rm $LINK
 }
 # Install pldmSoftPowerOff.service in correct targets
 pkg_postinst:${PN} () {
@@ -39,6 +41,10 @@ pkg_postinst:${PN} () {
     mkdir -p $D$systemd_system_unitdir/obmc-host-warm-reboot@0.target.wants
     LINK="$D$systemd_system_unitdir/obmc-host-warm-reboot@0.target.wants/pldmSoftPowerOff.service"
     TARGET="../pldmSoftPowerOff.service"
+    ln -s $TARGET $LINK
+    mkdir -p $D$systemd_system_unitdir/obmc-host-stop@0.target.wants
+    LINK="$D$systemd_system_unitdir/obmc-host-stop@0.target.wants/pldm-clear-dma.service"
+    TARGET="../pldm-clear-dma.service"
     ln -s $TARGET $LINK
 }
 
