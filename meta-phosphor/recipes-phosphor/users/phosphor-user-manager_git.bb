@@ -9,11 +9,11 @@ DEPENDS += "phosphor-dbus-interfaces"
 DEPENDS += "boost"
 DEPENDS += "nss-pam-ldapd"
 DEPENDS += "systemd"
-SRCREV = "6ceeb4c08ec858182a847634f976be0c45e76e6e"
+SRCREV = "5a73a3047bfdbf7222183ab3c087df8d0d525a31"
 PV = "1.0+git${SRCPV}"
 PR = "r1"
 
-SRC_URI = "git://github.com/openbmc/phosphor-user-manager;branch=master;protocol=https"
+SRC_URI = "git://github.com/ibm-openbmc/phosphor-user-manager;nobranch=1;protocol=https"
 SRC_URI += "file://upgrade_hostconsole_group.sh"
 
 S = "${WORKDIR}/git"
