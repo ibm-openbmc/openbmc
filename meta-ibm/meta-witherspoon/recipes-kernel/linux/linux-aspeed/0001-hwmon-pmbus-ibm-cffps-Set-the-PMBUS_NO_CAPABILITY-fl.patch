@@ -1,0 +1,35 @@
+From 52778c9d9bd3e755b26be142c9400113ec2600f6 Mon Sep 17 00:00:00 2001
+From: Eddie James <eajames@linux.ibm.com>
+Date: Tue, 22 Dec 2020 09:26:40 -0600
+Subject: [PATCH 1/5] hwmon: (pmbus/ibm-cffps) Set the PMBUS_NO_CAPABILITY flag
+
+Several power supplies supported by the IBM CFFPS driver don't
+report valid data in the CAPABILITY register. This results in PEC
+being enabled when it's not supported by the device, and since
+the automatic version detection might fail, disable use of the
+CAPABILITY register across the board for this driver.
+
+Signed-off-by: Eddie James <eajames@linux.ibm.com>
+Link: https://lore.kernel.org/r/20201222152640.27749-3-eajames@linux.ibm.com
+Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+(cherry picked from commit f7a652182cc7f07cf658b8eee8d545ac109fd02e)
+---
+ drivers/hwmon/pmbus/ibm-cffps.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/hwmon/pmbus/ibm-cffps.c b/drivers/hwmon/pmbus/ibm-cffps.c
+index 7cf4cc5824ab..b2fb4dd1adf5 100644
+--- a/drivers/hwmon/pmbus/ibm-cffps.c
++++ b/drivers/hwmon/pmbus/ibm-cffps.c
+@@ -469,7 +469,7 @@ static struct pmbus_driver_info ibm_cffps_info[] = {
+ };
+ 
+ static struct pmbus_platform_data ibm_cffps_pdata = {
+-	.flags = PMBUS_SKIP_STATUS_CHECK,
++	.flags = PMBUS_SKIP_STATUS_CHECK | PMBUS_NO_CAPABILITY,
+ };
+ 
+ static int ibm_cffps_probe(struct i2c_client *client,
+-- 
+2.17.1
+

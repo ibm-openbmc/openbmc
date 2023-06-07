@@ -1,0 +1,67 @@
+From abc1c4237594abb1535e398337a16a7ad27547d0 Mon Sep 17 00:00:00 2001
+From: Brandon Wyman <bjwyman@gmail.com>
+Date: Mon, 4 Oct 2021 14:43:38 +0000
+Subject: [PATCH 4/5] hwmon: (pmbus/ibm-cffps) Add mfg_id debugfs entry
+
+Add support for the manufacturer ID to the debugfs entries.
+
+Signed-off-by: Brandon Wyman <bjwyman@gmail.com>
+Link: https://lore.kernel.org/r/20211004144339.2634330-1-bjwyman@gmail.com
+Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+(cherry picked from commit a111ec399c60a860209205a9e303b4d4a9274968)
+---
+ drivers/hwmon/pmbus/ibm-cffps.c | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/hwmon/pmbus/ibm-cffps.c b/drivers/hwmon/pmbus/ibm-cffps.c
+index c37b72c24051..69e604a56646 100644
+--- a/drivers/hwmon/pmbus/ibm-cffps.c
++++ b/drivers/hwmon/pmbus/ibm-cffps.c
+@@ -18,6 +18,7 @@
+ 
+ #include "pmbus.h"
+ 
++#define CFFPS_MFG_ID_CMD                        0x99
+ #define CFFPS_FRU_CMD				0x9A
+ #define CFFPS_PN_CMD				0x9B
+ #define CFFPS_HEADER_CMD			0x9C
+@@ -34,7 +35,7 @@
+ #define CFFPS_INPUT_HISTORY_SIZE		100
+ 
+ #define CFFPS_CCIN_REVISION			GENMASK(7, 0)
+-#define  CFFPS_CCIN_REVISION_LEGACY		 0xde
++#define CFFPS_CCIN_REVISION_LEGACY		 0xde
+ #define CFFPS_CCIN_VERSION			GENMASK(15, 8)
+ #define CFFPS_CCIN_VERSION_1			 0x2b
+ #define CFFPS_CCIN_VERSION_2			 0x2e
+@@ -57,6 +58,7 @@
+ 
+ enum {
+ 	CFFPS_DEBUGFS_INPUT_HISTORY = 0,
++	CFFPS_DEBUGFS_MFG_ID,
+ 	CFFPS_DEBUGFS_FRU,
+ 	CFFPS_DEBUGFS_PN,
+ 	CFFPS_DEBUGFS_HEADER,
+@@ -156,6 +158,9 @@ static ssize_t ibm_cffps_debugfs_read(struct file *file, char __user *buf,
+ 	switch (idx) {
+ 	case CFFPS_DEBUGFS_INPUT_HISTORY:
+ 		return ibm_cffps_read_input_history(psu, buf, count, ppos);
++	case CFFPS_DEBUGFS_MFG_ID:
++		cmd = CFFPS_MFG_ID_CMD;
++		break;
+ 	case CFFPS_DEBUGFS_FRU:
+ 		cmd = CFFPS_FRU_CMD;
+ 		break;
+@@ -558,6 +563,9 @@ static int ibm_cffps_probe(struct i2c_client *client,
+ 	debugfs_create_file("input_history", 0444, ibm_cffps_dir,
+ 			    &psu->debugfs_entries[CFFPS_DEBUGFS_INPUT_HISTORY],
+ 			    &ibm_cffps_fops);
++	debugfs_create_file("mfg_id", 0444, ibm_cffps_dir,
++			    &psu->debugfs_entries[CFFPS_DEBUGFS_MFG_ID],
++			    &ibm_cffps_fops);
+ 	debugfs_create_file("fru", 0444, ibm_cffps_dir,
+ 			    &psu->debugfs_entries[CFFPS_DEBUGFS_FRU],
+ 			    &ibm_cffps_fops);
+-- 
+2.17.1
+

@@ -1,0 +1,54 @@
+From fb3a82247a76f26efb91da2fbb160ee7bc08713d Mon Sep 17 00:00:00 2001
+From: Brandon Wyman <bjwyman@gmail.com>
+Date: Mon, 4 Oct 2021 14:43:39 +0000
+Subject: [PATCH 5/5] hwmon: (pmbus/ibm-cffps) Use MFR_ID to choose version
+
+There are multiple power supplies that will indicate
+CFFPS_CCIN_VERSION_1, use the manufacturer ID to determine if it should
+be treated as version cffps1 or version cffps2.
+
+Signed-off-by: Brandon Wyman <bjwyman@gmail.com>
+Link: https://lore.kernel.org/r/20211004144339.2634330-2-bjwyman@gmail.com
+[groeck: Fixed continuation line alignment]
+Signed-off-by: Guenter Roeck <linux@roeck-us.net>
+(cherry picked from commit 8a5cfcfa9445987719b1f82b7bcabe5eb27187cf)
+---
+ drivers/hwmon/pmbus/ibm-cffps.c | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/hwmon/pmbus/ibm-cffps.c b/drivers/hwmon/pmbus/ibm-cffps.c
+index 69e604a56646..9a429d377de1 100644
+--- a/drivers/hwmon/pmbus/ibm-cffps.c
++++ b/drivers/hwmon/pmbus/ibm-cffps.c
+@@ -502,16 +502,27 @@ static int ibm_cffps_probe(struct i2c_client *client,
+ 		u16 ccin_revision = 0;
+ 		u16 ccin_version = CFFPS_CCIN_VERSION_1;
+ 		int ccin = i2c_smbus_read_word_swapped(client, CFFPS_CCIN_CMD);
++		char mfg_id[I2C_SMBUS_BLOCK_MAX + 2] = { 0 };
+ 
+ 		if (ccin > 0) {
+ 			ccin_revision = FIELD_GET(CFFPS_CCIN_REVISION, ccin);
+ 			ccin_version = FIELD_GET(CFFPS_CCIN_VERSION, ccin);
+ 		}
+ 
++		rc = i2c_smbus_read_block_data(client, PMBUS_MFR_ID, mfg_id);
++		if (rc < 0) {
++			dev_err(&client->dev, "Failed to read Manufacturer ID\n");
++			return rc;
++		}
++
+ 		switch (ccin_version) {
+ 		default:
+ 		case CFFPS_CCIN_VERSION_1:
+-			vs = cffps1;
++			if ((strncmp(mfg_id, "ACBE", 4) == 0) ||
++				     (strncmp(mfg_id, "ARTE", 4) == 0))
++				vs = cffps1;
++			else
++				vs = cffps2;
+ 			break;
+ 		case CFFPS_CCIN_VERSION_2:
+ 			vs = cffps2;
+-- 
+2.17.1
+
