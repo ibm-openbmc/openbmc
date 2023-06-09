@@ -7,7 +7,7 @@ DEPENDS += " \
         sdbusplus \
         systemd \
         "
-SRCREV = "d5938412637760f2a018b66d3cbb330f472d7eca"
+SRCREV = "28bb59a8b8a7919481ce396d90ecab88192a2df7"
 PV = "1.0+git${SRCPV}"
 PR = "r1"
 
