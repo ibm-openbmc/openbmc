@@ -23,5 +23,6 @@ do_install:append:p10bmc() {
     install -m 0755 ${WORKDIR}/inspur-login-logo.svg.gz ${D}${datadir}/www/img
     install -m 0755 ${WORKDIR}/inspur-logo-header.svg.gz ${D}${datadir}/www/img
     install -m 0755 ${WORKDIR}/blankLogo.svg.gz ${D}${datadir}/www/img
-    install -m 0755 ${WORKDIR}/changeLogo.sh ${D}${datadir}/www
+    install -d ${D}${bindir}
+    install -m 0755 ${WORKDIR}/changeLogo.sh ${D}${bindir}
 }
