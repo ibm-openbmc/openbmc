@@ -12,17 +12,18 @@ HOMEPAGE = "http://ibmswtpm.sourceforge.net/ibmswtpm2.html"
 LICENSE = "BSD-2-Clause"
 SECTION = "securty/tpm"
 LIC_FILES_CHKSUM = "file://../LICENSE;md5=1e023f61454ac828b4aa1bc4293f7d5f"
+LIC_FILES_CHKSUM += "file://LICENSE;md5=c75e465155c42c14154bf6a2acb7347b"
 
 DEPENDS = "openssl"
 
-SRC_URI = "https://sourceforge.net/projects/ibmswtpm2/files/ibmtpm${PV}.tar.gz \
+SRC_URI = "git://git.code.sf.net/p/ibmswtpm2/tpm2;protocol=https;branch=master \
            file://tune-makefile.patch \
            "
-SRC_URI[sha256sum] = "3cb642f871a17b23d50b046e5f95f449c2287415fc1e7aeb4bdbb8920dbcb38f"
+SRCREV = "5452af422edeff70fcae8ea99dd28a0922051d7b"
 
-UPSTREAM_CHECK_URI = "https://sourceforge.net/projects/ibmswtpm2/files/"
+UPSTREAM_CHECK_URI = "https://git.code.sf.net/p/ibmswtpm2/tpm2"
 
-S = "${WORKDIR}/src"
+S = "${WORKDIR}/git/src"
 
 CFLAGS += "-Wno-error=maybe-uninitialized -DALG_CAMELLIA=ALG_NO"
 
