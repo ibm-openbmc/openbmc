@@ -173,27 +173,27 @@
                "com.ibm.ipzvpd.VINI":{
                   "FN":[
                      48,
-                     50,
-                     89,
-                     75,
                      51,
-                     50,
-                     51
+                     76,
+                     87,
+                     49,
+                     51,
+                     57
                   ],
                   "CC":[
                      55,
-                     66,
-                     53,
-                     70
+                     69,
+                     48,
+                     49
                   ],
                   "PN":[
                      48,
-                     50,
-                     89,
-                     75,
                      51,
-                     50,
-                     51
+                     76,
+                     87,
+                     49,
+                     52,
+                     48
                   ],
                   "DR":[
                      66,
@@ -207,15 +207,15 @@
                      89,
                      76,
                      49,
-                     50,
+                     48,
                      74,
                      80,
-                     49,
-                     67,
-                     49,
-                     50,
-                     51,
-                     52
+                     89,
+                     77,
+                     68,
+                     83,
+                     83,
+                     83
                   ],
                   "RT":[
                      86,
@@ -239,11 +239,11 @@
                   ]
                },
                "xyz.openbmc_project.Inventory.Decorator.Asset":{
-                  "Model":"7B5F",
+                  "Model":"7E01",
                   "Manufacturer":"Delta",
-                  "PartNumber":"02YK323",
-                  "SparePartNumber":"02YK323",
-                  "SerialNumber":"YL12JP1C1234"
+                  "PartNumber":"03LW140",
+                  "SparePartNumber":"03LW139",
+                  "SerialNumber":"YL10JPYMDSSS"
                }
             }
          },
@@ -259,27 +259,27 @@
                "com.ibm.ipzvpd.VINI":{
                   "FN":[
                      48,
-                     50,
-                     89,
-                     75,
                      51,
-                     50,
-                     51
+                     76,
+                     87,
+                     49,
+                     51,
+                     57
                   ],
                   "CC":[
                      55,
-                     66,
-                     53,
-                     70
+                     69,
+                     48,
+                     49
                   ],
                   "PN":[
                      48,
-                     50,
-                     89,
-                     75,
                      51,
-                     50,
-                     51
+                     76,
+                     87,
+                     49,
+                     52,
+                     48
                   ],
                   "DR":[
                      66,
@@ -293,15 +293,15 @@
                      89,
                      76,
                      49,
-                     50,
+                     48,
                      74,
                      80,
-                     49,
-                     67,
-                     49,
-                     50,
-                     51,
-                     52
+                     89,
+                     77,
+                     68,
+                     83,
+                     83,
+                     83
                   ],
                   "RT":[
                      86,
@@ -325,11 +325,11 @@
                   ]
                },
                "xyz.openbmc_project.Inventory.Decorator.Asset":{
-                  "Model":"7B5F",
+                  "Model":"7E01",
                   "Manufacturer":"Delta",
-                  "PartNumber":"02YK323",
-                  "SparePartNumber":"02YK323",
-                  "SerialNumber":"YL12JP1C1234"
+                  "PartNumber":"03LW140",
+                  "SparePartNumber":"03LW139",
+                  "SerialNumber":"YL10JPYMDSSS"
                }
             }
          },
