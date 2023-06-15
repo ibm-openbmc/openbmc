@@ -2,8 +2,6 @@
 Description=Phosphor User Manager
 
 [Service]
-ExecStartPre=-/usr/libexec/upgrade_hostconsole_group.sh
-ExecStartPre=/usr/bin/env upgrade_ibm_service_account.sh
 ExecStart=/usr/bin/env phosphor-user-manager
 SyslogIdentifier=phosphor-user-manager
 Restart=always

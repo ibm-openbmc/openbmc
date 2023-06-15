@@ -15,7 +15,6 @@ PV = "1.0+git${SRCPV}"
 PR = "r1"
 
 SRC_URI = "git://github.com/ibm-openbmc/phosphor-user-manager;nobranch=1;protocol=https"
-SRC_URI += "file://upgrade_hostconsole_group.sh"
 SRC_URI += "file://upgrade_ibm_service_account.sh"
 
 S = "${WORKDIR}/git"
@@ -28,8 +27,6 @@ EXTRA_OEMESON = "-Dtests=disabled"
 EXTRA_OECONF:append = "enable_root_user_mgmt=no"
 
 do_install:append() {
-  install -d ${D}${libexecdir}
-  install -m 0755 ${WORKDIR}/upgrade_hostconsole_group.sh ${D}${libexecdir}/upgrade_hostconsole_group.sh
   install -d ${D}/home/service
   echo "/usr/bin/sudo -s;exit" >${D}/home/service/.profile
   install -d ${D}${bindir}
@@ -59,11 +56,3 @@ DBUS_SERVICE:${PN} += "xyz.openbmc_project.User.Manager.service"
 DBUS_SERVICE:phosphor-ldap = " \
         xyz.openbmc_project.Ldap.Config.service \
 "
-
-EXTRA_USERS_PARAMS += " \
-   groupadd hostconsole; \
-   "
-
-EXTRA_USERS_PARAMS += " \
-  usermod --append --groups hostconsole root; \
-  "
