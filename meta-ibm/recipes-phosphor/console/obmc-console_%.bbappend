@@ -54,7 +54,7 @@ SYSTEMD_SERVICE:${PN}:remove:p10bmc = "obmc-console-ssh.socket"
 
 FILES:${PN}:remove:p10bmc = "${systemd_system_unitdir}/obmc-console-ssh@.service.d/use-socket.conf"
 
-PACKAGECONFIG:append:p10bmc = " concurrent-servers"
+EXTRA_OECONF:append:p10bmc = " --enable-concurrent-servers"
 
 do_install:append:p10bmc() {
         install_concurrent_console_config

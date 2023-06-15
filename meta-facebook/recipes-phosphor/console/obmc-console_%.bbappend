@@ -35,7 +35,7 @@ SRC_URI:remove = "file://${BPN}.conf"
 SYSTEMD_SERVICE:${PN}:remove:fb-compute-multihost = "obmc-console-ssh.socket"
 SYSTEMD_SERVICE:${PN}:remove:fb-compute-multihost = "obmc-console-ssh@.service"
 
-PACKAGECONFIG:append:fb-compute-multihost = " concurrent-servers"
+EXTRA_OECONF:append:fb-compute-multihost = " --enable-concurrent-servers"
 
 do_install:append() {
         # Install the server configuration

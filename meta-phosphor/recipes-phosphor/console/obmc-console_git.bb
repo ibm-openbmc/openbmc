@@ -6,14 +6,16 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=fa818a259cbed7ce8bc2a22d35a464fc"
 DEPENDS += "autoconf-archive-native \
             systemd \
            "
-SRCREV = "c9f4a556ddc4154909c8d83323ac3b7b3dc38a1c"
-PACKAGECONFIG ??= "udev"
-PACKAGECONFIG[udev] = "-Dudev=enabled,-Dudev=disabled,udev"
-PACKAGECONFIG[concurrent-servers] = "-Dconcurrent-servers=true,-Dconcurrent-servers=false,"
+SRCREV = "397fd035e3adda2f3d36bfc5f2268372847778e7"
+PACKAGECONFIG ??= "udev ${@bb.utils.filter('DISTRO_FEATURES', 'systemd', d)}"
+PACKAGECONFIG[udev] = "--with-udevdir=`pkg-config --variable=udevdir udev`,\
+                       --without-udevdir,udev"
+PACKAGECONFIG[systemd] = "--with-systemdsystemunitdir=${systemd_system_unitdir}, \
+                          --without-systemdsystemunitdir"
 PV = "1.0+git${SRCPV}"
 PR = "r1"
 
-SRC_URI = "git://github.com/openbmc/obmc-console;branch=master;protocol=https"
+SRC_URI += "git://github.com/openbmc/obmc-console;branch=master;protocol=https"
 SRC_URI += "file://${BPN}.conf"
 
 S = "${WORKDIR}/git"
@@ -22,7 +24,7 @@ SYSTEMD_SERVICE:${PN} += "obmc-console-ssh@.service \
                 obmc-console@.service \
                 "
 
-inherit meson pkgconfig
+inherit autotools pkgconfig
 inherit obmc-phosphor-discovery-service
 inherit systemd
 
@@ -67,7 +69,7 @@ do_install:append() {
         fi
 }
 
-FILES:${PN} += "${systemd_system_unitdir}"
+FILES:${PN} += "${systemd_system_unitdir}/obmc-console-ssh@.service.d/use-socket.conf"
 
 TARGET_CFLAGS += "-fpic -O2"
 
