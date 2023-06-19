@@ -6,7 +6,7 @@ SRC_URI = " \
     git://github.com/open-power/sb-signing-framework;nobranch=1;protocol=https \
     file://sfclient-socsec-helper \
     "
-SRCREV = "c5238790100216e14aa4be102eb238f985ec793a"
+SRCREV = "c72d9ff8c2eab48de451f3b16cd58542a643ac07"
 PV = "1.0+git${SRCPV}"
 
 S = "${WORKDIR}/git/src/client-c++"
