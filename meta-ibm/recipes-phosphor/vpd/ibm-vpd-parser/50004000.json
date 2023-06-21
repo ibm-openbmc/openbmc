@@ -449,19 +449,6 @@
             }
          },
          {
-            "inventoryPath":"/system/chassis/motherboard/connector0",
-            "inherit":false,
-            "extraInterfaces":{
-               "xyz.openbmc_project.Inventory.Item.Connector":null,
-               "com.ibm.ipzvpd.Location":{
-                  "LocationCode":"Ufcs-P0-T0"
-               },
-               "xyz.openbmc_project.Inventory.Item":{
-                  "PrettyName":"Connector for UPS"
-               }
-            }
-         },
-         {
             "inventoryPath":"/system/chassis/motherboard/ethernet0",
             "inherit":false,
             "noprime":true,
@@ -692,6 +679,18 @@
                },
                "xyz.openbmc_project.Inventory.Item":{
                   "PrettyName":"USB connector for RDX"
+               }
+            }
+         },
+         {
+            "inventoryPath": "/system/chassis/motherboard/tod_battery",
+            "extraInterfaces": {
+               "xyz.openbmc_project.Inventory.Item.Battery": null,
+               "com.ibm.ipzvpd.Location" : {
+                  "LocationCode" : "Ufcs-P0-E0"
+               },
+               "xyz.openbmc_project.Inventory.Item": {
+                  "PrettyName": "Time Of Day Battery"
                }
             }
          }
