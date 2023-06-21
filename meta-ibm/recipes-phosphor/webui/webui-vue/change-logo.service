@@ -5,7 +5,7 @@ Before=bmcweb.service
 
 [Service]
 Restart=no
-ExecStart=/usr/share/www/changeLogo.sh
+ExecStart={bindir}/changeLogo.sh
 Type=oneshot
 RemainAfterExit=yes
 
