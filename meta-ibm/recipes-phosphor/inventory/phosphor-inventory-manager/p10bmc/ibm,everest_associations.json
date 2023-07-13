@@ -2615,6 +2615,17 @@
                     [
                         "/xyz/openbmc_project/led/groups/nvme0_identify"
                     ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "pcie_slot",
+                        "fType": "upstream_processor"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/dcm3/cpu1"
+                    ]
                 }
             ]
         },
@@ -2642,6 +2653,17 @@
                     "paths":
                     [
                         "/xyz/openbmc_project/led/groups/nvme1_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "pcie_slot",
+                        "fType": "upstream_processor"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/dcm3/cpu0"
                     ]
                 }
             ]
@@ -2671,6 +2693,17 @@
                     [
                         "/xyz/openbmc_project/led/groups/nvme2_identify"
                     ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "pcie_slot",
+                        "fType": "upstream_processor"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/dcm0/cpu1"
+                    ]
                 }
             ]
         },
@@ -2698,6 +2731,17 @@
                     "paths":
                     [
                         "/xyz/openbmc_project/led/groups/nvme3_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "pcie_slot",
+                        "fType": "upstream_processor"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/dcm0/cpu1"
                     ]
                 }
             ]
@@ -2727,6 +2771,17 @@
                     [
                         "/xyz/openbmc_project/led/groups/nvme4_identify"
                     ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "pcie_slot",
+                        "fType": "upstream_processor"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/dcm0/cpu0"
+                    ]
                 }
             ]
         },
@@ -2754,6 +2809,17 @@
                     "paths":
                     [
                         "/xyz/openbmc_project/led/groups/nvme5_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "pcie_slot",
+                        "fType": "upstream_processor"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/dcm3/cpu1"
                     ]
                 }
             ]
@@ -2783,6 +2849,17 @@
                     [
                         "/xyz/openbmc_project/led/groups/nvme6_identify"
                     ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "pcie_slot",
+                        "fType": "upstream_processor"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/dcm3/cpu0"
+                    ]
                 }
             ]
         },
@@ -2810,6 +2887,17 @@
                     "paths":
                     [
                         "/xyz/openbmc_project/led/groups/nvme7_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "pcie_slot",
+                        "fType": "upstream_processor"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/dcm0/cpu1"
                     ]
                 }
             ]
@@ -2839,6 +2927,17 @@
                     [
                         "/xyz/openbmc_project/led/groups/nvme8_identify"
                     ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "pcie_slot",
+                        "fType": "upstream_processor"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/dcm0/cpu1"
+                    ]
                 }
             ]
         },
@@ -2866,6 +2965,17 @@
                     "paths":
                     [
                         "/xyz/openbmc_project/led/groups/nvme9_identify"
+                    ]
+                },
+                {
+                    "types":
+                    {
+                        "rType": "pcie_slot",
+                        "fType": "upstream_processor"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/dcm0/cpu0"
                     ]
                 }
             ]
