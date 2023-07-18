@@ -24,7 +24,7 @@ inherit obmc-phosphor-dbus-service
 inherit useradd
 
 EXTRA_OEMESON = "-Dtests=disabled"
-EXTRA_OECONF:append = "root_user_mgmt=no"
+EXTRA_OEMESON += " -Droot_user_mgmt=disabled"
 
 do_install:append() {
   install -d ${D}/home/service
