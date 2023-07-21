@@ -29,6 +29,7 @@
          {
             "inventoryPath":"/system/chassis/motherboard",
             "isSystemVpd":true,
+            "systemVpdBackupPath": "/sys/bus/i2c/drivers/at24/7-0050/eeprom",
             "extraInterfaces":{
                "xyz.openbmc_project.Inventory.Item.Board.Motherboard":null,
                "com.ibm.ipzvpd.Location":{
