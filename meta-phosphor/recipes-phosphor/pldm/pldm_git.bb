@@ -8,6 +8,7 @@ DEPENDS += "nlohmann-json"
 DEPENDS += "cli11"
 DEPENDS += "libpldm"
 DEPENDS += "libcereal"
+DEPENDS += "phosphor-logging"
 PV = "1.0+git${SRCPV}"
 PR = "r1"
 
