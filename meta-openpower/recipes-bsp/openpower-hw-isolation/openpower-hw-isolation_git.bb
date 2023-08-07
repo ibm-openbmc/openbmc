@@ -12,8 +12,8 @@ inherit meson \
 
 S = "${WORKDIR}/git"
 
-SRC_URI = "git://git@github.com/ibm-openbmc/openpower-hw-isolation;branch="main";protocol=https;nobranch=1"
-SRCREV = "2b3fe8911ff6e3d9c68b0fc370f93092a539832f"
+SRC_URI = "git://git@github.com/ibm-openbmc/openpower-hw-isolation;branch="main";protocol=https"
+SRCREV = "0530e6547e446de3246cd462c501c0719ec6e7f8"
 
 DEPENDS = "sdbusplus \
            phosphor-dbus-interfaces \
@@ -25,7 +25,7 @@ DEPENDS = "sdbusplus \
           "
 
 DBUS_SERVICE:${PN} = "org.open_power.HardwareIsolation.service"
-SYSTEMD_SERVICE:${PN} = "faultlog_bmcboot.service"
+SYSTEMD_SERVICE:${PN} = "faultlog_periodic.service"
 SYSTEMD_SERVICE:${PN} += "faultlog_periodic.timer"
 SYSTEMD_SERVICE:${PN} += "faultlog_hostpoweron.service"
 FILES:${PN}:append = " ${systemd_system_unitdir}/* "
