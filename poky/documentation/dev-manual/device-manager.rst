@@ -1,7 +1,5 @@
 .. SPDX-License-Identifier: CC-BY-SA-2.0-UK
 
-.. _device-manager:
-
 Selecting a Device Manager
 **************************
 
