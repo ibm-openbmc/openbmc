@@ -28,7 +28,6 @@ EXTRA_OECMAKE += " \
     -DBUILD_STATIC_LIBS=OFF \
     -DCMAKE_POSITION_INDEPENDANT_CODE=ON \
     -DWITH_MANPAGES=OFF \
-    -DPROXY_PLUGINDIR=${libdir}/freerdp/proxy/plugins \
 "
 
 PACKAGECONFIG ??= " \

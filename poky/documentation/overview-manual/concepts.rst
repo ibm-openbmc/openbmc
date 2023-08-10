@@ -638,8 +638,9 @@ package files are kept:
    type sub-folder. Given RPM, IPK, or DEB packaging and tarball
    creation, the
    :term:`DEPLOY_DIR_RPM`,
-   :term:`DEPLOY_DIR_IPK`, or
-   :term:`DEPLOY_DIR_DEB`
+   :term:`DEPLOY_DIR_IPK`,
+   :term:`DEPLOY_DIR_DEB`, or
+   :term:`DEPLOY_DIR_TAR`,
    variables are used, respectively.
 
 -  :term:`PACKAGE_ARCH`: Defines
@@ -652,8 +653,9 @@ tasks to generate packages and place them into the package holding area
 (e.g. ``do_package_write_ipk`` for IPK packages). See the
 ":ref:`ref-tasks-package_write_deb`",
 ":ref:`ref-tasks-package_write_ipk`",
+":ref:`ref-tasks-package_write_rpm`",
 and
-":ref:`ref-tasks-package_write_rpm`"
+":ref:`ref-tasks-package_write_tar`"
 sections in the Yocto Project Reference Manual for additional
 information. As an example, consider a scenario where an IPK packaging
 manager is being used and there is package architecture support for both

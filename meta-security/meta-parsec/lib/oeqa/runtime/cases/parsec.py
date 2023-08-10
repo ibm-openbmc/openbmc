@@ -24,10 +24,6 @@ class ParsecTest(OERuntimeTestCase):
             self.parsec_status='pgrep -l parsec'
             self.parsec_reload='/etc/init.d/parsec reload'
 
-    def tearDown(self):
-        self.target.run('sync')
-        super(ParsecTest, self).tearDown()
-
     def copy_subconfig(self, cfg, provider):
         """ Copy a provider configuration to target and append it to Parsec config """
 
@@ -57,26 +53,17 @@ class ParsecTest(OERuntimeTestCase):
             self.assertIn("ID: 0x0%d (%s provider)" % (prov_id, provider),
                           output, msg='%s provider is not configured.' % provider)
 
-    def run_cli_tests(self, prov_id=None, extra_params=""):
+    def run_cli_tests(self, prov_id=None):
         """ Run Parsec CLI end-to-end tests against one or all providers """
 
-        status, output = self.target.run('parsec-cli-tests.sh %s %s' % ("-%d" % prov_id if prov_id else "", extra_params))
+        status, output = self.target.run('parsec-cli-tests.sh %s' % ("-%d" % prov_id if prov_id else ""))
         self.assertEqual(status, 0, msg='Parsec CLI tests failed.\n %s' % output)
 
     def check_packageconfig(self, prov):
         """ Check that the require provider is included in Parsec """
-
-        if 'PACKAGECONFIG:pn-parsec-service' in self.tc.td.keys():
-            providers = self.tc.td['PACKAGECONFIG:pn-parsec-service']
-        else:
-            # PACKAGECONFIG is not defined in local.conf
-            # Let's use the default value
-            providers = "PKCS11 MBED-CRYPTO"
-            if 'tpm2' in self.tc.td['DISTRO_FEATURES']:
-                providers += " TPM"
-        if prov not in providers:
+        if prov not in self.tc.td['PACKAGECONFIG:pn-parsec-service']:
             self.skipTest('%s provider is not included in Parsec. Parsec PACKAGECONFIG: "%s"' % \
-                          (prov, providers))
+                          (prov, self.tc.td['PACKAGECONFIG:pn-parsec-service']))
 
     def check_packages(self, prov, packages):
         """ Check for the required packages for Parsec providers software backends """
@@ -194,9 +181,7 @@ class ParsecTest(OERuntimeTestCase):
             self.configure_pkcs11_provider()
             self.check_parsec_providers("PKCS #11", prov_id)
 
-        # Software PKCS11 we use for OE QA testing
-        # doesn't support RSA-OAEP(SHA256) encryption/decryption operations
-        self.run_cli_tests(prov_id, "--no-oaep")
+        self.run_cli_tests(prov_id)
         self.restore_parsec_config()
 
     def configure_TS_provider(self):

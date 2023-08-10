@@ -38,14 +38,26 @@ following sections.
 Using systemd Exclusively
 =========================
 
-Set the :term:`INIT_MANAGER` variable in your distribution configuration
-file as follows::
+Set these variables in your distribution configuration file as follows::
 
-   INIT_MANAGER = "systemd"
+   DISTRO_FEATURES:append = " systemd"
+   VIRTUAL-RUNTIME_init_manager = "systemd"
 
-This will enable systemd and remove sysvinit components from the image.
-See ``meta/conf/distro/include/init-manager-systemd.inc`` for exact
-details on what this does.
+You can also prevent the SysVinit distribution feature from
+being automatically enabled as follows::
+
+   DISTRO_FEATURES_BACKFILL_CONSIDERED = "sysvinit"
+
+Doing so removes any
+redundant SysVinit scripts.
+
+To remove initscripts from your image altogether, set this variable
+also::
+
+   VIRTUAL-RUNTIME_initscripts = ""
+
+For information on the backfill variable, see
+:term:`DISTRO_FEATURES_BACKFILL_CONSIDERED`.
 
 Using systemd for the Main Image and Using SysVinit for the Rescue Image
 ========================================================================

@@ -42,13 +42,10 @@ do_compile_ptest() {
 
 do_install_ptest() {
 	install -d ${D}${PTEST_PATH}/tests
-	subdirs="unit integration stress "
+	subdirs="test/unit test/integration test/stress "
 	for tooltest in ${subdirs}
 	do
-		cp -r ${B}/test/${tooltest} ${D}${PTEST_PATH}/tests
-        if find ${S}/test/${tooltest}/ -name '*.sh' -print -quit | grep -q .; then
-		    cp ${S}/test/${tooltest}/*.sh ${D}${PTEST_PATH}/tests/${tooltest}
-        fi
+		cp -r ${B}/${tooltest} ${D}${PTEST_PATH}/tests
 	done
 	find ${D}${PTEST_PATH}/tests \( -name "*.d" -o -name "*.o" \) -exec rm -f {} \;
 }

@@ -13,8 +13,9 @@ S = "${WORKDIR}/git"
 inherit cmake
 
 EXTRA_OECMAKE = "\
-    -DBUILD_TESTS=OFF \
+    -DBUILD_CLAR=OFF \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DLIB_INSTALL_DIR=${libdir} \
     -DREGEX_BACKEND='pcre2' \
 "
 

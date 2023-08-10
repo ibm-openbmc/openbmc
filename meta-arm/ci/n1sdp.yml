@@ -4,7 +4,3 @@ header:
     - ci/base.yml
 
 machine: n1sdp
-
-local_conf_header:
-  unsupported_trusted_services: |
-    MACHINE_FEATURES:remove = "ts-smm-gateway"

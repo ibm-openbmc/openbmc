@@ -13,13 +13,13 @@ This layer depends on:
 
 URI: git://git.openembedded.org/openembedded-core
 subdirectory: meta
-branch: mickledore
+branch: master
 
 For some recipes, the meta-oe layer is required:
 
 URI: git://git.openembedded.org/meta-openembedded
 subdirectory: meta-oe
-branch: mickledore
+branch: master
 
 
 
@@ -50,12 +50,9 @@ Maintenance
 -----------
 
 Send patches / pull requests to openembedded-devel@lists.openembedded.org
-with '[meta-webserver][mickledore]' in the subject.
+with '[meta-webserver]' in the subject.
 
-When sending single patches, please using something like:
-git send-email -M -1 --to openembedded-devel@lists.openembedded.org --subject-prefix='meta-webserver][mickledore][PATCH'
-
-Layer maintainer: Armin Kuster <akuster808@gmail.com>
+Layer maintainer: Derek Straka <derek@asterius.io>
 
 
 License

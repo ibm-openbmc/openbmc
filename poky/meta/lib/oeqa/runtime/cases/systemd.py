@@ -154,7 +154,7 @@ class SystemdJournalTests(SystemdTest):
         """
 
         # The expression chain that uniquely identifies the time boot message.
-        expr_items=['Startup finished', 'kernel', 'userspace', r'\.$']
+        expr_items=['Startup finished', 'kernel', 'userspace','\.$']
         try:
             output = self.journalctl(args='-o cat --reverse')
         except AssertionError:
