@@ -4,6 +4,8 @@ PACKAGES =+ "${PN}-catalog-extralocales"
 PACKAGECONFIG = "pam hostnamed networkd randomseed resolved sysusers timedated \
                  timesyncd xz"
 
+EXTRA_OEMESON += "-Ddns-servers=''"
+
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 SRC_URI += "file://default.network"
 SRC_URI += "file://0001-sd-bus-Don-t-automatically-add-ObjectManager.patch"
