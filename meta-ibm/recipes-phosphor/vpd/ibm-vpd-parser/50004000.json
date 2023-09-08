@@ -1272,7 +1272,7 @@
             }
          }
       ],
-      "/sys/bus/i2c/drivers/ee1004/110-0050/eeprom":[
+      "/sys/bus/i2c/drivers/ee1004/112-0050/eeprom":[
          {
             "inventoryPath":"/system/chassis/motherboard/dimm0",
             "extraInterfaces":{
@@ -1289,7 +1289,7 @@
             }
          }
       ],
-      "/sys/bus/i2c/drivers/ee1004/111-0050/eeprom":[
+      "/sys/bus/i2c/drivers/ee1004/113-0050/eeprom":[
          {
             "inventoryPath":"/system/chassis/motherboard/dimm1",
             "extraInterfaces":{
@@ -1306,7 +1306,7 @@
             }
          }
       ],
-      "/sys/bus/i2c/drivers/ee1004/112-0050/eeprom":[
+      "/sys/bus/i2c/drivers/ee1004/111-0050/eeprom":[
          {
             "inventoryPath":"/system/chassis/motherboard/dimm2",
             "extraInterfaces":{
@@ -1323,7 +1323,7 @@
             }
          }
       ],
-      "/sys/bus/i2c/drivers/ee1004/113-0050/eeprom":[
+      "/sys/bus/i2c/drivers/ee1004/110-0050/eeprom":[
          {
             "inventoryPath":"/system/chassis/motherboard/dimm3",
             "extraInterfaces":{
