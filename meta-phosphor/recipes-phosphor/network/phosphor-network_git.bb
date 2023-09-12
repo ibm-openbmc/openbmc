@@ -36,5 +36,6 @@ EXTRA_OEMESON:append = " -Dtests=disabled"
 
 FILES:${PN} += "${datadir}/dbus-1/system.d"
 FILES:${PN} += "${systemd_unitdir}/network/60-phosphor-networkd-default.network"
+FILES:${PN} += "${systemd_unitdir}/network/60-phosphor-networkd-eth1-default.network"
 
 UBOOT_ENV_RDEPENDS = "${@d.getVar('PREFERRED_PROVIDER_u-boot-fw-utils', True) or 'u-boot-fw-utils'}"
