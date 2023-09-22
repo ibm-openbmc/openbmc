@@ -1,0 +1,14 @@
+[Unit]
+Description=Clears PSU fault LEDs on BMC
+After=obmc-chassis-powerreset@0.target
+Wants=obmc-power-reset-on@0.target
+After=obmc-power-reset-on@0.target
+Before=op-power-start@0.service
+ConditionPathExists=!/run/openbmc/chassis@0-on
+Before=phosphor-psu-monitor.service
+
+[Service]
+Type=oneshot
+Restart=no
+ExecStart=/bin/bash -c "clear-psu-fault-leds.sh"
+SyslogIdentifier=obmc-clear-psu-fault-leds
