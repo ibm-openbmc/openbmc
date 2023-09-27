@@ -1,0 +1,13 @@
+[Unit]
+Description=Set operational status as false for guarded FRUs
+Wants=xyz.openbmc_project.LED.GroupManager.service
+After=xyz.openbmc_project.LED.GroupManager.service
+After=phosphor-reset-chassis-running@0.service
+After=org.open_power.HardwareIsolation.service
+ConditionPathExists=!/run/openbmc/chassis@0-on
+
+[Service]
+Type=oneshot
+Restart=no
+ExecStart=/bin/bash -c "set-guarded-fru-leds.sh"
+SyslogIdentifier=omc-set-guarded-fru-leds
