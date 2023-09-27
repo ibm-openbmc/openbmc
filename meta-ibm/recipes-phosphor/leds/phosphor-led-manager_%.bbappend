@@ -17,18 +17,6 @@ pkg_postinst:${PN}:p10bmc () {
 
     # Needed this to run as part of BMC boot
     mkdir -p $D$systemd_system_unitdir/multi-user.target.wants
-    LINK="$D$systemd_system_unitdir/multi-user.target.wants/obmc-led-set-all-groups-asserted@false.service"
-    TARGET="../obmc-led-set-all-groups-asserted@.service"
-    ln -s $TARGET $LINK
-
-    # Needed this to run as part of Power On
-    mkdir -p $D$systemd_system_unitdir/obmc-chassis-poweron@0.target.wants
-    LINK="$D$systemd_system_unitdir/obmc-chassis-poweron@0.target.wants/obmc-led-set-all-groups-asserted@false.service"
-    TARGET="../obmc-led-set-all-groups-asserted@.service"
-    ln -s $TARGET $LINK
-
-    # Needed this to run as part of BMC boot
-    mkdir -p $D$systemd_system_unitdir/multi-user.target.wants
     LINK_FAULT="$D$systemd_system_unitdir/multi-user.target.wants/obmc-led-create-virtual-leds@sys-class-leds-virtual-enc-fault.service"
     TARGET_FAULT="../obmc-led-create-virtual-leds@.service"
     ln -s $TARGET_FAULT $LINK_FAULT
@@ -47,12 +35,6 @@ pkg_postinst:${PN}:p10bmc () {
 }
 
 pkg_prerm:${PN}:p10bmc () {
-
-    LINK="$D$systemd_system_unitdir/multi-user.target.wants/obmc-led-set-all-groups-asserted@false.service"
-    rm $LINK
-
-    LINK="$D$systemd_system_unitdir/obmc-chassis-poweron@0.target.wants/obmc-led-set-all-groups-asserted@false.service"
-    rm $LINK
 
     LINK_FAULT="$D$systemd_system_unitdir/multi-user.target.wants/obmc-led-create-virtual-leds@sys-class-leds-virtual-enc-fault.service"
     rm $LINK_FAULT
