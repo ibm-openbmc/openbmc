@@ -182,6 +182,23 @@ tpm_required_sensor:
             type: "bool"
             assert: true
 
+disable_tpm_sensor:
+  path: /xyz/openbmc_project/control/host0/TPMDisable
+  serviceInterface: org.freedesktop.DBus.Properties
+  readingType: assertion
+  mutability: Mutability::Write|Mutability::Read
+  sensorNamePattern: nameLeaf
+  interfaces:
+    xyz.openbmc_project.Control.TPM.Policy:
+      TPMEnable:
+        Offsets:
+          0x00:
+            type: "bool"
+            assert: false
+          0x01:
+            type: "bool"
+            assert: true
+
 gpu_func_sensor:
   serviceInterface: xyz.openbmc_project.Inventory.Manager
   readingType: assertion
