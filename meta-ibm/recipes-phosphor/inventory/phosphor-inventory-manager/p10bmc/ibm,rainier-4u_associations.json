@@ -2553,6 +2553,23 @@
             ]
         },
         {
+            "path": "system/chassis/motherboard/pcieslot12",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
             "path": "system/chassis/motherboard/pcieslot0/pcie_card0",
             "endpoints":
             [
@@ -2776,6 +2793,23 @@
                         "/xyz/openbmc_project/sensors/temperature/PCIe_Cable_Card_C11_Local_Temp",
                         "/xyz/openbmc_project/sensors/temperature/NVMe_JBOF_Card_C11_Temp",
                         "/xyz/openbmc_project/sensors/temperature/NVMe_JBOF_Card_C11_Local_Temp"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "system/chassis/motherboard/pcieslot12/pcie_card12",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
                     ]
                 }
             ]

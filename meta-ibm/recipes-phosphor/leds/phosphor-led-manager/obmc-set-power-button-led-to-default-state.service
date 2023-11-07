@@ -1,0 +1,12 @@
+[Unit]
+Description=Initialize power button LED to default state
+After=xyz.openbmc_project.led.controller@sys-class-leds-pca955x:front-sys-pwron0.service
+After=xyz.openbmc_project.LED.GroupManager.service
+After=phosphor-reset-chassis-running@0.service
+ConditionPathExists=!/run/openbmc/chassis@0-on
+
+[Service]
+Type=oneshot
+Restart=no
+ExecStart=/bin/bash -c "set-power-button-led-to-default-state.sh"
+SyslogIdentifier=obmc-set-power-button-led-to-default-state

@@ -352,6 +352,7 @@
                         "/xyz/openbmc_project/inventory/system/chassis/motherboard/pcieslot9",
                         "/xyz/openbmc_project/inventory/system/chassis/motherboard/pcieslot10",
                         "/xyz/openbmc_project/inventory/system/chassis/motherboard/pcieslot11",
+                        "/xyz/openbmc_project/inventory/system/chassis/motherboard/pcieslot12",
                         "/xyz/openbmc_project/inventory/system/chassis/motherboard/dasd_backplane/nvme0",
                         "/xyz/openbmc_project/inventory/system/chassis/motherboard/dasd_backplane/nvme1",
                         "/xyz/openbmc_project/inventory/system/chassis/motherboard/dasd_backplane/nvme2",
@@ -928,6 +929,23 @@
             ]
         },
         {
+            "path": "system/chassis/motherboard/pcieslot12",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
+                    ]
+                }
+            ]
+        },
+        {
             "path": "system/chassis/motherboard/pcieslot1/pcie_card1",
             "endpoints":
             [
@@ -1121,6 +1139,23 @@
                     [
                         "/xyz/openbmc_project/sensors/temperature/PCIe_Cable_Card_C11_Temp",
                         "/xyz/openbmc_project/sensors/temperature/PCIe_Cable_Card_C11_Local_Temp"
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "system/chassis/motherboard/pcieslot12/pcie_card12",
+            "endpoints":
+            [
+                {
+                    "types":
+                    {
+                        "rType": "inventory",
+                        "fType": "chassis"
+                    },
+                    "paths":
+                    [
+                        "/xyz/openbmc_project/inventory/system/chassis"
                     ]
                 }
             ]

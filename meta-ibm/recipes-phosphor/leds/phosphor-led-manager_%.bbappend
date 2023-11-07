@@ -1,6 +1,6 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
-SYSTEMD_SERVICE:${PN}:append:p10bmc = " obmc-led-set-all-groups-asserted@.service obmc-led-create-virtual-leds@.service obmc-set-guarded-frus-leds@.service"
+SYSTEMD_SERVICE:${PN}:append:p10bmc = " obmc-led-set-all-groups-asserted@.service obmc-led-create-virtual-leds@.service obmc-set-guarded-frus-leds@.service obmc-set-power-button-led-to-default-state.service"
 
 # Copies config file having arguments for led-set-all-groups-asserted.sh
 SYSTEMD_ENVIRONMENT_FILE:${PN}:append:p10bmc =" obmc/led/set-all/groups/config"
@@ -32,6 +32,12 @@ pkg_postinst:${PN}:p10bmc () {
     LINK="$D$systemd_system_unitdir/multi-user.target.wants/obmc-set-guarded-frus-leds@.service"
     TARGET="../obmc-set-guarded-frus-leds@.service"
     ln -s $TARGET $LINK
+
+    # Needed this to run as part of BMC boot
+    mkdir -p $D$systemd_system_unitdir/multi-user.target.wants
+    LINK="$D$systemd_system_unitdir/multi-user.target.wants/obmc-set-power-button-led-to-default-state.service"
+    TARGET="../obmc-set-power-button-led-to-default-state.service"
+    ln -s $TARGET $LINK
 }
 
 pkg_prerm:${PN}:p10bmc () {
@@ -43,6 +49,9 @@ pkg_prerm:${PN}:p10bmc () {
     rm $LINK_ID
 
     LINK_ID="$D$systemd_system_unitdir/multi-user.target.wants/obmc-set-guarded-frus-leds@.service"
+    rm $LINK_ID
+
+    LINK_ID="$D$systemd_system_unitdir/multi-user.target.wants/obmc-set-power-button-led-to-default-state.service"
     rm $LINK_ID
 }
 
