@@ -2,7 +2,6 @@ SUMMARY = "Sound server for Linux and Unix-like operating systems"
 DESCRIPTION = "A general purpose sound server intended to run as a middleware \
 between your applications and your hardware devices, either using ALSA or OSS."
 HOMEPAGE = "http://www.pulseaudio.org"
-AUTHOR = "Lennart Poettering"
 SECTION = "libs/multimedia"
 
 # Most of PulseAudio code is under LGPL-2.1-or-later. There are a few
@@ -258,7 +257,7 @@ RDEPENDS:pulseaudio-server += "${@bb.utils.contains('DISTRO_FEATURES', 'pulseaud
 
 # pulseaudio-module-console-kit is built whenever dbus is enabled by PACKAGECONFIG
 # but consolekit depends on libx11 and is available only for DISTRO with x11 in DISTRO_FEATURES
-RDEPENDS:pulseaudio-module-console-kit =+ "${@bb.utils.contains('DISTRO_FEATURES', 'x11', 'consolekit', '', d)}"
+RDEPENDS:pulseaudio-module-console-kit =+ "${@bb.utils.contains('DISTRO_FEATURES', 'sysvinit x11', 'consolekit', '', d)}"
 RDEPENDS:pulseaudio-misc += "pulseaudio-module-cli-protocol-unix"
 
 FILES:${PN}-module-alsa-card += "${datadir}/pulseaudio/alsa-mixer"

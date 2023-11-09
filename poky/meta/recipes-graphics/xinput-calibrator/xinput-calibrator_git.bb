@@ -4,8 +4,7 @@ LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://src/calibrator.cpp;endline=22;md5=1bcba08f67cdb56f34021557898e4b5a"
 DEPENDS = "virtual/libx11 libxi libxrandr"
 
-PV = "0.7.5+git${SRCPV}"
-PR = "r6"
+PV = "0.7.5+git"
 
 inherit autotools pkgconfig features_check
 # depends on virtual/libx11

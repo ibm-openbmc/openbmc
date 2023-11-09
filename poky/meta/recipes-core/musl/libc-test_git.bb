@@ -13,9 +13,10 @@ SRCREV = "18e28496adee3d84fefdda6efcb9c5b8996a2398"
 SRC_URI = " \
     git://repo.or.cz/libc-test;branch=master;protocol=https \
     file://run-ptest \
+    file://run-libc-ptests \
 "
 
-PV = "0+git${SRCPV}"
+PV = "0+git"
 
 S = "${WORKDIR}/git"
 
@@ -34,6 +35,7 @@ RDEPENDS:${PN} = " \
 
 RDEPENDS:${PN}-ptest = " \
      ${PN} \
+     musl-staticdev \
      sed \
 "
 
@@ -45,6 +47,10 @@ do_install () {
     cp ${S}/Makefile ${D}${install_path}
     cp ${S}/config.mak.def ${D}${install_path}/config.mak
     cp -r ${S}/src ${D}${install_path}
+}
+
+do_install_ptest_base:append() {
+    install -Dm 0755 ${WORKDIR}/run-libc-ptests ${D}${PTEST_PATH}/run-libc-ptests
 }
 
 COMPATIBLE_HOST = "null"

@@ -38,9 +38,13 @@ logger = logging.getLogger('BitBake')
 class ProcessTimeout(SystemExit):
     pass
 
+def currenttime():
+    return datetime.datetime.now().strftime('%H:%M:%S.%f')
+
 def serverlog(msg):
-    print(str(os.getpid()) + " " +  datetime.datetime.now().strftime('%H:%M:%S.%f') + " " + msg)
-    sys.stdout.flush()
+    print(str(os.getpid()) + " " +  currenttime() + " " + msg)
+    #Seems a flush here triggers filesytem sync like behaviour and long hangs in the server
+    #sys.stdout.flush()
 
 #
 # When we have lockfile issues, try and find infomation about which process is
@@ -289,7 +293,9 @@ class ProcessServer():
                     continue
                 try:
                     serverlog("Running command %s" % command)
-                    self.command_channel_reply.send(self.cooker.command.runCommand(command, self))
+                    reply = self.cooker.command.runCommand(command, self)
+                    serverlog("Sending reply %s" % repr(reply))
+                    self.command_channel_reply.send(reply)
                     serverlog("Command Completed (socket: %s)" % os.path.exists(self.sockname))
                 except Exception as e:
                    stack = traceback.format_exc()
@@ -405,12 +411,6 @@ class ProcessServer():
             nextsleep = 0.1
             fds = []
 
-            try:
-                self.cooker.process_inotify_updates()
-            except Exception as exc:
-                serverlog("Exception %s in inofify updates broke the idle_thread, exiting" % traceback.format_exc())
-                self.quit = True
-
             with bb.utils.lock_timeout(self._idlefuncsLock):
                 items = list(self._idlefuns.items())
 
@@ -502,9 +502,9 @@ class ServerCommunicator():
     def runCommand(self, command):
         self.connection.send(command)
         if not self.recv.poll(30):
-            logger.info("No reply from server in 30s")
+            logger.info("No reply from server in 30s (for command %s at %s)" % (command[0], currenttime()))
             if not self.recv.poll(30):
-                raise ProcessTimeout("Timeout while waiting for a reply from the bitbake server (60s)")
+                raise ProcessTimeout("Timeout while waiting for a reply from the bitbake server (60s at %s)" % currenttime())
         ret, exc = self.recv.get()
         # Should probably turn all exceptions in exc back into exceptions?
         # For now, at least handle BBHandledException
@@ -620,7 +620,7 @@ class BitBakeServer(object):
         os.set_inheritable(self.bitbake_lock.fileno(), True)
         os.set_inheritable(self.readypipein, True)
         serverscript = os.path.realpath(os.path.dirname(__file__) + "/../../../bin/bitbake-server")
-        os.execl(sys.executable, "bitbake-server", serverscript, "decafbad", str(self.bitbake_lock.fileno()), str(self.readypipein), self.logfile, self.bitbake_lock.name, self.sockname,  str(self.server_timeout or 0), str(int(self.profile)), str(self.xmlrpcinterface[0]), str(self.xmlrpcinterface[1]))
+        os.execl(sys.executable, sys.executable, serverscript, "decafbad", str(self.bitbake_lock.fileno()), str(self.readypipein), self.logfile, self.bitbake_lock.name, self.sockname,  str(self.server_timeout or 0), str(int(self.profile)), str(self.xmlrpcinterface[0]), str(self.xmlrpcinterface[1]))
 
 def execServer(lockfd, readypipeinfd, lockname, sockname, server_timeout, xmlrpcinterface, profile):
 
@@ -860,11 +860,10 @@ class ConnectionWriter(object):
                 process.queue_signals = True
                 self._send(obj)
                 process.queue_signals = False
-                try:
-                    for sig in process.signal_received.pop():
-                        process.handle_sig(sig, None)
-                except IndexError:
-                    pass
+
+                while len(process.signal_received) > 0:
+                    sig = process.signal_received.pop()
+                    process.handle_sig(sig, None)
         else:
             self._send(obj)
 

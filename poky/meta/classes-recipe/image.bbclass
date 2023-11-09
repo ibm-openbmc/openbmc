@@ -25,7 +25,7 @@ inherit ${IMGCLASSES}
 
 TOOLCHAIN_TARGET_TASK += "${PACKAGE_INSTALL}"
 TOOLCHAIN_TARGET_TASK_ATTEMPTONLY += "${PACKAGE_INSTALL_ATTEMPTONLY}"
-POPULATE_SDK_POST_TARGET_COMMAND += "rootfs_sysroot_relativelinks; "
+POPULATE_SDK_POST_TARGET_COMMAND += "rootfs_sysroot_relativelinks"
 
 LICENSE ?= "MIT"
 PACKAGES = ""
@@ -96,6 +96,7 @@ USE_DEPMOD ?= "1"
 PID = "${@os.getpid()}"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
+SSTATE_ARCHS_TUNEPKG = "${@all_multilib_tune_values(d, 'TUNE_PKGARCH')}"
 
 LDCONFIGDEPEND ?= "ldconfig-native:do_populate_sysroot"
 LDCONFIGDEPEND:libc-musl = ""
@@ -120,8 +121,7 @@ def rootfs_command_variables(d):
 python () {
     variables = rootfs_command_variables(d)
     for var in variables:
-        if d.getVar(var, False):
-            d.setVarFlag(var, 'func', '1')
+        d.setVarFlag(var, 'vardeps', d.getVar(var))
 }
 
 def rootfs_variables(d):
@@ -480,14 +480,14 @@ python () {
                     if subimage not in subimages:
                         subimages.append(subimage)
                     if type not in alltypes:
-                        rm_tmp_images.add(localdata.expand("${IMAGE_NAME}${IMAGE_NAME_SUFFIX}.${type}"))
+                        rm_tmp_images.add(localdata.expand("${IMAGE_NAME}.${type}"))
 
         for bt in basetypes[t]:
             gen_conversion_cmds(bt)
 
         localdata.setVar('type', realt)
         if t not in alltypes:
-            rm_tmp_images.add(localdata.expand("${IMAGE_NAME}${IMAGE_NAME_SUFFIX}.${type}"))
+            rm_tmp_images.add(localdata.expand("${IMAGE_NAME}.${type}"))
         else:
             subimages.append(realt)
 
@@ -594,13 +594,12 @@ python create_symlinks() {
     manifest_name = d.getVar('IMAGE_MANIFEST')
     taskname = d.getVar("BB_CURRENTTASK")
     subimages = (d.getVarFlag("do_" + taskname, 'subimages', False) or "").split()
-    imgsuffix = d.getVarFlag("do_" + taskname, 'imgsuffix') or d.expand("${IMAGE_NAME_SUFFIX}.")
 
     if not link_name:
         return
     for type in subimages:
         dst = os.path.join(deploy_dir, link_name + "." + type)
-        src = img_name + imgsuffix + type
+        src = img_name + "." + type
         if os.path.exists(os.path.join(deploy_dir, src)):
             bb.note("Creating symlink: %s -> %s" % (dst, src))
             if os.path.islink(dst):
@@ -658,8 +657,8 @@ create_merged_usr_symlinks_sdk() {
     create_merged_usr_symlinks ${SDK_OUTPUT}${SDKTARGETSYSROOT}
 }
 
-ROOTFS_PREPROCESS_COMMAND += "${@bb.utils.contains('DISTRO_FEATURES', 'usrmerge', 'create_merged_usr_symlinks_rootfs; ', '',d)}"
-POPULATE_SDK_PRE_TARGET_COMMAND += "${@bb.utils.contains('DISTRO_FEATURES', 'usrmerge', 'create_merged_usr_symlinks_sdk; ', '',d)}"
+ROOTFS_PREPROCESS_COMMAND += "${@bb.utils.contains('DISTRO_FEATURES', 'usrmerge', 'create_merged_usr_symlinks_rootfs', '',d)}"
+POPULATE_SDK_PRE_TARGET_COMMAND += "${@bb.utils.contains('DISTRO_FEATURES', 'usrmerge', 'create_merged_usr_symlinks_sdk', '',d)}"
 
 reproducible_final_image_task () {
     if [ "$REPRODUCIBLE_TIMESTAMP_ROOTFS" = "" ]; then
@@ -679,6 +678,6 @@ systemd_preset_all () {
     fi
 }
 
-IMAGE_PREPROCESS_COMMAND:append = " ${@ 'systemd_preset_all;' if bb.utils.contains('DISTRO_FEATURES', 'systemd', True, False, d) and not bb.utils.contains('IMAGE_FEATURES', 'stateless-rootfs', True, False, d) else ''} reproducible_final_image_task; "
+IMAGE_PREPROCESS_COMMAND:append = " ${@ 'systemd_preset_all' if bb.utils.contains('DISTRO_FEATURES', 'systemd', True, False, d) and not bb.utils.contains('IMAGE_FEATURES', 'stateless-rootfs', True, False, d) else ''} reproducible_final_image_task "
 
 CVE_PRODUCT = ""

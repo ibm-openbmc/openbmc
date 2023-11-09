@@ -3,15 +3,12 @@
 COMPATIBLE_MACHINE = "(corstone1000)"
 
 FILESEXTRAPATHS:prepend := "${THISDIR}/files/corstone1000:"
-
-SRC_URI:append = " \ 
+SRC_URI:append = " \
 	file://0001-Fix-FF-A-version-in-SPMC-manifest.patch \
-    file://0002-feat-corstone1000-bl2-loads-fip-based-on-metadata.patch \
-    "
-
-#Sets TF-A version to 2.8.0
-SRCREV_tfa = "9881bb93a3bc0a3ea37e9f093e09ab4b360a9e48"
-PV = "2.8.0"
+	file://0002-feat-corstone1000-bl2-loads-fip-based-on-metadata.patch \
+	file://0003-psci-SMCCC_ARCH_FEATURES-discovery-through-PSCI_FEATURES.patch \
+	file://0004-fix-corstone1000-add-cpuhelper-to-makefile.patch \
+       "
 
 TFA_DEBUG = "1"
 TFA_UBOOT ?= "1"
@@ -32,7 +29,7 @@ EXTRA_OEMAKE:append = " \
                         TARGET_PLATFORM=${TFA_TARGET_PLATFORM} \
                         ENABLE_STACK_PROTECTOR=strong \
                         ENABLE_PIE=1 \
-                        BL2_AT_EL3=1 \
+                        RESET_TO_BL2=1 \
                         CREATE_KEYS=1 \
                         GENERATE_COT=1 \
                         TRUSTED_BOARD_BOOT=1 \
@@ -41,7 +38,8 @@ EXTRA_OEMAKE:append = " \
                         NR_OF_IMAGES_IN_FW_BANK=4 \
                         COT=tbbr \
                         ARM_ROTPK_LOCATION=devel_rsa  \
+                        ERRATA_A35_855472=1 \
                         ROT_KEY=plat/arm/board/common/rotpk/arm_rotprivk_rsa.pem \
-                        BL32=${RECIPE_SYSROOT}/lib/firmware/tee-pager_v2.bin \
+                        BL32=${RECIPE_SYSROOT}/${nonarch_base_libdir}/firmware/tee-pager_v2.bin \
                         LOG_LEVEL=50 \
                         "

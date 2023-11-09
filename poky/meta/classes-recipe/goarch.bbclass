@@ -54,6 +54,7 @@ COMPATIBLE_HOST:linux-muslx32 = "null"
 COMPATIBLE_HOST:powerpc = "null"
 COMPATIBLE_HOST:powerpc64 = "null"
 COMPATIBLE_HOST:mipsarchn32 = "null"
+COMPATIBLE_HOST:riscv32 = "null"
 
 ARM_INSTRUCTION_SET:armv4 = "arm"
 ARM_INSTRUCTION_SET:armv5 = "arm"
@@ -90,6 +91,8 @@ def go_map_arch(a, d):
         return 'ppc64'
     elif a == 'riscv64':
         return 'riscv64'
+    elif a == 'loongarch64':
+        return 'loong64'
     else:
         raise bb.parse.SkipRecipe("Unsupported CPU architecture: %s" % a)
 

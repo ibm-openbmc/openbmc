@@ -24,7 +24,8 @@ def skipIfNoNetwork():
     return lambda f: f
 
 class TestTimeout(Exception):
-    pass
+    # Indicate to pytest that this is not a test suite
+    __test__ = False
 
 class Timeout():
 
@@ -428,9 +429,15 @@ class FetcherTest(unittest.TestCase):
         # a common setup is to use other default
         # branch than master.
         self.git(['checkout', '-b', 'master'], cwd=cwd)
-        if not self.git(['config', 'user.email'], cwd=cwd):
+
+        try:
+            self.git(['config', 'user.email'], cwd=cwd)
+        except bb.process.ExecutionError:
             self.git(['config', 'user.email', 'you@example.com'], cwd=cwd)
-        if not self.git(['config', 'user.name'], cwd=cwd):
+
+        try:
+            self.git(['config', 'user.name'], cwd=cwd)
+        except bb.process.ExecutionError:
             self.git(['config', 'user.name', 'Your Name'], cwd=cwd)
 
 class MirrorUriTest(FetcherTest):
@@ -677,11 +684,13 @@ class CleanTarballTest(FetcherTest):
         archive = tarfile.open(os.path.join(self.dldir, self.recipe_tarball))
         self.assertNotEqual(len(archive.members), 0)
         for member in archive.members:
-            self.assertEqual(member.uname, 'oe')
-            self.assertEqual(member.uid, 0)
-            self.assertEqual(member.gname, 'oe')
-            self.assertEqual(member.gid, 0)
-            self.assertEqual(member.mtime, mtime)
+            if member.name == ".":
+                continue
+            self.assertEqual(member.uname, 'oe', "user name for %s differs" % member.name)
+            self.assertEqual(member.uid, 0, "uid for %s differs" % member.name)
+            self.assertEqual(member.gname, 'oe', "group name for %s differs" % member.name)
+            self.assertEqual(member.gid, 0, "gid for %s differs" % member.name)
+            self.assertEqual(member.mtime, mtime, "mtime for %s differs" % member.name)
 
 
 class FetcherLocalTest(FetcherTest):
@@ -1335,6 +1344,7 @@ class URLHandle(unittest.TestCase):
        "cvs://anoncvs:anonymous@cvs.handhelds.org/cvs;tag=V0-99-81;module=familiar/dist/ipkg" : ('cvs', 'cvs.handhelds.org', '/cvs', 'anoncvs', 'anonymous', collections.OrderedDict([('tag', 'V0-99-81'), ('module', 'familiar/dist/ipkg')])),
        "git://git.openembedded.org/bitbake;branch=@foo;protocol=https" : ('git', 'git.openembedded.org', '/bitbake', '', '', {'branch': '@foo', 'protocol' : 'https'}),
        "file://somelocation;someparam=1": ('file', '', 'somelocation', '', '', {'someparam': '1'}),
+       "https://somesite.com/somerepo.git;user=anyUser:idtoken=1234" : ('https', 'somesite.com', '/somerepo.git', '', '', {'user': 'anyUser:idtoken=1234'}),
        r'git://s.o-me_ONE:!#$%^&*()-_={}[]\|:?,.<>~`@git.openembedded.org/bitbake;branch=main;protocol=https': ('git', 'git.openembedded.org', '/bitbake', 's.o-me_ONE', r'!#$%^&*()-_={}[]\|:?,.<>~`', {'branch': 'main', 'protocol' : 'https'}),
     }
     # we require a pathname to encodeurl but users can still pass such urls to 
@@ -2485,7 +2495,7 @@ class CrateTest(FetcherTest):
         uris = self.d.getVar('SRC_URI').split()
 
         fetcher = bb.fetch2.Fetch(uris, self.d)
-        with self.assertRaisesRegexp(bb.fetch2.FetchError, "Fetcher failure for URL"):
+        with self.assertRaisesRegex(bb.fetch2.FetchError, "Fetcher failure for URL"):
             fetcher.download()
 
 class NPMTest(FetcherTest):
@@ -3037,7 +3047,7 @@ class FetchPremirroronlyLocalTest(FetcherTest):
         self.mirrorname = "git2_git.fake.repo.bitbake.tar.gz"
         recipeurl = "git:/git.fake.repo/bitbake"
         os.makedirs(self.gitdir)
-        self.git("init", self.gitdir)
+        self.git_init(cwd=self.gitdir)
         for i in range(0):
             self.git_new_commit()
         bb.process.run('tar -czvf {} .'.format(os.path.join(self.mirrordir, self.mirrorname)), cwd =  self.gitdir)
@@ -3176,7 +3186,7 @@ class FetchPremirroronlyBrokenTarball(FetcherTest):
         import sys
         self.d.setVar("SRCREV", "0"*40)
         fetcher = bb.fetch.Fetch([self.recipe_url], self.d)
-        with self.assertRaises(bb.fetch2.FetchError):
+        with self.assertRaises(bb.fetch2.FetchError), self.assertLogs() as logs:
             fetcher.download()
-        stdout = sys.stdout.getvalue()
-        self.assertFalse(" not a git repository (or any parent up to mount point /)" in stdout)
+        output = "".join(logs.output)
+        self.assertFalse(" not a git repository (or any parent up to mount point /)" in output)

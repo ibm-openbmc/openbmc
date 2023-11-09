@@ -8,7 +8,7 @@ DEPENDS += "sdbusplus"
 DEPENDS += "${PYTHON_PN}-sdbus++-native"
 DEPENDS += "phosphor-logging"
 DEPENDS += "phosphor-dbus-interfaces"
-SRCREV = "f93c405fd2af186a36cdbbe763d51edd846a3f32"
+SRCREV = "714a20b5f28f97fcbb2881b72049b11f6b64aead"
 PV = "1.0+git${SRCPV}"
 PR = "r1"
 
@@ -18,6 +18,8 @@ S = "${WORKDIR}/git"
 
 inherit meson pkgconfig python3native
 inherit obmc-phosphor-dbus-service
+
+EXTRA_OEMESON = " -Dtests=disabled"
 
 RDEPENDS:${PN} += "phosphor-settings-manager"
 RDEPENDS:${PN} += "phosphor-network"

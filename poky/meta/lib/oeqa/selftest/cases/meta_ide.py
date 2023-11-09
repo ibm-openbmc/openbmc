@@ -18,7 +18,8 @@ class MetaIDE(OESelftestTestCase):
     def setUpClass(cls):
         super(MetaIDE, cls).setUpClass()
         bitbake('meta-ide-support')
-        bitbake('build-sysroots')
+        bitbake('build-sysroots -c build_native_sysroot')
+        bitbake('build-sysroots -c build_target_sysroot')
         bb_vars = get_bb_vars(['MULTIMACH_TARGET_SYS', 'DEPLOY_DIR_IMAGE', 'COREBASE'])
         cls.environment_script = 'environment-setup-%s' % bb_vars['MULTIMACH_TARGET_SYS']
         cls.deploydir = bb_vars['DEPLOY_DIR_IMAGE']
@@ -43,7 +44,7 @@ class MetaIDE(OESelftestTestCase):
     def test_meta_ide_can_build_cpio_project(self):
         dl_dir = self.td.get('DL_DIR', None)
         self.project = SDKBuildProject(self.tmpdir_metaideQA + "/cpio/", self.environment_script_path,
-                        "https://ftp.gnu.org/gnu/cpio/cpio-2.13.tar.gz",
+                        "https://ftp.gnu.org/gnu/cpio/cpio-2.14.tar.gz",
                         self.tmpdir_metaideQA, self.td['DATETIME'], dl_dir=dl_dir)
         self.project.download_archive()
         self.assertEqual(self.project.run_configure('$CONFIGURE_FLAGS --disable-maintainer-mode','sed -i -e "/char \*program_name/d" src/global.c;'), 0,
@@ -55,5 +56,5 @@ class MetaIDE(OESelftestTestCase):
 
     def test_meta_ide_can_run_sdk_tests(self):
         bitbake('-c populate_sysroot gtk+3')
-        bitbake('build-sysroots')
+        bitbake('build-sysroots -c build_target_sysroot')
         bitbake('-c testsdk meta-ide-support')

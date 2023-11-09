@@ -34,6 +34,8 @@ import mimetypes
 
 import logging
 
+from toastermain.logs import log_view_mixin
+
 logger = logging.getLogger("toaster")
 
 # Project creation and managed build enable
@@ -56,6 +58,7 @@ class MimeTypeFinder(object):
         return guessed_type
 
 # single point to add global values into the context before rendering
+@log_view_mixin
 def toaster_render(request, page, context):
     context['project_enable'] = project_enable
     context['project_specific'] = is_project_specific
@@ -665,16 +668,17 @@ def recipe_packages(request, build_id, recipe_id):
     return response
 
 from django.http import HttpResponse
+@log_view_mixin
 def xhr_dirinfo(request, build_id, target_id):
     top = request.GET.get('start', '/')
     return HttpResponse(_get_dir_entries(build_id, target_id, top), content_type = "application/json")
 
 from django.utils.functional import Promise
-from django.utils.encoding import force_text
+from django.utils.encoding import force_str
 class LazyEncoder(json.JSONEncoder):
     def default(self, obj):
         if isinstance(obj, Promise):
-            return force_text(obj)
+            return force_str(obj)
         return super(LazyEncoder, self).default(obj)
 
 from toastergui.templatetags.projecttags import filtered_filesizeformat
@@ -1404,7 +1408,7 @@ if True:
                     if not os.path.isdir('%s/conf' % request.POST['importdir']):
                         raise BadParameterException("Bad path or missing 'conf' directory (%s)" % request.POST['importdir'])
                     from django.core import management
-                    management.call_command('buildimport', '--command=import', '--name=%s' % request.POST['projectname'], '--path=%s' % request.POST['importdir'], interactive=False)
+                    management.call_command('buildimport', '--command=import', '--name=%s' % request.POST['projectname'], '--path=%s' % request.POST['importdir'])
                     prj = Project.objects.get(name = request.POST['projectname'])
                     prj.merged_attr = True
                     prj.save()
@@ -1612,6 +1616,7 @@ if True:
 
     from django.views.decorators.csrf import csrf_exempt
     @csrf_exempt
+    @log_view_mixin
     def xhr_testreleasechange(request, pid):
         def response(data):
             return HttpResponse(jsonfilter(data),
@@ -1648,6 +1653,7 @@ if True:
         except Exception as e:
             return response({"error": str(e) })
 
+    @log_view_mixin
     def xhr_configvaredit(request, pid):
         try:
             prj = Project.objects.get(id = pid)
@@ -1726,6 +1732,7 @@ if True:
             return HttpResponse(json.dumps({"error":str(e) + "\n" + traceback.format_exc()}), content_type = "application/json")
 
 
+    @log_view_mixin
     def customrecipe_download(request, pid, recipe_id):
         recipe = get_object_or_404(CustomImageRecipe, pk=recipe_id)
 

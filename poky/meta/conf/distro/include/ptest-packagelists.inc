@@ -47,6 +47,7 @@ PTESTS_FAST = "\
     libxml-sax-base-perl \
     libxml-simple-perl \
     libxml2 \
+    libxmlb \
     logrotate \
     lua \
     lzo \
@@ -75,9 +76,10 @@ PTESTS_FAST = "\
     slang \
     wayland \
     zlib \
+    libexif \
 "
-PTESTS_FAST:append:libc-glibc = " glibc-tests"
-PTESTS_PROBLEMS:remove:libc-glibc = "glibc-tests"
+PTESTS_FAST:append:libc-glibc = " glibc-y2038-tests"
+PTESTS_PROBLEMS:remove:libc-glibc = "glibc-y2038-tests"
 PTESTS_FAST:remove:mips64 = "qemu"
 PTESTS_PROBLEMS:append:mips64 = " qemu"
 PTESTS_FAST:remove:riscv32 = "qemu"
@@ -95,17 +97,22 @@ PTESTS_SLOW = "\
     glib-2.0 \
     gnutls \
     gstreamer1.0 \
+    less \
     libevent \
     libgcrypt \
     libmodule-build-perl \
     lttng-tools \
+    mdadm \
     openssh \
     openssl \
     parted \
     perl \
     python3-cryptography \
     python3 \
+    python3-click \
+    python3-xmltodict \
     strace \
+    tar \
     tcl \
     util-linux \
     valgrind \
@@ -122,7 +129,6 @@ PTESTS_PROBLEMS:append:x86 = " valgrind"
 #    rt-tests \ # Needs to be checked whether it runs at all
 #    bash \ # Test outcomes are non-deterministic by design
 #    ifupdown \ # Tested separately in lib/oeqa/selftest/cases/imagefeatures.py
-#    mdadm \ # Tests rely on non-deterministic sleep() amounts
 #    libinput \ # Tests need an unloaded system to be reliable
 #    libpam \ # Needs pam DISTRO_FEATURE
 #    numactl \ # qemu not (yet) configured for numa; all tests are skipped
@@ -134,10 +140,10 @@ PTESTS_PROBLEMS = "\
     rt-tests \
     bash \
     ifupdown \
-    mdadm \
     libinput \
     libpam \
     libseccomp \
     numactl \
+    python3-license-expression \
     python3-numpy \
 "

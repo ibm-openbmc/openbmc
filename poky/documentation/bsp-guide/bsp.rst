@@ -893,8 +893,8 @@ Yocto Project:
    ``recipes-*`` subdirectories specific to the recipe's function, or
    within a subdirectory containing a set of closely-related recipes.
    The recipes themselves should follow the general guidelines for
-   recipes used in the Yocto Project found in the ":oe_wiki:`OpenEmbedded
-   Style Guide </Styleguide>`".
+   recipes found in the ":doc:`../contributor-guide/recipe-style-guide`"
+   in the Yocto Project and OpenEmbedded Contributor Guide.
 
 -  *License File:* You must include a license file in the
    ``meta-bsp_root_name`` directory. This license covers the BSP
@@ -927,8 +927,8 @@ Yocto Project:
    -  The name and contact information for the BSP layer maintainer.
       This is the person to whom patches and questions should be sent.
       For information on how to find the right person, see the
-      ":ref:`dev-manual/changes:submitting a change to the yocto project`"
-      section in the Yocto Project Development Tasks Manual.
+      :doc:`../contributor-guide/submit-changes` section in the Yocto Project and
+      OpenEmbedded Contributor Guide.
 
    -  Instructions on how to build the BSP using the BSP layer.
 

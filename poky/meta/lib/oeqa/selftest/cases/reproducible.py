@@ -16,8 +16,6 @@ import os
 import datetime
 
 exclude_packages = [
-	'rust',
-	'rust-dbg'
 	]
 
 def is_excluded(package):
@@ -128,23 +126,17 @@ class DiffoscopeTests(OESelftestTestCase):
 class ReproducibleTests(OESelftestTestCase):
     # Test the reproducibility of whatever is built between sstate_targets and targets
 
-    package_classes = get_bb_var("OEQA_REPRODUCIBLE_TEST_PACKAGE")
-    if package_classes:
-        package_classes = package_classes.split()
-    else:
-        package_classes = ['deb', 'ipk', 'rpm']
+    package_classes = ['deb', 'ipk', 'rpm']
 
     # Maximum report size, in bytes
     max_report_size = 250 * 1024 * 1024
 
     # targets are the things we want to test the reproducibility of
-    targets = get_bb_var("OEQA_REPRODUCIBLE_TEST_TARGET")
-    if targets:
-        targets = targets.split()
-    else:
-        targets = ['core-image-minimal', 'core-image-sato', 'core-image-full-cmdline', 'core-image-weston', 'world']
+    targets = ['core-image-minimal', 'core-image-sato', 'core-image-full-cmdline', 'core-image-weston', 'world']
+
     # sstate targets are things to pull from sstate to potentially cut build/debugging time
-    sstate_targets = (get_bb_var("OEQA_REPRODUCIBLE_TEST_SSTATE_TARGETS") or "").split()
+    sstate_targets = []
+
     save_results = False
     if 'OEQA_DEBUGGING_SAVED_OUTPUT' in os.environ:
         save_results = os.environ['OEQA_DEBUGGING_SAVED_OUTPUT']
@@ -159,10 +151,19 @@ class ReproducibleTests(OESelftestTestCase):
 
     def setUpLocal(self):
         super().setUpLocal()
-        needed_vars = ['TOPDIR', 'TARGET_PREFIX', 'BB_NUMBER_THREADS', 'BB_HASHSERVE']
+        needed_vars = ['TOPDIR', 'TARGET_PREFIX', 'BB_NUMBER_THREADS', 'BB_HASHSERVE', 'OEQA_REPRODUCIBLE_TEST_PACKAGE', 'OEQA_REPRODUCIBLE_TEST_TARGET', 'OEQA_REPRODUCIBLE_TEST_SSTATE_TARGETS']
         bb_vars = get_bb_vars(needed_vars)
         for v in needed_vars:
             setattr(self, v.lower(), bb_vars[v])
+
+        if bb_vars['OEQA_REPRODUCIBLE_TEST_PACKAGE']:
+            self.package_classes = bb_vars['OEQA_REPRODUCIBLE_TEST_PACKAGE'].split()
+
+        if bb_vars['OEQA_REPRODUCIBLE_TEST_TARGET']:
+            self.targets = bb_vars['OEQA_REPRODUCIBLE_TEST_TARGET'].split()
+
+        if bb_vars['OEQA_REPRODUCIBLE_TEST_SSTATE_TARGETS']:
+            self.sstate_targets = bb_vars['OEQA_REPRODUCIBLE_TEST_SSTATE_TARGETS'].split()
 
         self.extraresults = {}
         self.extraresults.setdefault('reproducible.rawlogs', {})['log'] = ''
@@ -212,10 +213,9 @@ class ReproducibleTests(OESelftestTestCase):
 
         config = textwrap.dedent('''\
             PACKAGE_CLASSES = "{package_classes}"
-            INHIBIT_PACKAGE_STRIP = "1"
             TMPDIR = "{tmpdir}"
             LICENSE_FLAGS_ACCEPTED = "commercial"
-            DISTRO_FEATURES:append = ' systemd pam'
+            DISTRO_FEATURES:append = ' pam'
             USERADDEXTENSION = "useradd-staticids"
             USERADD_ERROR_DYNAMIC = "skip"
             USERADD_UID_TABLES += "files/static-passwd"

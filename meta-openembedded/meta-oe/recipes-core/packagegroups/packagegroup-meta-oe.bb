@@ -468,7 +468,6 @@ RDEPENDS:packagegroup-meta-oe-gnome ="\
     pyxdg \
     vte9 \
     gnome-theme-adwaita \
-    libxmlb \
 "
 
 RDEPENDS:packagegroup-meta-oe-graphics ="\
@@ -569,7 +568,6 @@ RDEPENDS:packagegroup-meta-oe-graphics ="\
     xclock \
     xfontsel \
     xkbprint \
-    xsetmode \
     xlsatoms \
     xlsclients \
     xlsfonts \
@@ -595,9 +593,7 @@ RDEPENDS:packagegroup-meta-oe-graphics ="\
     font-cursor-misc \
     font-misc-misc \
     xorg-fonts-100dpi \
-    liblbxutil \
     libxaw6 \
-    libxkbui \
     libxpresent \
     xcb-util-cursor \
     xserver-common \
@@ -928,8 +924,8 @@ RDEPENDS:packagegroup-meta-oe-support ="\
     libmicrohttpd \
     yaml-cpp \
 "
-RDEPENDS:packagegroup-meta-oe-support:append:armv7a = " ne10"
-RDEPENDS:packagegroup-meta-oe-support:append:armv7ve = " ne10"
+RDEPENDS:packagegroup-meta-oe-support:append:armv7a = "${@bb.utils.contains("TUNE_FEATURES","neon"," ne10","",d)}"
+RDEPENDS:packagegroup-meta-oe-support:append:armv7ve = "${@bb.utils.contains("TUNE_FEATURES","neon"," ne10","",d)}"
 RDEPENDS:packagegroup-meta-oe-support:append:aarch64 = " ne10"
 RDEPENDS:packagegroup-meta-oe-support:append:x86 = " mcelog mce-inject mce-test vboxguestdrivers"
 RDEPENDS:packagegroup-meta-oe-support:append:x86-64 = " mcelog mce-inject mce-test vboxguestdrivers"

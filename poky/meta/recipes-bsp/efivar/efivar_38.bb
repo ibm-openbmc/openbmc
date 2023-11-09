@@ -11,17 +11,13 @@ SRC_URI = "git://github.com/rhinstaller/efivar.git;branch=main;protocol=https \
            file://0001-docs-do-not-build-efisecdb-manpage.patch \
            "
 SRCREV = "90e88b221e8bc60dc50f3246051369b8f580c0d0"
-PV .= "+39+git${SRCPV}"
+PV .= "+39+git"
 
 S = "${WORKDIR}/git"
 
 inherit pkgconfig
 
 export CCLD_FOR_BUILD = "${BUILD_CCLD}"
-
-# Upstream uses --add-needed in gcc.specs which gold doesn't support, so
-# enforce BFD.
-LDFLAGS += "-fuse-ld=bfd"
 
 do_compile() {
     oe_runmake ERRORS= HOST_CFLAGS="${BUILD_CFLAGS}" HOST_LDFLAGS="${BUILD_LDFLAGS}"

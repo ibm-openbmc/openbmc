@@ -6,7 +6,6 @@ LICENSE = "GPL-2.0-only"
 LIC_FILES_CHKSUM = "file://COPYING;md5=94d55d512a9ba36caa9b7df079bae19f \
                     file://src/pm-pmu.c;beginline=1;endline=22;md5=3c1ddbc54e735fb4a0386e14c78a3147"
 
-PR = "r1"
 
 SRC_URI = "http://pm-utils.freedesktop.org/releases/pm-utils-${PV}.tar.gz"
 
@@ -17,7 +16,7 @@ inherit pkgconfig autotools manpages
 
 PACKAGECONFIG[manpages] = "--enable-doc, --disable-doc, libxslt-native xmlto-native"
 
-RDEPENDS:${PN} = "grep bash"
+RDEPENDS:${PN} = "bash"
 
 EXTRA_OECONF = "--libdir=${nonarch_libdir}"
 

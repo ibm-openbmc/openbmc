@@ -5,6 +5,8 @@ MACHINEOVERRIDES =. "corstone1000:"
 # TF-A
 TFA_PLATFORM = "corstone1000"
 EXTRA_IMAGEDEPENDS += "trusted-firmware-a"
+PREFERRED_VERSION_trusted-firmware-a ?= "2.9.%"
+PREFERRED_VERSION_tf-a-tests ?= "2.8.%"
 
 TFA_BL2_BINARY = "bl2-corstone1000.bin"
 TFA_FIP_BINARY = "fip-corstone1000.bin"
@@ -22,7 +24,7 @@ TFM_SIGN_PRIVATE_KEY = "${libdir}/tfm-scripts/root-RSA-3072_1.pem"
 RE_IMAGE_OFFSET = "0x1000"
 
 # u-boot
-PREFERRED_VERSION_u-boot ?= "2023.01"
+PREFERRED_VERSION_u-boot ?= "2023.07%"
 EXTRA_IMAGEDEPENDS += "u-boot"
 
 UBOOT_CONFIG ??= "EFI"
@@ -34,8 +36,8 @@ UBOOT_ARCH = "arm"
 UBOOT_EXTLINUX = "0"
 
 #optee
-PREFERRED_VERSION_optee-os ?= "3.20.%"
-PREFERRED_VERSION_optee-client ?= "3.18.%"
+PREFERRED_VERSION_optee-os ?= "3.22%"
+PREFERRED_VERSION_optee-client ?= "3.22%"
 EXTRA_IMAGEDEPENDS += "optee-os"
 OPTEE_ARCH = "arm64"
 OPTEE_BINARY = "tee-pager_v2.bin"
@@ -50,7 +52,7 @@ EXTRA_IMAGEDEPENDS += "external-system"
 
 # Linux kernel
 PREFERRED_PROVIDER_virtual/kernel:forcevariable = "linux-yocto"
-PREFERRED_VERSION_linux-yocto = "6.1%"
+PREFERRED_VERSION_linux-yocto = "6.4%"
 KERNEL_IMAGETYPE = "Image.gz"
 
 INITRAMFS_IMAGE_BUNDLE ?= "1"

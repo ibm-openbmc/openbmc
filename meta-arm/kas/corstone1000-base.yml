@@ -1,6 +1,9 @@
 header:
   version: 11
 
+env:
+  DISPLAY: ""
+
 distro: poky-tiny
 
 defaults:
@@ -28,6 +31,13 @@ repos:
     layers:
       meta-oe:
       meta-python:
+
+  meta-secure-core:
+    url: https://github.com/wind-river/meta-secure-core.git
+    layers:
+      meta:
+      meta-signing-key:
+      meta-efi-secure-boot:
 
 local_conf_header:
   base: |

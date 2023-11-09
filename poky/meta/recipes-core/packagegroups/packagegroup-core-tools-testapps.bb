@@ -4,7 +4,6 @@
 
 SUMMARY = "Testing tools/applications"
 
-PR = "r2"
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
@@ -24,8 +23,6 @@ KEXECTOOLS:riscv32 ?= ""
 GOTOOLS ?= "go-helloworld"
 GOTOOLS:powerpc ?= ""
 GOTOOLS:riscv32 ?= ""
-
-RUSTTOOLS ?= "rust-hello-world"
 
 GSTEXAMPLES ?= "gst-examples"
 GSTEXAMPLES:riscv64 = ""
@@ -59,5 +56,4 @@ RDEPENDS:${PN} = "\
     ${@bb.utils.contains('DISTRO_FEATURES', 'x11 opengl', "${X11GLTOOLS}", "", d)} \
     ${@bb.utils.contains('DISTRO_FEATURES', '3g', "${3GTOOLS}", "", d)} \
     ${GOTOOLS} \
-    ${RUSTTOOLS} \
     "

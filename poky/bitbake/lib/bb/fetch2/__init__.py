@@ -388,7 +388,7 @@ def decodeurl(url):
             if s:
                 if not '=' in s:
                     raise MalformedUrl(url, "The URL: '%s' is invalid: parameter %s does not specify a value (missing '=')" % (url, s))
-                s1, s2 = s.split('=')
+                s1, s2 = s.split('=', 1)
                 p[s1] = s2
 
     return type, host, urllib.parse.unquote(path), user, pswd, p
@@ -753,7 +753,7 @@ def get_autorev(d):
     d.setVar("__BBAUTOREV_SEEN", True)
     return "AUTOINC"
 
-def get_srcrev(d, method_name='sortable_revision'):
+def _get_srcrev(d, method_name='sortable_revision'):
     """
     Return the revision string, usually for use in the version string (PV) of the current package
     Most packages usually only have one SCM so we just pass on the call.
@@ -774,6 +774,7 @@ def get_srcrev(d, method_name='sortable_revision'):
     d.setVar("__BBINSRCREV", True)
 
     scms = []
+    revs = []
     fetcher = Fetch(d.getVar('SRC_URI').split(), d)
     urldata = fetcher.ud
     for u in urldata:
@@ -781,16 +782,19 @@ def get_srcrev(d, method_name='sortable_revision'):
             scms.append(u)
 
     if not scms:
-        raise FetchError("SRCREV was used yet no valid SCM was found in SRC_URI")
+        d.delVar("__BBINSRCREV")
+        return "", revs
+
 
     if len(scms) == 1 and len(urldata[scms[0]].names) == 1:
         autoinc, rev = getattr(urldata[scms[0]].method, method_name)(urldata[scms[0]], d, urldata[scms[0]].names[0])
+        revs.append(rev)
         if len(rev) > 10:
             rev = rev[:10]
         d.delVar("__BBINSRCREV")
         if autoinc:
-            return "AUTOINC+" + rev
-        return rev
+            return "AUTOINC+" + rev, revs
+        return rev, revs
 
     #
     # Mutiple SCMs are in SRC_URI so we resort to SRCREV_FORMAT
@@ -806,6 +810,7 @@ def get_srcrev(d, method_name='sortable_revision'):
         ud = urldata[scm]
         for name in ud.names:
             autoinc, rev = getattr(ud.method, method_name)(ud, d, name)
+            revs.append(rev)
             seenautoinc = seenautoinc or autoinc
             if len(rev) > 10:
                 rev = rev[:10]
@@ -823,7 +828,21 @@ def get_srcrev(d, method_name='sortable_revision'):
         format = "AUTOINC+" + format
 
     d.delVar("__BBINSRCREV")
-    return format
+    return format, revs
+
+def get_hashvalue(d, method_name='sortable_revision'):
+    pkgv, revs = _get_srcrev(d, method_name=method_name)
+    return " ".join(revs)
+
+def get_pkgv_string(d, method_name='sortable_revision'):
+    pkgv, revs = _get_srcrev(d, method_name=method_name)
+    return pkgv
+
+def get_srcrev(d, method_name='sortable_revision'):
+    pkgv, revs = _get_srcrev(d, method_name=method_name)
+    if not pkgv:
+        raise FetchError("SRCREV was used yet no valid SCM was found in SRC_URI")
+    return pkgv
 
 def localpath(url, d):
     fetcher = bb.fetch2.Fetch([url], d)
@@ -855,6 +874,7 @@ FETCH_EXPORT_VARS = ['HOME', 'PATH',
                      'AWS_SECRET_ACCESS_KEY',
                      'AWS_DEFAULT_REGION',
                      'GIT_CACHE_PATH',
+                     'REMOTE_CONTAINERS_IPC',
                      'SSL_CERT_DIR']
 
 def get_fetcher_environment(d):
@@ -1290,7 +1310,7 @@ class FetchData(object):
 
             if checksum_name in self.parm:
                 checksum_expected = self.parm[checksum_name]
-            elif self.type not in ["http", "https", "ftp", "ftps", "sftp", "s3", "az", "crate"]:
+            elif self.type not in ["http", "https", "ftp", "ftps", "sftp", "s3", "az", "crate", "gs"]:
                 checksum_expected = None
             else:
                 checksum_expected = d.getVarFlag("SRC_URI", checksum_name)
@@ -1402,6 +1422,9 @@ class FetchMethod(object):
         Is localpath something that can be represented by a checksum?
         """
 
+        # We cannot compute checksums for None
+        if urldata.localpath is None:
+            return False
         # We cannot compute checksums for directories
         if os.path.isdir(urldata.localpath):
             return False
@@ -1973,6 +1996,7 @@ from . import npm
 from . import npmsw
 from . import az
 from . import crate
+from . import gcp
 
 methods.append(local.Local())
 methods.append(wget.Wget())
@@ -1994,3 +2018,4 @@ methods.append(npm.Npm())
 methods.append(npmsw.NpmShrinkWrap())
 methods.append(az.Az())
 methods.append(crate.Crate())
+methods.append(gcp.GCP())

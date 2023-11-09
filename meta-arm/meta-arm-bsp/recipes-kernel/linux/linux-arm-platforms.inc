@@ -14,17 +14,9 @@ ARMBSPFILESPATHS := "${THISDIR}:${THISDIR}/files:"
 # Arm platforms kmeta
 SRC_URI_KMETA = "file://arm-platforms-kmeta;type=kmeta;name=arm-platforms-kmeta;destsuffix=arm-platforms-kmeta"
 SRC_URI:append:fvp-base = " ${SRC_URI_KMETA}"
-SRC_URI:append:fvp-baser-aemv8r64 = " ${SRC_URI_KMETA}"
 SRC_URI:append:juno = " ${SRC_URI_KMETA}"
 SRC_URI:append:n1sdp = " ${SRC_URI_KMETA}"
 SRCREV:arm-platforms-kmeta = "6147e82375aa9df8f2a162d42ea6406c79c854c5"
-
-#
-# Corstone-500 KMACHINE
-#
-COMPATIBLE_MACHINE:corstone500 = "corstone500"
-KBUILD_DEFCONFIG:corstone500  = "multi_v7_defconfig"
-KCONFIG_MODE:corstone500 = "--alldefconfig"
 
 #
 # Corstone1000 KMACHINE
@@ -66,23 +58,10 @@ FILESEXTRAPATHS:prepend:fvp-base := "${ARMBSPFILESPATHS}"
 SRC_URI:append:fvp-base = " file://0001-arm64-dts-fvp-Enable-virtio-rng-support.patch"
 
 #
-# FVP BaseR AEMv8r64 Machine
-#
-COMPATIBLE_MACHINE:fvp-baser-aemv8r64 = "fvp-baser-aemv8r64"
-FILESEXTRAPATHS:prepend:fvp-baser-aemv8r64 := "${ARMBSPFILESPATHS}"
-SRC_URI:append:fvp-baser-aemv8r64 = " file://fvp-baser-aemv8r64.dts;subdir=git/arch/arm64/boot/dts/arm"
-
-#
 # Juno KMACHINE
 #
 COMPATIBLE_MACHINE:juno = "juno"
 FILESEXTRAPATHS:prepend:juno := "${ARMBSPFILESPATHS}"
-SRC_URI:append:juno = " \
-    file://0001-arm64-dts-Update-cache-properties-for-Arm-Ltd-platfo.patch \
-    file://0002-arm64-dts-fvp-Add-SPE-to-Foundation-FVP.patch \
-    file://0003-arm64-dts-fvp-Add-information-about-L1-and-L2-caches.patch \
-    file://0004-ARM-dts-vexpress-align-LED-node-names-with-dtschema.patch \
-    "
 
 #
 # Musca B1/S2 can't run Linux
@@ -93,7 +72,7 @@ COMPATIBLE_MACHINE:musca-s1 = "(^$)"
 #
 # N1SDP KMACHINE
 #
-FILESEXTRAPATHS:prepend:n1sdp := "${THISDIR}/linux-yocto-6.1/n1sdp:"
+FILESEXTRAPATHS:prepend:n1sdp := "${THISDIR}/linux-yocto-6.4/n1sdp:"
 COMPATIBLE_MACHINE:n1sdp = "n1sdp"
 KBUILD_DEFCONFIG:n1sdp = "defconfig"
 KCONFIG_MODE:n1sdp = "--alldefconfig"

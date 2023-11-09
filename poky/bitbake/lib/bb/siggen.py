@@ -182,6 +182,11 @@ class SignatureGenerator(object):
     def exit(self):
         return
 
+def build_pnid(mc, pn, taskname):
+    if mc:
+        return "mc:" + mc + ":" + pn + ":" + taskname
+    return pn + ":" + taskname
+
 class SignatureGeneratorBasic(SignatureGenerator):
     """
     """
@@ -256,10 +261,6 @@ class SignatureGeneratorBasic(SignatureGenerator):
             bb.warn("Error during finalise of %s" % mcfn)
             raise
 
-        #Slow but can be useful for debugging mismatched basehashes
-        #for task in self.taskdeps[mcfn]:
-        #    self.dump_sigtask(mcfn, task, d.getVar("STAMP"), False)
-
         basehashes = {}
         for task in taskdeps:
             basehashes[task] = self.basehash[mcfn + ":" + task]
@@ -268,6 +269,11 @@ class SignatureGeneratorBasic(SignatureGenerator):
         d.setVar("__siggen_gendeps", gendeps)
         d.setVar("__siggen_varvals", lookupcache)
         d.setVar("__siggen_taskdeps", taskdeps)
+
+        #Slow but can be useful for debugging mismatched basehashes
+        #self.setup_datacache_from_datastore(mcfn, d)
+        #for task in taskdeps:
+        #    self.dump_sigtask(mcfn, task, d.getVar("STAMP"), False)
 
     def setup_datacache_from_datastore(self, mcfn, d):
         super().setup_datacache_from_datastore(mcfn, d)
@@ -309,15 +315,19 @@ class SignatureGeneratorBasic(SignatureGenerator):
         recipename = dataCaches[mc].pkg_fn[mcfn]
 
         self.tidtopn[tid] = recipename
+        # save hashfn for deps into siginfo?
+        for dep in deps:
+            (depmc, _, deptask, depmcfn) = bb.runqueue.split_tid_mcfn(dep)
+            dep_pn = dataCaches[depmc].pkg_fn[depmcfn]
 
-        for dep in sorted(deps, key=clean_basepath):
-            (depmc, _, _, depmcfn) = bb.runqueue.split_tid_mcfn(dep)
-            depname = dataCaches[depmc].pkg_fn[depmcfn]
-            if not self.rundep_check(mcfn, recipename, task, dep, depname, dataCaches):
+            if not self.rundep_check(mcfn, recipename, task, dep, dep_pn, dataCaches):
                 continue
+
             if dep not in self.taskhash:
                 bb.fatal("%s is not in taskhash, caller isn't calling in dependency order?" % dep)
-            self.runtaskdeps[tid].append(dep)
+
+            dep_pnid = build_pnid(depmc, dep_pn, deptask)
+            self.runtaskdeps[tid].append((dep_pnid, dep))
 
         if task in dataCaches[mc].file_checksums[mcfn]:
             if self.checksum_cache:
@@ -348,10 +358,10 @@ class SignatureGeneratorBasic(SignatureGenerator):
     def get_taskhash(self, tid, deps, dataCaches):
 
         data = self.basehash[tid]
-        for dep in self.runtaskdeps[tid]:
-            data += self.get_unihash(dep)
+        for dep in sorted(self.runtaskdeps[tid]):
+            data += self.get_unihash(dep[1])
 
-        for (f, cs) in self.file_checksum_values[tid]:
+        for (f, cs) in sorted(self.file_checksum_values[tid], key=clean_checksum_file_path):
             if cs:
                 if "/./" in f:
                     data += "./" + f.split("/./")[1]
@@ -409,21 +419,21 @@ class SignatureGeneratorBasic(SignatureGenerator):
         data['varvals'][task] = self.datacaches[mc].siggen_varvals[mcfn][task]
         for dep in self.datacaches[mc].siggen_taskdeps[mcfn][task]:
             if dep in self.basehash_ignore_vars:
-               continue
+                continue
             data['gendeps'][dep] = self.datacaches[mc].siggen_gendeps[mcfn][dep]
             data['varvals'][dep] = self.datacaches[mc].siggen_varvals[mcfn][dep]
 
         if runtime and tid in self.taskhash:
-            data['runtaskdeps'] = self.runtaskdeps[tid]
+            data['runtaskdeps'] = [dep[0] for dep in sorted(self.runtaskdeps[tid])]
             data['file_checksum_values'] = []
-            for f,cs in self.file_checksum_values[tid]:
+            for f,cs in sorted(self.file_checksum_values[tid], key=clean_checksum_file_path):
                 if "/./" in f:
                     data['file_checksum_values'].append(("./" + f.split("/./")[1], cs))
                 else:
                     data['file_checksum_values'].append((os.path.basename(f), cs))
             data['runtaskhashes'] = {}
-            for dep in data['runtaskdeps']:
-                data['runtaskhashes'][dep] = self.get_unihash(dep)
+            for dep in self.runtaskdeps[tid]:
+                data['runtaskhashes'][dep[0]] = self.get_unihash(dep[1])
             data['taskhash'] = self.taskhash[tid]
             data['unihash'] = self.get_unihash(tid)
 
@@ -735,6 +745,12 @@ class SignatureGeneratorTestEquivHash(SignatureGeneratorUniHashMixIn, SignatureG
         self.server = data.getVar('BB_HASHSERVE')
         self.method = "sstate_output_hash"
 
+def clean_checksum_file_path(file_checksum_tuple):
+    f, cs = file_checksum_tuple
+    if "/./" in f:
+        return "./" + f.split("/./")[1]
+    return f
+
 def dump_this_task(outfile, d):
     import bb.parse
     mcfn = d.getVar("BB_FILENAME")
@@ -792,39 +808,6 @@ def list_inline_diff(oldlist, newlist, colors=None):
             item = '{color_remove}-{value}{color_default}'.format(value=value, **colors)
             ret.append(item)
     return '[%s]' % (', '.join(ret))
-
-def clean_basepath(basepath):
-    basepath, dir, recipe_task = basepath.rsplit("/", 2)
-    cleaned = dir + '/' + recipe_task
-
-    if basepath[0] == '/':
-        return cleaned
-
-    if basepath.startswith("mc:") and basepath.count(':') >= 2:
-        mc, mc_name, basepath = basepath.split(":", 2)
-        mc_suffix = ':mc:' + mc_name
-    else:
-        mc_suffix = ''
-
-    # mc stuff now removed from basepath. Whatever was next, if present will be the first
-    # suffix. ':/', recipe path start, marks the end of this. Something like
-    # 'virtual:a[:b[:c]]:/path...' (b and c being optional)
-    if basepath[0] != '/':
-        cleaned += ':' + basepath.split(':/', 1)[0]
-
-    return cleaned + mc_suffix
-
-def clean_basepaths(a):
-    b = {}
-    for x in a:
-        b[clean_basepath(x)] = a[x]
-    return b
-
-def clean_basepaths_list(a):
-    b = []
-    for x in a:
-        b.append(clean_basepath(x))
-    return b
 
 # Handled renamed fields
 def handle_renames(data):
@@ -994,11 +977,11 @@ def compare_sigfiles(a, b, recursecb=None, color=False, collapsed=False):
                 a = a_data['runtaskdeps'][idx]
                 b = b_data['runtaskdeps'][idx]
                 if a_data['runtaskhashes'][a] != b_data['runtaskhashes'][b] and not collapsed:
-                    changed.append("%s with hash %s\n changed to\n%s with hash %s" % (clean_basepath(a), a_data['runtaskhashes'][a], clean_basepath(b), b_data['runtaskhashes'][b]))
+                    changed.append("%s with hash %s\n changed to\n%s with hash %s" % (a, a_data['runtaskhashes'][a], b, b_data['runtaskhashes'][b]))
 
         if changed:
-            clean_a = clean_basepaths_list(a_data['runtaskdeps'])
-            clean_b = clean_basepaths_list(b_data['runtaskdeps'])
+            clean_a = a_data['runtaskdeps']
+            clean_b = b_data['runtaskdeps']
             if clean_a != clean_b:
                 output.append(color_format("{color_title}runtaskdeps changed:{color_default}\n%s") % list_inline_diff(clean_a, clean_b, colors))
             else:
@@ -1007,8 +990,8 @@ def compare_sigfiles(a, b, recursecb=None, color=False, collapsed=False):
 
 
     if 'runtaskhashes' in a_data and 'runtaskhashes' in b_data:
-        a = clean_basepaths(a_data['runtaskhashes'])
-        b = clean_basepaths(b_data['runtaskhashes'])
+        a = a_data['runtaskhashes']
+        b = b_data['runtaskhashes']
         changed, added, removed = dict_diff(a, b)
         if added:
             for dep in sorted(added):

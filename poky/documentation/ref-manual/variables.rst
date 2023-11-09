@@ -192,10 +192,6 @@ system and gives an overview of their function and contents.
 
          ASSUME_SHLIBS = "libEGL.so.1:libegl-implementation"
 
-   :term:`AUTHOR`
-      The email address used to contact the original author or authors in
-      order to send patches and forward bugs.
-
    :term:`AUTO_LIBNAME_PKGS`
       When the :ref:`ref-classes-debian` class is inherited,
       which is the default behavior, :term:`AUTO_LIBNAME_PKGS` specifies which
@@ -1653,11 +1649,7 @@ system and gives an overview of their function and contents.
          and kernel module recipes).
 
    :term:`CVE_CHECK_IGNORE`
-      The list of CVE IDs which are ignored. Here is
-      an example from the :oe_layerindex:`Python3 recipe</layerindex/recipe/23823>`::
-
-         # This is windows only issue.
-         CVE_CHECK_IGNORE += "CVE-2020-15523"
+      This variable is deprecated and should be replaced by :term:`CVE_STATUS`.
 
    :term:`CVE_CHECK_SHOW_WARNINGS`
       Specifies whether or not the :ref:`ref-classes-cve-check`
@@ -1697,6 +1689,34 @@ system and gives an overview of their function and contents.
       vendor name as a prefix. The syntax for this is::
 
          CVE_PRODUCT = "vendor:package"
+
+   :term:`CVE_STATUS`
+      The CVE ID which is patched or should be ignored. Here is
+      an example from the :oe_layerindex:`Python3 recipe</layerindex/recipe/23823>`::
+
+         CVE_STATUS[CVE-2020-15523] = "not-applicable-platform: Issue only applies on Windows"
+
+      It has the format "reason: description" and the description is optional.
+      The Reason is mapped to the final CVE state by mapping via
+      :term:`CVE_CHECK_STATUSMAP`
+
+   :term:`CVE_STATUS_GROUPS`
+      If there are many CVEs with the same status and reason, they can by simplified by using this
+      variable instead of many similar lines with :term:`CVE_STATUS`::
+
+         CVE_STATUS_GROUPS = "CVE_STATUS_WIN CVE_STATUS_PATCHED"
+
+         CVE_STATUS_WIN = "CVE-1234-0001 CVE-1234-0002"
+         CVE_STATUS_WIN[status] = "not-applicable-platform: Issue only applies on Windows"
+         CVE_STATUS_PATCHED = "CVE-1234-0003 CVE-1234-0004"
+         CVE_STATUS_PATCHED[status] = "fixed-version: Fixed externally"
+
+   :term:`CVE_CHECK_STATUSMAP`
+      Mapping variable for all possible reasons of :term:`CVE_STATUS`:
+      ``Patched``, ``Unpatched`` and ``Ignored``.
+      See :ref:`ref-classes-cve-check` or ``meta/conf/cve-check-map.conf`` for more details::
+
+         CVE_CHECK_STATUSMAP[cpe-incorrect] = "Ignored"
 
    :term:`CVE_VERSION`
       In a recipe, defines the version used to match the recipe version
@@ -3905,9 +3925,18 @@ system and gives an overview of their function and contents.
    :term:`INCOMPATIBLE_LICENSE`
       Specifies a space-separated list of license names (as they would
       appear in :term:`LICENSE`) that should be excluded
-      from the build. Recipes that provide no alternatives to listed
+      from the build (if set globally), or from an image (if set locally
+      in an image recipe). 
+
+      When the variable is set globally, recipes that provide no alternatives to listed
       incompatible licenses are not built. Packages that are individually
-      licensed with the specified incompatible licenses will be deleted.
+      licensed with the specified incompatible licenses will be deleted. 
+      Most of the time this does not allow a feasible build (because it becomes impossible
+      to satisfy build time dependencies), so the recommended way to
+      implement license restrictions is to set the variable in specific
+      image recipes where the restrictions must apply. That way there 
+      are no build time restrictions, but the license check is still
+      performed when the image's filesystem is assembled from packages.
 
       There is some support for wildcards in this variable's value,
       however it is restricted to specific licenses. Currently only
@@ -4938,6 +4967,23 @@ system and gives an overview of their function and contents.
       prevent that recipe from being built.  For more information, see the
       ":ref:`dev-manual/licenses:enabling commercially licensed recipes`"
       section in the Yocto Project Development Tasks Manual.
+
+   :term:`LICENSE_FLAGS_DETAILS`
+      Adds details about a flag in :term:`LICENSE_FLAGS`. This way,
+      if such a flag is not accepted through :term:`LICENSE_FLAGS_ACCEPTED`,
+      the error message will be more informative, containing the specified
+      extra details.
+
+      For example, a recipe with an EULA may set::
+
+         LICENSE_FLAGS = "FooBar-EULA"
+         LICENSE_FLAGS_DETAILS[FooBar-EULA] = "For further details, see https://example.com/eula."
+
+      If ``Foobar-EULA`` isn't in :term:`LICENSE_FLAGS_ACCEPTED`, the
+      error message is more useful::
+
+        Has a restricted license 'FooBar-EULA' which is not listed in your LICENSE_FLAGS_ACCEPTED.
+        For further details, see https://example.com/eula.
 
    :term:`LICENSE_PATH`
       Path to additional licenses used during the build. By default, the

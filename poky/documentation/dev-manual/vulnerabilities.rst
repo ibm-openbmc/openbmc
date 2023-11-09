@@ -22,7 +22,7 @@ issues may be impacting Poky and OE-Core. It is up to the maintainers, users,
 contributors and anyone interested in the issues to investigate and possibly fix them by
 updating software components to newer versions or by applying patches to address them.
 It is recommended to work with Poky and OE-Core upstream maintainers and submit
-patches to fix them, see ":ref:`dev-manual/changes:submitting a change to the yocto project`" for details.
+patches to fix them, see ":doc:`../contributor-guide/submit-changes`" for details.
 
 Vulnerability check at build time
 =================================
@@ -130,7 +130,8 @@ Fixing vulnerabilities in recipes
 =================================
 
 If a CVE security issue impacts a software component, it can be fixed by updating to a newer
-version of the software component or by applying a patch. For Poky and OE-Core master branches, updating
+version of the software component, by applying a patch or by marking it as patched via
+:term:`CVE_STATUS` variable flag. For Poky and OE-Core master branches, updating
 to a newer software component release with fixes is the best option, but patches can be applied
 if releases are not yet available.
 
@@ -158,7 +159,8 @@ CVE checker will then capture this information and change the CVE status to ``Pa
 in the generated reports.
 
 If analysis shows that the CVE issue does not impact the recipe due to configuration, platform,
-version or other reasons, the CVE can be marked as ``Ignored`` using the :term:`CVE_CHECK_IGNORE` variable.
+version or other reasons, the CVE can be marked as ``Ignored`` by using
+the :term:`CVE_STATUS` variable flag with appropriate reason which is mapped to ``Ignored``.
 As mentioned previously, if data in the CVE database is wrong, it is recommend to fix those
 issues in the CVE database directly.
 
@@ -175,6 +177,8 @@ is found in the name of the file, the corresponding CVE is considered as patched
 Don't forget that if multiple CVE IDs are found in the filename, only the last
 one is considered. Then, the code looks for ``CVE: CVE-ID`` lines in the patch
 file. The found CVE IDs are also considered as patched.
+Additionally ``CVE_STATUS`` variable flags are parsed for reasons mapped to ``Patched``
+and these are also considered as patched.
 
 Then, the code looks up all the CVE IDs in the NIST database for all the
 products defined in :term:`CVE_PRODUCT`. Then, for each found CVE:
@@ -182,8 +186,9 @@ products defined in :term:`CVE_PRODUCT`. Then, for each found CVE:
 -  If the package name (:term:`PN`) is part of
    :term:`CVE_CHECK_SKIP_RECIPE`, it is considered as ``Patched``.
 
--  If the CVE ID is part of :term:`CVE_CHECK_IGNORE`, it is
-   set as ``Ignored``.
+-  If the CVE ID has status ``CVE_STATUS[<CVE ID>] = "ignored"`` or if it's set to
+   any reason which is mapped to status ``Ignored`` via ``CVE_CHECK_STATUSMAP``,
+   it is  set as ``Ignored``.
 
 -  If the CVE ID is part of the patched CVE for the recipe, it is
    already considered as ``Patched``.

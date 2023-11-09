@@ -10,6 +10,7 @@ DEPENDS = "libpcre2 zlib"
 
 SRC_URI = "git://github.com/pocoproject/poco.git;branch=master;protocol=https \
            file://0001-Use-std-atomic-int-instead-of-std-atomic-bool.patch \
+           file://0001-cppignore.lnx-Ignore-PKCS12-and-testLaunch-test.patch \
            file://run-ptest \
            "
 SRCREV = "1211613642269b7d53bea58b02de7fcd25ece3b9"
@@ -23,7 +24,13 @@ inherit cmake ptest
 # By default the most commonly used poco components are built
 # Foundation is built anyway and doesn't need to be listed explicitly
 # these don't have dependencies outside oe-core
-PACKAGECONFIG ??= "XML JSON MongoDB PDF Util Net NetSSL Crypto JWT Data DataSQLite Zip Encodings Redis Prometheus"
+PACKAGECONFIG ??= "XML JSON PDF Util Net NetSSL Crypto JWT Data DataSQLite Zip Encodings Redis Prometheus"
+# MongoDB does not build for all architectures yet keep in sync with COMPATIBLE_HOST list in mongodb recipe
+# and mongodb needs meta-python enabled as well
+PACKAGECONFIG:remove:riscv32 = "MongoDB"
+PACKAGECONFIG:remove:riscv64 = "MongoDB"
+PACKAGECONFIG:remove:mipsarch = "MongoDB"
+PACKAGECONFIG:remove:powerpc = "MongoDB"
 
 PACKAGECONFIG[XML] = "-DENABLE_XML=ON,-DENABLE_XML=OFF,expat"
 PACKAGECONFIG[JSON] = "-DENABLE_JSON=ON,-DENABLE_JSON=OFF"
@@ -72,17 +79,14 @@ python populate_packages:prepend () {
     poco_libdir = d.expand('${libdir}')
     pn = d.getVar("PN")
     packages = []
-    testrunners = []
 
     def hook(f, pkg, file_regex, output_pattern, modulename):
         packages.append(pkg)
-        testrunners.append(modulename)
 
     do_split_packages(d, poco_libdir, r'^libPoco(.*)\.so\..*$',
                     'poco-%s', 'Poco %s component', extra_depends='', prepend=True, hook=hook)
 
     d.setVar("RRECOMMENDS:%s" % pn, " ".join(packages))
-    d.setVar("POCO_TESTRUNNERS", "\n".join(testrunners))
 }
 
 do_install_ptest () {
@@ -90,7 +94,11 @@ do_install_ptest () {
        cp -f ${B}/lib/libCppUnit.so* ${D}${libdir}
        cp -rf ${B}/*/testsuite/data ${D}${PTEST_PATH}/bin/
        find "${D}${PTEST_PATH}" -executable -exec chrpath -d {} \;
-       echo "${POCO_TESTRUNNERS}" > "${D}${PTEST_PATH}/testrunners"
+       rm -f ${D}${PTEST_PATH}/testrunners
+       for f in ${D}${PTEST_PATH}/bin/*-testrunner; do
+            echo `basename $f` >> ${D}${PTEST_PATH}/testrunners
+       done
+       install -Dm 0644 ${S}/cppignore.lnx ${D}${PTEST_PATH}/cppignore.lnx
 }
 
 PACKAGES_DYNAMIC = "poco-.*"
@@ -104,5 +112,7 @@ FILES:${PN}-cppunit += "${libdir}/libCppUnit.so*"
 ALLOW_EMPTY:${PN}-cppunit = "1"
 
 RDEPENDS:${PN}-ptest += "${PN}-cppunit"
+RDEPENDS:${PN}-ptest += "${@bb.utils.contains('PACKAGECONFIG', 'MongoDB', 'mongodb', '', d)}"
+RDEPENDS:${PN}-ptest += "${@bb.utils.contains('PACKAGECONFIG', 'Redis', 'redis', '', d)}"
 
 BBCLASSEXTEND = "native"

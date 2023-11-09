@@ -1,8 +1,7 @@
-SRC_URI:remove = " \
-                  file://0003-core-link-add-no-warn-rwx-segments.patch \
-                  file://0007-core-spmc-handle-non-secure-interrupts.patch \
-                  file://0008-core-spmc-configure-SP-s-NS-interrupt-action-based-o.patch \
-                 "
+FILESEXTRAPATHS:prepend := "${THISDIR}/files/optee-os/corstone1000:"
+SRC_URI:append = " \
+                  file://0001-Handle-logging-syscall.patch \
+		  "
 
 COMPATIBLE_MACHINE = "corstone1000"
 

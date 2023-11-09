@@ -107,7 +107,7 @@ class ToasterSetting(models.Model):
 
 
 class ProjectManager(models.Manager):
-    def create_project(self, name, release, existing_project=None):
+    def create_project(self, name, release, existing_project=None, imported=False):
         if existing_project and (release is not None):
             prj = existing_project
             prj.bitbake_version = release.bitbake_version
@@ -134,19 +134,19 @@ class ProjectManager(models.Manager):
 
         if release is None:
             return prj
+        if not imported:
+            for rdl in release.releasedefaultlayer_set.all():
+                lv = Layer_Version.objects.filter(
+                    layer__name=rdl.layer_name,
+                    release=release).first()
 
-        for rdl in release.releasedefaultlayer_set.all():
-            lv = Layer_Version.objects.filter(
-                layer__name=rdl.layer_name,
-                release=release).first()
-
-            if lv:
-                ProjectLayer.objects.create(project=prj,
-                                            layercommit=lv,
-                                            optional=False)
-            else:
-                logger.warning("Default project layer %s not found" %
-                               rdl.layer_name)
+                if lv:
+                    ProjectLayer.objects.create(project=prj,
+                                                layercommit=lv,
+                                                optional=False)
+                else:
+                    logger.warning("Default project layer %s not found" %
+                                rdl.layer_name)
 
         return prj
 
@@ -1733,7 +1733,7 @@ class CustomImageRecipe(Recipe):
         packages_conf += "\""
 
         base_recipe_path = self.get_base_recipe_file()
-        if base_recipe_path:
+        if base_recipe_path and os.path.isfile(base_recipe_path):
             base_recipe = open(base_recipe_path, 'r').read()
         else:
             # Pass back None to trigger error message to user

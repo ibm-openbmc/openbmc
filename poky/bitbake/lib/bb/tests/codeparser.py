@@ -44,6 +44,7 @@ class VariableReferenceTest(ReferenceTest):
     def parseExpression(self, exp):
         parsedvar = self.d.expandWithRefs(exp, None)
         self.references = parsedvar.references
+        self.execs = parsedvar.execs
 
     def test_simple_reference(self):
         self.setEmptyVars(["FOO"])
@@ -60,6 +61,11 @@ class VariableReferenceTest(ReferenceTest):
         self.setEmptyVars(["BAR"])
         self.parseExpression("${@d.getVar('BAR') + 'foo'}")
         self.assertReferences(set(["BAR"]))
+
+    def test_python_exec_reference(self):
+        self.parseExpression("${@eval('3 * 5')}")
+        self.assertReferences(set())
+        self.assertExecs(set(["eval"]))
 
 class ShellReferenceTest(ReferenceTest):
 
@@ -429,6 +435,32 @@ esac
         self.assertEqual(sorted(values.splitlines()), sorted([varval]))
         self.assertEqual(deps, set(["TESTVAR2"]))
         self.assertEqual(self.d.getVar('ANOTHERVAR').split(), ['testval3', 'anothervalue'])
+
+    def test_contains_vardeps_override_operators(self):
+        # Check override operators handle dependencies correctly with the contains functionality
+        expr_plain = 'testval'
+        expr_prepend = '${@bb.utils.filter("TESTVAR1", "testval1", d)} '
+        expr_append = ' ${@bb.utils.filter("TESTVAR2", "testval2", d)}'
+        expr_remove = '${@bb.utils.contains("TESTVAR3", "no-testval", "testval", "", d)}'
+        # Check dependencies
+        self.d.setVar('ANOTHERVAR', expr_plain)
+        self.d.prependVar('ANOTHERVAR', expr_prepend)
+        self.d.appendVar('ANOTHERVAR', expr_append)
+        self.d.setVar('ANOTHERVAR:remove', expr_remove)
+        self.d.setVar('TESTVAR1', 'blah')
+        self.d.setVar('TESTVAR2', 'testval2')
+        self.d.setVar('TESTVAR3', 'no-testval')
+        deps, values = bb.data.build_dependencies("ANOTHERVAR", set(self.d.keys()), set(), set(), set(), set(), self.d, self.d)
+        self.assertEqual(sorted(values.splitlines()),
+                         sorted([
+                          expr_prepend + expr_plain + expr_append,
+                          '_remove of ' + expr_remove,
+                          'TESTVAR1{testval1} = Unset',
+                          'TESTVAR2{testval2} = Set',
+                          'TESTVAR3{no-testval} = Set',
+                          ]))
+        # Check final value
+        self.assertEqual(self.d.getVar('ANOTHERVAR').split(), ['testval2'])
 
     #Currently no wildcard support
     #def test_vardeps_wildcards(self):

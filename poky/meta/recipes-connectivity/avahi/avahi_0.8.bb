@@ -5,7 +5,6 @@ with no specific configuration. This tool implements IPv4LL, "Dynamic Configurat
 IPv4 Link-Local Addresses" (IETF RFC3927), a protocol for automatic IP address \
 configuration from the link-local 169.254.0.0/16 range without the need for a central \
 server.'
-AUTHOR = "Lennart Poettering <lennart@poettering.net>"
 HOMEPAGE = "http://avahi.org"
 BUGTRACKER = "https://github.com/lathiat/avahi/issues"
 SECTION = "network"
@@ -26,14 +25,14 @@ SRC_URI = "${GITHUB_BASE_URI}/download/v${PV}/avahi-${PV}.tar.gz \
            file://0001-Fix-opening-etc-resolv.conf-error.patch \
            file://handle-hup.patch \
            file://local-ping.patch \
+           file://invalid-service.patch \
            "
 
 GITHUB_BASE_URI = "https://github.com/lathiat/avahi/releases/"
 SRC_URI[md5sum] = "229c6aa30674fc43c202b22c5f8c2be7"
 SRC_URI[sha256sum] = "060309d7a333d38d951bc27598c677af1796934dbd98e1024e7ad8de798fedda"
 
-# Issue only affects Debian/SUSE, not us
-CVE_CHECK_IGNORE += "CVE-2021-26720"
+CVE_STATUS[CVE-2021-26720] = "not-applicable-platform: Issue only affects Debian/SUSE"
 
 DEPENDS = "expat libcap libdaemon glib-2.0 glib-2.0-native"
 

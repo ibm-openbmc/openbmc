@@ -66,6 +66,7 @@ do_rust_setup_snapshot () {
     fi
 }
 addtask rust_setup_snapshot after do_unpack before do_configure
+addtask do_test_compile after do_configure do_rust_gen_targets
 do_rust_setup_snapshot[dirs] += "${WORKDIR}/rust-snapshot"
 do_rust_setup_snapshot[vardepsexclude] += "UNINATIVE_LOADER"
 
@@ -129,6 +130,7 @@ python do_configure() {
     # [rust]
     config.add_section("rust")
     config.set("rust", "rpath", e(True))
+    config.set("rust", "remap-debuginfo", e(True))
     config.set("rust", "channel", e(d.expand("${RUST_CHANNEL}")))
 
     # Whether or not to optimize the compiler and standard library
@@ -221,6 +223,11 @@ FILES:${PN} += "${libdir}/*.so"
 FILES:${PN}-dev = ""
 
 do_compile () {
+}
+
+do_test_compile[dirs] = "${B}"
+do_test_compile () {
+    rust_runx build src/tools/remote-test-server --target "${RUST_TARGET_SYS}"
 }
 
 ALLOW_EMPTY:${PN} = "1"

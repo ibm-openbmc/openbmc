@@ -256,6 +256,31 @@ class DevtoolTestCase(OESelftestTestCase):
         if remaining_removelines:
             self.fail('Expected removed lines not found: %s' % remaining_removelines)
 
+    def _check_runqemu_prerequisites(self):
+        """Check runqemu is available
+
+        Whilst some tests would seemingly be better placed as a runtime test,
+        unfortunately the runtime tests run under bitbake and you can't run
+        devtool within bitbake (since devtool needs to run bitbake itself).
+        Additionally we are testing build-time functionality as well, so
+        really this has to be done as an oe-selftest test.
+        """
+        machine = get_bb_var('MACHINE')
+        if not machine.startswith('qemu'):
+            self.skipTest('This test only works with qemu machines')
+        if not os.path.exists('/etc/runqemu-nosudo'):
+            self.skipTest('You must set up tap devices with scripts/runqemu-gen-tapdevs before running this test')
+        result = runCmd('PATH="$PATH:/sbin:/usr/sbin" ip tuntap show', ignore_status=True)
+        if result.status != 0:
+            result = runCmd('PATH="$PATH:/sbin:/usr/sbin" ifconfig -a', ignore_status=True)
+            if result.status != 0:
+                self.skipTest('Failed to determine if tap devices exist with ifconfig or ip: %s' % result.output)
+        for line in result.output.splitlines():
+            if line.startswith('tap'):
+                break
+        else:
+            self.skipTest('No tap devices found - you must set up tap devices with scripts/runqemu-gen-tapdevs before running this test')
+
     def _test_devtool_add_git_url(self, git_url, version, pn, resulting_src_uri):
         self.track_for_cleanup(self.workspacedir)
         self.add_command_to_tearDown('bitbake-layers remove-layer */workspace')
@@ -366,6 +391,38 @@ class DevtoolAddTests(DevtoolBase):
             bindir = bindir[1:]
         self.assertTrue(os.path.isfile(os.path.join(installdir, bindir, 'pv')), 'pv binary not found in D')
 
+    def test_devtool_add_binary(self):
+        # Create a binary package containing a known test file
+        tempdir = tempfile.mkdtemp(prefix='devtoolqa')
+        self.track_for_cleanup(tempdir)
+        pn = 'tst-bin'
+        pv = '1.0'
+        test_file_dir     = "var/lib/%s/" % pn
+        test_file_name    = "test_file"
+        test_file_content = "TEST CONTENT"
+        test_file_package_root = os.path.join(tempdir, pn)
+        test_file_dir_full = os.path.join(test_file_package_root, test_file_dir)
+        bb.utils.mkdirhier(test_file_dir_full)
+        with open(os.path.join(test_file_dir_full, test_file_name), "w") as f:
+           f.write(test_file_content)
+        bin_package_path = os.path.join(tempdir, "%s.tar.gz" % pn)
+        runCmd("tar czf %s -C %s ." % (bin_package_path, test_file_package_root))
+
+        # Test devtool add -b on the binary package
+        self.track_for_cleanup(self.workspacedir)
+        self.add_command_to_tearDown('bitbake -c cleansstate %s' % pn)
+        self.add_command_to_tearDown('bitbake-layers remove-layer */workspace')
+        result = runCmd('devtool add  -b %s %s' % (pn, bin_package_path))
+        self.assertExists(os.path.join(self.workspacedir, 'conf', 'layer.conf'), 'Workspace directory not created')
+
+        # Build the resulting recipe
+        result = runCmd('devtool build %s' % pn)
+        installdir = get_bb_var('D', pn)
+        self.assertTrue(installdir, 'Could not query installdir variable')
+
+        # Check that a known file from the binary package has indeed been installed
+        self.assertTrue(os.path.isfile(os.path.join(installdir, test_file_dir, test_file_name)), '%s not found in D' % test_file_name)
+
     def test_devtool_add_git_local(self):
         # We need dbus built so that DEPENDS recognition works
         bitbake('dbus')
@@ -401,7 +458,7 @@ class DevtoolAddTests(DevtoolBase):
         checkvars['LICENSE'] = 'GPL-2.0-only'
         checkvars['LIC_FILES_CHKSUM'] = 'file://COPYING;md5=b234ee4d69f5fce4486a80fdaf4a4263'
         checkvars['S'] = '${WORKDIR}/git'
-        checkvars['PV'] = '0.1+git${SRCPV}'
+        checkvars['PV'] = '0.1+git'
         checkvars['SRC_URI'] = 'git://git.yoctoproject.org/git/dbus-wait;protocol=https;branch=master'
         checkvars['SRCREV'] = srcrev
         checkvars['DEPENDS'] = set(['dbus'])
@@ -540,7 +597,7 @@ class DevtoolAddTests(DevtoolBase):
         self.assertIn('_git.bb', recipefile, 'Recipe file incorrectly named')
         checkvars = {}
         checkvars['S'] = '${WORKDIR}/git'
-        checkvars['PV'] = '1.0+git${SRCPV}'
+        checkvars['PV'] = '1.0+git'
         checkvars['SRC_URI'] = url_branch
         checkvars['SRCREV'] = '${AUTOREV}'
         self._test_recipe_contents(recipefile, checkvars, [])
@@ -559,7 +616,7 @@ class DevtoolAddTests(DevtoolBase):
         self.assertIn('_git.bb', recipefile, 'Recipe file incorrectly named')
         checkvars = {}
         checkvars['S'] = '${WORKDIR}/git'
-        checkvars['PV'] = '1.5+git${SRCPV}'
+        checkvars['PV'] = '1.5+git'
         checkvars['SRC_URI'] = url_branch
         checkvars['SRCREV'] = checkrev
         self._test_recipe_contents(recipefile, checkvars, [])
@@ -1584,28 +1641,7 @@ class DevtoolExtractTests(DevtoolBase):
 
     @OETestTag("runqemu")
     def test_devtool_deploy_target(self):
-        # NOTE: Whilst this test would seemingly be better placed as a runtime test,
-        # unfortunately the runtime tests run under bitbake and you can't run
-        # devtool within bitbake (since devtool needs to run bitbake itself).
-        # Additionally we are testing build-time functionality as well, so
-        # really this has to be done as an oe-selftest test.
-        #
-        # Check preconditions
-        machine = get_bb_var('MACHINE')
-        if not machine.startswith('qemu'):
-            self.skipTest('This test only works with qemu machines')
-        if not os.path.exists('/etc/runqemu-nosudo'):
-            self.skipTest('You must set up tap devices with scripts/runqemu-gen-tapdevs before running this test')
-        result = runCmd('PATH="$PATH:/sbin:/usr/sbin" ip tuntap show', ignore_status=True)
-        if result.status != 0:
-            result = runCmd('PATH="$PATH:/sbin:/usr/sbin" ifconfig -a', ignore_status=True)
-            if result.status != 0:
-                self.skipTest('Failed to determine if tap devices exist with ifconfig or ip: %s' % result.output)
-        for line in result.output.splitlines():
-            if line.startswith('tap'):
-                break
-        else:
-            self.skipTest('No tap devices found - you must set up tap devices with scripts/runqemu-gen-tapdevs before running this test')
+        self._check_runqemu_prerequisites()
         self.assertTrue(not os.path.exists(self.workspacedir), 'This test cannot be run with a workspace directory under the build directory')
         # Definitions
         testrecipe = 'mdadm'

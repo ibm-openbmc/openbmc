@@ -2,7 +2,6 @@ SUMMARY = "Enhances systemd compatilibity with existing SysVinit scripts"
 HOMEPAGE = "http://www.freedesktop.org/wiki/Software/systemd"
 LICENSE = "MIT"
 
-PR = "r29"
 
 PACKAGE_WRITE_DEPS += "systemd-systemctl-native"
 
@@ -14,7 +13,8 @@ INHIBIT_DEFAULT_DEPS = "1"
 
 ALLOW_EMPTY:${PN} = "1"
 
-REQUIRED_DISTRO_FEATURES = "systemd"
+REQUIRED_DISTRO_FEATURES += "systemd"
+REQUIRED_DISTRO_FEATURES += "usrmerge"
 
 SYSTEMD_DISABLED_SYSV_SERVICES = " \
   busybox-udhcpc \

@@ -26,6 +26,7 @@ SRC_URI = "http://www.libsdl.org/release/SDL-${PV}.tar.gz \
            file://CVE-2019-7638.patch \
            file://CVE-2019-7576.patch \
            file://CVE-2019-13616.patch \
+           file://CVE-2022-34568.patch \
           "
 
 UPSTREAM_CHECK_REGEX = "SDL-(?P<pver>\d+(\.\d+)+)\.tar"
@@ -81,5 +82,4 @@ do_configure:prepend() {
 
 BBCLASSEXTEND = "native nativesdk"
 
-#CVE-2019-14906 is a RHEL specific vulnerability.
-CVE_CHECK_IGNORE += "CVE-2019-14906"
+CVE_STATUS[CVE-2019-14906] = "not-applicable-platform: Applies on RHEL only"

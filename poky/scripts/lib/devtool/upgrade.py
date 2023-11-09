@@ -35,6 +35,8 @@ def _get_srctree(tmpdir):
     dirs = scriptutils.filter_src_subdirs(tmpdir)
     if len(dirs) == 1:
         srctree = os.path.join(tmpdir, dirs[0])
+    else:
+        raise DevtoolError("Cannot determine where the source tree is after unpacking in {}: {}".format(tmpdir,dirs))
     return srctree
 
 def _copy_source_code(orig, dest):
@@ -427,6 +429,7 @@ def _create_new_recipe(newpv, md5, sha256, srcrev, srcbranch, srcsubdir_old, src
         newvalues["LIC_FILES_CHKSUM"] = newlicchksum
         _add_license_diff_to_recipe(fullpath, license_diff)
 
+    tinfoil.modified_files()
     try:
         rd = tinfoil.parse_recipe_file(fullpath, False)
     except bb.tinfoil.TinfoilCommandFailed as e:
@@ -439,7 +442,7 @@ def _create_new_recipe(newpv, md5, sha256, srcrev, srcbranch, srcsubdir_old, src
 def _check_git_config():
     def getconfig(name):
         try:
-            value = bb.process.run('git config --global %s' % name)[0].strip()
+            value = bb.process.run('git config %s' % name)[0].strip()
         except bb.process.ExecutionError as e:
             if e.exitcode == 1:
                 value = None

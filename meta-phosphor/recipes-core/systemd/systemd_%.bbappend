@@ -1,4 +1,3 @@
-FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 PACKAGECONFIG = "\
         cgroupv2 \
         coredump \

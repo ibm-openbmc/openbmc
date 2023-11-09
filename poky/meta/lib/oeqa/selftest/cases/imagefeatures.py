@@ -199,7 +199,7 @@ class ImageFeatures(OESelftestTestCase):
         image = 'core-image-minimal'
 
         all_image_types = set(get_bb_var("IMAGE_TYPES", image).split())
-        skip_image_types = set(('container', 'elf', 'f2fs', 'tar.zst', 'wic.zst', 'squashfs-lzo'))
+        skip_image_types = set(('container', 'elf', 'f2fs', 'tar.zst', 'wic.zst', 'squashfs-lzo', 'vfat'))
         img_types = all_image_types - skip_image_types
 
         config = """
@@ -250,7 +250,7 @@ USERADD_GID_TABLES += "files/static-group"
 DISTRO_FEATURES:append = " pam opengl wayland"
 
 # Switch to systemd
-DISTRO_FEATURES:append = " systemd"
+DISTRO_FEATURES:append = " systemd usrmerge"
 VIRTUAL-RUNTIME_init_manager = "systemd"
 VIRTUAL-RUNTIME_initscripts = ""
 VIRTUAL-RUNTIME_syslog = ""

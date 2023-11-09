@@ -1,10 +1,11 @@
 require conf/distro/include/phosphor-defaults.inc
+require conf/distro/include/phosphor-pkg-tweaks.inc
 
 # Match the distro codename from upstream poky.
 DISTRO_CODENAME ?= "mickledore"
 
 # Override these in poky based distros
-POKY_DEFAULT_DISTRO_FEATURES = "largefile opengl ptest multiarch wayland vulkan"
+POKY_DEFAULT_DISTRO_FEATURES = "opengl ptest multiarch wayland vulkan"
 POKY_DEFAULT_EXTRA_RDEPENDS = "packagegroup-core-boot"
 POKY_DEFAULT_EXTRA_RRECOMMENDS = "kernel-module-af-packet"
 
@@ -106,6 +107,7 @@ DISTRO_FEATURES_DEFAULT = " \
         slp \
         systemd \
         seccomp \
+        usrmerge \
         "
 
 DISTRO_FEATURES += " \
@@ -143,3 +145,6 @@ KERNEL_CLASSES:append = " obmc-phosphor-kernel-version"
 OBMC_ORG_YAML_SUBDIRS += " org/freedesktop xyz/openbmc_project"
 
 PREFERRED_VERSION_libgpiod = "1.6.4"
+
+# Enable SBOM: https://docs.yoctoproject.org/next/dev-manual/sbom.html
+INHERIT += "create-spdx"

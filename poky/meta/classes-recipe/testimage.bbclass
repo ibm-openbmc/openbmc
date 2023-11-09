@@ -124,18 +124,6 @@ testimage_dump_target () {
     find /var/log/ -type f 2>/dev/null -exec echo "====================" \; -exec echo {} \; -exec echo "====================" \; -exec cat {} \; -exec echo "" \;
 }
 
-testimage_dump_host () {
-    top -bn1
-    iostat -x -z -N -d -p ALL 20 2
-    ps -ef
-    free
-    df
-    memstat
-    dmesg
-    ip -s link
-    netstat -an
-}
-
 testimage_dump_monitor () {
     query-status
     query-block
@@ -334,7 +322,7 @@ def testimage_main(d):
     ovmf = d.getVar("QEMU_USE_OVMF")
 
     slirp = False
-    if d.getVar("QEMU_USE_SLIRP"):
+    if bb.utils.contains('TEST_RUNQEMUPARAMS', 'slirp', True, False, d):
         slirp = True
 
     # TODO: We use the current implementation of qemu runner because of
@@ -381,19 +369,24 @@ def testimage_main(d):
     # runtime use network for download projects for build
     export_proxies(d)
 
-    # we need the host dumper in test context
-    host_dumper = OERuntimeTestContextExecutor.getHostDumper(
-        d.getVar("testimage_dump_host"),
-        d.getVar("TESTIMAGE_DUMP_DIR"))
+    if slirp:
+        # Default to 127.0.0.1 and let the runner identify the port forwarding
+        # (as OEQemuTarget does), but allow overriding.
+        target_ip = d.getVar("TEST_TARGET_IP") or "127.0.0.1"
+        # Default to 10.0.2.2 as this is the IP that the guest has with the
+        # default qemu slirp networking configuration, but allow overriding.
+        server_ip = d.getVar("TEST_SERVER_IP") or "10.0.2.2"
+    else:
+        target_ip = d.getVar("TEST_TARGET_IP")
+        server_ip = d.getVar("TEST_SERVER_IP")
 
     # the robot dance
     target = OERuntimeTestContextExecutor.getTarget(
-        d.getVar("TEST_TARGET"), logger, d.getVar("TEST_TARGET_IP"),
-        d.getVar("TEST_SERVER_IP"), **target_kwargs)
+        d.getVar("TEST_TARGET"), logger, target_ip,
+        server_ip, **target_kwargs)
 
     # test context
-    tc = OERuntimeTestContext(td, logger, target, host_dumper,
-                              image_packages, extract_dir)
+    tc = OERuntimeTestContext(td, logger, target, image_packages, extract_dir)
 
     # Load tests before starting the target
     test_paths = get_runtime_paths(d)

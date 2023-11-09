@@ -690,7 +690,7 @@ def create_recipe(args):
             srcpvprefix = 'svnr'
         else:
             srcpvprefix = scheme
-        lines_before.append('PV = "%s+%s${SRCPV}"' % (realpv or '1.0', srcpvprefix))
+        lines_before.append('PV = "%s+%s"' % (realpv or '1.0', srcpvprefix))
         pv_srcpv = True
         if not args.autorev and srcrev == '${AUTOREV}':
             if os.path.exists(os.path.join(srctree, '.git')):
@@ -744,6 +744,10 @@ def create_recipe(args):
 
     for handler in handlers:
         handler.process(srctree_use, classes, lines_before, lines_after, handled, extravalues)
+
+    # native and nativesdk classes are special and must be inherited last
+    # If present, put them at the end of the classes list
+    classes.sort(key=lambda c: c in ("native", "nativesdk"))
 
     extrafiles = extravalues.pop('extrafiles', {})
     extra_pn = extravalues.pop('PN', None)
@@ -897,6 +901,7 @@ def create_recipe(args):
                 f.write('%s\n' % line)
                 lastline = line
         log_info_cond('Recipe %s has been created; further editing may be required to make it fully functional' % outfile, args.devtool)
+        tinfoil.modified_files()
 
     if tempsrc:
         if args.keep_temp:

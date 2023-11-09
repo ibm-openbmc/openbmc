@@ -177,7 +177,7 @@ def fetch_url(tinfoil, srcuri, srcrev, destdir, logger, preserve_tmp=False, mirr
                 f.write('BB_STRICT_CHECKSUM = "ignore"\n')
                 f.write('SRC_URI = "%s"\n' % srcuri)
                 f.write('SRCREV = "%s"\n' % srcrev)
-                f.write('PV = "0.0+${SRCPV}"\n')
+                f.write('PV = "0.0+"\n')
                 f.write('WORKDIR = "%s"\n' % tmpworkdir)
                 # Set S out of the way so it doesn't get created under the workdir
                 f.write('S = "%s"\n' % os.path.join(tmpdir, 'emptysrc'))
@@ -277,6 +277,6 @@ def filter_src_subdirs(pth):
     Used by devtool and recipetool.
     """
     dirlist = os.listdir(pth)
-    filterout = ['git.indirectionsymlink', 'source-date-epoch']
+    filterout = ['git.indirectionsymlink', 'source-date-epoch', 'sstate-install-recipe_qa']
     dirlist = [x for x in dirlist if x not in filterout]
     return dirlist

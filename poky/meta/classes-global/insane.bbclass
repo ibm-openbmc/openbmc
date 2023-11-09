@@ -34,6 +34,7 @@ WARN_QA ?= " libdir xorg-driver-abi buildpaths \
             missing-update-alternatives native-last missing-ptest \
             license-exists license-no-generic license-syntax license-format \
             license-incompatible license-file-missing obsolete-license \
+            32bit-time \
             "
 ERROR_QA ?= "dev-so debug-deps dev-deps debug-files arch pkgconfig la \
             perms dep-cmp pkgvarcheck perm-config perm-line perm-link \
@@ -49,6 +50,7 @@ ERROR_QA ?= "dev-so debug-deps dev-deps debug-files arch pkgconfig la \
 # Add usrmerge QA check based on distro feature
 ERROR_QA:append = "${@bb.utils.contains('DISTRO_FEATURES', 'usrmerge', ' usrmerge', '', d)}"
 ERROR_QA:append:layer-core = " patch-status"
+WARN_QA:append:layer-core = " missing-metadata missing-maintainer"
 
 FAKEROOT_QA = "host-user-contaminated"
 FAKEROOT_QA[doc] = "QA tests which need to run under fakeroot. If any \
@@ -95,9 +97,8 @@ def package_qa_check_shebang_size(path, name, d, elf, messages):
         return
 
     if stanza.startswith(b'#!'):
-        #Shebang not found
         try:
-            stanza = stanza.decode("utf-8")
+            stanza.decode("utf-8")
         except UnicodeDecodeError:
             #If it is not a text file, it is not a script
             return
@@ -513,6 +514,11 @@ def check_32bit_symbols(path, packagename, d, elf, messages):
     """
     Check that ELF files do not use any 32 bit time APIs from glibc.
     """
+    thirtytwo_bit_time_archs = set(('arm','armeb','mipsarcho32','powerpc','x86'))
+    overrides = set(d.getVar('OVERRIDES').split(':'))
+    if not(thirtytwo_bit_time_archs & overrides):
+        return
+
     import re
     # This list is manually constructed by searching the image folder of the
     # glibc recipe for __USE_TIME_BITS64.  There is no good way to do this
@@ -1335,7 +1341,6 @@ python do_qa_patch() {
     import re
     from oe import patch
 
-    coremeta_path = os.path.join(d.getVar('COREBASE'), 'meta', '')
     for url in patch.src_patches(d):
         (_, _, fullpath, _, _, _) = bb.fetch.decodeurl(url)
 
@@ -1462,6 +1467,44 @@ python do_qa_unpack() {
 
     unpack_check_src_uri(d.getVar('PN'), d)
 }
+
+python do_recipe_qa() {
+    def test_missing_metadata(d):
+        fn = d.getVar("FILE")
+        pn = d.getVar('BPN')
+        srcfile = d.getVar('SRC_URI').split()
+        # Check that SUMMARY is not the same as the default from bitbake.conf
+        if d.getVar('SUMMARY') == d.expand("${PN} version ${PV}-${PR}"):
+            oe.qa.handle_error("missing-metadata", "Recipe {} in {} does not contain a SUMMARY. Please add an entry.".format(pn, fn), d)
+        if not d.getVar('HOMEPAGE'):
+            if srcfile and srcfile[0].startswith('file') or not d.getVar('SRC_URI'):
+                # We are only interested in recipes SRC_URI fetched from external sources
+                pass
+            else:
+                oe.qa.handle_error("missing-metadata", "Recipe {} in {} does not contain a HOMEPAGE. Please add an entry.".format(pn, fn), d)
+
+    def test_missing_maintainer(d):
+        fn = d.getVar("FILE")
+        pn = d.getVar("PN")
+        if pn.endswith("-native") or pn.startswith("nativesdk-") or "packagegroup-" in pn or "core-image-ptest-" in pn:
+            return
+        if not d.getVar('RECIPE_MAINTAINER'):
+            oe.qa.handle_error("missing-maintainer", "Recipe {} in {} does not have an assigned maintainer. Please add an entry into meta/conf/distro/include/maintainers.inc.".format(pn, fn), d)
+
+    test_missing_metadata(d)
+    test_missing_maintainer(d)
+    oe.qa.exit_if_errors(d)
+}
+
+addtask do_recipe_qa before do_fetch do_package_qa do_build
+
+SSTATETASKS += "do_recipe_qa"
+do_recipe_qa[sstate-inputdirs] = ""
+do_recipe_qa[sstate-outputdirs] = ""
+python do_recipe_qa_setscene () {
+    sstate_setscene(d)
+}
+addtask do_recipe_qa_setscene
 
 # Check for patch fuzz
 do_patch[postfuncs] += "do_qa_patch "

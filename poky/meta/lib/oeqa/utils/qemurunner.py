@@ -21,7 +21,6 @@ import threading
 import codecs
 import logging
 import tempfile
-from oeqa.utils.dump import HostDumper
 from collections import defaultdict
 import importlib
 
@@ -33,8 +32,8 @@ re_control_char = re.compile('[%s]' % re.escape("".join(control_chars)))
 
 class QemuRunner:
 
-    def __init__(self, machine, rootfs, display, tmpdir, deploy_dir_image, logfile, boottime, dump_dir, dump_host_cmds,
-                 use_kvm, logger, use_slirp=False, serial_ports=2, boot_patterns = defaultdict(str), use_ovmf=False, workdir=None, tmpfsdir=None):
+    def __init__(self, machine, rootfs, display, tmpdir, deploy_dir_image, logfile, boottime, dump_dir, use_kvm, logger, use_slirp=False,
+     serial_ports=2, boot_patterns = defaultdict(str), use_ovmf=False, workdir=None, tmpfsdir=None):
 
         # Popen object for runqemu
         self.runqemu = None
@@ -69,7 +68,6 @@ class QemuRunner:
         if not workdir:
             workdir = os.getcwd()
         self.qemu_pidfile = workdir + '/pidfile_' + str(os.getpid())
-        self.host_dumper = HostDumper(dump_host_cmds, dump_dir)
         self.monitorpipe = None
 
         self.logger = logger
@@ -99,6 +97,7 @@ class QemuRunner:
         try:
             sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             sock.setblocking(0)
+            sock.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
             sock.bind(("127.0.0.1",0))
             sock.listen(2)
             port = sock.getsockname()[1]
@@ -111,16 +110,15 @@ class QemuRunner:
 
     def decode_qemulog(self, todecode):
         # Sanitize the data received from qemu as it may contain control characters
-        msg = todecode.decode("utf-8", errors='ignore')
+        msg = todecode.decode("utf-8", errors='backslashreplace')
         msg = re_control_char.sub('', msg)
         return msg
 
-    def log(self, msg):
+    def log(self, msg, extension=""):
         if self.logfile:
-            msg = self.decode_qemulog(msg)
-            self.msg += msg
-            with codecs.open(self.logfile, "a", encoding="utf-8") as f:
-                f.write("%s" % msg)
+            with codecs.open(self.logfile + extension, "ab") as f:
+                f.write(msg)
+        self.msg += self.decode_qemulog(msg)
 
     def getOutput(self, o):
         import fcntl
@@ -138,7 +136,6 @@ class QemuRunner:
                 self.logger.error('runqemu exited with code %d' % self.runqemu.returncode)
                 self.logger.error('Output from runqemu:\n%s' % self.getOutput(self.runqemu.stdout))
                 self.stop()
-                self._dump_host()
 
     def start(self, qemuparams = None, get_ip = True, extra_bootparams = None, runqemuparams='', launch_cmd=None, discard_writes=True):
         env = os.environ.copy()
@@ -286,7 +283,6 @@ class QemuRunner:
                 if self.runqemu.returncode:
                     # No point waiting any longer
                     self.logger.warning('runqemu exited with code %d' % self.runqemu.returncode)
-                    self._dump_host()
                     self.logger.warning("Output from runqemu:\n%s" % self.getOutput(output))
                     self.stop()
                     return False
@@ -314,7 +310,6 @@ class QemuRunner:
             ps = subprocess.Popen(['ps', 'axww', '-o', 'pid,ppid,pri,ni,command '], stdout=subprocess.PIPE).communicate()[0]
             processes = ps.decode("utf-8")
             self.logger.debug("Running processes:\n%s" % processes)
-            self._dump_host()
             op = self.getOutput(output)
             self.stop()
             if op:
@@ -430,7 +425,6 @@ class QemuRunner:
                     self.logger.error("Couldn't get ip from qemu command line and runqemu output! "
                                  "Here is the qemu command line used:\n%s\n"
                                  "and output from runqemu:\n%s" % (cmdline, out))
-                    self._dump_host()
                     self.stop()
                     return False
 
@@ -451,9 +445,11 @@ class QemuRunner:
         self.logger.debug("Waiting at most %d seconds for login banner (%s)" %
                           (self.boottime, time.strftime("%D %H:%M:%S")))
         endtime = time.time() + self.boottime
+        newlinetime = time.time() + 120
         filelist = [self.server_socket, self.runqemu.stdout]
         reachedlogin = False
         stopread = False
+        sentnewlines = False
         qemusock = None
         bootlog = b''
         data = b''
@@ -462,6 +458,16 @@ class QemuRunner:
                 sread, swrite, serror = select.select(filelist, [], [], 5)
             except InterruptedError:
                 continue
+            # With the 6.5 kernel, the serial port getty sometimes fails to appear, the data
+            # appears lost in some buffer somewhere. Wait two minutes, then if we've not had a login,
+            # try and provoke one. This is a workaround until we can work out the root cause.
+            if time.time() > newlinetime and not sentnewlines:
+                self.logger.warning('Probing the serial port to wake it up!')
+                try:
+                    self.server_socket.sendall(bytes("\n\n", "utf-8"))
+                    sentnewlines = True
+                except BrokenPipeError as e:
+                    self.logger.debug('Probe failed %s' % repr(e))
             for file in sread:
                 if file is self.server_socket:
                     qemusock, addr = self.server_socket.accept()
@@ -480,18 +486,14 @@ class QemuRunner:
                         self.logger.error('Invalid file type: %s\n%s' % (file))
                         read = b''
 
-                    self.logger.debug2('Partial boot log:\n%s' % (read.decode('utf-8', errors='ignore')))
+                    self.logger.debug2('Partial boot log:\n%s' % (read.decode('utf-8', errors='backslashreplace')))
                     data = data + read
                     if data:
                         bootlog += data
-                        if self.serial_ports < 2:
-                            # this file has mixed console/kernel data, log it to logfile
-                            self.log(data)
-
+                        self.log(data, extension = ".2")
                         data = b''
 
-                        decodedlog = self.decode_qemulog(bootlog)
-                        if self.boot_patterns['search_reached_prompt'] in decodedlog:
+                        if bytes(self.boot_patterns['search_reached_prompt'], 'utf-8') in bootlog:
                             self.server_socket.close()
                             self.server_socket = qemusock
                             stopread = True
@@ -513,12 +515,20 @@ class QemuRunner:
                                   (self.boottime, time.strftime("%D %H:%M:%S")))
             tail = lambda l: "\n".join(l.splitlines()[-25:])
             bootlog = self.decode_qemulog(bootlog)
-            # in case bootlog is empty, use tail qemu log store at self.msg
-            lines = tail(bootlog if bootlog else self.msg)
-            self.logger.warning("Last 25 lines of text (%d):\n%s" % (len(bootlog), lines))
+            self.logger.warning("Last 25 lines of login console (%d):\n%s" % (len(bootlog), tail(bootlog)))
+            self.logger.warning("Last 25 lines of all logging (%d):\n%s" % (len(self.msg), tail(self.msg)))
             self.logger.warning("Check full boot log: %s" % self.logfile)
-            self._dump_host()
             self.stop()
+            data = True
+            while data:
+                try:
+                    time.sleep(1)
+                    data = qemusock.recv(1024)
+                    self.log(data, extension = ".2")
+                    self.logger.warning('Extra log data read: %s\n' % (data.decode('utf-8', errors='backslashreplace')))
+                except Exception as e:
+                    self.logger.warning('Extra log data exception %s' % repr(e))
+                    data = None
             return False
 
         # If we are not able to login the tests can continue
@@ -697,13 +707,6 @@ class QemuRunner:
                 if (status_cmd == "0"):
                     status = 1
         return (status, str(data))
-
-
-    def _dump_host(self):
-        self.host_dumper.create_dir("qemu")
-        self.logger.warning("Qemu ended unexpectedly, dump data from host"
-                " is in %s" % self.host_dumper.dump_dir)
-        self.host_dumper.dump_host()
 
 # This class is for reading data from a socket and passing it to logfunc
 # to be processed. It's completely event driven and has a straightforward

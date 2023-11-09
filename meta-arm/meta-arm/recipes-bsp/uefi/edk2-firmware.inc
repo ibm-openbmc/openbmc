@@ -18,7 +18,6 @@ SRCBRANCH_edk2_platforms = "master"
 SRC_URI = "\
     ${SRC_URI_EDK2};branch=${SRCBRANCH_edk2_platforms};name=edk2;destsuffix=edk2 \
     ${SRC_URI_EDK2_PLATFORMS};branch=${SRCBRANCH_edk2};name=edk2-platforms;destsuffix=edk2/edk2-platforms \
-    file://default.patch;patchdir=edk2-platforms \
 "
 
 SRCREV_FORMAT         = "edk2_edk2-platforms"
@@ -76,6 +75,17 @@ export GCC5_ARM_PREFIX = "${TARGET_PREFIX}"
 EDK_COMPILER:toolchain-clang = "CLANG38"
 export CLANG38_AARCH64_PREFIX = "${TARGET_PREFIX}"
 export CLANG38_ARM_PREFIX = "${TARGET_PREFIX}"
+
+# These variables were changed in edk2 commit
+# 206168e83f0901cbc1815ef5df4ac6598ad9721b, which was part of edk2-202305
+export CC = "${BUILD_CC}"
+export CXX = "${BUILD_CXX}"
+export AS = "${BUILD_AS}"
+export AR = "${BUILD_AR}"
+export LD = "${BUILD_LD}"
+export CFLAGS = "${BUILD_CFLAGS}"
+export CPPFLAGS = "${BUILD_CPPFLAGS}"
+export LDFLAGS = "${BUILD_LFLAGS}"
 
 #FIXME - arm32 doesn't work with clang due to a linker issue
 TOOLCHAIN:arm = "gcc"

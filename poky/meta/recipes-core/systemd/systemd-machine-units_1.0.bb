@@ -5,9 +5,9 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 
 PACKAGE_ARCH = "${MACHINE_ARCH}"
 
-PR = "r19"
 
-inherit systemd
+inherit systemd features_check
+REQUIRED_DISTRO_FEATURES += "usrmerge"
 SYSTEMD_SERVICE:${PN} = ""
 
 ALLOW_EMPTY:${PN} = "1"
