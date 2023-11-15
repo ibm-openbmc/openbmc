@@ -12,7 +12,7 @@ DEPENDS = "boost \
 SRCREV = "95d21f487b3088c54b818cb02db6996100928a8b"
 PV = "1.0+git${SRCPV}"
 
-SRC_URI = "git://github.com/ibm-openbmc/telemetry;branch=master;protocol=https;nobranch=1"
+SRC_URI = "git://github.com/ibm-openbmc/telemetry;protocol=https;nobranch=1"
 
 S = "${WORKDIR}/git"
 SYSTEMD_SERVICE:${PN} = "xyz.openbmc_project.Telemetry.service"
