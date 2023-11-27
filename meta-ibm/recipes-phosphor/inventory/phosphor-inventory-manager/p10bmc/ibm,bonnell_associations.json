@@ -166,6 +166,7 @@
              "/xyz/openbmc_project/inventory/system/chassis/motherboard/connector7",
              "/xyz/openbmc_project/inventory/system/chassis/motherboard/connector8",
              "/xyz/openbmc_project/inventory/system/chassis/motherboard/connector9",
+	     "/xyz/openbmc_project/inventory/system/chassis/motherboard/connector10",
              "/xyz/openbmc_project/inventory/system/chassis/motherboard/connector11",
              "/xyz/openbmc_project/inventory/system/chassis/motherboard/connector12",
              "/xyz/openbmc_project/inventory/system/chassis/motherboard/connector13",
