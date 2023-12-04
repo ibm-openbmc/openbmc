@@ -13,7 +13,7 @@ require recipes-bsp/ecmd/libecmd.inc
 
 SRCREV_FORMAT = "ecmd-pdbg"
 
-SRCREV_ecmd_pdbg = "b8250cb7c04385f6c3552abedaf0f94517c0971c"
+SRCREV_ecmd_pdbg = "2d46c9bd96da704953094a0012e7723332722317"
 SRCREV_ecmd = "${ECMD_REV}"
 
 SRC_URI = "git://git@github.com/open-power/ecmd-pdbg.git;branch=master;protocol=https;name=ecmd_pdbg;protocol=https \
