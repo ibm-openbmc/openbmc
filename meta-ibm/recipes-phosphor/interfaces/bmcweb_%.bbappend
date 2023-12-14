@@ -6,6 +6,7 @@ EXTRA_OEMESON:append = " \
     -Dredfish-dump-log=enabled \
     -Dredfish-oem-manager-fan-data=disabled \
     -Dinsecure-enable-redfish-query=enabled \
+    -Dredfish-bmc-journal=disabled \
 "
 
 EXTRA_OEMESON:append:p10bmc = " \
