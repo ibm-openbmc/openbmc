@@ -1339,7 +1339,43 @@
                   "Available":false
                }
             }
-         }
+         },
+         {
+            "inventoryPath": "/system/chassis/motherboard/dimm0/unit0",
+            "inherit": false,
+            "extraInterfaces": {
+                "xyz.openbmc_project.Inventory.Item": {
+                    "PrettyName": "OpenCAPI Memory Buffer"
+                }
+            }
+        },
+        {
+            "inventoryPath": "/system/chassis/motherboard/dimm0/unit1",
+            "inherit": false,
+            "extraInterfaces": {
+                "xyz.openbmc_project.Inventory.Item": {
+                    "PrettyName": "DDR Memory Port"
+                }
+            }
+        },
+        {
+            "inventoryPath": "/system/chassis/motherboard/dimm0/unit2",
+            "inherit": false,
+            "extraInterfaces": {
+                "xyz.openbmc_project.Inventory.Item": {
+                    "PrettyName": "Onboard Memory Power Control Device"
+                }
+            }
+        },
+        {
+            "inventoryPath": "/system/chassis/motherboard/dimm0/unit3",
+            "inherit": false,
+            "extraInterfaces": {
+                "xyz.openbmc_project.Inventory.Item": {
+                    "PrettyName": "Onboard Memory Power Management IC"
+                }
+            }
+        }
       ],
       "/sys/bus/i2c/drivers/ee1004/113-0050/eeprom":[
          {
@@ -1356,7 +1392,43 @@
                   "Available":false
                }
             }
-         }
+         },
+         {
+            "inventoryPath": "/system/chassis/motherboard/dimm1/unit0",
+            "inherit": false,
+            "extraInterfaces": {
+                "xyz.openbmc_project.Inventory.Item": {
+                    "PrettyName": "OpenCAPI Memory Buffer"
+                }
+            }
+        },
+        {
+            "inventoryPath": "/system/chassis/motherboard/dimm1/unit1",
+            "inherit": false,
+            "extraInterfaces": {
+                "xyz.openbmc_project.Inventory.Item": {
+                    "PrettyName": "DDR Memory Port"
+                }
+            }
+        },
+        {
+            "inventoryPath": "/system/chassis/motherboard/dimm1/unit2",
+            "inherit": false,
+            "extraInterfaces": {
+                "xyz.openbmc_project.Inventory.Item": {
+                    "PrettyName": "Onboard Memory Power Control Device"
+                }
+            }
+        },
+        {
+            "inventoryPath": "/system/chassis/motherboard/dimm1/unit3",
+            "inherit": false,
+            "extraInterfaces": {
+                "xyz.openbmc_project.Inventory.Item": {
+                    "PrettyName": "Onboard Memory Power Management IC"
+                }
+            }
+        }
       ],
       "/sys/bus/i2c/drivers/ee1004/111-0050/eeprom":[
          {
@@ -1373,7 +1445,43 @@
                   "Available":false
                }
             }
-         }
+         },
+         {
+            "inventoryPath": "/system/chassis/motherboard/dimm2/unit0",
+            "inherit": false,
+            "extraInterfaces": {
+                "xyz.openbmc_project.Inventory.Item": {
+                    "PrettyName": "OpenCAPI Memory Buffer"
+                }
+            }
+        },
+        {
+            "inventoryPath": "/system/chassis/motherboard/dimm2/unit1",
+            "inherit": false,
+            "extraInterfaces": {
+                "xyz.openbmc_project.Inventory.Item": {
+                    "PrettyName": "DDR Memory Port"
+                }
+            }
+        },
+        {
+            "inventoryPath": "/system/chassis/motherboard/dimm2/unit2",
+            "inherit": false,
+            "extraInterfaces": {
+                "xyz.openbmc_project.Inventory.Item": {
+                    "PrettyName": "Onboard Memory Power Control Device"
+                }
+            }
+        },
+        {
+            "inventoryPath": "/system/chassis/motherboard/dimm2/unit3",
+            "inherit": false,
+            "extraInterfaces": {
+                "xyz.openbmc_project.Inventory.Item": {
+                    "PrettyName": "Onboard Memory Power Management IC"
+                }
+            }
+        }
       ],
       "/sys/bus/i2c/drivers/ee1004/110-0050/eeprom":[
          {
@@ -1390,7 +1498,43 @@
                   "Available":false
                }
             }
-         }
+         },
+         {
+            "inventoryPath": "/system/chassis/motherboard/dimm3/unit0",
+            "inherit": false,
+            "extraInterfaces": {
+                "xyz.openbmc_project.Inventory.Item": {
+                    "PrettyName": "OpenCAPI Memory Buffer"
+                }
+            }
+        },
+        {
+            "inventoryPath": "/system/chassis/motherboard/dimm3/unit1",
+            "inherit": false,
+            "extraInterfaces": {
+                "xyz.openbmc_project.Inventory.Item": {
+                    "PrettyName": "DDR Memory Port"
+                }
+            }
+        },
+        {
+            "inventoryPath": "/system/chassis/motherboard/dimm3/unit2",
+            "inherit": false,
+            "extraInterfaces": {
+                "xyz.openbmc_project.Inventory.Item": {
+                    "PrettyName": "Onboard Memory Power Control Device"
+                }
+            }
+        },
+        {
+            "inventoryPath": "/system/chassis/motherboard/dimm3/unit3",
+            "inherit": false,
+            "extraInterfaces": {
+                "xyz.openbmc_project.Inventory.Item": {
+                    "PrettyName": "Onboard Memory Power Management IC"
+                }
+            }
+        }
       ]
    }
 }
