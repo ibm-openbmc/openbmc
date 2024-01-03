@@ -5,6 +5,7 @@ inherit packagegroup
 
 PROVIDES = "${PACKAGES}"
 PACKAGES = " \
+        ${PN}-auditlog \
         ${PN}-bmc-state-mgmt \
         ${PN}-bmcweb \
         ${PN}-chassis-state-mgmt \
@@ -31,6 +32,11 @@ PACKAGES = " \
         ${PN}-telemetry \
         ${PN}-user-mgmt \
         ${PN}-user-mgmt-ldap \
+        "
+
+SUMMARY:${PN}-auditlog = "Audit log applications"
+RDEPENDS:${PN}-auditlog = " \
+        phosphor-auditlog \
         "
 
 SUMMARY:${PN}-bmc-state-mgmt = "BMC state management"
