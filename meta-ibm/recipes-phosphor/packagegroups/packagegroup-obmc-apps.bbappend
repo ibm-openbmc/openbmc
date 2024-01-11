@@ -9,6 +9,7 @@ POWER_SERVICE_PACKAGES_AC_SERVER = " \
 
 # P10 does not need/want the old PSU monitor
 POWER_SERVICE_PACKAGES_P10 = " \
+    phosphor-power-ibm-ups \
     phosphor-power-control \
     phosphor-power-utils \
     phosphor-power \
