@@ -6,12 +6,16 @@ DEPENDS:append:p10bmc = " libgpiod"
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
 SYSTEMD_SERVICE:${PN}:append:p10bmc = " ibm-vpd-parser@.service"
+SYSTEMD_SERVICE:${PN}:append:p10bmc = " ibm-isdimm-vpd-parser@.service"
+SYSTEMD_SERVICE:${PN}:append:p10bmc = " ibm-spi-vpd-parser@.service"
 SYSTEMD_SERVICE:${PN}:append:p10bmc = " system-vpd.service"
 SYSTEMD_SERVICE:${PN}:append:p10bmc = " com.ibm.VPD.Manager.service"
 SYSTEMD_SERVICE:${PN}:append:p10bmc = " wait-vpd-parsers.service"
 SYSTEMD_SERVICE:${PN}:remove:p10bmc = " op-vpd-parser.service"
 PACKAGECONFIG:append:p10bmc = " ibm-parser vpd-manager"
+EXTRA_OEMESON := " -Dibm-parser=enabled -Dtests=disabled -Dvpd-manager=enabled"
 
+SRC_URI:append:p10bmc = " file://50004000.json"
 FILES:${PN}:append:p10bmc = " ${datadir}/vpd/*.json"
 
 do_install:append:p10bmc() {
@@ -19,6 +23,7 @@ do_install:append:p10bmc() {
         DEST=${D}${inventory_envdir}
         rm ${DEST}/inventory
         rm ${D}/${nonarch_base_libdir}/udev/rules.d/70-op-vpd.rules
+        install ${WORKDIR}/50004000.json ${D}${datadir}/vpd/
 }
 
 do_install:append:witherspoon() {
