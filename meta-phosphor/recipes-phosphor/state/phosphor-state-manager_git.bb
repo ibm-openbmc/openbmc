@@ -257,7 +257,7 @@ RESET_INSTFMT_CTRL = "obmc-chassis-powerreset@{0}.target"
 RESET_FMT_CTRL = "../${RESET_TMPL_CTRL}:${SYSD_TGT}.wants/${RESET_INSTFMT_CTRL}"
 SYSTEMD_LINK:${PN}-obmc-targets += "${@compose_list_zip(d, 'RESET_FMT_CTRL', 'OBMC_CHASSIS_INSTANCES')}"
 
-SRC_URI = "git://github.com/openbmc/phosphor-state-manager;branch=master;protocol=https"
-SRCREV = "78c066f6078704fd202c8a4b02fcf73091481ef1"
+SRC_URI = "git://github.com/ibm-openbmc/phosphor-state-manager;nobranch=1;protocol=https"
+SRCREV = "e4761f21cf2f98d177ffca26eaf18b9d615b1ae8"
 
 S = "${WORKDIR}/git"
