@@ -10,6 +10,6 @@ RDEPENDS:${PN} = "bash"
 
 S = "${WORKDIR}/git"
 SRC_URI:p10bmc = "git://git@github.com/open-power/hostboot;branch="master-p10";protocol=ssh"
-SRCREV = "193d3c969b2af04a8c42c981d517087617dcd76c"
+SRCREV = "7066e427852641a0b595d02508d3b0a8c1807235"
 
 inherit setuptools3
