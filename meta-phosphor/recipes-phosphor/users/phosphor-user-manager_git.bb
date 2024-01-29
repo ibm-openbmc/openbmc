@@ -15,6 +15,7 @@ PV = "1.0+git${SRCPV}"
 PR = "r1"
 
 SRC_URI = "git://github.com/openbmc/phosphor-user-manager;branch=master;protocol=https"
+SRC_URI += "file://upgrade_ibm_service_account.sh"
 
 S = "${WORKDIR}/git"
 
@@ -27,6 +28,8 @@ EXTRA_OEMESON = "-Dtests=disabled"
 do_install:append() {
   install -d ${D}/home/service
   echo "/usr/bin/sudo -s;exit" >${D}/home/service/.profile
+  install -d ${D}${bindir}
+  install -m 0755 ${WORKDIR}/upgrade_ibm_service_account.sh ${D}${bindir}/upgrade_ibm_service_account.sh
 }
 
 RDEPENDS:${PN} += "bash"
