@@ -5,6 +5,7 @@ EXTRA_OEMESON:append = " \
     -Dredfish-oem-manager-fan-data=disabled \
     -Dbmcweb-logging=error \
     -Dredfish-bmc-journal=disabled \
+    -Dinsecure-ignore-content-type=enabled \
 "
 
 EXTRA_OEMESON:append:p10bmc = " \
