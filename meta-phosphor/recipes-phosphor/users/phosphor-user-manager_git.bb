@@ -10,11 +10,11 @@ DEPENDS += "bash"
 DEPENDS += "boost"
 DEPENDS += "nss-pam-ldapd"
 DEPENDS += "systemd"
-SRCREV = "d9adc73a09cc17253ed8774dd72362ba5083d578"
+SRCREV = "ef6f7b5ee6e3881cba6cce1d31fa3f862abae778"
 PV = "1.0+git${SRCPV}"
 PR = "r1"
 
-SRC_URI = "git://github.com/openbmc/phosphor-user-manager;branch=master;protocol=https"
+SRC_URI = "git://github.com/ibm-openbmc/phosphor-user-manager;nobranch=1;protocol=https"
 SRC_URI += "file://upgrade_ibm_service_account.sh"
 
 S = "${WORKDIR}/git"
