@@ -11,7 +11,7 @@ DEPENDS = " \
         sdbusplus \
         sdeventplus \
         "
-SRCREV = "8dbcc72d55f007c43c504ee98e40f352e996426f"
+SRCREV = "caa97f979486c1cd1a93f691665c12df8b8c648d"
 PACKAGECONFIG ??= "bmcweb-cert authority-cert"
 PACKAGECONFIG[ibm-hypervisor-cert] = "-Dca-cert-extension=enabled,-Dca-cert-extension=disabled"
 PACKAGECONFIG[bmcweb-cert] = "-Dconfig-bmcweb=enabled,-Dconfig-bmcweb=disabled"
@@ -19,7 +19,7 @@ PACKAGECONFIG[authority-cert] = "-Dconfig-authority=enabled,-Dconfig-authority=d
 PV = "0.1+git${SRCPV}"
 PR = "r1"
 
-SRC_URI = "git://github.com/openbmc/phosphor-certificate-manager;branch=master;protocol=https"
+SRC_URI = "git://github.com/ibm-openbmc/phosphor-certificate-manager;nobranch=1;protocol=https"
 
 S = "${WORKDIR}/git"
 SYSTEMD_SERVICE:${PN} = "phosphor-certificate-manager@.service"
