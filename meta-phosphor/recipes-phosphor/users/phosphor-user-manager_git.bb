@@ -10,7 +10,7 @@ DEPENDS += "bash"
 DEPENDS += "boost"
 DEPENDS += "nss-pam-ldapd"
 DEPENDS += "systemd"
-SRCREV = "ef6f7b5ee6e3881cba6cce1d31fa3f862abae778"
+SRCREV = "9029d31413c9037aeacc3db99eea34fe63b3e0b6"
 PV = "1.0+git${SRCPV}"
 PR = "r1"
 
