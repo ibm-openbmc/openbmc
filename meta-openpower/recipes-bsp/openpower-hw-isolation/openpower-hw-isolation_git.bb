@@ -13,7 +13,7 @@ inherit meson \
 S = "${WORKDIR}/git"
 
 SRC_URI = "git://git@github.com/ibm-openbmc/openpower-hw-isolation;branch="main";protocol=https;nobranch=1"
-SRCREV = "8c1155e044e1882590ff71df068c59abb9f40f57"
+SRCREV = "c3110537c23ae016b0f8e41b2546962534cdb610"
 
 DEPENDS = "sdbusplus \
            phosphor-dbus-interfaces \
