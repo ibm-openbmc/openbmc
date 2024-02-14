@@ -11,6 +11,8 @@ IMAGE_FEATURES:remove:witherspoon = "obmc-telemetry"
 # Generic IPMI FRU vpd collection not needed on p10bmc
 IMAGE_FEATURES:remove:p10bmc = "obmc-fru-ipmi"
 
+IMAGE_INSTALL:append:p10bmc = " phosphor-auditlog"
+
 # Optionally configure IBM service accounts
 #
 # To configure your distro, add the following line to its config:

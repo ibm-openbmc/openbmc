@@ -16,7 +16,8 @@ DEPENDS += "libcereal"
 DEPENDS += "sdeventplus"
 DEPENDS += "packagegroup-obmc-yaml-providers"
 DEPENDS += "dbus"
-SRCREV = "874c21e504a427ebdf04d202cf0d2f9ad53ede16"
+DEPENDS += "audit"
+SRCREV = "577bf9f442f533334a7c66df463d578286d8c4e6"
 PACKAGECONFIG ??= ""
 PACKAGECONFIG[openpower-pels] = " \
         -Dopenpower-pel-extension=enabled, \
@@ -51,6 +52,9 @@ FILES:${PN}-base += " \
         ${libdir}/libphosphor_logging.so.* \
         ${datadir}/dbus-1/system-services/xyz.openbmc_project.Logging.service \
 "
+FILES:phosphor-auditlog += " \
+        ${bindir}/phosphor-auditlog \
+"
 FILES:phosphor-rsyslog-config += " \
         ${bindir}/phosphor-rsyslog-conf \
 "
@@ -64,9 +68,11 @@ PACKAGE_BEFORE_PN = "${PN}-test"
 LOGGING_PACKAGES = " \
         ${PN}-base \
         phosphor-rsyslog-config \
+        phosphor-auditlog \
 "
 PACKAGE_BEFORE_PN += "${LOGGING_PACKAGES}"
 DBUS_PACKAGES = "${LOGGING_PACKAGES}"
 GROUPADD_PARAM:${PN}-base = "-r phosphor-logging"
 DBUS_SERVICE:${PN}-base += "xyz.openbmc_project.Logging.service"
 DBUS_SERVICE:phosphor-rsyslog-config += "xyz.openbmc_project.Syslog.Config.service"
+DBUS_SERVICE:phosphor-auditlog += "xyz.openbmc_project.Logging.AuditLog.service"

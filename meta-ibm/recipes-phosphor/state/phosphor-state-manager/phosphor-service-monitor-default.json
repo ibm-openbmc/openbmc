@@ -6,6 +6,7 @@
         "xyz.openbmc_project.hwmontempsensor.service",
         "xyz.openbmc_project.Inventory.Manager.service",
         "xyz.openbmc_project.Logging.service",
+        "xyz.openbmc_project.Logging.AuditLog.service",
         "xyz.openbmc_project.Network.service",
         "xyz.openbmc_project.nvmesensor.service",
         "xyz.openbmc_project.ObjectMapper.service",
