@@ -1,0 +1,32 @@
+commit 09f35303118164f9769aaa29553f4aee0c753df1
+Author: Andrew Geissler <geissonator@yahoo.com>
+Date:   Tue Feb 20 05:12:50 2024 -0600
+
+    ipmi: kcs: Update OBF poll timeout to reduce latency
+
+    Commit f90bc0f9 introduced an optimization to poll when the host has
+    read the output data register (ODR). Testing has shown that the 100us
+    timeout was not always enough. When we miss that 100us window, it
+    results in 10x the time to get the next message from the BMC to the
+    host. When you're sending 100's of messages between the BMC and Host,
+    this results in a server boot taking 50% longer for IBM P10 machines.
+
+    Started with 1000 and worked it down until the issue started to reoccur.
+    300 was the sweet spot in my testing. 250 showed the issue
+    intermittently.
+
+    Signed-off-by: Andrew Geissler <geissonator@yahoo.com>
+
+diff --git a/drivers/char/ipmi/kcs_bmc_aspeed.c b/drivers/char/ipmi/kcs_bmc_aspeed.c
+index 72640da55380..af1eae6153f6 100644
+--- a/drivers/char/ipmi/kcs_bmc_aspeed.c
++++ b/drivers/char/ipmi/kcs_bmc_aspeed.c
+@@ -422,7 +422,7 @@ static void aspeed_kcs_irq_mask_update(struct kcs_bmc_device *kcs_bmc, u8 mask,
+ 			 * missed the event.
+ 			 */
+ 			rc = read_poll_timeout_atomic(aspeed_kcs_inb, str,
+-						      !(str & KCS_BMC_STR_OBF), 1, 100, false,
++						      !(str & KCS_BMC_STR_OBF), 1, 300, false,
+ 						      &priv->kcs_bmc, priv->kcs_bmc.ioreg.str);
+ 			/* Time for the slow path? */
+ 			if (rc == -ETIMEDOUT)
