@@ -35,6 +35,7 @@ EXTRA_OEMESON = " \
 # If your system does not depend on phosphor-power, please use
 # RDEPENDS:${PN}:remove to remove the dependency.
 RDEPENDS:${PN} += "phosphor-power"
+RDEPENDS:${PN} += "phosphor-psu-code-images"
 
 ## The psutils here comes from phosphor-power repo where
 ## * PSU_VERSION_UTIL accepts a PSU inventory path and returns the PSU
