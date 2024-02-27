@@ -10,12 +10,12 @@ DEPENDS = "boost \
            valijson \
            ${PYTHON_PN}-jsonschema-native \
 "
-SRCREV = "80a49edc1611e981d5558b9f06fea3d67b2140a6"
+SRCREV = "19a9df6e1b222519f983e02588296c238ac97c52"
 PACKAGECONFIG ??= "ipmi-fru"
 PACKAGECONFIG[ipmi-fru] = "-Dfru-device=true, -Dfru-device=false, i2c-tools,"
 PV = "0.1+git${SRCPV}"
 
-SRC_URI = "git://github.com/openbmc/entity-manager.git;branch=master;protocol=https \
+SRC_URI = "git://github.com/ibm-openbmc/entity-manager.git;nobranch=1;protocol=https \
            file://blocklist.json \
           "
 
