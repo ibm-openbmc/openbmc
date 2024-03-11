@@ -13,7 +13,7 @@ DEPENDS = " \
     ${@bb.utils.contains('PTEST_ENABLED', '1', 'gtest', '', d)} \
     ${@bb.utils.contains('PTEST_ENABLED', '1', 'gmock', '', d)} \
 "
-SRCREV = "d99f819d3f8f88ddd49b14dc95821c5284e1cab5"
+SRCREV = "3ca5028e701457d1a0a454bbde2ec75b62ee87c9"
 PV = "1.0+git${SRCPV}"
 
 SRC_URI = "git://github.com/ibm-openbmc/bmcweb.git;nobranch=1;protocol=https"
