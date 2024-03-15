@@ -214,6 +214,38 @@
                }
             }
          },
+	 {
+            "inventoryPath": "/system/chassis/motherboard/pcieslot4",
+	    "inherit": false,
+	    "extraInterfaces": {
+		"com.ibm.Control.Host.PCIeLink": null,
+		"xyz.openbmc_project.Inventory.Item.PCIeSlot": {
+	           "SlotType": "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.OEM"
+	        },
+		"com.ibm.ipzvpd.Location": {
+		   "LocationCode": "Ufcs-P0-T13"
+	        },
+		"xyz.openbmc_project.Inventory.Item": {
+		   "PrettyName": "USB 3.0 port"
+		}
+	    }
+         },
+	 {
+            "inventoryPath": "/system/chassis/motherboard/pcieslot4/pcie_card4",
+            "inherit": false,
+            "extraInterfaces": {
+		"xyz.openbmc_project.Inventory.Item.PCIeDevice": null,
+                "com.ibm.ipzvpd.Location": {
+                   "LocationCode": "Ufcs-P0-T13"
+                },
+		"xyz.openbmc_project.Inventory.Decorator.Slot": {
+		   "SlotNumber": 4
+		},
+                "xyz.openbmc_project.Inventory.Item": {
+                   "PrettyName": "USB 3.0 port"
+                }
+            }
+         },
          {
             "inventoryPath":"/system/chassis/motherboard/fan0",
             "inherit":false,
