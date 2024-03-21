@@ -242,6 +242,15 @@
            "paths": [
              "/xyz/openbmc_project/led/groups/powersupply0_fault"
            ]
+         },
+         {
+           "types": {
+             "rType": "identified_by",
+             "fType": "identifying"
+           },
+           "paths": [
+             "/xyz/openbmc_project/led/groups/powersupply0_identify"
+           ]
          }
        ]
      },
@@ -279,6 +288,15 @@
            },
            "paths": [
              "/xyz/openbmc_project/led/groups/powersupply1_fault"
+           ]
+         },
+         {
+           "types": {
+             "rType": "identified_by",
+             "fType": "identifying"
+           },
+           "paths": [
+             "/xyz/openbmc_project/led/groups/powersupply1_identify"
            ]
          }
        ]
