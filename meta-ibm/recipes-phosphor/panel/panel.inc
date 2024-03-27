@@ -1,5 +1,5 @@
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=86d3f3a95c324c9479bd8986968f4327"
 SRC_URI += "git://git@github.com/ibm-openbmc/ibm-panel;nobranch=1;protocol=https"
-SRCREV = "1d0b5610a3694957261622a5817b639e3081fea9"
+SRCREV = "fda8206b6328ee68c7bfa7f33e4c882ae2bac102"
 
