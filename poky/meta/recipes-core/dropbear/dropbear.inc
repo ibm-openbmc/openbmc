@@ -5,10 +5,11 @@ SECTION = "console/network"
 # some files are from other projects and have others license terms:
 #   public domain, OpenSSH 3.5p1, OpenSSH3.6.1p2, PuTTY
 LICENSE = "MIT & BSD-3-Clause & BSD-2-Clause & PD"
-LIC_FILES_CHKSUM = "file://LICENSE;md5=a5ec40cafba26fc4396d0b550f824e01"
+LIC_FILES_CHKSUM = "file://LICENSE;md5=25cf44512b7bc8966a48b6b1a9b7605f"
 
 DEPENDS = "zlib virtual/crypt"
 RPROVIDES_${PN} = "ssh sshd"
+RCONFLICTS_${PN} = "openssh-sshd openssh"
 
 DEPENDS += "${@bb.utils.contains('DISTRO_FEATURES', 'pam', 'libpam', '', d)}"
 
@@ -69,8 +70,13 @@ do_install() {
 	install -m 0644 ${WORKDIR}/dropbear.default ${D}${sysconfdir}/default/dropbear
 
 	install -m 0755 dropbearmulti ${D}${sbindir}/
-	ln -s ${sbindir}/dropbearmulti ${D}${bindir}/dbclient
 
+	for i in ${BINCOMMANDS}
+	do
+		# ssh and scp symlinks are created by update-alternatives
+		if [ $i = ssh ] || [ $i = scp ]; then continue; fi
+		ln -s ${sbindir}/dropbearmulti ${D}${bindir}/$i
+	done
 	for i in ${SBINCOMMANDS}
 	do
 		ln -s ./dropbearmulti ${D}${sbindir}/$i
@@ -100,7 +106,7 @@ do_install() {
 inherit update-alternatives
 
 ALTERNATIVE_PRIORITY = "20"
-ALTERNATIVE_${PN} = "scp ssh"
+ALTERNATIVE_${PN} = "${@bb.utils.filter('BINCOMMANDS', 'scp ssh', d)}"
 
 ALTERNATIVE_TARGET = "${sbindir}/dropbearmulti"
 
@@ -112,3 +118,5 @@ pkg_postrm_append_${PN} () {
         rm ${sysconfdir}/dropbear/dropbear_dss_host_key
   fi
 }
+
+FILES_${PN} += "${bindir}"
