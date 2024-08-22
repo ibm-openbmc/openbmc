@@ -7,10 +7,6 @@ SRC_URI += "file://psu.json"
 EXTRA_OEMESON:append:ibm-ac-server = " -Ducd90160-yaml=${STAGING_DIR_HOST}${datadir}/power-sequencer/ucd90160.yaml"
 EXTRA_OEMESON:append:p10bmc = " -Dibm-vpd=true"
 
-# Temporary change to avoid inter-repository dependency.  Will remove when
-# ibm-ups source has been removed from the phosphor-power repository.
-EXTRA_OEMESON:append:p10bmc = " -Dibm-ups=false"
-
 DEPENDS:append:ibm-ac-server = " power-sequencer"
 DEPENDS:append:p10bmc = " power-sequencer"
 
