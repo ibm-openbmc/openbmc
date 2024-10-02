@@ -10,7 +10,7 @@ DEPENDS = "boost \
            sdbusplus \
            valijson \
 "
-SRCREV = "672de6e55f096479b7817f24a28f24624e53af04"
+SRCREV = "4f4ce24c54622ac7c2a04ff7e8ba6571a7e2bd54"
 PACKAGECONFIG ??= "ipmi-fru"
 PACKAGECONFIG[ipmi-fru] = "-Dfru-device=true, -Dfru-device=false, i2c-tools,"
 PACKAGECONFIG[validate-json] = "-Dvalidate-json=true, \
@@ -18,7 +18,7 @@ PACKAGECONFIG[validate-json] = "-Dvalidate-json=true, \
                                 ${PYTHON_PN}-jsonschema-native"
 PV = "0.1+git${SRCPV}"
 
-SRC_URI = "git://github.com/openbmc/entity-manager.git;branch=master;protocol=https \
+SRC_URI = "git://github.com/ibm-openbmc/entity-manager.git;nobranch=1;protocol=https \
            file://blocklist.json \
           "
 
