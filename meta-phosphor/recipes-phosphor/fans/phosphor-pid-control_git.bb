@@ -38,6 +38,8 @@ EXTRA_OEMESON = " \
   "
 
 FILES:${PN} = "${bindir}/swampd ${bindir}/setsensor"
+FILES:${PN}:append = " ${bindir}/pidctl"
+RDEPENDS:${PN} += "bash"
 # The following installs the OEM IPMI handler for the fan controls.
 FILES:${PN}:append = " ${libdir}/ipmid-providers/lib*${SOLIBS}"
 FILES:${PN}:append = " ${libdir}/host-ipmid/lib*${SOLIBS}"
