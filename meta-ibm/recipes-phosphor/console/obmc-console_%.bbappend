@@ -35,11 +35,17 @@ REGISTERED_SERVICES:${PN}:append:p10bmc = " obmc_console_hypervisor:tcp:2201:"
 SYSTEMD_SERVICE:${PN}:append:p10bmc = " obmc-console-ssh@2200.service \
 		obmc-console-ssh@2201.service \
                 "
+
+SYSTEMD_SERVICE:${PN}:append:system1 = " obmc-console-ssh@2200.service"
+
 SYSTEMD_SERVICE:${PN}:remove:p10bmc = "obmc-console-ssh.socket"
+SYSTEMD_SERVICE:${PN}:remove:system1 = "obmc-console-ssh.socket"
 
 FILES:${PN}:remove:p10bmc = "${systemd_system_unitdir}/obmc-console-ssh@.service.d/use-socket.conf"
+FILES:${PN}:remove:system1 = "${systemd_system_unitdir}/obmc-console-ssh@.service.d/use-socket.conf"
 
 PACKAGECONFIG:append:p10bmc = " concurrent-servers"
+PACKAGECONFIG:append:system1 = " concurrent-servers"
 
 do_install:append:p10bmc() {
         install_concurrent_console_config
@@ -61,6 +67,23 @@ EXTRA_OECONF:append:witherspoon-tacoma = " --enable-concurrent-servers"
 
 do_install:append:witherspoon-tacoma() {
         install_concurrent_console_config
+}
+
+do_install:append:system1() {
+        # Install configuration for the servers and clients. Keep commandline
+        # compatibility with previous configurations by defaulting to not
+        # specifying a console-id for VUART0/2200
+        install -m 0755 -d ${D}${sysconfdir}/${BPN}
+
+        # Remove the default client configuration as we don't to define a
+        # console-id for the 2200 console
+        rm -f ${D}${sysconfdir}/${BPN}/client.2200.conf
+
+        # However, now link to /dev/null as a way of not specifying a
+        # console-id while having a configuration file present. We need to
+        # provide a configuration path to meet the requirements of the packaged
+        # unit file.
+        ln -sr ${D}/dev/null ${D}${sysconfdir}/${BPN}/client.2200.conf
 }
 
 SRC_URI:append:sbp1 = " file://server.ttyVUART0.conf"
