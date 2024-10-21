@@ -24,6 +24,7 @@ RDEPENDS:${PN}-chassis = " \
         phosphor-host-postd        \
         phosphor-skeleton-control-power \
         phosphor-ipmi-ipmb \
+        python3-core \
 "
 
 SUMMARY:${PN}-flash = "System1 Flash"
