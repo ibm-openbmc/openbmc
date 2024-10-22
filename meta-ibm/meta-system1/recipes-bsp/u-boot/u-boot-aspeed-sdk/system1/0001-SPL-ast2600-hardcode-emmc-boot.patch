@@ -1,0 +1,49 @@
+From a22ce9634d587fdf6622cd1ad8faf04ab139bffc Mon Sep 17 00:00:00 2001
+From: Eddie James <eajames@linux.ibm.com>
+Date: Tue, 22 Oct 2024 14:11:46 -0500
+Subject: [PATCH] SPL: ast2600: hardcode emmc boot
+
+To workaround OTPs not reflecting in SCU register.
+
+Signed-off-by: Eddie James <eajames@linux.ibm.com>
+---
+ arch/arm/mach-aspeed/ast2600/spl.c         | 2 +-
+ configs/ast2600_openbmc_spl_emmc_defconfig | 4 +++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/arch/arm/mach-aspeed/ast2600/spl.c b/arch/arm/mach-aspeed/ast2600/spl.c
+index 92b6c3cd4b7..022181029d7 100644
+--- a/arch/arm/mach-aspeed/ast2600/spl.c
++++ b/arch/arm/mach-aspeed/ast2600/spl.c
+@@ -71,7 +71,7 @@ u32 spl_boot_device(void)
+ 
+ void board_boot_order(u32 *spl_boot_list)
+ {
+-	spl_boot_list[0] = spl_boot_device();
++	spl_boot_list[0] = BOOT_DEVICE_MMC1;
+ 	spl_boot_list[1] = BOOT_DEVICE_UART;
+ }
+ 
+diff --git a/configs/ast2600_openbmc_spl_emmc_defconfig b/configs/ast2600_openbmc_spl_emmc_defconfig
+index 7fb1350bfa9..d6e082181f7 100644
+--- a/configs/ast2600_openbmc_spl_emmc_defconfig
++++ b/configs/ast2600_openbmc_spl_emmc_defconfig
+@@ -37,7 +37,8 @@ CONFIG_MEASURED_BOOT=y
+ CONFIG_MEASURE_IGNORE_LOG=y
+ CONFIG_DISPLAY_BOARDINFO_LATE=y
+ CONFIG_ARCH_EARLY_INIT_R=y
+-CONFIG_BOARD_EARLY_INIT_F=y
++CONFIG_BOARD_EARLY_INIT_F=n
++CONFIG_TARGET_AST2600_IBM=y
+ CONFIG_SPL_BOARD_INIT=y
+ # CONFIG_SPL_LEGACY_IMAGE_SUPPORT is not set
+ CONFIG_SPL_SYS_MALLOC_SIMPLE=y
+@@ -138,4 +139,5 @@ CONFIG_USE_TINY_PRINTF=y
+ CONFIG_SPL_TINY_MEMSET=y
+ CONFIG_TPM=y
+ CONFIG_SPL_TPM=y
++CONFIG_SPL_YMODEM_SUPPORT=y
+ # CONFIG_EFI_LOADER is not set
+-- 
+2.43.5
+
