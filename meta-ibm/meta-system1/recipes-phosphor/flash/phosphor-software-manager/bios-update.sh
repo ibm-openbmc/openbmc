@@ -73,7 +73,7 @@ me_reset() {
 }
 
 # Enable FM_FLASH_SEC_OVRD
-gpio_info="$(gpiofind FM_FLASH_SEC_OVRD)"
+gpio_info="$(gpiofind flash-write-override)"
 read -r gpiochip gpio_line <<< "$gpio_info"
 gpioset "${gpiochip}" "${gpio_line}=1"
 
