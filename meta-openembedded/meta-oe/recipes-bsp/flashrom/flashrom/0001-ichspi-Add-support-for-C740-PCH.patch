@@ -1,0 +1,215 @@
+From f93fd0ec195bf02a1488d4780b1b3954fc782033 Mon Sep 17 00:00:00 2001
+From: Patrick Rudolph <patrick.rudolph@9elements.com>
+Date: Thu, 28 Sep 2023 15:58:48 +0200
+Subject: [PATCH] ichspi: Add support for C740 PCH
+
+Add Intel Emmitsburg detection support.
+
+Change-Id: I80eebc0fcc14de9df823aceaee77870ad136f94a
+Signed-off-by: Patrick Rudolph <patrick.rudolph@9elements.com>
+---
+ chipset_enable.c  |  2 ++
+ ich_descriptors.c | 15 +++++++++++++--
+ ichspi.c          |  8 ++++++++
+ programmer.h      |  1 +
+ 4 files changed, 24 insertions(+), 2 deletions(-)
+
+diff --git a/chipset_enable.c b/chipset_enable.c
+index bbd04653..2326b96f 100644
+--- a/chipset_enable.c
++++ b/chipset_enable.c
+@@ -598,6 +598,7 @@ static enum chipbustype enable_flash_ich_report_gcs(
+ 		break;
+ 	case CHIPSET_100_SERIES_SUNRISE_POINT:
+ 	case CHIPSET_C620_SERIES_LEWISBURG:
++	case CHIPSET_C740_SERIES_EMMITSBURG:
+ 	case CHIPSET_300_SERIES_CANNON_POINT:
+ 	case CHIPSET_APOLLO_LAKE:
+ 		reg_name = "BIOS_SPI_BC";
+@@ -693,6 +694,7 @@ static enum chipbustype enable_flash_ich_report_gcs(
+ 	case CHIPSET_9_SERIES_WILDCAT_POINT_LP:
+ 	case CHIPSET_100_SERIES_SUNRISE_POINT:
+ 	case CHIPSET_C620_SERIES_LEWISBURG:
++	case CHIPSET_C740_SERIES_EMMITSBURG:
+ 	case CHIPSET_300_SERIES_CANNON_POINT:
+ 		boot_straps = boot_straps_pch8_lp;
+ 		break;
+diff --git a/ich_descriptors.c b/ich_descriptors.c
+index 120d3fea..2351a271 100644
+--- a/ich_descriptors.c
++++ b/ich_descriptors.c
+@@ -41,6 +41,7 @@ ssize_t ich_number_of_regions(const enum ich_chipset cs, const struct ich_desc_c
+ 	case CHIPSET_APOLLO_LAKE:
+ 		return 6;
+ 	case CHIPSET_C620_SERIES_LEWISBURG:
++	case CHIPSET_C740_SERIES_EMMITSBURG:
+ 	case CHIPSET_300_SERIES_CANNON_POINT:
+ 		return 16;
+ 	case CHIPSET_100_SERIES_SUNRISE_POINT:
+@@ -66,6 +67,7 @@ ssize_t ich_number_of_masters(const enum ich_chipset cs, const struct ich_desc_c
+ {
+ 	switch (cs) {
+ 	case CHIPSET_C620_SERIES_LEWISBURG:
++	case CHIPSET_C740_SERIES_EMMITSBURG:
+ 	case CHIPSET_APOLLO_LAKE:
+ 		if (cont->NM <= MAX_NUM_MASTERS)
+ 			return cont->NM;
+@@ -103,7 +105,7 @@ void prettyprint_ich_chipset(enum ich_chipset cs)
+ 		"5 series Ibex Peak", "6 series Cougar Point", "7 series Panther Point",
+ 		"8 series Lynx Point", "Baytrail", "8 series Lynx Point LP", "8 series Wellsburg",
+ 		"9 series Wildcat Point", "9 series Wildcat Point LP", "100 series Sunrise Point",
+-		"C620 series Lewisburg", "300 series Cannon Point", "Apollo Lake",
++		"C620 series Lewisburg", "C740 series Emmitsburg", "300 series Cannon Point", "Apollo Lake",
+ 	};
+ 	if (cs < CHIPSET_ICH8 || cs - CHIPSET_ICH8 + 1 >= ARRAY_SIZE(chipset_names))
+ 		cs = 0;
+@@ -195,6 +197,7 @@ static const char *pprint_density(enum ich_chipset cs, const struct ich_descript
+ 	case CHIPSET_9_SERIES_WILDCAT_POINT_LP:
+ 	case CHIPSET_100_SERIES_SUNRISE_POINT:
+ 	case CHIPSET_C620_SERIES_LEWISBURG:
++	case CHIPSET_C740_SERIES_EMMITSBURG:
+ 	case CHIPSET_300_SERIES_CANNON_POINT:
+ 	case CHIPSET_APOLLO_LAKE: {
+ 		uint8_t size_enc;
+@@ -263,6 +266,7 @@ static const char *pprint_freq(enum ich_chipset cs, uint8_t value)
+ 		return freq_str[0][value];
+ 	case CHIPSET_100_SERIES_SUNRISE_POINT:
+ 	case CHIPSET_C620_SERIES_LEWISBURG:
++	case CHIPSET_C740_SERIES_EMMITSBURG:
+ 	case CHIPSET_300_SERIES_CANNON_POINT:
+ 		return freq_str[1][value];
+ 	case CHIPSET_APOLLO_LAKE:
+@@ -280,6 +284,7 @@ void prettyprint_ich_descriptor_component(enum ich_chipset cs, const struct ich_
+ 	switch (cs) {
+ 	case CHIPSET_100_SERIES_SUNRISE_POINT:
+ 	case CHIPSET_C620_SERIES_LEWISBURG:
++	case CHIPSET_C740_SERIES_EMMITSBURG:
+ 	case CHIPSET_300_SERIES_CANNON_POINT:
+ 	case CHIPSET_APOLLO_LAKE:
+ 		has_flill1 = true;
+@@ -399,7 +404,8 @@ void prettyprint_ich_descriptor_master(const enum ich_chipset cs, const struct i
+ 
+ 	msg_pdbg2("--- Details ---\n");
+ 	if (cs == CHIPSET_100_SERIES_SUNRISE_POINT ||
+-	    cs == CHIPSET_300_SERIES_CANNON_POINT) {
++	    cs == CHIPSET_300_SERIES_CANNON_POINT ||
++	    cs == CHIPSET_C740_SERIES_EMMITSBURG) {
+ 		const char *const master_names[] = {
+ 			"BIOS", "ME", "GbE", "unknown", "EC",
+ 		};
+@@ -921,6 +927,8 @@ static enum ich_chipset guess_ich_chipset_from_content(const struct ich_desc_con
+ 				msg_pwarn("Peculiar firmware descriptor, assuming Apollo Lake compatibility.\n");
+ 			return CHIPSET_APOLLO_LAKE;
+ 		}
++		if (content->ISL == 0x50)
++			return CHIPSET_C740_SERIES_EMMITSBURG;
+ 		msg_pwarn("Peculiar firmware descriptor, assuming Ibex Peak compatibility.\n");
+ 		return CHIPSET_5_SERIES_IBEX_PEAK;
+ 	} else if (content->ICCRIBA < 0x31 && content->FMSBA < 0x30) {
+@@ -961,6 +969,7 @@ static enum ich_chipset guess_ich_chipset(const struct ich_desc_content *const c
+ 		return guess;
+ 	case CHIPSET_100_SERIES_SUNRISE_POINT:
+ 	case CHIPSET_C620_SERIES_LEWISBURG:
++	case CHIPSET_C740_SERIES_EMMITSBURG:
+ 	case CHIPSET_APOLLO_LAKE:
+ 		if (component->modes.freq_read != 6) {
+ 			msg_pwarn("\nThe firmware descriptor looks like a Skylake/Sunrise Point descriptor.\n"
+@@ -1110,6 +1119,7 @@ int getFCBA_component_density(enum ich_chipset cs, const struct ich_descriptors
+ 	case CHIPSET_9_SERIES_WILDCAT_POINT_LP:
+ 	case CHIPSET_100_SERIES_SUNRISE_POINT:
+ 	case CHIPSET_C620_SERIES_LEWISBURG:
++	case CHIPSET_C740_SERIES_EMMITSBURG:
+ 	case CHIPSET_300_SERIES_CANNON_POINT:
+ 	case CHIPSET_APOLLO_LAKE:
+ 		if (idx == 0) {
+@@ -1145,6 +1155,7 @@ static uint32_t read_descriptor_reg(enum ich_chipset cs, uint8_t section, uint16
+ 	switch (cs) {
+ 	case CHIPSET_100_SERIES_SUNRISE_POINT:
+ 	case CHIPSET_C620_SERIES_LEWISBURG:
++	case CHIPSET_C740_SERIES_EMMITSBURG:
+ 	case CHIPSET_300_SERIES_CANNON_POINT:
+ 	case CHIPSET_APOLLO_LAKE:
+ 		mmio_le_writel(control, spibar + PCH100_REG_FDOC);
+diff --git a/ichspi.c b/ichspi.c
+index 725bfb36..760923d5 100644
+--- a/ichspi.c
++++ b/ichspi.c
+@@ -398,6 +398,7 @@ static void prettyprint_ich9_reg_hsfs(uint16_t reg_val)
+ 	switch (ich_generation) {
+ 	case CHIPSET_100_SERIES_SUNRISE_POINT:
+ 	case CHIPSET_C620_SERIES_LEWISBURG:
++	case CHIPSET_C740_SERIES_EMMITSBURG:
+ 	case CHIPSET_300_SERIES_CANNON_POINT:
+ 		break;
+ 	default:
+@@ -408,6 +409,7 @@ static void prettyprint_ich9_reg_hsfs(uint16_t reg_val)
+ 	switch (ich_generation) {
+ 	case CHIPSET_100_SERIES_SUNRISE_POINT:
+ 	case CHIPSET_C620_SERIES_LEWISBURG:
++	case CHIPSET_C740_SERIES_EMMITSBURG:
+ 	case CHIPSET_300_SERIES_CANNON_POINT:
+ 		pprint_reg(HSFS, PRR34_LOCKDN, reg_val, ", ");
+ 		pprint_reg(HSFS, WRSDIS, reg_val, ", ");
+@@ -427,6 +429,7 @@ static void prettyprint_ich9_reg_hsfc(uint16_t reg_val)
+ 	switch (ich_generation) {
+ 	case CHIPSET_100_SERIES_SUNRISE_POINT:
+ 	case CHIPSET_C620_SERIES_LEWISBURG:
++	case CHIPSET_C740_SERIES_EMMITSBURG:
+ 	case CHIPSET_300_SERIES_CANNON_POINT:
+ 		_pprint_reg(HSFC, PCH100_HSFC_FCYCLE, PCH100_HSFC_FCYCLE_OFF, reg_val, ", ");
+ 		pprint_reg(HSFC, WET, reg_val, ", ");
+@@ -1740,6 +1743,7 @@ int ich_init_spi(void *spibar, enum ich_chipset ich_gen)
+ 	switch (ich_generation) {
+ 	case CHIPSET_100_SERIES_SUNRISE_POINT:
+ 	case CHIPSET_C620_SERIES_LEWISBURG:
++	case CHIPSET_C740_SERIES_EMMITSBURG:
+ 	case CHIPSET_300_SERIES_CANNON_POINT:
+ 	case CHIPSET_APOLLO_LAKE:
+ 		num_pr			= 6;	/* Includes GPR0 */
+@@ -1769,6 +1773,7 @@ int ich_init_spi(void *spibar, enum ich_chipset ich_gen)
+ 		num_freg = 10;
+ 		break;
+ 	case CHIPSET_C620_SERIES_LEWISBURG:
++	case CHIPSET_C740_SERIES_EMMITSBURG:
+ 		num_freg = 12;	/* 12 MMIO regs, but 16 regions in FD spec */
+ 		break;
+ 	case CHIPSET_300_SERIES_CANNON_POINT:
+@@ -1866,6 +1871,7 @@ int ich_init_spi(void *spibar, enum ich_chipset ich_gen)
+ 		switch (ich_gen) {
+ 		case CHIPSET_100_SERIES_SUNRISE_POINT:
+ 		case CHIPSET_C620_SERIES_LEWISBURG:
++		case CHIPSET_C740_SERIES_EMMITSBURG:
+ 		case CHIPSET_300_SERIES_CANNON_POINT:
+ 		case CHIPSET_APOLLO_LAKE:
+ 			tmp = mmio_readl(ich_spibar + PCH100_REG_DLOCK);
+@@ -1940,6 +1946,7 @@ int ich_init_spi(void *spibar, enum ich_chipset ich_gen)
+ 			case CHIPSET_ICH8:
+ 			case CHIPSET_100_SERIES_SUNRISE_POINT:
+ 			case CHIPSET_C620_SERIES_LEWISBURG:
++			case CHIPSET_C740_SERIES_EMMITSBURG:
+ 			case CHIPSET_300_SERIES_CANNON_POINT:
+ 			case CHIPSET_APOLLO_LAKE:
+ 			case CHIPSET_BAYTRAIL:
+@@ -1972,6 +1979,7 @@ int ich_init_spi(void *spibar, enum ich_chipset ich_gen)
+ 			case CHIPSET_ICH8:
+ 			case CHIPSET_100_SERIES_SUNRISE_POINT:
+ 			case CHIPSET_C620_SERIES_LEWISBURG:
++			case CHIPSET_C740_SERIES_EMMITSBURG:
+ 			case CHIPSET_300_SERIES_CANNON_POINT:
+ 			case CHIPSET_APOLLO_LAKE:
+ 				break;
+diff --git a/programmer.h b/programmer.h
+index 3cf53b94..e1ec1c35 100644
+--- a/programmer.h
++++ b/programmer.h
+@@ -643,6 +643,7 @@ enum ich_chipset {
+ 	CHIPSET_9_SERIES_WILDCAT_POINT_LP,
+ 	CHIPSET_100_SERIES_SUNRISE_POINT, /* also 6th/7th gen Core i/o (LP) variants */
+ 	CHIPSET_C620_SERIES_LEWISBURG,
++	CHIPSET_C740_SERIES_EMMITSBURG,
+ 	CHIPSET_300_SERIES_CANNON_POINT,
+ 	CHIPSET_APOLLO_LAKE,
+ };
+-- 
+2.41.0
+

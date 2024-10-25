@@ -7,6 +7,7 @@ SRC_URI = "https://download.flashrom.org/releases/flashrom-v${PV}.tar.bz2 \
            file://meson-fixes.patch \
            file://0001-flashrom-Mark-RISCV-as-non-memory-mapped-I-O-archite.patch \
            file://0001-hwaccess-use-__asm__-as-is-done-elsewhere.patch \
+           file://0001-ichspi-Add-support-for-C740-PCH.patch \
            "
 SRC_URI[sha256sum] = "89a7ff5beb08c89b8795bbd253a51b9453547a864c31793302296b56bbc56d65"
 
