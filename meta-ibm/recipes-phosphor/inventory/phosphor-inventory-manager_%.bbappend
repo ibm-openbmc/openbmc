@@ -20,6 +20,12 @@ SRC_URI:append:system1 = " \
     file://system1-board-sys2.bin \
     file://system1-board-sys3.bin \
     file://system1-board-sys4.bin \
+    file://system1-board-sys5.bin \
+    file://system1-board-sys6.bin \
+    file://system1-board-sys7.bin \
+    file://system1-board-sys8.bin \
+    file://system1-board-sys9.bin \
+    file://system1-board-sys10.bin \
     file://system1-mudflap.bin \
     "
 
@@ -30,6 +36,12 @@ do_install:append:system1() {
     install -m 0644 ${WORKDIR}/system1-board-sys2.bin ${D}${base_datadir}/system1-board-sys2.bin
     install -m 0644 ${WORKDIR}/system1-board-sys3.bin ${D}${base_datadir}/system1-board-sys3.bin
     install -m 0644 ${WORKDIR}/system1-board-sys4.bin ${D}${base_datadir}/system1-board-sys4.bin
+    install -m 0644 ${WORKDIR}/system1-board-sys5.bin ${D}${base_datadir}/system1-board-sys5.bin
+    install -m 0644 ${WORKDIR}/system1-board-sys6.bin ${D}${base_datadir}/system1-board-sys6.bin
+    install -m 0644 ${WORKDIR}/system1-board-sys7.bin ${D}${base_datadir}/system1-board-sys7.bin
+    install -m 0644 ${WORKDIR}/system1-board-sys8.bin ${D}${base_datadir}/system1-board-sys8.bin
+    install -m 0644 ${WORKDIR}/system1-board-sys9.bin ${D}${base_datadir}/system1-board-sys9.bin
+    install -m 0644 ${WORKDIR}/system1-board-sys10.bin ${D}${base_datadir}/system1-board-sys10.bin
     install -m 0644 ${WORKDIR}/system1-mudflap.bin ${D}${base_datadir}/system1-mudflap.bin
 }
 
