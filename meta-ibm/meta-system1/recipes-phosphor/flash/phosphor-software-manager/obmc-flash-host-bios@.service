@@ -6,4 +6,4 @@ After=pch-standby.service
 [Service]
 Type=oneshot
 RemainAfterExit=no
-ExecStart=/usr/sbin/bios-update.sh /tmp/images/%i
+ExecStart=/usr/libexec/bios-update.sh /tmp/images/%i
