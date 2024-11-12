@@ -1,0 +1,50 @@
+From 7a2cf16cfd752ac686ca71e0b5fd8855b6730394 Mon Sep 17 00:00:00 2001
+From: Manojkiran Eda <manojkiran.eda@gmail.com>
+Date: Tue, 12 Nov 2024 11:49:26 +0530
+Subject: [PATCH] Enable support for SMBIOS version 3.0
+
+SMBIOS 3.2 is essentially a superset of SMBIOS 3.0. The changes from
+SMBIOS 3.0 to 3.2 added new structures and fields to accommodate more
+recent hardware features and capabilities, but they did not remove or
+fundamentally alter any pre-existing structures from 3.0. This means
+that:
+
+- SMBIOS 3.2 remains backward-compatible with SMBIOS 3.0. Any software
+  or system expecting information from SMBIOS 3.0 should still be able
+  to interpret the data in SMBIOS 3.2 without issues.
+
+Since we already support 3.2, its safe to assume that the code can also
+parse the smbios table version 3.0 without any issues. Hence adding 3.0
+in the list of supported versions.
+
+Tested By:
+Tested this change by sending the SMBIOS 3.0 tables from coreboot to
+BMC via IPMI, and the smbios app seems to parse the data successfully
+and host the dbus objects of CPU's and DIMM's.
+
+Change-Id: I2af595ed49b7c697abb6d19331470ad17e060836
+Signed-off-by: Manojkiran Eda <manojkiran.eda@gmail.com>
+---
+ include/smbios_mdrv2.hpp | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/include/smbios_mdrv2.hpp b/include/smbios_mdrv2.hpp
+index 950d498..1224f1e 100644
+--- a/include/smbios_mdrv2.hpp
++++ b/include/smbios_mdrv2.hpp
+@@ -165,9 +165,9 @@ static constexpr const char* pcieSuffix = "/chassis/motherboard/pcieslot";
+ 
+ static constexpr const char* systemSuffix = "/chassis/motherboard/bios";
+ 
+-constexpr std::array<SMBIOSVersion, 4> supportedSMBIOSVersions{
+-    SMBIOSVersion{3, 2}, SMBIOSVersion{3, 3}, SMBIOSVersion{3, 4},
+-    SMBIOSVersion{3, 5}};
++constexpr std::array<SMBIOSVersion, 5> supportedSMBIOSVersions{
++    SMBIOSVersion{3, 0}, SMBIOSVersion{3, 2}, SMBIOSVersion{3, 3},
++    SMBIOSVersion{3, 4}, SMBIOSVersion{3, 5}};
+ 
+ typedef enum
+ {
+-- 
+2.39.2
+
