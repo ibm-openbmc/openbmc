@@ -26,6 +26,16 @@ SRC_URI:append:system1 = " \
     file://system1-board-sys8.bin \
     file://system1-board-sys9.bin \
     file://system1-board-sys10.bin \
+    file://system1-board-sys11.bin \
+    file://system1-board-sys12.bin \
+    file://system1-board-sys13.bin \
+    file://system1-board-sys14.bin \
+    file://system1-board-sys15.bin \
+    file://system1-board-sys16.bin \
+    file://system1-board-sys17.bin \
+    file://system1-board-sys18.bin \
+    file://system1-board-sys19.bin \
+    file://system1-board-sys20.bin \
     file://system1-mudflap.bin \
     "
 
@@ -42,6 +52,16 @@ do_install:append:system1() {
     install -m 0644 ${WORKDIR}/system1-board-sys8.bin ${D}${base_datadir}/system1-board-sys8.bin
     install -m 0644 ${WORKDIR}/system1-board-sys9.bin ${D}${base_datadir}/system1-board-sys9.bin
     install -m 0644 ${WORKDIR}/system1-board-sys10.bin ${D}${base_datadir}/system1-board-sys10.bin
+    install -m 0644 ${WORKDIR}/system1-board-sys11.bin ${D}${base_datadir}/system1-board-sys11.bin
+    install -m 0644 ${WORKDIR}/system1-board-sys12.bin ${D}${base_datadir}/system1-board-sys12.bin
+    install -m 0644 ${WORKDIR}/system1-board-sys13.bin ${D}${base_datadir}/system1-board-sys13.bin
+    install -m 0644 ${WORKDIR}/system1-board-sys14.bin ${D}${base_datadir}/system1-board-sys14.bin
+    install -m 0644 ${WORKDIR}/system1-board-sys15.bin ${D}${base_datadir}/system1-board-sys15.bin
+    install -m 0644 ${WORKDIR}/system1-board-sys16.bin ${D}${base_datadir}/system1-board-sys16.bin
+    install -m 0644 ${WORKDIR}/system1-board-sys17.bin ${D}${base_datadir}/system1-board-sys17.bin
+    install -m 0644 ${WORKDIR}/system1-board-sys18.bin ${D}${base_datadir}/system1-board-sys18.bin
+    install -m 0644 ${WORKDIR}/system1-board-sys19.bin ${D}${base_datadir}/system1-board-sys19.bin
+    install -m 0644 ${WORKDIR}/system1-board-sys20.bin ${D}${base_datadir}/system1-board-sys20.bin
     install -m 0644 ${WORKDIR}/system1-mudflap.bin ${D}${base_datadir}/system1-mudflap.bin
 }
 
