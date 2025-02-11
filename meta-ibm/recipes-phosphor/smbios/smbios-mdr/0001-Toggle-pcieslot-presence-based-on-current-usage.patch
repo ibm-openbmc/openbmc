@@ -1,0 +1,28 @@
+From 8b1941ea54d7ad0594764e1acd3ac2d743ea26f6 Mon Sep 17 00:00:00 2001
+From: Manojkiran Eda <manojkiran.eda@gmail.com>
+Date: Wed, 29 Jan 2025 22:29:07 -0600
+Subject: [PATCH] Toggle pcieslot presence based on current usage
+
+Signed-off-by: Manojkiran Eda <manojkiran.eda@gmail.com>
+---
+ src/pcieslot.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/pcieslot.cpp b/src/pcieslot.cpp
+index 4b109d0..5336349 100644
+--- a/src/pcieslot.cpp
++++ b/src/pcieslot.cpp
+@@ -50,8 +50,8 @@ void Pcie::pcieInfoUpdate(uint8_t* smbiosTableStorage,
+     pcieIsHotPluggable(pcieInfo->characteristics2);
+     pcieLocation(pcieInfo->slotDesignation, pcieInfo->length, dataIn);
+ 
+-    /* Pcie slot is embedded on the board. Always be true */
+-    Item::present(true);
++    /* Set the PCIeSlot presence based on its current Usage*/
++    Item::present(pcieInfo->currUsage == 0x04);
+ 
+     if (!motherboardPath.empty())
+     {
+-- 
+2.34.1
+
