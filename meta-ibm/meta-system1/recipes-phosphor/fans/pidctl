@@ -1,0 +1,597 @@
+#!/bin/bash
+
+appName=${0##*/}
+scriptDate="6-Jan-2025"
+
+red=""
+bold=""
+normal=""
+if [ "${TERM:0:5}" == "xterm" ]; then
+    red="\033[31;1m";
+    bold="\033[1m";
+    normal="\033[0m";
+fi
+
+function usage()
+{
+    echo "Usage: ${appName} <options> <command>"
+    echo ""
+    echo "    command:"
+    echo "      status      Print fan speeds/pwm values"
+    echo "      pwmstatus   Print raw fan/pwm data"
+    echo "      resume      Resume normal phosphor-pid-control"
+    echo "      setpwm <PWM>        Set target PWM (0-255) for all fans"
+    echo "      setpwm <PWM> <ZONE> Set target PWM (0-255) for one zone (${zoneList[0]}/${zoneList[1]})"
+    echo "      setrpm <RPM>        Override target RPM for all fans (1000-40000)"
+    echo "      trace       Display swampd trace"
+    echo "      temps       Display temperature sensors (HwmonTempSensor, IntelCPUSensor)"
+    echo ""
+    echo "    options:"
+    echo "      -h          This help"
+    echo "      -v          Verbose (display busctl commands)"
+    echo "      -v2         More verbose"
+    echo ""
+    echo "    Script Date: $scriptDate"
+    exit 1
+}
+
+# Fans 1-5 have max of 14500 and bringup min speed of  8800
+# Fans 6-7 have max of 25000 and bringup min speed of 10800
+
+(( G_verbose=0 ))
+bus="xyz.openbmc_project.FanSensor"
+swampdService="phosphor-pid-control.service"
+setpointFile="/etc/thermal.d/setpoint"
+fanLogDir="/tmp/fanlogs"
+overrideLog="$fanLogDir/swampd.log"
+pwmOverrideFile="$fanLogDir/setpoint.pwm"
+tmpName="/tmp/.${appName}.tmp"
+zoneList=("CECIO" "NVME")
+
+if [ -z "$1" ]; then
+    usage
+fi
+
+while [ "${1:0:1}" == "-" ]; do
+    case "$1" in
+        -h | --help ) usage ;;
+        -v ) (( G_verbose=1 )) ;;
+        -v2 ) (( G_verbose=2 )) ;;
+        -v3 ) (( G_verbose=3 )) ;;
+        * ) echo -e "${red}ERROR: unknown option: $1${normal}"
+            usage
+            ;;
+    esac
+    shift
+done
+
+G_service=""
+function findServiceByObjPath()
+{
+    objPath="$1"
+    output="${tmpName}.out"
+    if [ $G_verbose -gt 1 ]; then
+        echo "==> dbus-send --system --print-reply --dest=xyz.openbmc_project.ObjectMapper /xyz/openbmc_project/object_mapper xyz.openbmc_project.ObjectMapper.GetObject string:\"$objPath\" array:string:"
+    fi
+    if dbus-send --system --print-reply --dest=xyz.openbmc_project.ObjectMapper /xyz/openbmc_project/object_mapper xyz.openbmc_project.ObjectMapper.GetObject string:"$objPath" array:string: > "$output" ; then
+        if [ -s "$output" ] && [ $G_verbose -gt 2 ]; then
+            cat "$output"
+        fi
+        if [ $G_verbose -gt 1 ]; then
+            echo "==> dbus-send --system --print-reply --dest=xyz.openbmc_project.ObjectMapper /xyz/openbmc_project/object_mapper xyz.openbmc_project.ObjectMapper.GetObject string:\"$objPath\" array:string: | grep 'string' | head -n 1 | awk '{print \$2}' | sed 's/\"//g'"
+        fi
+        service=$(dbus-send --system --print-reply --dest=xyz.openbmc_project.ObjectMapper /xyz/openbmc_project/object_mapper xyz.openbmc_project.ObjectMapper.GetObject string:"$objPath" array:string: | grep 'string' | head -n 1 | awk '{print $2}' | sed 's/"//g')
+        if [ -n "$service" ]; then
+            G_service="$service"
+        fi
+    else
+        echo "ERROR: dbus-send cmd failed"
+    fi
+    rm -f "$output"
+}
+
+# Set fan zone Manual property to newState - true (Manual control) or false (Automatic control)
+function setZoneManual()
+{
+    (( zoneNum=$1 ))
+    newState="$2"
+    if [ -z "$newState" ]; then
+        newState="true"
+    fi
+
+    objpath="/xyz/openbmc_project/settings/fanctrl/zone$zoneNum"
+    findServiceByObjPath "${objpath}"
+    interface="xyz.openbmc_project.Control.Mode"
+    if [ "$newState" == "true" ]; then
+        echo "Updating Zone $zoneNum to Manual control"
+    else
+        echo "Updating Zone $zoneNum to Automatic control"
+    fi
+    if [ $G_verbose -gt 0 ]; then
+        echo "==> busctl set-property $G_service ${objpath} $interface Manual b $newState"
+    fi
+    (( numRetries=1 ))
+    while true; do
+        busctl set-property "$G_service" "${objpath}" "$interface" Manual b "$newState"
+        (( rc=$? ))
+        if [ $rc -eq 0 ]; then
+            break
+        else
+            if [ $numRetries -eq 0 ]; then
+                echo "ERROR: failed to set $objpath Manual to $newState"
+                break
+            else
+                echo "...failed with rc=$rc.  Retrying"
+                (( numRetries-=1 ))
+            fi
+        fi
+    done
+    G_service=""
+}
+
+# Direct set of PWM via DBUS
+function setPwmTarget()
+{
+    (( pwmTarget=$1 ))
+    (( pwmPercent=pwmTarget*100/255 ))
+    zoneTarget=""
+    overrideZone=""
+    if [ -n "$2" ]; then
+        zoneTarget="$2"
+        echo -e "${bold}Setting PWM target to $pwmTarget ($pwmPercent%) for zone $zoneTarget${normal}"
+    else
+        echo -e "${bold}Setting PWM target to $pwmTarget ($pwmPercent%) for all zones${normal}"
+        rm -f "${pwmOverrideFile}".*
+    fi
+    oldPoint=""
+    if [ -e "$pwmOverrideFile$overrideZone" ]; then
+        oldPoint=$(cat "$pwmOverrideFile$overrideZone")
+        echo "        (prior value: $oldPoint)"
+    else
+        # Update zone to manual control (so PWM target is used)
+        if [ -z "$zoneTarget" ] || [ "$zoneTarget" == "0" ]; then
+            setZoneManual 0
+        fi
+        if [ -z "$zoneTarget" ] || [ "$zoneTarget" == "1" ]; then
+            setZoneManual 1
+        fi
+        overrideZone=".$zoneTarget"
+        if [ -n "$fanLogDir" ] && [ ! -d "$fanLogDir" ]; then
+            mkdir -v "$fanLogDir"
+        fi
+    fi
+    echo "$pwmTarget" > "$pwmOverrideFile$overrideZone"
+    if [ -e "${pwmOverrideFile}.0" ] && [ -e "${pwmOverrideFile}.1" ]; then
+        # Both override files exist (don't need global)
+        rm -f "${pwmOverrideFile}"
+    fi
+
+    if [ $G_verbose -gt 0 ]; then
+        echo "==> busctl tree $bus | grep 'control/fanpwm/'"
+    fi
+    fanList=$(busctl tree "$bus" | grep 'control/fanpwm/' | awk '{print $3}')
+    for fan in $fanList; do
+        fanName=${fan##*/}
+        shortFan=${fanName%_*}
+        (( fanNum=${shortFan:3:1} ))
+        if [ $fanNum -ge 6 ]; then
+            zone="1"
+        else
+            zone="0"
+        fi
+        if [ -z "$G_service" ]; then
+            findServiceByObjPath "$fan"
+        fi
+        if [ -n "$G_service" ]; then
+            interface="xyz.openbmc_project.Control.FanPwm"
+        fi
+
+        if [ -z "$zoneTarget" ] || [ "$zoneTarget" == "$zone" ]; then
+            echo "==> Setting $shortFan PWM Target to $pwmTarget (zone $zone - ${zoneList[$zone]})"
+            if [ $G_verbose -gt 0 ]; then
+                echo "==> busctl set-property $G_service $fan $interface Target t $pwmTarget"
+            fi
+            busctl set-property "$G_service" "$fan" "$interface" Target t "$pwmTarget"
+        fi
+    done
+}
+
+# Force all fans to specified RPM (stops pid-control server and manually starts swampd)
+function setRpmTarget()
+{
+    (( rpmTarget=$1 ))
+
+    echo -e "${bold}Setting all fans to $rpmTarget RPMs${normal}  ($setpointFile)"
+    oldPoint=""
+    if [ -e "$setpointFile" ]; then
+        oldPoint=$(cat "$setpointFile")
+        echo "      (prior value: $oldPoint RPMs)"
+    else
+        setpointDir="${setpointFile%/*}"
+        if [ ! -d "$setpointDir" ]; then
+            mkdir -pv "$setpointDir"
+        fi
+    fi
+    echo "$rpmTarget" > "$setpointFile"
+
+    # Stop pid-control service and start swampd with tuning enabled
+    startSwampd
+}
+
+# Stop pid-control service and start swampd with tuning enabled and logging to $fanLogDir
+function startSwampd()
+{
+    # Check if service is currently running
+    if systemctl status phosphor-pid-control.service > /dev/null ; then
+        echo "==> Stopping $swampdService"
+        systemctl stop "$swampdService"
+    else
+        # Kill prior swampd app (before restarting)
+        echo "==> killall swampd"
+        killall swampd
+    fi
+
+    if [ -e "$overrideLog" ]; then
+        mv -v "$overrideLog" "$overrideLog.last"
+    fi
+
+    if [ -n "$fanLogDir" ] && [ ! -d "$fanLogDir" ]; then
+        mkdir -v "$fanLogDir"
+    fi
+
+    # Since swampd is being restarted, any PWM overrides will be lost (just DBUS writes)
+    rm -fv "${pwmOverrideFile}"*
+
+    echo -e "${bold}==> Restarting swampd: swampd -t -l $fanLogDir${normal} > $overrideLog 2>&1 &"
+    swampd -t -l "$fanLogDir" > "$overrideLog" 2>&1 &
+    (( rc=$? ))
+    if [ $rc -ne 0 ]; then
+        echo "ERROR: Failed to start swampd (rc=$rc)"
+        exit $rc
+    else
+        sleep 5
+    fi
+}
+
+# Display summary of all fans and zones (and any overrides set with this script)
+function fanStatus()
+{
+    (( found=0 ))
+    echo ""
+    if [ -e "${pwmOverrideFile}" ]; then
+        (( currentpwm=$(cat "$pwmOverrideFile") ))
+        (( pwmPercent=currentpwm*100/255 ))
+        echo -e "Currently hardcoded PWM target: $currentpwm ($pwmPercent%)  (from $pwmOverrideFile)"
+        (( found=1 ))
+    fi
+    overrideFile="${pwmOverrideFile}.0"
+    if [ -e "${overrideFile}" ]; then
+        (( currentpwm=$(cat "$overrideFile") ))
+        (( pwmPercent=currentpwm*100/255 ))
+        echo -e "Currently hardcoded PWM target: $currentpwm ($pwmPercent%) for ${zoneList[0]} zone (from $overrideFile)"
+        (( found=1 ))
+    fi
+    overrideFile="${pwmOverrideFile}.1"
+    if [ -e "${overrideFile}" ]; then
+        (( currentpwm=$(cat "$overrideFile") ))
+        (( pwmPercent=currentpwm*100/255 ))
+        echo -e "Currently hardcoded PWM target: $currentpwm ($pwmPercent%) for ${zoneList[1]} zone (from $overrideFile)"
+        (( found=1 ))
+    fi
+    if [ -e "$setpointFile" ]; then
+        (( setpoint=$(cat "$setpointFile") ))
+        echo -e "Currently hardcoded RPM target: $setpoint RPM  (from $setpointFile)"
+        (( found=1 ))
+    fi
+    if [ $found -ne 0 ]; then
+        echo ""
+    fi
+
+    echo "Fans:"
+    fanList=$(busctl tree "$bus" | grep 'fan_tach/' | awk '{print $2}')
+    echo -e "    Fan      Rotor     Present    RPM\tPWM: %\tTarget\tZone"
+    echo -e "    ---     --------   -------   -----\t------\t------\t----"
+    lastFan=""
+    for fan in $fanList; do
+        fanName=${fan##*/}
+        shortFan=${fanName%_*}
+        if [ ${#shortFan} -eq 5 ]; then
+            shortFan="${shortFan:0:4}"
+        fi
+        (( fanNum=${shortFan:3:1} ))
+        if [ $fanNum -ge 6 ]; then
+            zone="1 (${zoneList[1]})"
+        else
+            zone="0 (${zoneList[0]})"
+        fi
+        if [ -z "$G_service" ]; then
+            findServiceByObjPath "$fan"
+        fi
+        if [ -n "$G_service" ]; then
+            interface="xyz.openbmc_project.State.Decorator.Availability"
+            if [ $G_verbose -gt 0 ]; then
+                echo "==> busctl call $G_service $fan org.freedesktop.DBus.Properties GetAll s $interface"
+                busctl call "$G_service" "$fan" org.freedesktop.DBus.Properties GetAll s "$interface" | sed 's/^/  /'
+            fi
+            available=$(busctl call "$G_service" "$fan" org.freedesktop.DBus.Properties Get ss "$interface" Available | sed 's/^v b //')
+
+            # /xyz/openbmc_project/sensors/fan_tach/Fan1a_in - Value (RPM)
+            interface="xyz.openbmc_project.Sensor.Value"
+            if [ $G_verbose -gt 0 ]; then
+                echo "==> busctl call $G_service $fan org.freedesktop.DBus.Properties GetAll s $interface"
+                busctl call "$G_service" "$fan" org.freedesktop.DBus.Properties GetAll s "$interface" | sed 's/^/  /'
+            fi
+            rpm=$(busctl call "$G_service" "$fan" org.freedesktop.DBus.Properties Get ss "$interface" Value | sed 's/^v d //')
+            if [ "$rpm" == "nan" ]; then
+                rpm="0"
+            fi
+
+            if [ "$shortFan" == "$lastFan" ]; then
+                # Second rotor (so skip PWM data since it is the same)
+                if [ $G_verbose -gt 0 ]; then
+                    echo -en "${bold}"
+                fi
+                printf "    %s    %-10s  %-5s    %5d\n" "$shortFan" "$fanName" "$available" "$rpm"
+                if [ $G_verbose -gt 0 ]; then
+                    echo -e "${normal}"
+                fi
+            else
+                # /xyz/openbmc_project/sensors/fan_pwm/Fan1_Pwm - Value (percent)
+                pwmName="/xyz/openbmc_project/sensors/fan_pwm/${shortFan}_Pwm"
+                if [ $G_verbose -gt 0 ]; then
+                    echo "==> busctl call $G_service $pwmName org.freedesktop.DBus.Properties GetAll s $interface"
+                    busctl call "$G_service" "$pwmName" org.freedesktop.DBus.Properties GetAll s "$interface"
+                fi
+                pwmPercent=$(busctl call "$G_service" "$pwmName" org.freedesktop.DBus.Properties Get ss "$interface" Value | sed 's/^v d //')
+                # /xyz/openbmc_project/control/fanpwm/Fan1_Pwm - Target
+                pwmName="/xyz/openbmc_project/control/fanpwm/${shortFan}_Pwm"
+                interface="xyz.openbmc_project.Control.FanPwm"
+                if [ $G_verbose -gt 0 ]; then
+                    echo "==> busctl call $G_service $pwmName org.freedesktop.DBus.Properties GetAll s $interface"
+                    busctl call "$G_service" "$pwmName" org.freedesktop.DBus.Properties GetAll s "$interface"
+                fi
+                pwmTarget=$(busctl call "$G_service" "$pwmName" org.freedesktop.DBus.Properties Get ss "$interface" Target | sed 's/^v t //')
+                if [ $G_verbose -gt 0 ]; then
+                    echo -en "${bold}"
+                fi
+                printf "    %s    %-10s  %-5s    %5d" "$shortFan" "$fanName" "$available" "$rpm"
+                printf "\t%6.2f\t%4d%%\t%s\n" "$pwmPercent" "$pwmTarget" "$zone"
+                if [ $G_verbose -gt 0 ]; then
+                    echo -e "${normal}"
+                fi
+            fi
+        fi
+        lastFan="$shortFan"
+    done
+    echo ""
+
+    # Display zone info
+    objpath="/xyz/openbmc_project/settings/fanctrl/zone"
+    interface="xyz.openbmc_project.Control.Mode"
+    findServiceByObjPath "${objpath}0"
+    if [ $G_verbose -gt 0 ]; then
+        echo "==> busctl call $G_service ${objpath}0 org.freedesktop.DBus.Properties GetAll s ${interface}"
+    fi
+    busctl call "$G_service" "${objpath}0" org.freedesktop.DBus.Properties GetAll s "${interface}" | sed "s/^a{sv} 2 /    Zone 0 (${zoneList[0]}) - /"
+    if [ $G_verbose -gt 0 ]; then
+        echo "==> busctl call $G_service ${objpath}1 org.freedesktop.DBus.Properties GetAll s ${interface}"
+    fi
+    busctl call "$G_service" "${objpath}1" org.freedesktop.DBus.Properties GetAll s "${interface}" | sed "s/^a{sv} 2 /    Zone 1 (${zoneList[1]}) - /"
+    G_service=""
+}
+
+# Display all DBUS properties of pwm and zone objects
+function pwmStatus()
+{
+    if [ -e "${pwmOverrideFile}" ]; then
+        (( currentpwm=$(cat "$pwmOverrideFile") ))
+        (( pwmPercent=currentpwm*100/255 ))
+        echo -e "Currently hardcoded PWM target: $currentpwm ($pwmPercent%)  (from $pwmOverrideFile)"
+    fi
+    if [ -e "${pwmOverrideFile}.0" ]; then
+        (( currentpwm=$(cat "$pwmOverrideFile.0") ))
+        (( pwmPercent=currentpwm*100/255 ))
+        echo -e "Currently hardcoded PWM target: $currentpwm ($pwmPercent%) for ${zoneList[0]} zone (from $pwmOverrideFile.0)"
+    fi
+    if [ -e "${pwmOverrideFile}.1" ]; then
+        (( currentpwm=$(cat "$pwmOverrideFile.1") ))
+        (( pwmPercent=currentpwm*100/255 ))
+        echo -e "Currently hardcoded PWM target: $currentpwm ($pwmPercent%) for ${zoneList[1]} zone (from $pwmOverrideFile.1)"
+    fi
+    if [ -e "$setpointFile" ]; then
+        (( setpoint=$(cat "$setpointFile") ))
+        echo -e "Currently hardcoded RPM target: $setpoint RPM  (from $setpointFile)"
+    fi
+
+    echo -e "\nDBUS Fan PWM Sensors:"
+    if [ $G_verbose -gt 0 ]; then
+        echo "==> busctl tree $bus | grep 'control/fanpwm/'"
+    fi
+    fanList=$(busctl tree "$bus" | grep 'control/fanpwm/' | awk '{print $3}')
+    for fan in $fanList; do
+        fanName=${fan##*/}
+        shortFan=${fanName%_*}
+        (( fanNum=${shortFan:3:1} ))
+        if [ -z "$G_service" ]; then
+            findServiceByObjPath "$fan"
+        fi
+        if [ -n "$G_service" ]; then
+            echo -e "${bold}$shortFan${normal}:\t\t($fan)"
+            pwmName="/xyz/openbmc_project/sensors/fan_pwm/${shortFan}_Pwm"
+            interface="xyz.openbmc_project.Sensor.Value"
+            if [ $G_verbose -gt 0 ]; then
+                echo "==> busctl call $G_service $pwmName org.freedesktop.DBus.Properties GetAll s $interface"
+            fi
+            busctl call "$G_service" "$pwmName" org.freedesktop.DBus.Properties GetAll s "$interface" | sed 's/^a{sv} ./   /'
+
+            pwmName="/xyz/openbmc_project/control/fanpwm/${shortFan}_Pwm"
+            interface="xyz.openbmc_project.Control.FanPwm"
+            if [ $G_verbose -gt 0 ]; then
+                echo "==> busctl call $G_service $pwmName org.freedesktop.DBus.Properties GetAll s $interface"
+            fi
+            busctl call "$G_service" "$pwmName" org.freedesktop.DBus.Properties GetAll s "$interface" | sed 's/^a{sv} ./   /'
+        fi
+    done
+    # Zone Status
+    echo ""
+    objpath="/xyz/openbmc_project/settings/fanctrl/zone0"
+    interface="xyz.openbmc_project.Control.Mode"
+    findServiceByObjPath "${objpath}"
+    echo -e "${bold}Zone 0 (${zoneList[0]}):${normal}\t\t($objpath)"
+    if [ $G_verbose -gt 0 ]; then
+        echo "==> busctl call $G_service ${objpath} org.freedesktop.DBus.Properties GetAll s ${interface}"
+    fi
+    busctl call "$G_service" "${objpath}" org.freedesktop.DBus.Properties GetAll s "${interface}" | sed 's/^a{sv} 2 /    /'
+    objpath="/xyz/openbmc_project/settings/fanctrl/zone1"
+    echo -e "${bold}Zone 1 (${zoneList[1]}):${normal}\t\t($objpath)"
+    if [ $G_verbose -gt 0 ]; then
+        echo "==> busctl call $G_service ${objpath} org.freedesktop.DBus.Properties GetAll s ${interface}"
+    fi
+    busctl call "$G_service" "${objpath}" org.freedesktop.DBus.Properties GetAll s "${interface}" | sed 's/^a{sv} 2 /    /'
+    G_service=""
+}
+
+# Display Value/Unit DBUS properties of temperature sensors for specified service
+function printTemperatureValues()
+{
+    if [ -n "$1" ]; then
+        service="$1"
+        echo -e "\nDBUS Temperature Sensors: ($service)"
+        if [ $G_verbose -gt 0 ]; then
+            echo "==> busctl tree $service | grep '/temperature/'"
+        fi
+        sensorList=$(busctl tree "$service" | grep '/temperature/' | awk '{print $2}')
+        for sensor in $sensorList; do
+            sensorName=${sensor##*/}
+            if [ -z "$G_service" ]; then
+                findServiceByObjPath "$sensor"
+            fi
+            if [ -n "$G_service" ]; then
+                interface="xyz.openbmc_project.Sensor.Value"
+                if [ $G_verbose -gt 0 ]; then
+                    echo "==> busctl call $G_service $sensor org.freedesktop.DBus.Properties GetAll s $interface"
+                    if [ $G_verbose -gt 1 ]; then
+                        busctl call "$G_service" "$sensor" org.freedesktop.DBus.Properties GetAll s "$interface" | sed 's/^a{sv} ./   /'
+                    fi
+                fi
+                temp=$(busctl get-property "$G_service" "$sensor" "$interface" Value | sed 's/^d //')
+                unit=$(busctl get-property "$G_service" "$sensor" "$interface" Unit | sed 's/^s .*.Unit.//' | sed 's/"//')
+                printf "    %-20s  %-7.2f %s\n" "$sensorName" "$temp" "$unit"
+            fi
+        done
+        G_service=""
+    else
+        echo "ERROR: printTemperatureValues() requires service name"
+    fi
+}
+
+###
+### main:
+###
+case "$1" in
+    "setrpm" )
+        if [ -z "$2" ]; then
+            echo "ERROR: setrpm requires target RPM_value"
+            echo "       $appName setrpm <RPM_value>"
+            exit 9
+        fi
+        (( target=$2 ))
+        if [ $target -lt 1000 ] || [ $target -gt 40000 ]; then
+            echo "ERROR: Invalid RPM value of $target (1000-40000)"
+            exit 8
+        fi
+        setRpmTarget "$target"
+        fanStatus
+        ;;
+
+    "setpwm" )
+        if [ -z "$2" ]; then
+            echo "ERROR: setpwm requires target PWM_value (0-255)"
+            echo "       $appName setpwm <PWM_value <Zone>>"
+            exit 19
+        fi
+        (( target=$2 ))
+        if [ $target -lt 0 ] || [ $target -gt 255 ]; then
+            echo "ERROR: Invalid PWM value of $target (0-255)"
+            exit 18
+        fi
+        targetZone=""
+        if [ -n "$3" ]; then
+            if [ "$3" == "0" ] || [ "$3" == "CECIO" ] || [ "$3" == "cecio" ]; then
+                targetZone="0"
+            elif [ "$3" == "1" ] || [ "$3" == "NVME" ] || [ "$3" == "nvme" ]; then
+                targetZone="1"
+            else
+                echo "ERROR: Invalid Zone: $3  (Use 0, 1, CECIO or NVME)"
+                echo "       $appName setpwm <PWM_value <Zone>>"
+                exit 18
+            fi
+        fi
+        setPwmTarget "$target" "$targetZone"
+        fanStatus
+        ;;
+
+    "resume" )
+        (( restart=1 ))
+        # Check if service is currently running
+        if ! systemctl status phosphor-pid-control.service > /dev/null ; then
+            echo -e "${bold}==> Killing swampd app${normal}"
+            killall swampd
+        else
+            echo -e "\n${bold}NOTE: phosphor-pid-control.service is already running${normal} (no need to restart)\n"
+            (( restart=0 ))
+            # Update zones back to automatic control
+            setZoneManual 0 false
+            setZoneManual 1 false
+        fi
+        if [ -e "$setpointFile" ]; then
+            echo "==> Removing $setpointFile"
+            rm -f "$setpointFile"
+        fi
+        if [ -e "$pwmOverrideFile" ] || [ -e "${pwmOverrideFile}.0" ] || [ -e "${pwmOverrideFile}.1" ]; then
+            echo "==> Removing ${pwmOverrideFile}"*
+            rm -fv "${pwmOverrideFile}"*
+        fi
+        if [ -e "$overrideLog" ]; then
+            mv -v "$overrideLog" "$overrideLog.last"
+        fi
+        if [ $restart -gt 0 ]; then
+            echo -e "${bold}==> Restarting $swampdService${normal}"
+            systemctl start "$swampdService"
+            sleep 5
+        fi
+        echo "==> systemctl status $swampdService"
+        if systemctl status "$swampdService" ; then
+            fanStatus
+        fi
+        ;;
+
+    "status" )
+        fanStatus
+        ;;
+
+    "pwmstatus" )
+        pwmStatus
+        ;;
+
+    "temps" )
+        printTemperatureValues "xyz.openbmc_project.HwmonTempSensor"
+        printTemperatureValues "xyz.openbmc_project.IntelCPUSensor"
+        ;;
+
+    "trace" )
+        if [ -e "$overrideLog" ]; then
+            echo "==> $overrideLog"
+            cat "$overrideLog"
+        else
+            echo -e "NOTE: No RPM override currently applied\n"
+            echo "==> journalctl | grep -e 'swampd' -e 'fansensor'"
+            journalctl | grep -e 'swampd' -e 'fansensor'
+        fi
+        ;;
+
+    * )
+        echo "ERROR: Unknown command: $1"
+        usage
+        ;;
+esac
