@@ -1,0 +1,364 @@
+From 490157a0e4806407c32fda8f989fc1a9e2930d65 Mon Sep 17 00:00:00 2001
+From: tiwari-nishant <tiwari.nishant@ibm.com>
+Date: Tue, 4 Feb 2025 13:12:53 +0530
+Subject: [PATCH] Added PCIe Slots Table in Inventory and LEDs Page
+
+- Implemented PCIe Slots in Inventory and LEDs Page
+
+- Added search functionality and Sorting Functionality
+
+Change-Id: Ie37b8c44b064fb289baa4f82994bbf0218fbce7a
+Signed-off-by: tiwari-nishant <tiwari.nishant@ibm.com>
+---
+ src/locales/en-US.json                        |   4 +
+ src/store/index.js                            |   3 +-
+ .../modules/HardwareStatus/PcieSlotsStore.js  |  62 ++++++++
+ .../HardwareStatus/Inventory/Inventory.vue    |  15 ++
+ .../Inventory/InventoryTablePcieSlots.vue     | 148 ++++++++++++++++++
+ 5 files changed, 231 insertions(+), 1 deletion(-)
+ create mode 100644 src/store/modules/HardwareStatus/PcieSlotsStore.js
+ create mode 100644 src/views/HardwareStatus/Inventory/InventoryTablePcieSlots.vue
+
+diff --git a/src/locales/en-US.json b/src/locales/en-US.json
+index e64287d..11601a3 100644
+--- a/src/locales/en-US.json
++++ b/src/locales/en-US.json
+@@ -380,6 +380,7 @@
+         "powerSupplies": "Power supplies",
+         "bmcManager": "BMC manager",
+         "chassis": "Chassis",
++        "pcieSlots": "PCIe slots",
+         "processors": "Processors",
+         "quicklinkTitle": "Quick links to hardware components",
+         "system": "System",
+@@ -413,6 +414,7 @@
+             "id": "ID",
+             "identifyLed": "Identify LED",
+             "instructionSet": "Instruction set",
++            "lanes": "Lanes",
+             "lastResetTime": "Last reset time",
+             "locationNumber": "Location number",
+             "managerType": "Manager type",
+@@ -428,6 +430,7 @@
+             "name": "Name",
+             "operatingSpeedMhz": "Operating speed",
+             "partNumber": "Part number",
++            "pcieType": "PCIe type",
+             "power": "Power",
+             "powerInputWatts": "Power input",
+             "processorArchitecture": "Processor architecture",
+@@ -448,6 +451,7 @@
+             "totalSystemMemoryGiB": "Total system memory",
+             "totalThreads": "Total threads",
+             "uuid": "UUID",
++            "slotType": "Slot type",
+             "version": "Version"
+         },
+         "toast": {
+diff --git a/src/store/index.js b/src/store/index.js
+index 029df7a..c865116 100644
+--- a/src/store/index.js
++++ b/src/store/index.js
+@@ -30,7 +30,7 @@ import PoliciesStore from './modules/SecurityAndAccess/PoliciesStore';
+ import FactoryResetStore from './modules/Operations/FactoryResetStore';
+ import SnmpAlertsStore from './modules/Settings/SnmpAlertsStore';
+ import KeyClearStore from './modules/Operations/KeyClearStore';
+-
++import PcieSlotsStore from './modules/HardwareStatus/PcieSlotsStore';
+ import DateTimeStore from './modules/Settings/DateTimeStore';
+ import VirtualMediaStore from './modules/Operations/VirtualMediaStore';
+ 
+@@ -72,6 +72,7 @@ const store = new Vuex.Store({
+     policies: PoliciesStore,
+     factoryReset: FactoryResetStore,
+     keyClear: KeyClearStore,
++    pcieSlots: PcieSlotsStore,
+   },
+ });
+ 
+diff --git a/src/store/modules/HardwareStatus/PcieSlotsStore.js b/src/store/modules/HardwareStatus/PcieSlotsStore.js
+new file mode 100644
+index 0000000..9dfa474
+--- /dev/null
++++ b/src/store/modules/HardwareStatus/PcieSlotsStore.js
+@@ -0,0 +1,62 @@
++import api from '@/store/api';
++
++const PcieSlotsStore = {
++  namespaced: true,
++  state: {
++    pcieSlots: [],
++  },
++  getters: {
++    pcieSlots: (state) => state.pcieSlots,
++  },
++  mutations: {
++    setPcieSlotsInfo: (state, data) => {
++      state.pcieSlots = data.map((slot) => {
++        const { PCIeType, Status, Lanes, Location, SlotType } = slot;
++        return {
++          type: SlotType,
++          pcieType: PCIeType,
++          lanes: Lanes,
++          statusState: Status?.State ? Status.State : '',
++          locationNumber: Location?.PartLocation?.ServiceLabel,
++        };
++      });
++    },
++  },
++  actions: {
++    async getChassisInfo() {
++      return await api.get(`/redfish/v1/Chassis`).then(({ data }) => {
++        return data?.Members;
++      });
++    },
++    async getPcieSlotsInfo({ dispatch, commit }) {
++      commit('setPcieSlotsInfo', []);
++      let tempPcieSlots = [];
++      const chassisInfo = await dispatch('getChassisInfo');
++      await api.all(
++        chassisInfo.map(async (singleChassis) => {
++          return await api
++            .get(`${singleChassis['@odata.id']}`)
++            .then(async ({ data }) => {
++              if (Object.hasOwn(data, 'PCIeSlots')) {
++                return await api
++                  .get(`${data['@odata.id']}/PCIeSlots`)
++                  .then((response) => {
++                    if (
++                      Array.isArray(response.data.Slots) &&
++                      response.data.Slots.length > 0
++                    ) {
++                      tempPcieSlots.push(...response.data.Slots);
++                    }
++                  })
++                  .catch((error) => console.log(error));
++              }
++            })
++            .catch((error) => console.log(error));
++        }),
++      );
++      commit('setPcieSlotsInfo', tempPcieSlots);
++    },
++  },
++};
++
++export default PcieSlotsStore;
+diff --git a/src/views/HardwareStatus/Inventory/Inventory.vue b/src/views/HardwareStatus/Inventory/Inventory.vue
+index a3f4d23..1ae55d8 100644
+--- a/src/views/HardwareStatus/Inventory/Inventory.vue
++++ b/src/views/HardwareStatus/Inventory/Inventory.vue
+@@ -45,6 +45,9 @@
+ 
+     <!-- Assembly table -->
+     <table-assembly ref="assembly" />
++
++    <!-- PCIe slots table -->
++    <table-pcie-slots ref="pcieSlots" />
+   </b-container>
+ </template>
+ 
+@@ -59,6 +62,7 @@ import TableBmcManager from './InventoryTableBmcManager';
+ import TableChassis from './InventoryTableChassis';
+ import TableProcessors from './InventoryTableProcessors';
+ import TableAssembly from './InventoryTableAssembly';
++import TablePcieSlots from './InventoryTablePcieSlots';
+ import LoadingBarMixin from '@/components/Mixins/LoadingBarMixin';
+ import PageSection from '@/components/Global/PageSection';
+ import JumpLink16 from '@carbon/icons-vue/es/jump-link/16';
+@@ -80,6 +84,7 @@ export default {
+     TableProcessors,
+     TableAssembly,
+     PageSection,
++    TablePcieSlots,
+     JumpLink: JumpLink16,
+   },
+   mixins: [LoadingBarMixin, JumpLinkMixin],
+@@ -141,6 +146,12 @@ export default {
+           href: '#assembly',
+           linkText: i18n.global.t('pageInventory.assemblies'),
+         },
++        {
++          id: 'pcieSlots',
++          dataRef: 'pcieSlots',
++          href: '#pcieSlots',
++          linkText: i18n.global.t('pageInventory.pcieSlots'),
++        },
+       ],
+     };
+   },
+@@ -181,6 +192,9 @@ export default {
+     const assemblyTablePromise = new Promise((resolve) => {
+       this.$root.$on('hardware-status-assembly-complete', () => resolve());
+     });
++    const pcieSlotsTablePromise = new Promise((resolve) => {
++      this.$root.$on('hardware-status-pcie-slots-complete', () => resolve());
++    });
+     // Combine all child component Promises to indicate
+     // when page data load complete
+     Promise.all([
+@@ -193,6 +207,7 @@ export default {
+       serviceIndicatorPromise,
+       systemTablePromise,
+       assemblyTablePromise,
++      pcieSlotsTablePromise,
+     ]).finally(() => this.endLoader());
+   },
+ };
+diff --git a/src/views/HardwareStatus/Inventory/InventoryTablePcieSlots.vue b/src/views/HardwareStatus/Inventory/InventoryTablePcieSlots.vue
+new file mode 100644
+index 0000000..9d313d3
+--- /dev/null
++++ b/src/views/HardwareStatus/Inventory/InventoryTablePcieSlots.vue
+@@ -0,0 +1,148 @@
++<template>
++  <page-section :section-title="$t('pageInventory.pcieSlots')">
++    <b-row class="align-items-end">
++      <b-col sm="6" md="5" xl="4">
++        <search
++          @change-search="onChangeSearchInput"
++          @clear-search="onClearSearchInput"
++        />
++      </b-col>
++      <b-col sm="6" md="3" xl="2">
++        <table-cell-count
++          :filtered-items-count="filteredRows"
++          :total-number-of-cells="pcieSlots.length"
++        ></table-cell-count>
++      </b-col>
++    </b-row>
++    <b-table
++      sort-icon-left
++      no-sort-reset
++      hover
++      responsive="md"
++      sort-by="name"
++      show-empty
++      :items="pcieSlots"
++      :fields="fields"
++      :sort-desc="false"
++      :sort-compare="sortCompare"
++      :filter="searchFilter"
++      :empty-text="$t('global.table.emptyMessage')"
++      :empty-filtered-text="$t('global.table.emptySearchMessage')"
++      :busy="isBusy"
++      @filtered="onFiltered"
++    >
++      <!-- StatusState -->
++      <template #cell(statusState)="{ value }">
++        <status-icon :status="statusStateIcon(value)" />
++        {{ value }}
++      </template>
++      <template #row-details="{ item }">
++        <b-container fluid>
++          <b-row>
++            <b-col sm="6" xl="6">
++              <dl>
++                <dt>
++                  {{ $t('pageInventory.table.slotType') }}
++                </dt>
++                <dd>{{ dataFormatter(item.type) }}</dd>
++              </dl>
++            </b-col>
++          </b-row>
++        </b-container>
++      </template>
++    </b-table>
++  </page-section>
++</template>
++<script>
++import PageSection from '@/components/Global/PageSection';
++import TableCellCount from '@/components/Global/TableCellCount';
++import DataFormatterMixin from '@/components/Mixins/DataFormatterMixin';
++import TableSortMixin from '@/components/Mixins/TableSortMixin';
++import Search from '@/components/Global/Search';
++import SearchFilterMixin, {
++  searchFilter,
++} from '@/components/Mixins/SearchFilterMixin';
++import BVToastMixin from '@/components/Mixins/BVToastMixin';
++import i18n from '@/i18n';
++import { useI18n } from 'vue-i18n';
++export default {
++  components: { PageSection, Search, TableCellCount },
++  mixins: [BVToastMixin, DataFormatterMixin, TableSortMixin, SearchFilterMixin],
++  data() {
++    return {
++      $t: useI18n().t,
++      isBusy: true,
++      fields: [
++        {
++          key: 'type',
++          label: i18n.global.t('pageInventory.table.slotType'),
++          formatter: this.dataFormatter,
++          sortable: true,
++        },
++        {
++          key: 'pcieType',
++          label: i18n.global.t('pageInventory.table.pcieType'),
++          formatter: this.dataFormatter,
++          sortable: true,
++        },
++        {
++          key: 'statusState',
++          label: i18n.global.t('pageInventory.table.state'),
++          formatter: this.dataFormatter,
++          sortable: true,
++        },
++        {
++          key: 'lanes',
++          label: i18n.global.t('pageInventory.table.lanes'),
++          formatter: this.dataFormatter,
++          sortable: true,
++        },
++        {
++          key: 'locationNumber',
++          label: i18n.global.t('pageInventory.table.locationNumber'),
++          formatter: this.dataFormatter,
++          sortable: true,
++        },
++      ],
++      searchFilter: searchFilter,
++      searchTotalFilteredRows: 0,
++    };
++  },
++  computed: {
++    filteredRows() {
++      return this.searchFilter
++        ? this.searchTotalFilteredRows
++        : this.pcieSlots.length;
++    },
++    pcieSlots() {
++      return this.$store.getters['pcieSlots/pcieSlots'];
++    },
++  },
++  created() {
++    this.$store.dispatch('pcieSlots/getPcieSlotsInfo').finally(() => {
++      this.$root.$emit('hardware-status-pcie-slots-complete');
++      this.isBusy = false;
++    });
++  },
++  methods: {
++    sortCompare(a, b, key) {
++      if (key === 'health') {
++        return this.sortStatus(a, b, key);
++      }
++    },
++    onFiltered(filteredItems) {
++      this.searchTotalFilteredRows = filteredItems.length;
++    },
++    statusStateIcon(status) {
++      switch (status) {
++        case 'Enabled':
++          return 'success';
++        case 'Absent':
++          return 'warning';
++        default:
++          return '';
++      }
++    },
++  },
++};
++</script>
+-- 
+2.34.1
+
