@@ -2,7 +2,7 @@ FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 SRC_URI += "file://bios-update.sh"
 
 PACKAGECONFIG:append = " flash_bios"
-RDEPENDS:${PN} += "bash flashrom bios-version phosphor-ipmi-ipmb"
+RDEPENDS:${PN} += "bash flashrom bios-version phosphor-ipmi-ipmb fpga-programming-utils"
 
 do_install:append() {
     install -d ${D}${libexecdir}
