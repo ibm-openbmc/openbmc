@@ -1,0 +1,351 @@
+From 97fa7d1ac5b2dda944179aeebb0ae791ec30e969 Mon Sep 17 00:00:00 2001
+From: Asmitha Karunanithi <asmitk01@in.ibm.com>
+Date: Fri, 7 Feb 2025 11:31:13 -0600
+Subject: [PATCH] Add PCIeSlots Redfish Endpoint for Chassis
+
+This commit introduces support for retrieving PCIe slot information
+from the inventory and exposing it via the /Chassis/<id>/PCIeSlots
+Redfish endpoint.
+
+Upstream-Status: Pending
+
+Tested By:
+'''
+GET https://${bmc}/redfish/v1/Chassis/<ChassisId>
+    "PCIeSlots": {
+        "@odata.id": "/redfish/v1/Chassis/IBM_System1_Baseboard/PCIeSlots"
+    }
+
+GET https://${bmc}/redfish/v1/Chassis/<ChassisId>/PCIeSlots
+    "Slots": [
+        {
+          "Lanes": 4,
+          "Location": {
+            "PartLocation": {
+              "ServiceLabel": "..."
+            }
+          },
+          "PCIeType": "...",
+          "SlotType": "...",
+          "Status": {
+            "State": "<Enabled/Absent>"
+          }
+        },
+        {...}
+    ]
+'''
+
+Change-Id: If9200559359c721aa67775d65f2dc9d3bf51a079
+Signed-off-by: Asmitha Karunanithi <asmitk01@in.ibm.com>
+---
+ redfish-core/lib/chassis.hpp    |   2 +
+ redfish-core/lib/pcie_slots.hpp | 218 ++++++++++++++++++++------------
+ redfish-core/src/redfish.cpp    |   2 +
+ 3 files changed, 138 insertions(+), 84 deletions(-)
+
+diff --git a/redfish-core/lib/chassis.hpp b/redfish-core/lib/chassis.hpp
+index a993b016..f5ac2388 100644
+--- a/redfish-core/lib/chassis.hpp
++++ b/redfish-core/lib/chassis.hpp
+@@ -511,6 +511,8 @@ inline void handleChassisGetSubTree(
+             .jsonValue["Actions"]["#Chassis.Reset"]["@Redfish.ActionInfo"] =
+             boost::urls::format("/redfish/v1/Chassis/{}/ResetActionInfo",
+                                 chassisId);
++        asyncResp->res.jsonValue["PCIeSlots"]["@odata.id"] =
++            boost::urls::format("/redfish/v1/Chassis/{}/PCIeSlots", chassisId);
+         dbus::utility::getAssociationEndPoints(
+             path + "/drive",
+             [asyncResp, chassisId](const boost::system::error_code& ec3,
+diff --git a/redfish-core/lib/pcie_slots.hpp b/redfish-core/lib/pcie_slots.hpp
+index a6796b99..9bd0a717 100644
+--- a/redfish-core/lib/pcie_slots.hpp
++++ b/redfish-core/lib/pcie_slots.hpp
+@@ -1,118 +1,146 @@
++// SPDX-License-Identifier: Apache-2.0
++// SPDX-FileCopyrightText: Copyright OpenBMC Authors
+ #pragma once
+ 
+ #include "app.hpp"
++#include "async_resp.hpp"
+ #include "dbus_utility.hpp"
+ #include "error_messages.hpp"
++#include "generated/enums/pcie_device.hpp"
+ #include "generated/enums/pcie_slots.hpp"
++#include "http_request.hpp"
++#include "logging.hpp"
+ #include "query.hpp"
+ #include "registries/privilege_registry.hpp"
+-#include "utility.hpp"
+-#include "utils/dbus_utils.hpp"
+-#include "utils/json_utils.hpp"
+ #include "utils/pcie_util.hpp"
+ 
++#include <asm-generic/errno.h>
++
++#include <boost/beast/http/verb.hpp>
+ #include <boost/system/error_code.hpp>
+ #include <boost/url/format.hpp>
+-#include <sdbusplus/asio/property.hpp>
+-#include <sdbusplus/unpack_properties.hpp>
++#include <nlohmann/json.hpp>
++#include <sdbusplus/message/native_types.hpp>
+ 
++#include <algorithm>
+ #include <array>
++#include <cstddef>
++#include <functional>
++#include <memory>
++#include <optional>
++#include <string>
+ #include <string_view>
++#include <utility>
++#include <variant>
+ 
+ namespace redfish
+ {
+ 
+-inline void
+-    onPcieSlotGetAllDone(const std::shared_ptr<bmcweb::AsyncResp>& asyncResp,
+-                         const boost::system::error_code& ec,
+-                         const dbus::utility::DBusPropertiesMap& propertiesList)
++inline void processPcieSlot(
++    const dbus::utility::DBusInterfacesMap& interfacesList,
++    nlohmann::json& slots)
+ {
+-    if (ec)
+-    {
+-        BMCWEB_LOG_ERROR("Can't get PCIeSlot properties!");
+-        messages::internalError(asyncResp->res);
+-        return;
+-    }
+-
+-    nlohmann::json& slots = asyncResp->res.jsonValue["Slots"];
++    nlohmann::json slot = nlohmann::json::object();
++    bool slotHasData = false;
+ 
+-    nlohmann::json::array_t* slotsPtr =
+-        slots.get_ptr<nlohmann::json::array_t*>();
+-    if (slotsPtr == nullptr)
++    for (const auto& [interface, properties] : interfacesList)
+     {
+-        BMCWEB_LOG_ERROR("Slots key isn't an array???");
+-        messages::internalError(asyncResp->res);
+-        return;
+-    }
+-
+-    nlohmann::json::object_t slot;
+-
+-    const std::string* generation = nullptr;
+-    const size_t* lanes = nullptr;
+-    const std::string* slotType = nullptr;
+-    const bool* hotPluggable = nullptr;
+-
+-    const bool success = sdbusplus::unpackPropertiesNoThrow(
+-        dbus_utils::UnpackErrorPrinter(), propertiesList, "Generation",
+-        generation, "Lanes", lanes, "SlotType", slotType, "HotPluggable",
+-        hotPluggable);
+-
+-    if (!success)
+-    {
+-        messages::internalError(asyncResp->res);
+-        return;
+-    }
+-
+-    if (generation != nullptr)
+-    {
+-        std::optional<pcie_device::PCIeTypes> pcieType =
+-            pcie_util::redfishPcieGenerationFromDbus(*generation);
+-        if (!pcieType)
+-        {
+-            BMCWEB_LOG_WARNING("Unknown PCIe Slot Generation: {}", *generation);
+-        }
+-        else
++        if (interface == "xyz.openbmc_project.Inventory.Item.PCIeSlot")
+         {
+-            if (*pcieType == pcie_device::PCIeTypes::Invalid)
++            auto it = std::find_if(
++                properties.begin(), properties.end(),
++                [](const auto& pair) { return pair.first == "Generation"; });
++            if (it != properties.end())
+             {
+-                messages::internalError(asyncResp->res);
+-                return;
++                const std::string* generation =
++                    std::get_if<std::string>(&it->second);
++                if (generation != nullptr)
++                {
++                    std::optional<pcie_device::PCIeTypes> pcieType =
++                        pcie_util::redfishPcieGenerationFromDbus(*generation);
++                    if (pcieType &&
++                        *pcieType != pcie_device::PCIeTypes::Invalid)
++                    {
++                        slot["PCIeType"] = *pcieType;
++                        slotHasData = true;
++                    }
++                }
+             }
+-            slot["PCIeType"] = *pcieType;
+-        }
+-    }
+ 
+-    if (lanes != nullptr && *lanes != 0)
+-    {
+-        slot["Lanes"] = *lanes;
+-    }
++            it = std::find_if(properties.begin(), properties.end(),
++                              [](const auto& pair) {
++                                  return pair.first == "Lanes";
++                              });
++            if (it != properties.end())
++            {
++                const size_t* lanes = std::get_if<size_t>(&it->second);
++                if (lanes != nullptr)
++                {
++                    slot["Lanes"] = *lanes;
++                    slotHasData = true;
++                }
++            }
+ 
+-    if (slotType != nullptr)
+-    {
+-        std::optional<pcie_slots::SlotTypes> redfishSlotType =
+-            pcie_util::dbusSlotTypeToRf(*slotType);
+-        if (!redfishSlotType)
++            it = std::find_if(properties.begin(), properties.end(),
++                              [](const auto& pair) {
++                                  return pair.first == "SlotType";
++                              });
++            if (it != properties.end())
++            {
++                const std::string* slotType =
++                    std::get_if<std::string>(&it->second);
++                if (slotType != nullptr)
++                {
++                    std::optional<pcie_slots::SlotTypes> redfishSlotType =
++                        pcie_util::dbusSlotTypeToRf(*slotType);
++                    if (redfishSlotType &&
++                        *redfishSlotType != pcie_slots::SlotTypes::Invalid)
++                    {
++                        slot["SlotType"] = *redfishSlotType;
++                        slotHasData = true;
++                    }
++                }
++            }
++        }
++        else if (interface ==
++                 "xyz.openbmc_project.Inventory.Decorator.LocationCode")
+         {
+-            BMCWEB_LOG_WARNING("Unknown PCIe Slot Type: {}", *slotType);
++            auto it = std::find_if(
++                properties.begin(), properties.end(),
++                [](const auto& pair) { return pair.first == "LocationCode"; });
++            if (it != properties.end())
++            {
++                const std::string* locationCode =
++                    std::get_if<std::string>(&it->second);
++                if (locationCode != nullptr)
++                {
++                    slot["Location"]["PartLocation"]["ServiceLabel"] =
++                        *locationCode;
++                    slotHasData = true;
++                }
++            }
+         }
+-        else
++        else if (interface == "xyz.openbmc_project.Inventory.Item")
+         {
+-            if (*redfishSlotType == pcie_slots::SlotTypes::Invalid)
++            auto it = std::find_if(
++                properties.begin(), properties.end(),
++                [](const auto& pair) { return pair.first == "Present"; });
++            if (it != properties.end())
+             {
+-                BMCWEB_LOG_ERROR("Unknown PCIe Slot Type: {}", *slotType);
+-                messages::internalError(asyncResp->res);
+-                return;
++                const bool* present = std::get_if<bool>(&it->second);
++                if (present != nullptr)
++                {
++                    slot["Status"]["State"] = *present ? "Enabled" : "Absent";
++                    slotHasData = true;
++                }
+             }
+-            slot["SlotType"] = *redfishSlotType;
+         }
+     }
+ 
+-    if (hotPluggable != nullptr)
++    if (slotHasData)
+     {
+-        slot["HotPluggable"] = *hotPluggable;
++        slots.push_back(slot);
+     }
+-
+-    slots.emplace_back(std::move(slot));
+ }
+ 
+ inline void onMapperAssociationDone(
+@@ -148,12 +176,34 @@ inline void onMapperAssociationDone(
+         return;
+     }
+ 
+-    sdbusplus::asio::getAllProperties(
+-        *crow::connections::systemBus, connectionName, pcieSlotPath,
+-        "xyz.openbmc_project.Inventory.Item.PCIeSlot",
+-        [asyncResp](const boost::system::error_code& ec2,
+-                    const dbus::utility::DBusPropertiesMap& propertiesList) {
+-            onPcieSlotGetAllDone(asyncResp, ec2, propertiesList);
++    sdbusplus::message::object_path invPath("/xyz/openbmc_project/inventory");
++    dbus::utility::getManagedObjects(
++        connectionName, invPath,
++        [asyncResp, connectionName,
++         pcieSlotPath](const boost::system::error_code& ec1,
++                       const dbus::utility::ManagedObjectType& pcieSlotObjs) {
++            if (ec1)
++            {
++                messages::internalError(asyncResp->res);
++                return;
++            }
++            auto& slots = asyncResp->res.jsonValue["Slots"];
++
++            const auto pcieSlotIt = std::ranges::find_if(
++                pcieSlotObjs,
++                [pcieSlotPath](
++                    const std::pair<sdbusplus::message::object_path,
++                                    dbus::utility::DBusInterfacesMap>&
++                        pcieSlot) { return pcieSlotPath == pcieSlot.first; });
++
++            if (pcieSlotIt == pcieSlotObjs.end())
++            {
++                messages::resourceNotFound(asyncResp->res, "PCIeSlots",
++                                           "PCIeSlots_To_Be_Changed");
++                return;
++            }
++
++            processPcieSlot(pcieSlotIt->second, slots);
+         });
+ }
+ 
+diff --git a/redfish-core/src/redfish.cpp b/redfish-core/src/redfish.cpp
+index 61f27622..45232f4e 100644
+--- a/redfish-core/src/redfish.cpp
++++ b/redfish-core/src/redfish.cpp
+@@ -28,6 +28,7 @@
+ #include "network_protocol.hpp"
+ #include "odata.hpp"
+ #include "pcie.hpp"
++#include "pcie_slots.hpp"
+ #include "power.hpp"
+ #include "power_subsystem.hpp"
+ #include "power_supply.hpp"
+@@ -99,6 +100,7 @@ RedfishService::RedfishService(App& app)
+     requestRoutesChassisResetActionInfo(app);
+     requestRoutesChassisDrive(app);
+     requestRoutesChassisDriveName(app);
++    requestRoutesPCIeSlots(app);
+     requestRoutesUpdateService(app);
+     requestRoutesStorageCollection(app);
+     requestRoutesStorage(app);
+-- 
+2.43.0
+
