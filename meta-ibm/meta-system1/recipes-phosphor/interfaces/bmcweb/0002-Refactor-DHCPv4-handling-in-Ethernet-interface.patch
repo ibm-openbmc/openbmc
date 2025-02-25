@@ -1,0 +1,110 @@
+From 45f8dfb61626a79ae73479422a4c022169b9435d Mon Sep 17 00:00:00 2001
+From: Asmitha Karunanithi <asmitk01@in.ibm.com>
+Date: Tue, 25 Feb 2025 11:58:08 -0600
+Subject: [PATCH] Refactor DHCPv4 handling in Ethernet interface
+
+This change ensures handleDHCPPatch is called only when DHCPv4 or DHCPv6
+is present. Currently, it runs even when absent in the Redfish request,
+causing the IPv4 default gateway to be set to null. This results in the
+gateway being lost and the network going down.
+
+Upstream-Status: Pending
+
+Tested By:
+
+* Enable DHCPv4 when a static IP is configured
+'''
+PATCH -D patch.txt -d '{"DHCPv4" : {"DHCPEnabled": true}}' https://${bmc}/redfish/v1/Managers/bmc/EthernetInterfaces/eth0
+'''
+
+* Configure Static IP or did a patch operation of any other property
+  other than DHCPv4/v6
+
+Signed-off-by: Asmitha Karunanithi <asmitk01@in.ibm.com>
+---
+ redfish-core/lib/ethernet.hpp | 44 +++++++++++++++++++++++++++--------
+ 1 file changed, 34 insertions(+), 10 deletions(-)
+
+diff --git a/redfish-core/lib/ethernet.hpp b/redfish-core/lib/ethernet.hpp
+index d8c5ae35..2fdd830f 100644
+--- a/redfish-core/lib/ethernet.hpp
++++ b/redfish-core/lib/ethernet.hpp
+@@ -2286,18 +2286,14 @@ inline void requestEthernetInterfacesRoutes(App& app)
+                 std::optional<bool> ipv6AutoConfigEnabled;
+                 std::optional<bool> interfaceEnabled;
+                 std::optional<size_t> mtuSize;
++                std::optional<nlohmann::json> dhcpv4;
++                std::optional<nlohmann::json> dhcpv6;
+                 DHCPParameters v4dhcpParms;
+                 DHCPParameters v6dhcpParms;
+                 // clang-format off
+         if (!json_util::readJsonPatch(req, asyncResp->res,
+-                "DHCPv4/DHCPEnabled",   v4dhcpParms.dhcpv4Enabled,
+-                "DHCPv4/UseDNSServers", v4dhcpParms.useDnsServers,
+-                "DHCPv4/UseDomainName", v4dhcpParms.useDomainName,
+-                "DHCPv4/UseNTPServers", v4dhcpParms.useNtpServers,
+-                "DHCPv6/OperatingMode", v6dhcpParms.dhcpv6OperatingMode,
+-                "DHCPv6/UseDNSServers", v6dhcpParms.useDnsServers,
+-                "DHCPv6/UseDomainName", v6dhcpParms.useDomainName,
+-                "DHCPv6/UseNTPServers", v6dhcpParms.useNtpServers,
++                "DHCPv4", dhcpv4,
++                "DHCPv6", dhcpv6,
+                 "FQDN", fqdn,
+                 "HostName", hostname,
+                 "IPv4StaticAddresses", ipv4StaticAddresses,
+@@ -2314,6 +2310,30 @@ inline void requestEthernetInterfacesRoutes(App& app)
+         {
+             return;
+         }
++
++        if (dhcpv4)
++        {
++            if (!json_util::readJson(*dhcpv4, asyncResp->res, "DHCPEnabled",
++                                     v4dhcpParms.dhcpv4Enabled, "UseDNSServers",
++                                     v4dhcpParms.useDnsServers, "UseNTPServers",
++                                     v4dhcpParms.useNtpServers, "UseDomainName",
++                                     v4dhcpParms.useDomainName))
++            {
++                return;
++            }
++        }
++        if (dhcpv6)
++        {
++            if (!json_util::readJson(*dhcpv6, asyncResp->res, "OperatingMode",
++                                     v6dhcpParms.dhcpv6OperatingMode,
++                                     "UseDNSServers", v6dhcpParms.useDnsServers,
++                                     "UseNTPServers", v6dhcpParms.useNtpServers,
++                                     "UseDomainName",
++                                     v6dhcpParms.useDomainName))
++            {
++                return;
++            }
++        }
+                 // clang-format on
+ 
+                 // Get single eth interface data, and call the below callback
+@@ -2329,6 +2349,7 @@ inline void requestEthernetInterfacesRoutes(App& app)
+                          std::move(ipv6StaticDefaultGateways),
+                      staticNameServers = std::move(staticNameServers), mtuSize,
+                      ipv6AutoConfigEnabled,
++                     dhcpv4 = std::move(dhcpv4), dhcpv6 = std::move(dhcpv6),
+                      v4dhcpParms = std::move(v4dhcpParms),
+                      v6dhcpParms = std::move(v6dhcpParms), interfaceEnabled](
+                         const bool success,
+@@ -2347,8 +2368,11 @@ inline void requestEthernetInterfacesRoutes(App& app)
+                             return;
+                         }
+ 
+-                        handleDHCPPatch(ifaceId, ethData, v4dhcpParms,
+-                                        v6dhcpParms, asyncResp);
++                        if (dhcpv4 || dhcpv6)
++                        {
++                            handleDHCPPatch(ifaceId, ethData, v4dhcpParms,
++                                            v6dhcpParms, asyncResp);
++                        }
+ 
+                         if (hostname)
+                         {
+-- 
+2.43.0
+

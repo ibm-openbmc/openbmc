@@ -1,0 +1,198 @@
+From 9f127898dbe4d91e45fb30a38a84dede65ac7d3b Mon Sep 17 00:00:00 2001
+From: Asmitha Karunanithi <asmitk01@in.ibm.com>
+Date: Tue, 25 Feb 2025 11:15:11 -0600
+Subject: [PATCH] Add helpers for DHCP and static IP management
+
+Currently, when configuring a static IP on an interface with DHCP
+enabled, the gateway is lost, causing network issues.
+
+This commit introduces changes to fix issues with DHCP and static
+IP configuration:
+
+ - Disallow co-existence of static and DHCP IP addresses on an
+   ethernet interface:
+    - When static IP is configured, on enabling DHCP, the static IP
+      is cleared before configuring the DHCP IP.
+    - When DHCP is enabled on the interface, on configuring statuc IP,
+      DHCP is disabled before applying the static configuration to the
+      network.
+
+Upstream-Status: Embedded-Project-Specific
+
+Tested By:
+
+1. Configure Static IP when DHCP IP is on the ethernet interface:
+'''
+PATCH -D patch.txt -d
+'{"IPv4StaticAddresses":[{"Address":"<>","SubnetMask":"<>","Gateway":"<>"}]}' https://${bmc}/redfish/v1/Managers/bmc/EthernetInterfaces/eth0
+'''
+
+2. Enable DHCP when static IP is configured on the interface:
+'''
+PATCH -D patch.txt -d '{"DHCPv4" : {"DHCPEnabled": true}}' https://${bmc}/redfish/v1/Managers/bmc/EthernetInterfaces/eth0
+'''
+
+Signed-off-by: Asmitha Karunanithi <asmitk01@in.ibm.com>
+---
+ src/ethernet_interface.cpp | 78 +++++++++++++++++++++++++++++++++++++-
+ src/ethernet_interface.hpp |  6 +++
+ 2 files changed, 82 insertions(+), 2 deletions(-)
+
+diff --git a/src/ethernet_interface.cpp b/src/ethernet_interface.cpp
+index 10229ac..be3c785 100644
+--- a/src/ethernet_interface.cpp
++++ b/src/ethernet_interface.cpp
+@@ -158,6 +158,18 @@ void EthernetInterface::updateInfo(const InterfaceInfo& info, bool skipSignal)
+     }
+ }
+ 
++bool EthernetInterface::originIsManuallyAssigned(IP::AddressOrigin origin)
++{
++    return (
++#ifdef LINK_LOCAL_AUTOCONFIGURATION
++        (origin == IP::AddressOrigin::Static)
++#else
++        (origin == IP::AddressOrigin::Static ||
++         origin == IP::AddressOrigin::LinkLocal)
++#endif
++    );
++}
++
+ void EthernetInterface::addAddr(const AddressInfo& info)
+ {
+     IP::AddressOrigin origin = IP::AddressOrigin::Static;
+@@ -224,6 +236,51 @@ void EthernetInterface::addStaticNeigh(const NeighborInfo& info)
+     }
+ }
+ 
++void EthernetInterface::disableDHCP(IP::Protocol protocol)
++{
++    DHCPConf dhcpState = EthernetInterfaceIntf::dhcpEnabled();
++    if (dhcpState == EthernetInterface::DHCPConf::both)
++    {
++        if (protocol == IP::Protocol::IPv4)
++        {
++            dhcpEnabled(EthernetInterface::DHCPConf::v6);
++	}
++        else if (protocol == IP::Protocol::IPv6)
++        {
++            dhcpEnabled(EthernetInterface::DHCPConf::v4);
++        }
++    }
++    else if ((dhcpState == EthernetInterface::DHCPConf::v4) &&
++             (protocol == IP::Protocol::IPv4))
++    {
++        dhcpEnabled(EthernetInterface::DHCPConf::none);
++    }
++    else if ((dhcpState == EthernetInterface::DHCPConf::v6) &&
++             (protocol == IP::Protocol::IPv6))
++    {
++        dhcpEnabled(EthernetInterface::DHCPConf::none);
++    }
++}
++
++void EthernetInterface::deleteStaticIPv4Addresses()
++{
++    std::unique_ptr<IPAddress> ptr;
++    for (auto it = addrs.begin(); it != addrs.end();)
++    {
++        if ((it->second->origin() == IP::AddressOrigin::Static) &&
++            (it->second->type() == IP::Protocol::IPv4))
++        {
++            ptr = std::move(it->second);
++            it = addrs.erase(it);
++            manager.get().reloadConfigs();
++        }
++        else
++        {
++            it++;
++        }
++    }
++}
++
+ ObjectPath EthernetInterface::ip(IP::Protocol protType, std::string ipaddress,
+                                  uint8_t prefixLength, std::string)
+ {
+@@ -291,6 +348,10 @@ ObjectPath EthernetInterface::ip(IP::Protocol protType, std::string ipaddress,
+     writeConfigurationFile();
+     manager.get().reloadConfigs();
+ 
++    if ((protType == IP::Protocol::IPv4) && dhcpIsEnabled(*addr))
++    {
++        disableDHCP(protType);
++    }
+     return it->second->getObjPath();
+ }
+ 
+@@ -379,6 +440,12 @@ bool EthernetInterface::dhcp6(bool value)
+ 
+ EthernetInterface::DHCPConf EthernetInterface::dhcpEnabled(DHCPConf value)
+ {
++    if ((value == DHCPConf::v4) || (value == DHCPConf::both))
++    {
++        // Delete all IPv4 static addresses while enabling DHCP
++        deleteStaticIPv4Addresses();
++    }
++
+     auto old4 = EthernetInterfaceIntf::dhcp4();
+     auto new4 = EthernetInterfaceIntf::dhcp4(
+         value == DHCPConf::v4 || value == DHCPConf::v4v6stateless ||
+@@ -724,22 +791,29 @@ void EthernetInterface::writeConfigurationFile()
+                 dnss.emplace_back(dns);
+             }
+         }
++        uint8_t prefixLength = 0;
+         {
+             auto& address = network["Address"];
+             for (const auto& addr : addrs)
+             {
+-                if (addr.second->origin() == IP::AddressOrigin::Static)
++                if (originIsManuallyAssigned(addr.second->origin()))
+                 {
+                     address.emplace_back(stdplus::toStr(addr.first));
++                    if (addr.second->type() == IP::Protocol::IPv4)
++                    {
++                        prefixLength = addr.second->prefixLength();
++                    }
+                 }
+             }
+         }
+         {
+             if (!dhcp4())
+             {
++                auto& gateways = network["Gateway"];
+                 auto gateway4 = EthernetInterfaceIntf::defaultGateway();
+-                if (!gateway4.empty())
++                if (!gateway4.empty() && prefixLength)
+                 {
++                    gateways.emplace_back(gateway4);
+                     auto& gateway4route = config.map["Route"].emplace_back();
+                     gateway4route["Gateway"].emplace_back(gateway4);
+                     gateway4route["GatewayOnLink"].emplace_back("true");
+diff --git a/src/ethernet_interface.hpp b/src/ethernet_interface.hpp
+index c7af241..faebcc3 100644
+--- a/src/ethernet_interface.hpp
++++ b/src/ethernet_interface.hpp
+@@ -108,6 +108,10 @@ class EthernetInterface : public Ifaces
+      */
+     void loadNameServers(const config::Parser& config);
+ 
++    /** @brief Function used to delete IPv4 static addresses
++     */
++    void deleteStaticIPv4Addresses();
++
+     /** @brief Function to create ipAddress dbus object.
+      *  @param[in] addressType - Type of ip address.
+      *  @param[in] ipAddress- IP address.
+@@ -143,6 +147,8 @@ class EthernetInterface : public Ifaces
+     {
+         return std::visit([&](auto v) { return dhcpIsEnabled(v); }, addr);
+     }
++    bool originIsManuallyAssigned(IP::AddressOrigin origin);
++    void disableDHCP(IP::Protocol protocol);
+ 
+     /** Set size of MTU */
+     size_t mtu(size_t value) override;
+-- 
+2.43.0
+
