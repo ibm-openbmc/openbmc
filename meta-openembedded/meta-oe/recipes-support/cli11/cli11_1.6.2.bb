@@ -6,7 +6,7 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=c271fee3ae28e11b24b97284d9f82887"
 SRCREV = "bd4dc911847d0cde7a6b41dfa626a85aab213baf"
 PV .= "+git${SRCPV}"
 
-SRC_URI += "gitsm://github.com/CLIUtils/CLI11 \
+SRC_URI += "gitsm://github.com/CLIUtils/CLI11;nobranch=1;protocol=https \
             file://0001-Add-CLANG_TIDY-check.patch \
            "
 
