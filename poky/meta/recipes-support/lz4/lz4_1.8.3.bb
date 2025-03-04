@@ -11,7 +11,7 @@ PE = "1"
 
 SRCREV = "641b453d9db536ee020851bfcb1dc39f61006f0a"
 
-SRC_URI = "git://github.com/lz4/lz4.git \
+SRC_URI = "git://github.com/lz4/lz4.git;nobranch=1;protocol=https \
            file://run-ptest \
            "
 UPSTREAM_CHECK_GITTAGREGEX = "v(?P<pver>.*)"
