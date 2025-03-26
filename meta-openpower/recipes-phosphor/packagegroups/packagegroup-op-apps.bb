@@ -47,7 +47,6 @@ RDEPENDS_${PN}-flash = " \
 
 SUMMARY_${PN}-system = "OpenPOWER System"
 RDEPENDS_${PN}-system = " \
-        hostboot-settings \
         pdbg \
         croserver \
         "
