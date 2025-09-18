@@ -1,6 +1,6 @@
-KBRANCH ?= "op940-dev-6.1"
-LINUX_VERSION ?= "6.1.130"
+KBRANCH ?= "dev-5.4"
+LINUX_VERSION ?= "5.4.289"
 
-SRCREV="0c9470dc93e2a8c20df253583cd770475908275b"
+SRCREV="110e5447de1345cf05a035fce2d05b227dd707e3"
 
 require linux-aspeed.inc
